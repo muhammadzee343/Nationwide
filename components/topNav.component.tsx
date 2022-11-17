@@ -7,7 +7,7 @@ import {faEnvelope} from "@fortawesome/free-regular-svg-icons";
 import {faPhone} from "@fortawesome/free-solid-svg-icons";
 
 
-export default function TopNav() {
+export default function TopNavComponent() {
 
 
     return (
