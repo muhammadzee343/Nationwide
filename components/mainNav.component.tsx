@@ -2,34 +2,40 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "../public/NWLogo.png";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import styles from '../styles/Header.module.css'
+import styles from '../styles/header.module.css'
 import {faBars, faCartShopping, faXmark} from "@fortawesome/free-solid-svg-icons";
-import {useEffect, useState} from "react";
+import {useState} from "react";
+import MegaMenu from "./megaMenu.component";
 
-const MainNav = () => {
+const MainNavComponent = () => {
     const [collapseIcon, setCollapseIcon] = useState(true);
-    useEffect(() => {
-        return () => {
+    const [isHovering, setIsHovering] = useState(false);
 
-        };
-    }, [collapseIcon]);
+    const handleMouseOver = () => {
+        setIsHovering(true);
+    };
+
+    const handleMouseOut = () => {
+        setIsHovering(false);
+    };
 
     const changeIcon = () => {
         setCollapseIcon(!collapseIcon)
     }
 
     return (
-        <div className="bg-lime px-2 sm:px-20">
-            <nav className="py-5 px-2  xl:flex xl:items-center xl:justify-between">
-                <div className="flex justify-between items-center">
+        <div className="bg-lime px-2 sm:px-20 ">
+            <nav className=" px-2  xl:flex xl:items-center xl:justify-between">
+
+                <div className="flex justify-between items-center py-5">
                     <span className="text-3xl cursor-pointer mx-2 xl:hidden block" onClick={changeIcon}>
                         {<FontAwesomeIcon className="w-8 ,w-7 text-dark-blue"
-                                          icon={collapseIcon === false ? faBars : faXmark}/>}
+                                          icon={!collapseIcon ? faBars : faXmark}/>}
                     </span>
 
                     <span className="text-2xl font-[Poppins]">
             <Image
-                className="h-10 w-40 inline cursor-pointer"
+                className="h-10 w-52 inline cursor-pointer"
                 src={logo}
                 alt="logo"
             />
@@ -43,26 +49,29 @@ const MainNav = () => {
                     </button>
                     </span>
                 </div>
+
                 <ul
                     className={`${styles.mNavList} ${collapseIcon ? styles.showMenu : ''}`}
                 >
-                    <li className="px-6 my-6 xl:my-0 ">
+                    <li className="  flex items-center px-6 my-6 xl:my-0 h-full ">
                         <Link href="#" className="text-[15px] font-[600] hover:text-white ">
                             HOME
                         </Link>
                     </li>
-                    <li className="px-6 my-6 xl:my-0 ">
-                        <Link href="#" className="text-[15px] font-semibold hover:text-white ">
+                    <li className=" flex items-center px-6 my-6 xl:my-0  h-full" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} >
+                        <Link href="#" className="text-[15px] block font-semibold hover:text-white ">
                             OUR SERVICES
                         </Link>
+                        {isHovering && <MegaMenu onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}/>
+                            }
                     </li>
-                    <li className="px-6 my-6 xl:my-0">
+                    <li className=" flex items-center px-6 my-6  xl:my-0 h-full">
                         <Link href="#" className="text-[15px] font-semibold hover:text-white ">
                             CONTACT US
                         </Link>
                     </li>
                     {!collapseIcon ?<>
-                        <li className="px-6 my-6 xl:my-0">
+                        <li className=" flex items-center px-6 my-6 xl:my-0">
                                 <button
                                     className={styles.addToCartBtn}>
                                     <FontAwesomeIcon className="w-4 ,w-3" icon={faCartShopping}/>
@@ -79,4 +88,4 @@ const MainNav = () => {
     );
 };
 
-export default MainNav;
+export default MainNavComponent;

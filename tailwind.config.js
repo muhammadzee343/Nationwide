@@ -12,13 +12,31 @@ module.exports = {
       lg: '976px',
       xl: '1200px',
     },
-    colors:{
-      'lime': '#c2cf10',
-      'blue': '#2d3c51',
-      'dark-blue': '#182333',
-      'white':'#ffffff'
+
+    extend: {
+      colors:{
+        'lime': '#c2cf10',
+        'blue': '#2d3c51',
+        'dark-blue': '#182333',
+        'l-grey': '#a3a3a6',
+        'white':'#ffffff'
+      },
+      keyframes: {
+        'fade-in-up': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(10px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          },
+        }
+      },
+      animation: {
+        'fade-in-up': 'fade-in-up 0.5s ease-out',
+      }
     },
-    extend: {},
   },
   plugins: [],
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from '../styles/Header.module.css'
+import styles from '../styles/header.module.css'
 import {faEnvelope} from "@fortawesome/free-regular-svg-icons";
 import {faPhone} from "@fortawesome/free-solid-svg-icons";
 
@@ -12,10 +12,10 @@ export default function TopNav() {
 
     return (
         <>
-            <div className="bg-blue lg:py-4 py-8 lg:px-16">
+            <div className="bg-blue lg:py-2 py-8 lg:px-16">
                 <nav>
                     <div className="flex flex-wrap md:justify-between justify-center px-4 text-center">
-                        <div className="flex"><Link href="#" className={styles.tNavLinks}>Frequently Asked
+                        <div className="flex mt-1"><Link href="#" className={styles.tNavLinks}>Frequently Asked
                             Questions</Link></div>
                         <div className='md:flex'>
                             <div>
