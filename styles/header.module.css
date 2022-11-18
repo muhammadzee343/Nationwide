@@ -1,0 +1,34 @@
+
+.tNavLinks{
+    @apply text-white px-2 text-[14px] hover:text-lime
+}
+.mNavList{
+    @apply xl:flex xl:items-center z-[-1] xl:z-auto h-[72px]
+    xl:static absolute xl:bg-lime bg-white w-full left-0 xl:w-auto
+    xl:py-0 py-4 xl:pl-0 pl-7 xl:opacity-100 opacity-0 top-[-400px]
+    transition-all ease-in duration-200;
+}
+
+.addToCartBtn{
+    @apply relative px-4 py-4 bg-dark-blue text-white rounded-full drop-shadow
+}
+.addToCartBtn >span{
+    @apply absolute top-1 right-0 px-2 py-1 translate-x-1/2 -translate-y-1/2 bg-lime rounded-full drop-shadow text-xs text-white
+}
+.cartCount{
+    padding: 0.1rem 0.4rem !important;
+}
+
+.showMenu{
+    @apply opacity-100 top-[250px] sm:top-[205px] md:top-[150px]
+}
+
+.megaMenuList{
+    @apply py-1
+}
+.megaMenuList > li{
+    @apply   text-sm  cursor-pointer py-1 h-12  border-b text-[#666] hover:text-blue  hover:underline
+}
+.megaMenuList >a{
+    @apply text-blue
+}
