@@ -7,9 +7,11 @@ import {
   faBars,
   faCartShopping,
   faXmark,
+  faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import MegaMenu from "./megaMenu.component";
+import MobileScreenNav from "./mobileScreenNav.component";
 
 const MainNavComponent = () => {
   const [collapseIcon, setCollapseIcon] = useState(true);
@@ -23,17 +25,13 @@ const MainNavComponent = () => {
     setIsHovering(false);
   };
 
-  const changeIcon = () => {
-    setCollapseIcon(!collapseIcon);
-  };
-
   return (
-    <div className="bg-lime px-2 sm:px-20">
+    <div className="bg-lime px-2 sm:px-20 static top auto ">
       <nav className="px-2  xl:flex xl:items-center xl:justify-between">
         <div className="flex justify-between items-center py-5">
           <span
             className="text-3xl cursor-pointer mx-2 xl:hidden block"
-            onClick={changeIcon}
+            onClick={() => setCollapseIcon(!collapseIcon)}
           >
             <FontAwesomeIcon
               className="w-8 ,w-7 text-dark-blue"
@@ -56,60 +54,67 @@ const MainNavComponent = () => {
             </button>
           </span>
         </div>
-
-        <ul
-          className={`${styles.mNavList} ${
-            collapseIcon ? styles.showMenu : ""
-          }`}
-        >
-          <li className="flex items-center px-6 my-6 xl:my-0 h-full">
-            <Link href="#" className="text-[15px] font-[600] hover:text-white">
-              HOME
-            </Link>
-          </li>
-          <li
-            className="flex items-center px-6 my-6 xl:my-0  h-full"
-            onMouseOver={handleMouseOver}
-            onMouseOut={handleMouseOut}
+        {!collapseIcon ? (
+          <ul
+            className={`${styles.mNavList} ${
+              collapseIcon ? styles.showMenu : ""
+            }`}
           >
-            <Link
-              href="#"
-              className="text-[15px] block font-semibold hover:text-white "
-            >
-              OUR SERVICES
-            </Link>
+            <li className="flex items-center px-6 my-6 xl:my-0 h-full">
+              <Link
+                href="#"
+                className="text-[15px] text-dark-blue font-[600] hover:text-white"
+              >
+                HOME
+              </Link>
+            </li>
 
-            {isHovering && (
-              <MegaMenu
-                onMouseOver={handleMouseOver}
-                onMouseOut={handleMouseOut}
-              />
-            )}
-          </li>
-          <li className="flex items-center px-6 my-6  xl:my-0 h-full">
-            <Link
-              href="#"
-              className="text-[15px] font-semibold hover:text-white"
+            <li
+              className="flex items-center px-6 my-6 xl:my-0 hover:text-white h-full"
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
             >
-              CONTACT US
-            </Link>
-          </li>
-          {!collapseIcon ? (
-            <>
-              <li className="flex items-center px-6 my-6 xl:my-0">
-                <button className={styles.addToCartBtn}>
-                  <FontAwesomeIcon className="w-4 ,w-3" icon={faCartShopping} />
-                  <span className={styles.cartCount}>0</span>
-                </button>
-              </li>
-              <button className="bg-dark-blue text-white px-6 py-2 rounded-full text-sm font-bold">
-                Order Online
+              <Link
+                href="#"
+                className="text-[15px] text-dark-blue block hover:text-white relative font-semibold flex"
+              >
+                OUR SERVICES
+                <FontAwesomeIcon
+                  className="w-4 w-3 ml-2 mb-1"
+                  icon={faChevronDown}
+                />
+              </Link>
+
+              {isHovering && (
+                <MegaMenu
+                  onMouseOver={handleMouseOver}
+                  onMouseOut={handleMouseOut}
+                />
+              )}
+            </li>
+
+            <li className="flex items-center px-6 my-6  xl:my-0 h-full">
+              <Link
+                href="#"
+                className="text-[15px] text-dark-blue font-semibold hover:text-white"
+              >
+                CONTACT US
+              </Link>
+            </li>
+
+            <li className="flex items-center px-6 my-6 xl:my-0">
+              <button className={styles.addToCartBtn}>
+                <FontAwesomeIcon className="w-4 ,w-3" icon={faCartShopping} />
+                <span className={styles.cartCount}>0</span>
               </button>
-            </>
-          ) : (
-            ""
-          )}
-        </ul>
+            </li>
+            <button className="bg-dark-blue text-white px-6 py-2 rounded-full text-sm font-bold">
+              Order Online
+            </button>
+          </ul>
+        ) : (
+          <MobileScreenNav />
+        )}
       </nav>
     </div>
   );

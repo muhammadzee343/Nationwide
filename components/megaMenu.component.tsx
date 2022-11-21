@@ -3,14 +3,14 @@ import styles from "../styles/header.module.css";
 export default function MegaMenu() {
   return (
     <>
-      <div className="w-5/6 absolute right-0 left-0 top-[74px] mx-auto pt-2 bg-lime rounded  animate-fade-in-up drop-shadow-md">
+      <div className="w-11/12 block xl:absolute inset-x-0 top-[75px] mx-auto pt-2 xl:bg-lime rounded  animate-fade-in-up drop-shadow-md">
         <div
           id="mega-menu-full-dropdown"
-          className="bg-white flex justify-center  shadow-sm"
+          className="bg-white flex justify-center shadow-sm"
         >
-          <div className="w-full bg-white flex justify-around py-3">
+          <div className="w-full bg-white grid grid-cols-1  md:grid-cols-2 xl:grid-cols-4  gap-4 py-3">
             <div className="flex-col items-center px-4 py-5">
-              <a className="font-semibold uppercase font-[15px]">
+              <a className="font-semibold uppercase text-dark-blue font-[15px]">
                 Domestic & Commercial Certifications
               </a>
               <ul className={styles.megaMenuList}>
@@ -23,7 +23,7 @@ export default function MegaMenu() {
             </div>
 
             <div className="flex-col items-center px-4 py-5">
-              <a className="font-semibold uppercase font-[15px]">
+              <a className="font-semibold text-dark-blue uppercase font-[15px]">
                 Gas Safety Certificate
               </a>
               <ul className={styles.megaMenuList}>
@@ -33,7 +33,7 @@ export default function MegaMenu() {
             </div>
 
             <div className="flex-col items-center px-4 py-5">
-              <a className="font-semibold uppercase font-[15px]">
+              <a className="font-semibold uppercase text-dark-blue font-[15px]">
                 Electrical Reports & Remedial Work
               </a>
               <ul className={styles.megaMenuList}>
@@ -44,7 +44,7 @@ export default function MegaMenu() {
             </div>
 
             <div className="flex-col items-center px-4 py-5">
-              <a className="font-semibold uppercase font-[15px]">
+              <a className="font-semibold uppercase text-dark-blue font-[15px]">
                 Other Services
               </a>
               <ul className={styles.megaMenuList}>

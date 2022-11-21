@@ -9,7 +9,7 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 export default function TopNavComponent() {
   return (
     <>
-      <div className="bg-blue lg:py-2 py-8 lg:px-16">
+      <div className="bg-blue lg:py-3 py-8 lg:px-16">
         <nav>
           <div className="flex flex-wrap md:justify-between justify-center px-4 text-center">
             <div className="flex mt-1">
