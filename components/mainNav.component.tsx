@@ -6,17 +6,32 @@ import styles from "../styles/header.module.css";
 import {
   faBars,
   faCartShopping,
-  faXmark,
   faChevronDown,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import MegaMenu from "./megaMenu.component";
 import MobileScreenNav from "./mobileScreenNav.component";
+import { DeviceContext } from "./deviceContext.component";
+import MediaQuery, { useMediaQuery } from "react-responsive";
 
 const MainNavComponent = () => {
-  const [collapseIcon, setCollapseIcon] = useState(true);
+  const [collapseIcon, setCollapseIcon] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
 
+  const { xlargeDevice }: any = useContext(DeviceContext);
+
+  const handleMediaQueryChange = (matches: any) => {
+    // matches will be true or false based on the value for the media query
+    if (matches) {
+      setCollapseIcon(false);
+    }
+  };
+  const isDesktopOrLaptop = useMediaQuery(
+    { minWidth: 1200 },
+    undefined,
+    handleMediaQueryChange
+  );
   const handleMouseOver = () => {
     setIsHovering(true);
   };
@@ -54,67 +69,72 @@ const MainNavComponent = () => {
             </button>
           </span>
         </div>
-        {!collapseIcon ? (
+        <MediaQuery minWidth={1200} onChange={handleMediaQueryChange}>
           <ul
-            className={`${styles.mNavList} ${
+            className={`${styles.mNavList}${
               collapseIcon ? styles.showMenu : ""
             }`}
           >
-            <li className="flex items-center px-6 my-6 xl:my-0 h-full">
-              <Link
-                href="#"
-                className="text-[15px] text-dark-blue font-[600] hover:text-white"
-              >
-                HOME
-              </Link>
-            </li>
+            {xlargeDevice && (
+              <>
+                <li className="flex items-center px-6 my-6 xl:my-0 h-full">
+                  <Link
+                    href="#"
+                    className="text-[15px] text-dark-blue font-[600] hover:text-white"
+                  >
+                    HOME
+                  </Link>
+                </li>
 
-            <li
-              className="flex items-center px-6 my-6 xl:my-0 hover:text-white h-full"
-              onMouseOver={handleMouseOver}
-              onMouseOut={handleMouseOut}
-            >
-              <Link
-                href="#"
-                className="text-[15px] text-dark-blue block hover:text-white relative font-semibold flex"
-              >
-                OUR SERVICES
-                <FontAwesomeIcon
-                  className="w-4 w-3 ml-2 mb-1"
-                  icon={faChevronDown}
-                />
-              </Link>
-
-              {isHovering && (
-                <MegaMenu
+                <li
+                  className="flex items-center px-6 my-6 xl:my-0 hover:text-white h-full"
                   onMouseOver={handleMouseOver}
                   onMouseOut={handleMouseOut}
-                />
-              )}
-            </li>
+                >
+                  <Link
+                    href="#"
+                    className="text-[15px] text-dark-blue block hover:text-white relative font-semibold flex"
+                  >
+                    OUR SERVICES
+                    <FontAwesomeIcon
+                      className="w-4 w-3 ml-2 mb-1"
+                      icon={faChevronDown}
+                    />
+                  </Link>
+                  {isHovering && (
+                    <MegaMenu
+                      onMouseOver={handleMouseOver}
+                      onMouseOut={handleMouseOut}
+                    />
+                  )}
+                </li>
 
-            <li className="flex items-center px-6 my-6  xl:my-0 h-full">
-              <Link
-                href="#"
-                className="text-[15px] text-dark-blue font-semibold hover:text-white"
-              >
-                CONTACT US
-              </Link>
-            </li>
+                <li className="flex items-center px-6 my-6  xl:my-0 h-full">
+                  <Link
+                    href="#"
+                    className="text-[15px] text-dark-blue font-semibold hover:text-white"
+                  >
+                    CONTACT US
+                  </Link>
+                </li>
 
-            <li className="flex items-center px-6 my-6 xl:my-0">
-              <button className={styles.addToCartBtn}>
-                <FontAwesomeIcon className="w-4 ,w-3" icon={faCartShopping} />
-                <span className={styles.cartCount}>0</span>
-              </button>
-            </li>
-            <button className="bg-dark-blue text-white px-6 py-2 rounded-full text-sm font-bold">
-              Order Online
-            </button>
+                <li className="flex items-center px-6 my-6 xl:my-0">
+                  <button className={styles.addToCartBtn}>
+                    <FontAwesomeIcon
+                      className="w-4 ,w-3"
+                      icon={faCartShopping}
+                    />
+                    <span className={styles.cartCount}>0</span>
+                  </button>
+                </li>
+                <button className="bg-dark-blue text-white px-6 py-2 rounded-full text-sm font-bold">
+                  Order Online
+                </button>
+              </>
+            )}
           </ul>
-        ) : (
-          <MobileScreenNav />
-        )}
+        </MediaQuery>
+        {collapseIcon && <MobileScreenNav />}
       </nav>
     </div>
   );

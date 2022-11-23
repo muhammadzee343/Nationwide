@@ -18,7 +18,14 @@ module.exports = {
         lime: "#c2cf10",
         blue: "#2d3c51",
         "dark-blue": "#182333",
-        "l-grey": "#a3a3a6",
+
+        grey: {
+          400: "#ccc",
+          500: "#a3a3a6",
+          600: "#cdcdcd",
+          700: "#8d9297",
+          900: "#20292f",
+        },
         white: "#ffffff",
       },
 
