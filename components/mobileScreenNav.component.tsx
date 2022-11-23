@@ -9,13 +9,13 @@ export default function MobileScreenNav() {
 
   return (
     <ul className="absolute w-11/12 inset-x-0 mx-auto flex-col px-6 py-2 align-center bg-white shadow-sm rounded border z-[100] ">
-      <li className="flex items-center border-b border-l-grey   xl:my-0 h-12  text-dark-blue">
+      <li className="flex items-center border-b border-grey-500   xl:my-0 h-12  text-dark-blue">
         <Link href="#" className="text-[15px] font-[600] ">
           HOME
         </Link>
       </li>
       <li
-        className="flex items-baseline border-b border-l-grey text-dark-blue mt-3  xl:my-0 h-8"
+        className="flex items-baseline border-b border-grey-500 text-dark-blue mt-3  xl:my-0 h-8"
         onClick={() => {
           setToggleMenu(!toggleMenu);
         }}
