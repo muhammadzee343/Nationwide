@@ -1,6 +1,6 @@
 
 .tNavLinks{
-    @apply text-white px-2 text-[14px] hover:text-lime
+    @apply text-white px-2 text-[14px] hover:text-lime hover:ease-in duration-300
 }
 .mNavList{
     @apply xl:flex xl:items-center z-[-1] xl:z-auto h-[72px]
@@ -27,7 +27,7 @@
     @apply py-1
 }
 .megaMenuList > li{
-    @apply   text-sm  cursor-pointer py-1 h-12  border-b text-[#666] hover:text-blue  hover:underline
+    @apply   text-sm  cursor-pointer h-12  border-b text-[#666] hover:text-blue  hover:underline
 }
 .megaMenuList >a{
     @apply text-blue
