@@ -134,9 +134,7 @@ export default function Home() {
               })}
             </div>
             <div className=" flex  w-full h-[600px]  justify-center xl:flex-nowrap gap-1 xl:gap-7">
-              <CarouselComponent list={howItWorks}>
-                <HowItWorks />
-              </CarouselComponent>
+              <CarouselComponent list={howItWorks} component={HowItWorks} />
             </div>
           </div>
         </div>
