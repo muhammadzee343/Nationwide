@@ -12,14 +12,14 @@ module.exports = {
       lg: "976px",
       xl: "1200px",
     },
-
     extend: {
       colors: {
         lime: "#c2cf10",
         blue: "#2d3c51",
+        "light-blue": "#213148",
         "dark-blue": "#182333",
-
         grey: {
+          300: "#667181",
           400: "#ccc",
           500: "#a3a3a6",
           600: "#cdcdcd",
@@ -27,11 +27,13 @@ module.exports = {
           900: "#20292f",
         },
         white: "#ffffff",
+        cream: "#f9f9f9",
       },
 
       backgroundImage: {
         home_bg_image: "url('../public/mainbg.jpg')",
         footer_bg_image: "url('../public/footer-bg.jpg')",
+        row_bg: "url('../public/row-bg.png')",
       },
 
       keyframes: {

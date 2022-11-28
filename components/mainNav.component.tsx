@@ -49,7 +49,7 @@ const MainNavComponent = () => {
             onClick={() => setCollapseIcon(!collapseIcon)}
           >
             <FontAwesomeIcon
-              className="w-8 ,w-7 text-dark-blue"
+              className="w-8 text-dark-blue"
               icon={!collapseIcon ? faBars : faXmark}
             />
           </span>
@@ -64,7 +64,7 @@ const MainNavComponent = () => {
 
           <span className="xl:hidden block">
             <button className={styles.addToCartBtn}>
-              <FontAwesomeIcon className="w-4 ,w-3" icon={faCartShopping} />
+              <FontAwesomeIcon className="w-4" icon={faCartShopping} />
               <span className={styles.cartCount}>0</span>
             </button>
           </span>
@@ -97,7 +97,7 @@ const MainNavComponent = () => {
                   >
                     OUR SERVICES
                     <FontAwesomeIcon
-                      className="w-4 w-3 ml-2 mb-1"
+                      className="w-4 ml-2 mb-1"
                       icon={faChevronDown}
                     />
                   </Link>
@@ -120,10 +120,7 @@ const MainNavComponent = () => {
 
                 <li className="flex items-center px-6 my-6 xl:my-0">
                   <button className={styles.addToCartBtn}>
-                    <FontAwesomeIcon
-                      className="w-4 ,w-3"
-                      icon={faCartShopping}
-                    />
+                    <FontAwesomeIcon className="w-4" icon={faCartShopping} />
                     <span className={styles.cartCount}>0</span>
                   </button>
                 </li>

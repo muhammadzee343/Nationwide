@@ -6,7 +6,7 @@ const HomeTab = () => {
   const [activeService, setService] = useState(LEC);
 
   return (
-    <div className="bg-[#182333bf] lg:flex gap-x-28 p-6 lg:py-6 lg:px-0">
+    <div className="bg-[#182333bf] lg:flex gap-x-28 p-6 lg:py-6 lg:px-0 md:min-h-[440px]">
       <div className="my-auto">
         <ul className="flex flex-wrap align-center lg:flex-col lg:mt-6">
           {SERVICES.map((ele, index) => {

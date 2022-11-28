@@ -44,4 +44,7 @@
     list-style-type: '\2713';
     @apply marker:text-dark-blue
 }
+.specialBUndle{
+    font-family:  'Tahoma','Ubuntu';
+}
 

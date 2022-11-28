@@ -57,7 +57,7 @@ export default function SelectProperty() {
               </div>
               <ButtonComponent
                 text="Quote Now"
-                className="bg-lime text-dark-blue hover:bg-dark-blue hover:text-white ease-in duration-200"
+                className="bg-lime text-dark-blue font-semibold  px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"
               />
             </div>
           </div>

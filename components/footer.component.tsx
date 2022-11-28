@@ -24,7 +24,7 @@ export default function Footer() {
   ];
   return (
     <>
-      <footer className="p-4 bg-white sm:p-6 dark:bg-gray-900">
+      <footer className="p-4 bg-white sm:p-6 dark:bg-gray-900 bg-footer_bg_image bg-no-repeat bg-cover">
         <div className=" flex flex-wrap justify-center my-20 mx-10">
           <div className="md:flex md:justify-evenly">
             <div className="mb-6 md:mb-0">
@@ -213,28 +213,28 @@ export default function Footer() {
               href="#"
               className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
             >
-              <FontAwesomeIcon className="w-[10px] ,w-1" icon={faFacebookF} />
+              <FontAwesomeIcon className="w-[10px]" icon={faFacebookF} />
               <span className="sr-only">Facebook page</span>
             </a>
             <a
               href="#"
               className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
             >
-              <FontAwesomeIcon className="w-4 ,w-3" icon={faTwitter} />
+              <FontAwesomeIcon className="w-4" icon={faTwitter} />
               <span className="sr-only">Twitter page</span>
             </a>
             <a
               href="#"
               className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
             >
-              <FontAwesomeIcon className="w-4 ,w-3" icon={faFlickr} />
+              <FontAwesomeIcon className="w-4" icon={faFlickr} />
               <span className="sr-only">flickr page</span>
             </a>
             <a
               href="#"
               className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
             >
-              <FontAwesomeIcon className="w-4 ,w-3" icon={faLinkedin} />
+              <FontAwesomeIcon className="w-4" icon={faLinkedin} />
               <span className="sr-only">LinkedIn account</span>
             </a>
           </div>

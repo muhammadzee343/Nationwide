@@ -1,3 +1,7 @@
 .customSlide{
     width: 284px !important;
 }
+.mySwiper{}
+.swiper-pagination-bullets{
+    background-color: black !important;
+}
