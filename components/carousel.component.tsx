@@ -23,6 +23,7 @@ function CarouselComponent({list, component}: any) {
             }}
             className=" mySwiper w-full flex justify-center"
             style={{
+                //@ts-ignore
                 "--swiper-pagination-color": "#c2cf10",
                 "--swiper-pagination-bullet-inactive-color": "#182333",
                 "--swiper-pagination-bullet-inactive-opacity": "1",

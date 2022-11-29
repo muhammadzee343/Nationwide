@@ -103,6 +103,7 @@ const MainNavComponent = () => {
                   </Link>
                   {isHovering && (
                     <MegaMenu
+                        //@ts-ignore
                       onMouseOver={handleMouseOver}
                       onMouseOut={handleMouseOut}
                     />
