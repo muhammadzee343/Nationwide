@@ -8,7 +8,7 @@ export default function HowItWorks({ title = "", paragraph = "", index = 0 }) {
         {index + 1}
       </div>
       <div
-        className={`bg-lime flex flex-col justify-center rounded overflow-auto min-h-[250px] min-w-[200px] max-w-[350px] text-center drop-shadow-lg p-[15px] mb-[15px]`}
+        className={`bg-lime flex flex-col justify-center rounded overflow-auto min-h-[250px] min-w-[200px] md:w-4/12 text-center drop-shadow-lg p-[15px] mb-[15px]`}
       >
         <h2
           className={`text-[20px] text-dark-blue font-bold uppercase mb-[15px]`}

@@ -20,7 +20,9 @@ export default function MegaMenu() {
                     Energy Performance Certificate
                   </Link>
                 </li>
-                <li>Commercial EPC</li>
+                <li>
+                  <Link href={"/service/commercial-epc"}>Commercial EPC</Link>
+                </li>
                 <li>Emergency Lights Test Report</li>
                 <li>Fire Alarm Test Report</li>
                 <li>Fire Risk Assessment</li>

@@ -4,13 +4,20 @@ import Electrical from "../public/electrical-1-1024x410-1.jpg";
 import Electrical2 from "../public/eicr7.jpg";
 import Certificate from "../public/0001-1-1.jpg";
 import Engineer from "../public/Engineer-.jpg";
-
+import epc from "../public/domesticepc.png";
+import epcSurveyor from "../public/epcSurveyor.jpg";
+import commercialEpc from "../public/Commercial-epc.jpg";
+import commercialEpcRating from "../public/commercialEpcRating.jpg";
 const images = {
   surveyour: Survey,
   electrical1: Electrical,
   electrical2: Electrical2,
   certificate: Certificate,
   engineer: Engineer,
+  domesticEpc: epc,
+  epcSurveyor: epcSurveyor,
+  commercialEpc: commercialEpc,
+  commercialEpcRating: commercialEpcRating,
 };
 
 export const LEC = {
@@ -138,6 +145,7 @@ export const homeServices = [
   {
     className: "flex flex-col lg:flex-row",
     content: {
+      type: "Home",
       link: "",
       image: images.surveyour,
       subTitle: "Why Choose",
@@ -158,6 +166,7 @@ export const homeServices = [
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
     content: {
+      type: "Home",
       link: "More about Domestic and Commercial EICRs ",
       image: images.electrical1,
       subTitle: "WHAT IS AN EICR AND WHO MAY REQUIRE IT?",
@@ -173,6 +182,7 @@ export const homeServices = [
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
     content: {
+      type: "Home",
       link: "MORE ABOUT Energy Performance Certificate ",
       image: images.certificate,
       subTitle: "DOMESTIC AND COMMERCIAL",
@@ -189,6 +199,7 @@ export const homeServices = [
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
     content: {
+      type: "Home",
       link: "MORE ABOUT Gas Safety Certificate",
       image: images.engineer,
       subTitle: "LANDLORD / HOMEOWNER",
@@ -205,6 +216,7 @@ export const homeServices = [
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
     content: {
+      type: "Home",
       link: "MORE ABOUT EICR Remedial Work",
       image: images.electrical2,
       subTitle: "WE ALSO PROVIDE",
@@ -279,4 +291,56 @@ export const howItWorks = [
       "Certificates / Reports will be issued digitally for each service ordered and sent to you by email, within 48 hours of Assessor’s visit. However," +
       " if it’s urgent, please advise this in your order notes or let us know when booking appointment(s).",
   },
+];
+
+export const service = [
+  {
+    className: "flex flex-col lg:flex-row",
+    content: {
+      type: "Service",
+      certificate: "Energy Performance Certificate",
+      image: images.domesticEpc,
+      heading: "Floor Plans",
+      content:
+        "<div>\n" +
+        "<p>The Government is complying with the Energy Performance of Building Directive (EPBD) with the introduction of the Energy Performance Certificate. The EPC shows a record of the energy efficiency levels and CO2 emissions of a building, by using a standard table from A to G (A being very efficient, G being very inefficient).</p>\n" +
+        "</div>",
+    },
+  },
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "Energy Performance Certificate",
+      image: images.epcSurveyor,
+      heading: "How an EPC assessment is carried out?",
+      content:
+        "<p>An energy survey is performed by a qualified energy assessor who visits the property and examines key items within the premises such as loft insulation, domestic boiler, hot water tank, radiators, windows for double glazing, etc.</p>" +
+        "<br/><p>Once this information is obtained it is then placed into a software programme which carries out and calculates the level of energy efficiency and CO2 emissions and advises us on the best measures in improving the energy performance of a property with an estimated cost and savings.</p>",
+    },
+  },
+  // {
+  //   className: "flex flex-col-reverse lg:flex-row-reverse",
+  //   content: {
+  //     type: "Service",
+  //     certificate: "Commercial EPC",
+  //     image: images.commercialEpc,
+  //     heading: "Commercial EPCs",
+  //     content:
+  //       "<p>An energy survey is performed by a qualified energy assessor who visits the property and examines key items within the premises such as loft insulation, domestic boiler, hot water tank, radiators, windows for double glazing, etc.</p>" +
+  //       "<br/><p>Once this information is obtained it is then placed into a software programme which carries out and calculates the level of energy efficiency and CO2 emissions and advises us on the best measures in improving the energy performance of a property with an estimated cost and savings.</p>",
+  //   },
+  // },
+  // {
+  //   className: "flex flex-col-reverse lg:flex-row-reverse",
+  //   content: {
+  //     type: "Service",
+  //     certificate: "Commercial EPC",
+  //     image: images.commercialEpcRating,
+  //     heading: "Who Needs a Commercial EPC?",
+  //     content:
+  //       "<p>An energy survey is performed by a qualified energy assessor who visits the property and examines key items within the premises such as loft insulation, domestic boiler, hot water tank, radiators, windows for double glazing, etc.</p>" +
+  //       "<br/><p>Once this information is obtained it is then placed into a software programme which carries out and calculates the level of energy efficiency and CO2 emissions and advises us on the best measures in improving the energy performance of a property with an estimated cost and savings.</p>",
+  //   },
+  // },
 ];
