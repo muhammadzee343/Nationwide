@@ -94,17 +94,24 @@ export default function Home() {
       </section>
       {/*ALL OUR SERVICES*/}
       <section>
-        <div className="bg-row_bg w-full flex flex-col items-center justify-center">
-          <div className="xl:container flex flex-wrap pb-[60px]">
+        <div className="bg-row_bg w-full flex flex-col items-center justify-center px-3">
+          <div className="w-full md:container flex flex-wrap pb-[60px]">
             <div className="border-l-[8px] border-lime mb-[30px] px-5 py-2">
               <h2 className="text-dark-blue text-4xl font-medium font-bold">
                 All Our Services
               </h2>
             </div>
-            <div className="flex flex-wrap gap-5">
+            <div className=" hidden md:flex flex-wrap gap-5">
               {ourServices.map(({ list, title }, index) => {
                 return <OurServices key={index} list={list} title={title} />;
               })}
+            </div>
+            <div className="md:hidden  w-full md:container ">
+              <CarouselComponent
+                list={ourServices}
+                component={OurServices}
+                className="h-[350px]"
+              />
             </div>
           </div>
         </div>
@@ -113,7 +120,7 @@ export default function Home() {
       {/*HOW IT WORKS*/}
 
       <section>
-        <div className="bg-row_bg w-full flex flex-col items-center justify-center">
+        <div className="bg-row_bg w-full flex flex-col items-center justify-center px-3">
           <div className="  w-full md:container flex flex-col  flex-wrap  pb-[60px]">
             <div className="border-l-[8px] border-lime mb-[30px] px-5 py-2">
               <h2 className="text-dark-blue text-4xl font-medium font-bold">
@@ -133,7 +140,7 @@ export default function Home() {
                 );
               })}
             </div>
-            <div className=" flex  w-full h-[600px]  justify-center xl:flex-nowrap gap-1 xl:gap-7">
+            <div className=" flex md:hidden  w-full h-[300px]  justify-center xl:flex-nowrap gap-1 xl:gap-7">
               <CarouselComponent list={howItWorks} component={HowItWorks} />
             </div>
           </div>
@@ -141,8 +148,8 @@ export default function Home() {
       </section>
       {/*B2B SECTION*/}
       <section>
-        <div className="bg-lime w-full flex justify-center">
-          <div className="sm:container flex flex-col flex-wrap pt-[80px] pb-[60px] w-2/4">
+        <div className="bg-lime w-full flex justify-center px-3 ">
+          <div className="sm:container w-full  flex flex-col flex-wrap pt-[80px] pb-[60px]">
             <div className="border-l-[8px] border-white mb-[30px] px-5 py-2">
               <h4 className="text-sm mb-[2px] mt-[5px] uppercase font-semibold text-white tracking-[1px]">
                 Placing Repeat Orders ?
@@ -153,7 +160,7 @@ export default function Home() {
                 Service
               </h2>
             </div>
-            <div className={`xl:w-2/5`}>
+            <div className={` w-full xl:w-2/5 `}>
               <p className={`text-white text-[15px] leading-[27px]`}>
                 For those customers needing to make regular orders you can get
                 direct access to our bespoke order management system for live
@@ -167,7 +174,7 @@ export default function Home() {
       </section>
 
       <section>
-        <div className=" w-full bg-row_bg flex  justify-center">
+        <div className=" w-full bg-row_bg flex  justify-center px-3">
           <div className="sm:container flex  flex-wrap justify-between items-center  pt-[80px] pb-[60px] ">
             <div className="border-l-[8px] border-lime mb-[30px] px-5 py-2">
               <h4 className="text-sm mb-[2px] mt-[5px] uppercase font-semibold text-[#1a1a1a] tracking-[1px]">
@@ -179,10 +186,10 @@ export default function Home() {
                 Coverage!
               </h2>
             </div>
-            <div>
-              <p>
+            <div className="mb-4 sm:mb-0">
+              <p className="text-dark-blue">
                 It only takes under three minutes to place an order
-                <br />
+                <br className="hidden sm:block" />
                 and then leave the rest on us.
               </p>
             </div>
