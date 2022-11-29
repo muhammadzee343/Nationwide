@@ -1,0 +1,6 @@
+.servicePara{
+    @apply text-[#1a1a1a] text-[15px] leading-7 font-semibold block mb-[23px] text-justify
+}
+.servicePara2{
+    @apply text-[16px] text-justify text-[#1a1a1a] mb-[15px] leading-7 text-[14px]
+}

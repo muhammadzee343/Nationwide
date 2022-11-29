@@ -9,8 +9,8 @@ export const DeviceContext = createContext({
 });
 
 const DeviceProvider = ({ children }: any) => {
-  const smallDevice: any = useMediaQuery({ maxWidth: 767 });
-  const middleDevice: any = useMediaQuery({ maxWidth: 1024, minWidth: 768 });
+  const smallDevice: any = useMediaQuery({ minWidth: 320, maxWidth: 990 });
+  const middleDevice: any = useMediaQuery({ minWidth: 991 });
   const largeDevice: any = useMediaQuery({ minWidth: 1025 });
 
   const handleMediaQueryChange = (matches: any) => {};

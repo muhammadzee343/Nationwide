@@ -27,7 +27,7 @@
     @apply py-1
 }
 .megaMenuList > li{
-    @apply   text-sm  cursor-pointer h-12  border-b text-[#666] hover:text-blue  hover:underline
+    @apply flex items-center text-sm cursor-pointer h-9  border-b text-[#666] hover:text-blue  hover:underline
 }
 .megaMenuList >a{
     @apply text-blue
