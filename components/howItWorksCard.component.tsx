@@ -1,15 +1,15 @@
 // @ts-ignore
-export default function HowItWorks({ title = "", paragraph = "", index = "" }) {
+export default function HowItWorks({ title = "", paragraph = "", index = 0 }) {
   return (
     <>
       <div
-        className={`bg-lime flex flex-col justify-center rounded min-h-[250px] min-w-[200px] max-w-[350px] relative   text-center drop-shadow-lg p-[15px] mb-[15px]`}
+        className={`bg-lime  font-semibold top-[-14px] z-[200]  mx-auto text-white md:hidden text-center w-[30px] h-[30px] sticky rounded-full mb-[-20px]`}
       >
-        <span
-          className={`bg-lime absolute font-semibold top-[-14px] inset-x-0 mx-auto text-white md:hidden  w-[30px] h-[30px] rounded-full`}
-        >
-          {index + 1}
-        </span>
+        {index + 1}
+      </div>
+      <div
+        className={`bg-lime flex flex-col justify-center rounded overflow-auto min-h-[250px] min-w-[200px] max-w-[350px] text-center drop-shadow-lg p-[15px] mb-[15px]`}
+      >
         <h2
           className={`text-[20px] text-dark-blue font-bold uppercase mb-[15px]`}
         >

@@ -6,7 +6,10 @@ import ButtonComponent from "./Button.component";
 export default function SelectProperty() {
   return (
     <>
-      <div className=" bg-white text-center z-[250]" id="main_quote_form">
+      <div
+        className=" bg-white text-center z-[250] drop-shadow-2xl"
+        id="main_quote_form"
+      >
         <form id="instantquote_main" method="post">
           <h3 className="text-white font-bold uppercase text-[26px]  mx-25  bg-dark-blue py-[20px] px-[25px] block">
             Get Instant <span className="text-lime block font-bold">Quote</span>

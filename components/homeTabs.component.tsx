@@ -12,7 +12,7 @@ const HomeTab = () => {
           {SERVICES.map((ele, index) => {
             return (
               <li
-                className=" py-1 lg:py-2"
+                className=" py-1 lg:py-2 w-full md:w-[238px] "
                 key={index}
                 onClick={() => setService(ele.slug)}
               >
@@ -21,7 +21,7 @@ const HomeTab = () => {
                     activeService.title === ele.slug.title
                       ? styles.pointerActive
                       : styles.pointer
-                  }`}
+                  } w-full`}
                 >
                   <Link href="#" onClick={(event) => event.preventDefault()}>
                     {ele.title} <br />

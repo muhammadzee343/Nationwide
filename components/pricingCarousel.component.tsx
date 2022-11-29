@@ -15,7 +15,7 @@ import PricingCard from "./pricingCard.component";
 function PricingCarouselComponent(props: any) {
   return (
     <>
-      <div className="pl-6 sm:px-6 mx-auto md:px-12 xl:px-32 mt-[10px] xl:mt-[-200px]">
+      <div className=" pl-6 sm:px-6 mx-auto md:px-12 xl:px-32 mt-[10px] xl:mt-[-200px]">
         <Swiper
           spaceBetween={0}
           slidesPerView={"auto"}
@@ -27,7 +27,8 @@ function PricingCarouselComponent(props: any) {
           modules={[Pagination, Navigation]}
           onSlideChange={() => {}}
           onSwiper={(swiper) => {}}
-          className=" mySwiper w-full flex justify-center"
+          className=" mySwiper w-full flex justify-center min-h-[560px] relative
+          "
           style={{
             "--swiper-pagination-color": "#c2cf10",
             "--swiper-pagination-bullet-inactive-color": "#182333",
@@ -41,7 +42,7 @@ function PricingCarouselComponent(props: any) {
             return (
               <SwiperSlide
                 key={index}
-                className={`${priceStyles.customSlide} xl:flex xl:justify-center`}
+                className={`${priceStyles.customSlide} xl:flex xl:justify-center `}
               >
                 <PricingCard
                   key={index}

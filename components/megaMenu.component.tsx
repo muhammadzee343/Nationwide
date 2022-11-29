@@ -1,4 +1,5 @@
 import styles from "../styles/header.module.css";
+import Link from "next/link";
 
 export default function MegaMenu() {
   return (
@@ -14,7 +15,11 @@ export default function MegaMenu() {
                 Domestic & Commercial Certifications
               </a>
               <ul className={styles.megaMenuList}>
-                <li>Energy Performance Certificate</li>
+                <li>
+                  <Link href={"/service/domestic-epc"}>
+                    Energy Performance Certificate
+                  </Link>
+                </li>
                 <li>Commercial EPC</li>
                 <li>Emergency Lights Test Report</li>
                 <li>Fire Alarm Test Report</li>
