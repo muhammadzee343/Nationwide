@@ -10,9 +10,9 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 function ServiceInfo({ className, content }: any) {
   return (
     <>
-      <div className="lg:w-5/12 py-4 px-4 flex justify-center">
+      <div className="lg:w-6/12 py-4 px-4 flex justify-center">
         <Image
-          className=" h-full cursor-pointer"
+          className=" h-fit cursor-pointer"
           src={content.image}
           alt="Nwlogo"
         />
@@ -32,20 +32,22 @@ function ServiceInfo({ className, content }: any) {
             <div>
               <p className={styles.servicePara2}>{content.paragraph2}</p>
             </div>
-            <Link
-              href={"#"}
-              className="text-sm uppercase text-lime hover:text-dark-blue flex"
-            >
-              {content.link}
-              <span className="flex ml-1">
-                <FontAwesomeIcon className="w-2 " icon={faChevronRight} />
-                <FontAwesomeIcon className="w-2 " icon={faChevronRight} />
-              </span>
-            </Link>
+            {content.link && (
+              <Link
+                href={"#"}
+                className="text-sm uppercase text-lime hover:text-dark-blue flex"
+              >
+                {content.link}
+                <span className="flex ml-1">
+                  <FontAwesomeIcon className="w-2 " icon={faChevronRight} />
+                  <FontAwesomeIcon className="w-2 " icon={faChevronRight} />
+                </span>
+              </Link>
+            )}
           </>
         )}
         {content.type === "Service" && (
-          <div className={`flex flex-col`}>
+          <div className={`flex flex-col leading-relaxed list-disc`}>
             <h3
               className={`text-[26px] font-semibold mb-2 ${styles.serviceHeading}`}
             >
