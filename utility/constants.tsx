@@ -8,6 +8,27 @@ import epc from "../public/domesticepc.png";
 import epcSurveyor from "../public/epcSurveyor.jpg";
 import commercialEpc from "../public/Commercial-epc.jpg";
 import commercialEpcRating from "../public/commercialEpcRating.jpg";
+import ELight from "../public/Emergency-light.jpg";
+import ELightIt from "../public/ELPITc.jpg";
+import Fat from "../public/FAT.jpg";
+import Fatt from "../public/FATT.png";
+import Fra from "../public/FRA.png";
+import Fra2 from "../public/FRA2.jpg";
+import GasCertificate from "../public/Gas-certificate-1.jpeg";
+import Bs from "../public/Boiler-service1.jpg";
+import Bs2 from "../public/boiler-service2.jpg";
+import Esr from "../public/ESR.jpg";
+import Pat1 from "../public/pat1.gif";
+import Pat2 from "../public/pat2.jpg";
+import Fp1 from "../public/Fp1.jpg";
+import Fp2 from "../public/Fp2.jpg";
+import HBs1 from "../public/bs1.jpg";
+import HBs2 from "../public/bs2.jpg";
+import Legion1 from "../public/Legion1.jpg";
+import Legion2 from "../public/Legion2.jpg";
+import Sap2 from "../public/sap1.jpg";
+import Sap1 from "../public/sap2.jpg";
+
 const images = {
   surveyour: Survey,
   electrical1: Electrical,
@@ -18,6 +39,26 @@ const images = {
   epcSurveyor: epcSurveyor,
   commercialEpc: commercialEpc,
   commercialEpcRating: commercialEpcRating,
+  emergencyLight: ELight,
+  emergencyLITL: ELightIt,
+  fat: Fat,
+  fatt: Fatt,
+  fra: Fra,
+  fra2: Fra2,
+  gasCertificate: GasCertificate,
+  bs1: Bs,
+  bs2: Bs2,
+  esr: Esr,
+  pat1: Pat1,
+  pat2: Pat2,
+  fp1: Fp1,
+  fp2: Fp2,
+  hBs1: HBs1,
+  hBs2: HBs2,
+  legion1: Legion1,
+  legion2: Legion2,
+  sap1: Sap1,
+  sap2: Sap2,
 };
 
 export const LEC = {
@@ -293,14 +334,16 @@ export const howItWorks = [
   },
 ];
 
+// Services
+
 export const service = [
   {
     className: "flex flex-col lg:flex-row",
     content: {
       type: "Service",
-      certificate: "Energy Performance Certificate",
+      certificate: "domestic-epc",
       image: images.domesticEpc,
-      heading: "Floor Plans",
+      heading: "EPC Explained",
       content:
         "<div>\n" +
         "<p>The Government is complying with the Energy Performance of Building Directive (EPBD) with the introduction of the Energy Performance Certificate. The EPC shows a record of the energy efficiency levels and CO2 emissions of a building, by using a standard table from A to G (A being very efficient, G being very inefficient).</p>\n" +
@@ -311,7 +354,7 @@ export const service = [
     className: "flex flex-col-reverse lg:flex-row-reverse",
     content: {
       type: "Service",
-      certificate: "Energy Performance Certificate",
+      certificate: "domestic-epc",
       image: images.epcSurveyor,
       heading: "How an EPC assessment is carried out?",
       content:
@@ -319,28 +362,469 @@ export const service = [
         "<br/><p>Once this information is obtained it is then placed into a software programme which carries out and calculates the level of energy efficiency and CO2 emissions and advises us on the best measures in improving the energy performance of a property with an estimated cost and savings.</p>",
     },
   },
-  // {
-  //   className: "flex flex-col-reverse lg:flex-row-reverse",
-  //   content: {
-  //     type: "Service",
-  //     certificate: "Commercial EPC",
-  //     image: images.commercialEpc,
-  //     heading: "Commercial EPCs",
-  //     content:
-  //       "<p>An energy survey is performed by a qualified energy assessor who visits the property and examines key items within the premises such as loft insulation, domestic boiler, hot water tank, radiators, windows for double glazing, etc.</p>" +
-  //       "<br/><p>Once this information is obtained it is then placed into a software programme which carries out and calculates the level of energy efficiency and CO2 emissions and advises us on the best measures in improving the energy performance of a property with an estimated cost and savings.</p>",
-  //   },
-  // },
-  // {
-  //   className: "flex flex-col-reverse lg:flex-row-reverse",
-  //   content: {
-  //     type: "Service",
-  //     certificate: "Commercial EPC",
-  //     image: images.commercialEpcRating,
-  //     heading: "Who Needs a Commercial EPC?",
-  //     content:
-  //       "<p>An energy survey is performed by a qualified energy assessor who visits the property and examines key items within the premises such as loft insulation, domestic boiler, hot water tank, radiators, windows for double glazing, etc.</p>" +
-  //       "<br/><p>Once this information is obtained it is then placed into a software programme which carries out and calculates the level of energy efficiency and CO2 emissions and advises us on the best measures in improving the energy performance of a property with an estimated cost and savings.</p>",
-  //   },
-  // },
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "commercial-epc",
+      image: images.commercialEpc,
+      heading: "Commercial EPCs",
+      content:
+        "<p>An energy survey is performed by a qualified energy assessor who visits the property and examines key items within the premises such as loft insulation, domestic boiler, hot water tank, radiators, windows for double glazing, etc.</p>" +
+        "<br/><p>Once this information is obtained it is then placed into a software programme which carries out and calculates the level of energy efficiency and CO2 emissions and advises us on the best measures in improving the energy performance of a property with an estimated cost and savings.</p>",
+    },
+  },
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "commercial-epc",
+      image: images.commercialEpcRating,
+      heading: "Who Needs a Commercial EPC?",
+      content:
+        "<p>An energy survey is performed by a qualified energy assessor who visits the property and examines key items within the premises such as loft insulation, domestic boiler, hot water tank, radiators, windows for double glazing, etc.</p>" +
+        "<br/><p>Once this information is obtained it is then placed into a software programme which carries out and calculates the level of energy efficiency and CO2 emissions and advises us on the best measures in improving the energy performance of a property with an estimated cost and savings.</p>",
+    },
+  },
+
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "emergency-light-test-report",
+      image: images.emergencyLITL,
+      heading: "Emergency Lights Testing",
+      content:
+        "<p>It’s a legal requirement for all commercial and industrial buildings to have emergency lighting system installed and maintained with emergency light testing conducted on a regular intervals by a competent person, as this will ensure a safe passage in case of an emergy evacuation.</p>" +
+        "<br/><p>Emergency light testing is therefore a vital part of this process, it allows for proper maintenance of the system which in turn makes certain that the emergency light system itself is fit for purpose. Importantly, this is a statutory requirement and most insurance companies require it, not only this but your life, the lives of staff and employees could depend on you, having had emergency light testing when needed.</p>",
+    },
+  },
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "emergency-light-test-report",
+      image: images.emergencyLight,
+      heading: "What Is Inspected during Emergency Lights Testing?",
+      content:
+        "<ul class='list-disc pl-4'>\n" +
+        "<li>Luminaire duration testing</li>\n" +
+        "<li>Cleaning of diffusers</li>\n" +
+        "<li>Battery charging functional check</li>\n" +
+        "<li>Labelling of luminaires</li>\n" +
+        "<li>Supply of test results</li>\n" +
+        "<li>Advice on any improvements required</li>\n" +
+        "<li>Certification</li>\n" +
+        "<li>General Information on Emergency Lighting</li>\n" +
+        "</ul>",
+    },
+  },
+
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "fire-alarm-test-report",
+      image: images.fatt,
+      heading: "Fire Alarm Testing",
+      content:
+        "<p>Landlords, Employers and Homeowners all need to be careful when they are dealing with their building’s" +
+        " systems. It is important that your fire alarm system is properly installed, maintained and tested regularly to ensure it is working to full capacity.</p> <br/>" +
+        "<p>Following are some of the reasons why you should get you fire alarm system serviced and tested:</p>" +
+        "<ul class='list-disc pl-4'>\n" +
+        "<li>To comply with British Standard Health &amp; Safety regulations.</li>\n" +
+        "<li>To avoid any problems with insurance claims should they arise.</li>\n" +
+        "<li>Above all, for the safety of yourself, tenants, employees and your customers</li>\n" +
+        "</ul>",
+    },
+  },
+
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "fire-alarm-test-report",
+      image: images.fat,
+      heading: "What is covered in a Fire Alarm Test Visit?",
+      content:
+        "<ul class='list-disc pl-4 leading-6'>\n" +
+        "<li>Carrying out core battery and devices test</li>\n" +
+        "<li>Checking fire alarm panel for faults</li>\n" +
+        "<li>Completing a full sounder test</li>\n" +
+        "<li>Noting all recommendations in fire log book</li>\n" +
+        "<li>Recording works &amp; parts used in fire log book</li>\n" +
+        "</ul>",
+    },
+  },
+
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "fire-risk-assessment",
+      image: images.fra,
+      heading: "Fire Safety Risk Assesment",
+      content:
+        "<p>Whether you are managing an HMO, Medical Practice, Care Home, Warehouse, Shop or an Office building," +
+        " we want to give your organisation peace of mind when dealing with your legal obligation to have a compliant" +
+        " Fire Risk Assesment in place. Our qualified Fire Risk Assessors are available across the country to carry out" +
+        " comprehensive Assemssents and provide you with an easy to understand report that sets out clearly what" +
+        " actions you need to take.</p>",
+    },
+  },
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "fire-risk-assessment",
+      image: images.fra2,
+      heading: "What does a Fire Safety Risk Assessment Include?",
+      content:
+        "<p class='mb-1'>A typical Fire Safety Risk Assesment covers:</p>" +
+        "<ul class='list-disc pl-4 leading-6'>\n" +
+        "<li>Building Occupancy &amp; Persons at Risk</li>\n" +
+        "<li>Means of Escape and Structural Fire Protection</li>\n" +
+        "<li>Emergency Lighting</li>\n" +
+        "<li>Fire Detection &amp; Warning Systems</li>\n" +
+        "<li>Fire Safety Signs &amp; Notices</li>\n" +
+        "<li>Fire Fighting &amp; Suppression Systems</li>\n" +
+        "<li>Evaluation of Other Risks within the Premises</li>\n" +
+        "<li>Planning and Training for Fire Emergencies</li>\n" +
+        "<li>Significant Findings Action Plan</li>\n" +
+        "</ul>",
+    },
+  },
+
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "gas-safety-certificate",
+      image: images.gasCertificate,
+      heading: "Gas Safety Certificate for Landlords",
+      content:
+        "<p>Are you a landlord? Then you are legally obligated to have a Gas Safety check done every year. landlords" +
+        " are also required to have their gas appliances serviced regularly to make sure they’re efficient and safe." +
+        " It’s the law, as stated in the <a class='hover:text-lime ease-in duration-100' href='http://www.legislation.gov.uk/uksi/1998/2451/contents/made?_ga=2.57176426.1191280566.1669616964-1647189842.1667901178' target='_blank' rel='noopener noreferrer'>Gas Safety (Installation and Use) Regulations 1998</a></p>",
+    },
+  },
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "gas-safety-certificate",
+      image: images.engineer,
+      heading: "Gas safety certificates and laws explained",
+      content:
+        "<p class='mb-2'>It’s a legal requirement for landlords to have all gas appliances, pipework, chimneys and flues" +
+        " checked every 12 months to make sure the property they’re renting out is safe for their tenants.</p>" +
+        "<p class='mb-2'>Once this check has been completed, you will get your Gas Safety Certificate also known as CP12" +
+        " Certificate. You’ll need to provide a copy to your tenants within 28 days and you’ll need to give one" +
+        " to new renters when they move in.</p>" +
+        "<p class='mb-2'>Make sure you keep hold of old certificates as CP12s need to be kept for at least two years.</p>" +
+        "<p class='mb-2'><span class=''><span class=''>&nbsp;</span></span></p>",
+    },
+  },
+
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "boiler-service",
+      image: images.bs1,
+      heading: "Boiler Service",
+      content:
+        "<p>Our UK wide network of Gas Safe Registered Engineers can complete boiler services in a timely and efficient manner.</p> <br/>" +
+        "<p>A boiler service is the best way to ensure your boiler doesn’t unexpectedly let you down or fall out of " +
+        "warranty. If you know your boiler needs servicing, please place your order online and leave rest with us.</p>",
+    },
+  },
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "boiler-service",
+      image: images.bs2,
+      heading: "What to Expect in a Boiler Service",
+      content: `
+        <ul class='list-disc pl-4 leading-7'>
+          <li>A pre-service check and fault analysis.</li>
+          <li>
+            Check installation and positioning comply with building regulations
+          </li>
+          <li>
+            Check installation and positioning comply with gas safe regulations
+          </li>
+          <li>
+            Installation and positioning complies to installation &amp; British
+            standards
+          </li>
+          <li>
+            Removal of outer casing &amp;Inspection of main internal components
+            (electrodes, fans etc)
+          </li>
+          <li>
+            Inspection of electrics, pipework (water &amp; gas), joints and flue
+          </li>
+          <li>A gas rate test to ensure gas usage is correct</li>
+          <li>Gas flue analysis</li>
+          <li class='mb-3'>Service certification paperwork</li>
+          <ul class='pl-4 leading-7 text-[#1a1a1a]' style="list-style-type: circle">
+            <li>A pre-service check and fault analysis.</li>
+            <li>
+              Check installation and positioning comply with building
+              regulations
+            </li>
+            <li>
+              Check installation and positioning comply with gas safe
+              regulations
+            </li>
+            <li>
+              Installation and positioning complies to installation &amp;
+              British standards
+            </li>
+            <li>
+              Removal of outer casing &amp;Inspection of main internal
+              components (electrodes, fans etc)
+            </li>
+            <li>
+              Inspection of electrics, pipework (water &amp; gas), joints and
+              flue
+            </li>
+            <li>A gas rate test to ensure gas usage is correct</li>
+            <li>Gas flue analysis</li>
+            <li>Service certification paperwork</li>
+          </ul>
+        </ul>
+      `,
+    },
+  },
+
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "electrical-installation-condition-report",
+      image: images.esr,
+      heading: "Electrical Safety Certificate",
+      content:
+        "<p>Our UK wide network of Gas Safe Registered Engineers can complete boiler services in a timely and efficient manner.</p> <br/>" +
+        "<p>A boiler service is the best way to ensure your boiler doesn’t unexpectedly let you down or fall out of " +
+        "warranty. If you know your boiler needs servicing, please place your order online and leave rest with us.</p>",
+    },
+  },
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "electrical-installation-condition-report",
+      image: images.electrical2,
+      heading: "What Is Inspected In An EICR ?",
+      content:
+        "<p>Our UK wide network of Gas Safe Registered Engineers can complete boiler services in a timely and efficient manner.</p> <br/>" +
+        "<p>A boiler service is the best way to ensure your boiler doesn’t unexpectedly let you down or fall out of " +
+        "warranty. If you know your boiler needs servicing, please place your order online and leave rest with us.</p>",
+    },
+  },
+
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "electrical-portable-appliance-test",
+      image: images.pat1,
+      heading: "Electrical Portable Appliance Test (PAT)",
+      content:
+        "<p>Portable Appliance Testing is a routine inspection of electrical appliances with a plug top to check they" +
+        " are safe to use, which consists of visual inspections and the testing of the appliance, each test result" +
+        " in either a PASS or a FAIL.</p>",
+    },
+  },
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "electrical-portable-appliance-test",
+      image: images.pat2,
+      heading: "Why PAT Testing is Required ?",
+      content: `<ul class='list-disc pl-4 leading-7'>
+<li>To Prevent electrical accidents at the workplace.</li>
+<li>To provide responsibility as an employer of a safe working environment and to prevent harm to all employees and to the public of faulty electrical appliances.</li>
+<li>To make sure insurance is valid.</li>
+<li>To Meet the requirements stated in the following regulations: –
+<ul class='pl-4 leading-7 text-[#1a1a1a]' style="list-style-type: circle">
+<li>Health and Safety at Work Act 1974</li>
+<li>Electricity at Work Regulations 1989</li>
+<li>The Provision and Use of Working Equipment Regulations 1998</li>
+<li>The Management of Health &amp; Safety at Work Regulations 1999</li>
+<li>Workplace (Health, Safety &amp; Welfare) Regulations 1992</li>
+</ul>
+</li>
+</ul>`,
+    },
+  },
+
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "eicr-remedial-work",
+      image: images.electrical2,
+      heading: "SATISFACTORY and UNSATISFACTORY EICR Explained",
+      content:
+        "<p>Once you have received your Electrical Installation Condition Report (EICR), under the OBSERVATIONS and" +
+        " RECOMMENDATIONS section of your report, it may contain one or more of the following codes:</p>" +
+        "<ul>\n" +
+        "<li>C1 (Danger Present, Risk of Injury. Immediate Remedial Action Required)</li>\n" +
+        "<li>C2 (Potentially Dangerous, Urgent Remedial Action Required),</li>\n" +
+        "<li>C3 (Improvement Recommended</li>\n" +
+        "<li>FI (Further Investigation Required without delay)</li>\n" +
+        "</ul>" +
+        "<p>Depending on Engineer’s observations, your EICR will either be “SATISFACTORY” or “UNSATISFACTORY”. " +
+        "If your EICR is UNSATISFACTORY, it means the electrical installation has a high risk of danger to yourself," +
+        " tenants or your employees.</p>" +
+        "<p>It is vital that these issues are resolved, in order to receive a satisfactory report. Until the remedial" +
+        " work is completed, your installation will not be compliant with Health and Safety regulations and legislations.</p>",
+    },
+  },
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "eicr-remedial-work",
+      image: "",
+      heading: "Electrical Remedial Work Following an EICR",
+      content:
+        "<p>Whether you have had your EICR completed and require electrical remedial repair work or yet to " +
+        "have your EICR completed, we would be happy to provide you a quotation for works or to conduct the required " +
+        "testing, to ensure your building remains compliant with current regulations.</p>" +
+        "<p>Electrical Remedial or Minor Works Can Include:</p>" +
+        "<ul class='list-disc pl-4 leading-7'>\n" +
+        "<li>Repairs to electrical installation following an Electrical Installation Condition Report (Fixed Wire Test)</li>\n" +
+        "<li>Replacement of electrical installation where damage has occurred</li>\n" +
+        "<li>Replacement of small power (sockets) that are old or damaged</li>\n" +
+        "<li>Replacement of failing emergency light systems</li>\n" +
+        "<li>Replacement of lighting including LED</li>\n" +
+        "</ul>",
+    },
+  },
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "floor-plans",
+      image: images.fp1,
+      heading: "Floor Plans",
+      content:
+        "<p>We provide Property Floor Plan service to Estate Agents, Private Landlords and Homeowners across the UK." +
+        " As we know, Property Floor Plans are now a days an essential property marketing tool to advertise your" +
+        " property. We create 2D and 3D floor plans, ensuring accuracy and consistency in a range of style options." +
+        " 2D and 3D floor plans are the most effective tool for presenting property’s layout, size, dimensions and" +
+        " furniture configuration.</p>",
+    },
+  },
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "floor-plans",
+      image: images.fp2,
+      heading: "Ordering Floor Plans through Nationwide Surveyors",
+      content:
+        "<p>Our trained property surveyors can visit a property across the mainland UK and supply the finalized" +
+        "marketing floor plans to you, in most cases the next working day after we visit your property.</p>",
+    },
+  },
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "building-surveys",
+      image: images.hBs2,
+      heading: "Building Survey Overview",
+      content:
+        "<p>A Building Survey is the most thorough and detailed report that you can commission on the condition of a" +
+        " property. The survey is usually carried out by a Chartered Surveyor who will be a member of the Roya" +
+        "l Institution of Chartered Surveyors (RICS) in which case he or she will have the letters MRICS or FRICS" +
+        " after his or her name. The RICS ensures that all its members maintain professional standards in their work." +
+        " When commissioning a Chartered Surveyor to carry out a survey you should be able to feel confident that the" +
+        " results will be appropriate for your needs.</p>",
+    },
+  },
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "building-surveys",
+      image: images.hBs1,
+      heading: "What is a Home buyer Survey?",
+      content:
+        "<p>A homebuyer survey covers a couple of different types of survey, so you need to make sure you know what you" +
+        " want before placing any orders.</p> <br/>" +
+        "<p>A <strong>HomeBuyer Report</strong> (which can also include a valuation as an addition) is provided by" +
+        " <a class='hover:text-lime ease-in duration-200' href=\"https://www.rics.org/uk/\">RICS</a> approved" +
+        " Surveyors. This will not include as much detail as a Building Survey, but typically does highlight" +
+        " anything that will have a affect on the value of the property or anything that will require further" +
+        " attention. it only covers areas that can be seen without having to take any further action – so they" +
+        " will not drill into walls or lift up carpets..</p> <br/>" +
+        "<p>A <strong>Homebuyer Survey</strong> could be provided by a non-RICS registered Surveyor, or by a Home" +
+        " Inspector or Energy Assessor.&nbsp; This does not have a standard format, and so you will really need to" +
+        " discuss your requirements prior to the commencement of any work to make sure you are getting everything you need.</p>",
+    },
+  },
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "legionella-risk-assessment",
+      image: images.legion1,
+      heading:
+        "Legionella is a risk for almost all water systems found within buildings which must be effectively controlled",
+      content:
+        "<p>If you manage any water system within a building you need to have a risk assessment and some good control" +
+        " measures in place. We can help you achieve this.</p>",
+    },
+  },
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "legionella-risk-assessment",
+      image: images.legion2,
+      heading: "Cost effective compliance from a reliable source",
+      content:
+        "<p>Our assessors and operatives are provided with enough time and support for them to" +
+        " develop the right combination of training, skills, experience and knowledge to carry out their role" +
+        " effectively.</p>",
+    },
+  },
+
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "sap-assessments-2",
+      image: images.sap1,
+      heading: "SAP Assessments Explained",
+      content:
+        "<p>SAP Calculations are an energy efficiency calculation, required by the Building Regulations on all new" +
+        " build dwellings, converted dwellings and some extensions.</p><br/>" +
+        "<p>Since 2008, in response to the Energy Performance of Buildings Directive (EPBD), all new homes in the" +
+        " United Kingdom under construction require a Predicted Energy Assessment (PEA) and an On Construction" +
+        " Energy Performance Certificate (OCEPC).</p>",
+    },
+  },
+  {
+    className: "flex flex-col-reverse lg:flex-row-reverse",
+    content: {
+      type: "Service",
+      certificate: "sap-assessments-2",
+      image: images.sap2,
+      heading: "When SAP Assessments are Required ?",
+      content:
+        "<p>SAPs are used in partnership with the PEA during a property’s design phase. This is done to achieve" +
+        " Building Control approval for the property; a legal requirement in the UK, according to Part L1a" +
+        " of Building Regulations.</p>",
+    },
+  },
 ];

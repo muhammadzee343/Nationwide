@@ -16,16 +16,28 @@ export default function MegaMenu() {
               </a>
               <ul className={styles.megaMenuList}>
                 <li>
-                  <Link href={"/service/domestic-epc"}>
+                  <Link href="/service/domestic-epc">
                     Energy Performance Certificate
                   </Link>
                 </li>
                 <li>
-                  <Link href={"/service/commercial-epc"}>Commercial EPC</Link>
+                  <Link href="/service/commercial-epc">Commercial EPC</Link>
                 </li>
-                <li>Emergency Lights Test Report</li>
-                <li>Fire Alarm Test Report</li>
-                <li>Fire Risk Assessment</li>
+                <li>
+                  <Link href="/service/emergency-light-test-report">
+                    Emergency Lights Test Report
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/service/fire-alarm-test-report">
+                    Fire Alarm Test Report
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/service/fire-risk-assessment">
+                    Fire Risk Assessment
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -34,8 +46,14 @@ export default function MegaMenu() {
                 Gas Safety Certificate
               </a>
               <ul className={styles.megaMenuList}>
-                <li>Gas Safety Certificate</li>
-                <li>Boiler Service</li>
+                <li>
+                  <Link href="/service/gas-safety-certificate">
+                    Gas Safety Certificate
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/service/boiler-service">Boiler Service</Link>
+                </li>
               </ul>
             </div>
 
@@ -44,9 +62,21 @@ export default function MegaMenu() {
                 Electrical Reports & Remedial Work
               </a>
               <ul className={styles.megaMenuList}>
-                <li>Electrical Installation Condition Report (EICR)</li>
-                <li>Electrical Portable Appliance Test (PAT)</li>
-                <li>Electrical Portable Appliance Test (PAT)</li>
+                <li>
+                  <Link href="/service/electrical-installation-condition-report">
+                    Electrical Installation Condition Report (EICR)
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/service/electrical-portable-appliance-test">
+                    Electrical Portable Appliance Test (PAT)
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/service/eicr-remedial-work">
+                    EICR Remedial Work
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -55,10 +85,20 @@ export default function MegaMenu() {
                 Other Services
               </a>
               <ul className={styles.megaMenuList}>
-                <li>Floor Plans</li>
-                <li>Building Surveys</li>
-                <li>Legionella Risk Assessment</li>
-                <li>SAP Assessments</li>
+                <li>
+                  <Link href="/service/floor-plans">Floor Plans</Link>
+                </li>
+                <li>
+                  <Link href="/service/building-surveys">Building Surveys</Link>
+                </li>
+                <li>
+                  <Link href="/service/legionella-risk-assessment">
+                    Legionella Risk Assessment
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/service/sap-assessments-2">SAP Assessments</Link>
+                </li>
               </ul>
             </div>
           </div>

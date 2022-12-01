@@ -1,23 +1,24 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-import surveryor from "../public/surveyor-1.jpg";
 import styles from "../styles/service.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 function ServiceInfo({ className, content }: any) {
   return (
     <>
-      <div className="lg:w-6/12 py-4 px-4 flex justify-center">
-        <Image
-          className=" h-fit cursor-pointer"
-          src={content.image}
-          alt="Nwlogo"
-        />
-      </div>
-      <div className="lg:w-6/12 py-4 px-4">
+      {content.image && (
+        <div className="lg:w-6/12 py-4 px-8 flex justify-center">
+          <Image
+            className=" h-fit cursor-pointer"
+            src={content.image}
+            alt="ServiceInfo"
+          />
+        </div>
+      )}
+      <div
+        className={`${content.image ? "lg:w-6/12" : "lg:w-12/12"} py-4 px-8`}
+      >
         {content.type !== "Service" && (
           <>
             <div className="border-l-[8px] border-lime mb-[30px] px-5 py-2">
@@ -34,7 +35,7 @@ function ServiceInfo({ className, content }: any) {
             </div>
             {content.link && (
               <Link
-                href={"#"}
+                href="#"
                 className="text-sm uppercase text-lime hover:text-dark-blue flex"
               >
                 {content.link}
@@ -47,14 +48,14 @@ function ServiceInfo({ className, content }: any) {
           </>
         )}
         {content.type === "Service" && (
-          <div className={`flex flex-col leading-relaxed list-disc`}>
+          <div className="flex flex-col leading-relaxed list-disc">
             <h3
               className={`text-[26px] font-semibold mb-2 ${styles.serviceHeading}`}
             >
               {content.heading}
             </h3>
             <div
-              className={`text-[#1A1A1A] text-[15px]`}
+              className="text-[#1A1A1A] text-[15px]"
               dangerouslySetInnerHTML={{
                 __html: `${content.content}`,
               }}

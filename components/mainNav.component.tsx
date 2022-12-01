@@ -55,7 +55,7 @@ const MainNavComponent = () => {
           </span>
 
           <span className="text-2xl font-[Poppins]">
-            <Link href={"/"}>
+            <Link href="/">
               <Image
                 className="h-10 w-52 inline cursor-pointer"
                 src={logo}
