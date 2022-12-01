@@ -75,7 +75,7 @@ export default function Home() {
       {middleDevice && <Pricing />}
       {/*SERVICE INFO*/}
       <section>
-        <div className="bg-row_bg w-full flex flex-col items-center justify-center">
+        <div className="bg-row_bg w-full flex flex-col items-center justify-center px-3 ">
           {homeServices.map(({ className, content }: any, index: any) => {
             return (
               <div
@@ -136,6 +136,7 @@ export default function Home() {
                     title={title}
                     paragraph={paragraph}
                     index={index}
+                    type="Home"
                   />
                 );
               })}

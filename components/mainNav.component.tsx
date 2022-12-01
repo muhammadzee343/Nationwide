@@ -55,11 +55,13 @@ const MainNavComponent = () => {
           </span>
 
           <span className="text-2xl font-[Poppins]">
-            <Image
-              className="h-10 w-52 inline cursor-pointer"
-              src={logo}
-              alt="logo"
-            />
+            <Link href="/">
+              <Image
+                className="h-10 w-52 inline cursor-pointer"
+                src={logo}
+                alt="logo"
+              />
+            </Link>
           </span>
 
           <span className="xl:hidden block">
@@ -79,7 +81,7 @@ const MainNavComponent = () => {
               <>
                 <li className="flex items-center px-6 my-6 xl:my-0 h-full">
                   <Link
-                    href="#"
+                    href="/"
                     className="text-[15px] text-dark-blue font-[600] hover:text-white"
                   >
                     HOME
@@ -103,7 +105,7 @@ const MainNavComponent = () => {
                   </Link>
                   {isHovering && (
                     <MegaMenu
-                        //@ts-ignore
+                      //@ts-ignore
                       onMouseOver={handleMouseOver}
                       onMouseOut={handleMouseOut}
                     />

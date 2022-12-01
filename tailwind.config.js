@@ -16,6 +16,7 @@ module.exports = {
       colors: {
         lime: "#c2cf10",
         blue: "#2d3c51",
+        "blue-transparent":"#182333cc",
         "light-blue": "#213148",
         "dark-blue": "#182333",
         grey: {
@@ -34,6 +35,7 @@ module.exports = {
       backgroundImage: {
         home_bg_image: "url('../public/mainbg.jpg')",
         footer_bg_image: "url('../public/footer-bg.jpg')",
+        header_bg: "url('../public/bg-header.jpg')",
         row_bg: "url('../public/row-bg.png')",
       },
 
