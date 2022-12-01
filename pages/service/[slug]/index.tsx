@@ -32,14 +32,14 @@ function Servive(props: any) {
           <link rel="icon" href="/favicon.png" />
         </Head>
         <div className="xl:w-4/12 2xl:w-4/12 bg-grey-200 flex justify-end items-start pt-20 ">
-          <div className=" w-full flex xl:w-8/12 2xl:w-6/12 lg:mr-5 justify-end items-start top-[60px] sticky">
-            <div className=" w-full lg:w-[296px] px-4 lg:px-0 justify-end">
+          <div className="w-full flex xl:w-8/12 2xl:w-6/12 lg:mr-5 justify-end items-start top-[60px] sticky">
+            <div className="w-full lg:w-[296px] px-4 lg:px-0 justify-end">
               <SelectProperty />
             </div>
           </div>
         </div>
-        <div className=" xl:w-8/12 2xl:w-8/12 flex flex-col bg-white py-16">
-          <div className={`2xl:w-8/12 px-3`}>
+        <div className="xl:w-8/12 2xl:w-8/12 flex flex-col bg-white py-16">
+          <div className="2xl:w-8/12 px-3">
             {certificate?.map(({ className, content }: any, index: any) => {
               return (
                 <>
@@ -61,14 +61,14 @@ function Servive(props: any) {
           <div className="2xl:w-8/12 px-4">
             <section>
               <div className="bg-row_bg w-full flex flex-col items-center justify-center px-3">
-                <div className="  w-full md:container flex flex-col  flex-wrap  pb-[60px]">
+                <div className="w-full md:container flex flex-col  flex-wrap  pb-[60px]">
                   <div className="border-l-[8px] border-lime mb-[30px] px-6 py-2">
                     <h2 className="text-dark-blue text-4xl font-medium font-bold">
                       How it works?
                     </h2>
                   </div>
                   <StepperComponent />
-                  <div className="w-full flex flex-col md:flex-row  justify-center md:items-center xl:flex-nowrap gap-1 xl:gap-7">
+                  <div className="w-full flex flex-col md:flex-row justify-center md:items-center xl:flex-nowrap gap-1 xl:gap-7">
                     {howItWorks.map(({ title, paragraph }: any, index) => {
                       return (
                         <HowItWorks
