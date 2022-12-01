@@ -58,7 +58,7 @@ function Servive(props: any) {
               );
             })}
           </div>
-          <div className={`2xl:w-8/12 px-4`}>
+          <div className="2xl:w-8/12 px-4">
             <section>
               <div className="bg-row_bg w-full flex flex-col items-center justify-center px-3">
                 <div className="  w-full md:container flex flex-col  flex-wrap  pb-[60px]">
