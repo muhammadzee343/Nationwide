@@ -31,17 +31,15 @@ function CarouselComponent({ list, component, className = "" }: any) {
       spaceBetween={30}
       slidesPerView={"auto"}
       centeredSlides={true}
-      pagination={{
-        dynamicBullets: true,
-      }}
+      pagination={true}
       navigation={false}
       modules={[Pagination, Navigation]}
       onSlideChange={() => {}}
       onSwiper={(swiper) => {}}
       className={`mySwiper w-full flex justify-center ${className} relative`}
       style={{
-        "--swiper-pagination-color": "'#c2cf10'",
-        "--swiper-pagination-bullet-inactive-color": "'#182333'",
+        "--swiper-pagination-color": "#c2cf10",
+        "--swiper-pagination-bullet-inactive-color": "#182333",
         "--swiper-pagination-bullet-inactive-opacity": "1",
         "--swiper-pagination-bullet-size": "14px",
         "--swiper-pagination-bullet-horizontal-gap": "6px",

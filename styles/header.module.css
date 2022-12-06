@@ -10,7 +10,7 @@
 }
 
 .addToCartBtn{
-    @apply relative px-4 py-4 bg-dark-blue text-white rounded-full drop-shadow
+    @apply relative px-3 py-3 sm:px-4 sm:py-4 bg-dark-blue text-white rounded-full drop-shadow
 }
 .addToCartBtn >span{
     @apply absolute top-1 right-0 px-2 py-1 translate-x-1/2 -translate-y-1/2 bg-lime rounded-full drop-shadow text-xs text-white

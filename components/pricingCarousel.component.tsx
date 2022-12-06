@@ -4,11 +4,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/swiper-bundle.min.css";
 import priceStyles from "../styles/pricing.module.css";
-import styles from "../styles/Home.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import ButtonComponent from "./Button.component";
-import { Pagination, Navigation } from "swiper";
+import { Navigation, Pagination } from "swiper";
 import { bundles } from "../utility/constants";
 import PricingCard from "./pricingCard.component";
 
@@ -20,9 +16,7 @@ function PricingCarouselComponent(props: any) {
           spaceBetween={0}
           slidesPerView={"auto"}
           centeredSlides={true}
-          pagination={{
-            dynamicBullets: true,
-          }}
+          pagination={true}
           navigation={true}
           modules={[Pagination, Navigation]}
           onSlideChange={() => {}}
@@ -33,7 +27,7 @@ function PricingCarouselComponent(props: any) {
             "--swiper-pagination-color": "#c2cf10",
             "--swiper-pagination-bullet-inactive-color": "#182333",
             "--swiper-pagination-bullet-inactive-opacity": "1",
-            "--swiper-pagination-bullet-size": "14px",
+            "--swiper-pagination-bullet-size": "12px",
             "--swiper-pagination-bullet-horizontal-gap": "6px",
             swiperButtonNext: "#0000",
           }}

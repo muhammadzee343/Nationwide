@@ -4,9 +4,15 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 function ServiceHeader(props: any) {
+  const epcPoints = [
+    "EICR certificate shared same day",
+    "Failings repaired on half hour rate",
+    "Knowledge & advice you can trust",
+    "Charged at £30.00 ex VAT per circuit",
+  ];
   return (
     <>
-      <div className="bg-header_bg bg-blue-transparent bg-cover bg-no-repeat relative  h-[300px] md:h-fit  w-full">
+      <div className="bg-header_bg bg-blue-transparent bg-cover bg-no-repeat relative  h-[230px] sm:h-[300px] md:h-fit  w-full">
         <div className="md:bg-blue-transparent hidden md:block w-full py-[32px]">
           <h1 className="text-[34px] md:text-[40px] bg-blue-transparent md:bg-transparent font-bold text-white mb-[25px] text-center">
             Energy Performance Certificate
@@ -14,50 +20,21 @@ function ServiceHeader(props: any) {
           <div className="w-full flex justify-around">
             <div className="w-full md:container flex flex-col md:flex-row justify-center items-center md:px-6">
               <div className="w-5/12 flex flex-col">
-                <div className="flex gap-3 my-2">
-                  <span className="w-6 h-6 bg-lime flex justify-center rounded-full">
-                    <FontAwesomeIcon
-                      className="w-4"
-                      icon={faCheck}
-                    ></FontAwesomeIcon>
-                  </span>
-                  <p className="text-lg text-white font-semibold">
-                    EICR certificate shared same day
-                  </p>
-                </div>
-                <div className="flex gap-3 my-2">
-                  <span className="w-6 h-6 bg-lime flex justify-center rounded-full">
-                    <FontAwesomeIcon
-                      className="w-4"
-                      icon={faCheck}
-                    ></FontAwesomeIcon>
-                  </span>
-                  <p className="text-lg text-white font-semibold">
-                    Failings repaired on half hour rate
-                  </p>
-                </div>
-                <div className="flex gap-3 my-2">
-                  <span className="w-6 h-6 bg-lime flex justify-center rounded-full">
-                    <FontAwesomeIcon
-                      className="w-4"
-                      icon={faCheck}
-                    ></FontAwesomeIcon>
-                  </span>
-                  <p className="text-lg text-white font-semibold">
-                    Knowledge & advice you can trust
-                  </p>
-                </div>
-                <div className="flex gap-3 my-2">
-                  <span className="w-6 h-6 bg-lime flex justify-center rounded-full">
-                    <FontAwesomeIcon
-                      className="w-4"
-                      icon={faCheck}
-                    ></FontAwesomeIcon>
-                  </span>
-                  <p className="text-lg text-white font-semibold">
-                    Charged at £30.00 ex VAT per circuit
-                  </p>
-                </div>
+                {epcPoints.map((ele: any, index) => {
+                  return (
+                    <div key={index} className="flex gap-3 my-2">
+                      <span className="w-6 h-6 bg-lime flex justify-center rounded-full">
+                        <FontAwesomeIcon
+                          className="w-4"
+                          icon={faCheck}
+                        ></FontAwesomeIcon>
+                      </span>
+                      <p className="text-lg text-dark-blue md:text-white font-semibold">
+                        {ele}
+                      </p>
+                    </div>
+                  );
+                })}
               </div>
               <div className="w-5/12 flex flex-col text-center">
                 <p className="text-lg text-white font-semibold">
@@ -82,57 +59,28 @@ function ServiceHeader(props: any) {
           </div>
         </div>
       </div>
-      <div className="md:bg-blue-transparent md:hidden block w-full py-[32px] ">
-        <h1 className="text-[34px] md:text-[40px] bg-blue-transparent md:bg-transparent font-bold text-white mb-[25px] text-center">
+      <div className="md:bg-blue-transparent md:hidden block w-full py-[32px] relative">
+        <h1 className=" text-[20px] md:text-[34px] md:text-[40px] bg-blue-transparent md:bg-transparent font-bold text-white mb-[25px] text-center absolute py-[3px] top-[-35px] md:top-[-51px] w-full">
           Energy Performance Certificate
         </h1>
         <div className="w-full flex justify-around">
           <div className="w-full md:container flex flex-col md:flex-row justify-center md:items-center px-6">
             <div className=" w-full md:w-5/12 flex flex-col">
-              <div className="flex gap-3 my-2">
-                <span className="w-6 h-6 bg-lime flex justify-center rounded-full">
-                  <FontAwesomeIcon
-                    className="w-4"
-                    icon={faCheck}
-                  ></FontAwesomeIcon>
-                </span>
-                <p className="text-lg text-dark-blue md:text-white font-semibold">
-                  EICR certificate shared same day
-                </p>
-              </div>
-              <div className="flex gap-3 my-2">
-                <span className="w-6 h-6 bg-lime flex justify-center rounded-full">
-                  <FontAwesomeIcon
-                    className="w-4"
-                    icon={faCheck}
-                  ></FontAwesomeIcon>
-                </span>
-                <p className="text-lg text-dark-blue md:text-white font-semibold">
-                  Failings repaired on half hour rate
-                </p>
-              </div>
-              <div className="flex gap-3 my-2">
-                <span className="w-6 h-6 bg-lime flex justify-center rounded-full">
-                  <FontAwesomeIcon
-                    className="w-4"
-                    icon={faCheck}
-                  ></FontAwesomeIcon>
-                </span>
-                <p className="text-lg text-dark-blue md:text-white font-semibold">
-                  Knowledge & advice you can trust
-                </p>
-              </div>
-              <div className="flex gap-3 my-2">
-                <span className="w-6 h-6 bg-lime flex justify-center rounded-full">
-                  <FontAwesomeIcon
-                    className="w-4"
-                    icon={faCheck}
-                  ></FontAwesomeIcon>
-                </span>
-                <p className="text-lg text-dark-blue md:text-white font-semibold">
-                  Charged at £30.00 ex VAT per circuit
-                </p>
-              </div>
+              {epcPoints.map((ele: any, index) => {
+                return (
+                  <div key={index} className="flex gap-3 my-2">
+                    <span className="w-6 h-6 bg-lime flex justify-center rounded-full">
+                      <FontAwesomeIcon
+                        className="w-4"
+                        icon={faCheck}
+                      ></FontAwesomeIcon>
+                    </span>
+                    <p className="text-lg text-dark-blue md:text-white font-semibold">
+                      {ele}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
             <div className="text-center">
               <h2 className="text-[30px] font-semibold text-dark-blue">
