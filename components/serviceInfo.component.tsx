@@ -17,7 +17,7 @@ function ServiceInfo({ className, content }: any) {
         </div>
       )}
       <div
-        className={`${content.image ? "lg:w-6/12" : "lg:w-12/12"} py-4 px-8`}
+        className={`${content.image ? "lg:w-6/12" : "lg:w-12/12"} py-4 px-1`}
       >
         {content.type !== "Service" && (
           <>
