@@ -49,7 +49,7 @@ const MainNavComponent = () => {
             onClick={() => setCollapseIcon(!collapseIcon)}
           >
             <FontAwesomeIcon
-              className="w-8 text-dark-blue"
+              className=" w-6 sm:w-8 text-dark-blue"
               icon={!collapseIcon ? faBars : faXmark}
             />
           </span>
@@ -108,6 +108,7 @@ const MainNavComponent = () => {
                       //@ts-ignore
                       onMouseOver={handleMouseOver}
                       onMouseOut={handleMouseOut}
+                      onLinkClick={setIsHovering}
                     />
                   )}
                 </li>

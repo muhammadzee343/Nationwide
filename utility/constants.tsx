@@ -269,8 +269,57 @@ export const homeServices = [
   },
 ];
 
-// <img src={image} />
-// <img src={require(`../dfgdgdf/dfgffgdf/dfgdfdf/${image}`)} />
+//MEGA MENU LINKS
+
+export const megaMenu = [
+  {
+    heading: "Domestic & Commercial Certifications",
+    links: [
+      { title: "Energy Performance Certificate", link: "/domestic-epc" },
+      { title: "Commercial EPC", link: "/commercial-epc" },
+      {
+        title: "Emergency Lights Test Report",
+        link: "/emergency-light-test-report",
+      },
+      { title: "Fire Alarm Test Report", link: "/fire-alarm-test-report" },
+      { title: "Fire Risk Assessment", link: "/fire-risk-assessment" },
+    ],
+  },
+  {
+    heading: "Gas Safety Certificate",
+    links: [
+      { title: "Gas Safety Certificate", link: "/gas-safety-certificate" },
+      { title: "Boiler Service", link: "/boiler-service" },
+    ],
+  },
+  {
+    heading: "Electrical Reports & Remedial Work",
+    links: [
+      {
+        title: "Electrical Installation Condition Report (EICR)",
+        link: "/electrical-installation-condition-report",
+      },
+      {
+        title: "Electrical Portable Appliance Test (PAT)",
+        link: "/electrical-portable-appliance-test",
+      },
+      { title: "EICR Remedial Work", link: "/eicr-remedial-work" },
+    ],
+  },
+
+  {
+    heading: "Other Services",
+    links: [
+      { title: "Floor Plans", link: "/floor-plans" },
+      { title: "Building Surveys", link: "/building-surveys" },
+      {
+        title: "Legionella Risk Assessment",
+        link: "/legionella-risk-assessment",
+      },
+      { title: "SAP Assessments", link: "/sap-assessments-2" },
+    ],
+  },
+];
 
 // OUR SERVICES
 export const ourServices = [
@@ -335,7 +384,6 @@ export const howItWorks = [
 ];
 
 // Services
-
 export const service = [
   {
     className: "flex flex-col lg:flex-row",
