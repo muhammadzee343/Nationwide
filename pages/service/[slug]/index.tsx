@@ -10,16 +10,8 @@ import OrderNowCard from "../../../components/orderNowCard.component";
 import { useRouter } from "next/router";
 import ServiceHeader from "../../../components/serviceHeader.component";
 
-function Servive(props: any) {
-  const [certificate, setCertificate] = useState([]);
-  const router = useRouter();
-  const { slug } = router.query;
-  useEffect(() => {
-    const certificate: any = service.filter((ele) => {
-      return ele.content.certificate === slug;
-    });
-    setCertificate(certificate);
-  }, [slug]);
+function Servive({certificate}) {
+
   return (
     <>
       <ServiceHeader />
@@ -90,6 +82,16 @@ function Servive(props: any) {
       </div>
     </>
   );
+}
+
+Servive.getInitialProps =  (props) => {
+
+  const { slug } = props.query;
+  const certificate: any = service.filter((ele) => {
+    return ele.content.certificate === slug;
+  });
+
+  return { certificate }
 }
 
 export default Servive;
