@@ -1,0 +1,17 @@
+.ourServicesHeading{
+    @apply  text-4xl text-dark-blue inline-block pb-[5px] relative font-semibold
+}
+.ourServicesHeading::before{
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 1px;
+    bottom: 0;
+    top:60px;
+    left: 25%;
+    border-bottom: 5px solid #c2cf10;
+}
+.ourServiceParagraph{
+    @apply  text-[15px] leading-loose mb-4
+}
+

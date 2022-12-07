@@ -26,7 +26,7 @@ import { DeviceContext } from "../components/deviceContext.component";
 import React, { useContext } from "react";
 import ServiceInfo from "../components/serviceInfo.component";
 import { homeServices, howItWorks, ourServices } from "../utility/constants";
-import OurServices from "../components/ourServices.component";
+import OurServicesComponent from "../components/ourServices.component";
 import HowItWorks from "../components/howItWorksCard.component";
 import StepperComponent from "../components/stepper.component";
 import ButtonComponent from "../components/Button.component";
@@ -101,15 +101,17 @@ export default function Home() {
                 All Our Services
               </h2>
             </div>
-            <div className=" hidden md:flex flex-wrap gap-5">
+            <div className=" hidden lg:flex flex-wrap lg:gap-2 xl:gap-9">
               {ourServices.map(({ list, title }, index) => {
-                return <OurServices key={index} list={list} title={title} />;
+                return (
+                  <OurServicesComponent key={index} list={list} title={title} />
+                );
               })}
             </div>
-            <div className="md:hidden  w-full md:container ">
+            <div className="lg:hidden  w-full md:container ">
               <CarouselComponent
                 list={ourServices}
-                component={OurServices}
+                component={OurServicesComponent}
                 className="h-[350px]"
               />
             </div>

@@ -29,6 +29,7 @@ import Legion2 from "../public/Legion2.jpg";
 import Sap2 from "../public/sap1.jpg";
 import Sap1 from "../public/sap2.jpg";
 
+//APPLICATION IMAGES
 const images = {
   surveyour: Survey,
   electrical1: Electrical,
@@ -112,6 +113,7 @@ export const BHR = {
   ],
   btnText: "Get Instant Quote Now",
 };
+
 export const SERVICES = [
   {
     title: "Landlord Electrical",
@@ -268,9 +270,7 @@ export const homeServices = [
     },
   },
 ];
-
 //MEGA MENU LINKS
-
 export const megaMenu = [
   {
     heading: "Domestic & Commercial Certifications",
@@ -320,7 +320,6 @@ export const megaMenu = [
     ],
   },
 ];
-
 // OUR SERVICES
 export const ourServices = [
   {
@@ -358,7 +357,6 @@ export const ourServices = [
     ],
   },
 ];
-
 // HOW IT WORKS
 export const howItWorks = [
   {
@@ -382,7 +380,6 @@ export const howItWorks = [
       " if it’s urgent, please advise this in your order notes or let us know when booking appointment(s).",
   },
 ];
-
 // Services
 export const service = [
   {

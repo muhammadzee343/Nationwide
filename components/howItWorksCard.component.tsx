@@ -11,7 +11,7 @@ export default function HowItWorks({
       </div>
       <div
         className={`${
-          type === "service" ? "px-[6px] py-[5px]" : "px-[16px] py-[5px]"
+          type === "service" ? "px-[6px] py-[5px]" : "md:px-[16px] py-[5px]"
         } md:w-4/12 text-center drop-shadow-lg`}
       >
         <div

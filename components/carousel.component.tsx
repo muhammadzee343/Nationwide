@@ -28,8 +28,8 @@ function CarouselComponent({ list, component, className = "" }: any) {
   }, []);
   return (
     <Swiper
-      spaceBetween={30}
-      slidesPerView={"auto"}
+      spaceBetween={10}
+      slidesPerView={1}
       centeredSlides={true}
       pagination={true}
       navigation={false}
