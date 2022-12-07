@@ -94,8 +94,9 @@ const MainNavComponent = () => {
                   onMouseOut={handleMouseOut}
                 >
                   <Link
-                    href="#"
+                    href="/ourServices"
                     className="text-[15px] text-dark-blue block hover:text-white relative font-semibold flex"
+                    onClick={() => setIsHovering(false)}
                   >
                     OUR SERVICES
                     <FontAwesomeIcon
@@ -121,7 +122,6 @@ const MainNavComponent = () => {
                     CONTACT US
                   </Link>
                 </li>
-
                 <li className="flex items-center px-6 my-6 xl:my-0">
                   <button className={styles.addToCartBtn}>
                     <FontAwesomeIcon className="w-4" icon={faCartShopping} />
