@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faBuilding, faHouse } from "@fortawesome/free-solid-svg-icons";
 import ButtonComponent from "./Button.component";
 
@@ -28,7 +27,7 @@ export default function SelectProperty() {
                    hover:bg-lime"
                   >
                     <FontAwesomeIcon
-                      className="w-8 ,w-3 text-dark-blue absolute left-[14px]"
+                      className="w-8 text-dark-blue absolute left-[14px]"
                       icon={faHouse}
                     />
                     Residential
@@ -61,7 +60,7 @@ export default function SelectProperty() {
               </div>
               <ButtonComponent
                 text="Quote Now"
-                className="bg-lime text-dark-blue font-semibold  px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"
+                className="bg-lime text-dark-blue font-semibold uppercase px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"
               />
             </div>
           </div>

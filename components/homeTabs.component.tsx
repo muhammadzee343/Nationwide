@@ -43,7 +43,11 @@ const HomeTab = () => {
         </h3>
         <ul className="marker:text-white list-disc text-white ml-5">
           {activeService.points.map((ele, index) => {
-            return <li key={index}>{ele}</li>;
+            return (
+              <li key={index} className="text-sm p-1">
+                {ele}
+              </li>
+            );
           })}
         </ul>
         <button

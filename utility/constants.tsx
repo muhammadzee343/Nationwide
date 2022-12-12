@@ -116,8 +116,8 @@ export const BHR = {
 
 export const SERVICES = [
   {
-    title: "Landlord Electrical",
-    certificate: "Certificates",
+    title: "Domestic &",
+    certificate: "Commercial EICR",
     slug: { ...LEC },
   },
   {

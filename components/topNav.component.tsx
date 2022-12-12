@@ -15,7 +15,7 @@ export default function TopNavComponent() {
             </div>
             <div className="md:flex">
               <div>
-                <p className="text-white px-2 text-[14px] leading-7">
+                <p className="text-white px-2 text-[14px] leading-6">
                   <strong>Email:</strong>
                   <Link
                     href="mailto:info@nationwidesurveyors.org.uk"
@@ -26,7 +26,7 @@ export default function TopNavComponent() {
                 </p>
               </div>
               <div>
-                <p className="text-white px-2 text-[14px] leading-7">
+                <p className="text-white px-2 text-[14px] leading-6">
                   <strong>Call us Free:</strong>
                   <Link href="tel:0800 048 7474" className={styles.tNavLinks}>
                     0800 048 7474

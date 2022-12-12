@@ -28,7 +28,9 @@
 
 }
 .pointerActive a {
-    @apply h-[61px] block relative py-[9px] px-[20px] mb-[15px] text-dark-blue text-base font-bold
+    font-size: 16px;
+    line-height: 1.2;
+    @apply h-[61px] block relative py-[9px] px-[20px] mb-[15px] text-dark-blue font-bold
 }
 
 

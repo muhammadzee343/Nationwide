@@ -11,12 +11,13 @@ module.exports = {
       md: "768px",
       lg: "976px",
       xl: "1200px",
+      xxl: "1400px",
     },
     extend: {
       colors: {
         lime: "#c2cf10",
         blue: "#2d3c51",
-        "blue-transparent":"#182333cc",
+        "blue-transparent": "#182333cc",
         "light-blue": "#213148",
         "dark-blue": "#182333",
         grey: {
