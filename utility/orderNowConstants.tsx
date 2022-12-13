@@ -23,6 +23,29 @@ export const serviceAttributes = [
       { type: "radio", title: "Semi Detached Bungalow", value: "" },
       { type: "radio", title: "Flat / Maisonette / Other", value: "" },
     ],
+    service_attributes: {
+      property_type: false,
+      property_age: false,
+      property_price: false,
+      property_area: false,
+      bedrooms: false,
+      studio: false,
+      other_rooms: false,
+      distribution_boards: false,
+      electrical_appliances: false,
+      floors: false,
+      supply_type: false,
+      gas_appliances: false,
+      gas_fire: false,
+      property_postcode: false,
+      property_address: false,
+      circuits: false,
+      session_id: false,
+      bathrooms: false,
+      pat_appliances: false,
+      fire_back_boiler: false
+    }
+
   },
   {
     headings: "No of Bedrooms",
