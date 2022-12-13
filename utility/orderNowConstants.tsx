@@ -10,7 +10,7 @@ export const contactOptions = [
 export const serviceAttributes = [
   {
     headings: "Property Type:",
-    attribute: "",
+    attr: "propertyType",
     Alert: "",
     exactNumber: "",
     exactNumber2: "",
@@ -26,7 +26,7 @@ export const serviceAttributes = [
   },
   {
     headings: "No of Bedrooms",
-    attribute: "",
+    attr: "NoOfBedrooms",
     Alert:
       "To Provide an accurate quotation for larger properties with multiple" +
       " living/study rooms, tell us exact number of additional rooms.",
@@ -44,7 +44,7 @@ export const serviceAttributes = [
   },
   {
     headings: "How Many Fuse Boards You have in Property?",
-    attribute: "",
+    attr: "NoFuseBoard",
     Alert: "",
     exactNumber: "",
     exactNumber2: "",
@@ -53,7 +53,7 @@ export const serviceAttributes = [
   },
   {
     headings: "Number of Electrical Appliances (PAT)",
-    attribute: "",
+    attr: "NoElectricalAppliances",
     Alert: "",
     exactNumber: "Confirm exact Electrical Appliances:",
     exactNumber2: "",
@@ -67,7 +67,7 @@ export const serviceAttributes = [
   },
   {
     headings: "Property Age",
-    attribute: "",
+    attr: "PropertyAge",
     Alert: "",
     exactNumber: "",
     exactNumber2: "",
@@ -79,7 +79,7 @@ export const serviceAttributes = [
   },
   {
     headings: "Property Price",
-    attribute: "",
+    attr: "PropertyPrice",
     Alert: "",
     exactNumber: "Confirm exact Property Price £:",
     exactNumber2: "",
@@ -93,7 +93,7 @@ export const serviceAttributes = [
   },
   {
     headings: "Number of Floors",
-    attribute: "",
+    attr: "NoFloors",
     Alert: "",
     exactNumber: "Confirm exact Floors:",
     exactNumber2: "",
@@ -107,7 +107,7 @@ export const serviceAttributes = [
   },
   {
     headings: "Number of Gas Appliances (CP12)",
-    attribute: "",
+    attr: "NoGasAppliances",
     Alert:
       "All gas burning appliances in the property must be tested. For an accurate quotation, please select correct number of gas appliances.",
     exactNumber: "Confirm exact Gas Appliances:",

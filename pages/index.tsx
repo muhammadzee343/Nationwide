@@ -66,7 +66,7 @@ export default function Home() {
           <div className=" w-[95%] lg:w-[65%] xxl:w-[55%]">
             <HomeTab />
           </div>
-          <div className="w-[95%] lg:w-[30%] xl:w-[25%]">
+          <div className="w-[95%] lg:w-[30%] xl:w-[30%] xxl:w-[27%]">
             <SelectProperty />
           </div>
         </div>

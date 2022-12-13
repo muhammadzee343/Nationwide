@@ -17,7 +17,7 @@ function OrderNow(props: any) {
   const [ispropertySelected, setIsPropertySelected] = useState<boolean>(true);
   const [selectedService, setSelectedService] = useState<string[]>([]);
   const servicesSection = useRef<HTMLInputElement | any>();
-  const [attribute, setAttributes] = useState({
+  const [attribute, setAttributes] = useState<any>({
     propertyType: "",
     NoOfBedrooms: "",
     noOtherBedrooms: "",
@@ -139,10 +139,13 @@ function OrderNow(props: any) {
           {selectedService.length > 0 && (
             <section className="animate-fade-in-up" ref={servicesSection}>
               <div className="flex flex-col justify-center items-center px-5">
-                {serviceAttributes.map((ele) => {
+                {serviceAttributes.map((ele, index) => {
                   return (
                     <>
-                      <div className=" w-full sm:px-5 md:px-0 xl:w-8/12 mt-8 mb-2">
+                      <div
+                        className=" w-full sm:px-5 md:px-0 xl:w-8/12 mt-8 mb-2"
+                        key={index}
+                      >
                         <h3 className=" text-2xl md:text-3xl text-dark-blue font-bold my-[30px]">
                           {ele.headings}
                         </h3>
@@ -157,11 +160,11 @@ function OrderNow(props: any) {
                                     <RadioButton
                                       title={attr.title}
                                       selectattribute={setAttributes}
-                                      // className={`${
-                                      //   attribute.propertyType === attr.title
-                                      //     ? "bg-lime"
-                                      //     : "border border-grey-500"
-                                      // }border border-grey-500`}
+                                      className={`${
+                                        attribute[ele.attr] === attr.title
+                                          ? "bg-lime"
+                                          : "border border-grey-500"
+                                      }border border-grey-500`}
                                     />
                                   </div>
                                 </>
@@ -234,6 +237,7 @@ function OrderNow(props: any) {
                         <div className="w-full sm:w-7/12 flex flex-col justify-center">
                           <div>
                             <TextField
+                              handleChange={() => {}}
                               lable="Property Postcode"
                               placeholder="Enter full postcode here"
                             />
@@ -250,6 +254,7 @@ function OrderNow(props: any) {
 
                     <div className="sm:w-6/12 w-full flex flex-col justify-center">
                       <TextField
+                        handleChange={() => {}}
                         lable="Property Address"
                         placeholder="Enter full address here"
                       />
@@ -285,15 +290,21 @@ function OrderNow(props: any) {
                 <div className="w-full flex sm:px-5 md:px-0 md:justify-center">
                   <div className="w-full md:w-8/12 flex flex-col md:flex-row flex-wrap gap-6 lg:justify-start">
                     <TextField
+                      handleChange={() => {}}
                       lable="Other Name"
+                      name="name"
                       placeholder="Example: Martin Roberts"
                     />
                     <TextField
+                      handleChange={() => {}}
                       lable="Tenant Contact Number"
+                      name="Contact Number"
                       placeholder="e.g. 01632 960069"
                     />
                     <TextField
+                      handleChange={() => {}}
                       lable="Other Email"
+                      name="otherEmail"
                       placeholder="e.g. martin.roberts@gmail.com"
                     />
                   </div>

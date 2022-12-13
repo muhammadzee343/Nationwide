@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import SelectProperty from "../../../components/selectProperty.component";
-import { homeServices, howItWorks, service } from "../../../utility/constants";
+import { howItWorks, service } from "../../../utility/constants";
 import ServiceInfo from "../../../components/serviceInfo.component";
 import Head from "next/head";
 import StepperComponent from "../../../components/stepper.component";
 import HowItWorks from "../../../components/howItWorksCard.component";
-import CarouselComponent from "../../../components/carousel.component";
 import OrderNowCard from "../../../components/orderNowCard.component";
-import { useRouter } from "next/router";
 import ServiceHeader from "../../../components/serviceHeader.component";
 
-function Servive({ certificate }: any) {
+function Service({ certificate }: any) {
   return (
     <>
       <ServiceHeader />
@@ -83,7 +81,7 @@ function Servive({ certificate }: any) {
   );
 }
 
-Servive.getInitialProps = (props: any) => {
+Service.getInitialProps = (props: any) => {
   const { slug } = props.query;
   const certificate: any = service.filter((ele) => {
     return ele.content.certificate === slug;
@@ -92,4 +90,4 @@ Servive.getInitialProps = (props: any) => {
   return { certificate };
 };
 
-export default Servive;
+export default Service;

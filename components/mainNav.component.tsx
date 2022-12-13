@@ -13,11 +13,13 @@ import { useContext, useState } from "react";
 import MegaMenu from "./megaMenu.component";
 import MobileScreenNav from "./mobileScreenNav.component";
 import { DeviceContext } from "./deviceContext.component";
-import MediaQuery, { useMediaQuery } from "react-responsive";
+import { useMediaQuery } from "react-responsive";
+import { useRouter } from "next/router";
 
 const MainNavComponent = () => {
   const [collapseIcon, setCollapseIcon] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const router = useRouter();
 
   const { xlargeDevice }: any = useContext(DeviceContext);
 
@@ -78,25 +80,31 @@ const MainNavComponent = () => {
             <li className=" hidden xl:flex items-center px-6 my-6 xl:my-0 h-full">
               <Link
                 href="/"
-                className="text-[15px] text-dark-blue font-[600] hover:text-white"
+                className={`${
+                  router.pathname === "/" ? "text-white" : "text-dark-blue"
+                } text-[15px]  font-[600] hover:text-white`}
               >
                 HOME
               </Link>
             </li>
 
             <li
-              className="hidden xl:flex items-center px-6 my-6 xl:my-0 hover:text-white h-full"
+              className="hidden xl:flex items-center px-5 my-6 xl:my-0 hover:text-white h-full"
               onMouseOver={handleMouseOver}
               onMouseOut={handleMouseOut}
             >
               <Link
                 href="/ourServices"
-                className="text-[15px] text-dark-blue block hover:text-white relative font-semibold flex"
+                className={`${
+                  router.pathname === "/ourServices"
+                    ? "text-white"
+                    : "text-dark-blue"
+                } text-[15px] tracking-wide text-dark-blue block hover:text-white relative font-semibold flex`}
                 onClick={() => setIsHovering(false)}
               >
                 OUR SERVICES
                 <FontAwesomeIcon
-                  className="w-4 ml-2 mb-1"
+                  className="w-3 ml-2 mb-1"
                   icon={faChevronDown}
                 />
               </Link>
@@ -112,8 +120,12 @@ const MainNavComponent = () => {
 
             <li className="hidden xl:flex items-center px-6 my-6  xl:my-0 h-full">
               <Link
-                href="#"
-                className="text-[15px] text-dark-blue font-semibold hover:text-white"
+                href="/contact-us"
+                className={`${
+                  router.pathname === "/contact-us"
+                    ? "text-white"
+                    : "text-dark-blue"
+                } text-[15px]  font-[600] hover:text-white`}
               >
                 CONTACT US
               </Link>
@@ -124,7 +136,7 @@ const MainNavComponent = () => {
                 <span className={styles.cartCount}>0</span>
               </button>
             </li>
-            <button className=" hidden xl:flex uppercase bg-dark-blue text-white px-6 py-2 rounded-full text-sm font-bold">
+            <button className=" hidden xl:flex uppercase bg-dark-blue text-white px-6 py-2 rounded-full text-[12px] font-bold">
               <Link href="/order-now">Order Online</Link>
             </button>
           </>

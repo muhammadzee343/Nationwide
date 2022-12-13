@@ -3,9 +3,6 @@ import type { AppProps } from "next/app";
 import TopNavComponent from "../components/topNav.component";
 import MainNavComponent from "../components/mainNav.component";
 import Footer from "../components/footer.component";
-import DeviceProvider, {
-  DeviceContext,
-} from "../components/deviceContext.component";
 import localFont from "@next/font/local";
 
 const myFont = localFont({
