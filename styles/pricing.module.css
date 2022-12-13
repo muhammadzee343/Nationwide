@@ -1,7 +1,11 @@
-.customSlide{
+.customSlide {
 
     width: 80% !important;
     height: 370px !important;
+}
+
+.priceCustomSlide {
+    width: 300px;
 }
 
 

@@ -17,7 +17,7 @@ function OrderNowCard(props: any) {
           <div className="">
             <ButtonComponent
               text="ORDER NOW"
-              className="bg-lime text-sm font-semibold text-white px-[22px] py-[13px] hover:text-dark-blue ease-in duration-200 "
+              className="bg-lime text-sm font-semibold uppercase text-white px-[22px] py-[13px] hover:text-dark-blue ease-in duration-200 "
             />
           </div>
         </div>

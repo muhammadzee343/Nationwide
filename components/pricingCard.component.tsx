@@ -68,7 +68,7 @@ function PricingCard({
                     content?.bundleName === "Service Bundle Three"
                       ? "bg-lime text-dark-blue bg-lime hover:bg-dark-blue hover:text-white "
                       : "bg-dark-blue text-white hover:bg-lime hover:text-white"
-                  } ease-in duration-200 px-[20px] py-[13px]`}
+                  } ease-in duration-200 px-[20px] py-[13px] uppercase`}
                 />
               </div>
             </div>

@@ -62,11 +62,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <div className=" lg:min-h-[700px] py-[60px] bg-home_bg_image bg-no-repeat bg-cover w-full flex flex-wrap justify-evenly">
-        <div className=" xl:min-w-[1320px] max-w-[1320px] flex flex-col-reverse flex-col items-center lg:items-start lg:flex-row flex-wrap justify-evenly">
-          <div className=" w-[95%] lg:w-[65%] xl:w-[55%]">
+        <div className=" container flex flex-col-reverse flex-col items-center lg:items-start lg:flex-row flex-wrap justify-around">
+          <div className=" w-[95%] lg:w-[65%] xxl:w-[55%]">
             <HomeTab />
           </div>
-          <div className="w-[95%] lg:w-[30%] xl:w-[25%]">
+          <div className="w-[95%] lg:w-[30%] xl:w-[30%] xxl:w-[27%]">
             <SelectProperty />
           </div>
         </div>
@@ -199,7 +199,7 @@ export default function Home() {
             <div>
               <ButtonComponent
                 text="Instant Quote and order here"
-                className=" flex font-semibold border-2 border-dark-blue hover:bg-dark-blue hover:text-white px-[28px] py-[12px] text-sm ease-in duration-200"
+                className=" flex font-semibold uppercase border-2 border-dark-blue hover:bg-dark-blue hover:text-white px-[28px] py-[12px] text-sm ease-in duration-200"
               >
                 <span className="flex mt-1.5 ml-2">
                   <FontAwesomeIcon className="w-1.5" icon={faChevronRight} />

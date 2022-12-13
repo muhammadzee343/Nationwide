@@ -36,7 +36,7 @@ function PricingCarouselComponent(props: any) {
             return (
               <SwiperSlide
                 key={index}
-                className={`${priceStyles.customSlide} xl:flex xl:justify-center `}
+                className={`${priceStyles.priceCustomSlide} xl:flex xl:justify-center `}
               >
                 <PricingCard
                   key={index}

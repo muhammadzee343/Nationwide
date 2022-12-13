@@ -12,7 +12,7 @@ function ButtonComponent({
     <>
       <div className="flex flex-wrap justify-between w-full ">
         <button
-          className={`w-full uppercase text-[15px]  
+          className={`w-full text-[15px]  
               text-center tracking-normal  ${className}`}
         >
           {text}
