@@ -4,7 +4,7 @@ import Link from "next/link";
 function OurServicesComponent({ list, title }: any) {
   return (
     <div
-      className="h-[320px] w-11/12   lg:w-[250px] lg:max-w-[285px] leading-4 bg-light-blue
+      className="h-[320px] w-11/12 lg:w-[275px] lg:max-w-[300px] leading-4 bg-light-blue
        hover:bg-lime transition-all ease-in duration-300  p-[30px] flex flex-col"
     >
       <span className="text-white text-[15px] font-bold mb-[10px] pb-[10px]  border border-transparent border-b-grey-300">

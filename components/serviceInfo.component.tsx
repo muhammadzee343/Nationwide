@@ -4,11 +4,14 @@ import Link from "next/link";
 import styles from "../styles/service.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import DOMPurify from "isomorphic-dompurify";
+
 function ServiceInfo({ className, content }: any) {
+  const cleanContent = DOMPurify.sanitize(content.content);
   return (
     <>
       {content.image && (
-        <div className="lg:w-6/12 py-4 px-8 flex justify-center">
+        <div className="lg:w-5/12 py-4 px-8 flex justify-center">
           <Image
             className=" h-fit cursor-pointer"
             src={content.image}
@@ -35,7 +38,7 @@ function ServiceInfo({ className, content }: any) {
             </div>
             {content.link && (
               <Link
-                href="#"
+                href={content.link}
                 className="text-sm uppercase text-lime hover:text-dark-blue flex"
               >
                 {content.link}
@@ -57,7 +60,7 @@ function ServiceInfo({ className, content }: any) {
             <div
               className="text-[#1A1A1A] text-[15px]"
               dangerouslySetInnerHTML={{
-                __html: `${content.content}`,
+                __html: `${cleanContent}`,
               }}
             />
           </div>

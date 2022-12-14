@@ -12,7 +12,7 @@ import {
 } from "../utility/orderNowConstants";
 import TextField from "../components/TextFied.component";
 
-function OrderNow({ commercialProperties, residentialProperties }) {
+function OrderNow({ commercialProperties, residentialProperties }: any) {
   const [propertyType, setPropertyType] = useState<string>("");
 
   const [ispropertySelected, setIsPropertySelected] = useState<boolean>(true);
@@ -36,7 +36,7 @@ function OrderNow({ commercialProperties, residentialProperties }) {
     gasFire: "",
     backBoiler: "",
     postCode: "",
-    hasGas:"",
+    hasGas: "",
     propertyAddress: "",
     contactAccess: "",
     contact: {
@@ -53,28 +53,26 @@ function OrderNow({ commercialProperties, residentialProperties }) {
     servicesSection.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const setAllAttributes = (selectedServicesData : string[] ) =>{
-
+  const setAllAttributes = (selectedServicesData: string[]) => {
     let attributes: string[] = [...serviceAttributes];
 
     const services =
-        propertyType === "Residential Property"
-            ? residentialProperties
-            : commercialProperties;
+      propertyType === "Residential Property"
+        ? residentialProperties
+        : commercialProperties;
     const addAttributes = services.forEach((data) => {
       if (
-          selectedServicesData.includes(data.name) &&
-          data?.service_attributes
+        selectedServicesData.includes(data.name) &&
+        data?.service_attributes
       ) {
         Object.keys(data?.service_attributes).forEach(function (key) {
-          console.log({ key });
           attributes.push(key);
         });
       }
     });
 
     setServiceAttributes(attributes);
-  }
+  };
 
   const selectService = (title: string) => {
     const temp = title;
@@ -185,7 +183,9 @@ function OrderNow({ commercialProperties, residentialProperties }) {
                     </div>
                   </div>
                 )}
-                {ele.Alert && attribute[ele.attr] === "+" && <AlertBox text={ele.Alert} />}
+                {ele.Alert && attribute[ele.attr] === "+" && (
+                  <AlertBox text={ele.Alert} />
+                )}
                 {ele.radioQuestion.map((ques, index) => {
                   return (
                     <div key={index} className="flex flex-col w-full">
@@ -202,9 +202,9 @@ function OrderNow({ commercialProperties, residentialProperties }) {
                               lable={x.attr}
                               selectattribute={setAttributes}
                               className={`${
-                                  attribute[x.attr] === x.value
-                                      ? "bg-lime"
-                                      : "border border-grey-500"
+                                attribute[x.attr] === x.value
+                                  ? "bg-lime"
+                                  : "border border-grey-500"
                               } border border-grey-500`}
                             />
                           );
@@ -233,8 +233,6 @@ function OrderNow({ commercialProperties, residentialProperties }) {
 
     return elements;
   }, [serviceAttributes, selectedService, attribute]);
-
-  console.log({ attribute });
 
   return (
     <>

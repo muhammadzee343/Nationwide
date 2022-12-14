@@ -70,7 +70,7 @@ export default function Footer() {
 
             <div className="grid  grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-6  lg:grid-cols-3">
               <div>
-                <h3 className="mb-6 text-lg font-semibold text-gray-900 pl-3  dark:text-white border-l-4 border-lime">
+                <h3 className="mb-6 text-lg font-semibold  pl-3  text-white border-l-4 border-lime">
                   Our Services
                 </h3>
 
