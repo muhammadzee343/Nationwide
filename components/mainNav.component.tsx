@@ -43,7 +43,7 @@ const MainNavComponent = () => {
   };
 
   return (
-    <div className="bg-lime px-2 sm:px-20 static top auto ">
+    <div className="bg-lime px-2 sm:px-14 static top auto ">
       <nav className="px-2  xl:flex xl:items-center xl:justify-between">
         <div className="flex justify-between items-center py-5">
           <span
@@ -77,7 +77,7 @@ const MainNavComponent = () => {
           className={`${styles.mNavList}${collapseIcon ? styles.showMenu : ""}`}
         >
           <>
-            <li className=" hidden xl:flex items-center px-6 my-6 xl:my-0 h-full">
+            <li className=" hidden xl:flex items-center px-3 my-6 xl:my-0 h-full">
               <Link
                 href="/"
                 className={`${

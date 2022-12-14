@@ -5,7 +5,7 @@ import styles from "../styles/header.module.css";
 export default function TopNavComponent() {
   return (
     <>
-      <div className="bg-blue lg:py-3 py-4 lg:px-16">
+      <div className="bg-blue lg:py-3 py-4 lg:px-11">
         <nav>
           <div className="flex flex-wrap md:justify-between justify-center px-4 text-center">
             <div className="flex mt-1">
