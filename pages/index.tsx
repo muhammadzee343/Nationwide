@@ -71,8 +71,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {smallDevice && <PricingCarouselComponent />}
-      {middleDevice && <Pricing />}
+      <PricingCarouselComponent />
+      <Pricing />
       {/*SERVICE INFO*/}
       <section>
         <div className="bg-row_bg w-full flex flex-col items-center justify-center px-3 ">

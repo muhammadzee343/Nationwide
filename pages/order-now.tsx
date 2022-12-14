@@ -239,6 +239,7 @@ function OrderNow(props: any) {
                             <TextField
                               handleChange={() => {}}
                               lable="Property Postcode"
+                              name="postcode"
                               placeholder="Enter full postcode here"
                             />
                           </div>
@@ -256,6 +257,7 @@ function OrderNow(props: any) {
                       <TextField
                         handleChange={() => {}}
                         lable="Property Address"
+                        name="address"
                         placeholder="Enter full address here"
                       />
                     </div>

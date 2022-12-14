@@ -136,9 +136,11 @@ const MainNavComponent = () => {
                 <span className={styles.cartCount}>0</span>
               </button>
             </li>
-            <button className=" hidden xl:flex uppercase bg-dark-blue text-white px-6 py-2 rounded-full text-[12px] font-bold">
-              <Link href="/order-now">Order Online</Link>
-            </button>
+            {router.pathname !== "/order-now" && (
+              <button className=" hidden xl:flex uppercase bg-dark-blue text-white px-6 py-2 rounded-full text-[12px] font-bold">
+                <Link href="/order-now">Order Online</Link>
+              </button>
+            )}
           </>
         </ul>
         {collapseIcon && <MobileScreenNav />}
