@@ -101,7 +101,7 @@ export default function Home() {
                 All Our Services
               </h2>
             </div>
-            <div className=" hidden lg:flex flex-wrap lg:gap-2 xl:gap-9">
+            <div className=" hidden lg:flex flex-wrap lg:gap-2 xl:gap-6 xxl:gap-9">
               {ourServices.map(({ list, title }, index) => {
                 return (
                   <OurServicesComponent key={index} list={list} title={title} />
