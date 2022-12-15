@@ -395,7 +395,6 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 OrderNow.getInitialProps = async () => {
   const res = await fetch("http://192.168.10.38:3000/services/list_services");
   const data = await res.json();
-
   const commercialProperties = data.services.filter(
     (data) => data.category === "commercial_property"
   );
@@ -420,7 +419,7 @@ function NextBottom(props: any) {
       <div className="inline-block w-[180px]">
         <ButtonComponent
           text="Next"
-          className="bg-dark-blue uppercase text-white font-semibold  px-[20px] py-[13px] hover:bg-lime  ease-in duration-200"
+          className="bg-dark-blue uppercase text-white font-semibold px-[20px] py-[13px] hover:bg-lime  ease-in duration-200"
         />
       </div>
     </div>
