@@ -8,7 +8,6 @@ body {
   margin: 0;
   font-family: "Open Sans", BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-;
 }
 
 a {
@@ -33,4 +32,10 @@ input[type=number] {
 input::-webkit-input-placeholder {
   color: #9b9b9b;
   font-weight: 600;
+}
+input:focus{
+  box-shadow: 0 0 4px 3px rgb(0 0 0 / 6%)
+}
+textarea:focus{
+  box-shadow: 0 0 4px 3px rgb(0 0 0 / 6%)
 }

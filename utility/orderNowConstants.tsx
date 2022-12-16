@@ -8,7 +8,7 @@ export const contactOptions = [
 ];
 
 export const attributes = {
-  "property_type": {
+  property_type: {
     headings: "Property Type:",
     attr: "propertyType",
     Alert: "",
@@ -16,15 +16,31 @@ export const attributes = {
     exactNumber2: "",
     radioQuestion: [],
     options: [
-      {type: "radio", title: "Mid Terraced House", value: "mid_terraced_house"},
-      {type: "radio", title: "End Terraced / Semi House", value: "end_terraced_or_semi_house"},
-      {type: "radio", title: "Detached House", value: "detached_house"},
-      {type: "radio", title: "Detached Bungalow", value: "detached_bungalow"},
-      {type: "radio", title: "Semi Detached Bungalow", value: "semi_detached_bungalow"},
-      {type: "radio", title: "Flat / Maisonette / Other", value: "flat_or_maisonette_or_other"},
+      {
+        type: "radio",
+        title: "Mid Terraced House",
+        value: "mid_terraced_house",
+      },
+      {
+        type: "radio",
+        title: "End Terraced / Semi House",
+        value: "end_terraced_or_semi_house",
+      },
+      { type: "radio", title: "Detached House", value: "detached_house" },
+      { type: "radio", title: "Detached Bungalow", value: "detached_bungalow" },
+      {
+        type: "radio",
+        title: "Semi Detached Bungalow",
+        value: "semi_detached_bungalow",
+      },
+      {
+        type: "radio",
+        title: "Flat / Maisonette / Other",
+        value: "flat_or_maisonette_or_other",
+      },
     ],
   },
-  "bedrooms":{
+  bedrooms: {
     headings: "No of Bedrooms",
     attr: "NoOfBedrooms",
     Alert:
@@ -42,7 +58,7 @@ export const attributes = {
       { type: "radio", title: "5+ Bedrooms", value: "+" },
     ],
   },
-  "distribution_boards":{
+  distribution_boards: {
     headings: "How Many Fuse Boards You have in Property?",
     attr: "NoFuseBoard",
     Alert: "",
@@ -51,7 +67,7 @@ export const attributes = {
     radioQuestion: [],
     options: [{ type: "counter", title: "No of Fuse Board", value: "" }],
   },
-  "electrical_appliances":{
+  electrical_appliances: {
     headings: "Number of Electrical Appliances (PAT)",
     attr: "NoElectricalAppliances",
     Alert: "",
@@ -65,7 +81,7 @@ export const attributes = {
       { type: "radio", title: "30+ Appliances", value: "+" },
     ],
   },
-  "property_age":{
+  property_age: {
     headings: "Property Age",
     attr: "PropertyAge",
     Alert: "",
@@ -77,7 +93,7 @@ export const attributes = {
       { type: "radio", title: "Post 1940", value: "post_1940" },
     ],
   },
-  "property_price":{
+  property_price: {
     headings: "Property Price",
     attr: "PropertyPrice",
     Alert: "",
@@ -91,7 +107,7 @@ export const attributes = {
       { type: "radio", title: "Upto £1M", value: "1000000" },
     ],
   },
-  "floors":{
+  floors: {
     headings: "Number of Floors",
     attr: "NoFloors",
     Alert: "",
@@ -105,7 +121,7 @@ export const attributes = {
       { type: "radio", title: "4+ Floors", value: "+" },
     ],
   },
-  "gas_appliances":{
+  gas_appliances: {
     headings: "Number of Gas Appliances (CP12)",
     attr: "NoGasAppliances",
     Alert:
@@ -140,9 +156,9 @@ export const attributes = {
 };
 
 export const services = [
-  "Electrical Installation Condition Report (EICR)",
-  "Energy Performance Certificate",
-  "Electrical Portable Appliance Test (PAT)",
-  "Gas Safety Certificate",
-  "Boiler Service",
+  { name: "Electrical Installation Condition Report (EICR)" },
+  { name: "Energy Performance Certificate" },
+  { name: "Electrical Portable Appliance Test (PAT)" },
+  { name: "Gas Safety Certificate" },
+  { name: "Boiler Service" },
 ];
