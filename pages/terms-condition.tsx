@@ -1,29 +1,37 @@
 import React from 'react'
+import HeaderComponent from '../components/Header.component'
 const TermsCondition = () => {
     return (
         <div className="w-full bg-white flex justify-center">
-            <div className=" w-full xl:ml-0 xl: mr-0  xl:max-w-[1114px] sm:ml-5 mr-5 flex flex-col font-montserrat mb-10">
-                <p className='pt-10'>
+            <div className="w-full flex flex-col items-center">
+                <HeaderComponent
+                    header="Terms & Conditions"
+                    breadcrumb="Terms & Conditions"
+                    className="bg-dark-blue"
+                />
+                {/* w-full xl:ml-0 xl: mr-0  xl:max-w-[1114px] sm:ml-5 mr-5 flex flex-col font-montserrat mb-10 */}
+                <div className='w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0'>
+                <p className='footer-paragraph'>
                     These terms and conditions (“Terms”, “Agreement”) are an agreement between Nationwide Surveyors (“Nationwide Services-UK Ltd”, “us”, “we” or “our”) and you
                     (“User”, “you” or “your”). This Agreement sets forth the general terms and conditions of your use of the Nationwide Surveyors’ websites and any of its
                     products or services (collectively, “Website” or “Services”).
                 </p>
-                <p>
+                <p className='footer-paragraph'>
                     <br />
                     You agree to adhere to all applicable laws, regulations and codes of conduct when using the Nationwide Surveyors’ websites.
                 </p>
-                <p>
+                <p className='footer-paragraph'>
                     <br />
                     You agree not to Damage, Interfere or Disrupt the website or access the website to:
                 </p>
                 <br />
-                <ul className='list-disc list-inside bg-blue-400'>
+                <ul className='list-disc list-inside bg-blue-400 footer-paragraph'>
                     <li>Gain or attempt to gain unauthorised access by any means to any restricted Nationwide Services-UK Ltd. networks or systems;</li>
                     <li>Make available, upload or distribute on the nationwidesurveyors.org.uk website any materials or files that contain viruses or any other harmful software;</li>
                     <li>Use the website to send unsolicited material for any purpose.</li>
                 </ul>
                 <br />
-                <p>
+                <p className='footer-paragraph'>
                     Although Nationwide Services-UK Ltd endeavours to ensure the contents of this website are correct, it shall not be liable for any damages
                     arising in contract or otherwise from the use of or inability to use this website, or any material contained within it, or from any action or
                     decision taken as a result of using this website or any such material.
@@ -37,8 +45,9 @@ const TermsCondition = () => {
                     We reserve the right to withdraw a link or refuse to link to any website without providing an explanation or justification.
                 </p>
                 <br />
-                <h1 className='text-2xl font-bold'>Payment Terms and Conditions</h1>
-                <ul className='list-disc list-inside bg-blue-400'>
+                <h1 className='text-[30px] leading-9 font-semibold'>Payment Terms and Conditions</h1>
+                <br/>
+                <ul className='list-disc list-inside bg-blue-400 footer-paragraph'>
                     <li>
                         Payment
                         <ul className={`bg-blue-400 ml-5 circle-list ml-10`}>
@@ -106,19 +115,21 @@ const TermsCondition = () => {
                         </ul>
                     </li>
                 </ul>
-                <h1 className='text-xl font-bold'>Complaints</h1>
-                <ul className='list-disc list-inside bg-blue-400'>
+                <h1><b>Complaints</b></h1>
+                <br/>
+                <ul className='list-disc list-inside bg-blue-400 footer-paragraph'>
                     <li>
-                    If you want to make a complaint, we will deal with it speedily and fairly. We will acknowledge your complaint within 5 working days of receipt 
-                    and try and resolve your complaint fully within 4 weeks. If there are valid reasons for consideration of the complaint taking longer, we will keep you 
-                    fully informed in writing or via telephone or email and you will receive a response at the very latest within 8 weeks.
+                        If you want to make a complaint, we will deal with it speedily and fairly. We will acknowledge your complaint within 5 working days of receipt
+                        and try and resolve your complaint fully within 4 weeks. If there are valid reasons for consideration of the complaint taking longer, we will keep you
+                        fully informed in writing or via telephone or email and you will receive a response at the very latest within 8 weeks.
                     </li>
                     <li>
-                    If you are unhappy with our final resolution of your complaint then we recommend you approach The Citizens Advice, Trading Standards or seek independent advice.
-                     Complaints should be sent to: Nationwide Services-UK Ltd | Kemp House, 160 City Road, London, United Kingdom, EC1V 2NX, Phone: 0300 140 0023 | 
-                     complaints@nationwidesurveyors.org.uk
+                        If you are unhappy with our final resolution of your complaint then we recommend you approach The Citizens Advice, Trading Standards or seek independent advice.
+                        Complaints should be sent to: Nationwide Services-UK Ltd | Kemp House, 160 City Road, London, United Kingdom, EC1V 2NX, Phone: 0300 140 0023 |
+                        complaints@nationwidesurveyors.org.uk
                     </li>
                 </ul>
+                </div>
             </div>
         </div>
     )

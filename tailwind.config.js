@@ -38,6 +38,7 @@ module.exports = {
         footer_bg_image: "url('../public/footer-bg.jpg')",
         header_bg: "url('../public/bg-header.jpg')",
         row_bg: "url('../public/row-bg.png')",
+        energy_performance_header_bg: "url('../public/test.jpg')",
       },
 
       keyframes: {
