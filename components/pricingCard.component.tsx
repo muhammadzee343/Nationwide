@@ -28,12 +28,12 @@ function PricingCard({
                 </div>
                 <div className="relative inline-block mt-[37px] mb-0 text-left">
                   <div
-                    className={` ${styles.pricingAmount}  text-lime absolute top-0 font-semibold text-xl  inline-block`}
+                    className={` ${styles.poppinsFamily}  text-lime absolute top-0 font-semibold text-xl  inline-block`}
                   >
                     £
                   </div>
                   <div
-                    className={`${styles.pricingAmount} text-lime text-[50px] leading-[27px] pl-[20px] font-semibold`}
+                    className={`${styles.poppinsFamily} text-lime text-[50px] leading-[27px] pl-[20px] font-semibold`}
                   >
                     {content?.price}
                   </div>

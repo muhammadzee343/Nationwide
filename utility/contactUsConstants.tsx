@@ -8,6 +8,6 @@ export const enquiries = [
     text: "New Quotation, confirm availability and bookings",
     link: "/general-enquiries",
   },
-  { text: "Enquire about our B2B services", link: "/" },
-  { text: "Enquire about something else", link: "/" },
+  { text: "Enquire about our B2B services", link: "/business-enquiries" },
+  { text: "Enquire about something else", link: "/general-enquiries" },
 ];
