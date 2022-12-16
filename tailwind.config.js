@@ -65,6 +65,10 @@ module.exports = {
       animation: {
         "fade-in-up": "fade-in-up 0.5s ease-out",
       },
+      fontFamily: {
+        'poppins': ['Poppins', 'sans-serif'],
+        'montserrat' : ['Montserrat', 'Arial', 'Helvetica', 'sans-serif']
+      },
     },
   },
   plugins: [],

@@ -34,3 +34,8 @@ input::-webkit-input-placeholder {
   color: #9b9b9b;
   font-weight: 600;
 }
+
+/* list style circle */
+.circle-list{
+  list-style-type: circle
+}

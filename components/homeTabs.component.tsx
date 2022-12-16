@@ -12,7 +12,7 @@ const HomeTab = () => {
           {SERVICES.map((ele, index) => {
             return (
               <li
-                className=" py-1 lg:py-2 w-full md:w-[238px] "
+                className="py-1 lg:py-2 w-full md:w-[238px] "
                 key={index}
                 onClick={() => setService(ele.slug)}
               >
