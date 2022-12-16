@@ -39,7 +39,7 @@
     @apply relative h-[37px] font-bold pb-[10px] mb-[10px] uppercase text-base border-b border-b-dark-blue
     after:content-[''] after:absolute after:bottom-[-1px] after:inset-x-0 after:h-[1px] after:w-[70px] after:bg-lime
 }
-.pricingAmount{
+.poppinsFamily{
     font-family: 'Poppins', sans-serif;
 }
 .pricingMarkers{
@@ -49,4 +49,5 @@
 .specialBUndle{
     font-family:  'Tahoma','Ubuntu';
 }
+
 
