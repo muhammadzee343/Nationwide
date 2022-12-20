@@ -31,13 +31,16 @@ module.exports = {
         },
         white: "#ffffff",
         cream: "#f9f9f9",
+        black: "#1a1a1a"
       },
 
       backgroundImage: {
         home_bg_image: "url('../public/mainbg.jpg')",
         footer_bg_image: "url('../public/footer-bg.jpg')",
         header_bg: "url('../public/bg-header.jpg')",
+        head: "url('../public/bs1.jpg')",
         row_bg: "url('../public/row-bg.png')",
+        energy_performance_header_bg: "url('../public/test.jpg')",
       },
 
       keyframes: {
@@ -64,6 +67,11 @@ module.exports = {
       },
       animation: {
         "fade-in-up": "fade-in-up 0.5s ease-out",
+      },
+      fontFamily: {
+        'poppins': ['Poppins', 'sans-serif'],
+        'montserrat' : ['Montserrat', 'Arial', 'Helvetica', 'sans-serif'],
+        'opensans' : ['Open Sans', 'Arial', 'Helvetica', 'sans-serif']
       },
     },
   },

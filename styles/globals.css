@@ -33,9 +33,35 @@ input::-webkit-input-placeholder {
   color: #9b9b9b;
   font-weight: 600;
 }
+
+/* list style circle */
+.circle-list{
+  list-style-type: circle
+}
+
 input:focus{
   box-shadow: 0 0 4px 3px rgb(0 0 0 / 6%)
 }
 textarea:focus{
   box-shadow: 0 0 4px 3px rgb(0 0 0 / 6%)
+}
+
+.footer-paragraph{
+  @apply  mb-3.5 text-sm text-dark-blue leading-7 font-normal
+}
+
+.footer-pages-heading{
+  list-style-type: circle
+}
+
+.footerPagesHeading{
+  @apply  text-4xl font-semibold 
+}
+
+.footerPagesSubHeading{
+  @apply  text-3xl font-semibold 
+}
+
+.footerSmallHead{
+  @apply text-xl font-semibold
 }
