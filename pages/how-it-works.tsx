@@ -8,11 +8,11 @@ function HowItWorks() {
                 <HeaderComponent
                     header="How It Works"
                     breadcrumb="How It Works"
-                    className="bg-dark-blue"
+                    className="bg-zinc-800 bg-blend-overlay bg-home_bg_image"
                 />
                 {/* w-full xl:ml-0 xl: mr-0  xl:max-w-[1114px] sm:ml-5 mr-5 flex flex-col font-montserrat mb-10 */}
-                <div className='w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0'>
-                    <h1 className='footerPagesHeading'>1. Place Order Online</h1>
+                <div className='w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0 font-opensans'>
+                    <h1 className='footerPagesHeading text-4xl'>1. Place Order Online</h1>
                     <br />
                     <p className='footer-paragraph'>Please select the services required and place order online 24/7. Our services can be ordered individually or as a combined Bundle Package.
                         Prefer to place order over the phone? please call us FREE at 0800 048 7474.</p>

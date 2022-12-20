@@ -10,7 +10,7 @@ const TermsCondition = () => {
                     className="bg-dark-blue"
                 />
                 {/* w-full xl:ml-0 xl: mr-0  xl:max-w-[1114px] sm:ml-5 mr-5 flex flex-col font-montserrat mb-10 */}
-                <div className='w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0'>
+                <div className='w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0 font-opensans'>
                 <p className='footer-paragraph'>
                     These terms and conditions (“Terms”, “Agreement”) are an agreement between Nationwide Surveyors (“Nationwide Services-UK Ltd”, “us”, “we” or “our”) and you
                     (“User”, “you” or “your”). This Agreement sets forth the general terms and conditions of your use of the Nationwide Surveyors’ websites and any of its
@@ -21,11 +21,10 @@ const TermsCondition = () => {
                     You agree to adhere to all applicable laws, regulations and codes of conduct when using the Nationwide Surveyors’ websites.
                 </p>
                 <p className='footer-paragraph'>
-                    <br />
                     You agree not to Damage, Interfere or Disrupt the website or access the website to:
                 </p>
                 <br />
-                <ul className='list-disc list-inside bg-blue-400 footer-paragraph'>
+                <ul className='list-disc list-inside bg-blue-400 footer-paragraph font-opensans'>
                     <li>Gain or attempt to gain unauthorised access by any means to any restricted Nationwide Services-UK Ltd. networks or systems;</li>
                     <li>Make available, upload or distribute on the nationwidesurveyors.org.uk website any materials or files that contain viruses or any other harmful software;</li>
                     <li>Use the website to send unsolicited material for any purpose.</li>

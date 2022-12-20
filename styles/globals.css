@@ -47,7 +47,7 @@ textarea:focus{
 }
 
 .footer-paragraph{
-  @apply  mb-3.5 text-sm text-dark-blue leading-7
+  @apply  mb-3.5 text-sm text-dark-blue leading-7 font-normal
 }
 
 .footer-pages-heading{
@@ -55,9 +55,13 @@ textarea:focus{
 }
 
 .footerPagesHeading{
-  @apply  text-2xl font-bold
+  @apply  text-4xl font-semibold 
 }
 
 .footerPagesSubHeading{
-  @apply  text-xl font-bold
+  @apply  text-3xl font-semibold 
+}
+
+.footerSmallHead{
+  @apply text-xl font-semibold
 }

@@ -94,34 +94,34 @@ export default function Footer() {
 
                 <ul className="text-gray-600 dark:text-gray-400">
                   <li className="mb-4">
-                    <a href="#" className=" text-white hover:text-lime text-sm">
+                    <Link href="faq" className=" text-white hover:text-lime text-sm">
                       Frequently Asked Questions
-                    </a>
+                    </Link>
                   </li>
                   <li className="mb-4">
-                    <a href="#" className=" text-white hover:text-lime text-sm">
+                    <Link href="how-it-works" className=" text-white hover:text-lime text-sm">
                       How It Works
-                    </a>
+                    </Link>
                   </li>
                   <li className="mb-4">
-                    <a href="#" className=" text-white hover:text-lime text-sm">
+                    <Link href="who-needs-an-epc" className=" text-white hover:text-lime text-sm">
                       Who Needs an EPC
-                    </a>
+                    </Link>
                   </li>
                   <li className="mb-4">
-                    <a href="#" className=" text-white hover:text-lime text-sm">
+                    <Link href="energy-performance-certificate-rules-and-regulations" className=" text-white hover:text-lime text-sm">
                       Energy Performance Certificate Rules and Regulations
-                    </a>
+                    </Link>
                   </li>
                   <li className="mb-4">
-                    <a href="#" className=" text-white hover:text-lime text-sm">
+                    <Link href="who-needs-eicr" className=" text-white hover:text-lime text-sm">
                       Who needs EICR
-                    </a>
+                    </Link>
                   </li>
                   <li className="mb-4">
-                    <a href="#" className=" text-white hover:text-lime text-sm">
+                    <Link href="terms-condition" className=" text-white hover:text-lime text-sm">
                       Terms & Condition
-                    </a>
+                    </Link>
                   </li>
                   <li className="mt-5">
                     <button className="font-bold transition-colors text-white text-sm border-2 border-white p-3 hover:text-black hover:bg-white hover:font-normal  ">
