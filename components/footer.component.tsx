@@ -25,11 +25,14 @@ export default function Footer() {
 
   const UsefulLinkes = [
     { title: "Frequently Asked Questions", pageLink: "faq" },
-    { title: "How It Works", pageLink: "how-it-works"  },
-    { title: "Who Needs an EPC", pageLink: "who-needs-an-epc"  },
-    { title: "Energy Performance Certificate Rules and Regulations", pageLink: "energy-performance-certificate-rules-and-regulations"  },
-    { title: "Who needs EICR", pageLink: "who-needs-eicr"  },
-    { title: "Terms & Condition", pageLink: "terms-condition"  },
+    { title: "How It Works", pageLink: "how-it-works" },
+    { title: "Who Needs an EPC", pageLink: "who-needs-an-epc" },
+    {
+      title: "Energy Performance Certificate Rules and Regulations",
+      pageLink: "energy-performance-certificate-rules-and-regulations",
+    },
+    { title: "Who needs EICR", pageLink: "who-needs-eicr" },
+    { title: "Terms & Condition", pageLink: "terms-condition" },
   ];
 
   return (
@@ -102,17 +105,20 @@ export default function Footer() {
 
                 <ul className="text-gray-600 dark:text-gray-400">
                   {UsefulLinkes.map((items, index) => {
-                    return(
-                      <li className="mb-4">
-                    <Link href={`/${items?.pageLink}`} className=" text-white hover:text-lime text-sm">
-                      {items?.title}
-                    </Link>
-                  </li>
-                    )
+                    return (
+                      <li className="mb-4" key={index}>
+                        <Link
+                          href={`/${items?.pageLink}`}
+                          className=" text-white hover:text-lime text-sm"
+                        >
+                          {items?.title}
+                        </Link>
+                      </li>
+                    );
                   })}
                   <li className="mt-5">
                     <button className="font-bold transition-colors text-white text-sm border-2 border-white p-3 hover:text-black hover:bg-white hover:font-normal  ">
-                    SEE ALL OUR SERVICES
+                      SEE ALL OUR SERVICES
                     </button>
                   </li>
                 </ul>
@@ -179,10 +185,7 @@ export default function Footer() {
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
             Copyright © 2021
-            <a
-              href="#"
-              className="text-white hover:text-lime"
-            >
+            <a href="#" className="text-white hover:text-lime">
               Nationwide Surveyors.
             </a>
             All Rights Reserved.
