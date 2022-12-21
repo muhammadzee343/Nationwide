@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Collapse } from "antd";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
-import { accordionData } from "../utility/constants";
 const { Panel } = Collapse;
 
-function FaqAccordion() {
+function FaqAccordion({ accordionData = [] }:any) {
   const [active, setActive] = useState("1");
   const onChange = (key: string | string[]) => {
     setActive(key);
@@ -12,7 +11,7 @@ function FaqAccordion() {
 
   return (
     <>
-      {accordionData.map((item, index) => {
+      {accordionData?.map((item, index) => {
         return (
           <Collapse
             accordion
@@ -46,7 +45,7 @@ function FaqAccordion() {
                       : "text-gray-500"
                   } hover:text-white text-[17px] leading-4`}
                 >
-                  {item.title}
+                  {item?.title}
                 </span>
               }
               key={index + 1}
@@ -54,7 +53,7 @@ function FaqAccordion() {
                 active === (index + 1).toString() ? "bg-lime" : null
               } hover:bg-lime hover:text-white`}
             >
-              {item.description.map((desc) => {
+              {item?.description.map((desc:any) => {
                 return (
                   <>
                     <p className="footer-paragraph">{desc?.para1}</p>
