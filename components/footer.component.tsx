@@ -22,6 +22,19 @@ export default function Footer() {
     { title: "Floor Plans" },
     { title: "Building Surveys" },
   ];
+
+  const UsefulLinkes = [
+    { title: "Frequently Asked Questions", pageLink: "faq" },
+    { title: "How It Works", pageLink: "how-it-works" },
+    { title: "Who Needs an EPC", pageLink: "who-needs-an-epc" },
+    {
+      title: "Energy Performance Certificate Rules and Regulations",
+      pageLink: "energy-performance-certificate-rules-and-regulations",
+    },
+    { title: "Who needs EICR", pageLink: "who-needs-eicr" },
+    { title: "Terms & Condition", pageLink: "terms-condition" },
+  ];
+
   return (
     <>
       <footer className="p-4 bg-white sm:p-6 bg-gray-900 bg-footer_bg_image bg-no-repeat bg-cover">
@@ -67,7 +80,6 @@ export default function Footer() {
                 <hr className="" />
               </ul>
             </div>
-
             <div className="grid  grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-6  lg:grid-cols-3">
               <div>
                 <h3 className="mb-6 text-lg font-semibold  pl-3  text-white border-l-4 border-lime">
@@ -78,51 +90,32 @@ export default function Footer() {
                   {OurServices.map((el, index) => {
                     return (
                       <li className="mb-4" key={index}>
-                        <a href="#" className={styles.tNavLinks}>
+                        <Link href="#" className={styles.tNavLinks}>
                           {el.title}
-                        </a>
+                        </Link>
                       </li>
                     );
                   })}
                 </ul>
               </div>
-
               <div>
                 <h3 className="mb-6 text-lg  font-semibold  text-gray-900 pl-3  text-white border-l-4 border-lime  ">
                   Useful Links
                 </h3>
 
-                <ul className="text-gray-600 text-gray-400">
-                  <li className="mb-4">
-                    <a href="#" className=" text-white hover:text-lime text-sm">
-                      Frequently Asked Questions
-                    </a>
-                  </li>
-                  <li className="mb-4">
-                    <a href="#" className=" text-white hover:text-lime text-sm">
-                      How It Works
-                    </a>
-                  </li>
-                  <li className="mb-4">
-                    <a href="#" className=" text-white hover:text-lime text-sm">
-                      Who Needs an EPC
-                    </a>
-                  </li>
-                  <li className="mb-4">
-                    <a href="#" className=" text-white hover:text-lime text-sm">
-                      Energy Performance Certificate Rules and Regulations
-                    </a>
-                  </li>
-                  <li className="mb-4">
-                    <a href="#" className=" text-white hover:text-lime text-sm">
-                      Who needs EICR
-                    </a>
-                  </li>
-                  <li className="mb-4">
-                    <a href="#" className=" text-white hover:text-lime text-sm">
-                      Terms & Condition
-                    </a>
-                  </li>
+                <ul className="text-gray-600 dark:text-gray-400">
+                  {UsefulLinkes.map((items, index) => {
+                    return (
+                      <li className="mb-4" key={index}>
+                        <Link
+                          href={`/${items?.pageLink}`}
+                          className=" text-white hover:text-lime text-sm"
+                        >
+                          {items?.title}
+                        </Link>
+                      </li>
+                    );
+                  })}
                   <li className="mt-5">
                     <button className="font-bold transition-colors text-white text-sm border-2 border-white p-3 hover:text-black hover:bg-white hover:font-normal  ">
                       SEE ALL OUR SERVICES
@@ -192,19 +185,14 @@ export default function Footer() {
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-gray-500 sm:text-center text-gray-400">
             Copyright © 2021
-            <a
-              href="https://flowbite.com/"
-              className="text-white hover:text-lime"
-            >
-              {" "}
+            <a href="#" className="text-white hover:text-lime">
               Nationwide Surveyors.
-            </a>{" "}
+            </a>
             All Rights Reserved.
             <Link href="#" className="text-white hover:text-lime ml-3">
               Cookie Policy
-            </Link>{" "}
+            </Link>
             <Link href="#" className="text-white hover:text-lime ml-3">
-              {" "}
               Privacy Policy
             </Link>
           </span>
@@ -218,7 +206,7 @@ export default function Footer() {
             </a>
             <a
               href="#"
-              className="text-gray-500 hover:text-gray-900 hover:text-white"
+              className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
             >
               <FontAwesomeIcon className="w-4" icon={faTwitter} />
               <span className="sr-only">Twitter page</span>
