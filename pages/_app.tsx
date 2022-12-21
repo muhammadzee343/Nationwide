@@ -4,6 +4,8 @@ import TopNavComponent from "../components/topNav.component";
 import MainNavComponent from "../components/mainNav.component";
 import Footer from "../components/footer.component";
 import localFont from "@next/font/local";
+import DrawerComponent from "../components/Drawer.component";
+import { useState } from "react";
 
 const myFont = localFont({
   src: [
@@ -28,11 +30,28 @@ const myFont = localFont({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [showDrawer, setShowDrawer] = useState(false);
+  const [overlay, setOverlay] = useState(false);
+  const displayDrawer = () => {
+    setTimeout(() => {
+      setShowDrawer(true);
+    }, 1);
+
+    setOverlay(true);
+  };
   return (
     <>
       <main className={myFont.className}>
+        {overlay && (
+          <DrawerComponent
+            showDrawer={showDrawer}
+            closeDrawer={setShowDrawer}
+            showOverlay={overlay}
+            closeOverlay={setOverlay}
+          />
+        )}
         <TopNavComponent />
-        <div className="xl:top-0 xl:sticky z-[1000]">
+        <div className="xl:top-0 xl:sticky z-[1000]" onClick={displayDrawer}>
           <MainNavComponent />
         </div>
         <Component {...pageProps} />

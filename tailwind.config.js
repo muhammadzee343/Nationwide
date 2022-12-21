@@ -1,11 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+    "./node_modules/flowbite-react/**/*.{js,ts,jsx,tsx}",
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
+    "./public/**/*.html",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      body: ['"Open Sans"', '"Helvetica"', '"ui-sans-serif"'],
+    },
     screens: {
       sm: "480px",
       md: "768px",
@@ -38,6 +43,7 @@ module.exports = {
         footer_bg_image: "url('../public/footer-bg.jpg')",
         header_bg: "url('../public/bg-header.jpg')",
         row_bg: "url('../public/row-bg.png')",
+        row_bg_two: "url('../public/row-bg-two.jpg')",
       },
 
       keyframes: {
@@ -67,5 +73,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("flowbite/plugin")],
 };
