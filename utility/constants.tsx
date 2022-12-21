@@ -1026,3 +1026,39 @@ export const faqAccordionData = [
   },
 ];
 
+//Cookie policy
+export const cookielistPoints = [
+  {
+    point:
+      "Strictly necessary cookies. These are cookies that are required for the operation of our website. They include, for example, cookies that enable you to log into secure areas of our website.",
+  },
+  {
+    point:
+      "Analytical/performance cookies. They allow us to recognize and count the number of visitors and to see how visitors move around our website when they are using it. This helps us to improve the way our website works, for example, by ensuring that users are finding what they are looking for easily.",
+  },
+  {
+    point:
+      "Functionality cookies. These are used to recognize you when you return to our website. This enables us to personalize our content for you, greet you by name and remember your preferences (for example, your choice of language or region).",
+  },
+  {
+    point:
+      "Targeting cookies. These cookies record your visit to our website, the pages you have visited and the links you have followed. We will use this information to make our website and the advertising displayed on it more relevant to your interests.",
+  },
+];
+
+//privacy policy
+export const infolistPoints = [
+  {
+    point: "Identify you when you contact us.",
+  },
+  {
+    point: "Enable us to contact you.",
+  },
+  {
+    point:
+      "Help contact you regarding your order/enquiry (we may contact you by telephone or e-mail if you have given us these contact details).",
+  },
+  {
+    point: "Help to prevent and detect fraud or loss; and",
+  },
+];
