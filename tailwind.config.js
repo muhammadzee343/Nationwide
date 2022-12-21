@@ -69,7 +69,7 @@ module.exports = {
         "fade-in-up": "fade-in-up 0.5s ease-out",
       },
       fontFamily: {
-        'poppins': ['Poppins', 'sans-serif'],
+        'poppins': ['Poppins', 'Arial', 'Helvetica', 'sans-serif'],
         'montserrat' : ['Montserrat', 'Arial', 'Helvetica', 'sans-serif'],
         'opensans' : ['Open Sans', 'Arial', 'Helvetica', 'sans-serif']
       },
