@@ -1,8 +1,7 @@
 import React from "react";
 import HeaderComponent from "../components/Header.component";
-import {agreeListPoints} from "../utility/constants"
+import { agreeListPoints } from "../utility/constants";
 const TermsCondition = () => {
-  
   return (
     <div className="w-full bg-white flex justify-center">
       <div className="w-full flex flex-col items-center">
@@ -45,7 +44,7 @@ const TermsCondition = () => {
             website or any such material.
           </p>
           <p className="footer-paragraph">
-          Please note that any links to external websites are provided for
+            Please note that any links to external websites are provided for
             information and convenience only. Nationwide Services-UK Ltd does
             not accept responsibility for the websites linked to, or the
             information found there. A link does not imply an endorsement of a
@@ -53,7 +52,7 @@ const TermsCondition = () => {
             lack of endorsement.
           </p>
           <p className="footer-paragraph">
-          We reserve the right to withdraw a link or refuse to link to any
+            We reserve the right to withdraw a link or refuse to link to any
             website without providing an explanation or justification.
           </p>
           <br />
@@ -64,7 +63,7 @@ const TermsCondition = () => {
           <ul className="list-disc list-inside bg-blue-400 footer-paragraph">
             <li>
               Payment
-              <ul className={"bg-blue-400 ml-5 circle-list ml-10"}>
+              <ul className="bg-blue-400 ml-5 circle-list ml-10">
                 <li>
                   Payments can be made online, over the phone or through direct
                   bank transfer into our company account. All major debit/credit
@@ -74,7 +73,7 @@ const TermsCondition = () => {
             </li>
             <li>
               Your Obligations
-              <ul className={"bg-blue-400 ml-5 circle-list ml-10"}>
+              <ul className="bg-blue-400 ml-5 circle-list ml-10">
                 <li>
                   You agree to ensure that the information that you supply to us
                   in the order including without limitation details of the
@@ -98,7 +97,7 @@ const TermsCondition = () => {
             </li>
             <li>
               Liability
-              <ul className={"bg-blue-400 ml-5 circle-list ml-10"}>
+              <ul className="bg-blue-400 ml-5 circle-list ml-10">
                 <li>
                   We cannot accept any liability for any error in
                   certificate/report, which is based on any error or inaccuracy
@@ -142,7 +141,7 @@ const TermsCondition = () => {
             </li>
             <li>
               Pricing
-              <ul className={"bg-blue-400 ml-5 circle-list ml-10"}>
+              <ul className="bg-blue-400 ml-5 circle-list ml-10">
                 <li>
                   The website prices quoted are for properties anywhere on the
                   mainland of England and Wales.
@@ -195,7 +194,7 @@ const TermsCondition = () => {
             </li>
             <li>
               Cancellation
-              <ul className={"bg-blue-400 ml-5 circle-list ml-10"}>
+              <ul className="bg-blue-400 ml-5 circle-list ml-10">
                 <li>
                   Should you wish to cancel or re-schedule an order, you agree
                   to give us as much notice as is reasonably practicable. we
