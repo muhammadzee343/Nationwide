@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../styles/footer.module.css";
+import serviceStyle from "../styles/service.module.css";
 import { Collapse } from "antd";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 const { Panel } = Collapse;
@@ -23,6 +24,7 @@ function FaqAccordion({
       {accordionData?.map((item: any, index: any) => {
         return (
           <Collapse
+            key={index}
             accordion
             activeKey={active}
             onChange={onChange}
@@ -60,9 +62,9 @@ function FaqAccordion({
               key={index + 1}
               className={`${
                 active === (index + 1).toString()
-                  ? `${activeHeadBackgorund} border border-lime shadow-md`
+                  ? `${activeHeadBackgorund}  border border-lime shadow-md`
                   : null
-              } hover:${hoverHeadBackground} ${headerBackground}`}
+              } hover:${hoverHeadBackground} ${headerBackground} ${serviceStyle.parent}`}
             >
               <h1 className="font-semibold text-base">{item.head1}</h1>
               {item?.description.map((desc: any) => {

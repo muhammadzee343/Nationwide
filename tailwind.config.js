@@ -1,8 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+    "./node_modules/flowbite-react/**/*.{js,ts,jsx,tsx}",
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
+    "./public/**/*.html",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -41,6 +43,7 @@ module.exports = {
         head: "url('../public/bs1.jpg')",
         row_bg: "url('../public/row-bg.png')",
         energy_performance_header_bg: "url('../public/test.jpg')",
+        row_bg_two: "url('../public/row-bg-two.jpg')",
       },
 
       keyframes: {
@@ -75,5 +78,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("flowbite/plugin")],
 };

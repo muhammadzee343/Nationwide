@@ -5,12 +5,9 @@ import ButtonComponent from "../components/Button.component";
 import ServiceSelectionCard from "../components/serviceSelectionCard.component";
 import Counter from "../components/counter";
 import RadioButton from "../components/RadioButton.component";
-import {
-  contactOptions,
-  attributes,
-  services,
-} from "../utility/orderNowConstants";
+import { attributes } from "../utility/orderNowConstants";
 import TextField from "../components/TextFied.component";
+import AlertBox from "../components/alertBox.component";
 
 function OrderNow({ commercialProperties, residentialProperties }: any) {
   const [propertyType, setPropertyType] = useState<string>("");
@@ -54,7 +51,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
   };
 
   const setAllAttributes = (selectedServicesData: string[]) => {
-    let attributes: string[] = [...serviceAttributes];
+    let attributes = new Set();
 
     const services =
       propertyType === "Residential Property"
@@ -66,12 +63,12 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         data?.service_attributes
       ) {
         Object.keys(data?.service_attributes).forEach(function (key) {
-          attributes.push(key);
+          attributes.add(key);
         });
       }
     });
-
-    setServiceAttributes(attributes);
+    //@ts-ignore
+    setServiceAttributes([...attributes]);
   };
 
   const selectService = (title: string) => {
@@ -115,7 +112,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
             title={service.name}
             className={`${
               selectedService.includes(service.name) ? "bg-lime self-end " : ""
-            }`}
+            } text-[15px] py-[11px] border-lime`}
           />
         </div>
       );
@@ -129,7 +126,6 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
     serviceAttributes.forEach((key, index) => {
       const ele = attributes[key];
-
       if (ele) {
         elements.push(
           <>
@@ -157,7 +153,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                               attribute[ele.attr] === attr.value
                                 ? "bg-lime"
                                 : "border border-grey-500"
-                            } border border-grey-500`}
+                            } border border-grey-500 w-6 h-6 sm:w-7 sm:h-7`}
                           />
                         </div>
                       </>
@@ -184,7 +180,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                   </div>
                 )}
                 {ele.Alert && attribute[ele.attr] === "+" && (
-                  <AlertBox text={ele.Alert} />
+                  <AlertBox text={ele.Alert} className="text-[17px]" />
                 )}
                 {ele.radioQuestion.map((ques, index) => {
                   return (
@@ -205,7 +201,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                                 attribute[x.attr] === x.value
                                   ? "bg-lime"
                                   : "border border-grey-500"
-                              } border border-grey-500`}
+                              } border border-grey-500 w-6 h-6 sm:w-7 sm:h-7`}
                             />
                           );
                         })}
@@ -230,7 +226,6 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         );
       }
     });
-
     return elements;
   }, [serviceAttributes, selectedService, attribute]);
 
@@ -333,54 +328,54 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                     </div>
                   </div>
                 </div>
-                <div className=" w-full sm:px-5 md:px-0 xl:w-8/12 mt-8 mb-2">
-                  <h3 className=" text-2xl md:text-3xl text-dark-blue font-bold my-[30px]">
-                    Contact for Access:
-                  </h3>
-                </div>
-                <div className="w-full flex sm:px-5 md:px-0 md:justify-center">
-                  <div className="w-full md:w-8/12 flex flex-col md:flex-row flex-wrap gap-6 lg:justify-start">
-                    {contactOptions.map((attr, index) => {
-                      return (
-                        <>
-                          <div key={index} className="w-full md:w-5/12">
-                            <RadioButton
-                              title={attr.title}
-                              className={`border border-grey-500 bg-lime`}
-                            />
-                          </div>
-                        </>
-                      );
-                    })}
-                  </div>
-                </div>
-                <div className=" w-full sm:px-5 md:px-0 xl:w-8/12 mt-8 mb-2">
-                  <h3 className=" text-2xl md:text-3xl text-dark-blue font-bold my-[30px]">
-                    Contact for Access:
-                  </h3>
-                </div>
-                <div className="w-full flex sm:px-5 md:px-0 md:justify-center">
-                  <div className="w-full md:w-8/12 flex flex-col md:flex-row flex-wrap gap-6 lg:justify-start">
-                    <TextField
-                      handleChange={() => {}}
-                      lable="Other Name"
-                      name="name"
-                      placeholder="Example: Martin Roberts"
-                    />
-                    <TextField
-                      handleChange={() => {}}
-                      lable="Tenant Contact Number"
-                      name="Contact Number"
-                      placeholder="e.g. 01632 960069"
-                    />
-                    <TextField
-                      handleChange={() => {}}
-                      lable="Other Email"
-                      name="otherEmail"
-                      placeholder="e.g. martin.roberts@gmail.com"
-                    />
-                  </div>
-                </div>
+                {/*<div className=" w-full sm:px-5 md:px-0 xl:w-8/12 mt-8 mb-2">*/}
+                {/*  <h3 className=" text-2xl md:text-3xl text-dark-blue font-bold my-[30px]">*/}
+                {/*    Contact for Access:*/}
+                {/*  </h3>*/}
+                {/*</div>*/}
+                {/*<div className="w-full flex sm:px-5 md:px-0 md:justify-center">*/}
+                {/*  <div className="w-full md:w-8/12 flex flex-col md:flex-row flex-wrap gap-6 lg:justify-start">*/}
+                {/*    {contactOptions.map((attr, index) => {*/}
+                {/*      return (*/}
+                {/*        <>*/}
+                {/*          <div key={index} className="w-full md:w-5/12">*/}
+                {/*            <RadioButton*/}
+                {/*              title={attr.title}*/}
+                {/*              className={`border border-grey-500 bg-lime`}*/}
+                {/*            />*/}
+                {/*          </div>*/}
+                {/*        </>*/}
+                {/*      );*/}
+                {/*    })}*/}
+                {/*  </div>*/}
+                {/*</div>*/}
+                {/*<div className=" w-full sm:px-5 md:px-0 xl:w-8/12 mt-8 mb-2">*/}
+                {/*  <h3 className=" text-2xl md:text-3xl text-dark-blue font-bold my-[30px]">*/}
+                {/*    Contact for Access:*/}
+                {/*  </h3>*/}
+                {/*</div>*/}
+                {/*<div className="w-full flex sm:px-5 md:px-0 md:justify-center">*/}
+                {/*  <div className="w-full md:w-8/12 flex flex-col md:flex-row flex-wrap gap-6 lg:justify-start">*/}
+                {/*    <TextField*/}
+                {/*      handleChange={() => {}}*/}
+                {/*      lable="Other Name"*/}
+                {/*      name="name"*/}
+                {/*      placeholder="Example: Martin Roberts"*/}
+                {/*    />*/}
+                {/*    <TextField*/}
+                {/*      handleChange={() => {}}*/}
+                {/*      lable="Tenant Contact Number"*/}
+                {/*      name="Contact Number"*/}
+                {/*      placeholder="e.g. 01632 960069"*/}
+                {/*    />*/}
+                {/*    <TextField*/}
+                {/*      handleChange={() => {}}*/}
+                {/*      lable="Other Email"*/}
+                {/*      name="otherEmail"*/}
+                {/*      placeholder="e.g. martin.roberts@gmail.com"*/}
+                {/*    />*/}
+                {/*  </div>*/}
+                {/*</div>*/}
                 <hr className=" h-[2px] mt-8  w-10/12 md:w-8/12 bg-[#dfdfdf]" />
                 <NextBottom setpropType={setIsPropertySelected} />
               </div>
@@ -393,7 +388,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 }
 
 OrderNow.getInitialProps = async () => {
-  const res = await fetch("http://192.168.10.38:3000/services/list_services");
+  const res = await fetch("http://192.168.10.38:8000/services/list_services");
   const data = await res.json();
   const commercialProperties = data.services.filter(
     (data) => data.category === "commercial_property"
@@ -422,14 +417,6 @@ function NextBottom(props: any) {
           className="bg-dark-blue uppercase text-white font-semibold px-[20px] py-[13px] hover:bg-lime  ease-in duration-200"
         />
       </div>
-    </div>
-  );
-}
-
-function AlertBox({ text }: any) {
-  return (
-    <div className="py-[7px] px-[20px] border-l-[5px] border-l-lime bg-cream rounded text-[17px] drop-shadow-xl text-dark-blue">
-      {text}
     </div>
   );
 }
