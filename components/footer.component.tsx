@@ -12,15 +12,20 @@ import {
 
 export default function Footer() {
   const OurServices = [
-    { title: "Energy Performance Certificate" },
-    { title: "Commercial EPC" },
-    { title: "Gas Safety Certificate" },
-    { title: "Boiler Service" },
-    { title: "Electrical Portable Appliance Test" },
-    { title: "Energy Performance Certificate" },
-    { title: "Electrical Installation Condition Report (EICR)" },
-    { title: "Floor Plans" },
-    { title: "Building Surveys" },
+    { title: "Energy Performance Certificate", pageLink: "domestic-epc" },
+    { title: "Commercial EPC", pageLink: "commercial-epc" },
+    { title: "Gas Safety Certificate", pageLink: "gas-safety-certificate" },
+    { title: "Boiler Service", pageLink: "boiler-service" },
+    {
+      title: "Electrical Portable Appliance Test",
+      pageLink: "electrical-portable-appliance-test",
+    },
+    {
+      title: "Electrical Installation Condition Report (EICR)",
+      pageLink: "electrical-installation-condition-report",
+    },
+    { title: "Floor Plans", pageLink: "floor-plans" },
+    { title: "Building Surveys", pageLink: "building-surveys" },
   ];
 
   const UsefulLinkes = [
@@ -90,7 +95,10 @@ export default function Footer() {
                   {OurServices.map((el, index) => {
                     return (
                       <li className="mb-4" key={index}>
-                        <Link href="#" className={styles.tNavLinks}>
+                        <Link
+                          href={`/service/${el.pageLink}`}
+                          className={styles.tNavLinks}
+                        >
                           {el.title}
                         </Link>
                       </li>
@@ -154,6 +162,14 @@ export default function Footer() {
                   </li>
                   <li className="py-1">
                     <a
+                      href="/career"
+                      className="text-white hover:text-lime text-[15px]"
+                    >
+                      Career
+                    </a>
+                  </li>
+                  <li className="py-1">
+                    <a
                       href="#"
                       className="text-white hover:text-lime text-[15px]"
                     >
@@ -162,7 +178,7 @@ export default function Footer() {
                   </li>
                   <li className="py-1">
                     <a
-                      href="#"
+                      href="/bulk-order-discounts"
                       className="text-white hover:text-lime text-[15px]"
                     >
                       Bulk Order Discounts
@@ -189,10 +205,10 @@ export default function Footer() {
               Nationwide Surveyors.
             </a>
             All Rights Reserved.
-            <Link href="#" className="text-white hover:text-lime ml-3">
+            <Link href="/cookie-policy" className="text-white hover:text-lime ml-3">
               Cookie Policy
             </Link>
-            <Link href="#" className="text-white hover:text-lime ml-3">
+            <Link href="/privacy-policy" className="text-white hover:text-lime ml-3">
               Privacy Policy
             </Link>
           </span>

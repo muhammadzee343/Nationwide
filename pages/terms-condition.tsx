@@ -1,6 +1,8 @@
 import React from "react";
+import styles from "../styles/footer.module.css";
 import HeaderComponent from "../components/Header.component";
 import { agreeListPoints } from "../utility/constants";
+
 const TermsCondition = () => {
   return (
     <div className="w-full bg-white flex justify-center">
@@ -11,7 +13,7 @@ const TermsCondition = () => {
           className="bg-dark-blue"
         />
         <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0 font-opensans">
-          <p className="footer-paragraph">
+          <p className={`${styles.footerParagraph}`}>
             These terms and conditions (“Terms”, “Agreement”) are an agreement
             between Nationwide Surveyors (“Nationwide Services-UK Ltd”, “us”,
             “we” or “our”) and you (“User”, “you” or “your”). This Agreement
@@ -19,23 +21,23 @@ const TermsCondition = () => {
             Nationwide Surveyors’ websites and any of its products or services
             (collectively, “Website” or “Services”).
           </p>
-          <p className="footer-paragraph">
+          <p className={`${styles.footerParagraph}`}>
             <br />
             You agree to adhere to all applicable laws, regulations and codes of
             conduct when using the Nationwide Surveyors’ websites.
           </p>
-          <p className="footer-paragraph">
+          <p className={`${styles.footerParagraph}`}>
             You agree not to Damage, Interfere or Disrupt the website or access
             the website to:
           </p>
           <br />
-          <ul className="list-disc list-inside bg-blue-400 footer-paragraph font-opensans">
+          <ul className={`list-disc list-inside bg-blue-400 font-opensans ${styles.footerParagraph}`}>
             {agreeListPoints.map((item, index) => {
               return <li key={index}>{item.point}</li>;
             })}
           </ul>
           <br />
-          <p className="footer-paragraph">
+          <p className={`${styles.footerParagraph}`}>
             Although Nationwide Services-UK Ltd endeavours to ensure the
             contents of this website are correct, it shall not be liable for any
             damages arising in contract or otherwise from the use of or
@@ -43,7 +45,7 @@ const TermsCondition = () => {
             or from any action or decision taken as a result of using this
             website or any such material.
           </p>
-          <p className="footer-paragraph">
+          <p className={`${styles.footerParagraph}`}>
             Please note that any links to external websites are provided for
             information and convenience only. Nationwide Services-UK Ltd does
             not accept responsibility for the websites linked to, or the
@@ -51,7 +53,7 @@ const TermsCondition = () => {
             website; likewise, not linking to a particular site does not imply
             lack of endorsement.
           </p>
-          <p className="footer-paragraph">
+          <p className={`${styles.footerParagraph}`}>
             We reserve the right to withdraw a link or refuse to link to any
             website without providing an explanation or justification.
           </p>
@@ -60,10 +62,10 @@ const TermsCondition = () => {
             Payment Terms and Conditions
           </h1>
           <br />
-          <ul className="list-disc list-inside bg-blue-400 footer-paragraph">
+          <ul className={`list-disc list-inside bg-blue-400 ${styles.footerParagraph}`}>
             <li>
               Payment
-              <ul className="bg-blue-400 ml-5 circle-list ml-10">
+              <ul className={`bg-blue-400 ml-5 ml-10 ${styles.circleList}`}>
                 <li>
                   Payments can be made online, over the phone or through direct
                   bank transfer into our company account. All major debit/credit
@@ -73,7 +75,7 @@ const TermsCondition = () => {
             </li>
             <li>
               Your Obligations
-              <ul className="bg-blue-400 ml-5 circle-list ml-10">
+              <ul className={`bg-blue-400 ml-5 ml-10 ${styles.circleList}`}>
                 <li>
                   You agree to ensure that the information that you supply to us
                   in the order including without limitation details of the
@@ -97,7 +99,7 @@ const TermsCondition = () => {
             </li>
             <li>
               Liability
-              <ul className="bg-blue-400 ml-5 circle-list ml-10">
+              <ul className={`bg-blue-400 ml-5 ml-10 `}>
                 <li>
                   We cannot accept any liability for any error in
                   certificate/report, which is based on any error or inaccuracy
@@ -141,7 +143,7 @@ const TermsCondition = () => {
             </li>
             <li>
               Pricing
-              <ul className="bg-blue-400 ml-5 circle-list ml-10">
+              <ul className={`bg-blue-400 ml-5 ml-10 ${styles.circleList}`}>
                 <li>
                   The website prices quoted are for properties anywhere on the
                   mainland of England and Wales.
@@ -194,7 +196,7 @@ const TermsCondition = () => {
             </li>
             <li>
               Cancellation
-              <ul className="bg-blue-400 ml-5 circle-list ml-10">
+              <ul className={`bg-blue-400 ml-5 ml-10 ${styles.circleList}`}>
                 <li>
                   Should you wish to cancel or re-schedule an order, you agree
                   to give us as much notice as is reasonably practicable. we
@@ -224,7 +226,7 @@ const TermsCondition = () => {
             <b>Complaints</b>
           </h1>
           <br />
-          <ul className="list-disc list-inside bg-blue-400 footer-paragraph">
+          <ul className={`list-disc list-inside bg-blue-400 ${styles.footerParagraph}`}>
             <li>
               If you want to make a complaint, we will deal with it speedily and
               fairly. We will acknowledge your complaint within 5 working days
