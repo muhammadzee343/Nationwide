@@ -1,10 +1,10 @@
 import React, { useState } from "react";
+import styles from "../styles/footer.module.css";
 import { Collapse } from "antd";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
-import { accordionData } from "../utility/constants";
 const { Panel } = Collapse;
 
-function FaqAccordion() {
+function FaqAccordion({ accordionData = [] }: any) {
   const [active, setActive] = useState("1");
   const onChange = (key: string | string[]) => {
     setActive(key);
@@ -12,7 +12,7 @@ function FaqAccordion() {
 
   return (
     <>
-      {accordionData.map((item, index) => {
+      {accordionData?.map((item: any, index: any) => {
         return (
           <Collapse
             accordion
@@ -22,19 +22,17 @@ function FaqAccordion() {
             expandIcon={({ isActive }) =>
               isActive ? (
                 <MinusOutlined
-                  className={`text-xl`}
+                  className="text-xl"
                   style={{ color: "#8d9297" }}
                 />
               ) : (
                 <PlusOutlined
-                  className={`text-xl`}
+                  className="text-xl"
                   style={{ color: "#8d9297" }}
                 />
               )
             }
-            className={`font-opensans mb-5 ${
-              active === (index + 1).toString() ? "border border-lime" : null
-            }`}
+            className="font-opensans mb-5"
             style={{ color: "#fff" }}
           >
             <Panel
@@ -43,24 +41,24 @@ function FaqAccordion() {
                   className={`${
                     active === (index + 1).toString()
                       ? "text-white"
-                      : "text-gray-500"
-                  } hover:text-white text-[17px] leading-4`}
+                      : "text-gray-400"
+                  } hover:text-white text-[17px] leading-4 font-semibold`}
                 >
-                  {item.title}
+                  {item?.title}
                 </span>
               }
               key={index + 1}
               className={`${
-                active === (index + 1).toString() ? "bg-lime" : null
-              } hover:bg-lime hover:text-white`}
+                active === (index + 1).toString() ? "bg-lime border border-lime" : null
+              } hover:bg-lime bg-white`}
             >
-              {item.description.map((desc) => {
+              {item?.description.map((desc: any) => {
                 return (
                   <>
-                    <p className="footer-paragraph">{desc?.para1}</p>
-                    <p className="footer-paragraph">{desc?.para2}</p>
-                    <p className="footer-paragraph">{desc?.para3}</p>
-                    <p className="footer-paragraph">{desc?.para4}</p>
+                    <p className={styles.footerParagraph}>{desc?.para1}</p>
+                    <p className={styles.footerParagraph}>{desc?.para2}</p>
+                    <p className={styles.footerParagraph}>{desc?.para3}</p>
+                    <p className={styles.footerParagraph}>{desc?.para4}</p>
                   </>
                 );
               })}

@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../styles/footer.module.css";
 import HeaderComponent from "../components/Header.component";
 
 function BusinessEnquiries(props: any) {
@@ -11,7 +12,7 @@ function BusinessEnquiries(props: any) {
           className="bg-dark-blue"
         />
         <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0">
-          <p className="footer-paragraph">
+          <p className={`${styles.footerParagraph}`}>
             To discuss bulk order discounts, it is best to call our planning
             team on 0800 048 7474. Bulk order discounts are designed for clients
             who need to order in a large quantity and usually just a one off.
@@ -22,7 +23,7 @@ function BusinessEnquiries(props: any) {
             with us to access the best service and pricing tailored to your
             needs.
           </p>
-          <p className="footer-paragraph">
+          <p className={`${styles.footerParagraph}`}>
             For All business Enquiries, Please contact at:
             b2b@nationwidesurveyors.org.uk
           </p>

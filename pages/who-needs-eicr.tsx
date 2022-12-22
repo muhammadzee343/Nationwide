@@ -1,5 +1,7 @@
 import React from "react";
+import styles from "../styles/footer.module.css";
 import HeaderComponent from "../components/Header.component";
+
 const WhoNeedsEicr = () => {
   return (
     <div className="w-full bg-white flex justify-center">
@@ -10,11 +12,11 @@ const WhoNeedsEicr = () => {
           className="bg-dark-blue"
         />
         <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0 font-opensans">
-          <h1 className="footerPagesHeading">
+          <h1 className={`${styles.footerPagesHeading}`}>
             Electrical Installation Condition Report (EICR)
           </h1>
           <br />
-          <p className="footer-paragraph font-normal h-20">
+          <p className={`font-normal h-20 ${styles.footerParagraph}`}>
             whether it’s your home, a business or a property you rent out, your
             electrical installation should always be covered by an in date
             Electrical Condition Report. Although it’s not a legal requirement

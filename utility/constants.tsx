@@ -8,6 +8,12 @@ import epc from "../public/domesticepc.png";
 import epcSurveyor from "../public/epcSurveyor.jpg";
 import commercialEpc from "../public/Commercial-epc.jpg";
 import commercialEpcRating from "../public/commercialEpcRating.jpg";
+import {
+  faBarChart,
+  faHeadset,
+  faTelevision,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ELight from "../public/Emergency-light.jpg";
 import ELightIt from "../public/ELPITc.jpg";
 import Fat from "../public/FAT.jpg";
@@ -873,6 +879,28 @@ export const service = [
     },
   },
 ];
+//Terms and condition lists
+export const joinAdvantageList = [
+  {
+    point: "Weekly Payments Against All Completed Orders",
+  },
+  {
+    point: "Pre-Booked Customer Appointments, No More Chasing Clients",
+  },
+  {
+    point: "Business Support Team to Help Manage Your Appointments",
+  },
+  {
+    point: "Market Leading Rates Paid",
+  },
+  {
+    point:
+      "Option to Offer us More than One Service, i.e EPC + Floor Plan/ PAT etc",
+  },
+  {
+    point: "24/7 Access to Our Portal",
+  },
+];
 
 //Terms and condition lists
 export const agreeListPoints = [
@@ -889,8 +917,48 @@ export const agreeListPoints = [
   },
 ];
 
-//Accordion data
-export const accordionData = [
+// FAQ
+export const faqCardData = [
+  {
+    iconName: (
+      <FontAwesomeIcon
+        className="w-[45px] text-lime"
+        icon={faTelevision}
+        style={{ fontSize: "40px" }}
+      />
+    ),
+    headTitle: "Place Order Online",
+    bodyContant:
+      "Please select the services required and place order online 24/7. Our services can be ordered individually or as a combined Bundle Package.Prefer to place order over the phone? please call us FREE at 0800 048 7474.",
+  },
+  {
+    iconName: (
+      <FontAwesomeIcon
+        className="w-[45px] text-lime"
+        icon={faHeadset}
+        style={{ fontSize: "40px" }}
+      />
+    ),
+    headTitle: "Assessment Survey Booked",
+    bodyContant:
+      "Once you placed order online, our customer support team will get in touch with you to arrange a suitable date and time to carry out the assessment survey for each service ordered, according to your suitability.",
+  },
+  {
+    iconName: (
+      <FontAwesomeIcon
+        className="w-[45px] text-lime"
+        icon={faBarChart}
+        style={{ fontSize: "40px" }}
+      />
+    ),
+    headTitle: "Certificates Issued",
+    bodyContant:
+      "Certificates will be issued digitally for each service ordered and sent to you by email, within 48 hours of Assessor’s visit. Being an online customer, you will also be able to download your certificates from your online account with us.",
+  },
+];
+
+//FAQ Accordion data
+export const faqAccordionData = [
   {
     title: "Who require an EPC?",
     description: [
@@ -955,5 +1023,42 @@ export const accordionData = [
           "Should you have any questions or would rather place an order over the telephone you can call our team on 0800 048 7474. Our opening times are Monday – Friday 9am – 6pm and Saturday 10am to 2pm.",
       },
     ],
+  },
+];
+
+//Cookie policy
+export const cookielistPoints = [
+  {
+    point:
+      "Strictly necessary cookies. These are cookies that are required for the operation of our website. They include, for example, cookies that enable you to log into secure areas of our website.",
+  },
+  {
+    point:
+      "Analytical/performance cookies. They allow us to recognize and count the number of visitors and to see how visitors move around our website when they are using it. This helps us to improve the way our website works, for example, by ensuring that users are finding what they are looking for easily.",
+  },
+  {
+    point:
+      "Functionality cookies. These are used to recognize you when you return to our website. This enables us to personalize our content for you, greet you by name and remember your preferences (for example, your choice of language or region).",
+  },
+  {
+    point:
+      "Targeting cookies. These cookies record your visit to our website, the pages you have visited and the links you have followed. We will use this information to make our website and the advertising displayed on it more relevant to your interests.",
+  },
+];
+
+//privacy policy
+export const infolistPoints = [
+  {
+    point: "Identify you when you contact us.",
+  },
+  {
+    point: "Enable us to contact you.",
+  },
+  {
+    point:
+      "Help contact you regarding your order/enquiry (we may contact you by telephone or e-mail if you have given us these contact details).",
+  },
+  {
+    point: "Help to prevent and detect fraud or loss; and",
   },
 ];
