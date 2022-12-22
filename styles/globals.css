@@ -38,7 +38,8 @@ input:focus{
   box-shadow: 0 0 4px 3px rgb(0 0 0 / 6%)
 }
 textarea:focus{
-  box-shadow: 0 0 4px 3px rgb(0 0 0 / 6%)
+  box-shadow: 0 0 4px 3px rgb(0 0 0 / 6%);
+  @apply border-grey-500
 }
 
 .ant-collapse-item {

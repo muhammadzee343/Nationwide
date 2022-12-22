@@ -161,4 +161,6 @@ export const services = [
   { name: "Electrical Portable Appliance Test (PAT)" },
   { name: "Gas Safety Certificate" },
   { name: "Boiler Service" },
+  { name: "Boiler Service" },
+  { name: "Boiler Service" },
 ];

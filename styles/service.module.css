@@ -11,3 +11,9 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.parent {
+    @apply text-gray-500
+}
+.parent:hover span{
+    @apply text-white
+}

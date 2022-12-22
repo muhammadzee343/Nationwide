@@ -18,9 +18,9 @@ function RadioButton({
       }}
     >
       <div
-        className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full hover:border-lime hover:bg-lime ${className} `}
+        className={` rounded-full hover:border-lime hover:bg-lime ${className} `}
       />
-      <p className={`${pClass} text-[18px] text-dark-blue ml-3`}>{title}</p>
+      <p className={`${pClass}  text-dark-blue ml-3`}>{title}</p>
     </div>
   );
 }
