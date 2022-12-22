@@ -4,7 +4,15 @@ import { Collapse } from "antd";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 const { Panel } = Collapse;
 
-function FaqAccordion({ accordionData = [] }: any) {
+function FaqAccordion({
+  accordionData = [],
+  iconMinusColor = "",
+  iconPlusColor = "",
+  headerBackground = "",
+  activeHeadBackgorund = "",
+  hoverHeadBackground = "",
+  headerTitleColor = "",
+}: any) {
   const [active, setActive] = useState("1");
   const onChange = (key: string | string[]) => {
     setActive(key);
@@ -23,16 +31,18 @@ function FaqAccordion({ accordionData = [] }: any) {
               isActive ? (
                 <MinusOutlined
                   className="text-xl"
-                  style={{ color: "#8d9297" }}
+                  style={{
+                    color: `${iconMinusColor}`,
+                  }}
                 />
               ) : (
                 <PlusOutlined
                   className="text-xl"
-                  style={{ color: "#8d9297" }}
+                  style={{ color: `${iconPlusColor}` }}
                 />
               )
             }
-            className="font-opensans mb-5"
+            className="font-opensans mb-5 w-full"
             style={{ color: "#fff" }}
           >
             <Panel
@@ -41,17 +51,20 @@ function FaqAccordion({ accordionData = [] }: any) {
                   className={`${
                     active === (index + 1).toString()
                       ? "text-white"
-                      : "text-gray-400"
-                  } hover:text-white text-[17px] leading-4 font-semibold`}
+                      : `${headerTitleColor}`
+                  } text-[17px] leading-4 font-lg`}
                 >
                   {item?.title}
                 </span>
               }
               key={index + 1}
               className={`${
-                active === (index + 1).toString() ? "bg-lime border border-lime" : null
-              } hover:bg-lime bg-white`}
+                active === (index + 1).toString()
+                  ? `${activeHeadBackgorund} border border-lime shadow-md`
+                  : null
+              } hover:${hoverHeadBackground} ${headerBackground}`}
             >
+              <h1 className="font-semibold text-base">{item.head1}</h1>
               {item?.description.map((desc: any) => {
                 return (
                   <>
@@ -62,6 +75,20 @@ function FaqAccordion({ accordionData = [] }: any) {
                   </>
                 );
               })}
+              <h1 className="font-semibold text-base">{item.head2}</h1>
+              <br />
+              {item?.requirementList?.map((desc: any) => {
+                return (
+                  <div className="flex flex-row">
+                    {desc.iconName}
+                    <li className="ml-2 leading-7 pb-3" key={index}>
+                      {desc.listPoint}
+                    </li>
+                  </div>
+                );
+              })}
+              <br />
+              <p className="text-sm font-semibold">{item.sendCdInsctruction}</p>
             </Panel>
           </Collapse>
         );

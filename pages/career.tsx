@@ -1,7 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import styles from "../styles/footer.module.css";
-import { joinAdvantageList } from "../utility/constants";
+import FaqAccordionComponent from "../components/FaqAccordion.component";
+import { joinAdvantageList, careerAccordionData } from "../utility/constants";
 import surveyor_image from "../public/surveyor-1.jpg";
 
 function Career() {
@@ -28,7 +29,9 @@ function Career() {
                   Some of the advantages of joining Nationwide Surveyors:
                 </p>
                 <br />
-                <ul className={`list-disc list-inside bg-blue-400 font-opensans ${styles.footerParagraph}`}>
+                <ul
+                  className={`list-disc list-inside bg-blue-400 font-opensans ${styles.footerParagraph}`}
+                >
                   {joinAdvantageList.map((item, index) => {
                     return (
                       <li key={index} className="ml-4">
@@ -48,6 +51,12 @@ function Career() {
             <div className="h-1.5 w-20 bg-lime" />
             <br />
             <br />
+            <FaqAccordionComponent
+              accordionData={careerAccordionData}
+              iconMinusColor="#c2cf10"
+              iconPlusColor="#8d9297"
+              headerTitleColor="text-black"
+            />
           </div>
         </div>
       </div>

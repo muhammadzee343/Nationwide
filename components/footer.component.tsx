@@ -146,7 +146,7 @@ export default function Footer() {
                   </li>
                   <li className="py-1">
                     <a
-                      href="#"
+                      href="/contact-us"
                       className="text-white hover:text-lime text-[15px]"
                     >
                       Contact Us
@@ -154,7 +154,7 @@ export default function Footer() {
                   </li>
                   <li className="py-1">
                     <a
-                      href="#"
+                      href="/business-enquiries"
                       className="text-white hover:text-lime text-[15px]"
                     >
                       Business Enquiries
@@ -173,7 +173,7 @@ export default function Footer() {
                       href="#"
                       className="text-white hover:text-lime text-[15px]"
                     >
-                      DEA Opportunities
+                      Join Us
                     </a>
                   </li>
                   <li className="py-1">

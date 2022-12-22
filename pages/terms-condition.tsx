@@ -31,9 +31,15 @@ const TermsCondition = () => {
             the website to:
           </p>
           <br />
-          <ul className={`list-disc list-inside bg-blue-400 font-opensans ${styles.footerParagraph}`}>
+          <ul
+            className={`list-disc list-inside bg-blue-400 font-opensans ${styles.footerParagraph}`}
+          >
             {agreeListPoints.map((item, index) => {
-              return <li key={index}>{item.point}</li>;
+              return (
+                <div className="flex flex-row">
+                  <li key={index}>{item.point}</li>
+                </div>
+              );
             })}
           </ul>
           <br />
@@ -62,7 +68,9 @@ const TermsCondition = () => {
             Payment Terms and Conditions
           </h1>
           <br />
-          <ul className={`list-disc list-inside bg-blue-400 ${styles.footerParagraph}`}>
+          <ul
+            className={`list-disc list-inside bg-blue-400 ${styles.footerParagraph}`}
+          >
             <li>
               Payment
               <ul className={`bg-blue-400 ml-5 ml-10 ${styles.circleList}`}>
@@ -99,7 +107,7 @@ const TermsCondition = () => {
             </li>
             <li>
               Liability
-              <ul className={`bg-blue-400 ml-5 ml-10 `}>
+              <ul className={`bg-blue-400 ml-5 ml-10 ${styles.circleList}`}>
                 <li>
                   We cannot accept any liability for any error in
                   certificate/report, which is based on any error or inaccuracy
@@ -226,7 +234,9 @@ const TermsCondition = () => {
             <b>Complaints</b>
           </h1>
           <br />
-          <ul className={`list-disc list-inside bg-blue-400 ${styles.footerParagraph}`}>
+          <ul
+            className={`list-disc list-inside bg-blue-400 ${styles.footerParagraph}`}
+          >
             <li>
               If you want to make a complaint, we will deal with it speedily and
               fairly. We will acknowledge your complaint within 5 working days

@@ -31,7 +31,15 @@ function Feq() {
             <br />
           </div>
           <div className="w-full flex flex-col xl:max-w-[1114px] pt-[30px] mb-[40px] lg:mb-[70px] px-3 xl:px-0 font-opensans">
-            <FaqAccordionComponent accordionData={faqAccordionData} />
+            <FaqAccordionComponent
+              accordionData={faqAccordionData}
+              iconMinusColor="#fff"
+              iconPlusColor="#8d9297"
+              headerBackground="bg-white"
+              headerTitleColor="text-gray-400"
+              activeHeadBackgorund="bg-lime"
+              hoverHeadBackground="bg-lime"
+            />
           </div>
           <div className="md:flex md:flex-row content-between grid-cols-3 gap-4 mb-4 lg:mb-14">
             {faqCardData.map((item, index) => {
