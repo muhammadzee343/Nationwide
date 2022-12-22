@@ -7,7 +7,6 @@ import { SidebarContext } from "../context/sidebarContext";
 export default function SelectProperty() {
   const { setShowDrawer, setOverlay, setPropertyType, propertyType } =
     useContext(SidebarContext);
-  console.log(propertyType);
   const displayDrawer = (propertyType: string) => {
     setPropertyType(propertyType);
     setOverlay(true);

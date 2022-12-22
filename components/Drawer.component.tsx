@@ -67,8 +67,6 @@ const DrawerComponent = ({}: any) => {
   useLayoutEffect(() => {
     fetchData(propertyType);
   }, []);
-
-  console.log(propertyType, "drawer");
   const fetchData = async (propertyType: any) => {
     const res = await fetch("http://192.168.10.38:8000/services/list_services");
     const data = await res.json();
