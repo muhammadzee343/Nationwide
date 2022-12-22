@@ -163,8 +163,8 @@ export default function Home() {
                 Service
               </h2>
             </div>
-            <div className={` w-full xl:w-2/5 `}>
-              <p className={`text-white text-[15px] leading-[27px]`}>
+            <div className=" w-full xl:w-2/5">
+              <p className="text-white text-[15px] leading-[27px]">
                 For those customers needing to make regular orders you can get
                 direct access to our bespoke order management system for live
                 updates.We offer a fully national service and can provide EPCs,
