@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Collapse } from "antd";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
-import { accordionData } from "../utility/constants";
+import { accordionData, service } from "../utility/constants";
 const { Panel } = Collapse;
-
+import styles from "../styles/service.module.css";
 function FaqAccordion() {
-  const [active, setActive] = useState("1");
+  const [active, setActive] = useState<string | string[]>("1");
   const onChange = (key: string | string[]) => {
     setActive(key);
   };
@@ -15,6 +15,7 @@ function FaqAccordion() {
       {accordionData.map((item, index) => {
         return (
           <Collapse
+            key={index}
             accordion
             activeKey={active}
             onChange={onChange}
@@ -34,7 +35,7 @@ function FaqAccordion() {
             }
             className={`font-opensans mb-5 ${
               active === (index + 1).toString() ? "border border-lime" : null
-            }`}
+            } `}
             style={{ color: "#fff" }}
           >
             <Panel
@@ -43,16 +44,16 @@ function FaqAccordion() {
                   className={`${
                     active === (index + 1).toString()
                       ? "text-white"
-                      : "text-gray-500"
-                  } hover:text-white text-[17px] leading-4`}
+                      : "text-gray-500 hover:text-white"
+                  }  text-[17px] leading-4`}
                 >
                   {item.title}
                 </span>
               }
               key={index + 1}
-              className={`${
+              className={`hover:bg-lime  ${styles.parent} ${
                 active === (index + 1).toString() ? "bg-lime" : null
-              } hover:bg-lime hover:text-white`}
+              }`}
             >
               {item.description.map((desc) => {
                 return (

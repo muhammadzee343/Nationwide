@@ -1,8 +1,20 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBuilding, faHouse } from "@fortawesome/free-solid-svg-icons";
 import ButtonComponent from "./Button.component";
+import React, { useContext } from "react";
+import { SidebarContext } from "../context/sidebarContext";
 
 export default function SelectProperty() {
+  const { setShowDrawer, setOverlay, setPropertyType, propertyType } =
+    useContext(SidebarContext);
+  console.log(propertyType);
+  const displayDrawer = (propertyType: string) => {
+    setPropertyType(propertyType);
+    setOverlay(true);
+    setTimeout(() => {
+      setShowDrawer(true);
+    }, 1);
+  };
   return (
     <>
       <div
@@ -25,6 +37,7 @@ export default function SelectProperty() {
                     className=" relative flex items-center border-2 border-lime py-[16px] px-[5px]
                    pl-[55px] font-[15px] font-bold text-dark-blue cursor-pointer mb-[15px]
                    hover:bg-lime"
+                    onClick={() => displayDrawer("residential_property")}
                   >
                     <FontAwesomeIcon
                       className="w-8 text-dark-blue absolute left-[14px]"
@@ -43,6 +56,7 @@ export default function SelectProperty() {
                   <label
                     className="relative flex items-center border-2 border-lime py-[16px] px-[5px]
                    pl-[55px] font-[15px] font-bold text-dark-blue cursor-pointer mb-[15px] hover:bg-lime"
+                    onClick={() => displayDrawer("commerical_property")}
                   >
                     <FontAwesomeIcon
                       className="w-[26px] ,w-3 text-dark-blue  absolute left-[14px]"

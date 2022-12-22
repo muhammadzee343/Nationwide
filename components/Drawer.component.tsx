@@ -1,4 +1,10 @@
-import React, { useEffect, useLayoutEffect, useMemo, useState } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState,
+} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBuilding,
@@ -18,18 +24,11 @@ import styles from "../styles/Home.module.css";
 import RequestCallBack from "./requestCallBack.component";
 import HowItWorks from "./howItWorksCard.component";
 import CardComponent from "./Card.component";
+import { SidebarContext } from "../context/sidebarContext";
 
-const DrawerComponent = ({
-  showDrawer,
-  closeDrawer,
-  showOverlay,
-  closeOverlay,
-}: any) => {
+const DrawerComponent = ({}: any) => {
   const [showMore, setShowMore] = useState(false);
   const [Services, setServices] = useState<any[]>([]);
-  const [propertyType, setPropertyType] = useState<string>(
-    "Residential Property"
-  );
   const [Postcode, setPostcode] = useState("");
   const [selectedService, setSelectedService] = useState<string[]>([]);
   const [serviceAttributes, setServiceAttributes] = useState<string[]>([]);
@@ -57,10 +56,19 @@ const DrawerComponent = ({
     },
   });
 
+  const {
+    showDrawer,
+    setShowDrawer,
+    overlay,
+    setOverlay,
+    propertyType,
+    setPropertyType,
+  } = useContext(SidebarContext);
   useLayoutEffect(() => {
-    fetchData("residential_property");
+    fetchData(propertyType);
   }, []);
 
+  console.log(propertyType, "drawer");
   const fetchData = async (propertyType: any) => {
     const res = await fetch("http://192.168.10.38:8000/services/list_services");
     const data = await res.json();
@@ -85,10 +93,11 @@ const DrawerComponent = ({
       setSelectedService([...selectedService]);
     }
   };
+
   const displayDrawer = () => {
-    closeDrawer(false);
+    setShowDrawer(false);
     setTimeout(() => {
-      closeOverlay(false);
+      setOverlay(false);
     }, 690);
   };
 
@@ -111,7 +120,6 @@ const DrawerComponent = ({
 
   const services = useMemo<JSX.Element[]>(() => {
     const elements: JSX.Element[] = [];
-    // console.log(residentialProperties);
     const services = !showMore ? Services.slice(0, 5) : Services;
 
     for (let i = 0; i < services?.length; i++) {
@@ -335,7 +343,7 @@ const DrawerComponent = ({
                 <label
                   className={`relative flex items-center border-2 py-[16px] px-[5px]
                    pl-[55px] font-[15px] font-bold text-dark-blue cursor-pointer mb-[15px] ${
-                     propertyType === "Residential Property"
+                     propertyType === "residential_property"
                        ? "bg-lime border-lime"
                        : "border-[#ececec] bg-white"
                    }
@@ -349,8 +357,13 @@ const DrawerComponent = ({
                 </label>
 
                 <label
-                  className="relative flex items-center border-2 border-[#ececec] py-[16px] px-[5px]
-                   pl-[55px] font-[15px] font-bold text-dark-blue cursor-pointer mb-[15px] hover:bg-lime"
+                  className={`relative flex items-center border-2 border-[#ececec] py-[16px] px-[5px]
+                   pl-[55px] font-[15px] font-bold text-dark-blue cursor-pointer mb-[15px] hover:bg-lime
+                    cursor-pointer  ${
+                      propertyType === "commerical_property"
+                        ? "bg-lime border-lime"
+                        : "border-[#ececec] bg-white"
+                    }`}
                 >
                   <FontAwesomeIcon
                     className="w-[26px] ,w-3 text-dark-blue  absolute left-[14px]"

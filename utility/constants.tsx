@@ -28,7 +28,29 @@ import Legion1 from "../public/Legion1.jpg";
 import Legion2 from "../public/Legion2.jpg";
 import Sap2 from "../public/sap1.jpg";
 import Sap1 from "../public/sap2.jpg";
+import localFont from "@next/font/local";
 
+export const myFont = localFont({
+  src: [
+    {
+      path: "../public/fonts/OpenSans/OpenSans-Regular.ttf",
+      weight: "400",
+    },
+    {
+      path: "../public/fonts/OpenSans/OpenSans-Medium.ttf",
+      weight: "500",
+    },
+    {
+      path: "../public/fonts/OpenSans/OpenSans-SemiBold.ttf",
+      weight: "600",
+    },
+    {
+      path: "../public/fonts/OpenSans/OpenSans-Bold.ttf",
+      weight: "700",
+    },
+  ],
+  fallback: ["Helvetica", "ui-sans-serif"],
+});
 //APPLICATION IMAGES
 const images = {
   surveyour: Survey,
