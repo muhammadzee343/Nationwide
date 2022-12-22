@@ -15,7 +15,7 @@ function Feq() {
           breadcrumb="FAQs"
           className="bg-dark-blue"
         />
-        <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0 font-opensans">
+        <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0">
           <div className="grid place-items-center">
             <h1 className="font-medium text-4xl text-center mb-5">
               Frequently Asked Questions
@@ -30,7 +30,7 @@ function Feq() {
             </p>
             <br />
           </div>
-          <div className="w-full flex flex-col xl:max-w-[1114px] pt-[30px] mb-[40px] lg:mb-[70px] px-3 xl:px-0 font-opensans">
+          <div className="w-full flex flex-col xl:max-w-[1114px] pt-[30px] mb-[40px] lg:mb-[70px] px-3 xl:px-0">
             <FaqAccordionComponent
               accordionData={faqAccordionData}
               iconMinusColor="#fff"
@@ -39,6 +39,8 @@ function Feq() {
               headerTitleColor="text-gray-400"
               activeHeadBackgorund="bg-lime"
               hoverHeadBackground="bg-lime"
+              defaultActiveaccordion="1"
+              navigateFromFAQ
             />
           </div>
           <div className="md:flex md:flex-row content-between grid-cols-3 gap-4 mb-4 lg:mb-14">
@@ -59,7 +61,7 @@ function Feq() {
           </div>
         </div>
         <div className="w-full bg-lime flex justify-center">
-          <div className="w-full flex flex-col xl:max-w-[1024px] pt-[40px] pb-[50px] px-3 xl:px-0 font-opensans md:flex md:flex-row items-center">
+          <div className="w-full flex flex-col xl:max-w-[1024px] pt-[40px] pb-[50px] px-3 xl:px-0 md:flex md:flex-row items-center">
             <div className="max-w-3/4 mb-5 md:mb-0">
               <p className="text-[25px] text-white text-center">
                 Still couldn't find the answers you are looking for ? Please

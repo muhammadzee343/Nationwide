@@ -12,7 +12,7 @@ function CookiePolicy() {
           breadcrumb=" Cookie Policy"
           className="bg-zinc-800 bg-blend-overlay bg-home_bg_image"
         />
-        <div className="w-full flex flex-col xl:max-w-[1114px] pt-[60px] pb-[40px] px-3 xl:px-0 font-opensans">
+        <div className="w-full flex flex-col xl:max-w-[1114px] pt-[60px] pb-[40px] px-3 xl:px-0">
           <p className={`${styles.footerParagraph}`}>
             Our website uses cookies to distinguish you from other users of our
             website. This helps us to provide you with a good experience when
@@ -27,13 +27,14 @@ function CookiePolicy() {
             We use the following cookies:
           </p>
           <ul
-            className={`list-disc list-inside bg-blue-400 ${styles.footerParagraph} font-opensans`}
+            className={`list-disc list-inside bg-blue-400 ${styles.footerParagraph}`}
           >
             {cookielistPoints.map((item, index) => {
               return (
-                <li className="ml-4" key={index}>
-                  {item.point}
-                </li>
+                <div className="flex flex-row ml-2" key={index}>
+                  <li className="text-justify"></li>
+                  <p>{item.point}</p>
+                </div>
               );
             })}
           </ul>

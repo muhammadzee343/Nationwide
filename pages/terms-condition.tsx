@@ -13,7 +13,7 @@ const TermsCondition = () => {
           className="bg-dark-blue"
         />
         <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0 font-opensans">
-          <p className={`${styles.footerParagraph}`}>
+          <p className={`${styles.footerParagraph} text-justify`}>
             These terms and conditions (“Terms”, “Agreement”) are an agreement
             between Nationwide Surveyors (“Nationwide Services-UK Ltd”, “us”,
             “we” or “our”) and you (“User”, “you” or “your”). This Agreement
@@ -21,12 +21,12 @@ const TermsCondition = () => {
             Nationwide Surveyors’ websites and any of its products or services
             (collectively, “Website” or “Services”).
           </p>
-          <p className={`${styles.footerParagraph}`}>
+          <p className={`${styles.footerParagraph} text-justify`}>
             <br />
             You agree to adhere to all applicable laws, regulations and codes of
             conduct when using the Nationwide Surveyors’ websites.
           </p>
-          <p className={`${styles.footerParagraph}`}>
+          <p className={`${styles.footerParagraph} text-justify`}>
             You agree not to Damage, Interfere or Disrupt the website or access
             the website to:
           </p>
@@ -36,30 +36,30 @@ const TermsCondition = () => {
           >
             {agreeListPoints.map((item, index) => {
               return (
-                <div className="flex flex-row">
-                  <li key={index}>{item.point}</li>
+                <div className="flex flex-row" key={index}>
+                  <li className="text-justify"></li>
+                  <p>{item.point}</p>
                 </div>
               );
             })}
           </ul>
           <br />
-          <p className={`${styles.footerParagraph}`}>
+          <p className={`${styles.footerParagraph} text-justify`}>
             Although Nationwide Services-UK Ltd endeavours to ensure the
             contents of this website are correct, it shall not be liable for any
             damages arising in contract or otherwise from the use of or
             inability to use this website, or any material contained within it,
             or from any action or decision taken as a result of using this
             website or any such material.
-          </p>
-          <p className={`${styles.footerParagraph}`}>
+            <br />
+            <br />
             Please note that any links to external websites are provided for
             information and convenience only. Nationwide Services-UK Ltd does
             not accept responsibility for the websites linked to, or the
             information found there. A link does not imply an endorsement of a
             website; likewise, not linking to a particular site does not imply
             lack of endorsement.
-          </p>
-          <p className={`${styles.footerParagraph}`}>
+            <br /> <br />
             We reserve the right to withdraw a link or refuse to link to any
             website without providing an explanation or justification.
           </p>
@@ -69,7 +69,7 @@ const TermsCondition = () => {
           </h1>
           <br />
           <ul
-            className={`list-disc list-inside bg-blue-400 ${styles.footerParagraph}`}
+            className={`list-disc list-inside bg-blue-400 text-justify ${styles.footerParagraph}`}
           >
             <li>
               Payment
@@ -237,23 +237,29 @@ const TermsCondition = () => {
           <ul
             className={`list-disc list-inside bg-blue-400 ${styles.footerParagraph}`}
           >
-            <li>
-              If you want to make a complaint, we will deal with it speedily and
-              fairly. We will acknowledge your complaint within 5 working days
-              of receipt and try and resolve your complaint fully within 4
-              weeks. If there are valid reasons for consideration of the
-              complaint taking longer, we will keep you fully informed in
-              writing or via telephone or email and you will receive a response
-              at the very latest within 8 weeks.
-            </li>
-            <li>
-              If you are unhappy with our final resolution of your complaint
-              then we recommend you approach The Citizens Advice, Trading
-              Standards or seek independent advice. Complaints should be sent
-              to: Nationwide Services-UK Ltd | Kemp House, 160 City Road,
-              London, United Kingdom, EC1V 2NX, Phone: 0300 140 0023 |
-              complaints@nationwidesurveyors.org.uk
-            </li>
+            <div className="flex flex-row">
+              <li className="text-justify"></li>
+              <p>
+                If you want to make a complaint, we will deal with it speedily
+                and fairly. We will acknowledge your complaint within 5 working
+                days of receipt and try and resolve your complaint fully within
+                4 weeks. If there are valid reasons for consideration of the
+                complaint taking longer, we will keep you fully informed in
+                writing or via telephone or email and you will receive a
+                response at the very latest within 8 weeks.
+              </p>
+            </div>
+            <div className="flex flex-row">
+              <li className="text-justify"></li>
+              <p>
+                If you are unhappy with our final resolution of your complaint
+                then we recommend you approach The Citizens Advice, Trading
+                Standards or seek independent advice. Complaints should be sent
+                to: Nationwide Services-UK Ltd | Kemp House, 160 City Road,
+                London, United Kingdom, EC1V 2NX, Phone: 0300 140 0023 |
+                complaints@nationwidesurveyors.org.uk
+              </p>
+            </div>
           </ul>
         </div>
       </div>

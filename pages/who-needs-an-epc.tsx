@@ -12,7 +12,7 @@ const WhoNeedsAnEpc = () => {
           className="bg-dark-blue"
         />
         <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0">
-          <p className={`font-opensans ${styles.footerParagraph}`}>
+          <p className={`${styles.footerParagraph}`}>
             The Government is complying with the Energy Performance of Building
             Directive (EPBD) with the introduction of the Energy Performance
             Certificate. The EPC shows a record of the energy efficiency levels
