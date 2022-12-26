@@ -48,18 +48,19 @@ textarea:focus{
 }
 .ant-collapse{
   border-radius: 0 !important;
-  border-bottom: 0 !important;
+  border: 0 !important;
+  /* border-bottom: 2px solid #cdcdcd !important; */
 }
 .ant-collapse-content {
   border-radius: 0 !important;
 }
 
 .ant-collapse-content-box{
-  padding-bottom: 10px !important;
+  padding: 0 !important;
 }
 
 .ant-collapse-header{
-  padding: 17px 16px !important
+  padding: 16px 16px !important
 }
 .ant-collapse-header:hover{
   color: white !important

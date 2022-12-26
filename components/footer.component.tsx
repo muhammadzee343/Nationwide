@@ -43,7 +43,7 @@ export default function Footer() {
   return (
     <>
       <footer className="p-4 bg-white sm:p-6 bg-gray-900 bg-footer_bg_image bg-no-repeat bg-cover">
-        <div className=" flex flex-wrap justify-center my-20 mx-10">
+        <div className=" flex flex-wrap justify-center my-10 md:mx-10">
           <div className="md:flex md:justify-evenly">
             <div className="mb-6 md:mb-0">
               <Link href="#" className="flex items-center">
@@ -53,7 +53,7 @@ export default function Footer() {
                   alt="Nwlogo"
                 />
               </Link>
-              <p className="w-[248px] text-[#a3a3a6] text-[15px] my-10">
+              <p className="md:w-[248px] text-[#a3a3a6] text-[15px] my-10">
                 Nationwide Surveyors is a trading name of Nationwide Services-UK
                 Limited, Company No: 12010871 Kemp House, 160 City Road London,
                 EC1V 2NX
@@ -61,7 +61,7 @@ export default function Footer() {
               <h3 className="mb-6 text-lg font-semibold text-gray-900 pl-3  text-white border-l-4 border-lime">
                 Opening Hours
               </h3>
-              <ul className="pl-4 pr-5">
+              <ul className="md:pl-4 md:pr-5">
                 <li className="flex justify-between text-[#a3a3a6]  text-[16px]  py-1">
                   Mon - Fri
                   <span>
@@ -85,7 +85,7 @@ export default function Footer() {
                 <hr className="" />
               </ul>
             </div>
-            <div className="grid  grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-6  lg:grid-cols-3">
+            <div className="grid  grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-6 mt-20 md:mt-0 lg:grid-cols-3">
               <div>
                 <h3 className="mb-6 text-lg font-semibold  pl-3  text-white border-l-4 border-lime">
                   Our Services
@@ -146,7 +146,7 @@ export default function Footer() {
                   </li>
                   <li className="py-1">
                     <a
-                      href="#"
+                      href="/contact-us"
                       className="text-white hover:text-lime text-[15px]"
                     >
                       Contact Us
@@ -154,7 +154,7 @@ export default function Footer() {
                   </li>
                   <li className="py-1">
                     <a
-                      href="#"
+                      href="/business-enquiries"
                       className="text-white hover:text-lime text-[15px]"
                     >
                       Business Enquiries
@@ -173,7 +173,7 @@ export default function Footer() {
                       href="#"
                       className="text-white hover:text-lime text-[15px]"
                     >
-                      DEA Opportunities
+                      Join Us
                     </a>
                   </li>
                   <li className="py-1">
@@ -205,10 +205,16 @@ export default function Footer() {
               Nationwide Surveyors.
             </a>
             All Rights Reserved.
-            <Link href="/cookie-policy" className="text-white hover:text-lime ml-3">
+            <Link
+              href="/cookie-policy"
+              className="text-white hover:text-lime ml-3"
+            >
               Cookie Policy
             </Link>
-            <Link href="/privacy-policy" className="text-white hover:text-lime ml-3">
+            <Link
+              href="/privacy-policy"
+              className="text-white hover:text-lime ml-3"
+            >
               Privacy Policy
             </Link>
           </span>

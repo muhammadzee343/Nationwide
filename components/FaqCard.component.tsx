@@ -1,6 +1,6 @@
 import React from "react";
 
-function FaqCard({ iconProps = "", title = "", description = "" }) {
+function FaqCard({ iconProps = "", title = "", description = "" }: any) {
   return (
     <div className="flex flex-row pt-4 pb-36 md:pb-16 pl-5 font-opensans">
       <div className="leading-7 pt-1">{iconProps}</div>

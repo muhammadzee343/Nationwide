@@ -10,6 +10,7 @@ import commercialEpc from "../public/Commercial-epc.jpg";
 import commercialEpcRating from "../public/commercialEpcRating.jpg";
 import {
   faBarChart,
+  faCheckCircle,
   faHeadset,
   faTelevision,
 } from "@fortawesome/free-solid-svg-icons";
@@ -1045,6 +1046,56 @@ export const faqAccordionData = [
           "Should you have any questions or would rather place an order over the telephone you can call our team on 0800 048 7474. Our opening times are Monday – Friday 9am – 6pm and Saturday 10am to 2pm.",
       },
     ],
+  },
+];
+
+//FAQ Accordion data
+export const careerAccordionData = [
+  {
+    title: "Qualified Domestic Energy Assessor",
+    head1: "Job Description",
+    description: [
+      {
+        para1:
+          "We are looking for Qualified DEAs across the country, If you are looking for a regular flow of work, with everything pre-booked, then look no further. We will provide you access to our state of the art CRM and having our customer support team dealing with all the appointment bookings and customer inquiries, letting you focus only on the work that are good at.",
+      },
+    ],
+    head2: "Requirements",
+    requirementList: [
+      {
+        iconName: (
+          <FontAwesomeIcon
+            className="pt-2 text-lime"
+            icon={faCheckCircle}
+            style={{ fontSize: "15px" }}
+          />
+        ),
+        listPoint: "You must own and drive vehicle",
+      },
+      {
+        iconName: (
+          <FontAwesomeIcon
+            className="pt-2 text-lime"
+            icon={faCheckCircle}
+            style={{ fontSize: "15px" }}
+          />
+        ),
+        listPoint: "Have access to internet and smart phone",
+      },
+      {
+        iconName: (
+          <FontAwesomeIcon
+            className="pt-2 text-lime"
+            icon={faCheckCircle}
+            style={{ fontSize: "15px" }}
+          />
+        ),
+        listPoint:
+          "Upload all the Certificates and relevant paperwork on to our portal",
+      },
+    ],
+    sendCdInsctruction:
+      "In order to be considered for this role, Please send your CV to admin@nationwidesurveyors.org.uk",
   },
 ];
 

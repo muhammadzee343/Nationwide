@@ -11,12 +11,12 @@ const WhoNeedsEicr = () => {
           breadcrumb="Who Needs EICR"
           className="bg-dark-blue"
         />
-        <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0 font-opensans">
+        <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0">
           <h1 className={`${styles.footerPagesHeading}`}>
             Electrical Installation Condition Report (EICR)
           </h1>
           <br />
-          <p className={`font-normal h-20 ${styles.footerParagraph}`}>
+          <p className={`font-normal pb-4 ${styles.footerParagraph}`}>
             whether it’s your home, a business or a property you rent out, your
             electrical installation should always be covered by an in date
             Electrical Condition Report. Although it’s not a legal requirement

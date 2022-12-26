@@ -12,7 +12,7 @@ const EnergyPerformanceCertificate = () => {
           className="bg-zinc-800 bg-blend-overlay bg-home_bg_image"
         />
         <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0">
-          <p className={`font-opensans font-normal ${styles.footerParagraph}`}>
+          <p className={`font-normal ${styles.footerParagraph}`}>
             The Energy Performance Certificate (EPC) changes finally took effect
             on 1st October 2008, whereby the energy performance certificate
             rules which are relevant to domestic property owners, occupiers and
@@ -25,28 +25,27 @@ const EnergyPerformanceCertificate = () => {
             Therefore, the EPCs in the HIP are now valid for a period of three
             years and not 12 months as it was previously.
           </p>
-          <br />
-          <h1 className={`font-opensans ${styles.footerPagesHeading}`}>
+          <h1 className="text-[30px] font-semibold">
             The changes will make EPCs Mandatory for:
           </h1>
           <br />
-          <p className={`font-opensans ${styles.footerParagraph}`}>
+          <p className={`${styles.footerParagraph}`}>
             <b>Homes –</b> which include those domestic properties on the market
             before the phased introduction of EPCs began in 2007.
           </p>
-          <p className={`font-opensans ${styles.footerParagraph}`}>
+          <p className={`${styles.footerParagraph}`}>
             <b>Commercial buildings– –</b> including the ones already placed on
             the market. If you sell or rent a property during the transition
             period, you are obliged to purchase an EPC as soon as is practically
             possible.
           </p>
-          <p className={`font-opensans ${styles.footerParagraph}`}>
+          <p className={`${styles.footerParagraph}`}>
             <b>Public buildings’ –</b> Any property on or above a 1,000 square
             metres will be required to exhibit the energy certificates to
             include the air-conditioning systems.
           </p>
           <br />
-          <h1 className={`font-opensans ${styles.footerPagesHeading}`}>
+          <h1 className="text-[30px] font-semibold">
             The disclosure of information from the EPC registers
           </h1>
           <br />

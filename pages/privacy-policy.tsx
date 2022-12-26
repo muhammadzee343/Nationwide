@@ -12,7 +12,7 @@ function PrivacyPolicy() {
           breadcrumb="Privacy Policy"
           className="bg-zinc-800 bg-blend-overlay bg-home_bg_image"
         />
-        <div className="w-full flex flex-col xl:max-w-[1114px] pt-[60px] pb-[40px] px-3 xl:px-0 font-opensans">
+        <div className="w-full flex flex-col xl:max-w-[1114px] pt-[60px] pb-[40px] px-3 xl:px-0">
           <p className={`${styles.footerParagraph}`}>
             At Nationwide Surveyors, we are committed to preserving the privacy
             of all visitors to this website. This policy applies to personal
@@ -56,13 +56,14 @@ function PrivacyPolicy() {
             Information you provide or we hold about you may be used by us to:
           </p>
           <ul
-            className={`list-disc list-inside bg-blue-400 font-opensans ${styles.footerParagraph}`}
+            className={`list-disc list-inside bg-blue-400 ${styles.footerParagraph}`}
           >
             {infolistPoints.map((item, index) => {
               return (
-                <li className="ml-4" key={index}>
-                  {item.point}
-                </li>
+                <div className="flex flex-row" key={index}>
+                  <li className="text-justify ml-3"></li>
+                  <p>{item.point}</p>
+                </div>
               );
             })}
           </ul>

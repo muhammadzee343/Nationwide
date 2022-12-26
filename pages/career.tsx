@@ -1,23 +1,24 @@
 import Image from "next/image";
 import React from "react";
 import styles from "../styles/footer.module.css";
-import { joinAdvantageList } from "../utility/constants";
+import FaqAccordionComponent from "../components/FaqAccordion.component";
+import { joinAdvantageList, careerAccordionData } from "../utility/constants";
 import surveyor_image from "../public/surveyor-1.jpg";
 
 function Career() {
   return (
     <div className="w-full bg-white flex justify-center">
       <div className="w-full flex flex-col items-center">
-        <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0 font-opensans">
+        <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0">
           <div className="grid place-items-center">
             <h1 className="font-medium text-4xl text-center mb-5">
-              Frequently Asked Questions
+              We're Hiring!
             </h1>
             <div className="h-1.5 w-20 bg-lime" />
             <br />
             <div className="w-full md:flex md:flex-row">
               <div className="w-full md:w-1/2 p-5">
-                <p className="text-[20px] font-medium tracking-wider">
+                <p className="text-[20px] font-semibold tracking-wider">
                   Are you a Qualified Energy Assessor, a Gas Safe Registered
                   Engineer, Qualified Electrician or a Chartered Surveyor ? We
                   can offer you a regular stream of prebooked work within your
@@ -28,12 +29,15 @@ function Career() {
                   Some of the advantages of joining Nationwide Surveyors:
                 </p>
                 <br />
-                <ul className={`list-disc list-inside bg-blue-400 font-opensans ${styles.footerParagraph}`}>
+                <ul
+                  className={`list-disc list-inside bg-blue-400 font-opensans ${styles.footerParagraph}`}
+                >
                   {joinAdvantageList.map((item, index) => {
                     return (
-                      <li key={index} className="ml-4">
-                        {item.point}
-                      </li>
+                      <div className="flex flex-row" key={index}>
+                        <li className="text-justify ml-2"></li>
+                        <p>{item.point}</p>
+                      </div>
                     );
                   })}
                 </ul>
@@ -48,6 +52,12 @@ function Career() {
             <div className="h-1.5 w-20 bg-lime" />
             <br />
             <br />
+            <FaqAccordionComponent
+              accordionData={careerAccordionData}
+              iconMinusColor="#c2cf10"
+              iconPlusColor="#000"
+              headerTitleColor="text-black"
+            />
           </div>
         </div>
       </div>

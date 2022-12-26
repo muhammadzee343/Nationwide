@@ -5,8 +5,18 @@ import { Collapse } from "antd";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 const { Panel } = Collapse;
 
-function FaqAccordion({ accordionData = [] }: any) {
-  const [active, setActive] = useState("1");
+function FaqAccordion({
+  accordionData = [],
+  iconMinusColor = "",
+  iconPlusColor = "",
+  headerBackground = "",
+  activeHeadBackgorund = "",
+  hoverHeadBackground = "",
+  headerTitleColor = "",
+  defaultActiveaccordion = "",
+  navigateFromFAQ,
+}: any) {
+  const [active, setActive] = useState(defaultActiveaccordion);
   const onChange = (key: string | string[]) => {
     setActive(key);
   };
@@ -25,16 +35,18 @@ function FaqAccordion({ accordionData = [] }: any) {
               isActive ? (
                 <MinusOutlined
                   className="text-xl"
-                  style={{ color: "#8d9297" }}
+                  style={{
+                    color: `${iconMinusColor}`,
+                  }}
                 />
               ) : (
                 <PlusOutlined
                   className="text-xl"
-                  style={{ color: "#8d9297" }}
+                  style={{ color: `${iconPlusColor}` }}
                 />
               )
             }
-            className="font-opensans mb-5"
+            className="font-opensans mb-5 w-full font-medium"
             style={{ color: "#fff" }}
           >
             <Panel
@@ -43,27 +55,56 @@ function FaqAccordion({ accordionData = [] }: any) {
                   className={`${
                     active === (index + 1).toString()
                       ? "text-white"
-                      : "text-gray-400"
-                  } hover:text-white text-[17px] leading-4 font-semibold`}
+                      : `${headerTitleColor}`
+                  } text-[17px] leading-4 font-lg`}
                 >
                   {item?.title}
                 </span>
               }
               key={index + 1}
-              className={`hover:bg-lime ${serviceStyle.parent} ${
-                active === (index + 1).toString() ? "bg-lime" : null
-              }`}
+              className={`${
+                active === (index + 1).toString()
+                  ? `${activeHeadBackgorund}`
+                  : "border border-gray-300"
+              } hover:${hoverHeadBackground} ${headerBackground} ${
+                navigateFromFAQ ? serviceStyle.parent : null
+              } `}
             >
-              {item?.description.map((desc: any) => {
-                return (
-                  <>
-                    <p className={styles.footerParagraph}>{desc?.para1}</p>
-                    <p className={styles.footerParagraph}>{desc?.para2}</p>
-                    <p className={styles.footerParagraph}>{desc?.para3}</p>
-                    <p className={styles.footerParagraph}>{desc?.para4}</p>
-                  </>
-                );
-              })}
+              <div
+                className={`${
+                  active === (index + 1).toString()
+                    ? "border-t-0 border-l border-r border-b border-lime shadow-md"
+                    : null
+                } p-5`}
+              >
+                <h1 className="font-semibold text-base">{item.head1}</h1>
+                {item?.description.map((desc: any) => {
+                  return (
+                    <>
+                      <p className={styles.footerParagraph}>{desc?.para1}</p>
+                      <p className={styles.footerParagraph}>{desc?.para2}</p>
+                      <p className={styles.footerParagraph}>{desc?.para3}</p>
+                      <p className={styles.footerParagraph}>{desc?.para4}</p>
+                    </>
+                  );
+                })}
+                <h1 className="font-semibold text-base">{item.head2}</h1>
+                <br />
+                {item?.requirementList?.map((desc: any) => {
+                  return (
+                    <div className="flex flex-row">
+                      {desc.iconName}
+                      <li className="ml-2 leading-7 pb-3" key={index}>
+                        {desc.listPoint}
+                      </li>
+                    </div>
+                  );
+                })}
+                <br />
+                <p className="text-[15px] font-semibold">
+                  {item.sendCdInsctruction}
+                </p>
+              </div>
             </Panel>
           </Collapse>
         );
