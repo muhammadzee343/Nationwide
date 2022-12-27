@@ -4,7 +4,7 @@ import TextField from "../components/TextFied.component";
 import ServiceSelectionCard from "../components/serviceSelectionCard.component";
 import { services } from "../utility/orderNowConstants";
 import TextArea from "../components/TextArea.component";
-import ButtonComponent from "../components/Button.component";
+import ButtonComponent from "../components/button.component";
 
 function GeneralEnquiries() {
   const radioQuestions = [
@@ -80,7 +80,7 @@ function GeneralEnquiries() {
                           title={opt.title}
                           value={opt.value}
                           lable={opt.attr}
-                          className={`border border-grey-500`}
+                          className={`border border-grey-500 border border-grey-500 w-6 h-6 sm:w-7 sm:h-7`}
                           pClass={opt.pclass}
                         />
                       );
@@ -115,7 +115,7 @@ function GeneralEnquiries() {
                         selectedService.includes(array[index]?.name)
                           ? "bg-lime self-end "
                           : ""
-                      }`}
+                      } py-[11px]`}
                     />
                   </div>
                 );

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../styles/Home.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faStar } from "@fortawesome/free-solid-svg-icons";
-import ButtonComponent from "./Button.component";
+import ButtonComponent from "./button.component";
 
 function PricingCard({
   className = "",

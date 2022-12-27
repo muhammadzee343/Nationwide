@@ -107,7 +107,7 @@ export default function Footer() {
                 </ul>
               </div>
               <div>
-                <h3 className="mb-6 text-lg  font-semibold  text-gray-900 pl-3  text-white border-l-4 border-lime  ">
+                <h3 className="mb-6 text-lg font-semibold text-gray-900 pl-3 text-white border-l-4 border-lime  ">
                   Useful Links
                 </h3>
 

@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonComponent from "./Button.component";
+import ButtonComponent from "./button.component";
 
 function OrderNowCard(props: any) {
   return (

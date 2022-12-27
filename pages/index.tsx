@@ -29,7 +29,7 @@ import { homeServices, howItWorks, ourServices } from "../utility/constants";
 import OurServicesComponent from "../components/ourServices.component";
 import HowItWorks from "../components/howItWorksCard.component";
 import StepperComponent from "../components/stepper.component";
-import ButtonComponent from "../components/Button.component";
+import ButtonComponent from "../components/button.component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CarouselComponent from "../components/carousel.component";
 

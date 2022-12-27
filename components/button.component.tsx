@@ -1,19 +1,13 @@
 import React from "react";
-import { children } from "dom7";
 
-function ButtonComponent({
-  text = "",
-  className = "",
-  icon = false,
-  children,
-}: any) {
+function ButtonComponent({ text = "", className = "", children }: any) {
   // @ts-ignore
   return (
     <>
       <div className="flex flex-wrap justify-between w-full ">
         <button
-          className={`w-full text-[15px]  
-              text-center tracking-normal  ${className}`}
+          className={`w-full   
+              text-center tracking-normal ease-in duration-200  ${className}`}
         >
           {text}
           {children}
