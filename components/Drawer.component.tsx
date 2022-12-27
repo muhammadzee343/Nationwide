@@ -19,11 +19,11 @@ import RadioButton from "./RadioButton.component";
 import Counter from "./counter";
 import AlertBox from "./alertBox.component";
 import TextField from "./TextFied.component";
-import ButtonComponent from "./Button.component";
+import ButtonComponent from "./button.component";
 import styles from "../styles/Home.module.css";
 import RequestCallBack from "./requestCallBack.component";
 import HowItWorks from "./howItWorksCard.component";
-import CardComponent from "./Card.component";
+import CardComponent from "./card.component";
 import { SidebarContext } from "../context/sidebarContext";
 
 const DrawerComponent = ({}: any) => {
@@ -322,7 +322,17 @@ const DrawerComponent = ({}: any) => {
               </div>
             </div>
             <RequestCallBack />
-            <CardComponent className="bg-white shadow px-[20px] pt-[15px] pb-[20px] my-[25px]" />
+            <CardComponent
+              className="bg-white shadow px-[20px] pt-[15px] pb-[20px] my-[25px]"
+              paragraph="          Orders can be placed online 24/7 or over the phone during our working
+          hours. We can also coordinate directly with your tenants, agent or
+          vendor to organise inspection appointment(s). Our normal wait time is
+          currently between 1 to 3 working days. If you want to discuss a
+          quotation, need help placing new order or got any other question,
+          please don’t hesitate to call us free at 0800 048 7474 or request a
+          callback."
+              heading="HOW IT WORKS?"
+            />
           </>
         )}
         {step && (

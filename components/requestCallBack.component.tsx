@@ -4,7 +4,7 @@ import { faChevronRight, faXmark } from "@fortawesome/free-solid-svg-icons";
 import AlertBox from "./alertBox.component";
 import TextField from "./TextFied.component";
 import TextArea from "./TextArea.component";
-import ButtonComponent from "./Button.component";
+import ButtonComponent from "./button.component";
 
 function RequestCallBack(props: any) {
   const [collapse, setCollapse] = useState(true);

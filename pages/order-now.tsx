@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import PropertyTypeCardComponent from "../components/propertyTypeCard.component";
 import { faBuilding, faHouse } from "@fortawesome/free-solid-svg-icons";
-import ButtonComponent from "../components/Button.component";
+import ButtonComponent from "../components/button.component";
 import ServiceSelectionCard from "../components/serviceSelectionCard.component";
 import Counter from "../components/counter";
 import RadioButton from "../components/RadioButton.component";

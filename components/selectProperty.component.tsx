@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBuilding, faHouse } from "@fortawesome/free-solid-svg-icons";
-import ButtonComponent from "./Button.component";
+import ButtonComponent from "./button.component";
 import React, { useContext } from "react";
 import { SidebarContext } from "../context/sidebarContext";
 

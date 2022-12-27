@@ -107,7 +107,7 @@ export default function Footer() {
                 </ul>
               </div>
               <div>
-                <h3 className="mb-6 text-lg  font-semibold  text-gray-900 pl-3  text-white border-l-4 border-lime  ">
+                <h3 className="mb-6 text-lg font-semibold text-gray-900 pl-3 text-white border-l-4 border-lime  ">
                   Useful Links
                 </h3>
 
@@ -205,10 +205,16 @@ export default function Footer() {
               Nationwide Surveyors.
             </a>
             All Rights Reserved.
-            <Link href="/cookie-policy" className="text-white hover:text-lime ml-3">
+            <Link
+              href="/cookie-policy"
+              className="text-white hover:text-lime ml-3"
+            >
               Cookie Policy
             </Link>
-            <Link href="/privacy-policy" className="text-white hover:text-lime ml-3">
+            <Link
+              href="/privacy-policy"
+              className="text-white hover:text-lime ml-3"
+            >
               Privacy Policy
             </Link>
           </span>
