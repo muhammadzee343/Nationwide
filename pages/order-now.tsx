@@ -8,8 +8,10 @@ import RadioButton from "../components/RadioButton.component";
 import { attributes } from "../utility/orderNowConstants";
 import TextField from "../components/TextFied.component";
 import AlertBox from "../components/alertBox.component";
+import { useForm } from "react-hook-form";
 
 function OrderNow({ commercialProperties, residentialProperties }: any) {
+  const { register, handleSubmit } = useForm();
   const [propertyType, setPropertyType] = useState<string>("");
 
   const [ispropertySelected, setIsPropertySelected] = useState<boolean>(true);
@@ -304,7 +306,10 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                             <TextField
                               handleChange={() => {}}
                               lable="Property Postcode"
+                              register={register}
                               name="postcode"
+                              className="text-lg text-dark-blue font-semibold"
+                              inputClass="border-grey-500 py-2.5 px-3"
                               placeholder="Enter full postcode here"
                             />
                           </div>
@@ -322,7 +327,10 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                       <TextField
                         handleChange={() => {}}
                         lable="Property Address"
+                        register={register}
                         name="address"
+                        inputClass="border-grey-500 py-2.5 px-3"
+                        className="text-lg text-dark-blue font-semibold"
                         placeholder="Enter full address here"
                       />
                     </div>
@@ -359,19 +367,28 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                 {/*    <TextField*/}
                 {/*      handleChange={() => {}}*/}
                 {/*      lable="Other Name"*/}
+                {/*          register={register}*/}
                 {/*      name="name"*/}
+                {/*inputClass="border-grey-500 py-2.5 px-3"*/}
+                {/*className="text-lg text-dark-blue font-semibold"*/}
                 {/*      placeholder="Example: Martin Roberts"*/}
                 {/*    />*/}
                 {/*    <TextField*/}
                 {/*      handleChange={() => {}}*/}
                 {/*      lable="Tenant Contact Number"*/}
+                {/*register={register}*/}
                 {/*      name="Contact Number"*/}
+                {/*inputClass="border-grey-500 py-2.5 px-3"*/}
+                {/*className="text-lg text-dark-blue font-semibold"*/}
                 {/*      placeholder="e.g. 01632 960069"*/}
                 {/*    />*/}
                 {/*    <TextField*/}
                 {/*      handleChange={() => {}}*/}
                 {/*      lable="Other Email"*/}
-                {/*      name="otherEmail"*/}
+                {/*register={register}*/}
+                {/*/!*      name="otherEmail"*!/inputClass="border-grey-500 py-2.5 px-3"*/}
+
+                {/*className="text-lg text-dark-blue font-semibold"*/}
                 {/*      placeholder="e.g. martin.roberts@gmail.com"*/}
                 {/*    />*/}
                 {/*  </div>*/}
@@ -388,7 +405,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 }
 
 OrderNow.getInitialProps = async () => {
-  const res = await fetch("http://192.168.10.38:8000/services/list_services");
+  const res = await fetch(`${process.env.BASE_URL_DEV}/services/list_services`);
   const data = await res.json();
   const commercialProperties = data.services.filter(
     (data) => data.category === "commercial_property"

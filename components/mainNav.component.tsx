@@ -43,7 +43,7 @@ const MainNavComponent = () => {
   };
 
   return (
-    <div className="bg-lime px-2 sm:px-14 static top auto ">
+    <div className="bg-lime px-2  sm:pl-11 sm:pr-14 static top auto ">
       <nav className="px-2  xl:flex xl:items-center xl:justify-between">
         <div className="flex justify-between items-center py-5">
           <span
@@ -56,10 +56,10 @@ const MainNavComponent = () => {
             />
           </span>
 
-          <span className="text-2xl font-[Poppins]">
+          <span className="text-2xl ml-[3px] font-[Poppins]">
             <Link href="/">
               <Image
-                className="h-10 w-52 inline cursor-pointer"
+                className="h-10 w-[204px] inline cursor-pointer"
                 src={logo}
                 alt="logo"
               />
@@ -77,7 +77,7 @@ const MainNavComponent = () => {
           className={`${styles.mNavList}${collapseIcon ? styles.showMenu : ""}`}
         >
           <>
-            <li className=" hidden xl:flex items-center px-3 my-6 xl:my-0 h-full">
+            <li className=" hidden xl:flex items-center px-5 my-6 xl:my-0 h-full">
               <Link
                 href="/"
                 className={`${
@@ -118,7 +118,7 @@ const MainNavComponent = () => {
               )}
             </li>
 
-            <li className="hidden xl:flex items-center px-6 my-6  xl:my-0 h-full">
+            <li className="hidden xl:flex items-center px-5 my-6  xl:my-0 h-full">
               <Link
                 href="/contact-us"
                 className={`${
@@ -137,7 +137,7 @@ const MainNavComponent = () => {
               </button>
             </li>
             {router.pathname !== "/order-now" && (
-              <button className=" hidden xl:flex uppercase bg-dark-blue text-white px-6 py-2 rounded-full text-[12px] font-bold">
+              <button className=" xl:flex items-center justify-center  h-[37px] w-[129px] py-2 bg-dark-blue text-white text-[12px] font-bold rounded-full uppercase">
                 <Link href="/order-now">Order Online</Link>
               </button>
             )}

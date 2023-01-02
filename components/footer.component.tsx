@@ -145,52 +145,52 @@ export default function Footer() {
                     </h2>
                   </li>
                   <li className="py-1">
-                    <a
+                    <Link
                       href="/contact-us"
                       className="text-white hover:text-lime text-[15px]"
                     >
                       Contact Us
-                    </a>
+                    </Link>
                   </li>
                   <li className="py-1">
-                    <a
+                    <Link
                       href="/business-enquiries"
                       className="text-white hover:text-lime text-[15px]"
                     >
                       Business Enquiries
-                    </a>
+                    </Link>
                   </li>
                   <li className="py-1">
-                    <a
+                    <Link
                       href="/career"
                       className="text-white hover:text-lime text-[15px]"
                     >
                       Career
-                    </a>
+                    </Link>
                   </li>
                   <li className="py-1">
-                    <a
-                      href="#"
+                    <Link
+                      href="/join-us"
                       className="text-white hover:text-lime text-[15px]"
                     >
                       Join Us
-                    </a>
+                    </Link>
                   </li>
                   <li className="py-1">
-                    <a
+                    <Link
                       href="/bulk-order-discounts"
                       className="text-white hover:text-lime text-[15px]"
                     >
                       Bulk Order Discounts
-                    </a>
+                    </Link>
                   </li>
                   <li className="py-1">
-                    <a
-                      href="#"
+                    <Link
+                      href="mailto:info@nationwidesurveyors.org.uk"
                       className="text-white hover:text-lime text-[15px]"
                     >
                       info@nationwidesurveyors.org.uk
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

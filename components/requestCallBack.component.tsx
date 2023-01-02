@@ -5,10 +5,11 @@ import AlertBox from "./alertBox.component";
 import TextField from "./TextFied.component";
 import TextArea from "./TextArea.component";
 import ButtonComponent from "./button.component";
+import { useForm } from "react-hook-form";
 
 function RequestCallBack(props: any) {
   const [collapse, setCollapse] = useState(true);
-
+  const { register, handleSubmit } = useForm();
   return (
     <div className="bg-white shadow-md relative">
       {!collapse && (
@@ -50,17 +51,22 @@ function RequestCallBack(props: any) {
               <div className=" w-full sm:w-[45%]">
                 <TextField
                   handleChange={() => {}}
+                  className="text-lg text-dark-blue font-semibold"
                   lable="First Name"
                   name="firstname"
                   placeholder="Enter first name here"
+                  inputClass="border-grey-500 py-2.5 px-3"
                 />
               </div>
               <div className="w-full sm:w-[45%]">
                 <TextField
                   handleChange={() => {}}
+                  className="text-lg text-dark-blue font-semibold"
                   lable="Last Name"
                   name="lastname"
+                  register={register}
                   placeholder="Enter last name here"
+                  inputClass="border-grey-500 py-2.5 px-3"
                 />
               </div>
             </div>
@@ -69,17 +75,23 @@ function RequestCallBack(props: any) {
               <div className="w-full sm:w-[45%]">
                 <TextField
                   handleChange={() => {}}
+                  className="text-lg text-dark-blue font-semibold"
                   lable="Phone"
                   name="phone"
                   placeholder="Enter a callback number"
+                  register={register}
+                  inputClass="border-grey-500 py-2.5 px-3"
                 />
               </div>
               <div className="w-full sm:w-[45%]">
                 <TextField
                   handleChange={() => {}}
+                  className="text-lg text-dark-blue font-semibold"
                   lable="Email"
                   name="email"
                   placeholder="Enter email address"
+                  register={register}
+                  inputClass="border-grey-500 py-2.5 px-3"
                 />
               </div>
             </div>
@@ -87,6 +99,10 @@ function RequestCallBack(props: any) {
             <TextArea
               lable="Additional Notes"
               placeholder="Any additional information"
+              className="text-lg text-dark-blue font-semibold my-1"
+              inputClass="border-grey-500 py-2.5 px-3"
+              register={register}
+              name="notes"
             />
             <hr className="h-[2px] bg-[#ececec] my-[25px]" />
             <ButtonComponent

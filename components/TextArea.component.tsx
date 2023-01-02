@@ -1,18 +1,25 @@
 import React from "react";
 
-function TextArea({ lable = "", placeholder, name, handleChange }: any) {
+function TextArea({
+  lable = "",
+  placeholder,
+  name,
+  handleChange,
+  className = "",
+  inputClass = "",
+  register,
+}: any) {
   return (
     <div className="w-full">
-      <label className="text-lg text-dark-blue font-semibold my-1">
-        {lable}
-      </label>
+      <label className={`${className}`}>{lable}</label>
       <textarea
         cols={80}
         placeholder={placeholder}
         value={""}
         name={name}
-        className="border w-full border-grey-500 py-2.5 px-3 outline-none"
+        className={`border w-full outline-none ${inputClass}`}
         onChange={(e) => handleChange(e)}
+        {...register(name)}
       ></textarea>
     </div>
   );

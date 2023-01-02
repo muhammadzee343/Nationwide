@@ -6,13 +6,13 @@ const HomeTab = () => {
   const [activeService, setService] = useState(LEC);
 
   return (
-    <div className="bg-[#182333bf] lg:flex gap-x-28 p-6 lg:py-6 lg:px-0 md:min-h-[440px]">
+    <div className="bg-[#182333bf] lg:flex gap-x-20 p-6 lg:py-6 lg:px-0 md:min-h-[401px]">
       <div className="my-auto">
         <ul className="flex flex-wrap align-center lg:flex-col lg:mt-6">
           {SERVICES.map((ele, index) => {
             return (
               <li
-                className="py-1 lg:py-2 w-full md:w-[238px] "
+                className="py-1 lg:py-2 w-full md:w-[230px]"
                 key={index}
                 onClick={() => setService(ele.slug)}
               >
@@ -35,7 +35,7 @@ const HomeTab = () => {
       </div>
 
       <div className="animate-fade-in-up">
-        <h2 className="font-semibold text-4xl text-white mb-10 animate-fade-in-up">
+        <h2 className="font-semibold text-[35px] leading-10 text-white mb-4 animate-fade-in-up">
           {activeService.title}
         </h2>
         <h3 className="font-semibold text-3xl text-[#c2cf10] mb-5 animate-fade-in-up">
@@ -52,7 +52,7 @@ const HomeTab = () => {
         </ul>
         <button
           className="bg-lime hover:bg-dark-blue text-dark-blue hover:text-white px-5 py-[6px]
-        ease-in duration-200 ease-out duration-200 font-normal hover:font-semibold text-md my-2 uppercase "
+        ease-in duration-200 ease-out duration-200 font-semibold text-[15px] my-2 uppercase "
         >
           {activeService.btnText}
         </button>
