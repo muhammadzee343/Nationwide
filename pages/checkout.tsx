@@ -4,7 +4,6 @@ import BillingForm from "../components/billingForm";
 import CardComponent from "../components/card.component";
 import Table from "../components/table.component";
 import CheckoutStepper from "../components/checkoutStepper.component";
-import { useForm } from "react-hook-form";
 
 function Checkout(props: any) {
   return (

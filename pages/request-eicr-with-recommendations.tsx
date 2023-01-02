@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock, faMessage } from "@fortawesome/free-regular-svg-icons";
+import { faMessage } from "@fortawesome/free-regular-svg-icons";
 import ButtonComponent from "../components/button.component";
 
 function RequestEicrWithRecommendations(props: any) {
@@ -31,8 +31,7 @@ function RequestEicrWithRecommendations(props: any) {
             </p>
             <p className="text-[15px] text-[#1a1a1a] font-normal mb-[16px]">
               Please use the box below if you wish to provide any additional
-              information or instructions and press "SUBMIT EICR REQUEST"
-              button.
+              information or instructions and press SUBMIT EICR REQUEST button.
             </p>
 
             <h4 className="text-[28px] text-[#1a1a1a] mb-[20px] font-normal leading-none">
