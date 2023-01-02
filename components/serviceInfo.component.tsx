@@ -11,7 +11,7 @@ function ServiceInfo({ className, content }: any) {
   return (
     <>
       {content.image && (
-        <div className="lg:w-5/12 py-4 px-8 flex justify-center">
+        <div className="lg:w-5/12 py-4 px-1  flex justify-center">
           <Image
             className=" h-fit cursor-pointer"
             src={content.image}
@@ -20,7 +20,7 @@ function ServiceInfo({ className, content }: any) {
         </div>
       )}
       <div
-        className={`${content.image ? "lg:w-6/12" : "lg:w-12/12"} py-4 px-1`}
+        className={`${content.image ? "lg:w-[58%]" : "lg:w-12/12"} py-4 px-1`}
       >
         {content.type !== "Service" && (
           <>
@@ -51,7 +51,7 @@ function ServiceInfo({ className, content }: any) {
           </>
         )}
         {content.type === "Service" && (
-          <div className="flex flex-col leading-relaxed list-disc">
+          <div className="flex flex-col leading-relaxed list-disc w-[80%]">
             <h3
               className={`text-[26px] font-semibold mb-2 ${styles.serviceHeading}`}
             >

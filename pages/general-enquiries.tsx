@@ -5,6 +5,7 @@ import ServiceSelectionCard from "../components/serviceSelectionCard.component";
 import { services } from "../utility/orderNowConstants";
 import TextArea from "../components/TextArea.component";
 import ButtonComponent from "../components/button.component";
+import { useForm } from "react-hook-form";
 
 function GeneralEnquiries() {
   const radioQuestions = [
@@ -49,6 +50,7 @@ function GeneralEnquiries() {
       setSelectedService([...selectedService]);
     }
   };
+  const { register, handleSubmit } = useForm();
   return (
     <div className="w-full flex justify-center pt-[82px]">
       <div className=" w-full px-8 xl:px-0 xl:max-w-[1114px]  flex flex-col">
@@ -97,7 +99,13 @@ function GeneralEnquiries() {
                 <p className="text-sm my-3">
                   This is to check the availability and converage
                 </p>
-                <TextField placeholder="Enter postcode here" />
+                <TextField
+                  placeholder="Enter postcode here"
+                  className="text-lg text-dark-blue font-semibold"
+                  register={register}
+                  name="postcode"
+                  inputClass="border-grey-500 py-2.5 px-3"
+                />
               </div>
             </div>
 
@@ -122,20 +130,50 @@ function GeneralEnquiries() {
               })}
             </div>
             <div className=" my-12">
-              <TextArea lable="Please use box below to provide any further information related to your enquiry" />
+              <TextArea
+                lable="Please use box below to provide any further information related to your enquiry"
+                className="text-lg text-dark-blue font-semibold my-1"
+                inputClass="border-grey-500 py-2.5 px-3"
+                register={register}
+                name="enquiry"
+              />
             </div>
             <div className="w-full flex flex-col md:flex-row flex-wrap gap-y-6 justify-between">
               <div className="w-full md:w-[49%]">
-                <TextField lable="First Name" name="firstName" />
+                <TextField
+                  lable="First Name"
+                  name="firstName"
+                  className="text-lg text-dark-blue font-semibold"
+                  register={register}
+                  inputClass="border-grey-500 py-2.5 px-3"
+                />
               </div>
               <div className="w-full md:w-[49%]">
-                <TextField lable="Last Name" name="lastName" />
+                <TextField
+                  lable="Last Name"
+                  name="lastName"
+                  register={register}
+                  className="text-lg text-dark-blue font-semibold"
+                  inputClass="border-grey-500 py-2.5 px-3"
+                />
               </div>
               <div className="w-full md:w-[49%]">
-                <TextField lable="Phone" name="phone" />
+                <TextField
+                  lable="Phone"
+                  name="phone"
+                  register={register}
+                  className="text-lg text-dark-blue font-semibold"
+                  inputClass="border-grey-500 py-2.5 px-3"
+                />
               </div>
               <div className="w-full md:w-[49%]">
-                <TextField lable="Email" name="email" />
+                <TextField
+                  lable="Email"
+                  name="email"
+                  register={register}
+                  className="text-lg text-dark-blue font-semibold"
+                  inputClass="border-grey-500 py-2.5 px-3"
+                />
               </div>
             </div>
 
@@ -148,7 +186,7 @@ function GeneralEnquiries() {
                   title="By Phone"
                   value="phone"
                   lable="prefrence"
-                  className={`border border-grey-500`}
+                  className={`border border-grey-500 w-6 h-6 sm:w-7 sm:h-7`}
                   pClass="font-semibold"
                 />
               </div>
@@ -157,7 +195,7 @@ function GeneralEnquiries() {
                   title="By Email"
                   value="email"
                   lable="prefrence"
-                  className={`border border-grey-500`}
+                  className={`border border-grey-500 w-6 h-6 sm:w-7 sm:h-7`}
                   pClass="font-semibold"
                 />
               </div>

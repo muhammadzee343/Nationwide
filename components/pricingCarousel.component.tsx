@@ -11,13 +11,19 @@ import PricingCard from "./pricingCard.component";
 function PricingCarouselComponent(props: any) {
   return (
     <>
-      <div className="flex lg:hidden pl-6 sm:px-6 mx-auto md:px-12 xl:px-32 mt-[10px] xl:mt-[-200px]">
+      <div className="flex lg:hidden relative pl-6 sm:px-6 mx-auto md:px-12 xl:px-32 mt-[10px] xl:mt-[-200px]">
+        <div
+          className="border border-[#a0a0a0] absolute w-[33px] h-[45px] bg-white top-[49%]
+       left-3  sm:left-[30px] z-[600] flex justify-center items-center cursor-pointer"
+        >
+          <p className="text-[19px] text-dark-blue font-bold">&#8249;</p>
+        </div>
         <Swiper
           spaceBetween={0}
           slidesPerView={"auto"}
           centeredSlides={true}
           pagination={true}
-          navigation={true}
+          navigation={false}
           modules={[Pagination, Navigation]}
           onSlideChange={() => {}}
           onSwiper={(swiper) => {}}
@@ -47,6 +53,12 @@ function PricingCarouselComponent(props: any) {
             );
           })}
         </Swiper>
+        <div
+          className="border border-[#a0a0a0] absolute w-[33px] h-[45px] bg-white top-[49%] right-3 sm:right-[30px]
+          z-[600] flex justify-center items-center cursor-pointer"
+        >
+          <p className="text-[19px] text-dark-blue font-bold"> &#8250;</p>
+        </div>
       </div>
     </>
   );

@@ -6,18 +6,23 @@ function TextField({
   name = "",
   className = "",
   handleChange,
+  required,
+  register,
+  inputClass = "",
 }: any) {
   return (
     <div className="w-full">
-      <label className={`text-lg text-dark-blue font-semibold ${className}`}>
+      <label className={` ${className}`}>
         {lable}
+        {required && <span className="text-[#ff0000] text-xl ml-1">*</span>}
       </label>
       <input
         type="text"
         placeholder={placeholder}
         required
         name={name}
-        className="border w-full border-grey-500 py-2.5 px-3 focus:border-lime  outline-none"
+        className={`border w-full  focus:border-lime  outline-none focus:ring-transparent shadow-sm ${inputClass}`}
+        {...register(name, { required: true })}
         onChange={({ target: { value } }) => {
           handleChange(value);
         }}

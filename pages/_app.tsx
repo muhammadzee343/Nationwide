@@ -28,7 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
           setPropertyType,
         }}
       >
-        <main className="">
+        <main className={myFont.className}>
           {overlay && <DrawerComponent />}
           <TopNavComponent />
           <div className="xl:top-0 xl:sticky z-[1000]">

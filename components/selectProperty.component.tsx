@@ -42,14 +42,7 @@ export default function SelectProperty() {
                       className="w-8 text-dark-blue absolute left-[14px]"
                       icon={faHouse}
                     />
-                    Residential
-                    <input
-                      type="radio"
-                      name="product_type"
-                      value="domestic"
-                      className="hidden"
-                    />
-                    Property
+                    Residential Property
                   </label>
 
                   <label
@@ -62,12 +55,6 @@ export default function SelectProperty() {
                       icon={faBuilding}
                     />
                     Commercial Property
-                    <input
-                      type="radio"
-                      name="product_type"
-                      className="hidden"
-                      value="commercial"
-                    />
                   </label>
                 </div>
               </div>

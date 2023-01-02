@@ -1,6 +1,6 @@
 
 .tNavLinks{
-    @apply text-white px-1 text-[14px] hover:text-lime hover:ease-in duration-300
+    @apply text-white text-[14px] hover:text-lime hover:ease-in duration-300
 }
 .mNavList{
     @apply xl:flex xl:items-center z-[-1] xl:z-auto h-[72px]
@@ -10,14 +10,15 @@
 }
 
 .addToCartBtn{
-    @apply relative flex justify-center items-center w-[35px] h-[35px] px-3 py-3 sm:px-3 sm:py-3 bg-dark-blue text-white rounded-full drop-shadow
+    @apply relative flex justify-center items-center w-[31px] h-[31px] px-2.5 py-2.5 sm:px-2.5 sm:py-2.5 bg-dark-blue text-white rounded-full drop-shadow
 }
 .addToCartBtn >span{
-    @apply absolute top-1 right-0 px-2 py-1 translate-x-1/2 -translate-y-1/2 bg-lime rounded-full drop-shadow text-xs text-white
+    @apply absolute top-1 right-0 h-[18px] w-[18px] py-1 translate-x-1/2 -translate-y-1/2 bg-lime rounded-full drop-shadow text-xs text-white text-center
 }
 .cartCount{
     padding: 0.1rem 0.4rem !important;
-
+    display: flex;
+    justify-content: center;
 }
 
 .showMenu{

@@ -29,16 +29,16 @@ function Service({ certificate }: any) {
             </div>
           </div>
           <div className="xl:w-8/12 2xl:w-8/12 flex flex-col bg-white py-16">
-            <div className=" px-3">
+            <div className=" px-5">
               {certificate?.map(({ className, content }: any, index: any) => {
                 return (
                   <>
                     <div
-                      className={`xl:container ${
+                      className={`${
                         index % 2 == 0
                           ? "flex flex-col lg:flex-row"
                           : "flex flex-col-reverse lg:flex-row-reverse"
-                      } pb-[60px] `}
+                      } pb-[60px] gap-6 `}
                       key={index}
                     >
                       <ServiceInfo content={content} className={className} />

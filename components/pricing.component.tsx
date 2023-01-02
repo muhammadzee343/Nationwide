@@ -9,7 +9,7 @@ import { bundles } from "../utility/constants";
 const Pricing = () => {
   return (
     <>
-      <div className=" hidden lg:flex md:justify-center md:flex-nowrap flex-wrap px-6 md:px-12 xl:px-32 mt-[-125px]">
+      <div className=" hidden w-full lg:flex md:justify-center md:flex-nowrap flex-wrap px-6 sm:px-0 mt-[-125px]">
         {bundles.map(({ className, content }, index) => {
           return (
             <PricingCard

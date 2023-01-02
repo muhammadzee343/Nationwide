@@ -25,6 +25,7 @@ import RequestCallBack from "./requestCallBack.component";
 import HowItWorks from "./howItWorksCard.component";
 import CardComponent from "./card.component";
 import { SidebarContext } from "../context/sidebarContext";
+import { useForm } from "react-hook-form";
 
 const DrawerComponent = ({}: any) => {
   const [showMore, setShowMore] = useState(false);
@@ -55,7 +56,7 @@ const DrawerComponent = ({}: any) => {
       otherEmail: "",
     },
   });
-
+  const { register, handleSubmit } = useForm();
   const {
     showDrawer,
     setShowDrawer,
@@ -68,7 +69,9 @@ const DrawerComponent = ({}: any) => {
     fetchData(propertyType);
   }, []);
   const fetchData = async (propertyType: any) => {
-    const res = await fetch("http://192.168.10.38:8000/services/list_services");
+    const res = await fetch(
+      `${process.env.BASE_URL_DEV}/services/list_services`
+    );
     const data = await res.json();
     const filteredService = data.services.filter(
       (data) => data.category === propertyType
@@ -115,7 +118,7 @@ const DrawerComponent = ({}: any) => {
     //@ts-ignore
     setServiceAttributes([...attributes]);
   };
-
+  const propertyTypeUI = useMemo<JSX.Element[]>(() => {}, [propertyType]);
   const services = useMemo<JSX.Element[]>(() => {
     const elements: JSX.Element[] = [];
     const services = !showMore ? Services.slice(0, 5) : Services;
@@ -356,6 +359,7 @@ const DrawerComponent = ({}: any) => {
                        : "border-[#ececec] bg-white"
                    }
                    hover:bg-lime`}
+                  onClick={setPropertyType("residential_property")}
                 >
                   <FontAwesomeIcon
                     className="w-8 text-dark-blue absolute left-[14px]"
@@ -372,6 +376,7 @@ const DrawerComponent = ({}: any) => {
                         ? "bg-lime border-lime"
                         : "border-[#ececec] bg-white"
                     }`}
+                  onClick={setPropertyType("commerical_property")}
                 >
                   <FontAwesomeIcon
                     className="w-[26px] ,w-3 text-dark-blue  absolute left-[14px]"
@@ -402,7 +407,10 @@ const DrawerComponent = ({}: any) => {
                 lable="Property postcode"
                 placeholder="Property postcode"
                 name="postcode"
+                register={register}
+                className="text-lg text-dark-blue font-semibold"
                 handleChange={setPostcode}
+                inputClass="border-grey-500 py-2.5 px-3"
               />
               <hr className="h-[2px] bg-[#ececec] my-[20px] " />
               <ButtonComponent
