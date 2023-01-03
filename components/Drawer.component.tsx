@@ -69,6 +69,7 @@ const DrawerComponent = ({}: any) => {
     fetchData(propertyType);
   }, []);
   const fetchData = async (propertyType: any) => {
+    console.log(process.env.BASE_URL_DEV);
     const res = await fetch(
       `${process.env.BASE_URL_DEV}/services/list_services`
     );
