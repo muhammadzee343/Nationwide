@@ -4,14 +4,34 @@ import { faBuilding, faHouse } from "@fortawesome/free-solid-svg-icons";
 import ButtonComponent from "../components/button.component";
 import ServiceSelectionCard from "../components/serviceSelectionCard.component";
 import Counter from "../components/counter";
-import RadioButton from "../components/RadioButton.component";
+import RadioButton from "../components/radioButton.component";
 import { attributes } from "../utility/orderNowConstants";
-import TextField from "../components/TextFied.component";
+import TextField from "../components/textFied.component";
 import AlertBox from "../components/alertBox.component";
 import { useForm } from "react-hook-form";
+import Select from "../components/select.component";
+import { useRouter } from "next/router";
 
 function OrderNow({ commercialProperties, residentialProperties }: any) {
-  const { register, handleSubmit } = useForm();
+  const attributeState = {
+    property_type: "",
+    property_age: "",
+    property_price: "",
+    bedrooms: "",
+    other_rooms: 0,
+    distribution_boards: 1,
+    electrical_appliances: "",
+    floors: "",
+    gas_appliances: "",
+    gas_fire: "",
+    fire_back_boiler: "",
+    post_code: "",
+    property_area: "",
+    supply_type: "",
+    circuits: "",
+  };
+
+  const { register, handleSubmit, setValue } = useForm();
   const [propertyType, setPropertyType] = useState<string>("");
 
   const [ispropertySelected, setIsPropertySelected] = useState<boolean>(true);
@@ -20,45 +40,131 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   const [serviceAttributes, setServiceAttributes] = useState<string[]>([]);
 
+  const [selectedServiceId, setSelectedServiceId] = useState<any[]>([]);
+
+  const [attribute, setAttributes] = useState<any>(attributeState);
+
   const servicesSection = useRef<HTMLInputElement | any>();
 
-  const [attribute, setAttributes] = useState<any>({
-    propertyType: "",
-    NoOfBedrooms: "",
-    noOtherBedrooms: "",
-    NoFuseBoard: "",
-    NoElectricalAppliances: "",
-    PropertyAge: "",
-    PropertyPrice: "",
-    NoFloors: "",
-    NoGasAppliances: "",
-    gasFire: "",
-    backBoiler: "",
-    postCode: "",
-    hasGas: "",
-    propertyAddress: "",
-    contactAccess: "",
-    contact: {
-      otherName: "",
-      tenantConatctNo: "",
-      otherEmail: "",
-    },
-  });
+  const attributeSection = useRef<HTMLInputElement | any>();
+
+  const router = useRouter();
+  const { bundle, ser, value, keys, property } = router.query;
   useEffect(() => {
-    // scrollIntoViewClick();
-  }, [propertyType]);
+    if (bundle) {
+      selectBundle();
+    }
+    OrderNow();
+  }, []);
 
   const scrollIntoViewClick = () => {
     servicesSection.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const selectBundle = () => {
+    if (bundle) {
+      switch (bundle) {
+        case "10":
+          setPropertyType("residential_property");
+          setSelectedService([
+            "Electrical Installation Condition Report (EICR)",
+            "Electrical Portable Appliance Test (PAT)",
+          ]);
+          setSelectedServiceId([9, 10]);
+          setAllAttributes([
+            "Electrical Installation Condition Report (EICR)",
+            "Electrical Portable Appliance Test (PAT)",
+          ]);
+          break;
+        case "20":
+          setPropertyType("residential_property");
+          setSelectedServiceId([9, 1]);
+          setSelectedService([
+            "Electrical Installation Condition Report (EICR)",
+            "Energy Performance Certificate",
+          ]);
+          setAllAttributes([
+            "Electrical Installation Condition Report (EICR)",
+            "Energy Performance Certificate",
+          ]);
+          break;
+        case "30":
+          setPropertyType("residential_property");
+          setSelectedServiceId([9, 10, 7]);
+          setSelectedService([
+            "Electrical Installation Condition Report (EICR)",
+            "Electrical Portable Appliance Test (PAT)",
+            "Gas Safety Certificate",
+          ]);
+          setAllAttributes([
+            "Electrical Installation Condition Report (EICR)",
+            "Electrical Portable Appliance Test (PAT)",
+            "Gas Safety Certificate",
+          ]);
+          break;
+        case "40":
+          setPropertyType("residential_property");
+          setSelectedServiceId([9, 1, 7]);
+          setSelectedService([
+            "Electrical Installation Condition Report (EICR)",
+            "Energy Performance Certificate",
+            "Gas Safety Certificate",
+          ]);
+          setAllAttributes([
+            "Electrical Installation Condition Report (EICR)",
+            "Energy Performance Certificate",
+            "Gas Safety Certificate",
+          ]);
+          break;
+        default:
+          setPropertyType("");
+          setSelectedService([]);
+          setAllAttributes([]);
+          setSelectedServiceId([]);
+      }
+    }
+  };
+
+  const OrderNow = () => {
+    if (ser && value && keys) {
+      let obj = Object.fromEntries(keys?.map((k, i) => [k, value[i]]));
+      setPropertyType(property);
+      if (obj) {
+        const services =
+          property === "residential_property"
+            ? residentialProperties
+            : commercialProperties;
+        let temp = typeof ser !== "string" ? ser?.map((ele) => +ele) : [+ser];
+        let selectedService = services
+          .filter((ele, index) => {
+            return temp.includes(ele.id);
+          })
+          .map((ele) => ele.name);
+
+        setAttributes(obj);
+        setSelectedServiceId(temp);
+        setAllAttributes(selectedService);
+        setSelectedService(selectedService);
+        setValue("property_area", obj.property_area);
+        setValue("property_postcode", obj.property_postcode);
+      }
+    }
+  };
+
+  const changePropertyType = (property_type: string) => {
+    setPropertyType(property_type);
+    scrollIntoViewClick();
+    setSelectedService([]);
+    setAttributes(attributeState);
   };
 
   const setAllAttributes = (selectedServicesData: string[]) => {
     let attributes = new Set();
 
     const services =
-      propertyType === "Residential Property"
-        ? residentialProperties
-        : commercialProperties;
+      propertyType === "commercial_property"
+        ? commercialProperties
+        : residentialProperties;
     const addAttributes = services.forEach((data) => {
       if (
         selectedServicesData.includes(data.name) &&
@@ -70,35 +176,42 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
       }
     });
     //@ts-ignore
-    setServiceAttributes([...attributes]);
+    if (selectedServicesData.length > 0) {
+      setServiceAttributes(["property_type", ...attributes]);
+    } else {
+      setServiceAttributes([...attributes]);
+    }
   };
 
-  const selectService = (title: string) => {
-    const temp = title;
+  const selectService = ({ name, id }: any) => {
+    const temp = name;
     const services =
-      propertyType === "Residential Property"
+      propertyType === "residential_property"
         ? residentialProperties
         : commercialProperties;
-    const condition = selectedService.findIndex((ele) => title === ele) === -1;
+    const condition = selectedService.findIndex((ele) => name === ele) === -1;
     let attributes: string[] = [...serviceAttributes];
     if (condition) {
       const selectedServicesData = [...selectedService, temp];
-
+      const selectedServicesId: any = [...selectedServiceId, id];
       setAllAttributes(selectedServicesData);
       setSelectedService(selectedServicesData);
+      setSelectedServiceId(selectedServicesId);
     } else {
-      const index = selectedService.findIndex((ele) => title === ele);
+      const index = selectedService.findIndex((ele) => name === ele);
+      const idIndex = selectedServiceId.findIndex((ele) => +id === +ele);
       selectedService.splice(index, 1);
+      selectedServiceId.splice(idIndex, 1);
       setAllAttributes(selectedService);
       setSelectedService([...selectedService]);
+      setSelectedServiceId([...selectedServiceId]);
     }
   };
 
   const services = useMemo<JSX.Element[]>(() => {
     const elements: JSX.Element[] = [];
-
     const services =
-      propertyType === "Residential Property"
+      propertyType === "residential_property"
         ? residentialProperties
         : commercialProperties;
 
@@ -107,13 +220,13 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
       elements.push(
         <div
           key={i}
-          className=" w-full md:w-5/12"
-          onClick={() => selectService(service.name)}
+          className="w-full md:w-[47.5%] xxl:w-[48%]"
+          onClick={() => selectService(service)}
         >
           <ServiceSelectionCard
             title={service.name}
             className={`${
-              selectedService.includes(service.name) ? "bg-lime self-end " : ""
+              selectedServiceId.includes(service.id) ? "bg-lime self-end " : ""
             } text-[15px] py-[11px] border-lime`}
           />
         </div>
@@ -121,104 +234,168 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     }
 
     return elements;
-  }, [propertyType, selectedService]);
+  }, [propertyType, selectedService, selectedServiceId]);
 
   const serviceAttribute = useMemo<JSX.Element[]>(() => {
     const elements: JSX.Element[] = [];
-
     serviceAttributes.forEach((key, index) => {
-      const ele = attributes[key];
+      const ele = { ...attributes[key] };
+      if (ele?.attr === "property_type") {
+        let options = [...ele?.options];
+        ele.options = options?.filter((opt: any) => {
+          return opt.serviceType === propertyType;
+        });
+      }
       if (ele) {
         elements.push(
           <>
             <div
-              className=" w-full sm:px-5 md:px-0 xl:w-8/12 mt-8 mb-2"
+              className=" w-full sm:px-5 md:px-0 xl:w-8/12 xxl:w-9/12 mt-8 mb-2"
               key={index}
             >
               <h3 className=" text-2xl md:text-3xl text-dark-blue font-bold my-[30px]">
                 {ele.headings}
               </h3>
             </div>
-            <div className="w-full flex sm:px-5 md:px-0 md:justify-center">
-              <div className="w-full md:w-8/12 flex flex-col md:flex-row flex-wrap gap-6 lg:justify-start">
-                {ele.options.map((attr, index) => {
-                  if (attr.type === "radio") {
+            <div className="w-full flex sm:px-5 md:px-0 xl:w-8/12 xxl:w-9/12">
+              <div className="w-full  flex flex-col md:flex-row flex-wrap gap-6 lg:justify-start">
+                {ele.options?.map((opt, index, options) => {
+                  if (opt.type === "radio") {
                     return (
                       <>
                         <div key={index} className="w-full md:w-5/12">
                           <RadioButton
-                            title={attr.title}
-                            value={attr.value}
+                            title={opt.title}
+                            value={opt.value}
                             lable={ele.attr}
                             selectattribute={setAttributes}
                             className={`${
-                              attribute[ele.attr] === attr.value
+                              attribute[ele.attr] == opt.value ||
+                              (options.length - 1 === index &&
+                                attribute[ele.attr] >= opt.value &&
+                                typeof opt.value === "number")
                                 ? "bg-lime"
                                 : "border border-grey-500"
-                            } border border-grey-500 w-6 h-6 sm:w-7 sm:h-7`}
+                            } border border-grey-500 w-4 h-4 sm:w-5 sm:h-5`}
+                            pClass="text-[18px] font-semibold"
                           />
                         </div>
                       </>
                     );
-                  } else {
+                  } else if (opt.type !== "radio" && opt.type !== "select") {
                     return (
                       <div key={index} className="w-full  flex">
                         <p className=" text-lg text-dark-blue font-semibold mr-3">
-                          {attr.title}
+                          {opt.title}
                         </p>
-                        <Counter />
+                        <Counter
+                          label={ele.attr}
+                          minValue={ele.minValue}
+                          setValue={setAttributes}
+                          preValue={+attribute[ele.attr]}
+                        />
                       </div>
                     );
                   }
                 })}
-                {ele.exactNumber && attribute[ele.attr] === "+" && (
+                {ele.type === "select" && (
+                  <div className="w-full">
+                    <Select
+                      label=""
+                      className="text-sm leading-8 text-dark-blue font-semibold"
+                      name="property_area"
+                      register={register}
+                      inputClass="border-[#DEDEDE] py-2 px-3"
+                      required={false}
+                      options={ele.options}
+                    />
+                  </div>
+                )}
+                {ele.exactNumber && attribute[ele.attr] >= ele.minValue && (
                   <div className="w-full flex">
                     <p className=" text-lg text-dark-blue font-semibold mr-3 w-5/12">
                       {ele.exactNumber}
                     </p>
                     <div className="w-5/12">
-                      <Counter />
+                      <Counter
+                        minValue={ele.minValue}
+                        label={ele.attr}
+                        setValue={setAttributes}
+                        preValue={+attribute[ele.attr]}
+                        className={ele.className && ele.className}
+                      />
                     </div>
                   </div>
                 )}
-                {ele.Alert && attribute[ele.attr] === "+" && (
+                {ele.Alert && attribute[ele.attr] >= ele.minValue && (
                   <AlertBox text={ele.Alert} className="text-[17px]" />
                 )}
-                {ele.radioQuestion.map((ques, index) => {
-                  return (
-                    <div key={index} className="flex flex-col w-full">
-                      <p className=" text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
-                        {ques.question}
-                      </p>
-                      <div className="flex flex-wrap gap-9">
-                        {ques.options.map((x, index) => {
-                          return (
+                {ele?.radioQuestion1 && (
+                  <div className="flex flex-col w-full">
+                    <p className=" text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
+                      {ele.radioQuestion1.question}
+                    </p>
+                    <div className="flex flex-wrap gap-9">
+                      {ele.radioQuestion1.options.map((x, index: number) => {
+                        return (
+                          <>
                             <RadioButton
                               key={index}
                               title={x.title}
                               value={x.value}
-                              lable={x.attr}
+                              lable={ele.radioQuestion1.attr}
                               selectattribute={setAttributes}
                               className={`${
-                                attribute[x.attr] === x.value
+                                eval(attribute[ele.radioQuestion1.attr]) ==
+                                x.value
                                   ? "bg-lime"
                                   : "border border-grey-500"
-                              } border border-grey-500 w-6 h-6 sm:w-7 sm:h-7`}
+                              } border border-grey-500 w-4 h-4 sm:w-5 sm:h-5`}
                             />
-                          );
-                        })}
-                      </div>
+                          </>
+                        );
+                      })}
                     </div>
-                  );
-                })}
-
-                {ele.exactNumber2 && attribute[ele.attr] === "+" && (
+                  </div>
+                )}
+                {ele?.radioQuestion2 && attribute[ele?.radioQuestion1.attr] && (
+                  <div className="flex flex-col w-full">
+                    <p className=" text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
+                      {ele.radioQuestion2.question}
+                    </p>
+                    <div className="flex flex-wrap gap-9">
+                      {ele.radioQuestion2.options.map((x, index: number) => {
+                        return (
+                          <RadioButton
+                            key={index}
+                            title={x.title}
+                            value={x.value}
+                            lable={ele.radioQuestion2.attr}
+                            selectattribute={setAttributes}
+                            className={`${
+                              eval(attribute[ele.radioQuestion2.attr]) ==
+                              x.value
+                                ? "bg-lime"
+                                : "border border-grey-500"
+                            } border border-grey-500 w-4 h-4 sm:w-5 sm:h-5`}
+                          />
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+                {ele.exactNumber2 && +attribute[ele.attr] >= ele.minValue && (
                   <div className="w-full flex my-4">
                     <p className=" text-lg text-dark-blue font-semibold mr-3 ">
                       {ele.exactNumber2}
                     </p>
                     <div className="w-5/12">
-                      <Counter />
+                      <Counter
+                        setValue={setAttributes}
+                        label="other_rooms"
+                        minValue={0}
+                        preValue={+attribute[ele.attr]}
+                      />
                     </div>
                   </div>
                 )}
@@ -229,34 +406,41 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
       }
     });
     return elements;
-  }, [serviceAttributes, selectedService, attribute]);
+  }, [propertyType, serviceAttributes, selectedService, attribute]);
 
   return (
     <>
       <div className="flex justify-center">
-        <div className="w-full xl:container">
+        <div
+          className="w-full  md:min-w-[750px] md:max-w-[750px] lg:min-w-[970px] lg:max-w-[970px]
+        xl:min-w-[1155px] xl:max-w-[1155px]"
+        >
           <section>
             <div className="flex flex-col justify-center items-center">
-              <div className="w-full px-5 md:px-0 md:w-8/12 ">
+              <div className="w-full px-5 md:px-0 md:w-8/12 xxl:w-9/12">
                 <h3 className=" text-2xl md:text-3xl text-dark-blue font-bold my-[30px]">
                   Select your property type
                 </h3>
               </div>
-              <div className="flex justify-center ">
-                <div className="md:container flex flex-col px-5 lg:px-0  justify-center ">
+              <div className="flex justify-center">
+                <div className="md:container flex flex-col px-5 lg:px-0 justify-center ">
                   {!ispropertySelected && !propertyType && (
                     <p className="mb-3">Please select a category.</p>
                   )}
                   <div className="flex flex-col lg:flex-row gap-8">
                     <PropertyTypeCardComponent
-                      changePropertyType={setPropertyType}
+                      changePropertyType={changePropertyType}
+                      propertyType={propertyType}
                       title="Residential Property"
+                      value="residential_property"
                       description="Select this option if your property is a home."
                       icon={faHouse}
                     />
                     <PropertyTypeCardComponent
-                      changePropertyType={setPropertyType}
+                      changePropertyType={changePropertyType}
+                      propertyType={propertyType}
                       title="Commercial Property"
+                      value="commercial_property"
                       description="Select this option if the property is a commercial premises.
                     Example: An office, retail or restaurant."
                       icon={faBuilding}
@@ -274,27 +458,29 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
           {propertyType && (
             <section className="animate-fade-in-up" ref={servicesSection}>
               <div className="flex flex-col justify-center items-center px-5">
-                <div className=" w-full  sm: px-5 md:px-0  md:w-8/12 ">
-                  <h3 className=" text-2xl md:text-3xl text-dark-blue font-bold my-[30px]">
-                    Select Your Service
+                <div className=" w-full  sm:px-5 md:px-0  md:w-8/12 xxl:w-9/12 my-[20px]">
+                  <h3 className=" text-2xl md:text-3xl text-dark-blue font-bold ">
+                    Choose Your Services
                   </h3>
                 </div>
-                <div className="w-full flex justify-center sm:px-5  md:px-0">
-                  <div className=" w-full md:w-12/12 lg:w-10/12 xl:w-10/12 xxl:w-8/12  flex flex-col md:flex-row flex-wrap justify-center gap-6">
+                <div className="w-full md:w-8/12 xxl:w-9/12 flex justify-center sm:px-5  md:px-0">
+                  <div className=" w-full  flex flex-col md:flex-row flex-wrap justify-start gap-6  xxl:gap-x-8 xxl:gap-y-6">
                     {services}
                   </div>
                 </div>
                 <hr className=" h-[2px] mt-8  w-10/12 md:w-8/12 bg-[#dfdfdf]" />
-                <NextBottom setpropType={setIsPropertySelected} />
+                {selectedServiceId.length <= 0 && (
+                  <NextBottom setpropType={() => {}} />
+                )}
               </div>
             </section>
           )}
 
           {selectedService.length > 0 && (
-            <section className="animate-fade-in-up" ref={servicesSection}>
+            <section className="animate-fade-in-up" ref={attributeSection}>
               <div className="flex flex-col justify-center items-center px-5">
                 {serviceAttribute}
-                <div className="w-full sm:px-5 md:px-0 xl:w-8/12 mt-8 mb-2">
+                <div className="w-full sm:px-5 md:px-0  xl:w-8/12 xxl:w-9/12 mt-8 mb-2">
                   <h3 className="text-2xl md:text-3xl text-dark-blue font-bold my-[30px]">
                     Property Information
                   </h3>
@@ -307,7 +493,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                               handleChange={() => {}}
                               lable="Property Postcode"
                               register={register}
-                              name="postcode"
+                              name="property_postcode"
                               className="text-lg text-dark-blue font-semibold"
                               inputClass="border-grey-500 py-2.5 px-3"
                               placeholder="Enter full postcode here"
@@ -324,15 +510,69 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                     </div>
 
                     <div className="sm:w-6/12 w-full flex flex-col justify-center">
-                      <TextField
-                        handleChange={() => {}}
-                        lable="Property Address"
-                        register={register}
-                        name="address"
-                        inputClass="border-grey-500 py-2.5 px-3"
-                        className="text-lg text-dark-blue font-semibold"
-                        placeholder="Enter full address here"
-                      />
+                      <div className="w-full relative">
+                        <label className="text-lg text-dark-blue font-semibold">
+                          Property Address
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="Enter full address here"
+                          name="property_address"
+                          required={true}
+                          className={`border w-full  focus:border-lime  outline-none focus:ring-transparent
+                           shadow-sm border-grey-500 py-2.5 px-3`}
+                          {...register("property_address", { required: true })}
+                        />
+                        {
+                          <div className="w-[97%] max-h-[300px] overflow-y-auto border border-lime absolute bg-white ">
+                            <div
+                              className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue"
+                              onClick={() => {
+                                setValue("property_address", "sddsd");
+                              }}
+                            >
+                              3D Business Solutions (Accountancy Book Keeping IT
+                              Business Mobiles & HR), Accountancy, Leicester,
+                              Leicestershire, LE11AA
+                            </div>
+                            <div className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue">
+                              3D Business Solutions (Accountancy Book Keeping IT
+                              Business Mobiles & HR), Accountancy, Leicester,
+                              Leicestershire, LE11AA
+                            </div>
+                            <div className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue">
+                              3D Business Solutions (Accountancy Book Keeping IT
+                              Business Mobiles & HR), Accountancy, Leicester,
+                              Leicestershire, LE11AA
+                            </div>
+                            <div className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue">
+                              3D Business Solutions (Accountancy Book Keeping IT
+                              Business Mobiles & HR), Accountancy, Leicester,
+                              Leicestershire, LE11AA
+                            </div>
+                            <div className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue">
+                              3D Business Solutions (Accountancy Book Keeping IT
+                              Business Mobiles & HR), Accountancy, Leicester,
+                              Leicestershire, LE11AA
+                            </div>
+                            <div className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue">
+                              3D Business Solutions (Accountancy Book Keeping IT
+                              Business Mobiles & HR), Accountancy, Leicester,
+                              Leicestershire, LE11AA
+                            </div>
+                            <div className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue">
+                              3D Business Solutions (Accountancy Book Keeping IT
+                              Business Mobiles & HR), Accountancy, Leicester,
+                              Leicestershire, LE11AA
+                            </div>
+                            <div className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue">
+                              3D Business Solutions (Accountancy Book Keeping IT
+                              Business Mobiles & HR), Accountancy, Leicester,
+                              Leicestershire, LE11AA
+                            </div>
+                          </div>
+                        }
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -404,7 +644,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
   );
 }
 
-OrderNow.getInitialProps = async () => {
+export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.BASE_URL_DEV}/services/list_services`);
   const data = await res.json();
   const commercialProperties = data.services.filter(
@@ -415,8 +655,10 @@ OrderNow.getInitialProps = async () => {
   );
 
   return {
-    commercialProperties,
-    residentialProperties,
+    props: {
+      commercialProperties,
+      residentialProperties,
+    },
   };
 };
 
@@ -426,7 +668,11 @@ function NextBottom(props: any) {
   return (
     <div
       className="w-8/12 flex justify-center py-6"
-      onClick={() => props.setpropType(false)}
+      onClick={() =>
+        props.setpropType((prevValue) => {
+          return !prevValue;
+        })
+      }
     >
       <div className="inline-block w-[180px]">
         <ButtonComponent

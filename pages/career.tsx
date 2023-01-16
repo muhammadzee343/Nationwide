@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import styles from "../styles/footer.module.css";
-import FaqAccordionComponent from "../components/FaqAccordion.component";
+import FaqAccordionComponent from "../components/faqAccordion.component";
 import { joinAdvantageList, careerAccordionData } from "../utility/constants";
 import surveyor_image from "../public/surveyor-1.jpg";
 

@@ -48,7 +48,7 @@ export default function SelectProperty() {
                   <label
                     className="relative flex items-center border-2 border-lime py-[16px] px-[5px]
                    pl-[55px] font-[15px] font-bold text-dark-blue cursor-pointer mb-[15px] hover:bg-lime"
-                    onClick={() => displayDrawer("commerical_property")}
+                    onClick={() => displayDrawer("commercial_property")}
                   >
                     <FontAwesomeIcon
                       className="w-[26px] ,w-3 text-dark-blue  absolute left-[14px]"

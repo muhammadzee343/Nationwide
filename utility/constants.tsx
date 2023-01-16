@@ -136,7 +136,7 @@ export const BHR = {
   points: [
     "Nationwide Coverage",
     "Multiple Services at one place",
-    "Compatitive Prices",
+    "Competitive Prices",
     "Fast Turnaround",
     "Bulk Quantity Discount Available",
   ],
@@ -169,6 +169,7 @@ export const bundles = [
     content: {
       bundleName: "Service Bundle One",
       price: "129",
+      service: "10",
       list: [
         "Electrical Portable Appliance Test (PAT)",
         "Electrical Installation Condition Report (EICR)",
@@ -180,6 +181,7 @@ export const bundles = [
     content: {
       bundleName: "Service Bundle Two",
       price: "129",
+      service: "20",
       list: [
         "Energy Performance Certificate",
         "Electrical Installation Condition Report (EICR)",
@@ -191,6 +193,8 @@ export const bundles = [
     content: {
       bundleName: "Service Bundle Three",
       price: "199",
+      service: "30",
+      value: ["1", "7", "9"],
       list: [
         "Gas Safety Certificate",
         "Electrical Portable Appliance Test (PAT)",
@@ -203,6 +207,7 @@ export const bundles = [
     content: {
       bundleName: "Service Bundle Four",
       price: "199",
+      service: "40",
       list: [
         "Energy Performance Certificate",
         "Gas Safety Certificate",

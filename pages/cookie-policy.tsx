@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../styles/footer.module.css";
-import HeaderComponent from "../components/Header.component";
+import HeaderComponent from "../components/header.component";
 import { cookielistPoints } from "../utility/constants";
 
 function CookiePolicy() {

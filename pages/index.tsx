@@ -51,7 +51,6 @@ library.add(
 export default function Home() {
   const { smallDevice, middleDevice, largeDevice }: any =
     useContext(DeviceContext);
-  console.log(process.env.BASE_URL_DEV);
   return (
     <div>
       <Head>
