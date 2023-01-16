@@ -49,7 +49,6 @@ function GeneralEnquiries({ Services }: any) {
   const services = useMemo<JSX.Element[]>(() => {
     const elements: JSX.Element[] = [];
     const services = Services;
-    console.log(services);
     for (let i = 0; i < services.length; i++) {
       const service = services[i];
       elements.push(
