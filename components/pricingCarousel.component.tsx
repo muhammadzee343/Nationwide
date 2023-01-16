@@ -11,7 +11,7 @@ import PricingCard from "./pricingCard.component";
 function PricingCarouselComponent(props: any) {
   return (
     <>
-      <div className="flex lg:hidden relative pl-6 sm:px-6 mx-auto md:px-12 xl:px-32 mt-[10px] xl:mt-[-200px]">
+      <div className="flex lg:hidden relative pl-6 sm:px-6 mx-auto md:px-12 xl:px-32 mt-[10px] xl:mt-[-200]px]">
         <div
           className="border border-[#a0a0a0] absolute w-[33px] h-[45px] bg-white top-[49%]
        left-3  sm:left-[30px] z-[600] flex justify-center items-center cursor-pointer"

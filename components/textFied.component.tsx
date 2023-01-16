@@ -5,10 +5,10 @@ function TextField({
   placeholder = "",
   name = "",
   className = "",
-  handleChange,
-  required,
+  required = false,
   register,
   inputClass = "",
+  type = "text",
 }: any) {
   return (
     <div className="w-full">
@@ -17,15 +17,12 @@ function TextField({
         {required && <span className="text-[#ff0000] text-xl ml-1">*</span>}
       </label>
       <input
-        type="text"
+        type={type}
         placeholder={placeholder}
-        required
         name={name}
+        required={required}
         className={`border w-full  focus:border-lime  outline-none focus:ring-transparent shadow-sm ${inputClass}`}
-        {...register(name, { required: true })}
-        onChange={({ target: { value } }) => {
-          handleChange(value);
-        }}
+        {...register(name, { required })}
       />
     </div>
   );

@@ -4,7 +4,7 @@ function TextArea({
   lable = "",
   placeholder,
   name,
-  handleChange,
+  required,
   className = "",
   inputClass = "",
   register,
@@ -15,11 +15,10 @@ function TextArea({
       <textarea
         cols={80}
         placeholder={placeholder}
-        value={""}
         name={name}
         className={`border w-full outline-none ${inputClass}`}
-        onChange={(e) => handleChange(e)}
-        {...register(name)}
+        onChange={() => {}}
+        {...register(name, { required })}
       ></textarea>
     </div>
   );

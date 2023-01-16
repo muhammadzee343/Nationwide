@@ -3,11 +3,15 @@ import styles from "../styles/Home.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faStar } from "@fortawesome/free-solid-svg-icons";
 import ButtonComponent from "./button.component";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 function PricingCard({
   className = "",
-  content = { bundleName: "", price: "", list: [""] },
+  content = { bundleName: "", price: "", list: [""], service: "" },
 }) {
+  const router = useRouter();
+
   return (
     <>
       <div
@@ -62,14 +66,21 @@ function PricingCard({
                     })}
                   </ul>
                 </div>
-                <ButtonComponent
-                  text="Get Instant Quote"
-                  className={` ${
-                    content?.bundleName === "Service Bundle Three"
-                      ? "bg-lime text-dark-blue bg-lime hover:bg-dark-blue hover:text-white "
-                      : "bg-dark-blue text-white hover:bg-lime hover:text-white"
-                  } ease-in duration-200 px-[20px] py-[13px] uppercase`}
-                />
+                <Link
+                  href={{
+                    pathname: "/order-now",
+                    query: { bundle: content.service },
+                  }}
+                >
+                  <ButtonComponent
+                    text="Get Instant Quote"
+                    className={` ${
+                      content?.bundleName === "Service Bundle Three"
+                        ? "bg-lime text-dark-blue bg-lime hover:bg-dark-blue hover:text-white "
+                        : "bg-dark-blue text-white hover:bg-lime hover:text-white"
+                    } ease-in duration-200 px-[20px] py-[13px] uppercase`}
+                  />
+                </Link>
               </div>
             </div>
           </div>

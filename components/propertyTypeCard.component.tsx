@@ -4,8 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function PropertyTypeCardComponent(props: any) {
   return (
     <div
-      className="border-2 border-lime lg:w-[275px] lg:h-[330px]  drop-shadow-lg cursor-pointer"
-      onClick={() => props.changePropertyType(props.title)}
+      className={`border-2 border-lime lg:w-[275px] lg:h-[330px]  drop-shadow-lg cursor-pointer ${
+        props.propertyType === props.value && "bg-lime"
+      }`}
+      onClick={() => props.changePropertyType(props.value)}
     >
       <div className="px-[23px]  flex flex-col justify-center pt-[50px] mb-[10px]">
         <div className="h-11 mb-7">

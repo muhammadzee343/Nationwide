@@ -1,8 +1,8 @@
 import React from "react";
-import HeaderComponent from "../components/Header.component";
-import FaqCardComponent from "../components/FaqCard.component";
+import HeaderComponent from "../components/header.component";
+import FaqCardComponent from "../components/faqCard.component";
 import ButtonComponent from "../components/button.component";
-import FaqAccordionComponent from "../components/FaqAccordion.component";
+import FaqAccordionComponent from "../components/faqAccordion.component";
 import { faqCardData, faqAccordionData } from "../utility/constants";
 import Link from "next/link";
 

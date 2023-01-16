@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form";
 import ButtonComponent from "./button.component";
 import Link from "next/link";
 import TermsConditionComponent from "./terms&condition.component";
-import TextField from "./TextFied.component";
-import TextArea from "./TextArea.component";
-import RadioInput from "./RadioInput.component";
+import TextField from "./textFied.component";
+import TextArea from "./textArea.component";
+import RadioInput from "./radioInput.component";
 function BillingForm(props: any) {
   const { register, handleSubmit } = useForm({
     defaultValues: {
@@ -99,41 +99,7 @@ function BillingForm(props: any) {
               inputClass="border-[#DEDEDE] py-2 px-3"
             />
           </div>
-          <div className="w-full mt-3 mb-1">
-            <TextField
-              handleChange={() => {}}
-              className="text-sm leading-8 text-dark-blue font-semibold"
-              placeholder="Apartment, suite, unit, etc. (optional)"
-              lable=""
-              name="appartment"
-              register={register}
-              inputClass="border-[#DEDEDE] py-2 px-3"
-            />
-          </div>
-          <div className="w-[45%] mb-1">
-            <TextField
-              handleChange={() => {}}
-              className="text-sm leading-8 text-dark-blue font-semibold"
-              placeholder=""
-              lable="Town / City"
-              required={true}
-              name="city"
-              register={register}
-              inputClass="border-[#DEDEDE] py-2 px-3"
-            />
-          </div>
-          <div className="w-[45%] mb-1">
-            <TextField
-              handleChange={() => {}}
-              className="text-sm leading-8 text-dark-blue font-semibold"
-              placeholder=""
-              lable="County Optional"
-              required={true}
-              name="county"
-              register={register}
-              inputClass="border-[#DEDEDE] py-2 px-3"
-            />
-          </div>
+
           <div className="w-[45%] mb-1">
             <TextField
               handleChange={() => {}}
@@ -172,19 +138,6 @@ function BillingForm(props: any) {
         </div>
       </div>
       <div className="w-full lg:w-[48%]">
-        <h3 className="text-[28px] text-dark-blue leading-7 mb-[15px] font-semibold ">
-          Additional information
-        </h3>
-        <div className="w-full mb-1">
-          <TextArea
-            lable="Order Notes (optional)"
-            placeholder="You can provide any special instructions/notes to help us deal with your order."
-            name="orderNotes"
-            className="text-sm leading-8 text-dark-blue font-semibold"
-            inputClass=" border-[#DEDEDE] py-5 px-3 focus:border-lime "
-            register={register}
-          />
-        </div>
         <div className="bg-[#ebe9eb] mt-[30px]">
           <div className="p-[14px] border-b border-b-[#d3ced2]">
             <RadioInput

@@ -1,13 +1,17 @@
 import React from "react";
 
-function CardComponent({ heading = "", paragraph = "", className = "" }) {
+function CardComponent({
+  heading = "",
+  paragraph = "",
+  className = "",
+  hClass = "",
+  pClass = "",
+}) {
   return (
     <div className={`${className}`}>
       <div>
-        <h4 className="text-xl mb-[15px] text-black font-bold text-center">
-          {heading}
-        </h4>
-        <p className=" font-semibold text-justify text-base">{paragraph}</p>
+        <h4 className={`${hClass}`}>{heading}</h4>
+        <p className={`${pClass}`}>{paragraph}</p>
       </div>
     </div>
   );

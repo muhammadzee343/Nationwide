@@ -1,20 +1,32 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
-function Counter(props: any) {
-  const [count, setCount] = useState(0);
+function Counter({
+  minValue = 0,
+  label,
+  setValue,
+  preValue = 0,
+  className = "",
+}: any) {
+  const [count, setCount] = useState<number>(preValue || minValue);
   function increment() {
     setCount(function (prevCount) {
+      setValue((types) => {
+        return { ...types, [label]: prevCount };
+      });
       return (prevCount += 1);
     });
   }
 
   function decrement() {
     setCount(function (prevCount) {
-      if (prevCount > 0) {
+      setValue((types: any) => {
+        return { ...types, [label]: prevCount };
+      });
+      if (prevCount > minValue) {
         return (prevCount -= 1);
       } else {
-        return (prevCount = 0);
+        return (prevCount = minValue);
       }
     });
   }
@@ -29,11 +41,13 @@ function Counter(props: any) {
         </span>
       </div>
       <input
-        className="w-14 h-7 border border-grey-500 flex
-      justify-center text-center text-base text-dark-blue font-semibold outline-0 "
+        className={`w-14 h-7 border border-grey-500 flex
+      justify-center text-center text-base text-dark-blue font-semibold outline-none focus:ring-transparent ${className}`}
         type="number"
         step={1}
+        min={minValue}
         value={count}
+        onChange={() => {}}
       />
       <div className="ml-3" onClick={decrement}>
         <span className="w-6 h-6 sm:w-7 sm:h-7 bg-lime flex justify-center items-center rounded-full">

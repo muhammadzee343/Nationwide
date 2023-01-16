@@ -1,9 +1,9 @@
 import React from "react";
-import TextField from "../components/TextFied.component";
+import TextField from "../components/textFied.component";
 import { useForm } from "react-hook-form";
 import { register } from "tsconfig-paths";
-import RadioInput from "../components/RadioInput.component";
-import TextArea from "../components/TextArea.component";
+import RadioInput from "../components/radioInput.component";
+import TextArea from "../components/textArea.component";
 import ButtonComponent from "../components/button.component";
 
 const JoinUs = (props: any) => {
@@ -38,7 +38,7 @@ const JoinUs = (props: any) => {
       <div
         className="w-full flex flex-col justify-center items-center
        md:min-w-[750px] md:max-w-[750px] lg:min-w-[970px] lg:max-w-[970px]
-        xl:min-w-[1155px] xl:max-w-[1155px]  pt-[35px] pb-[25px] px-2 sm:px-0"
+        xl:min-w-[1155px] xl:max-w-[1155px] pt-[35px] pb-[25px] px-2 sm:px-0"
       >
         <Header />
         <form>

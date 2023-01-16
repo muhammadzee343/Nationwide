@@ -6,7 +6,7 @@ function AccordianComponent(props) {
   return (
     <>
       <AccordionPanel>
-        <AccordionContent>dsfsddff</AccordionContent>
+        <AccordionContent></AccordionContent>
       </AccordionPanel>
     </>
   );
