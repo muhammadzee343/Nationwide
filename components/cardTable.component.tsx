@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
+import { faCircleInfo, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 import { useForm } from "react-hook-form";
 import ButtonComponent from "./button.component";
@@ -29,7 +30,6 @@ function CardTable(props) {
               Mobiles & HR), Accountancy, Leicester, Leicestershire, LE11AA
             </p>
           </div>
-          <KeyHolderInfo />
         </div>
 
         <div className="w-full">
@@ -54,8 +54,20 @@ function CardTable(props) {
             </li>
           </ul>
         </div>
-        <div className="w-full"></div>
+        <ButtonComponent
+          text="Add an other service"
+          className=" flex justify-center text-[13px] hover:text-white font-medium border-2 border-dark-blue hover:border-lime
+           hover:bg-lime px-[28px] py-[12px] uppercase rounded"
+        />
+        <br />
         <TextArea />
+        <div className="w-full px-4">
+          <p className="text-dark-blue text-[18px] font-semibold ">
+            Keyholder Info (Contact for Access)
+            <FontAwesomeIcon className="ml-2" icon={faInfoCircle} />
+          </p>
+          <KeyHolderInfo />
+        </div>
       </div>
       <div className="border border-[#e5e7eb] rounded-sm my-2">
         <div className="w-full flex px-4 py-1 justify-between">
@@ -65,7 +77,6 @@ function CardTable(props) {
               Mobiles & HR), Accountancy, Leicester, Leicestershire, LE11AA
             </p>
           </div>
-          <KeyHolderInfo />
         </div>
 
         <div className="w-full">
@@ -99,8 +110,20 @@ function CardTable(props) {
             </li>
           </ul>
         </div>
-        <div className="w-full"></div>
-        <TextArea />
+        <div className="w-full px-4">
+          <ButtonComponent
+            text="Add an other service"
+            className=" flex justify-center text-[13px] hover:text-white font-medium border-2 border-dark-blue hover:border-lime
+           hover:bg-lime px-[28px] py-[12px] uppercase rounded"
+          />
+          <br />
+          <TextArea />
+          <p className="text-dark-blue text-[18px] font-semibold ">
+            Keyholder Info (Contact for Access)
+            <FontAwesomeIcon className="ml-2" icon={faInfoCircle} />
+          </p>
+          <KeyHolderInfo hide={false} />
+        </div>
       </div>
     </div>
   );
@@ -108,26 +131,33 @@ function CardTable(props) {
 
 function KeyHolderInfo({ hide = true }: any) {
   return (
-    <div className="w-[30%] relative bg-[#ececec] ">
+    <div className="relative bg-[#ececec]">
       <div className="px-3 py-1">
-        <span className="absolute top-0 right-1 cursor-pointer text-sm text-dark-blue ">
+        <span
+          className="absolute top-1 right-3 cursor-pointer text-sm text-dark-blue"
+          onClick={() => (hide = !hide)}
+        >
           Edit
         </span>
-        <p className="text-dark-blue text-sm font-semibold font-bold">
-          Keyholder Info
-        </p>
-        <p className="text-dark-blue text-sm font-semibold break-all">
-          Rosmery Ballard
-        </p>
-        <p className="text-dark-blue text-sm font-semibold break-all">
-          0293942233
-        </p>
-        <p className="text-dark-blue text-sm font-semibold break-all">
-          romeryballlr@gmail.com
-        </p>
+        <div className="flex flex-col sm:flex-row my-2 sm:space-x-44">
+          <p className="text-dark-blue text-[16px] font-semibold break-all">
+            Name: Rosmery Ballard
+          </p>
+          <p className="text-dark-blue text-[16px] font-semibold break-all">
+            Email: romeryballlr@gmail.com
+          </p>
+        </div>
+        <div className="flex flex-col sm:flex-row my-2 md:space-x-44">
+          <p className="text-dark-blue text-[16px] font-semibold break-all">
+            Contact 1: 07942423523
+          </p>
+          <p className="text-dark-blue text-[16px] font-semibold break-all">
+            Contact 2: 07942423523
+          </p>
+        </div>
       </div>
       {!hide && (
-        <div className=" w-full absolute bg-[#ececec] px-3">
+        <div className=" w-[60%] sm:w-[45%] absolute bg-[#ececec] px-3 top-5 right-1 ">
           <div className="w-full">
             <label className="text-sm font-semibold text-dark-blue">
               Name
@@ -145,20 +175,6 @@ function KeyHolderInfo({ hide = true }: any) {
 
           <div className="w-full">
             <label className="text-sm font-semibold text-dark-blue">
-              Phone
-              <span className="text-[#ff0000] text-xl ml-1">*</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Enter your Phone No"
-              name="name"
-              required={true}
-              className={`border w-full  focus:border-lime  outline-none focus:ring-transparent shadow-sm`}
-              onChange={() => {}}
-            />
-          </div>
-          <div className="w-full">
-            <label className="text-sm font-semibold text-dark-blue">
               Email
               <span className="text-[#ff0000] text-xl ml-1">*</span>
             </label>
@@ -171,6 +187,35 @@ function KeyHolderInfo({ hide = true }: any) {
               onChange={() => {}}
             />
           </div>
+
+          <div className="w-full">
+            <label className="text-sm font-semibold text-dark-blue">
+              Contact 1<span className="text-[#ff0000] text-xl ml-1">*</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Enter your Phone No"
+              name="name"
+              required={true}
+              className={`border w-full  focus:border-lime  outline-none focus:ring-transparent shadow-sm`}
+              onChange={() => {}}
+            />
+          </div>
+
+          <div className="w-full">
+            <label className="text-sm font-semibold text-dark-blue">
+              Contact 2<span className="text-[#ff0000] text-xl ml-1">*</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Enter your Phone No"
+              name="name"
+              required={true}
+              className={`border w-full  focus:border-lime  outline-none focus:ring-transparent shadow-sm`}
+              onChange={() => {}}
+            />
+          </div>
+
           <div className="w-[80%] mx-auto my-2">
             <ButtonComponent
               text="SAVE"

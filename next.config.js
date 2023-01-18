@@ -10,6 +10,7 @@ const nextConfig = {
   },
   env: {
     BASE_URL_DEV: process.env.BASE_URL_DEV,
+    ADDRESS_API_KEY: process.env.API_KEY_DEV,
   },
 };
 

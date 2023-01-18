@@ -19,12 +19,12 @@ function Checkout(props: any) {
           <div className="w-full my-3">
             <CardTable />
           </div>
-          <ButtonComponent
-            text="Add an other service"
-            className=" flex justify-center text-[13px] hover:text-white font-medium border-2 border-dark-blue hover:border-lime
-           hover:bg-lime px-[28px] py-[12px] uppercase rounded"
-          />
-          <br />
+          {/*<ButtonComponent*/}
+          {/*  text="Add an other service"*/}
+          {/*  className=" flex justify-center text-[13px] hover:text-white font-medium border-2 border-dark-blue hover:border-lime*/}
+          {/* hover:bg-lime px-[28px] py-[12px] uppercase rounded"*/}
+          {/*/>*/}
+          {/*<br />*/}
           <ButtonComponent
             text="Pay by debit/credit card"
             className=" flex justify-center text-[13px] font-bold hover:text-white border-2 border-lime
@@ -57,6 +57,9 @@ function Checkout(props: any) {
               applied.
             </p>
           </div>
+          <div className="hidden md:w-full md:flex">
+            <OrderSummary />
+          </div>
           <CardComponent
             className="bg-lime shadow px-[20px] pt-[15px] pb-[20px] my-[25px]"
             hClass="text-xl mb-[15px] text-black font-bold text-center"
@@ -68,9 +71,6 @@ function Checkout(props: any) {
              currently between 1 to 3 working days. If you need help placing new order or got a question,
               please don’t hesitate to call us free at 0800 048 7474."
           />
-          <div className="hidden md:w-full md:flex">
-            <OrderSummary />
-          </div>
         </div>
       </div>
     </div>
@@ -79,7 +79,10 @@ function Checkout(props: any) {
 
 function OrderSummary() {
   return (
-    <div className="flex justify-center flex-col md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0 md:space-x-6 xl:space-x-8">
+    <div
+      className="flex justify-center flex-col md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0
+     md:space-x-6 xl:space-x-8 mt-6"
+    >
       <div className="flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full bg-[#ececec] dark:bg-gray-800 space-y-6">
         <h3 className="text-xl dark:text-white font-semibold leading-5 text-gray-800">
           Summary
@@ -90,7 +93,7 @@ function OrderSummary() {
               Subtotal
             </p>
             <p className="text-base dark:text-gray-300 leading-4 text-gray-600">
-              $56.00
+              &#163;56.00
             </p>
           </div>
           <div className="flex justify-between items-center w-full">
@@ -98,15 +101,7 @@ function OrderSummary() {
               Discount
             </p>
             <p className="text-base dark:text-gray-300 leading-4 text-gray-600">
-              -$28.00 (50%)
-            </p>
-          </div>
-          <div className="flex justify-between items-center w-full">
-            <p className="text-base dark:text-white leading-4 text-gray-800">
-              Shipping
-            </p>
-            <p className="text-base dark:text-gray-300 leading-4 text-gray-600">
-              $8.00
+              -&#163;28.00 (50%)
             </p>
           </div>
         </div>
@@ -115,7 +110,7 @@ function OrderSummary() {
             Total
           </p>
           <p className="text-base dark:text-gray-300 font-semibold leading-4 text-gray-600">
-            $36.00
+            &#163;36.00
           </p>
         </div>
       </div>

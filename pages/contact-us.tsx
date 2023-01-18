@@ -2,9 +2,9 @@ import React from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faGlobe,
   faLocationDot,
   faMobileScreenButton,
-  faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 import { faMessage } from "@fortawesome/free-regular-svg-icons";
 import { enquiries } from "../utility/contactUsConstants";
@@ -27,10 +27,10 @@ function ContactUs(props: any) {
               Depending on the type and nature of your enquiry. Please select
               one of the relevant option below.
             </p>
-            {enquiries.map(({ text, link }, index) => {
+            {enquiries.map(({ text, link, query }, index) => {
               return (
                 <div key={index}>
-                  <Enquiry text={text} link={link} />
+                  <Enquiry text={text} link={link} query={query} />
                 </div>
               );
             })}
@@ -47,11 +47,11 @@ function ContactUs(props: any) {
 
 export default ContactUs;
 
-function Enquiry({ text, link }: any) {
+function Enquiry({ text, link, query }: any) {
   return (
     <div className=" w-[95%] md:w-11/12 bg-lime hover:bg-dark-blue  text-white ease-in mb-[21px]  duration-200">
       <Link
-        href={link}
+        href={{ pathname: link, query: query }}
         className="text-sm block text-white font-semibold px-[30px] py-[13px]"
       >
         {text}

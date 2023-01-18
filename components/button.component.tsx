@@ -4,6 +4,7 @@ function ButtonComponent({
   text = "",
   className = "",
   children,
+  type = "submit",
   ...buttonProps
 }: any) {
   // @ts-ignore
@@ -13,7 +14,7 @@ function ButtonComponent({
         <button
           className={`w-full   
               text-center tracking-normal ease-in duration-200  ${className}`}
-          type="submit"
+          type={type}
           {...buttonProps}
         >
           {text}

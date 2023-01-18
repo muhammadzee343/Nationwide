@@ -33,9 +33,7 @@ function BillingForm(props: any) {
         <div className=" flex flex-wrap justify-between justify-center">
           <div className="w-[45%] mb-1">
             <TextField
-              handleChange={() => {}}
               className="text-sm leading-8 text-dark-blue font-semibold"
-              placeholder=""
               lable="First Name"
               name="firstName"
               required={true}
@@ -45,9 +43,7 @@ function BillingForm(props: any) {
           </div>
           <div className="w-[45%] mb-1">
             <TextField
-              handleChange={() => {}}
               className="text-sm leading-8 text-dark-blue font-semibold"
-              placeholder=""
               lable="Last Name"
               required={true}
               name="lastName"
@@ -57,9 +53,7 @@ function BillingForm(props: any) {
           </div>
           <div className="w-full mb-1">
             <TextField
-              handleChange={() => {}}
               className="text-sm leading-8 text-dark-blue font-semibold"
-              placeholder=""
               lable="Company Name (optional)"
               name="company"
               register={register}
@@ -69,9 +63,7 @@ function BillingForm(props: any) {
           <div className="w-full flex items-end gap-9 mb-1">
             <div className="w-[45%]">
               <TextField
-                handleChange={() => {}}
                 className="text-sm leading-8 text-dark-blue font-semibold"
-                placeholder=""
                 lable="PostCode"
                 required={true}
                 name="postcode"
@@ -89,7 +81,6 @@ function BillingForm(props: any) {
           </div>
           <div className="w-full mb-1">
             <TextField
-              handleChange={() => {}}
               className="text-sm leading-8 text-dark-blue font-semibold"
               placeholder=" House number and street name"
               lable="Street address"
@@ -102,9 +93,7 @@ function BillingForm(props: any) {
 
           <div className="w-[45%] mb-1">
             <TextField
-              handleChange={() => {}}
               className="text-sm leading-8 text-dark-blue font-semibold"
-              placeholder=""
               lable="Phone"
               required={true}
               name="phone"
@@ -114,9 +103,7 @@ function BillingForm(props: any) {
           </div>
           <div className="w-[45%] mb-1">
             <TextField
-              handleChange={() => {}}
               className="text-sm leading-8 text-dark-blue font-semibold"
-              placeholder=""
               lable="Phone 2 (optional)"
               name="phone2"
               register={register}
@@ -125,9 +112,7 @@ function BillingForm(props: any) {
           </div>
           <div className="w-full mb-1">
             <TextField
-              handleChange={() => {}}
               className="text-sm leading-8 text-dark-blue font-semibold"
-              placeholder=""
               lable="Email"
               required={true}
               name="email"
@@ -180,7 +165,6 @@ function BillingForm(props: any) {
             <CheckBox
               register={register}
               label="I have read and agree to the website"
-              className=""
               required={true}
             />
             <div className="w-[158px]  mt-3 mb-1 ml-auto">
