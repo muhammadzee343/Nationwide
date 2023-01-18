@@ -93,7 +93,7 @@ function FaqAccordion({
                 {item?.requirementList?.map((desc: any, index: number) => {
                   return (
                     <div className="flex flex-row" key={index}>
-                      {desc.iconName}
+                      <span className="w-[15px]">{desc.iconName}</span>
                       <li className="ml-2 leading-7 pb-3" key={index}>
                         {desc.listPoint}
                       </li>

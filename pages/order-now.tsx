@@ -31,7 +31,11 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     circuits: "",
   };
 
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit, setValue, watch } = useForm();
+
+  const postcode = watch("property_postcode", "");
+  const propertyAddress = watch("property_address");
+
   const [propertyType, setPropertyType] = useState<string>("");
 
   const [ispropertySelected, setIsPropertySelected] = useState<boolean>(true);
@@ -44,12 +48,16 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   const [attribute, setAttributes] = useState<any>(attributeState);
 
+  const [addresses, setAddresseses] = useState([]);
+
   const servicesSection = useRef<HTMLInputElement | any>();
 
   const attributeSection = useRef<HTMLInputElement | any>();
 
   const router = useRouter();
+
   const { bundle, ser, value, keys, property } = router.query;
+
   useEffect(() => {
     if (bundle) {
       selectBundle();
@@ -156,6 +164,31 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     scrollIntoViewClick();
     setSelectedService([]);
     setAttributes(attributeState);
+  };
+
+  const getPropertyAddress = async () => {
+    if (!propertyAddress) {
+      try {
+        const response = await fetch(
+          `https://api.getAddress.io/find/${postcode}?api-key=${process.env.ADDRESS_API_KEY}`
+        );
+        if (!response.ok) {
+          setAddresseses([]);
+          switch (response.status) {
+            case 400:
+              alert("Please Enter a valid Postcode");
+          }
+        } else {
+          const data = await response.json();
+          setAddresseses([...data.addresses]);
+        }
+      } catch (err) {}
+    }
+  };
+
+  const setPropertyAddress = (address: string) => {
+    setValue("property_address", address);
+    setAddresseses([]);
   };
 
   const setAllAttributes = (selectedServicesData: string[]) => {
@@ -410,7 +443,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   return (
     <>
-      <div className="flex justify-center">
+      <div className="flex justify-center" onClick={() => setAddresseses([])}>
         <div
           className="w-full  md:min-w-[750px] md:max-w-[750px] lg:min-w-[970px] lg:max-w-[970px]
         xl:min-w-[1155px] xl:max-w-[1155px]"
@@ -490,7 +523,6 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                         <div className="w-full sm:w-7/12 flex flex-col justify-center">
                           <div>
                             <TextField
-                              handleChange={() => {}}
                               lable="Property Postcode"
                               register={register}
                               name="property_postcode"
@@ -503,7 +535,9 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                         <div className=" w-full sm:w-4/12 flex items-end">
                           <ButtonComponent
                             text="Find Address"
-                            className="bg-[#252525] text-white text-[11px] sm:text-[12px] font-semibold px-[2px] sm:px-[20px] py-[13px] hover:bg-lime hover:text-white ease-in duration-200"
+                            className="bg-[#252525] text-white text-[11px] sm:text-[12px] font-semibold px-[2px]
+                             sm:px-[20px] py-[13px] hover:bg-lime hover:text-white ease-in duration-200"
+                            onClick={getPropertyAddress}
                           />
                         </div>
                       </div>
@@ -523,55 +557,21 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                            shadow-sm border-grey-500 py-2.5 px-3`}
                           {...register("property_address", { required: true })}
                         />
-                        {
+                        {addresses.length > 0 && (
                           <div className="w-[97%] max-h-[300px] overflow-y-auto border border-lime absolute bg-white ">
-                            <div
-                              className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue"
-                              onClick={() => {
-                                setValue("property_address", "sddsd");
-                              }}
-                            >
-                              3D Business Solutions (Accountancy Book Keeping IT
-                              Business Mobiles & HR), Accountancy, Leicester,
-                              Leicestershire, LE11AA
-                            </div>
-                            <div className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue">
-                              3D Business Solutions (Accountancy Book Keeping IT
-                              Business Mobiles & HR), Accountancy, Leicester,
-                              Leicestershire, LE11AA
-                            </div>
-                            <div className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue">
-                              3D Business Solutions (Accountancy Book Keeping IT
-                              Business Mobiles & HR), Accountancy, Leicester,
-                              Leicestershire, LE11AA
-                            </div>
-                            <div className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue">
-                              3D Business Solutions (Accountancy Book Keeping IT
-                              Business Mobiles & HR), Accountancy, Leicester,
-                              Leicestershire, LE11AA
-                            </div>
-                            <div className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue">
-                              3D Business Solutions (Accountancy Book Keeping IT
-                              Business Mobiles & HR), Accountancy, Leicester,
-                              Leicestershire, LE11AA
-                            </div>
-                            <div className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue">
-                              3D Business Solutions (Accountancy Book Keeping IT
-                              Business Mobiles & HR), Accountancy, Leicester,
-                              Leicestershire, LE11AA
-                            </div>
-                            <div className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue">
-                              3D Business Solutions (Accountancy Book Keeping IT
-                              Business Mobiles & HR), Accountancy, Leicester,
-                              Leicestershire, LE11AA
-                            </div>
-                            <div className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue">
-                              3D Business Solutions (Accountancy Book Keeping IT
-                              Business Mobiles & HR), Accountancy, Leicester,
-                              Leicestershire, LE11AA
-                            </div>
+                            {addresses.map((ele, index) => {
+                              return (
+                                <div
+                                  key={index}
+                                  className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue"
+                                  onClick={() => setPropertyAddress(ele)}
+                                >
+                                  {ele}
+                                </div>
+                              );
+                            })}
                           </div>
-                        }
+                        )}
                       </div>
                     </div>
                   </div>

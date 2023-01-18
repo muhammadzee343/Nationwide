@@ -6,8 +6,7 @@ import MainNavComponent from "../components/mainNav.component";
 import Footer from "../components/footer.component";
 import DrawerComponent from "../components/drawer.component";
 
-import { SidebarContext } from "../context/sidebarContext";
-import { OverlayContext } from "../context/sidebarContext";
+import { OverlayContext, SidebarContext } from "../context/sidebarContext";
 import { myFont } from "../utility/constants";
 
 import "../styles/globals.css";
