@@ -4,10 +4,13 @@ import styles from "../styles/footer.module.css";
 import FaqAccordionComponent from "../components/faqAccordion.component";
 import { joinAdvantageList, careerAccordionData } from "../utility/constants";
 import surveyor_image from "../public/surveyor-1.jpg";
-
+import Head from "next/head";
 function Career() {
   return (
     <div className="w-full bg-white flex justify-center">
+      <Head>
+        <title>Career - Nationwide Surveyors</title>
+      </Head>
       <div className="w-full flex flex-col items-center">
         <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0">
           <div className="grid place-items-center">

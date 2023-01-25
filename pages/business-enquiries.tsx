@@ -1,10 +1,13 @@
 import React from "react";
 import styles from "../styles/footer.module.css";
 import HeaderComponent from "../components/header.component";
-
+import Head from "next/head";
 function BusinessEnquiries(props: any) {
   return (
     <div className="w-full bg-white flex justify-center  items-center">
+      <Head>
+        <title>Business Enquiries - Nationwide Surveyors</title>
+      </Head>
       <div className=" w-full flex flex-col items-center">
         <HeaderComponent
           header="Business Enquiries"

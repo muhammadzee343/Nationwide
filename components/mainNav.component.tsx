@@ -9,19 +9,32 @@ import {
   faChevronDown,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import MegaMenu from "./megaMenu.component";
 import MobileScreenNav from "./mobileScreenNav.component";
-import { DeviceContext } from "./deviceContext.component";
 import { useMediaQuery } from "react-responsive";
 import { useRouter } from "next/router";
+import { CartCountContext } from "../context/sidebarContext";
 
 const MainNavComponent = () => {
   const [collapseIcon, setCollapseIcon] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [isSticky, setSticky] = useState(false);
+  useLayoutEffect(() => {
+    function updatePosition() {
+      if (window.pageYOffset >= 60) {
+        setSticky(true);
+      } else {
+        setSticky(false);
+      }
+    }
+    window.addEventListener("scroll", updatePosition);
+    updatePosition();
+    return () => window.removeEventListener("scroll", updatePosition);
+  }, []);
   const router = useRouter();
-
-  const { xlargeDevice }: any = useContext(DeviceContext);
+  const { count } = useContext(CartCountContext);
+  useEffect(() => {}, [count]);
 
   const handleMediaQueryChange = (matches: any) => {
     // matches will be true or false based on the value for the media query
@@ -40,6 +53,12 @@ const MainNavComponent = () => {
 
   const handleMouseOut = () => {
     setIsHovering(false);
+  };
+
+  const goToCheckout = () => {
+    if (count && count > 0) {
+      router.push({ pathname: "/checkout" });
+    }
   };
 
   return (
@@ -67,9 +86,12 @@ const MainNavComponent = () => {
           </span>
 
           <span className="xl:hidden block">
-            <button className={styles.addToCartBtn}>
+            <button
+              className={styles.addToCartBtn}
+              onClick={() => goToCheckout()}
+            >
               <FontAwesomeIcon className="w-3" icon={faCartShopping} />
-              <span className={styles.cartCount}>0</span>
+              <span className={styles.cartCount}>{count || 0}</span>
             </button>
           </span>
         </div>
@@ -81,7 +103,9 @@ const MainNavComponent = () => {
               <Link
                 href="/"
                 className={`${
-                  router.pathname === "/" ? "text-white" : "text-dark-blue"
+                  router.pathname === "/" || isSticky
+                    ? "text-white"
+                    : "text-dark-blue"
                 } text-[15px]  font-[600] hover:text-white`}
               >
                 HOME
@@ -96,10 +120,10 @@ const MainNavComponent = () => {
               <Link
                 href="/ourServices"
                 className={`${
-                  router.pathname === "/ourServices"
+                  router.pathname === "/ourServices" || isSticky
                     ? "text-white"
                     : "text-dark-blue"
-                } text-[15px] tracking-wide text-dark-blue block hover:text-white relative font-semibold flex`}
+                } text-[15px] tracking-wide  block hover:text-white relative font-semibold flex`}
                 onClick={() => setIsHovering(false)}
               >
                 OUR SERVICES
@@ -122,7 +146,7 @@ const MainNavComponent = () => {
               <Link
                 href="/contact-us"
                 className={`${
-                  router.pathname === "/contact-us"
+                  router.pathname === "/contact-us" || isSticky
                     ? "text-white"
                     : "text-dark-blue"
                 } text-[15px]  font-[600] hover:text-white`}
@@ -131,13 +155,16 @@ const MainNavComponent = () => {
               </Link>
             </li>
             <li className="hidden xl:flex items-center px-6 my-5 xl:my-0">
-              <button className={styles.addToCartBtn}>
+              <button
+                className={styles.addToCartBtn}
+                onClick={() => goToCheckout()}
+              >
                 <FontAwesomeIcon className="w-3" icon={faCartShopping} />
-                <span className={styles.cartCount}>0</span>
+                <span className={styles.cartCount}>{count || 0}</span>
               </button>
             </li>
             {router.pathname !== "/order-now" && (
-              <button className=" xl:flex items-center justify-center  h-[37px] w-[129px] py-2 bg-dark-blue text-white text-[12px] font-bold rounded-full uppercase">
+              <button className="  hidden xl:flex items-center justify-center  h-[37px] w-[129px] py-2 bg-dark-blue text-white text-[12px] font-bold rounded-full uppercase">
                 <Link href="/order-now">Order Online</Link>
               </button>
             )}

@@ -44,7 +44,7 @@ export default function Footer() {
     <>
       <footer className="p-4 bg-white sm:p-6 bg-gray-900 bg-footer_bg_image bg-no-repeat bg-cover">
         <div className=" flex flex-wrap justify-center my-10 md:mx-10">
-          <div className="md:flex md:justify-evenly">
+          <div className="md:flex md:justify-between w-full lg:max-w-[970px] xl:max-w-[1170px]">
             <div className="mb-6 md:mb-0">
               <Link href="#" className="flex items-center">
                 <Image
@@ -198,55 +198,57 @@ export default function Footer() {
           </div>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto border-gray-700 lg:my-8" />
-        <div className="sm:flex sm:items-center sm:justify-between">
-          <span className="text-sm text-gray-500 sm:text-center text-gray-400">
-            Copyright © 2021
-            <a href="#" className="text-white hover:text-lime">
-              Nationwide Surveyors.
-            </a>
-            All Rights Reserved.
-            <Link
-              href="/cookie-policy"
-              className="text-white hover:text-lime ml-3"
-            >
-              Cookie Policy
-            </Link>
-            <Link
-              href="/privacy-policy"
-              className="text-white hover:text-lime ml-3"
-            >
-              Privacy Policy
-            </Link>
-          </span>
-          <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-            <a
-              href="#"
-              className="text-gray-500 hover:text-gray-900 hover:text-white"
-            >
-              <FontAwesomeIcon className="w-[10px]" icon={faFacebookF} />
-              <span className="sr-only">Facebook page</span>
-            </a>
-            <a
-              href="#"
-              className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
-            >
-              <FontAwesomeIcon className="w-4" icon={faTwitter} />
-              <span className="sr-only">Twitter page</span>
-            </a>
-            <a
-              href="#"
-              className="text-gray-500 hover:text-gray-900 hover:text-white"
-            >
-              <FontAwesomeIcon className="w-4" icon={faFlickr} />
-              <span className="sr-only">flickr page</span>
-            </a>
-            <a
-              href="#"
-              className="text-gray-500 hover:text-gray-900 hover:text-white"
-            >
-              <FontAwesomeIcon className="w-4" icon={faLinkedin} />
-              <span className="sr-only">LinkedIn account</span>
-            </a>
+        <div className="w-full  flex justify-center">
+          <div className="sm:flex sm:items-center sm:justify-between lg:min-w-[970px] xl:min-w-[1170px]">
+            <span className="text-sm text-gray-500 sm:text-center text-gray-400">
+              Copyright © 2021
+              <a href="#" className="text-white hover:text-lime">
+                Nationwide Surveyors.
+              </a>
+              All Rights Reserved.
+              <Link
+                href="/cookie-policy"
+                className="text-white hover:text-lime ml-3"
+              >
+                Cookie Policy
+              </Link>
+              <Link
+                href="/privacy-policy"
+                className="text-white hover:text-lime ml-3"
+              >
+                Privacy Policy
+              </Link>
+            </span>
+            <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+              <a
+                href="#"
+                className="text-gray-500 hover:text-gray-900 hover:text-white"
+              >
+                <FontAwesomeIcon className="w-[10px]" icon={faFacebookF} />
+                <span className="sr-only">Facebook page</span>
+              </a>
+              <a
+                href="#"
+                className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              >
+                <FontAwesomeIcon className="w-4" icon={faTwitter} />
+                <span className="sr-only">Twitter page</span>
+              </a>
+              <a
+                href="#"
+                className="text-gray-500 hover:text-gray-900 hover:text-white"
+              >
+                <FontAwesomeIcon className="w-4" icon={faFlickr} />
+                <span className="sr-only">flickr page</span>
+              </a>
+              <a
+                href="#"
+                className="text-gray-500 hover:text-gray-900 hover:text-white"
+              >
+                <FontAwesomeIcon className="w-4" icon={faLinkedin} />
+                <span className="sr-only">LinkedIn account</span>
+              </a>
+            </div>
           </div>
         </div>
       </footer>

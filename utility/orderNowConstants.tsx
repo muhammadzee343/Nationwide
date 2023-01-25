@@ -94,6 +94,7 @@ export const attributes = {
     minValue: 5,
     exactNumber2: "Confirm number of other rooms:",
     radioQuestion: [],
+    className: "w-14",
     options: [
       { type: "radio", title: "Studio", value: "s" },
       { type: "radio", title: "1 Bedrooms", value: 1 },
@@ -120,6 +121,7 @@ export const attributes = {
     exactNumber: "Confirm exact Electrical Appliances:",
     minValue: 30,
     exactNumber2: "",
+    className: "w-24",
     radioQuestion: [],
     options: [
       { type: "radio", title: "1-10 Appliances", value: "1-10" },
@@ -148,7 +150,7 @@ export const attributes = {
     minValue: 1000001,
     exactNumber2: "",
     radioQuestion: [],
-    className: "w-[100px]",
+    className: "w-24",
     options: [
       { type: "radio", title: "Upto £100k", value: 100000 },
       { type: "radio", title: "Upto £300k", value: 300000 },
@@ -165,6 +167,7 @@ export const attributes = {
     minValue: 4,
     exactNumber2: "",
     radioQuestion: [],
+    className: "w-[80px]",
     options: [
       { type: "radio", title: "1 Floor", value: 1 },
       { type: "radio", title: "2 Floors", value: 2 },
@@ -180,6 +183,7 @@ export const attributes = {
     exactNumber: "Confirm exact Gas Appliances:",
     minValue: 4,
     exactNumber2: "",
+    className: "w-24",
     radioQuestion1: {
       question: "Do you have gas fire in the property?",
       attr: "gas_fire",
@@ -229,6 +233,7 @@ export const attributes = {
     minValue: 31,
     exactNumber2: "",
     radioQuestion: [],
+    className: "w-[80px]",
     options: [
       {
         type: "radio",

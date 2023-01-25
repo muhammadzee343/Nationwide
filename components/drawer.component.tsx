@@ -57,10 +57,17 @@ const DrawerComponent = ({}: any) => {
   const [step, setStep] = useState(true);
   const [formDirty, setFormDirty] = useState(false);
   const [attribute, setAttributes] = useState<any>(attributeState);
+  const [validPostcode, setValidPostcode] = useState(true);
 
   const router = useRouter();
 
-  const { register, handleSubmit, reset, watch } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm();
   const watchPropertyArea = watch("property_area", "");
   const {
     showDrawer,
@@ -115,15 +122,45 @@ const DrawerComponent = ({}: any) => {
 
   //SUBMIT FORM1 GET INTSANT QUOTE
   const getInstantQuote = async (data: any, e: any) => {
-    setFormDirty(true);
-    if (checkFormValidity() && selectedService.length > 0) {
-      setAttributes((attr) => {
-        return { ...attr, ...data };
-      });
-      saveLogs(data);
-      setStep(false);
+    checkPostCodeValidity(data.property_postcode);
+    if (validPostcode) {
+      if (checkFormValidity() && selectedService.length > 0) {
+        setAttributes((attr) => {
+          return { ...attr, ...data };
+        });
+        saveLogs(data);
+        setStep(false);
+      }
     }
   };
+
+  //CHECKPOSTCODE VALIDAITY
+  const checkPostCodeValidity = async (data) => {
+    if (data) {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ postcode: data }),
+      };
+      try {
+        const response = await fetch(
+          `${process.env.BASE_URL_DEV}postcodes/find_address`,
+          requestOptions
+        );
+        if (!response.ok) {
+          switch (response.status) {
+            case 422:
+              setValidPostcode(false);
+          }
+        } else {
+          const data = await response.json();
+          setValidPostcode(true);
+          setFormDirty(true);
+        }
+      } catch (err) {}
+    }
+  };
+
   //CHECK FORM VALIDITY
   const checkFormValidity = () => {
     return serviceAttributes.every((data) => {
@@ -185,6 +222,7 @@ const DrawerComponent = ({}: any) => {
     );
     setfilteredServices(filteredService);
   };
+
   //SELECT SERVICE
   const selectService = ({ name, id }: any) => {
     const temp = name;
@@ -342,6 +380,7 @@ const DrawerComponent = ({}: any) => {
                           label={ele.attr}
                           minValue={ele.minValue}
                           setValue={setAttributes}
+                          className="w-14"
                         />
                       </div>
                     );
@@ -370,6 +409,7 @@ const DrawerComponent = ({}: any) => {
                         minValue={ele.minValue}
                         label={ele.attr}
                         setValue={setAttributes}
+                        className={ele.className && ele.className}
                       />
                     </div>
                   </div>
@@ -438,6 +478,7 @@ const DrawerComponent = ({}: any) => {
                         setValue={setAttributes}
                         label="other_rooms"
                         minValue={0}
+                        className="w-14"
                       />
                     </div>
                   </div>
@@ -619,11 +660,18 @@ const DrawerComponent = ({}: any) => {
                   lable="Property postcode"
                   placeholder="Property postcode"
                   name="property_postcode"
-                  register={register}
                   required={true}
+                  errors={errors}
+                  register={register}
                   className="text-lg text-dark-blue font-semibold my-3"
                   inputClass="border-grey-500 py-2.5 px-3 mt-3"
+                  errorClass="text-[#ff0000] text-sm font-semibold"
                 />
+                {!validPostcode && (
+                  <p className="text-[#ff0000] text-sm font-semibold">
+                    Enter a Valid Code
+                  </p>
+                )}
                 <hr className="h-[2px] bg-[#ececec] my-[20px] " />
                 {formDirty && (
                   <h3 className="text-[21px] font-semibold font-bold my-[20px] text-[#ff0000]">

@@ -41,14 +41,15 @@ function Counter({
         </span>
       </div>
       <input
-        className={`w-14 h-7 border border-grey-500 flex
-      justify-center text-center text-base text-dark-blue font-semibold outline-none focus:ring-transparent ${className}`}
+        className={` ${className ? "w-24" : ""}  h-7 border border-grey-500 flex
+      justify-center text-center text-base text-dark-blue font-semibold outline-none focus:ring-transparent`}
         type="number"
         step={1}
         min={minValue}
         value={count}
         onChange={() => {}}
       />
+
       <div className="ml-3" onClick={decrement}>
         <span className="w-6 h-6 sm:w-7 sm:h-7 bg-lime flex justify-center items-center rounded-full">
           <FontAwesomeIcon

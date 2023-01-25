@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState, useContext } from "react";
 import PropertyTypeCardComponent from "../components/propertyTypeCard.component";
 import { faBuilding, faHouse } from "@fortawesome/free-solid-svg-icons";
 import ButtonComponent from "../components/button.component";
@@ -11,6 +11,8 @@ import AlertBox from "../components/alertBox.component";
 import { useForm } from "react-hook-form";
 import Select from "../components/select.component";
 import { useRouter } from "next/router";
+import Head from "next/head";
+import { UuidContext } from "../context/sidebarContext";
 
 function OrderNow({ commercialProperties, residentialProperties }: any) {
   const attributeState = {
@@ -31,6 +33,8 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     circuits: "",
   };
 
+  const { uuid } = useContext(UuidContext);
+
   const { register, handleSubmit, setValue, watch } = useForm();
 
   const postcode = watch("property_postcode", "");
@@ -50,6 +54,8 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   const [addresses, setAddresseses] = useState([]);
 
+  const [formDirty, setFormDirty] = useState(false);
+
   const servicesSection = useRef<HTMLInputElement | any>();
 
   const attributeSection = useRef<HTMLInputElement | any>();
@@ -62,11 +68,14 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     if (bundle) {
       selectBundle();
     }
-    OrderNow();
+    populateForms();
   }, []);
 
   const scrollIntoViewClick = () => {
-    servicesSection.current?.scrollIntoView({ behavior: "smooth" });
+    servicesSection.current?.scrollIntoView(true, {
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   const selectBundle = () => {
@@ -133,7 +142,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     }
   };
 
-  const OrderNow = () => {
+  const populateForms = () => {
     if (ser && value && keys) {
       let obj = Object.fromEntries(keys?.map((k, i) => [k, value[i]]));
       setPropertyType(property);
@@ -159,28 +168,87 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     }
   };
 
+  const orderNow = async () => {
+    setFormDirty(true);
+    const body = {
+      order: {
+        service_category: propertyType,
+        session_id: uuid,
+        property_postcode: postcode,
+        property_address: propertyAddress,
+        contact_type: "",
+        contact_name: "",
+        contact_number: "",
+        contact_email: "",
+        customer_note: "",
+      },
+      order_product: {
+        ...attribute,
+        number_bedrooms_manual: attribute.bedrooms >= 5 ? true : false,
+        no_of_gas_appliances_manual:
+          attribute.gas_appliances >= 4 ? true : false,
+        no_of_distribution_boards_manual: true,
+        no_of_electric_appliances_manual:
+          attribute.electrical_appliances >= 30 ? true : false,
+        no_of_floors_manual: attribute.floors >= 4 ? true : false,
+        no_of_bathrooms_manual: true,
+        no_of_circuits_manual: attribute.circuits >= 31 ? true : false,
+        property_price_manual:
+          attribute.property_price >= 1000001 ? true : false,
+      },
+      services: [...selectedServiceId],
+    };
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(body),
+    };
+    //
+    try {
+      const response = await fetch(
+        `${process.env.BASE_URL_DEV}orders`,
+        requestOptions
+      );
+      if (!response.ok) {
+        switch (response.status) {
+        }
+      } else {
+        const data = await response.json();
+        router.push({ pathname: "/checkout" });
+      }
+    } catch (err) {}
+  };
+
   const changePropertyType = (property_type: string) => {
     setPropertyType(property_type);
     scrollIntoViewClick();
     setSelectedService([]);
+    setSelectedServiceId([]);
     setAttributes(attributeState);
   };
 
   const getPropertyAddress = async () => {
     if (!propertyAddress) {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ postcode: postcode }),
+      };
       try {
         const response = await fetch(
-          `https://api.getAddress.io/find/${postcode}?api-key=${process.env.ADDRESS_API_KEY}`
+          `${process.env.BASE_URL_DEV}postcodes/find_address`,
+          requestOptions
         );
         if (!response.ok) {
           setAddresseses([]);
           switch (response.status) {
-            case 400:
+            case 422:
               alert("Please Enter a valid Postcode");
           }
         } else {
           const data = await response.json();
-          setAddresseses([...data.addresses]);
+          const addresses = [...data.addresses];
+          setAddresseses([...addresses]);
         }
       } catch (err) {}
     }
@@ -271,22 +339,30 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   const serviceAttribute = useMemo<JSX.Element[]>(() => {
     const elements: JSX.Element[] = [];
+
     serviceAttributes.forEach((key, index) => {
       const ele = { ...attributes[key] };
+
       if (ele?.attr === "property_type") {
         let options = [...ele?.options];
         ele.options = options?.filter((opt: any) => {
           return opt.serviceType === propertyType;
         });
       }
-      if (ele) {
+      if (ele && Object.keys(ele).length !== 0) {
         elements.push(
           <>
             <div
               className=" w-full sm:px-5 md:px-0 xl:w-8/12 xxl:w-9/12 mt-8 mb-2"
               key={index}
             >
-              <h3 className=" text-2xl md:text-3xl text-dark-blue font-bold my-[30px]">
+              <h3
+                className={`text-[21px] font-semibold font-bold my-[20px] ${
+                  formDirty && attribute[ele.attr] === ""
+                    ? "text-[#ff0000]"
+                    : "text-dark-blue"
+                }`}
+              >
                 {ele.headings}
               </h3>
             </div>
@@ -326,6 +402,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                           minValue={ele.minValue}
                           setValue={setAttributes}
                           preValue={+attribute[ele.attr]}
+                          className="w-14"
                         />
                       </div>
                     );
@@ -428,6 +505,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                         label="other_rooms"
                         minValue={0}
                         preValue={+attribute[ele.attr]}
+                        className="w-14"
                       />
                     </div>
                   </div>
@@ -439,11 +517,14 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
       }
     });
     return elements;
-  }, [propertyType, serviceAttributes, selectedService, attribute]);
+  }, [propertyType, serviceAttributes, selectedService, attribute, formDirty]);
 
   return (
     <>
       <div className="flex justify-center" onClick={() => setAddresseses([])}>
+        <Head>
+          <title>Order Now - Nationwide Surveyors</title>
+        </Head>
         <div
           className="w-full  md:min-w-[750px] md:max-w-[750px] lg:min-w-[970px] lg:max-w-[970px]
         xl:min-w-[1155px] xl:max-w-[1155px]"
@@ -564,9 +645,11 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                                 <div
                                   key={index}
                                   className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue"
-                                  onClick={() => setPropertyAddress(ele)}
+                                  onClick={() =>
+                                    setPropertyAddress(ele.address)
+                                  }
                                 >
-                                  {ele}
+                                  {ele.address}
                                 </div>
                               );
                             })}
@@ -576,65 +659,8 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                     </div>
                   </div>
                 </div>
-                {/*<div className=" w-full sm:px-5 md:px-0 xl:w-8/12 mt-8 mb-2">*/}
-                {/*  <h3 className=" text-2xl md:text-3xl text-dark-blue font-bold my-[30px]">*/}
-                {/*    Contact for Access:*/}
-                {/*  </h3>*/}
-                {/*</div>*/}
-                {/*<div className="w-full flex sm:px-5 md:px-0 md:justify-center">*/}
-                {/*  <div className="w-full md:w-8/12 flex flex-col md:flex-row flex-wrap gap-6 lg:justify-start">*/}
-                {/*    {contactOptions.map((attr, index) => {*/}
-                {/*      return (*/}
-                {/*        <>*/}
-                {/*          <div key={index} className="w-full md:w-5/12">*/}
-                {/*            <RadioButton*/}
-                {/*              title={attr.title}*/}
-                {/*              className={`border border-grey-500 bg-lime`}*/}
-                {/*            />*/}
-                {/*          </div>*/}
-                {/*        </>*/}
-                {/*      );*/}
-                {/*    })}*/}
-                {/*  </div>*/}
-                {/*</div>*/}
-                {/*<div className=" w-full sm:px-5 md:px-0 xl:w-8/12 mt-8 mb-2">*/}
-                {/*  <h3 className=" text-2xl md:text-3xl text-dark-blue font-bold my-[30px]">*/}
-                {/*    Contact for Access:*/}
-                {/*  </h3>*/}
-                {/*</div>*/}
-                {/*<div className="w-full flex sm:px-5 md:px-0 md:justify-center">*/}
-                {/*  <div className="w-full md:w-8/12 flex flex-col md:flex-row flex-wrap gap-6 lg:justify-start">*/}
-                {/*    <TextField*/}
-                {/*      handleChange={() => {}}*/}
-                {/*      lable="Other Name"*/}
-                {/*          register={register}*/}
-                {/*      name="name"*/}
-                {/*inputClass="border-grey-500 py-2.5 px-3"*/}
-                {/*className="text-lg text-dark-blue font-semibold"*/}
-                {/*      placeholder="Example: Martin Roberts"*/}
-                {/*    />*/}
-                {/*    <TextField*/}
-                {/*      handleChange={() => {}}*/}
-                {/*      lable="Tenant Contact Number"*/}
-                {/*register={register}*/}
-                {/*      name="Contact Number"*/}
-                {/*inputClass="border-grey-500 py-2.5 px-3"*/}
-                {/*className="text-lg text-dark-blue font-semibold"*/}
-                {/*      placeholder="e.g. 01632 960069"*/}
-                {/*    />*/}
-                {/*    <TextField*/}
-                {/*      handleChange={() => {}}*/}
-                {/*      lable="Other Email"*/}
-                {/*register={register}*/}
-                {/*/!*      name="otherEmail"*!/inputClass="border-grey-500 py-2.5 px-3"*/}
-
-                {/*className="text-lg text-dark-blue font-semibold"*/}
-                {/*      placeholder="e.g. martin.roberts@gmail.com"*/}
-                {/*    />*/}
-                {/*  </div>*/}
-                {/*</div>*/}
                 <hr className=" h-[2px] mt-8  w-10/12 md:w-8/12 bg-[#dfdfdf]" />
-                <NextBottom setpropType={setIsPropertySelected} />
+                <NextBottom setpropType={orderNow} />
               </div>
             </section>
           )}
@@ -664,12 +690,12 @@ export const getServerSideProps = async () => {
 
 export default OrderNow;
 
-function NextBottom(props: any) {
+function NextBottom({ setpropType }: any) {
   return (
     <div
       className="w-8/12 flex justify-center py-6"
       onClick={() =>
-        props.setpropType((prevValue) => {
+        setpropType((prevValue) => {
           return !prevValue;
         })
       }
@@ -677,7 +703,8 @@ function NextBottom(props: any) {
       <div className="inline-block w-[180px]">
         <ButtonComponent
           text="Next"
-          className="bg-dark-blue uppercase text-white font-semibold px-[20px] py-[13px] hover:bg-lime  ease-in duration-200"
+          className="bg-dark-blue uppercase text-white font-semibold px-[20px] py-[13px] hover:bg-lime
+            ease-in duration-200"
         />
       </div>
     </div>
