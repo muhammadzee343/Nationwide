@@ -418,6 +418,7 @@ export const howItWorks = [
 export const service = [
   {
     className: "flex flex-col lg:flex-row",
+    title: "Get an EPC from £35 only | Energy Performance Certificate",
     content: {
       type: "Service",
       certificate: "domestic-epc",
@@ -431,6 +432,7 @@ export const service = [
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "Get an EPC from £35 only | Energy Performance Certificate",
     content: {
       type: "Service",
       certificate: "domestic-epc",
@@ -443,6 +445,7 @@ export const service = [
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "Get Commercial EPC For as Little as £150",
     content: {
       type: "Service",
       certificate: "commercial-epc",
@@ -455,6 +458,7 @@ export const service = [
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "Get Commercial EPC For as Little as £150",
     content: {
       type: "Service",
       certificate: "commercial-epc",
@@ -468,6 +472,7 @@ export const service = [
 
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "Emergency Lights Test Certificate | Become BS5266 Compliant",
     content: {
       type: "Service",
       certificate: "emergency-light-test-report",
@@ -480,6 +485,7 @@ export const service = [
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "Emergency Lights Test Certificate | Become BS5266 Compliant",
     content: {
       type: "Service",
       certificate: "emergency-light-test-report",
@@ -501,6 +507,7 @@ export const service = [
 
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "Fire Alarm Testing BS5839",
     content: {
       type: "Service",
       certificate: "fire-alarm-test-report",
@@ -520,6 +527,7 @@ export const service = [
 
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "Fire Alarm Testing BS5839",
     content: {
       type: "Service",
       certificate: "fire-alarm-test-report",
@@ -538,6 +546,7 @@ export const service = [
 
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "Fire Risk Assessment",
     content: {
       type: "Service",
       certificate: "fire-risk-assessment",
@@ -553,6 +562,7 @@ export const service = [
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "Fire Risk Assessment",
     content: {
       type: "Service",
       certificate: "fire-risk-assessment",
@@ -576,6 +586,7 @@ export const service = [
 
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "Gas Safety Certificate for Landlords from £49 Only",
     content: {
       type: "Service",
       certificate: "gas-safety-certificate",
@@ -589,6 +600,7 @@ export const service = [
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "Gas Safety Certificate for Landlords from £49 Only",
     content: {
       type: "Service",
       certificate: "gas-safety-certificate",
@@ -607,6 +619,8 @@ export const service = [
 
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title:
+      "Boiler Service | Completed by our Gas Safe Registered Engineers only",
     content: {
       type: "Service",
       certificate: "boiler-service",
@@ -620,6 +634,8 @@ export const service = [
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title:
+      "Boiler Service | Completed by our Gas Safe Registered Engineers only",
     content: {
       type: "Service",
       certificate: "boiler-service",
@@ -681,6 +697,7 @@ export const service = [
 
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "Landlord EICR Certificate | Electrical Safety Check & Inspection",
     content: {
       type: "Service",
       certificate: "electrical-installation-condition-report",
@@ -694,6 +711,7 @@ export const service = [
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "Landlord EICR Certificate | Electrical Safety Check & Inspection",
     content: {
       type: "Service",
       certificate: "electrical-installation-condition-report",
@@ -708,6 +726,7 @@ export const service = [
 
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "PAT Testing & Certificates | Domestic & Commercial",
     content: {
       type: "Service",
       certificate: "electrical-portable-appliance-test",
@@ -721,6 +740,7 @@ export const service = [
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "PAT Testing & Certificates | Domestic & Commercial",
     content: {
       type: "Service",
       certificate: "electrical-portable-appliance-test",
@@ -745,6 +765,8 @@ export const service = [
 
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title:
+      "Electrical Remedial Work & Landlord Electrcial Safety Reports | Order Now",
     content: {
       type: "Service",
       certificate: "eicr-remedial-work",
@@ -768,6 +790,8 @@ export const service = [
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title:
+      "Electrical Remedial Work & Landlord Electrcial Safety Reports | Order Now",
     content: {
       type: "Service",
       certificate: "eicr-remedial-work",
@@ -789,6 +813,7 @@ export const service = [
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "2D / 3D Floor Plans",
     content: {
       type: "Service",
       certificate: "floor-plans",
@@ -804,6 +829,7 @@ export const service = [
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "2D / 3D Floor Plans",
     content: {
       type: "Service",
       certificate: "floor-plans",
@@ -816,6 +842,7 @@ export const service = [
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "Home Buyer Reports and Surveys",
     content: {
       type: "Service",
       certificate: "building-surveys",
@@ -832,6 +859,7 @@ export const service = [
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "Home Buyer Reports and Surveys",
     content: {
       type: "Service",
       certificate: "building-surveys",
@@ -853,6 +881,7 @@ export const service = [
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "Legionella Risk Assessment",
     content: {
       type: "Service",
       certificate: "legionella-risk-assessment",
@@ -866,6 +895,7 @@ export const service = [
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "Legionella Risk Assessment",
     content: {
       type: "Service",
       certificate: "legionella-risk-assessment",
@@ -880,6 +910,7 @@ export const service = [
 
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "SAP Assessment",
     content: {
       type: "Service",
       certificate: "sap-assessments-2",
@@ -895,6 +926,7 @@ export const service = [
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
+    title: "SAP Assessment",
     content: {
       type: "Service",
       certificate: "sap-assessments-2",

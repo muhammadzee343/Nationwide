@@ -1,15 +1,22 @@
 import React from "react";
 import Link from "next/link";
 import styles from "../styles/header.module.css";
+import Head from "next/head";
 
 export default function TopNavComponent() {
   return (
     <>
       <div className="bg-blue lg:py-[13px] py-4 lg:px-[55px] md:h-[50px]">
+        <Head>
+          <title>FAQs - Nationwide Surveyors</title>
+        </Head>
         <nav>
           <div className="flex flex-wrap md:justify-between justify-center items-center pr-[13px]">
             <div className="flex  items-center">
-              <Link href="#" className={`${styles.tNavLinks} text-[#fffffff2]`}>
+              <Link
+                href="/faq"
+                className={`${styles.tNavLinks} text-[#fffffff2]`}
+              >
                 Frequently Asked Questions
               </Link>
             </div>

@@ -1,23 +1,45 @@
-import React from "react";
+import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 import ButtonComponent from "../components/button.component";
 import BillingForm from "../components/billingForm";
 import CardComponent from "../components/card.component";
-import Table from "../components/table.component";
 import CheckoutStepper from "../components/checkoutStepper.component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTag } from "@fortawesome/free-solid-svg-icons";
 import CardTable from "../components/cardTable.component";
+import Head from "next/head";
+import { CartCountContext, UuidContext } from "../context/sidebarContext";
+import { router } from "next/client";
 
 function Checkout(props: any) {
+  const [cart, setCart] = useState([]);
+  const { uuid } = useContext(UuidContext);
+
+  useLayoutEffect(() => {
+    getCartValues();
+  }, []);
+
+  useEffect(() => {}, [cart]);
+  const { setCount } = useContext(CartCountContext);
+  const getCartValues = async () => {
+    const response = await fetch(
+      `${process.env.BASE_URL_DEV}shopping_carts?session_id=${uuid}`
+    );
+    const data = await response.json();
+    setCart(data.shopping_cart_orders);
+    setCount(data.orders_count);
+  };
   return (
     <div className="w-full flex flex-col justify-center items-center">
-      <div className="w-[70%] lg:w-[50%] xl:w-[43%]  ">
+      <Head>
+        <title>Checkout - Nationwide Surveyors</title>
+      </Head>
+      <div className="w-[70%] lg:w-[50%] xl:w-[43%]">
         <CheckoutStepper />
       </div>
-      <div className="w-full flex flex-wrap justify-around ">
-        <div className="w-full lg:w-[62%] flex flex-col justify-center items-center  pt-[35px] pb-[25px] px-2">
+      <div className="w-full flex flex-wrap justify-center sm:gap-x-22">
+        <div className="w-full lg:w-[50%] flex flex-col justify-center items-center  pt-[35px] pb-[25px] px-2">
           <div className="w-full my-3">
-            <CardTable />
+            <CardTable cart={cart} />
           </div>
           {/*<ButtonComponent*/}
           {/*  text="Add an other service"*/}
@@ -49,7 +71,7 @@ function Checkout(props: any) {
           <br />
           <BillingForm />
         </div>
-        <div className="w-full lg:w-[32%] pt-[35px] pb-[25px] px-4 mt-[10px]">
+        <div className="w-full lg:w-[25%] pt-[35px] pb-[25px] px-4 mt-[10px]">
           <div className=" bg-dark-blue flex rounded-sm py-[10px] pl-[45px] pr-[20px]">
             <FontAwesomeIcon className="text-lime w-4 mr-2" icon={faTag} />
             <p className="text-white text-[15px] font-semibold">

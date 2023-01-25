@@ -2,10 +2,13 @@ import React from "react";
 import styles from "../styles/footer.module.css";
 import HeaderComponent from "../components/header.component";
 import { cookielistPoints } from "../utility/constants";
-
+import Head from "next/head";
 function CookiePolicy() {
   return (
     <div className="w-full bg-white flex justify-center">
+      <Head>
+        <title>Cookie Policy - Nationwide Surveyors</title>
+      </Head>
       <div className="w-full flex flex-col items-center">
         <HeaderComponent
           header="Cookie Policy"

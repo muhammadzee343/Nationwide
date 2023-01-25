@@ -2,10 +2,14 @@ import React from "react";
 import styles from "../styles/ourServices.module.css";
 import { ourServices } from "../utility/constants";
 import OurServicesComponent from "../components/ourServices.component";
+import Head from "next/head";
 
 function OurServices(props: any) {
   return (
     <div className="flex flex-col  items-center justify-center ">
+      <Head>
+        <title>Our Services - Nationwide Surveyors</title>
+      </Head>
       <div className="text-center pt-[65px] mb-40px">
         <h1 className={`${styles.ourServicesHeading}`}> Our Services</h1>
       </div>

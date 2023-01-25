@@ -2,10 +2,14 @@ import React from "react";
 import styles from "../styles/footer.module.css";
 import HeaderComponent from "../components/header.component";
 import { infolistPoints } from "../utility/constants";
+import Head from "next/head";
 
 function PrivacyPolicy() {
   return (
     <div className="w-full bg-white flex justify-center">
+      <Head>
+        <title>Nationwide Surveyors - Privacy Policy</title>
+      </Head>
       <div className="w-full flex flex-col items-center">
         <HeaderComponent
           header="Privacy Policy"

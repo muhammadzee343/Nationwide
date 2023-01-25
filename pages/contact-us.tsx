@@ -8,10 +8,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faMessage } from "@fortawesome/free-regular-svg-icons";
 import { enquiries } from "../utility/contactUsConstants";
-
+import Head from "next/head";
 function ContactUs(props: any) {
   return (
     <div className="w-full flex justify-center px-[31px] mb-10">
+      <Head>
+        <title>Nationwide Surveyors | Contact Us</title>
+      </Head>
       <div className=" w-full xl:container xxl:px-[100px]">
         <div className="w-full flex flex-col md:flex-row  pt-[82px]">
           <div className=" w-full md:w-6/12 flex flex-col px-2">

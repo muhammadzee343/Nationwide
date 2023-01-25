@@ -1,48 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { AppProps } from "next/app";
-
-import TopNavComponent from "../components/topNav.component";
-import MainNavComponent from "../components/mainNav.component";
-import Footer from "../components/footer.component";
-import DrawerComponent from "../components/drawer.component";
-
-import { OverlayContext, SidebarContext } from "../context/sidebarContext";
-import { myFont } from "../utility/constants";
+import { v4 as uuidv4 } from "uuid";
+import {
+  OverlayContext,
+  SidebarContext,
+  UuidContext,
+} from "../context/sidebarContext";
 
 import "../styles/globals.css";
 import Overlay from "../components/overLay.component";
-
+import Layout from "../components/layout.component";
 export default function App({ Component, pageProps }: AppProps) {
   const [showDrawer, setShowDrawer] = useState(false);
   const [overlay, setOverlay] = useState(false);
   const [propertyType, setPropertyType] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+  const [uuid, setUuid] = useState("");
+  useEffect(() => {
+    let Uuid = "";
+    if (!uuid) {
+      Uuid = uuidv4();
+      setUuid(Uuid);
+    }
+  }, []);
   return (
     <>
-      <OverlayContext.Provider value={{ isLoading, setIsLoading }}>
-        {isLoading && <Overlay />}
-        <SidebarContext.Provider
-          value={{
-            showDrawer,
-            setShowDrawer,
-            overlay,
-            setOverlay,
-            propertyType,
-            setPropertyType,
-          }}
-        >
-          <main className={myFont.className}>
-            {overlay && <DrawerComponent />}
-            <TopNavComponent />
-            <div className="xl:top-0 xl:sticky z-[1000]">
-              <MainNavComponent />
-            </div>
-            <Component {...pageProps} />
-            <Footer />
-          </main>
-        </SidebarContext.Provider>
-      </OverlayContext.Provider>
+      <UuidContext.Provider value={{ uuid }}>
+        <OverlayContext.Provider value={{ isLoading, setIsLoading }}>
+          {isLoading && <Overlay />}
+          <SidebarContext.Provider
+            value={{
+              showDrawer,
+              setShowDrawer,
+              overlay,
+              setOverlay,
+              propertyType,
+              setPropertyType,
+            }}
+          >
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </SidebarContext.Provider>
+        </OverlayContext.Provider>
+      </UuidContext.Provider>
     </>
   );
 }

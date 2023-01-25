@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import RadioInput from "../components/radioInput.component";
 import TextArea from "../components/textArea.component";
 import ButtonComponent from "../components/button.component";
+import Head from "next/head";
 
 const JoinUs = (props: any) => {
   const {
@@ -85,11 +86,15 @@ const JoinUs = (props: any) => {
     );
     if (response.ok) {
       const res = await response.json();
+      setSubmitted(true);
     }
   };
 
   return (
     <div className="w-full flex justify-center">
+      <Head>
+        <title>Join Us - Nationwide Surveyors</title>
+      </Head>
       <div
         className="w-full flex flex-col justify-center items-center
        md:min-w-[750px] md:max-w-[750px] lg:min-w-[970px] lg:max-w-[970px]

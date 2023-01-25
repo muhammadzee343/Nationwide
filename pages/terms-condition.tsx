@@ -2,10 +2,14 @@ import React from "react";
 import styles from "../styles/footer.module.css";
 import HeaderComponent from "../components/header.component";
 import { agreeListPoints } from "../utility/constants";
+import Head from "next/head";
 
 const TermsCondition = () => {
   return (
     <div className="w-full bg-white flex justify-center">
+      <Head>
+        <title>Terms & Conditions - Nationwide Surveyors</title>
+      </Head>
       <div className="w-full flex flex-col items-center">
         <HeaderComponent
           header="Terms & Conditions"

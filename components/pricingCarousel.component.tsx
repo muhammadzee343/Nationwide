@@ -1,5 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useSwiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/swiper-bundle.min.css";
@@ -7,17 +8,14 @@ import priceStyles from "../styles/pricing.module.css";
 import { Navigation, Pagination } from "swiper";
 import { bundles } from "../utility/constants";
 import PricingCard from "./pricingCard.component";
+import SwiperButton from "./swiperButton.component";
 
 function PricingCarouselComponent(props: any) {
+  const swiper = useSwiper();
+
   return (
     <>
       <div className="flex lg:hidden relative pl-6 sm:px-6 mx-auto md:px-12 xl:px-32 mt-[10px] xl:mt-[-200]px]">
-        <div
-          className="border border-[#a0a0a0] absolute w-[33px] h-[45px] bg-white top-[49%]
-       left-3  sm:left-[30px] z-[600] flex justify-center items-center cursor-pointer"
-        >
-          <p className="text-[19px] text-dark-blue font-bold">&#8249;</p>
-        </div>
         <Swiper
           spaceBetween={0}
           slidesPerView={"auto"}
@@ -38,6 +36,12 @@ function PricingCarouselComponent(props: any) {
             swiperButtonNext: "#0000",
           }}
         >
+          <SwiperButton
+            charset="&#8249;"
+            className="top-[49%]
+       left-3  sm:left-[30px]"
+            direction="prev"
+          />
           {bundles.map(({ className, content }, index) => {
             return (
               <SwiperSlide
@@ -52,13 +56,12 @@ function PricingCarouselComponent(props: any) {
               </SwiperSlide>
             );
           })}
+          <SwiperButton
+            charset="&#8250;"
+            className="top-[49%] right-3 sm:right-[30px]"
+            direction="next"
+          />
         </Swiper>
-        <div
-          className="border border-[#a0a0a0] absolute w-[33px] h-[45px] bg-white top-[49%] right-3 sm:right-[30px]
-          z-[600] flex justify-center items-center cursor-pointer"
-        >
-          <p className="text-[19px] text-dark-blue font-bold"> &#8250;</p>
-        </div>
       </div>
     </>
   );

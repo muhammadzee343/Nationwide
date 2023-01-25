@@ -6,6 +6,7 @@ import TextArea from "../components/textArea.component";
 import ButtonComponent from "../components/button.component";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 function GeneralEnquiries({ Services }: any) {
   const radioQuestions = [
@@ -173,6 +174,9 @@ function GeneralEnquiries({ Services }: any) {
 
   return (
     <div className="w-full flex justify-center pt-[82px]">
+      <Head>
+        <title>General Enquiries - Nationwide Surveyors</title>
+      </Head>
       <form onSubmit={handleSubmit(requestCallback)}>
         <div className=" w-full px-8 xl:px-0 xl:max-w-[1114px]  flex flex-col">
           <div className="border-l-[6px] border-lime mb-[20px] px-5">

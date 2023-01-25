@@ -1,10 +1,14 @@
 import React from "react";
 import styles from "../styles/footer.module.css";
 import HeaderComponent from "../components/header.component";
+import Head from "next/head";
 
 function HowItWorks() {
   return (
     <div className="w-full bg-white flex justify-center">
+      <Head>
+        <title>How It Works - Nationwide Surveyors</title>
+      </Head>
       <div className="w-full flex flex-col items-center">
         <HeaderComponent
           header="How It Works"
