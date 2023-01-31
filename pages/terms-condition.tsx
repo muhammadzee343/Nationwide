@@ -68,7 +68,7 @@ const TermsCondition = () => {
             website without providing an explanation or justification.
           </p>
           <br />
-          <h1 className="text-[30px] leading-9 font-semibold">
+          <h1 className="text-[30px] leading-9 font-semibold text-dark-blue">
             Payment Terms and Conditions
           </h1>
           <br />
@@ -235,13 +235,13 @@ const TermsCondition = () => {
             </li>
           </ul>
           <h1>
-            <b>Complaints</b>
+            <b className="text-sm">Complaints</b>
           </h1>
           <br />
           <ul
             className={`list-disc list-inside bg-blue-400 ${styles.footerParagraph}`}
           >
-            <div className="flex flex-row">
+            <div className="flex flex-row ml-1.5">
               <li className="text-justify"></li>
               <p>
                 If you want to make a complaint, we will deal with it speedily
@@ -253,7 +253,7 @@ const TermsCondition = () => {
                 response at the very latest within 8 weeks.
               </p>
             </div>
-            <div className="flex flex-row">
+            <div className="flex flex-row ml-1.5">
               <li className="text-justify"></li>
               <p>
                 If you are unhappy with our final resolution of your complaint

@@ -62,9 +62,11 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   const router = useRouter();
 
-  const { bundle, ser, value, keys, property } = router.query;
+  const { bundle, ser, value, keys, property, postCode, item, address } =
+    router.query;
 
   useEffect(() => {
+    addOtherService();
     if (bundle) {
       selectBundle();
     }
@@ -203,7 +205,6 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(body),
     };
-    //
     try {
       const response = await fetch(
         `${process.env.BASE_URL_DEV}orders`,
@@ -306,6 +307,28 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
       setAllAttributes(selectedService);
       setSelectedService([...selectedService]);
       setSelectedServiceId([...selectedServiceId]);
+    }
+  };
+
+  const addOtherService = () => {
+    console.log(property, postCode, ser);
+    if (address) {
+      setPropertyType(property);
+      const temp = ser.map((ele) => +ele);
+
+      const services =
+        property === "residential_property"
+          ? residentialProperties
+          : commercialProperties;
+      let selectedService = services
+        .filter((ele, index) => {
+          return temp.includes(ele.id);
+        })
+        .map((ele) => ele.name);
+      setSelectedServiceId(temp);
+      setSelectedService(selectedService);
+      setValue("property_address", address);
+      setValue("property_postcode", postCode);
     }
   };
 

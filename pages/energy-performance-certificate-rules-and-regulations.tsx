@@ -9,7 +9,7 @@ const EnergyPerformanceCertificate = () => {
         <HeaderComponent
           header="Energy Performance Certificate Rules And Regulations"
           breadcrumb="Energy Performance Certificate Rules And Regulations"
-          className="bg-zinc-800 bg-blend-overlay bg-home_bg_image"
+          className=" bg-home_bg_image"
         />
         <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0">
           <p className={`font-normal ${styles.footerParagraph}`}>

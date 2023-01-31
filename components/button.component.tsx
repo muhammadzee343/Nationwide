@@ -10,7 +10,7 @@ function ButtonComponent({
   // @ts-ignore
   return (
     <>
-      <div className="flex flex-wrap justify-between w-full">
+      <div className="flex flex-wrap justify-center w-full">
         <button
           className={`w-full   
               text-center tracking-normal ease-in duration-200  ${className}`}
