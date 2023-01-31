@@ -10,7 +10,7 @@ export default function MobileScreenNav() {
   return (
     <ul className="absolute w-11/12 inset-x-0 mx-auto flex-col px-6 py-2 align-center bg-white shadow-sm rounded border z-[100] ">
       <li className="flex items-center border-b border-grey-500   xl:my-0 h-12  text-dark-blue">
-        <Link href="#" className="text-[15px] font-[600] ">
+        <Link href="/" className="text-[15px] font-[600] ">
           HOME
         </Link>
       </li>
@@ -20,7 +20,7 @@ export default function MobileScreenNav() {
           setToggleMenu(!toggleMenu);
         }}
       >
-        <Link href="#" className="text-[15px] font-[600] ">
+        <Link href="/our-services" className="text-[15px] font-[600] ">
           OUR SERVICES
         </Link>
         <FontAwesomeIcon
@@ -30,7 +30,10 @@ export default function MobileScreenNav() {
       </li>
       {toggleMenu && <MegaMenu />}
       <li className="flex items-center  mt-3 h-12 xl:my-0 ">
-        <Link href="#" className="text-[15px] font-[600] text-dark-blue">
+        <Link
+          href="/contact-us"
+          className="text-[15px] font-[600] text-dark-blue"
+        >
           CONTACT US
         </Link>
       </li>
