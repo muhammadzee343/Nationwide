@@ -314,7 +314,13 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     console.log(property, postCode, ser);
     if (address) {
       setPropertyType(property);
-      const temp = ser.map((ele) => +ele);
+      let temp  = [ ];
+      if (Array.isArray(ser)){
+        temp = ser.map((ele) => +ele);
+      }else{
+        const arr = [ser];
+        temp = arr.map((ele) => +ele);
+      }
 
       const services =
         property === "residential_property"
@@ -326,6 +332,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         })
         .map((ele) => ele.name);
       setSelectedServiceId(temp);
+      setAllAttributes(selectedService);
       setSelectedService(selectedService);
       setValue("property_address", address);
       setValue("property_postcode", postCode);

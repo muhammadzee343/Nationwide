@@ -114,9 +114,10 @@ function CardTable({ cart, getCart }: any) {
     const postCode = cartItems[cartNo]?.order_postcode;
     const address = cartItems[cartNo]?.order_address;
     const selectedServiceId = cartItems[cartNo]["products"].map(
-      (ele) => ele.service_id
+        (ele) => ele.service_id
     );
-    const property = cartItems[cartNo].router.push({
+    const property = cartItems[cartNo];
+    router?.push({
       pathname: "/order-now",
       query: {
         property: "residential_property",
@@ -126,7 +127,6 @@ function CardTable({ cart, getCart }: any) {
       },
     });
   };
-
   return (
     <div>
       <header>
@@ -180,15 +180,20 @@ function CardTable({ cart, getCart }: any) {
                 })}
               </ul>
             </div>
-            <div className="px-3">
-              <ButtonComponent
-                text="Add an other service"
-                type="button"
-                className=" flex justify-center text-[14px] hover:text-white font-medium border-2 border-dark-blue hover:border-lime
+            {!router?.query?.aquote && !router?.query.bquote &&
+            (
+                <div className="px-3">
+                  <ButtonComponent
+                      text="Add an other service"
+                      type="button"
+                      className=" flex justify-center text-[14px] hover:text-white font-medium border-2 border-dark-blue hover:border-lime
            hover:bg-lime px-[28px] py-[12px] uppercase rounded"
-                onClick={() => addAnotherService(cartNo)}
-              />
-            </div>
+                      onClick={() => addAnotherService(cartNo)}
+                  />
+                </div>
+            )
+
+            }
             <br />
 
             <div className="w-full px-4">

@@ -6,6 +6,11 @@ import TermsConditionComponent from "./terms&condition.component";
 import TextField from "./textFied.component";
 import TextArea from "./textArea.component";
 import RadioInput from "./radioInput.component";
+import {Elements} from "@stripe/react-stripe-js";
+import CardFormComponent from "./cardForm.component";
+import {loadStripe} from "@stripe/stripe-js";
+
+const stripePromise = loadStripe("pk_test_6pRNASCoBOKtIshFeQd4XMUh");
 function BillingForm(props: any) {
   const { register, handleSubmit } = useForm({
     defaultValues: {
@@ -132,7 +137,12 @@ function BillingForm(props: any) {
               value="DC"
               className="text-sm text-dark-blue font-bold mb-3"
             />
-            <Note content="Payment Instructions will be provided once we received your order." />
+            <Note content="Payment Instructions will be provided once we received your order." >
+
+            </Note>
+            <Elements stripe={stripePromise}>
+              <CardFormComponent />
+            </Elements>
             <RadioInput
               label="Online Bank Transfer"
               register={register}

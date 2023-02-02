@@ -8,6 +8,7 @@ import {
 } from "../context/sidebarContext";
 
 import "../styles/globals.css";
+
 import Overlay from "../components/overLay.component";
 import Layout from "../components/layout.component";
 export default function App({ Component, pageProps }: AppProps) {
@@ -16,6 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const [propertyType, setPropertyType] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [uuid, setUuid] = useState("");
+
   useEffect(() => {
     let Uuid = "";
     if (!uuid) {
@@ -23,9 +25,10 @@ export default function App({ Component, pageProps }: AppProps) {
       setUuid(Uuid);
     }
   }, []);
+
   return (
     <>
-      <UuidContext.Provider value={{ uuid }}>
+      <UuidContext.Provider value={{uuid,setUuid}}>
         <OverlayContext.Provider value={{ isLoading, setIsLoading }}>
           {isLoading && <Overlay />}
           <SidebarContext.Provider

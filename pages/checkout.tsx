@@ -1,24 +1,74 @@
 import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTag } from "@fortawesome/free-solid-svg-icons";
+import Head from "next/head";
+import { CartCountContext, UuidContext } from "../context/sidebarContext";
+import { useRouter } from "next/router";
+import { v4 as uuidv4 } from "uuid";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
+import CardFormComponent from "../components/cardForm.component";
+import CardTable from "../components/cardTable.component";
 import ButtonComponent from "../components/button.component";
 import BillingForm from "../components/billingForm";
 import CardComponent from "../components/card.component";
 import CheckoutStepper from "../components/checkoutStepper.component";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTag } from "@fortawesome/free-solid-svg-icons";
-import CardTable from "../components/cardTable.component";
-import Head from "next/head";
-import { CartCountContext, UuidContext } from "../context/sidebarContext";
-import { useRouter } from "next/router";
+
+
+
 
 function Checkout(props: any) {
   const router = useRouter();
   const [cart, setCart] = useState<any>([]);
   const [pricing, setPricing] = useState({ totalAmount: "0", discount: "0" });
-  const { uuid } = useContext(UuidContext);
+  const { uuid , setUuid } = useContext(UuidContext);
+
 
   useLayoutEffect(() => {
     getCartValues();
   }, []);
+
+  useLayoutEffect(() => {
+    if (router?.query?.aquote){
+      //@ts-ignore
+      postQuoteApi(router?.query.aquote , true);
+    }else if (router?.query?.bquote) {
+      //@ts-ignore
+      postQuoteApi(router?.query.bquote , false);
+    }
+
+  }, [router]);
+
+
+  const postQuoteApi = async (quote : string, isAQuote = false) => {
+    const body = {
+      session_id:uuid,
+    }
+    const params: any = {
+      method: "POST",
+      headers: Object.assign({}, { }),
+    };
+    if (isAQuote){
+      //@ts-ignore
+      body.aquote = quote;
+    }else{
+      //@ts-ignore
+      body.bquote = quote;
+    }
+    params.body = JSON.stringify(body)
+    params.headers["Content-Type"] = "application/json"
+
+    const response = await fetch(
+        `${process.env.BASE_URL_DEV}orders/quote_checkout`,
+        params
+    );
+
+      if (response.ok){
+        getCartValues();
+      }
+  };
+
 
   useEffect(() => {}, [cart]);
   const { setCount } = useContext(CartCountContext);
@@ -35,6 +85,18 @@ function Checkout(props: any) {
     });
     setCount(data.orders_count);
   };
+
+  useEffect(() => {
+    return () => {
+      if (router?.query?.aquote || router?.query?.bquote){
+        setCount(0);
+        const Uuid = uuidv4();
+        setUuid(Uuid);
+      }
+    };
+  }, []);
+
+
   return (
     <div className="w-full flex flex-col justify-center items-center">
       <Head>
@@ -59,6 +121,7 @@ function Checkout(props: any) {
             className=" flex justify-center text-[13px] font-bold hover:text-white border-2 border-lime
            hover:bg-lime px-[28px] py-[12px] uppercase rounded"
           />
+
           <br />
           <ButtonComponent
             text="Pay Over Phone"
