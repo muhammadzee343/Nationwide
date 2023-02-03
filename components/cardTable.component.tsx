@@ -26,7 +26,9 @@ function CardTable({ cart, getCart }: any) {
 
   useEffect(() => {
     cart?.forEach((item) => {
-      item["contact_type"] = "Me";
+      if (!item["contact_type"]) {
+        item["contact_type"] = "Me";
+      }
     });
     setCartItems(cart);
   }, [cart]);
@@ -114,7 +116,7 @@ function CardTable({ cart, getCart }: any) {
     const postCode = cartItems[cartNo]?.order_postcode;
     const address = cartItems[cartNo]?.order_address;
     const selectedServiceId = cartItems[cartNo]["products"].map(
-        (ele) => ele.service_id
+      (ele) => ele.service_id
     );
     const property = cartItems[cartNo];
     router?.push({
@@ -180,20 +182,17 @@ function CardTable({ cart, getCart }: any) {
                 })}
               </ul>
             </div>
-            {!router?.query?.aquote && !router?.query.bquote &&
-            (
-                <div className="px-3">
-                  <ButtonComponent
-                      text="Add an other service"
-                      type="button"
-                      className=" flex justify-center text-[14px] hover:text-white font-medium border-2 border-dark-blue hover:border-lime
+            {!router?.query?.aquote && !router?.query.bquote && (
+              <div className="px-3">
+                <ButtonComponent
+                  text="Add an other service"
+                  type="button"
+                  className=" flex justify-center text-[14px] hover:text-white font-medium border-2 border-dark-blue hover:border-lime
            hover:bg-lime px-[28px] py-[12px] uppercase rounded"
-                      onClick={() => addAnotherService(cartNo)}
-                  />
-                </div>
-            )
-
-            }
+                  onClick={() => addAnotherService(cartNo)}
+                />
+              </div>
+            )}
             <br />
 
             <div className="w-full px-4">
@@ -211,6 +210,7 @@ function CardTable({ cart, getCart }: any) {
                       value={type.title}
                       cartItem={cartItems}
                       cart={cart}
+                      checked={cartItems?.contact_type === type}
                       index={cartNo}
                       changeContactType={changeContactType}
                       className="text-lg text-dark-blue font-semibold mb-3"
@@ -253,7 +253,7 @@ const RadioInput = ({
           type="radio"
           value={value}
           defaultChecked={value === cartItem.contact_type}
-          className="mb-[2px] mr-[5px] h-[13px] w-[13px]"
+          className="mb-[2px] mr-[5px] h-[13px] w-[13px]  outline-lime border-lime focus:ring-lime checked:bg-lime"
           name={`${name}${index}`}
           onChange={() => changeContactType(value, index)}
         />
