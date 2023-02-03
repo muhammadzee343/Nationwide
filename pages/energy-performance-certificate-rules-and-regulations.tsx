@@ -11,7 +11,7 @@ const EnergyPerformanceCertificate = () => {
           breadcrumb="Energy Performance Certificate Rules And Regulations"
           className=" bg-home_bg_image"
         />
-        <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0">
+        <div className="flex flex-col pt-[65px] pb-[40px] px-3 xl:px-0 w-full lg:max-w-[970px] xl:max-w-[1170px]">
           <p className={`font-normal ${styles.footerParagraph}`}>
             The Energy Performance Certificate (EPC) changes finally took effect
             on 1st October 2008, whereby the energy performance certificate

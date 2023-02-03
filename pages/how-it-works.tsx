@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from "../styles/footer.module.css";
 import HeaderComponent from "../components/header.component";
 import Head from "next/head";
@@ -13,9 +13,9 @@ function HowItWorks() {
         <HeaderComponent
           header="How It Works"
           breadcrumb="How It Works"
-          className="bg-zinc-800 bg-blend-overlay bg-home_bg_image"
+          className="bg-blend-overlay bg-home_bg_image"
         />
-        <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0">
+        <div className="flex flex-col pt-[65px] pb-[40px] px-3 xl:px-0 w-full lg:max-w-[970px] xl:max-w-[1170px]">
           <h1 className={`text-4xl ${styles.footerPagesHeading}`}>
             1. Place Order Online
           </h1>

@@ -15,7 +15,7 @@ const WhoNeedsAnEpc = () => {
           breadcrumb="Who Needs An EPC"
           className="bg-dark-blue"
         />
-        <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0">
+        <div className="flex flex-col pt-[65px] pb-[40px] px-3 xl:px-0 w-full lg:max-w-[970px] xl:max-w-[1170px]">
           <p className={`${styles.footerParagraph}`}>
             The Government is complying with the Energy Performance of Building
             Directive (EPBD) with the introduction of the Energy Performance

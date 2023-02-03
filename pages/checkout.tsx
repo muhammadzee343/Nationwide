@@ -116,6 +116,13 @@ function Checkout(props: any) {
           {/* hover:bg-lime px-[28px] py-[12px] uppercase rounded"*/}
           {/*/>*/}
           {/*<br />*/}
+          <div className=" flex w-full md:hidden">
+            <OrderSummary
+                discount={pricing.discount}
+                subTotal={pricing.totalAmount}
+            />
+          </div>
+          <br/>
           <ButtonComponent
             text="Pay by debit/credit card"
             className=" flex justify-center text-[13px] font-bold hover:text-white border-2 border-lime
@@ -134,13 +141,6 @@ function Checkout(props: any) {
             className=" flex justify-center text-[13px] font-bold hover:text-white border-2 border-lime
            hover:bg-lime px-[28px] py-[12px] uppercase rounded"
           />
-          <br />
-          <div className=" flex w-full md:hidden">
-            <OrderSummary
-              discount={pricing.discount}
-              subTotal={pricing.totalAmount}
-            />
-          </div>
           <br />
           <BillingForm />
         </div>

@@ -139,7 +139,7 @@ function CardTable({ cart, getCart }: any) {
           <p className="text-dark-blue text-sm font-semibold">
             Property & Services
           </p>
-          <p className="text-dark-blue text-sm font-semibold">Price</p>
+          <p className="text-dark-blue text-sm px-4 font-semibold">Price</p>
         </div>
       </header>
       {cartItems?.map((cartItems, cartNo, array) => {
@@ -149,8 +149,8 @@ function CardTable({ cart, getCart }: any) {
             key={cartNo}
           >
             <div className="w-full flex px-4 py-1 justify-between">
-              <div className="w-[70%]">
-                <p className="text-[18px] text-dark-blue font-semibold">
+              <div className="w-full">
+                <p className="text-[15px] text-dark-blue font-semibold">
                   {cartItems?.order_address}
                 </p>
               </div>
@@ -162,19 +162,19 @@ function CardTable({ cart, getCart }: any) {
                   return (
                     <li
                       key={index}
-                      className="py-3 flex justify-between border-b border-[#e5e7eb]"
+                      className="py-1.5 flex justify-between border-b border-[#e5e7eb]"
                     >
                       <div className="flex">
-                        <p className="text-[16px] text-dark-blue font-semibold">
+                        <FontAwesomeIcon
+                            icon={faTrashAlt}
+                            className="text-[#ff0000] h-[15px] cursor-pointer"
+                            onClick={() => deleteService(e.product_id, cartNo)}
+                        />
+                        <p className="text-[10px] md:text-xs ml-4 text-dark-blue font-semibold">
                           &#8618; {e?.product_name}
                         </p>
-                        <FontAwesomeIcon
-                          icon={faTrashAlt}
-                          className="text-[#ff0000] h-[20px] cursor-pointer ml-2 mt-1"
-                          onClick={() => deleteService(e.product_id, cartNo)}
-                        />
                       </div>
-                      <p className="text-[16px] text-dark-blue font-semibold">
+                      <p className="text-[10px] md:text-xs text-dark-blue font-semibold">
                         &#163; {e.total_amount}
                       </p>
                     </li>
@@ -182,17 +182,20 @@ function CardTable({ cart, getCart }: any) {
                 })}
               </ul>
             </div>
-            {!router?.query?.aquote && !router?.query.bquote && (
-              <div className="px-3">
-                <ButtonComponent
-                  text="Add an other service"
-                  type="button"
-                  className=" flex justify-center text-[14px] hover:text-white font-medium border-2 border-dark-blue hover:border-lime
-           hover:bg-lime px-[28px] py-[12px] uppercase rounded"
-                  onClick={() => addAnotherService(cartNo)}
-                />
-              </div>
-            )}
+            {!router?.query?.aquote && !router?.query.bquote &&
+            (
+                <div className="px-3">
+                  <ButtonComponent
+                      text="Add an other service"
+                      type="button"
+                      className=" flex justify-center text-[14px] hover:text-white font-medium border-2 border-dark-blue hover:border-lime
+           hover:bg-lime px-[28px] py-[8px] uppercase rounded mt-2"
+                      onClick={() => addAnotherService(cartNo)}
+                  />
+                </div>
+            )
+
+            }
             <br />
 
             <div className="w-full px-4">
@@ -200,7 +203,7 @@ function CardTable({ cart, getCart }: any) {
                 (Contact for Access)
                 <FontAwesomeIcon className="ml-2 w-5" icon={faInfoCircle} />
               </p>
-              <div className="flex flex-wrap gap-x-6 xxl:gap-x-12">
+              <div className="flex flex-wrap xxl:gap-x-2 grid grid-cols-2 md:grid-cols-6 lg:grid-cols-2 xl:grid-cols-6">
                 {contactType.map((type, index) => {
                   return (
                     <RadioInput

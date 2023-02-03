@@ -16,7 +16,7 @@ const TermsCondition = () => {
           breadcrumb="Terms & Conditions"
           className="bg-dark-blue"
         />
-        <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0 font-opensans">
+        <div className="flex flex-col pt-[65px] pb-[40px] px-3 xl:px-0 font-opensans w-full lg:max-w-[970px] xl:max-w-[1170px]">
           <p className={`${styles.footerParagraph} text-justify`}>
             These terms and conditions (“Terms”, “Agreement”) are an agreement
             between Nationwide Surveyors (“Nationwide Services-UK Ltd”, “us”,

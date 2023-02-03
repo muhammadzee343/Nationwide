@@ -38,9 +38,12 @@ const HomeTab = () => {
         <h2 className="font-semibold text-[35px] leading-10 text-white mb-4 animate-fade-in-up">
           {activeService.title}
         </h2>
-        <h3 className="font-semibold text-3xl text-[#c2cf10] mb-5 animate-fade-in-up">
-          {activeService.subTitle}
-        </h3>
+        <div className="flex flex-row">
+            <h3 className="font-semibold text-3xl text-[#c2cf10] mb-5 animate-fade-in-up">
+                {activeService.subTitle}
+            </h3>
+            <p className="text-[#c2cf10] mt-4">*</p>
+        </div>
         <ul className="marker:text-white list-disc text-white ml-5">
           {activeService.points.map((ele, index) => {
             return (

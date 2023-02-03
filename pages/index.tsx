@@ -52,7 +52,7 @@ export default function Home() {
   const { smallDevice, middleDevice, largeDevice }: any =
     useContext(DeviceContext);
   return (
-    <div>
+    <div className="ml-auto mr-auto">
       <Head>
         <title>Landlord Certifications | Nationwide Surveyors</title>
         <meta
