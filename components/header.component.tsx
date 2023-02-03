@@ -9,7 +9,7 @@ function HeaderComponent({ header = "", breadcrumb = "", className = "" }) {
       className={`w-full flex relative justify-center h-[283px] bg-left items-center ${className}`}
     >
       <div className="absolute inset-0 w-full h-full bg-[#182333b8] flex justify-center items-center">
-        <div className="w-full xl:max-w-[1114px] flex flex-col px-3 xl:px-0 font-poppins">
+        <div className="w-full lg:max-w-[970px] xl:max-w-[1170px] flex flex-col px-3 xl:px-0 font-poppins">
           <div className="border-l-[8px] border-lime px-5 opacity-100">
             <h2 className="text-[26px] md:text-[43px]  text-white font-semibold">
               {header}

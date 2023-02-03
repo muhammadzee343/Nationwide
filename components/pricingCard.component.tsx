@@ -27,7 +27,7 @@ function PricingCard({
           <div className="block">
             <div className="block ">
               <div className="block relative text-left ">
-                <div className="text-xl text-grey-900 text-left ">
+                <div className="text-xl text-grey-900 text-left pt-4 pb-4">
                   <h3 className={styles.pricingTitle}>{content?.bundleName}</h3>
                 </div>
                 <div className="relative inline-block mt-[37px] mb-0 text-left">

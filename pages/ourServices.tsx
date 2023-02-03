@@ -13,7 +13,7 @@ function OurServices(props: any) {
       <div className="text-center pt-[65px] mb-40px">
         <h1 className={`${styles.ourServicesHeading}`}> Our Services</h1>
       </div>
-      <div className="text-center mt-[40px] mb-[20px] w-8/12 sm:w-3/5 lg:px-[60px]">
+      <div className="text-center mt-[40px] mb-[20px] w-8/12 sm:w-3/5 lg:px-[60px] xl:max-w-[850px]">
         <p className={`${styles.ourServiceParagraph}`}>
           We provide a wide range of domestic and commercial services to Private
           Landlords, Homeowners, Buyers, Sellers, Property Managers, Housing

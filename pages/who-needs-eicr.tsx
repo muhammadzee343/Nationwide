@@ -15,7 +15,7 @@ const WhoNeedsEicr = () => {
           breadcrumb="Who Needs EICR"
           className="bg-dark-blue"
         />
-        <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0">
+        <div className="flex flex-col pt-[65px] pb-[40px] px-3 xl:px-0 w-full lg:max-w-[970px] xl:max-w-[1170px]">
           <h1 className={`${styles.footerPagesHeading}`}>
             Electrical Installation Condition Report (EICR)
           </h1>

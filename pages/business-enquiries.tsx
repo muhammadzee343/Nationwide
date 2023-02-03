@@ -4,17 +4,17 @@ import HeaderComponent from "../components/header.component";
 import Head from "next/head";
 function BusinessEnquiries(props: any) {
   return (
-    <div className="w-full bg-white flex justify-center  items-center">
+    <div className="bg-white flex justify-center items-center">
       <Head>
         <title>Business Enquiries - Nationwide Surveyors</title>
       </Head>
       <div className=" w-full flex flex-col items-center">
         <HeaderComponent
-          header="Business Enquiries"
-          breadcrumb="Business Enquiries"
-          className="bg-dark-blue"
+            header="Business Enquiries"
+            breadcrumb="Business Enquiries"
+            className="bg-dark-blue"
         />
-        <div className="w-full flex flex-col xl:max-w-[1114px] pt-[65px] pb-[40px] px-3 xl:px-0">
+        <div className="flex flex-col pt-[65px] pb-[40px] px-3 xl:px-0 w-full lg:max-w-[970px] xl:max-w-[1170px]">
           <p className={`${styles.footerParagraph}`}>
             To discuss bulk order discounts, it is best to call our planning
             team on 0800 048 7474. Bulk order discounts are designed for clients

@@ -93,7 +93,7 @@ const images = {
 
 export const LEC = {
   title: "Electrical Installation Condition Report (EICR)",
-  subTitle: "From Only £79*",
+  subTitle: "From Only £79",
   points: [
     "Provides a Safety Inspection",
     "Online Order Tracking",

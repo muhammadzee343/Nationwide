@@ -98,7 +98,7 @@ const JoinUs = (props: any) => {
       <div
         className="w-full flex flex-col justify-center items-center
        md:min-w-[750px] md:max-w-[750px] lg:min-w-[970px] lg:max-w-[970px]
-        xl:min-w-[1155px] xl:max-w-[1155px] pt-[35px] pb-[25px] px-2 sm:px-0"
+        xl:min-w-[1155px] xl:max-w-[1170px] pt-[35px] pb-[25px] px-2 sm:px-0"
       >
         <Header />
         {!submitted && (

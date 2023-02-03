@@ -21,7 +21,7 @@ export default function SelectProperty() {
         id="main_quote_form"
       >
         <form id="instantquote_main" method="post">
-          <h3 className="text-white font-semibold uppercase text-[26px]  mx-25  bg-dark-blue py-[20px] px-[25px] block">
+          <h3 className="text-white font-semibold uppercase text-[26px] mx-25 bg-dark-blue py-[15px] px-[25px] block">
             Get Instant
             <span className="text-lime block font-semibold">Quote</span>
           </h3>
