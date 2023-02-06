@@ -11,7 +11,7 @@ function BuldOrderDiscount() {
           breadcrumb="Placing Repeat Orders ? Why Not Join Our Commercial Service"
           className="bg-dark-blue"
         />
-        <div className="flex flex-col pt-[65px] pb-[40px] px-3 xl:px-0 w-full lg:max-w-[970px] xl:max-w-[1170px]">
+        <div className="flex flex-col pt-[65px] pb-[40px] px-3 xl:px-3 w-full lg:max-w-[970px] xl:max-w-[1170px]">
           <p className={`${styles.footerParagraph}`}>
             For those customers needing to make regular orders you can get
             direct access to our bespoke order management system for live
