@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTag } from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
-import { CartCountContext, UuidContext } from "../context/sidebarContext";
+import {CartCountContext, SidebarContext, UuidContext} from "../context/sidebarContext";
 import { useRouter } from "next/router";
 import { v4 as uuidv4 } from "uuid";
 import { loadStripe } from "@stripe/stripe-js";
@@ -14,16 +14,46 @@ import ButtonComponent from "../components/button.component";
 import BillingForm from "../components/billingForm";
 import CardComponent from "../components/card.component";
 import CheckoutStepper from "../components/checkoutStepper.component";
+import RequestCallBack from "../components/requestCallBack.component";
+import RadioInput from "../components/radioInput.component";
+import {useForm} from "react-hook-form";
+import TermsConditionComponent from "../components/terms&condition.component";
+import Link from "next/link";
 
-
+const stripePromise = loadStripe("pk_test_6pRNASCoBOKtIshFeQd4XMUh");
 
 
 function Checkout(props: any) {
+  const attributeState = {
+    property_type: "",
+    property_age: "",
+    property_price: "",
+    bedrooms: "",
+    other_rooms: 0,
+    distribution_boards: 1,
+    electrical_appliances: "",
+    floors: "",
+    gas_appliances: "",
+    gas_fire: "",
+    fire_back_boiler: "",
+    property_postcode: "",
+    property_area: "",
+    supply_type: "",
+    circuits: "",
+  };
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      orderNotes: "",
+      payment: "",
+    },
+  });
   const router = useRouter();
   const [cart, setCart] = useState<any>([]);
   const [pricing, setPricing] = useState({ totalAmount: "0", discount: "0" });
   const { uuid , setUuid } = useContext(UuidContext);
-
+  const [attribute, setAttributes] = useState<any>(attributeState);
+  const [selectedServiceId, setSelectedServiceId] = useState<string[]>([]);
+  const [isCardPayment, setIsCardPayment] = useState<boolean>(false)
 
   useLayoutEffect(() => {
     getCartValues();
@@ -39,7 +69,6 @@ function Checkout(props: any) {
     }
 
   }, [router]);
-
 
   const postQuoteApi = async (quote : string, isAQuote = false) => {
     const body = {
@@ -69,7 +98,6 @@ function Checkout(props: any) {
       }
   };
 
-
   useEffect(() => {}, [cart]);
   const { setCount } = useContext(CartCountContext);
   const getCartValues = async () => {
@@ -95,7 +123,9 @@ function Checkout(props: any) {
       }
     };
   }, []);
-
+  const {
+    propertyType,
+  } = useContext<any>(SidebarContext);
 
   return (
     <div className="w-full flex flex-col justify-center items-center">
@@ -123,11 +153,75 @@ function Checkout(props: any) {
             />
           </div>
           <br/>
-          <ButtonComponent
-            text="Pay by debit/credit card"
-            className=" flex justify-center text-[13px] font-bold hover:text-white border-2 border-lime
+          <div className="w-full">
+            <ButtonComponent
+                text="Pay by debit/credit card"
+                className=" flex justify-center text-[13px] font-bold hover:text-white border-2 border-lime
            hover:bg-lime px-[28px] py-[12px] uppercase rounded"
-          />
+                onClick={() => setIsCardPayment(!isCardPayment)}
+            />
+            {!isCardPayment &&
+                <div className="w-full">
+                  <div className="bg-[#ebe9eb] mt-[10px]">
+                    <div className="p-[14px] border-b border-b-[#d3ced2]">
+                      <RadioInput
+                          label="Debit/Credit Card"
+                          register={register}
+                          name="payment"
+                          value="DC"
+                          className="text-sm text-dark-blue font-bold mb-3"
+                      />
+                      <Note content="Payment Instructions will be provided once we received your order." >
+
+                      </Note>
+                      <Elements stripe={stripePromise}>
+                        <CardFormComponent />
+                      </Elements>
+                      <RadioInput
+                          label="Online Bank Transfer"
+                          register={register}
+                          name="payment"
+                          value="bankTransfer"
+                          className="text-sm text-dark-blue font-bold mb-3"
+                      />
+                      <RadioInput
+                          label="Pay Over the Phone"
+                          register={register}
+                          name="payment"
+                          value="payPhone"
+                          className="text-sm text-dark-blue font-bold mb-3"
+                      />
+                    </div>
+                    <div className="p-[14px] mb-[15px]">
+                      <p className="text-[15px] text-[#1a1a1a] leading-6 ">
+                        Your personal data will be used to process your order, support
+                        your experience throughout this website, and for other purposes
+                        described in our
+                        <Link
+                            href="/privacy-policy"
+                            className="pl-1 hover:text-lime ease-in duration-200 "
+                        >
+                          privacy policy
+                        </Link>
+                        .
+                      </p>
+                      <TermsConditionComponent />
+                      <CheckBox
+                          register={register}
+                          label="I have read and agree to the website"
+                          required={true}
+                      />
+                      <div className="w-[158px]  mt-3 mb-1 ml-auto">
+                        <ButtonComponent
+                            text="PLACE ORDER"
+                            className="bg-dark-blue text-white text-[13px] px-[20px] py-[10px]
+                 hover:bg-lime hover:text-white ease-in duration-200"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>}
+          </div>
 
           <br />
           <ButtonComponent
@@ -172,12 +266,51 @@ function Checkout(props: any) {
              currently between 1 to 3 working days. If you need help placing new order or got a question,
               please don’t hesitate to call us free at 0800 048 7474."
           />
+          <RequestCallBack
+              attributes={attribute}
+              services={selectedServiceId}
+              propertyType={propertyType}
+          />
         </div>
       </div>
     </div>
   );
 }
 
+function CheckBox({ register, label, required, className }: any) {
+  return (
+      <div className="form-group form-check">
+        <input
+            name="acceptTerms"
+            type="checkbox"
+            {...register("acceptTerms")}
+            id="acceptTerms"
+            className="w-[13px] h-[13px] rounded-sm"
+        />
+        <label
+            htmlFor="acceptTerms"
+            className="text-sm text-[#1a1a1a] font-semibold ml-2"
+        >
+          {label}
+          <Link
+              href="/privacy-policy"
+              className="pl-1 hover:text-lime ease-in duration-200 font-bold "
+          >
+            Accept Terms & Conditions
+          </Link>
+          {required && <span className="text-[#ff0000] text-xl ml-1">*</span>}
+        </label>
+      </div>
+  );
+}
+function Note({ content }: any) {
+  return (
+      <div className="relative bg-[#dfdcde]  px-8 py-3 rounded-sm my-3">
+        <div className="text-gray-800 text-[13px] text-[#515151]">{content}</div>
+        <div className="absolute top-0 left-[39px] transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-4 h-4 bg-[#dfdcde]"></div>
+      </div>
+  );
+}
 function OrderSummary({ subTotal, discount }: any) {
   return (
     <div

@@ -26,7 +26,9 @@ function CardTable({ cart, getCart }: any) {
 
   useEffect(() => {
     cart?.forEach((item) => {
-      item["contact_type"] = "Me";
+      if (!item["contact_type"]) {
+        item["contact_type"] = "Me";
+      }
     });
     setCartItems(cart);
   }, [cart]);
@@ -114,7 +116,7 @@ function CardTable({ cart, getCart }: any) {
     const postCode = cartItems[cartNo]?.order_postcode;
     const address = cartItems[cartNo]?.order_address;
     const selectedServiceId = cartItems[cartNo]["products"].map(
-        (ele) => ele.service_id
+      (ele) => ele.service_id
     );
     const property = cartItems[cartNo];
     router?.push({
