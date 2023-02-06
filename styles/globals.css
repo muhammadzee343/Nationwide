@@ -69,7 +69,3 @@ textarea:focus{
 .listStyleCircle{
   list-style-type: circle
 }
-
-input[type='radio']:checked{
-  background-image: none;
-}

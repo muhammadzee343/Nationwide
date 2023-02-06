@@ -213,7 +213,6 @@ function CardTable({ cart, getCart }: any) {
                       value={type.title}
                       cartItem={cartItems}
                       cart={cart}
-                      checked={cartItems?.contact_type === type}
                       index={cartNo}
                       changeContactType={changeContactType}
                       className="text-lg text-dark-blue font-semibold mb-3"
@@ -256,7 +255,7 @@ const RadioInput = ({
           type="radio"
           value={value}
           defaultChecked={value === cartItem.contact_type}
-          className="mb-[2px] mr-[5px] h-[13px] w-[13px]  outline-lime border-lime focus:ring-lime checked:bg-lime"
+          className="mb-[2px] mr-[5px] h-[13px] w-[13px]"
           name={`${name}${index}`}
           onChange={() => changeContactType(value, index)}
         />

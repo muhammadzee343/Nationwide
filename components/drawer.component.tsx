@@ -21,7 +21,6 @@ import AlertBox from "./alertBox.component";
 import TextField from "./textFied.component";
 import ButtonComponent from "./button.component";
 import styles from "../styles/Home.module.css";
-import RequestCallBack from "./requestCallBack.component";
 import CardComponent from "./card.component";
 import { OverlayContext, SidebarContext } from "../context/sidebarContext";
 import { useForm } from "react-hook-form";
@@ -570,11 +569,6 @@ const DrawerComponent = ({}: any) => {
                 )}
               </div>
             </div>
-            <RequestCallBack
-              attributes={attribute}
-              services={selectedServiceId}
-              propertyType={propertyType}
-            />
             <CardComponent
               className="bg-white shadow px-[20px] pt-[15px] pb-[20px] my-[25px]"
               hClass="text-xl mb-[15px] text-black font-bold text-center"
