@@ -68,7 +68,7 @@ const CardFormComponent = () => {
             <div className="w-full flex flex-col md:flex-row justify-between mb-3 space-x-3">
                 <div className="w-full md:w-[45%]">
                     <label>
-                        Card Number
+                        <p className="mb-1">Card Number</p>
                         <CardNumberElement
                             options={options}
                             onReady={() => {
@@ -89,7 +89,7 @@ const CardFormComponent = () => {
                 </div>
                 <div className="w-full md:w-[25%]">
                     <label>
-                        Exp Date
+                        <p className="mb-1">Exp Date</p>
                         <CardExpiryElement
                             options={options}
                             onReady={() => {
@@ -110,7 +110,7 @@ const CardFormComponent = () => {
                 </div>
                 <div className="w-full md:w-[25%]">
                     <label>
-                        CVC
+                        <p className="mb-1">CVC</p>
                         <CardCvcElement
                             options={options}
                             onReady={() => {
