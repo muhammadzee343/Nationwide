@@ -53,7 +53,7 @@ function Checkout(props: any) {
   const { uuid , setUuid } = useContext(UuidContext);
   const [attribute, setAttributes] = useState<any>(attributeState);
   const [selectedServiceId, setSelectedServiceId] = useState<string[]>([]);
-  const [isCardPayment, setIsCardPayment] = useState<boolean>(false)
+  const [isCardPayment, setIsCardPayment] = useState<boolean>(true)
 
   useLayoutEffect(() => {
     getCartValues();
@@ -135,7 +135,7 @@ function Checkout(props: any) {
       <div className="w-[70%] lg:w-[50%] xl:w-[43%]">
         <CheckoutStepper />
       </div>
-      <div className="w-full flex flex-wrap justify-center sm:gap-x-22">
+      <div className="w-full flex flex-wrap justify-center items-start sm:gap-x-22">
         <div className="w-full lg:w-[50%] flex flex-col justify-center items-center  pt-[35px] pb-[25px] px-2">
           <div className="w-full my-3">
             <CardTable cart={cart} getCart={getCartValues} />
@@ -156,68 +156,17 @@ function Checkout(props: any) {
           <div className="w-full">
             <ButtonComponent
                 text="Pay by debit/credit card"
-                className=" flex justify-center text-[13px] font-bold hover:text-white border-2 border-lime
-           hover:bg-lime px-[28px] py-[12px] uppercase rounded"
+                className={`flex justify-center text-[13px] font-bold hover:text-white border-2 border-lime
+           hover:bg-lime px-[28px] py-[12px] uppercase rounded ${!isCardPayment && "text-white bg-lime"}`}
                 onClick={() => setIsCardPayment(!isCardPayment)}
             />
             {!isCardPayment &&
                 <div className="w-full">
-                  <div className="bg-[#ebe9eb] mt-[10px]">
+                  <div className="bg-white shadow-xl space-y-6 mt-[10px]">
                     <div className="p-[14px] border-b border-b-[#d3ced2]">
-                      <RadioInput
-                          label="Debit/Credit Card"
-                          register={register}
-                          name="payment"
-                          value="DC"
-                          className="text-sm text-dark-blue font-bold mb-3"
-                      />
-                      <Note content="Payment Instructions will be provided once we received your order." >
-
-                      </Note>
                       <Elements stripe={stripePromise}>
                         <CardFormComponent />
                       </Elements>
-                      <RadioInput
-                          label="Online Bank Transfer"
-                          register={register}
-                          name="payment"
-                          value="bankTransfer"
-                          className="text-sm text-dark-blue font-bold mb-3"
-                      />
-                      <RadioInput
-                          label="Pay Over the Phone"
-                          register={register}
-                          name="payment"
-                          value="payPhone"
-                          className="text-sm text-dark-blue font-bold mb-3"
-                      />
-                    </div>
-                    <div className="p-[14px] mb-[15px]">
-                      <p className="text-[15px] text-[#1a1a1a] leading-6 ">
-                        Your personal data will be used to process your order, support
-                        your experience throughout this website, and for other purposes
-                        described in our
-                        <Link
-                            href="/privacy-policy"
-                            className="pl-1 hover:text-lime ease-in duration-200 "
-                        >
-                          privacy policy
-                        </Link>
-                        .
-                      </p>
-                      <TermsConditionComponent />
-                      <CheckBox
-                          register={register}
-                          label="I have read and agree to the website"
-                          required={true}
-                      />
-                      <div className="w-[158px]  mt-3 mb-1 ml-auto">
-                        <ButtonComponent
-                            text="PLACE ORDER"
-                            className="bg-dark-blue text-white text-[13px] px-[20px] py-[10px]
-                 hover:bg-lime hover:text-white ease-in duration-200"
-                        />
-                      </div>
                     </div>
                   </div>
                 </div>}
@@ -226,14 +175,16 @@ function Checkout(props: any) {
           <br />
           <ButtonComponent
             text="Pay Over Phone"
-            className=" flex justify-center text-[13px] font-bold hover:text-white border-2 border-lime
+            className="flex justify-center text-[13px] font-bold hover:text-white border-2 border-lime
            hover:bg-lime px-[28px] py-[12px] uppercase rounded"
+            onClick={() => setIsCardPayment(true)}
           />
           <br />
           <ButtonComponent
             text="Pay By Bank Transfer"
             className=" flex justify-center text-[13px] font-bold hover:text-white border-2 border-lime
            hover:bg-lime px-[28px] py-[12px] uppercase rounded"
+            onClick={() => setIsCardPayment(true)}
           />
           <br />
           <BillingForm />
@@ -277,32 +228,6 @@ function Checkout(props: any) {
   );
 }
 
-function CheckBox({ register, label, required, className }: any) {
-  return (
-      <div className="form-group form-check">
-        <input
-            name="acceptTerms"
-            type="checkbox"
-            {...register("acceptTerms")}
-            id="acceptTerms"
-            className="w-[13px] h-[13px] rounded-sm"
-        />
-        <label
-            htmlFor="acceptTerms"
-            className="text-sm text-[#1a1a1a] font-semibold ml-2"
-        >
-          {label}
-          <Link
-              href="/privacy-policy"
-              className="pl-1 hover:text-lime ease-in duration-200 font-bold "
-          >
-            Accept Terms & Conditions
-          </Link>
-          {required && <span className="text-[#ff0000] text-xl ml-1">*</span>}
-        </label>
-      </div>
-  );
-}
 function Note({ content }: any) {
   return (
       <div className="relative bg-[#dfdcde]  px-8 py-3 rounded-sm my-3">

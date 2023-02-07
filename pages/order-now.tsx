@@ -254,7 +254,6 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
       } catch (err) {}
     }
   };
-
   const setPropertyAddress = (address: string) => {
     setValue("property_address", address);
     setAddresseses([]);

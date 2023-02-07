@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { useForm } from "react-hook-form";
 import ButtonComponent from "./button.component";
 import TextField from "./textFied.component";
-
+import Link from "next/link";
+import {Select} from 'antd'
 
 function BillingForm(props: any) {
-  const { register, handleSubmit } = useForm({
+  const [addresses, setAddresseses] = useState([]);
+  const { register, setValue, watch  } = useForm({
     defaultValues: {
       firstName: "",
       lastName: "",
@@ -22,61 +24,96 @@ function BillingForm(props: any) {
       payment: "",
     },
   });
+  const postcode = watch("postcode", "");
+  const handleChange = (value: string | string[]) => {
+    console.log(`Selected: ${value}`);
+  };
+  const getPropertyAddress = async (e: any) => {
+    e.preventDefault()
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ postcode: postcode }),
+      };
+      try {
+        const response = await fetch(
+            `${process.env.BASE_URL_DEV}postcodes/find_address`,
+            requestOptions
+        );
+        if (!response.ok) {
+          setAddresseses([]);
+          switch (response.status) {
+            case 422:
+              alert("Please Enter a valid Postcode");
+          }
+        } else {
+          const data = await response.json();
+          const addresses = [...data.addresses];
+          const newAddress= addresses.map((item) => {
+            return{  value: item.address,
+              label: item.address,}
+          })
+          setAddresseses([...newAddress]);
+        }
+      } catch (err) {
+        console.log(err, 'err')
+      }
+  };
   return (
-    <form className="w-full flex justify-between flex-wrap bg-[#f5f5f5] p-[20px]">
+    <form className="w-full flex justify-between flex-wrap bg-white shadow-xl space-y-6 p-[20px]">
       <div className="w-full">
         <h3 className="text-[28px] text-dark-blue leading-7 mb-[15px] font-semibold ">
           BILLING DETAILS
         </h3>
         <div className=" flex flex-wrap justify-between justify-center">
-          <div className="w-[45%] mb-1">
+          <div className="w-[48%] mb-1">
             <TextField
               className="text-sm leading-8 text-dark-blue font-semibold"
               lable="First Name"
               name="firstName"
               required={true}
               register={register}
-              inputClass="border-[#DEDEDE] py-2 px-3"
+              inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
           </div>
-          <div className="w-[45%] mb-1">
+          <div className="w-[48%] mb-1">
             <TextField
               className="text-sm leading-8 text-dark-blue font-semibold"
               lable="Last Name"
               required={true}
               name="lastName"
               register={register}
-              inputClass="border-[#DEDEDE] py-2 px-3"
+              inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
           </div>
-            <div className="w-[45%] mb-1">
+            <div className="w-[48%] mb-1">
               <TextField
                   className="text-sm leading-8 text-dark-blue font-semibold"
                   lable="Company Name (optional)"
                   name="company"
                   register={register}
-                  inputClass="border-[#DEDEDE] py-2 px-3"
+                  inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
               />
             </div>
-            <div className="w-[45%] mb-1">
+            <div className="w-[48%] mb-1">
               <TextField
                   className="text-sm leading-8 text-dark-blue font-semibold"
                   lable="Email"
                   required={true}
                   name="email"
                   register={register}
-                  inputClass="border-[#DEDEDE] py-2 px-3"
+                  inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
               />
             </div>
           <div className="w-full flex items-end gap-9 mb-1">
-            <div className="w-[45%]">
+            <div className="w-[48%]">
               <TextField
                 className="text-sm leading-8 text-dark-blue font-semibold"
                 lable="PostCode"
                 required={true}
                 name="postcode"
                 register={register}
-                inputClass="border-[#DEDEDE] py-2 px-3"
+                inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
               />
             </div>
             <div>
@@ -84,9 +121,23 @@ function BillingForm(props: any) {
                 text="FIND ADDRESS"
                 className="bg-dark-blue text-white text-[15px] font-semibold px-[20px] py-[10px]
                  hover:bg-lime hover:text-white ease-in duration-200"
+                onClick={() => {getPropertyAddress(event)}}
               />
             </div>
           </div>
+          {addresses.length > 0 &&
+              <div className="w-full mt-2">
+                <p>Select Address</p>
+                <div>
+                  <Select
+                      size="large"
+                      className="w-full py-2"
+                      onChange={handleChange}
+                      options={addresses}
+                  />
+                </div>
+              </div>
+          }
           <div className="w-full mb-1">
             <TextField
               className="text-sm leading-8 text-dark-blue font-semibold"
@@ -95,27 +146,41 @@ function BillingForm(props: any) {
               required={true}
               name="streetAddress"
               register={register}
-              inputClass="border-[#DEDEDE] py-2 px-3"
+              inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
           </div>
 
-          <div className="w-[45%] mb-1">
+          <div className="w-[48%] mb-1">
             <TextField
               className="text-sm leading-8 text-dark-blue font-semibold"
               lable="Phone"
               required={true}
               name="phone"
               register={register}
-              inputClass="border-[#DEDEDE] py-2 px-3"
+              inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
           </div>
-          <div className="w-[45%] mb-1">
+          <div className="w-[48%] mb-1">
             <TextField
               className="text-sm leading-8 text-dark-blue font-semibold"
               lable="Phone 2 (optional)"
               name="phone2"
               register={register}
-              inputClass="border-[#DEDEDE] py-2 px-3"
+              inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
+            />
+          </div>
+        </div>
+        <div className="w-full p-[14px] mb-[15px]">
+          <CheckBox
+              register={register}
+              label="I have read and agree to the website"
+              required={true}
+          />
+          <div className="w-[300px]  mt-3 mb-1 items-center bg-red-600">
+            <ButtonComponent
+                text="PLACE ORDER"
+                className="bg-dark-blue text-white text-[13px] px-[20px] py-[10px]
+                 hover:bg-lime hover:text-white ease-in duration-200"
             />
           </div>
         </div>
@@ -124,6 +189,32 @@ function BillingForm(props: any) {
   );
 }
 
+function CheckBox({ register, label, required, className }: any) {
+  return (
+      <div className="form-group form-check">
+        <input
+            name="acceptTerms"
+            type="checkbox"
+            {...register("acceptTerms")}
+            id="acceptTerms"
+            className="w-[13px] h-[13px] rounded-sm"
+        />
+        <label
+            htmlFor="acceptTerms"
+            className="text-sm text-[#1a1a1a] font-semibold ml-2"
+        >
+          {label}
+          <Link
+              href="/privacy-policy"
+              className="pl-1 hover:text-lime ease-in duration-200 font-bold "
+          >
+            Accept Terms & Conditions
+          </Link>
+          {required && <span className="text-[#ff0000] text-xl ml-1">*</span>}
+        </label>
+      </div>
+  );
+}
 
 
 export default BillingForm;
