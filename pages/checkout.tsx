@@ -157,13 +157,13 @@ function Checkout(props: any) {
             <ButtonComponent
                 text="Pay by debit/credit card"
                 className={`flex justify-center text-[13px] font-bold hover:text-white border-2 border-lime
-           hover:bg-lime px-[28px] py-[12px] uppercase rounded ${!isCardPayment && "text-white bg-lime"}`}
+           hover:bg-lime px-[28px] py-[12px] uppercase rounded ${!isCardPayment && "text-white bg-lime rounded-b-none"}`}
                 onClick={() => setIsCardPayment(!isCardPayment)}
             />
             {!isCardPayment &&
                 <div className="w-full">
-                  <div className="bg-white shadow-xl space-y-6 mt-[10px]">
-                    <div className="p-[14px] border-b border-b-[#d3ced2]">
+                  <div className="bg-white space-y-6">
+                    <div className="p-[14px] border-lime border-r-2 border-b-2 border-l-2 rounded-b">
                       <Elements stripe={stripePromise}>
                         <CardFormComponent />
                       </Elements>
