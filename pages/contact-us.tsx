@@ -11,13 +11,13 @@ import { enquiries } from "../utility/contactUsConstants";
 import Head from "next/head";
 function ContactUs(props: any) {
   return (
-    <div className="w-full flex justify-center px-[31px] mb-10">
+    <div className="mb-20 w-full flex justify-center px-[31px] sm:mb-20 md:mb-12">
       <Head>
         <title>Nationwide Surveyors | Contact Us</title>
       </Head>
       <div className=" w-full xl:container xxl:px-[100px]">
         <div className="w-full flex flex-col md:flex-row  pt-[82px]">
-          <div className=" w-full md:w-6/12 flex flex-col px-2">
+          <div className="w-full md:w-6/12 flex flex-col px-2">
             <div className="border-l-[8px] border-lime mb-[30px] px-5 py-2">
               <h4 className="text-sm mb-[2px] mt-[5px] uppercase font-semibold text-[#1a1a1a] tracking-[1px]">
                 GET IN TOUCH
