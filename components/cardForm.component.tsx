@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
-import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
-import useResponsiveFontSizeHook from "../hooks/useResponsiveFontSize.hook";
+import { useStripe, useElements, CardNumberElement, CardExpiryElement, CardCvcElement } from "@stripe/react-stripe-js";
 
 import "../styles/strip.module.css";
 
@@ -46,7 +45,9 @@ const CardFormComponent = () => {
             return;
         }
 
-        const card = elements.getElement(CardElement);
+        const card = elements.getElement(CardNumberElement);
+
+        console.log(card, 'card')
         //@ts-ignore
         const result = await stripe.createToken(card);
 
@@ -63,24 +64,72 @@ const CardFormComponent = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <label>
-                Credit or debit card
-                <CardElement
-                    options={options}
-                    onReady={() => {
-                        console.log("CardElement [ready]");
-                    }}
-                    onChange={event => {
-                        console.log("CardElement [change]", event);
-                    }}
-                    onBlur={() => {
-                        console.log("CardElement [blur]");
-                    }}
-                    onFocus={() => {
-                        console.log("CardElement [focus]");
-                    }}
-                />
-            </label>
+            <p className="pb-2 font-bold">Debit/Credit Card payment</p>
+            <div className="w-full flex flex-col md:flex-row justify-between mb-3 space-x-3">
+                <div className="w-full md:w-[45%]">
+                    <label>
+                        Card Number
+                        <CardNumberElement
+                            options={options}
+                            onReady={() => {
+                                console.log("CardElement [ready]");
+                            }}
+                            onChange={event => {
+                                console.log("CardElement [change]", event);
+                            }}
+                            onBlur={() => {
+                                console.log("CardElement [blur]");
+                            }}
+                            onFocus={() => {
+                                console.log("CardElement [focus]");
+                            }}
+                            className="border-2 border-gray-300 p-2 rounded-md"
+                        />
+                    </label>
+                </div>
+                <div className="w-full md:w-[25%]">
+                    <label>
+                        Exp Date
+                        <CardExpiryElement
+                            options={options}
+                            onReady={() => {
+                                console.log("CardElement [ready]");
+                            }}
+                            onChange={event => {
+                                console.log("CardElement [change]", event);
+                            }}
+                            onBlur={() => {
+                                console.log("CardElement [blur]");
+                            }}
+                            onFocus={() => {
+                                console.log("CardElement [focus]");
+                            }}
+                            className="border-2 border-gray-300 p-2 rounded-md"
+                        />
+                    </label>
+                </div>
+                <div className="w-full md:w-[25%]">
+                    <label>
+                        CVC
+                        <CardCvcElement
+                            options={options}
+                            onReady={() => {
+                                console.log("CardElement [ready]");
+                            }}
+                            onChange={event => {
+                                console.log("CardElement [change]", event);
+                            }}
+                            onBlur={() => {
+                                console.log("CardElement [blur]");
+                            }}
+                            onFocus={() => {
+                                console.log("CardElement [focus]");
+                            }}
+                            className="border-2 border-gray-300 p-2 rounded-md"
+                        />
+                    </label>
+                </div>
+            </div>
         </form>
     );
 };

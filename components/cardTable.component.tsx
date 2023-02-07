@@ -26,9 +26,7 @@ function CardTable({ cart, getCart }: any) {
 
   useEffect(() => {
     cart?.forEach((item) => {
-      if (!item["contact_type"]) {
-        item["contact_type"] = "Me";
-      }
+      item["contact_type"] = "Me";
     });
     setCartItems(cart);
   }, [cart]);
@@ -189,7 +187,7 @@ function CardTable({ cart, getCart }: any) {
                       text="Add an other service"
                       type="button"
                       className=" flex justify-center text-[14px] hover:text-white font-medium border-2 border-dark-blue hover:border-lime
-           hover:bg-lime px-[28px] py-[8px] uppercase rounded mt-2"
+           hover:bg-lime px-[28px] py-[12px] uppercase rounded"
                       onClick={() => addAnotherService(cartNo)}
                   />
                 </div>
@@ -203,7 +201,7 @@ function CardTable({ cart, getCart }: any) {
                 (Contact for Access)
                 <FontAwesomeIcon className="ml-2 w-5" icon={faInfoCircle} />
               </p>
-              <div className="flex flex-wrap xxl:gap-x-2 grid grid-cols-2 md:grid-cols-6 lg:grid-cols-2 xl:grid-cols-6">
+              <div className="flex flex-wrap gap-x-6 xxl:gap-x-12">
                 {contactType.map((type, index) => {
                   return (
                     <RadioInput
@@ -230,6 +228,18 @@ function CardTable({ cart, getCart }: any) {
                   updateOrder={updateOrder}
                 />
               )}
+              <div>
+                <textarea
+                    cols={80}
+                    placeholder="You can provide any special instructions/notes to help us deal with your order."
+                    name="orderNotes"
+                    defaultValue={cartItems.contact_2}
+                    className={`border w-full outline-none border-grey-500 py-2.5 px-3`}
+                    onChange={(e) => {
+                      changeInfo("customer_note", e.target.value, cartNo);
+                    }}
+                ></textarea>
+              </div>
             </div>
           </div>
         );
@@ -409,18 +419,7 @@ function KeyHolderInfo({
                   />
                 </div>
               </div>
-              <div>
-                <textarea
-                  cols={80}
-                  placeholder="You can provide any special instructions/notes to help us deal with your order."
-                  name="orderNotes"
-                  defaultValue={item.contact_2}
-                  className={`border w-full outline-none border-grey-500 py-2.5 px-3`}
-                  onChange={(e) => {
-                    changeInfo("customer_note", e.target.value, i);
-                  }}
-                ></textarea>
-              </div>
+
               <div className="w-full flex justify-center">
                 <ButtonComponent
                   text="Save"
