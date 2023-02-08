@@ -41,12 +41,6 @@ function Checkout(props: any) {
     supply_type: "",
     circuits: "",
   };
-  const { register, handleSubmit } = useForm({
-    defaultValues: {
-      orderNotes: "",
-      payment: "",
-    },
-  });
   const router = useRouter();
   const [cart, setCart] = useState<any>([]);
   const [pricing, setPricing] = useState({ totalAmount: "0", discount: "0" });
