@@ -2,6 +2,8 @@ import React, { useMemo } from "react";
 import { useStripe, useElements, CardNumberElement, CardExpiryElement, CardCvcElement } from "@stripe/react-stripe-js";
 
 import "../styles/strip.module.css";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCcMastercard, faCcVisa, faCcDiscover, faCcAmex, faStripe} from "@fortawesome/free-brands-svg-icons";
 
 const useOptions = () => {
 
@@ -64,7 +66,15 @@ const CardFormComponent = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <p className="pb-2 font-bold">Debit/Credit Card payment</p>
+            <div className="w-full flex flex-row items-center justify-between mb-10">
+                <p className="font-bold">Debit/Credit Card payment</p>
+                <div className="flex flex-row gap-x-3">
+                    <FontAwesomeIcon className="text-yellow-500 w-10" icon={faCcMastercard}/>
+                    <FontAwesomeIcon className="text-indigo-800 w-10" icon={faCcVisa}/>
+                    <FontAwesomeIcon className="text-black w-10" icon={faCcDiscover}/>
+                    <FontAwesomeIcon className="text-indigo-600 w-10" icon={faStripe}/>
+                </div>
+            </div>
             <div className="w-full flex flex-col md:flex-row justify-between mb-3 space-x-3">
                 <div className="w-full md:w-[45%]">
                     <label>
