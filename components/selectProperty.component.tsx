@@ -61,6 +61,8 @@ export default function SelectProperty() {
               <ButtonComponent
                 text="Quote Now"
                 className="bg-lime text-dark-blue font-semibold uppercase px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"
+                onClick={() => displayDrawer("residential_property")}
+                type="button"
               />
             </div>
           </div>

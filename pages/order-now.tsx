@@ -13,6 +13,7 @@ import Select from "../components/select.component";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { UuidContext } from "../context/sidebarContext";
+import {bundles} from "../utility/constants";
 
 function OrderNow({ commercialProperties, residentialProperties }: any) {
   const attributeState = {
@@ -82,64 +83,18 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   const selectBundle = () => {
     if (bundle) {
-      switch (bundle) {
-        case "10":
-          setPropertyType("residential_property");
-          setSelectedService([
-            "Electrical Installation Condition Report (EICR)",
-            "Electrical Portable Appliance Test (PAT)",
-          ]);
-          setSelectedServiceId([9, 10]);
-          setAllAttributes([
-            "Electrical Installation Condition Report (EICR)",
-            "Electrical Portable Appliance Test (PAT)",
-          ]);
-          break;
-        case "20":
-          setPropertyType("residential_property");
-          setSelectedServiceId([9, 1]);
-          setSelectedService([
-            "Electrical Installation Condition Report (EICR)",
-            "Energy Performance Certificate",
-          ]);
-          setAllAttributes([
-            "Electrical Installation Condition Report (EICR)",
-            "Energy Performance Certificate",
-          ]);
-          break;
-        case "30":
-          setPropertyType("residential_property");
-          setSelectedServiceId([9, 10, 7]);
-          setSelectedService([
-            "Electrical Installation Condition Report (EICR)",
-            "Electrical Portable Appliance Test (PAT)",
-            "Gas Safety Certificate",
-          ]);
-          setAllAttributes([
-            "Electrical Installation Condition Report (EICR)",
-            "Electrical Portable Appliance Test (PAT)",
-            "Gas Safety Certificate",
-          ]);
-          break;
-        case "40":
-          setPropertyType("residential_property");
-          setSelectedServiceId([9, 1, 7]);
-          setSelectedService([
-            "Electrical Installation Condition Report (EICR)",
-            "Energy Performance Certificate",
-            "Gas Safety Certificate",
-          ]);
-          setAllAttributes([
-            "Electrical Installation Condition Report (EICR)",
-            "Energy Performance Certificate",
-            "Gas Safety Certificate",
-          ]);
-          break;
-        default:
-          setPropertyType("");
-          setSelectedService([]);
-          setAllAttributes([]);
-          setSelectedServiceId([]);
+      // @ts-ignore
+      const bundleData = bundles.find((data) => data.content.service == bundle);
+      if (bundleData){
+        setPropertyType("residential_property");
+        setSelectedService(bundleData.content.list);
+        setSelectedServiceId(bundleData.content.value);
+        setAllAttributes(bundleData.content.list);
+      }else{
+        setPropertyType("");
+        setSelectedService([]);
+        setAllAttributes([]);
+        setSelectedServiceId([]);
       }
     }
   };
@@ -175,31 +130,45 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     const body = {
       order: {
         service_category: propertyType,
-        session_id: uuid,
-        property_postcode: postcode,
-        property_address: propertyAddress,
-        contact_type: "",
-        contact_name: "",
-        contact_number: "",
-        contact_email: "",
-        customer_note: "",
+        session_id: uuid
       },
       order_product: {
         ...attribute,
-        number_bedrooms_manual: attribute.bedrooms >= 5 ? true : false,
+        number_bedrooms_manual: attribute.bedrooms >= 5,
         no_of_gas_appliances_manual:
-          attribute.gas_appliances >= 4 ? true : false,
+          attribute.gas_appliances >= 4,
         no_of_distribution_boards_manual: true,
         no_of_electric_appliances_manual:
-          attribute.electrical_appliances >= 30 ? true : false,
-        no_of_floors_manual: attribute.floors >= 4 ? true : false,
+          attribute.electrical_appliances >= 30,
+        no_of_floors_manual: attribute.floors >= 4,
         no_of_bathrooms_manual: true,
-        no_of_circuits_manual: attribute.circuits >= 31 ? true : false,
+        no_of_circuits_manual: attribute.circuits >= 31,
         property_price_manual:
-          attribute.property_price >= 1000001 ? true : false,
+          attribute.property_price >= 1000001,
+        property_postcode: postcode,
+        property_address: propertyAddress,
       },
       services: [...selectedServiceId],
     };
+
+    if (bundle){
+      //@ts-ignore
+      const bundleData = bundles.find((data) => data.content.service == bundle);
+
+      if (bundleData){
+        let notSame = false;
+        selectedServiceId.map((data) =>{
+            if(!bundleData.content.value.includes(data)){
+              notSame = true;
+            }
+        })
+        if (!notSame){
+          //@ts-ignore
+          body.bundle_id = bundle;
+        }
+      }
+    }
+
     const requestOptions = {
       method: "POST",
       headers: { "Content-type": "application/json" },
@@ -310,7 +279,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
   };
 
   const addOtherService = () => {
-    console.log(property, postCode, ser);
+
     if (address) {
       setPropertyType(property);
       let temp  = [ ];
@@ -331,6 +300,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         })
         .map((ele) => ele.name);
       setSelectedServiceId(temp);
+
       setAllAttributes(selectedService);
       setSelectedService(selectedService);
       setValue("property_address", address);
