@@ -7,6 +7,14 @@ export const contactOptions = [
   { type: "radio", title: "Other", value: "" },
 ];
 
+export const paymentTypes = {
+  "card":"Debit/Credit Card",
+  "pay_over_phone":"Pay Over Phone",
+  "bank_transfer":"Bank Transfer",
+  "google_pay":"Payment Request (Stripe)",
+  "apple_pay":"Payment Request (Stripe)"
+}
+
 export const attributes = {
   property_type: {
     headings: "Property Type:",

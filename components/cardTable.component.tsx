@@ -6,6 +6,9 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import ButtonComponent from "./button.component";
 import { OverlayContext } from "../context/sidebarContext";
+import AwesomeDebouncePromise from "awesome-debounce-promise";
+
+
 
 function CardTable({ cart, getCart }: any) {
   const contactType = [
@@ -20,14 +23,17 @@ function CardTable({ cart, getCart }: any) {
 
   const [open, setOpen] = useState(false);
 
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState({
+    shopping_cart_products:[],
+    shopping_cart_bundles:[]
+  });
 
   const { handleSubmit, register } = useForm();
 
   useEffect(() => {
-    cart?.forEach((item) => {
-      item["contact_type"] = "Me";
-    });
+    // cart?.forEach((item) => {
+    //   item["contact_type"] = "Me";
+    // });
     setCartItems(cart);
   }, [cart]);
 
@@ -35,26 +41,92 @@ function CardTable({ cart, getCart }: any) {
 
   const { setIsLoading } = useContext(OverlayContext);
 
-  const changeContactType = (data, index) => {
-    cart[index].contact_type = data;
+  const changeContactType = (data, index,obj) => {
 
-    setCartItems([...cart]);
+    cart[obj][index][0].contact_type = data;
+    setCartItems({
+      shopping_cart_products:cart.shopping_cart_products,
+      shopping_cart_bundles:cart.shopping_cart_bundles
+    });
+
+
+    const orderIds = cart[obj][index].map((data) => data.id);
+
+    asyncFunctionDebounced(index,orderIds,obj);
+
+
   };
 
-  const changeInfo = (name: string, data: any, index: number) => {
-    console.log(name, data, index);
-    cart[index][name] = data;
-    console.log(cart);
-  };
 
-  const deleteService = async (id, cartNo: number) => {
+
+  const updateOrder = async (index,orderIds,obj) => {
+    const temp = cart[obj][index][0] || "";
+    const body = {
+      order_product:{
+        contact_type: temp?.contact_type,
+        contact_name: temp?.contact_name,
+        contact_1: temp?.contact_1,
+        contact_2: temp?.contact_2,
+        contact_email: temp?.contact_email,
+        customer_note: temp?.customer_note,
+      },
+      order_product_ids : orderIds,
+    };
     const requestOptions = {
-      method: "DELETE",
+      method: "PUT",
       headers: { "Content-type": "application/json" },
+      body: JSON.stringify(body),
     };
     try {
       const response = await fetch(
-        `${process.env.BASE_URL_DEV}/order_products/${id}`,
+          `${process.env.BASE_URL_DEV}/order_products/update_products`,
+          requestOptions
+      );
+      if (!response.ok) {
+        switch (response.status) {
+          case 422:
+        }
+      } else {
+        const data = await response.json();
+      }
+
+    } catch (err) {
+
+    }
+  };
+
+
+  const asyncFunctionDebounced = AwesomeDebouncePromise(
+      updateOrder,
+      500,
+  );
+
+  const changeInfo = (name: string, data: any, index: number,obj:string) => {
+    cart[obj][index][0][name] = data;
+    const orderIds = cart[obj][index].map((data) => data.id);
+
+    asyncFunctionDebounced(index,orderIds,obj);
+  };
+
+
+
+  const deleteService = async (orderId, bundleId , productId,address) => {
+
+    const body = {
+      "order_id": orderId,
+      "bundle_id": bundleId,
+      "product_id": productId,
+      "address":address
+    }
+
+    const requestOptions = {
+      method: "DELETE",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(body),
+    };
+    try {
+      const response = await fetch(
+        `${process.env.BASE_URL_DEV}/order_products/delete_products`,
         requestOptions
       );
       if (!response.ok) {
@@ -68,55 +140,15 @@ function CardTable({ cart, getCart }: any) {
     } catch (err) {}
   };
 
-  const updateOrder = async (e, orderId) => {
-    e.preventDefault();
-    setIsLoading(true);
-    const temp =
-      cartItems.find((order) => {
-        return order.order_id == orderId;
-      }) || "";
-    const body = {
-      order_address: temp?.order_address,
-      contact_name: temp?.contact_name,
-      contact_1: temp?.contact_1,
-      contact_2: temp?.contact_2,
-      contact_email: temp?.contact_email,
-      customer_note: temp?.customer_note,
-      contact_type: temp?.contact_type,
-    };
-    console.log(cartItems);
-    console.log(temp);
-    console.log(body);
-    const requestOptions = {
-      method: "PUT",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(body),
-    };
-    try {
-      const response = await fetch(
-        `${process.env.BASE_URL_DEV}/orders/${orderId}`,
-        requestOptions
-      );
-      if (!response.ok) {
-        switch (response.status) {
-          case 422:
-        }
-      } else {
-        const data = await response.json();
-      }
-      setIsLoading(false);
-    } catch (err) {
-      setIsLoading(false);
-    }
-  };
+
 
   const addAnotherService = (cartNo: number) => {
-    const postCode = cartItems[cartNo]?.order_postcode;
-    const address = cartItems[cartNo]?.order_address;
-    const selectedServiceId = cartItems[cartNo]["products"].map(
+
+    const postCode = cartItems.shopping_cart_products[cartNo][0]?.property_postcode;
+    const address = cartItems.shopping_cart_products[cartNo][0]?.property_address;
+    const selectedServiceId = cartItems.shopping_cart_products[cartNo].map(
       (ele) => ele.service_id
     );
-    const property = cartItems[cartNo];
     router?.push({
       pathname: "/order-now",
       query: {
@@ -127,6 +159,8 @@ function CardTable({ cart, getCart }: any) {
       },
     });
   };
+
+
   return (
     <div>
       <header>
@@ -140,7 +174,8 @@ function CardTable({ cart, getCart }: any) {
           <p className="text-dark-blue text-sm px-4 font-semibold">Price</p>
         </div>
       </header>
-      {cartItems?.map((cartItems, cartNo, array) => {
+      { cartItems?.shopping_cart_products?.map((cartItemData, cartNo, array) => {
+
         return (
           <div
             className="border border-[#e5e7eb] rounded-sm my-2 py-3"
@@ -149,14 +184,15 @@ function CardTable({ cart, getCart }: any) {
             <div className="w-full flex px-4 py-1 justify-between">
               <div className="w-full">
                 <p className="text-[15px] text-dark-blue font-semibold">
-                  {cartItems?.order_address}
+                  {cartItemData[0]?.property_address}
                 </p>
               </div>
             </div>
 
             <div className="w-full">
               <ul className="w-full px-4">
-                {cartItems?.products.map((e, index) => {
+                {cartItemData?.map((e, index) => {
+
                   return (
                     <li
                       key={index}
@@ -166,10 +202,10 @@ function CardTable({ cart, getCart }: any) {
                         <FontAwesomeIcon
                             icon={faTrashAlt}
                             className="text-[#ff0000] h-[15px] cursor-pointer"
-                            onClick={() => deleteService(e.product_id, cartNo)}
+                            onClick={() => deleteService( e.order_id,"",e.id,e.property_address)}
                         />
                         <p className="text-[10px] md:text-xs ml-4 text-dark-blue font-semibold">
-                          &#8618; {e?.product_name}
+                          &#8618; {e?.name}
                         </p>
                       </div>
                       <p className="text-[10px] md:text-xs text-dark-blue font-semibold">
@@ -203,29 +239,33 @@ function CardTable({ cart, getCart }: any) {
               </p>
               <div className="flex flex-wrap gap-x-6 xxl:gap-x-12">
                 {contactType.map((type, index) => {
+
                   return (
                     <RadioInput
                       key={index}
                       label={type.title}
-                      name="contact_type"
+                      name="contact_type1"
                       value={type.title}
-                      cartItem={cartItems}
+                      activeVal={cartItemData[0].contact_type}
                       cart={cart}
                       index={cartNo}
                       changeContactType={changeContactType}
+                      obj="shopping_cart_products"
                       className="text-lg text-dark-blue font-semibold mb-3"
                     />
                   );
                 })}
               </div>
-              {cartItems.contact_type !== "Me" && (
+              {cartItemData.length && cartItemData[0]?.contact_type !== "Me" && (
                 <KeyHolderInfo
-                  item={cartItems}
+                  item={cartItemData[0]}
                   i={cartNo}
                   setItem={setCartItems}
                   cart={array}
                   changeInfo={changeInfo}
                   updateOrder={updateOrder}
+                  obj="shopping_cart_products"
+
                 />
               )}
               <div>
@@ -233,17 +273,130 @@ function CardTable({ cart, getCart }: any) {
                     cols={80}
                     placeholder="You can provide any special instructions/notes to help us deal with your order."
                     name="orderNotes"
-                    defaultValue={cartItems.contact_2}
+                    defaultValue={cartItemData[0]?.customer_note}
                     className={`border w-full outline-none border-grey-500 py-2.5 px-3`}
                     onChange={(e) => {
-                      changeInfo("customer_note", e.target.value, cartNo);
+                      changeInfo("customer_note", e.target.value, cartNo,"shopping_cart_products");
                     }}
-                ></textarea>
+                />
               </div>
             </div>
           </div>
         );
       })}
+
+
+      { cartItems?.shopping_cart_bundles?.map((cartItemData, cartNo, array) => {
+
+        return (
+            <div
+                className="border border-[#e5e7eb] rounded-sm my-2 py-3"
+                key={cartNo}
+            >
+              <div className="w-full flex px-4 py-1 justify-between">
+                <div className="w-full flex ">
+                  <FontAwesomeIcon
+                      icon={faTrashAlt}
+                      className="text-[#ff0000] h-[15px] cursor-pointer"
+                      onClick={() => deleteService( cartItemData[0].order_id,cartItemData[0].bundle_id,"",cartItemData[0]?.property_address)}
+                  />
+                  <p className=" ml-4  text-[15px] text-dark-blue font-semibold">
+                    {cartItemData[0]?.property_address}
+                  </p>
+                </div>
+              </div>
+
+              <div className="w-full">
+                <ul className="w-full px-4">
+                  {cartItemData?.map((e, index) => {
+                    return (
+                        <li
+                            key={index}
+                            className="py-1.5 flex justify-between border-b border-[#e5e7eb]"
+                        >
+                          <div className="flex">
+                            <p className="text-[10px] md:text-xs ml-4 text-dark-blue font-semibold">
+                              &#8618; {e?.name}
+                            </p>
+                          </div>
+                          <p className="text-[10px] md:text-xs text-dark-blue font-semibold">
+                            &#163; {e.total_amount}
+                          </p>
+                        </li>
+                    );
+                  })}
+                </ul>
+              </div>
+           {/*   {!router?.query?.aquote && !router?.query.bquote &&*/}
+           {/*   (*/}
+           {/*       <div className="px-3">*/}
+           {/*         <ButtonComponent*/}
+           {/*             text="Add an other service"*/}
+           {/*             type="button"*/}
+           {/*             className=" flex justify-center text-[14px] hover:text-white font-medium border-2 border-dark-blue hover:border-lime*/}
+           {/*hover:bg-lime px-[28px] py-[12px] uppercase rounded"*/}
+           {/*             onClick={() => addAnotherService(cartNo)}*/}
+           {/*         />*/}
+           {/*       </div>*/}
+           {/*   )*/}
+
+           {/*   }*/}
+              <br />
+
+              <div className="w-full px-4">
+                <p className="text-dark-blue text-[18px] font-semibold flex">
+                  (Contact for Access)
+                  <FontAwesomeIcon className="ml-2 w-5" icon={faInfoCircle} />
+                </p>
+                <div className="flex flex-wrap gap-x-6 xxl:gap-x-12">
+                  {contactType.map((type, index) => {
+                    return (
+                        <RadioInput
+                            key={index}
+                            label={type.title}
+                            name="contact_type"
+                            value={type.title}
+                            activeVal={cartItemData[0]?.contact_type}
+                            cart={cart}
+                            index={cartNo}
+                            changeContactType={changeContactType}
+                            obj="shopping_cart_bundles"
+                            className="text-lg text-dark-blue font-semibold mb-3"
+                        />
+                    );
+                  })}
+                </div>
+                {cartItemData.length && cartItemData[0]?.contact_type !== "Me" && (
+                    <KeyHolderInfo
+                        item={cartItemData[0]}
+                        i={cartNo}
+                        setItem={setCartItems}
+                        cart={array}
+                        changeInfo={changeInfo}
+                        updateOrder={updateOrder}
+                        obj="shopping_cart_bundles"
+                    />
+                )}
+                <div>
+                <textarea
+                    cols={80}
+                    placeholder="You can provide any special instructions/notes to help us deal with your order."
+                    name="orderNotes"
+                    defaultValue={cartItemData[0]?.customer_note}
+                    className={`border w-full outline-none border-grey-500 py-2.5 px-3`}
+                    onChange={(e) => {
+                      changeInfo("customer_note", e.target.value, cartNo,"shopping_cart_bundles");
+                    }}
+                />
+                </div>
+              </div>
+            </div>
+        );
+      })}
+
+
+
+
     </div>
   );
 }
@@ -253,10 +406,11 @@ const RadioInput = ({
   value,
   name,
   className = "",
-  cartItem,
+  activeVal,
   changeContactType,
   index,
   cart,
+  obj
 }: any) => {
   return (
     <label className={`${className}`}>
@@ -264,10 +418,10 @@ const RadioInput = ({
         <input
           type="radio"
           value={value}
-          defaultChecked={value === cartItem.contact_type}
+          defaultChecked={value === activeVal}
           className="mb-[2px] mr-[5px] h-[13px] w-[13px]"
           name={`${name}${index}`}
-          onChange={() => changeContactType(value, index)}
+          onChange={() => changeContactType(value, index, obj)}
         />
         {label}
       </div>
@@ -282,6 +436,7 @@ function KeyHolderInfo({
   cart,
   changeInfo,
   updateOrder,
+  obj
 }: any) {
   return (
     <div className="relative border-t border-t-[#e5e7eb]">
@@ -349,7 +504,7 @@ function KeyHolderInfo({
                     className={`w-full px-0 border-0 border-b border-b-grey-500 h-[40px] focus:border-b-lime  outline-none
                    focus:ring-transparent shadow-sm`}
                     onChange={(e) => {
-                      changeInfo("contact_name", e.target.value, i);
+                      changeInfo("contact_name", e.target.value, i, obj);
                     }}
                   />
                 </div>
@@ -370,7 +525,7 @@ function KeyHolderInfo({
                     className={`border-0 px-0 border-b border-b-grey-500 w-full h-[40px]  focus:border-lime  outline-none
                    focus:ring-transparent shadow-sm`}
                     onChange={(e) => {
-                      changeInfo("contact_email", e.target.value, i);
+                      changeInfo("contact_email", e.target.value, i, obj);
                     }}
                   />
                 </div>
@@ -393,7 +548,7 @@ function KeyHolderInfo({
                     className={`border-0 px-0 border-b border-b-grey-500 w-full h-[40px] focus:border-lime  outline-none
                    focus:ring-transparent shadow-sm`}
                     onChange={(e) => {
-                      changeInfo("contact_1", e.target.value, i);
+                      changeInfo("contact_1", e.target.value, i, obj);
                     }}
                   />
                 </div>
@@ -414,18 +569,10 @@ function KeyHolderInfo({
                     required={true}
                     className={`border-0 px-0 border-b border-b-grey-500 w-full h-[40px] focus:border-lime  outline-none focus:ring-transparent shadow-sm`}
                     onChange={(e) => {
-                      changeInfo("contact_2", e.target.value, i);
+                      changeInfo("contact_2", e.target.value, i, obj);
                     }}
                   />
                 </div>
-              </div>
-
-              <div className="w-full flex justify-center">
-                <ButtonComponent
-                  text="Save"
-                  className="bg-[#252525] text-white w-[100px] text-[11px] sm:text-[12px] font-semibold px-[2px]
-                             sm:px-[20px] py-[13px] hover:bg-lime hover:text-white ease-in duration-200"
-                />
               </div>
             </div>
           </form>

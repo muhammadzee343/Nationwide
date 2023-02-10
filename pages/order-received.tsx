@@ -1,25 +1,10 @@
 import React, {useMemo} from "react";
 import Head from "next/head";
 import ButtonComponent from "../components/button.component";
+import {attributes, paymentTypes} from "../utility/orderNowConstants";
+import {useRouter} from "next/router";
+import moment from "moment"
 
-const orderData = [
-    {
-        title: "ORDER NUMBER:",
-        value: "1339324"
-    },
-    {
-        title: "DATE:",
-        value: "February 8, 2023"
-    },
-    {
-        title: "TOTAL:",
-        value: "$70.00"
-    },
-    {
-        title: "PAYMENT METHOD:",
-        value: "Debit/Credit Card"
-    },
-]
 const productData = [
     {
         serviceName: "Electrical Installation Condition Report (EICR)",
@@ -38,50 +23,84 @@ const productData = [
         total: "$129.00"
     },
 ]
-const priceData = [
-    {
+
+const OrderReceived: React.FunctionComponent = ({ orderInfo }) => {
+    const router = useRouter();
+
+    const orderData = [
+        {
+            title: "ORDER NUMBER:",
+            value: orderInfo.order_id
+        },
+        {
+            title: "DATE:",
+            value: moment(orderInfo.payment_date).format('MMMM D, YYYY')
+        },
+        {
+            title: "TOTAL:",
+            value: `$${orderInfo.total_amount}`
+        },
+        {
+            title: "PAYMENT METHOD:",
+            value: paymentTypes[orderInfo.payment_method]
+        },
+    ]
+
+    const priceData = [
+      {
         title: "SUBTOTAL",
-        value: "$377.00",
-    },
-    {
-        title: "DISCOUNT",
-        value: "-$15.00",
-    },
-    {
-        title: "PAYMENT METHOD",
-        value: "Debit/Credit Card",
-    },
-    {
-        title: "TOTAL",
-        value: "$362.00",
-    },
-]
-const OrderReceived: React.FunctionComponent = () => {
-    const orderDetail = useMemo<JSX.Element[]>(() => {
-       const element:JSX.Element[] = []
-        orderData.forEach((data) => {
-            element.push(
-                <div className="flex flex-row mr-10 pt-5 pb-5 md:p-5">
-                    <div className={`md:border-r border-gray-500 border-dotted md:pr-10 text-sm`}>
-                        <p>{data.title}</p>
-                        <p className="font-bold">{data.value}</p>
-                    </div>
-                </div>
-            )
+        value: `$${parseInt(orderInfo.total_amount) + parseInt(orderInfo.total_discount) }`,
+      },
+    ];
+
+    if(orderInfo.total_discount !="0.0"){
+        priceData.push({
+          title: "DISCOUNT",
+          value: `-${orderInfo.total_discount}`,
+        });
+    }
+
+
+    priceData.push(
+        {
+            title: "PAYMENT METHOD",
+            value:  paymentTypes[orderInfo.payment_method],
+        },
+        {
+            title: "TOTAL",
+            value: `$${orderInfo.total_amount}`,
         })
-        return element
-    },[])
-    return(
-        <div className="w-full flex flex-col justify-center items-center">
-            <Head>
-                <title>Checkout - Nationwide Surveyors</title>
-            </Head>
-            <div className="w-full flex flex-wrap justify-center items-start sm:gap-x-22 mt-14 mb-14">
-                <div className="w-full lg:w-[80%] flex flex-col justify-center pt-[35px] pb-[25px] px-2">
-                    <div className="w-[60%] md:w-1/4 lg:w-[20%] xl:w-[15%]">
-                        <ButtonComponent
-                            text="RETURN TO HOME PAGE"
-                            className="bg-dark-blue text-white text-xs font-semibold px-[20px] py-[10px]
+
+  const orderDetail = useMemo<JSX.Element[]>(() => {
+    const element: JSX.Element[] = [];
+    orderData.forEach((data) => {
+      element.push(
+        <div className="flex flex-row mr-10 pt-5 pb-5 md:p-5">
+          <div className="md:border-r border-gray-500 border-dotted md:pr-10">
+            <p className="text-xs">{data.title}</p>
+            <p className="font-bold">{data.value}</p>
+          </div>
+        </div>
+      );
+    });
+    return element;
+  }, []);
+  return (
+    <div className="w-full flex flex-col justify-center items-center">
+      <Head>
+        <title>Checkout - Nationwide Surveyors</title>
+      </Head>
+      <div className="w-full flex flex-wrap justify-center items-start sm:gap-x-22 mt-14 mb-14">
+        <div className="w-full lg:w-[90%] flex flex-col justify-center pt-[35px] pb-[25px] px-2">
+          <div className="w-3/4 md:w-1/4">
+            <ButtonComponent
+                onClick={() =>{
+                    router?.push({
+                        pathname: "/",
+                    });
+                }}
+              text="RETURN TO HOME PAGE"
+              className="bg-dark-blue text-white md:text-[18px] font-semibold px-[20px] py-[10px]
                             hover:bg-lime hover:text-white ease-in duration-200"
                         />
                     </div>
@@ -101,25 +120,26 @@ const OrderReceived: React.FunctionComponent = () => {
                                 </div>
                             </div>
                             <div className="w-full py-3">
-                                {productData.map((item, index) => {
+                                {orderInfo.products.map((item, index) => {
+                                    const propertyType  = attributes.property_type.options.find((data) => data.value ===item.property_type);
                                     return(
-                                        <div className={`w-full flex flex-row py-4 ${index != productData.length-1 && "border-b-4 border-dark-blue"}`}>
+                                        <div className={`w-full flex flex-row py-4 ${index != orderInfo.products.length-1 && "border-b-4 border-dark-blue"}`}>
                                             <div className="w-3/5 items-center">
                                                 <div className="w-full">
-                                                    <p className="text-center font-medium text-xl">{item.serviceName}</p>
+                                                    <p className="text-center font-medium text-xl">{item.name}</p>
                                                 </div>
                                                 <div className="pt-5 lg:pl-14 text-sm xxl:text-lg">
                                                     <div className="flex flex-row">
-                                                        <p className="font-bold mr-4">{item.posttitle}</p>
-                                                        <p className="font-medium">{item.postvalue}</p>
+                                                        <p className="font-bold mr-4">Postcode:</p>
+                                                        <p className="font-medium">{item.property_postcode}</p>
                                                     </div>
                                                     <div className="flex flex-row mt-2">
-                                                        <p className="font-bold mr-4">{item.addressTitle}</p>
-                                                        <p className="font-medium">{item.addressValue}</p>
+                                                        <p className="font-bold mr-4">Address:</p>
+                                                        <p className="font-medium">{item.property_address}</p>
                                                     </div>
                                                     <div className="flex flex-row mt-2">
-                                                        <p className="font-bold mr-4">{item.propTypeTitle}</p>
-                                                        <p className="font-medium">{item.propTypeValue}</p>
+                                                        <p className="font-bold mr-4">Property Type:</p>
+                                                        <p className="font-medium">{propertyType?.title}</p>
                                                     </div>
                                                     <div className="flex flex-row mt-2">
                                                         <p className="font-bold mr-4">{item.bedroomsTitle}</p>
@@ -136,7 +156,7 @@ const OrderReceived: React.FunctionComponent = () => {
                                                 </div>
                                             </div>
                                             <div className="w-2/5 m-auto">
-                                                <p className="text-center font-bold">{item.total}</p>
+                                                <p className="text-center font-bold">${item.total_amount}</p>
                                             </div>
                                         </div>
                                     )
@@ -162,5 +182,17 @@ const OrderReceived: React.FunctionComponent = () => {
         </div>
     )
 }
+
+export const getServerSideProps = async (context) => {
+    const {query} = context;
+    const res = await fetch(`${process.env.BASE_URL_DEV}/orders/${query.order_id}`);
+    const data = await res.json();
+
+    return {
+        props: {
+            orderInfo:data
+        },
+    };
+};
 
 export default OrderReceived

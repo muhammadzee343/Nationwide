@@ -31,37 +31,21 @@ const useOptions = () => {
     return options;
 };
 
-const CardFormComponent = () => {
+const CardFormComponent = ({stripObj}) => {
+
     const stripe = useStripe();
     const elements = useElements();
+
+    stripObj.stripe = stripe;
+    stripObj.elements = elements;
+
+
     const options = useOptions();
     //@ts-ignore
     const handleSubmit = async (event) => {
         // We don't want to let default form submission happen here,
         // which would refresh the page.
         event.preventDefault();
-
-        if (!stripe || !elements) {
-            // Stripe.js has not yet loaded.
-            // Make  sure to disable form submission until Stripe.js has loaded.
-            return;
-        }
-
-        const card = elements.getElement(CardNumberElement);
-
-        console.log(card, 'card')
-        //@ts-ignore
-        const result = await stripe.createToken(card);
-
-        if (result.error) {
-            // Show error to your customer.
-            console.log(result.error.message);
-        } else {
-            console.log(result.token);
-            // Send the token to your server.
-            // This function does not exist yet; we will define it in the next step.
-            // stripeTokenHandler(result.token);
-        }
     };
 
     return (

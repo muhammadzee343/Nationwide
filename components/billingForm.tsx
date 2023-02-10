@@ -1,13 +1,15 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { useForm } from "react-hook-form";
 import ButtonComponent from "./button.component";
 import TextField from "./textFied.component";
 import Link from "next/link";
 import {Select} from 'antd'
+import {OverlayContext} from "../context/sidebarContext";
 
 function BillingForm(props: any) {
   const [addresses, setAddresseses] = useState([]);
-  const { register, setValue, watch  } = useForm({
+  const { isLoading, setIsLoading } = useContext<any>(OverlayContext);
+  const { register, setValue, watch, handleSubmit , formState: { errors },  } = useForm({
     defaultValues: {
       firstName: "",
       lastName: "",
@@ -22,14 +24,17 @@ function BillingForm(props: any) {
       email: "",
       orderNotes: "",
       payment: "",
+      postAddress:"",
     },
   });
   const postcode = watch("postcode", "");
-  const handleChange = (value: string | string[]) => {
+  const handleChange = (value: string ) => {
     console.log(`Selected: ${value}`);
+    setValue("postAddress",value,{shouldValidate:true});
   };
-  const getPropertyAddress = async (e: any) => {
-    e.preventDefault()
+  const getPropertyAddress = async () => {
+    if (postcode){
+      setIsLoading(true)
       const requestOptions = {
         method: "POST",
         headers: { "Content-type": "application/json" },
@@ -46,6 +51,9 @@ function BillingForm(props: any) {
             case 422:
               alert("Please Enter a valid Postcode");
           }
+
+          setIsLoading(false)
+          return false;
         } else {
           const data = await response.json();
           const addresses = [...data.addresses];
@@ -54,13 +62,36 @@ function BillingForm(props: any) {
               label: item.address,}
           })
           setAddresseses([...newAddress]);
+
+          setIsLoading(false)
+          return true;
         }
+
       } catch (err) {
+        setIsLoading(false)
         console.log(err, 'err')
       }
+    }
+
+  };
+
+  const submitHandler = (data: any) => {
+    getPropertyAddress().then((status) =>{
+
+      if (status){
+        if (data.postAddress.length > 5){
+          props.chargeCard(data);
+        }else {
+          alert("Please select a valid address.");
+        }
+      }
+
+
+    })
+
   };
   return (
-    <form className="w-full flex justify-between flex-wrap bg-white shadow-xl space-y-6 p-[20px]">
+    <form onSubmit={handleSubmit(submitHandler)}  className="w-full flex justify-between flex-wrap bg-white shadow-xl space-y-6 p-[20px]">
       <div className="w-full">
         <h3 className="text-[28px] text-dark-blue leading-7 mb-[15px] font-semibold ">
           BILLING DETAILS
@@ -73,6 +104,7 @@ function BillingForm(props: any) {
               name="firstName"
               required={true}
               register={register}
+              errors={errors}
               inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
           </div>
@@ -83,6 +115,7 @@ function BillingForm(props: any) {
               required={true}
               name="lastName"
               register={register}
+              errors={errors}
               inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
           </div>
@@ -92,6 +125,7 @@ function BillingForm(props: any) {
                   lable="Company Name (optional)"
                   name="company"
                   register={register}
+                  errors={errors}
                   inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
               />
             </div>
@@ -101,7 +135,9 @@ function BillingForm(props: any) {
                   lable="Email"
                   required={true}
                   name="email"
+                  type="email"
                   register={register}
+                  errors={errors}
                   inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
               />
             </div>
@@ -113,15 +149,17 @@ function BillingForm(props: any) {
                 required={true}
                 name="postcode"
                 register={register}
+                errors={errors}
                 inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
               />
             </div>
             <div>
               <ButtonComponent
+                type="button"
                 text="FIND ADDRESS"
                 className="bg-dark-blue text-white text-[15px] font-semibold px-[20px] py-[10px]
                  hover:bg-lime hover:text-white ease-in duration-200"
-                onClick={() => {getPropertyAddress(event)}}
+                onClick={getPropertyAddress}
               />
             </div>
           </div>
@@ -146,6 +184,7 @@ function BillingForm(props: any) {
               required={true}
               name="streetAddress"
               register={register}
+              errors={errors}
               inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
           </div>
@@ -157,6 +196,7 @@ function BillingForm(props: any) {
               required={true}
               name="phone"
               register={register}
+              errors={errors}
               inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
           </div>
@@ -166,6 +206,7 @@ function BillingForm(props: any) {
               lable="Phone 2 (optional)"
               name="phone2"
               register={register}
+              errors={errors}
               inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
           </div>
