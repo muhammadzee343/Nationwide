@@ -20,9 +20,9 @@ function CheckoutStepper(props: any) {
           ORDER SUMMARY
         </span>
       </div>
-      <div className=" bg-white relative mb-[-18px]  text-white  text-center  w-[35px] h-[35px] rounded-full border-lime border-4">
-        <FontAwesomeIcon className="mb-[-7px]" icon={faCheck} />
-        <span className="absolute top-12  inset-x-0 sm:left-[-70px] pb-[6px] text-[12px] lg:text-base  sm:w-[160px] md:w-[180px] text-[#dedede] font-semibold">
+      <div className="bg-lime relative mb-[-18px]   text-white  text-center  w-[35px] h-[35px] rounded-full">
+        <FontAwesomeIcon className=" w-5 mt-[7px] ml-[6px]" icon={faCheck} />
+        <span className="absolute top-12  inset-x-0 sm:left-[-70px] pb-[6px] text-[12px] lg:text-base  sm:w-[160px] md:w-[180px] font-semibold text-dark-blue sm:border-b-[3px] border-lime">
           ORDER PAYMENT
         </span>
       </div>

@@ -69,3 +69,14 @@ textarea:focus{
 .listStyleCircle{
   list-style-type: circle
 }
+
+input[type='radio']:checked{
+  background-image: none;
+  color : rgb(194 207 16 );
+  background-color: rgb(194 207 16 );
+  border-color: rgb(194 207 16 );
+}
+
+[type='checkbox']:focus, [type='radio']:focus {
+    --tw-ring-color: rgb(194 207 16 );
+  }
