@@ -168,10 +168,10 @@ function CardTable({ cart, getCart }: any) {
           ORDER SUMMARY
         </h3>
         <div className="w-full flex justify-between ">
-          <p className="text-dark-blue text-lg font-semibold">
+          <p className="text-dark-blue text-[13px] md:text-[14px] font-semibold">
             Property & Services
           </p>
-          <p className="text-dark-blue text-lg px-4 font-semibold">Price</p>
+          <p className="text-dark-blue text-[13px] md:text-[14px] px-4 font-semibold">Price</p>
         </div>
       </header>
       { cartItems?.shopping_cart_products?.map((cartItemData, cartNo, array) => {
@@ -183,7 +183,7 @@ function CardTable({ cart, getCart }: any) {
           >
             <div className="w-full flex px-4 py-1 justify-between">
               <div className="w-full">
-                <p className="text-lg text-dark-blue font-semibold">
+                <p className="text-[13px] md:text-[15px] text-dark-blue font-semibold">
                   {cartItemData[0]?.property_address}
                 </p>
               </div>
@@ -201,14 +201,14 @@ function CardTable({ cart, getCart }: any) {
                       <div className="flex">
                         <FontAwesomeIcon
                             icon={faTrashAlt}
-                            className="text-[#ff0000] h-[17px] cursor-pointer"
+                            className="text-[#ff0000] h-[17px] cursor-pointer mt-2.5"
                             onClick={() => deleteService( e.order_id,"",e.id,e.property_address)}
                         />
-                        <p className="text-[10px] md:text-lg ml-4 text-dark-blue font-medium">
-                          <span style={{fontSize: 32}}>⤷</span> {e?.name}
+                        <p className="text-[13px] md:text-[14px] ml-4 text-dark-blue font-semibold">
+                          <span style={{fontSize: 24}}>⤷</span> {e?.name}
                         </p>
                       </div>
-                      <p className="text-[10px] md:text-lg text-dark-blue font-medium">
+                      <p className="text-[13px] md:text-[14px] text-dark-blue font-semibold">
                         &#163; {e.total_amount}
                       </p>
                     </li>
@@ -303,7 +303,7 @@ function CardTable({ cart, getCart }: any) {
                       className="text-[#ff0000] h-[15px] cursor-pointer"
                       onClick={() => deleteService( cartItemData[0].order_id,cartItemData[0].bundle_id,"",cartItemData[0]?.property_address)}
                   />
-                  <p className=" ml-4  text-[15px] text-dark-blue font-semibold">
+                  <p className="ml-4 text-[13px] md:text-[15px] text-dark-blue font-semibold">
                     {cartItemData[0]?.property_address}
                   </p>
                 </div>
@@ -318,11 +318,11 @@ function CardTable({ cart, getCart }: any) {
                             className="py-1.5 flex justify-between border-b border-[#e5e7eb]"
                         >
                           <div className="flex">
-                            <p className="text-[10px] md:text-xs ml-4 text-dark-blue font-semibold">
-                              &#8618; {e?.name}
+                            <p className="text-[13px] md:text-[14px] ml-4 text-dark-blue font-semibold">
+                              <span style={{fontSize: 24}}>⤷</span> {e?.name}
                             </p>
                           </div>
-                          <p className="text-[10px] md:text-xs text-dark-blue font-semibold">
+                          <p className="text-[13px] md:text-[14px] text-dark-blue font-semibold">
                             &#163; {e.total_amount}
                           </p>
                         </li>
