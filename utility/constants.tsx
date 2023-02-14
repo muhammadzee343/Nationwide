@@ -95,18 +95,19 @@ export const LEC = {
   title: "Electrical Installation Condition Report (EICR)",
   subTitle: "From Only £79",
   points: [
-    "Provides a Safety Inspection",
-    "Online Order Tracking",
+    "Foe Landlords, Home Buyers & Sellers",
+    "Flexible Available & Fast Turnaround",
+    "Get Instant Quote & Order Online",
     "Qualified & Registered Electricians",
-    "Fast Turnaround",
-    "Bulk Quantity Discount Available",
+    "Multi-Service Order Discount Available",
   ],
   btnText: "More About an EICR ",
+  btnLink: "/electrical-installation-condition-report",
 };
 
 export const EPC = {
   title: "Energy Performance Certificate",
-  subTitle: "EPC From Only £35*",
+  subTitle: "EPC From Only £35",
   points: [
     "Nationwide Coverage",
     "Fully Accredited Energy Assessors",
@@ -115,11 +116,12 @@ export const EPC = {
     "Bulk Quantity Discount Available",
   ],
   btnText: "Get Instant EPC Quote",
+  btnLink: "/domestic-epc/",
 };
 
 export const GSC = {
   title: "Gas Safety Certificate",
-  subTitle: "From Only £49*",
+  subTitle: "From Only £49",
   points: [
     "Nationwide Coverage",
     "Gas Safe Registered Engineers",
@@ -128,19 +130,20 @@ export const GSC = {
     "Bulk Quantity Discount Available",
   ],
   btnText: "Get Instant Quote Now",
+  btnLink: "/gas-safety-certificate/",
 };
 
 export const BHR = {
   title: "Building Survey & HomeBuyer Reports",
-  subTitle: "Nationwide Coverage*",
+  subTitle: "Nationwide Coverage",
   points: [
-    "Nationwide Coverage",
-    "Multiple Services at one place",
-    "Competitive Prices",
-    "Fast Turnaround",
-    "Bulk Quantity Discount Available",
+    "Homebuyer Reprt (RICS Level 2)",
+    "Building Survey (RICS Level 3)",
+    "Compatitive Prices",
+    "Discount on Multi-Service Order",
   ],
   btnText: "Get Instant Quote Now",
+  btnLink: "/building-surveys/",
 };
 
 export const SERVICES = [
@@ -248,7 +251,7 @@ export const homeServices = [
     content: {
       type: "Home",
       link: "More about Domestic and Commercial EICRs ",
-      image: images.electrical1,
+      image: images.electrical2,
       subTitle: "WHAT IS AN EICR AND WHO MAY REQUIRE IT?",
       title: "Electrical Installation Condition Report (EICR)",
       paragraph1:
@@ -298,7 +301,7 @@ export const homeServices = [
     content: {
       type: "Home",
       link: "MORE ABOUT EICR Remedial Work",
-      image: images.electrical2,
+      image: images.electrical1,
       subTitle: "WE ALSO PROVIDE",
       title: "New Electrical Installation and Remedial Work",
       paragraph1: "",

@@ -643,7 +643,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                               return (
                                 <div
                                   key={index}
-                                  className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue"
+                                  className="border-b border-b-grey-500 px-[20px] py-[5px] text-[15px] font-normal text-dark-blue cursor-pointer"
                                   onClick={() =>
                                     setPropertyAddress(ele.address)
                                   }

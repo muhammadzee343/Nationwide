@@ -85,7 +85,7 @@ const MainNavComponent = () => {
             </Link>
           </span>
 
-          <span className="xl:hidden block">
+          <span className="xl:hidden block mr-4">
             <button
               className={styles.addToCartBtn}
               onClick={() => goToCheckout()}
@@ -142,7 +142,7 @@ const MainNavComponent = () => {
               )}
             </li>
 
-            <li className="hidden xl:flex items-center px-5 my-6  xl:my-0 h-full">
+            <li className="hidden xl:flex items-center px-5 my-6 xl:my-0 h-full">
               <Link
                 href="/contact-us"
                 className={`${

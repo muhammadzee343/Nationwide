@@ -91,13 +91,13 @@ function BillingForm(props: any) {
 
   };
   return (
-    <form onSubmit={handleSubmit(submitHandler)}  className="w-full flex justify-between flex-wrap bg-white shadow-xl space-y-6 p-[20px]">
+    <form onSubmit={handleSubmit(submitHandler)}  className="w-full flex justify-between flex-wrap bg-white shadow-xl border border-slate-100 space-y-6 p-[20px]">
       <div className="w-full">
-        <h3 className="text-[28px] text-dark-blue leading-7 mb-[15px] font-semibold ">
+        <h3 className="text-[28px] text-dark-blue leading-7 mb-[15px] font-semibold">
           BILLING DETAILS
         </h3>
         <div className=" flex flex-wrap justify-between justify-center">
-          <div className="w-[48%] mb-1">
+          <div className="md:w-[48%] mb-1">
             <TextField
               className="text-sm leading-8 text-dark-blue font-semibold"
               lable="First Name"
@@ -108,7 +108,7 @@ function BillingForm(props: any) {
               inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
           </div>
-          <div className="w-[48%] mb-1">
+          <div className="md:w-[48%] mb-1">
             <TextField
               className="text-sm leading-8 text-dark-blue font-semibold"
               lable="Last Name"
@@ -119,7 +119,7 @@ function BillingForm(props: any) {
               inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
           </div>
-            <div className="w-[48%] mb-1">
+            <div className="md:w-[48%] mb-1">
               <TextField
                   className="text-sm leading-8 text-dark-blue font-semibold"
                   lable="Company Name (optional)"
@@ -129,7 +129,7 @@ function BillingForm(props: any) {
                   inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
               />
             </div>
-            <div className="w-[48%] mb-1">
+            <div className="md:w-[48%] mb-1">
               <TextField
                   className="text-sm leading-8 text-dark-blue font-semibold"
                   lable="Email"
@@ -141,41 +141,42 @@ function BillingForm(props: any) {
                   inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
               />
             </div>
-          <div className="w-full flex items-end gap-9 mb-1">
-            <div className="w-[48%]">
+          <div className="md:w-[48%] flex flex-col md:flex-row justify-between">
+            <div className="md:w-[60%]">
               <TextField
-                className="text-sm leading-8 text-dark-blue font-semibold"
-                lable="PostCode"
-                required={true}
-                name="postcode"
-                register={register}
-                errors={errors}
-                inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
+                  className="text-sm leading-8 text-dark-blue font-semibold"
+                  lable="PostCode"
+                  required={true}
+                  name="postcode"
+                  register={register}
+                  errors={errors}
+                  inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
               />
             </div>
-            <div>
+            <div className="mt-5 md:mt-8">
               <ButtonComponent
-                type="button"
-                text="FIND ADDRESS"
-                className="bg-dark-blue text-white text-[15px] font-semibold px-[20px] py-[10px]
+                  type="button"
+                  text="FIND ADDRESS"
+                  className="bg-dark-blue text-white text-[13px] px-[20px] py-[10px]
                  hover:bg-lime hover:text-white ease-in duration-200"
-                onClick={getPropertyAddress}
+                  onClick={getPropertyAddress}
               />
             </div>
           </div>
           {addresses.length > 0 &&
-              <div className="w-full mt-2">
+              <div className="md:w-[48%] mt-1">
                 <p>Select Address</p>
                 <div>
                   <Select
                       size="large"
-                      className="w-full py-2"
+                      className="w-full py-1"
                       onChange={handleChange}
                       options={addresses}
                   />
                 </div>
               </div>
           }
+
           <div className="w-full mb-1">
             <TextField
               className="text-sm leading-8 text-dark-blue font-semibold"
@@ -217,7 +218,7 @@ function BillingForm(props: any) {
               label="I have read and agree to the website"
               required={true}
           />
-          <div className="w-[300px]  mt-3 mb-1 items-center bg-red-600">
+          <div className="w-[300px]  mt-3 mb-1 items-center">
             <ButtonComponent
                 text="PLACE ORDER"
                 className="bg-dark-blue text-white text-[13px] px-[20px] py-[10px]

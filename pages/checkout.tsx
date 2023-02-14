@@ -343,28 +343,31 @@ function Checkout(props: any) {
             {paymentType !== "" && <BillingForm chargeCard={chargeCard} />}
           </div>
           <div className="w-full lg:w-[25%] pt-[35px] pb-[25px] px-4 mt-[10px]">
-            <div className=" bg-dark-blue flex rounded-sm py-[10px] pl-[45px] pr-[20px]">
-              <FontAwesomeIcon
-                className="text-lime w-8 xxl:w-4  mr-2"
-                icon={faTag}
-              />
-              <p className="text-white text-[15px] font-semibold">
-                Congratulations! £10 multi-service-order Discount has been
-                applied.
-              </p>
-            </div>
+            {
+              (pricing.discount > 0) &&
+                <div className=" bg-dark-blue flex rounded-sm py-[10px] pl-[45px] pr-[20px]">
+                  <FontAwesomeIcon
+                      className="text-lime w-8 xxl:w-4  mr-2"
+                      icon={faTag}
+                  />
+                  <p className="text-white text-[15px] font-semibold">
+                    Congratulations! £10 multi-service-order Discount has been
+                    applied.
+                  </p>
+                </div>
+            }
             <div className="hidden md:w-full md:flex">
               <OrderSummary
-                discount={pricing.discount}
-                subTotal={pricing.totalAmount}
+                  discount={pricing.discount}
+                  subTotal={pricing.totalAmount}
               />
             </div>
             <CardComponent
-              className="bg-lime shadow px-[20px] pt-[15px] pb-[20px] my-[25px]"
-              hClass="text-xl mb-[15px] text-black font-bold text-center"
-              pClass="font-semibold text-justify text-base"
-              heading="WHAT’S NEXT AFTER ORDER PLACEMENT?"
-              paragraph="Once an order is placed online, we aim to call you or your agent/tenants
+                className="bg-lime shadow px-[20px] pt-[15px] pb-[20px] my-[25px]"
+                hClass="text-xl mb-[15px] text-black font-bold text-center"
+                pClass="font-semibold text-justify text-base"
+                heading="WHAT’S NEXT AFTER ORDER PLACEMENT?"
+                paragraph="Once an order is placed online, we aim to call you or your agent/tenants
            within 60 minutes of receiving your order (during our working hours) to organise suitable
             appointment(s). Depending on the availability of access to the property, our normal wait time is
              currently between 1 to 3 working days. If you need help placing new order or got a question,
@@ -374,6 +377,7 @@ function Checkout(props: any) {
               attributes={attribute}
               services={selectedServiceId}
               propertyType={propertyType}
+              setPaymentType={setPaymentType}
             />
           </div>
         </div>
@@ -393,10 +397,10 @@ function Note({ content }: any) {
 function OrderSummary({ subTotal, discount }: any) {
   return (
     <div
-      className="flex justify-center flex-col md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0
-     md:space-x-6 xl:space-x-8 mt-6"
+      className={`flex justify-center flex-col md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0
+     md:space-x-6 xl:space-x-8 ${discount > 0 && "mt-6"}`}
     >
-      <div className="flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full bg-white shadow-xl space-y-6">
+      <div className="flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full bg-white shadow-xl border border-slate-100 space-y-6">
         <h3 className="text-xl dark:text-white font-semibold leading-5 text-gray-800">
           Summary
         </h3>
@@ -409,14 +413,15 @@ function OrderSummary({ subTotal, discount }: any) {
               &#163;{`${Number(subTotal) - Number(discount)}`}
             </p>
           </div>
-          <div className="flex justify-between items-center w-full">
-            <p className="text-base dark:text-white leading-4 text-gray-800">
-              Discount
-            </p>
-            <p className="text-base dark:text-gray-300 leading-4 text-gray-600">
-              -&#163;({discount})
-            </p>
-          </div>
+          {discount > 0 &&
+              <div className="flex justify-between items-center w-full">
+                <p className="text-base dark:text-white leading-4 text-gray-800">
+                  Discount
+                </p>
+                <p className="text-base dark:text-gray-300 leading-4 text-gray-600">
+                  -&#163;({discount})
+                </p>
+              </div>}
         </div>
         <div className="flex justify-between items-center w-full">
           <p className="text-base dark:text-white font-semibold leading-4 text-gray-800">

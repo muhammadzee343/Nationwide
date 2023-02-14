@@ -7,7 +7,7 @@ import TextArea from "./textArea.component";
 import ButtonComponent from "./button.component";
 import { useForm } from "react-hook-form";
 
-function RequestCallBack({ attributes, services, propertyType, price }: any) {
+function RequestCallBack({ attributes, services, propertyType, price , setPaymentType}: any) {
   const [collapse, setCollapse] = useState(true);
   const [submitted, setSubmitted] = useState(false);
   const { register, handleSubmit } = useForm();
@@ -49,7 +49,10 @@ function RequestCallBack({ attributes, services, propertyType, price }: any) {
       }
     }
   };
-
+  const handleCallbackClick = () => {
+    setCollapse(!collapse)
+    setPaymentType("")
+  }
   return (
     <div className="bg-white shadow-md relative">
       {!collapse && (
@@ -69,7 +72,7 @@ function RequestCallBack({ attributes, services, propertyType, price }: any) {
               : "bg-lime hover:bg-dark-blue hover:text-white ease-in duration-200" +
                 " text-dark-blue text-[17px] font-bold"
           } flex gap-2 cursor-pointer`}
-          onClick={() => setCollapse(!collapse)}
+          onClick={handleCallbackClick}
         >
           REQUEST A CALLBACK
           {collapse && (

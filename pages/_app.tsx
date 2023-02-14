@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import type { AppProps } from "next/app";
 import { v4 as uuidv4 } from "uuid";
 import {
