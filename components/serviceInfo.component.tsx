@@ -11,9 +11,9 @@ function ServiceInfo({ className, content }: any) {
   return (
     <>
       {content.image && (
-        <div className="lg:w-5/12 py-4 px-1  flex justify-center">
+        <div className="w-full lg:w-5/12 py-4 px-1 flex justify-center">
           <Image
-            className=" h-fit cursor-pointer"
+            className="h-fit cursor-pointer"
             src={content.image}
             alt="ServiceInfo"
           />

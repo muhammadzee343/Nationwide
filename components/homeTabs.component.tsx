@@ -55,9 +55,11 @@ const HomeTab = () => {
         </ul>
         <button
           className="bg-lime hover:bg-dark-blue text-dark-blue hover:text-white px-5 py-[6px]
-        ease-in duration-200 ease-out duration-200 font-semibold text-[15px] my-2 uppercase "
+        ease-in duration-200 ease-out duration-200 font-semibold text-[15px] my-2 uppercase"
         >
-          {activeService.btnText}
+          <Link href={`service/${activeService.btnLink}`}>
+              {activeService.btnText}
+          </Link>
         </button>
       </div>
     </div>

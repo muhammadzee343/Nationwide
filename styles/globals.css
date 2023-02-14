@@ -80,3 +80,7 @@ input[type='radio']:checked{
 [type='checkbox']:focus, [type='radio']:focus {
     --tw-ring-color: rgb(194 207 16 );
   }
+
+.ant-select-selector:hover, .ant-select-selector:focus-within {
+  border: 1px #C2CF10 solid  !important;
+}
