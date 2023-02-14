@@ -1,11 +1,41 @@
 import React, { useMemo } from "react";
-import { useStripe, useElements, CardNumberElement, CardExpiryElement, CardCvcElement } from "@stripe/react-stripe-js";
+import { useStripe, useElements, CardNumberElement, CardExpiryElement, CardCvcElement, CardElement } from "@stripe/react-stripe-js";
 
 import "../styles/strip.module.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCcMastercard, faCcVisa, faCcDiscover, faCcAmex, faStripe} from "@fortawesome/free-brands-svg-icons";
+import useResponsiveFontSizeHook from "../hooks/useResponsiveFontSize.hook";
+
+
+const CARD_OPTIONS = {
+    iconStyle: 'solid' as const,
+    style: {
+        base: {
+            iconColor: '#6772e5',
+            color: '#6772e5',
+            fontWeight: '500',
+            fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
+            fontSize: '16px',
+            fontSmoothing: 'antialiased',
+            ':-webkit-autofill': {
+                color: '#fce883',
+            },
+            '::placeholder': {
+                color: '#6772e5',
+            },
+        },
+        invalid: {
+            iconColor: '#ef2961',
+            color: '#ef2961',
+        },
+    },
+};
+
+
 
 const useOptions = () => {
+
+    const fontSize = useResponsiveFontSizeHook();
 
     const options = useMemo(
         () => ({
@@ -14,7 +44,7 @@ const useOptions = () => {
                     color: "#32325d",
                     fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
                     fontSmoothing: "antialiased",
-                    fontSize:27,
+                    fontSize:fontSize,
                     "::placeholder": {
                         color: "#aab7c4",
                     },
@@ -25,13 +55,15 @@ const useOptions = () => {
                 },
             },
         }),
-        []
+        [fontSize]
     );
 
     return options;
 };
 
 const CardFormComponent = ({stripObj}) => {
+
+
 
     const stripe = useStripe();
     const elements = useElements();
@@ -60,68 +92,19 @@ const CardFormComponent = ({stripObj}) => {
                 </div>
             </div>
             <div className="w-full flex flex-col md:flex-row justify-between mb-3 space-x-3">
-                <div className="w-full md:w-[45%]">
-                    <label>
-                        <p className="mb-1">Card Number</p>
-                        <CardNumberElement
-                            options={options}
-                            onReady={() => {
-                                console.log("CardElement [ready]");
-                            }}
-                            onChange={event => {
-                                console.log("CardElement [change]", event);
-                            }}
-                            onBlur={() => {
-                                console.log("CardElement [blur]");
-                            }}
-                            onFocus={() => {
-                                console.log("CardElement [focus]");
-                            }}
-                            className="border-2 border-gray-300 p-2 rounded-md"
-                        />
-                    </label>
-                </div>
-                <div className="w-full md:w-[25%]">
-                    <label>
-                        <p className="mb-1">Exp Date</p>
-                        <CardExpiryElement
-                            options={options}
-                            onReady={() => {
-                                console.log("CardElement [ready]");
-                            }}
-                            onChange={event => {
-                                console.log("CardElement [change]", event);
-                            }}
-                            onBlur={() => {
-                                console.log("CardElement [blur]");
-                            }}
-                            onFocus={() => {
-                                console.log("CardElement [focus]");
-                            }}
-                            className="border-2 border-gray-300 p-2 rounded-md"
-                        />
-                    </label>
-                </div>
-                <div className="w-full md:w-[25%]">
-                    <label>
-                        <p className="mb-1">CVC</p>
-                        <CardCvcElement
-                            options={options}
-                            onReady={() => {
-                                console.log("CardElement [ready]");
-                            }}
-                            onChange={event => {
-                                console.log("CardElement [change]", event);
-                            }}
-                            onBlur={() => {
-                                console.log("CardElement [blur]");
-                            }}
-                            onFocus={() => {
-                                console.log("CardElement [focus]");
-                            }}
-                            className="border-2 border-gray-300 p-2 rounded-md"
-                        />
-                    </label>
+                <div className="w-full">
+
+                    <CardElement
+                        options={options}
+                        onChange={(e) => {
+                            // if (e.error) {
+                            //     setPayment({ status: 'error' });
+                            //     setErrorMessage(
+                            //         e.error.message ?? 'An unknown error occured'
+                            //     );
+                            // }
+                        }}
+                    />
                 </div>
             </div>
         </form>

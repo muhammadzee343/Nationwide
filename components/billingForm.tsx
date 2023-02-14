@@ -28,11 +28,12 @@ function BillingForm(props: any) {
     },
   });
   const postcode = watch("postcode", "");
+  const postAddress = watch("postAddress", "");
   const handleChange = (value: string ) => {
     console.log(`Selected: ${value}`);
     setValue("postAddress",value,{shouldValidate:true});
   };
-  const getPropertyAddress = async () => {
+  const getPropertyAddress = async (isFinalReq = false) => {
     if (postcode){
       setIsLoading(true)
       const requestOptions = {
@@ -56,12 +57,14 @@ function BillingForm(props: any) {
           return false;
         } else {
           const data = await response.json();
-          const addresses = [...data.addresses];
-          const newAddress= addresses.map((item) => {
-            return{  value: item.address,
-              label: item.address,}
-          })
-          setAddresseses([...newAddress]);
+          if ((isFinalReq && postAddress.length < 5) || (!isFinalReq) ){
+            const addresses = [...data.addresses];
+            const newAddress= addresses.map((item) => {
+              return{  value: item.address,
+                label: item.address,}
+            })
+            setAddresseses([...newAddress]);
+          }
 
           setIsLoading(false)
           return true;
@@ -76,8 +79,7 @@ function BillingForm(props: any) {
   };
 
   const submitHandler = (data: any) => {
-    getPropertyAddress().then((status) =>{
-
+    getPropertyAddress(true).then((status) =>{
       if (status){
         if (data.postAddress.length > 5){
           props.chargeCard(data);
@@ -86,12 +88,11 @@ function BillingForm(props: any) {
         }
       }
 
-
     })
-
   };
+
   return (
-    <form onSubmit={handleSubmit(submitHandler)}  className="w-full flex justify-between flex-wrap bg-white shadow-xl border border-slate-100 space-y-6 p-[20px]">
+    <form autoComplete={"off"} onSubmit={handleSubmit(submitHandler)}  className="w-full flex justify-between flex-wrap bg-white shadow-xl border border-slate-100 space-y-6 p-[20px]">
       <div className="w-full">
         <h3 className="text-[28px] text-dark-blue leading-7 mb-[15px] font-semibold">
           BILLING DETAILS
@@ -159,35 +160,44 @@ function BillingForm(props: any) {
                   text="FIND ADDRESS"
                   className="bg-dark-blue text-white text-[13px] px-[20px] py-[10px]
                  hover:bg-lime hover:text-white ease-in duration-200"
-                  onClick={getPropertyAddress}
+                  onClick={()=>{getPropertyAddress()}}
               />
             </div>
           </div>
-          {addresses.length > 0 &&
-              <div className="md:w-[48%] mt-1">
-                <p>Select Address</p>
-                <div>
-                  <Select
-                      size="large"
-                      className="w-full py-1"
-                      onChange={handleChange}
-                      options={addresses}
-                  />
-                </div>
-              </div>
-          }
-
           <div className="w-full mb-1">
+
+          <div className="mb-1 w-full relative">
             <TextField
               className="text-sm leading-8 text-dark-blue font-semibold"
               placeholder=" House number and street name"
-              lable="Street address"
+              lable="Address"
               required={true}
               name="streetAddress"
               register={register}
               errors={errors}
               inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
+            {addresses.length > 0 && (
+                <div className="w-[100%] max-h-[300px] overflow-y-auto border border-lime absolute bg-white ">
+                  {addresses.map((ele, index) => {
+                    return (
+                        <div
+                            key={index}
+                            className="border-b border-b-grey-500 px-[20px] py-[10px] text-[15px] font-normal text-dark-blue"
+                            onClick={() => {
+                              setValue("postAddress",ele.value,{shouldValidate:true});
+                              setValue("streetAddress",ele.value,{shouldValidate:true});
+                              setAddresseses([])
+                            }
+                            }
+                        >
+                          {ele.value}
+                        </div>
+                    );
+                  })}
+                </div>
+            )}
+          </div>
           </div>
 
           <div className="w-[48%] mb-1">

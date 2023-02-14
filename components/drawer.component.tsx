@@ -28,6 +28,8 @@ import { useForm } from "react-hook-form";
 import Select from "./select.component";
 import { useRouter } from "next/router";
 
+import { postcodeValidator, postcodeValidatorExistsForCountry } from 'postcode-validator';
+
 const DrawerComponent = ({}: any) => {
   const attributeState = {
     property_type: "",
@@ -122,8 +124,10 @@ const DrawerComponent = ({}: any) => {
 
   //SUBMIT FORM1 GET INTSANT QUOTE
   const getInstantQuote = async (data: any, e: any) => {
-    checkPostCodeValidity(data.property_postcode);
-    if (validPostcode) {
+    const code = data.property_postcode.replace(/\s/g, "");
+
+    if (postcodeValidator(code, 'UK') || postcodeValidator(code, 'US')){
+      setValidPostcode(true);
       if (checkFormValidity() && selectedService.length > 0) {
         setAttributes((attr) => {
           return { ...attr, ...data };
@@ -131,35 +135,11 @@ const DrawerComponent = ({}: any) => {
         saveLogs(data);
         setStep(false);
       }
+    }else{
+      setValidPostcode(false);
     }
   };
 
-  //CHECKPOSTCODE VALIDAITY
-  const checkPostCodeValidity = async (data) => {
-    if (data) {
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ postcode: data }),
-      };
-      try {
-        const response = await fetch(
-          `${process.env.BASE_URL_DEV}postcodes/find_address`,
-          requestOptions
-        );
-        if (!response.ok) {
-          switch (response.status) {
-            case 422:
-              setValidPostcode(false);
-          }
-        } else {
-          const data = await response.json();
-          setValidPostcode(true);
-          setFormDirty(true);
-        }
-      } catch (err) {}
-    }
-  };
 
   //CHECK FORM VALIDITY
   const checkFormValidity = () => {
@@ -167,13 +147,15 @@ const DrawerComponent = ({}: any) => {
       return attribute[data] !== "";
     });
   };
+
+
   // SAVE LOGS
   const saveLogs = async (data: any) => {
     const body = {
       quotation_log: {
         ...attribute,
         ...data,
-        studio: attribute.bedrooms === "s" ? true : false,
+        studio: attribute.bedrooms === "s",
         request_type: "front-end",
         ip_address: ip,
       },
