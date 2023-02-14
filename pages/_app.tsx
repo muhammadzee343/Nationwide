@@ -19,11 +19,19 @@ export default function App({ Component, pageProps }: AppProps) {
   const [uuid, setUuid] = useState("");
 
   useEffect(() => {
-    let Uuid = "";
-    if (!uuid) {
-      Uuid = uuidv4();
-      setUuid(Uuid);
-    }
+
+        const sessionId = localStorage.getItem("session_id");
+
+        let Uuid = "";
+        if (!uuid) {
+            if (!sessionId){
+                Uuid = uuidv4();
+            }else{
+                Uuid = sessionId;
+            }
+            localStorage.setItem("session_id",Uuid);
+            setUuid(Uuid);
+        }
   }, []);
 
   return (

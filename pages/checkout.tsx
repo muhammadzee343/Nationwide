@@ -6,7 +6,7 @@ import {CartCountContext, OverlayContext, SidebarContext, UuidContext} from "../
 import { useRouter } from "next/router";
 import { v4 as uuidv4 } from "uuid";
 import { loadStripe } from "@stripe/stripe-js";
-import {CardNumberElement, Elements, useElements, useStripe} from "@stripe/react-stripe-js";
+import {CardElement, CardNumberElement, Elements, useElements, useStripe} from "@stripe/react-stripe-js";
 
 import CardFormComponent from "../components/cardForm.component";
 import CardTable from "../components/cardTable.component";
@@ -70,9 +70,9 @@ function Checkout(props: any) {
 
   useLayoutEffect(() => {
     getCartValues();
-  }, []);
+  }, [uuid]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (router?.query?.aquote){
       //@ts-ignore
       postQuoteApi(router?.query.aquote , true);
@@ -152,6 +152,7 @@ function Checkout(props: any) {
       if (router?.query?.aquote || router?.query?.bquote){
         setCount(0);
         const Uuid = uuidv4();
+        localStorage.setItem("session_id",Uuid);
         setUuid(Uuid);
       }
     };
@@ -178,7 +179,7 @@ function Checkout(props: any) {
         return;
       }
 
-      const card = stripObj?.elements.getElement(CardNumberElement);
+      const card = stripObj?.elements.getElement(CardElement);
 
       //@ts-ignore
       const result = await stripObj?.stripe.createToken(card);
@@ -199,6 +200,7 @@ function Checkout(props: any) {
 
   const placeOrder = async (data,token) =>{
     setIsLoading(true)
+
     const body = {
       "payment_detail": {
         "billing_first_name": data.firstName,
@@ -208,7 +210,7 @@ function Checkout(props: any) {
         "billing_state": "Punjab",
         "billing_postcode": data.postcode,
         "billing_phone": data.phone,
-        "billing_phone_2": "data.phone2",
+        "billing_phone_2": data.phone2,
         "billing_email": data.email,
         "payment_method": "card"
       },
