@@ -178,7 +178,7 @@ function CardTable({ cart, getCart }: any) {
 
         return (
           <div
-            className="border border-[#e5e7eb] rounded-sm my-2 py-3"
+            className="border-[#e5e7eb] rounded-sm my-2 py-3 shadow-xl"
             key={cartNo}
           >
             <div className="w-full flex px-4 py-1 justify-between">
@@ -268,13 +268,16 @@ function CardTable({ cart, getCart }: any) {
 
                 />
               )}
-              <div>
+              <div className="mt-1">
+                <label className="text-[15px] text-dark-blue font-semibold ">
+                  Order Notes (optional)
+                </label>
                 <textarea
                     cols={80}
                     placeholder="You can provide any special instructions/notes to help us deal with your order."
                     name="orderNotes"
                     defaultValue={cartItemData[0]?.customer_note}
-                    className={`border w-full outline-none border-grey-500 py-2.5 px-3`}
+                    className={`border w-full focus:border-lime outline-none focus:ring-transparent shadow-sm border-[#DEDEDE] py-2 px-3 rounded-md border`}
                     onChange={(e) => {
                       changeInfo("customer_note", e.target.value, cartNo,"shopping_cart_products");
                     }}
@@ -439,7 +442,7 @@ function KeyHolderInfo({
   obj
 }: any) {
   return (
-    <div className="relative border-t border-t-[#e5e7eb]">
+    <div className="relative border-t border-t-[#182333]">
       <div className="py-1">
         {/*<span*/}
         {/*  className="absolute top-[-20px] rounded right-3 cursor-pointer text-sm text-dark-blue font-bold"*/}
@@ -487,43 +490,33 @@ function KeyHolderInfo({
           >
             <div className="flex flex-col gap-y-2">
               <div className="flex flex-col sm:flex-row gap-4">
-                <div className="flex flex-col w-full sm:flex-row sm:items-center">
-                  {/*<label className="text-sm font-semibold text-dark-blue ml-2 sm:hidden">*/}
-                  {/*  Name*/}
-                  {/*  <span className="text-[#ff0000] text-xl ml-1">*</span>*/}
-                  {/*</label>*/}
-                  {/*<p className="text-dark-blue text-[16px] font-semibold break-all sm:break-normal  hidden sm:flex">*/}
-                  {/*  Name:*/}
-                  {/*</p>*/}
+                <div className="flex-col w-full sm:flex-row sm:items-center">
+                  <label className="text-sm font-semibold text-dark-blue w-full">
+                    Name:
+                  </label>
                   <input
                     type="text"
                     placeholder={`Enter ${item.contact_type} Name`}
                     name={`name${i}`}
                     defaultValue={item.contact_name}
                     required={true}
-                    className={`w-full px-0 border-0 border-b border-b-grey-500 h-[40px] focus:border-b-lime  outline-none
-                   focus:ring-transparent shadow-sm`}
+                    className={`border w-full  focus:border-lime  outline-none focus:ring-transparent shadow-sm border-[#DEDEDE] py-2 px-3 rounded-md border`}
                     onChange={(e) => {
                       changeInfo("contact_name", e.target.value, i, obj);
                     }}
                   />
                 </div>
-                <div className="flex flex-col w-full sm:flex-row sm:items-center">
-                  {/*<label className="text-sm font-semibold text-dark-blue  sm:hidden">*/}
-                  {/*  Email*/}
-                  {/*  <span className="text-[#ff0000] text-xl ml-1">*</span>*/}
-                  {/*</label>*/}
-                  {/*<p className="text-dark-blue mr-1 text-[16px] font-semibold break-all sm:break-normal  hidden sm:flex">*/}
-                  {/*  Email:*/}
-                  {/*</p>*/}
+                <div className="flex-col w-full sm:flex-row sm:items-center">
+                  <label className="text-sm font-semibold text-dark-blue">
+                   Email
+                  </label>
                   <input
                     type="email"
                     placeholder={`Enter ${item.contact_type} Email`}
                     name="name"
                     defaultValue={item.contact_email}
                     required={true}
-                    className={`border-0 px-0 border-b border-b-grey-500 w-full h-[40px]  focus:border-lime  outline-none
-                   focus:ring-transparent shadow-sm`}
+                    className={`border w-full  focus:border-lime  outline-none focus:ring-transparent shadow-sm border-[#DEDEDE] py-2 px-3 rounded-md border`}
                     onChange={(e) => {
                       changeInfo("contact_email", e.target.value, i, obj);
                     }}
@@ -531,43 +524,34 @@ function KeyHolderInfo({
                 </div>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <div className="flex flex-col w-full sm:flex-row sm:items-center">
-                  {/*<label className="text-sm font-semibold text-dark-blue  sm:hidden">*/}
-                  {/*  Contact*/}
-                  {/*  <span className="text-[#ff0000] text-xl ml-1">*</span>*/}
-                  {/*</label>*/}
-                  {/*<p className="text-dark-blue text-[16px] mr-2 font-semibold break-all sm:break-normal  hidden sm:flex">*/}
-                  {/*  Contact:*/}
-                  {/*</p>*/}
+                <div className="flex-col w-full sm:flex-row sm:items-center">
+                  <label className="text-sm font-semibold text-dark-blue">
+                   Contact # 1
+                  </label>
                   <input
                     type="text"
                     placeholder={`Enter ${item.contact_type} Contact`}
                     name="contact"
                     defaultValue={item.contact_1}
                     required={true}
-                    className={`border-0 px-0 border-b border-b-grey-500 w-full h-[40px] focus:border-lime  outline-none
-                   focus:ring-transparent shadow-sm`}
+                    className={`border w-full focus:border-lime outline-none focus:ring-transparent shadow-sm border-[#DEDEDE] py-2 px-3 rounded-md border`}
                     onChange={(e) => {
                       changeInfo("contact_1", e.target.value, i, obj);
                     }}
                   />
                 </div>
 
-                <div className="flex flex-col w-full sm:flex-row sm:items-center">
-                  {/*<label className="text-sm font-semibold text-dark-blue ml-2 sm:hidden">*/}
-                  {/*  Contact2*/}
-                  {/*  <span className="text-[#ff0000] text-xl ml-1">*</span>*/}
-                  {/*</label>*/}
-                  {/*<p className="text-dark-blue text-[16px] font-semibold break-all sm:break-normal  hidden sm:flex">*/}
-                  {/*  Contact2:*/}
-                  {/*</p>*/}
+                <div className="flex-col w-full sm:flex-row sm:items-center">
+                  <label className="text-sm font-semibold text-dark-blue">
+                   Contact # 2
+                  </label>
                   <input
                     type="text"
                     placeholder={`Enter ${item.contact_type} Contact2`}
                     name="contact2"
                     defaultValue={item.contact_2}
                     required={true}
-                    className={`border-0 px-0 border-b border-b-grey-500 w-full h-[40px] focus:border-lime  outline-none focus:ring-transparent shadow-sm`}
+                    className={`border w-full focus:border-lime outline-none focus:ring-transparent shadow-sm border-[#DEDEDE] py-2 px-3 rounded-md border`}
                     onChange={(e) => {
                       changeInfo("contact_2", e.target.value, i, obj);
                     }}
