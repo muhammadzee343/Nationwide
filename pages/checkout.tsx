@@ -161,16 +161,64 @@ function Checkout(props: any) {
     propertyType,
   } = useContext<any>(SidebarContext);
 
+
+  const getIntent = async (data) =>{
+
+    const body = {
+      "payment_detail": {
+        "billing_first_name": data.firstName,
+        "billing_last_name": data.lastName,
+        "billing_address": data.streetAddress,
+        "billing_city": "data.city",
+        "billing_state": "Punjab",
+        "billing_postcode": data.postcode,
+        "billing_phone": data.phone,
+        "billing_phone_2": data.phone2,
+        "billing_email": data.email,
+        "payment_method": "card"
+      },
+      "session_id": uuid
+    }
+    let url = `${process.env.BASE_URL_DEV}orders/create_payment_intent`;
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(body),
+    };
+
+    try {
+      const response = await fetch(
+          url,
+          requestOptions
+      );
+      const result =  await response.json();
+      console.log({result});
+      if (!response.ok) {
+
+      } else {
+        return result.client_secret;
+
+      }
+    } catch (err) {
+      console.log(err, 'err')
+    }
+
+
+  }
+
   const chargeCard = async (data,e) =>{
 
     if (paymentType === ""){
       alert("Please select a payment method.");
       return;
     }
+
     if (!data.acceptTerms){
       alert("Please accept terms and conditions.");
       return;
     }
+
     if (paymentType === "payByCard"){
       if (!stripObj?.stripe || !stripObj?.elements) {
         // Stripe.js has not yet loaded.
@@ -179,15 +227,37 @@ function Checkout(props: any) {
         return;
       }
 
+      setIsLoading(true)
       const card = stripObj?.elements.getElement(CardElement);
 
-      //@ts-ignore
-      const result = await stripObj?.stripe.createToken(card);
+      const clientSecret = await getIntent(data);
 
-      if (result.error) {
-        alert(result.error.message ?? 'An unknown error occured')
+      const { error, paymentIntent } = await stripObj?.stripe!.confirmCardPayment(
+          clientSecret,
+          {
+            payment_method: {
+              card: card!
+            },
+          }
+      );
+
+
+      //@ts-ignore
+      // const result = await stripObj?.stripe.createToken(card);
+      console.log({error});
+      if (error) {
+        setIsLoading(false)
+        alert(error.message ?? 'An unknown error occured')
       } else {
-        placeOrder(data,result.token.id);
+
+        router?.push({
+          pathname: "/order-received",
+          query: {
+            order_id:orderId
+          },
+        });
+        setIsLoading(false)
+        // placeOrder(data,result.token.id);
       }
     }
 
