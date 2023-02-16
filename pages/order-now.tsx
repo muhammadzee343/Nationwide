@@ -63,10 +63,16 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   const router = useRouter();
 
+
+
   const { bundle, ser, value, keys, property, postCode, item, address } =
     router.query;
 
   useEffect(() => {
+
+    setTimeout(() => {
+      attributeSection.current.scrollIntoView({ behavior: "smooth", block: "end" })
+    }, 500)
     addOtherService();
     if (bundle) {
       selectBundle();
