@@ -178,7 +178,7 @@ function CardTable({ cart, getCart }: any) {
 
         return (
           <div
-            className="border-[#e5e7eb] rounded-sm my-2 py-3 shadow-xl"
+            className="border-[#e5e7eb] rounded-sm my-2 py-3 shadow-md"
             key={cartNo}
           >
             <div className="w-full flex px-4 py-1 justify-between">
