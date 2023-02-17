@@ -13,7 +13,7 @@ import Select from "../components/select.component";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { UuidContext } from "../context/sidebarContext";
-import {bundles} from "../utility/constants";
+import { bundles } from "../utility/constants";
 
 function OrderNow({ commercialProperties, residentialProperties }: any) {
   const attributeState = {
@@ -63,16 +63,16 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   const router = useRouter();
 
-
-
   const { bundle, ser, value, keys, property, postCode, item, address } =
     router.query;
 
   useEffect(() => {
-
     setTimeout(() => {
-      attributeSection.current.scrollIntoView({ behavior: "smooth", block: "end" })
-    }, 500)
+      attributeSection.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+      });
+    }, 500);
     addOtherService();
     if (bundle) {
       selectBundle();
@@ -91,12 +91,12 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     if (bundle) {
       // @ts-ignore
       const bundleData = bundles.find((data) => data.content.service == bundle);
-      if (bundleData){
+      if (bundleData) {
         setPropertyType("residential_property");
         setSelectedService(bundleData.content.list);
         setSelectedServiceId(bundleData.content.value);
         setAllAttributes(bundleData.content.list);
-      }else{
+      } else {
         setPropertyType("");
         setSelectedService([]);
         setAllAttributes([]);
@@ -136,39 +136,36 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     const body = {
       order: {
         service_category: propertyType,
-        session_id: uuid
+        session_id: uuid,
       },
       order_product: {
         ...attribute,
         number_bedrooms_manual: attribute.bedrooms >= 5,
-        no_of_gas_appliances_manual:
-          attribute.gas_appliances >= 4,
+        no_of_gas_appliances_manual: attribute.gas_appliances >= 4,
         no_of_distribution_boards_manual: true,
-        no_of_electric_appliances_manual:
-          attribute.electrical_appliances >= 30,
+        no_of_electric_appliances_manual: attribute.electrical_appliances >= 30,
         no_of_floors_manual: attribute.floors >= 4,
         no_of_bathrooms_manual: true,
         no_of_circuits_manual: attribute.circuits >= 31,
-        property_price_manual:
-          attribute.property_price >= 1000001,
+        property_price_manual: attribute.property_price >= 1000001,
         property_postcode: postcode,
         property_address: propertyAddress,
       },
       services: [...selectedServiceId],
     };
 
-    if (bundle){
+    if (bundle) {
       //@ts-ignore
       const bundleData = bundles.find((data) => data.content.service == bundle);
 
-      if (bundleData){
+      if (bundleData) {
         let notSame = false;
-        selectedServiceId.map((data) =>{
-            if(!bundleData.content.value.includes(data)){
-              notSame = true;
-            }
-        })
-        if (!notSame){
+        selectedServiceId.map((data) => {
+          if (!bundleData.content.value.includes(data)) {
+            notSame = true;
+          }
+        });
+        if (!notSame) {
           //@ts-ignore
           body.bundle_id = bundle;
         }
@@ -285,13 +282,12 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
   };
 
   const addOtherService = () => {
-
     if (address) {
       setPropertyType(property);
-      let temp  = [ ];
-      if (Array.isArray(ser)){
+      let temp = [];
+      if (Array.isArray(ser)) {
         temp = ser.map((ele) => +ele);
-      }else{
+      } else {
         const arr = [ser];
         temp = arr.map((ele) => +ele);
       }
