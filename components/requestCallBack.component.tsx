@@ -7,19 +7,24 @@ import TextArea from "./textArea.component";
 import ButtonComponent from "./button.component";
 import { useForm } from "react-hook-form";
 
-function RequestCallBack({ attributes, services, propertyType, price , setPaymentType}: any) {
+function RequestCallBack({
+  attributes,
+  services,
+  propertyType,
+  price,
+  setPaymentType,
+  order_id,
+  uuid,
+}: any) {
   const [collapse, setCollapse] = useState(true);
   const [submitted, setSubmitted] = useState(false);
   const { register, handleSubmit } = useForm();
   const submitForm = async (data: any, e: any) => {
     const body = {
-      callback_request: { ...data, service_type: propertyType },
-      callback_request_product: {
-        ...attributes,
-        studio: attributes.bedrooms === "s" ? true : false,
-      },
-      services,
+      ...data,
+      session_id: uuid,
     };
+
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -27,7 +32,7 @@ function RequestCallBack({ attributes, services, propertyType, price , setPaymen
     };
     try {
       const response = await fetch(
-        `${process.env.BASE_URL_DEV}callback_requests`,
+        `${process.env.BASE_URL_DEV}callback_requests/create_cart_callback?order_id=${order_id}`,
         requestOptions
       );
       if (!response.ok) {
@@ -50,9 +55,9 @@ function RequestCallBack({ attributes, services, propertyType, price , setPaymen
     }
   };
   const handleCallbackClick = () => {
-    setCollapse(!collapse)
-    setPaymentType("")
-  }
+    setCollapse(!collapse);
+    setPaymentType("");
+  };
   return (
     <div className="bg-white shadow-md relative">
       {!collapse && (
@@ -76,7 +81,10 @@ function RequestCallBack({ attributes, services, propertyType, price , setPaymen
         >
           REQUEST A CALLBACK
           {collapse && (
-            <FontAwesomeIcon className="w-3 absolute top-[17px] right-[15px]" icon={faChevronRight} />
+            <FontAwesomeIcon
+              className="w-3 absolute top-[17px] right-[15px]"
+              icon={faChevronRight}
+            />
           )}
         </h4>
       </div>
@@ -113,50 +121,50 @@ function RequestCallBack({ attributes, services, propertyType, price , setPaymen
                   <div className="flex flex-col my-[25px]">
                     <div className=" w-full">
                       <TextField
-                          handleChange={() => {}}
-                          className="text-sm leading-8 font-semibold"
-                          lable="First Name"
-                          required={true}
-                          name="first_name"
-                          register={register}
-                          placeholder="Enter first name here"
-                          inputClass="border-grey-500 px-3"
+                        handleChange={() => {}}
+                        className="text-sm leading-8 font-semibold"
+                        lable="First Name"
+                        required={true}
+                        name="first_name"
+                        register={register}
+                        placeholder="Enter first name here"
+                        inputClass="border-grey-500 px-3"
                       />
                     </div>
                     <div className="w-full">
                       <TextField
-                          handleChange={() => {}}
-                          className="text-sm leading-8 font-semibold"
-                          lable="Last Name"
-                          required={true}
-                          name="last_name"
-                          register={register}
-                          placeholder="Enter last name here"
-                          inputClass="border-grey-500 px-3"
+                        handleChange={() => {}}
+                        className="text-sm leading-8 font-semibold"
+                        lable="Last Name"
+                        required={true}
+                        name="last_name"
+                        register={register}
+                        placeholder="Enter last name here"
+                        inputClass="border-grey-500 px-3"
                       />
                     </div>
                     <div className="w-full">
                       <TextField
-                          handleChange={() => {}}
-                          className="text-sm leading-8 font-semibold"
-                          lable="Phone"
-                          required={true}
-                          name="phone"
-                          placeholder="Enter a callback number"
-                          register={register}
-                          inputClass="border-grey-500 px-3"
+                        handleChange={() => {}}
+                        className="text-sm leading-8 font-semibold"
+                        lable="Phone"
+                        required={true}
+                        name="phone"
+                        placeholder="Enter a callback number"
+                        register={register}
+                        inputClass="border-grey-500 px-3"
                       />
                     </div>
                     <div className="w-full">
                       <TextField
-                          handleChange={() => {}}
-                          className="text-sm leading-8 font-semibold"
-                          lable="Email"
-                          required={false}
-                          name="email_address"
-                          placeholder="Enter email address"
-                          register={register}
-                          inputClass="border-grey-500 px-3"
+                        handleChange={() => {}}
+                        className="text-sm leading-8 font-semibold"
+                        lable="Email"
+                        required={false}
+                        name="email_address"
+                        placeholder="Enter email address"
+                        register={register}
+                        inputClass="border-grey-500 px-3"
                       />
                     </div>
                     <hr className="h-[2px] bg-[#ececec] my-[25px]" />
