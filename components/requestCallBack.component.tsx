@@ -6,6 +6,7 @@ import TextField from "./textFied.component";
 import TextArea from "./textArea.component";
 import ButtonComponent from "./button.component";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 
 function RequestCallBack({
   attributes,
@@ -19,7 +20,16 @@ function RequestCallBack({
   const [collapse, setCollapse] = useState(true);
   const [submitted, setSubmitted] = useState(false);
   const { register, handleSubmit } = useForm();
+  const router = useRouter();
   const submitForm = async (data: any, e: any) => {
+    if (router.pathname === "/") {
+      requestCBHome(data);
+    } else {
+      requestCBCheckout(data);
+    }
+  };
+
+  const requestCBCheckout = async (data: any) => {
     const body = {
       ...data,
       session_id: uuid,
@@ -30,6 +40,7 @@ function RequestCallBack({
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     };
+
     try {
       const response = await fetch(
         `${process.env.BASE_URL_DEV}callback_requests/create_cart_callback?order_id=${order_id}`,
@@ -54,9 +65,49 @@ function RequestCallBack({
       }
     }
   };
+
+  const requestCBHome = async (data: any) => {
+    const body = {
+      callback_request: { ...data, service_type: propertyType },
+      callback_request_product: {
+        ...attributes,
+        studio: attributes.bedrooms === "s" ? true : false,
+      },
+      services,
+    };
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    };
+    try {
+      const response = await fetch(
+        `${process.env.BASE_URL_DEV}callback_requests`,
+        requestOptions
+      );
+      if (!response.ok) {
+        throw new Error("Bad Response", {
+          cause: {
+            response,
+          },
+        });
+      } else {
+        setSubmitted(true);
+        const data = await response.json();
+      }
+    } catch (error) {
+      switch (error.cause.response.status) {
+        case 422:
+          console.log("Error");
+          break;
+        default:
+      }
+    }
+  };
+
   const handleCallbackClick = () => {
     setCollapse(!collapse);
-    setPaymentType("");
+    // setPaymentType("");
   };
   return (
     <div className="bg-white shadow-md relative">
