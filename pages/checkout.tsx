@@ -38,6 +38,7 @@ import TermsConditionComponent from "../components/terms&condition.component";
 import Link from "next/link";
 import GoogePayComponent from "../components/googePay.component";
 
+
 const stripePromise = loadStripe("pk_test_96JJ6DEa2MKGHUR9ubWNXJDT00EC1yyjzn");
 
 const stripObj = {
@@ -100,8 +101,12 @@ function Checkout(props: any) {
   }, [router]);
 
   const postQuoteApi = async (quote: string, isAQuote = false) => {
+    setCount(0);
+    const Uuid = uuidv4();
+    localStorage.setItem("session_id", Uuid);
+    setUuid(Uuid);
     const body = {
-      session_id: uuid,
+      session_id: Uuid,
     };
     const params: any = {
       method: "POST",
