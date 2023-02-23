@@ -368,7 +368,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
               </h3>
             </div>
             <div className="w-full flex sm:px-5 md:px-0 xl:w-8/12 xxl:w-9/12">
-              <div className="w-full  flex flex-col md:flex-row flex-wrap gap-6 lg:justify-start">
+              <div className="w-full  flex flex-col md:flex-row flex-wrap  md:gap-y-6 lg:gap-y-6 xl:gap-y-6 xll:gap-y-6 sm:gap-y-2 gap-x-28 lg:justify-start">
                 {ele.options?.map((opt, index, options) => {
                   if (opt.type === "radio") {
                     return (
@@ -394,8 +394,8 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                     );
                   } else if (opt.type !== "radio" && opt.type !== "select") {
                     return (
-                      <div key={index} className="w-full  flex">
-                        <p className=" text-lg text-dark-blue font-semibold mr-3">
+                      <div key={index} className="w-full  flex ">
+                        <p className=" font-opensans text-lg text-dark-blue font-semibold mr-3">
                           {opt.title}
                         </p>
                         <Counter
@@ -423,11 +423,11 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                   </div>
                 )}
                 {ele.exactNumber && attribute[ele.attr] >= ele.minValue && (
-                  <div className="w-full flex">
-                    <p className=" text-lg text-dark-blue font-semibold mr-3 w-5/12">
+                  <div className="w-full flex lg:gap-x-28">
+                    <p className=" font-opensans text-lg text-dark-blue font-semibold mr-3 w-5/12">
                       {ele.exactNumber}
                     </p>
-                    <div className="w-5/12">
+                    <div className="w-2/4 pl-[24px] lg:pl-[12px]">
                       <Counter
                         minValue={ele.minValue}
                         label={ele.attr}
@@ -443,7 +443,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                 )}
                 {ele?.radioQuestion1 && (
                   <div className="flex flex-col w-full">
-                    <p className=" text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
+                    <p className=" font-opensans text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
                       {ele.radioQuestion1.question}
                     </p>
                     <div className="flex flex-wrap gap-9">
@@ -471,7 +471,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                 )}
                 {ele?.radioQuestion2 && attribute[ele?.radioQuestion1.attr] && (
                   <div className="flex flex-col w-full">
-                    <p className=" text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
+                    <p className=" font-opensans text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
                       {ele.radioQuestion2.question}
                     </p>
                     <div className="flex flex-wrap gap-9">
@@ -496,11 +496,11 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                   </div>
                 )}
                 {ele.exactNumber2 && +attribute[ele.attr] >= ele.minValue && (
-                  <div className="w-full flex my-4">
-                    <p className=" text-lg text-dark-blue font-semibold mr-3 ">
+                  <div className="w-full flex my-4 lg:gap-x-28">
+                    <p className=" font-opensans text-lg text-dark-blue font-semibold mr-3 w-2/4 ">
                       {ele.exactNumber2}
                     </p>
-                    <div className="w-5/12">
+                    <div className="w-2/4">
                       <Counter
                         setValue={setAttributes}
                         label="other_rooms"

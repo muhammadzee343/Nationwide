@@ -32,17 +32,17 @@ function Counter({
   }
   return (
     <div className="flex cursor-pointer">
-      <div className="mr-3" onClick={increment}>
-        <span className=" w-6 h-6 sm:w-7 sm:h-7 bg-lime flex justify-center items-center rounded-full">
+      <div className="mr-3 flex items-center" onClick={decrement}>
+          <span className=" w-5 h-5 bg-lime flex justify-center items-center items-center rounded-full">
           <FontAwesomeIcon
-            className=" w-4 h-4 sm:w-5 sm:h-5 bg-lime text-white"
-            icon={faPlus}
-          ></FontAwesomeIcon>
+              className=" w-[17px] h-[20px] text-white"
+              icon={faMinus}
+          />
         </span>
       </div>
       <input
-        className={` ${className ? "w-24" : ""}  h-7 border border-grey-500 flex
-      justify-center text-center text-base text-dark-blue font-semibold outline-none focus:ring-transparent`}
+        className={`w-14 h-7 border border-grey-500 flex
+      justify-center text-center text-base text-dark-blue font-semibold outline-none focus:ring-transparent ${className} `}
         type="number"
         step={1}
         min={minValue}
@@ -50,12 +50,12 @@ function Counter({
         onChange={() => {}}
       />
 
-      <div className="ml-3" onClick={decrement}>
-        <span className="w-6 h-6 sm:w-7 sm:h-7 bg-lime flex justify-center items-center rounded-full">
+      <div className="ml-3 flex items-center" onClick={increment}>
+        <span className="w-5 h-5 bg-lime flex justify-center items-center rounded-full">
           <FontAwesomeIcon
-            className="w-4 h-4 sm:w-5 sm:h-5  bg-lime text-white font-bold rounded-full"
-            icon={faMinus}
-          ></FontAwesomeIcon>
+              className=" w-[17px] h-[20px] text-white "
+              icon={faPlus}
+          />
         </span>
       </div>
     </div>

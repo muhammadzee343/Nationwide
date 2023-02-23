@@ -20,7 +20,7 @@ function RadioButton({
       <div
         className={`rounded-full hover:border-lime hover:bg-lime ${className} `}
       />
-      <p className={`${pClass}  text-dark-blue ml-3`}>{title}</p>
+      <p className={`${pClass} font-opensans  text-dark-blue ml-3`}>{title}</p>
     </div>
   );
 }

@@ -355,7 +355,7 @@ const DrawerComponent = ({}: any) => {
                   } else if (opt.type !== "radio" && opt.type !== "select") {
                     return (
                       <div key={index} className="w-full flex">
-                        <p className=" text-lg text-dark-blue font-semibold mr-3">
+                        <p className=" font-opensans text-base text-dark-blue font-semibold mr-3">
                           {opt.title}
                         </p>
                         <Counter
@@ -383,10 +383,10 @@ const DrawerComponent = ({}: any) => {
                 )}
                 {ele.exactNumber && attribute[ele.attr] >= ele.minValue && (
                   <div className="w-full flex">
-                    <p className=" text-lg text-dark-blue font-semibold mr-3 w-5/12">
+                    <p className=" font-opensans  text-base text-dark-blue font-semibold mr-3 w-2/4">
                       {ele.exactNumber}
                     </p>
-                    <div className="w-5/12">
+                    <div className="w-2/4 pl-[24px]">
                       <Counter
                         minValue={ele.minValue}
                         label={ele.attr}
@@ -397,11 +397,11 @@ const DrawerComponent = ({}: any) => {
                   </div>
                 )}
                 {ele.Alert && attribute[ele.attr] >= ele.minValue && (
-                  <AlertBox text={ele.Alert} />
+                  <AlertBox text={ele.Alert} className={"text-[16px] font-normal"} />
                 )}
                 {ele?.radioQuestion1 && (
                   <div className="flex flex-col w-full">
-                    <p className=" text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
+                    <p className=" font-opensans text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
                       {ele.radioQuestion1.question}
                     </p>
                     <div className="flex flex-wrap gap-9">
@@ -426,7 +426,7 @@ const DrawerComponent = ({}: any) => {
                 )}
                 {ele?.radioQuestion2 && attribute[ele?.radioQuestion1.attr] && (
                   <div className="flex flex-col w-full">
-                    <p className=" text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
+                    <p className=" font-opensans text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
                       {ele.radioQuestion2.question}
                     </p>
                     <div className="flex flex-wrap gap-9">
@@ -452,10 +452,10 @@ const DrawerComponent = ({}: any) => {
 
                 {ele.exactNumber2 && attribute[ele.attr] >= ele.minValue && (
                   <div className="w-full flex my-4">
-                    <p className=" text-lg text-dark-blue font-semibold mr-3 ">
+                    <p className=" font-opensans text-base text-dark-blue font-semibold w-2/4">
                       {ele.exactNumber2}
                     </p>
-                    <div className="w-5/12">
+                    <div className="w-2/4 pl-[24px]">
                       <Counter
                         setValue={setAttributes}
                         label="other_rooms"
@@ -479,8 +479,8 @@ const DrawerComponent = ({}: any) => {
     <div className="w-screen h-screen bg-[#000000cc] fixed z-[2999] flex items-end flex-col ">
       <div
         id="drawer-right-example"
-        className={`h-screen relative p-4 overflow-y-auto bg-row_bg_two px-[15px] sm:px-[30px] 
-            bg-gray-800  ease-in-out duration-1000 w-[100%] xl:w-[50%] xxl:w-[37%] ${
+        className={`h-screen relative p-4 overflow-y-auto bg-row_bg_two py-[30px] px-[15px] sm:px-[30px] 
+            bg-gray-800  ease-in-out duration-1000 w-[100%] xl:w-[50%] xxl:w-[36.5%] ${
               showDrawer ? "translate-x-[0%]" : "translate-x-[100%]"
             }`}
         aria-labelledby="drawer-right-label"
@@ -575,14 +575,14 @@ const DrawerComponent = ({}: any) => {
         {step && (
           <>
             <div className="flex justify-between">
-              <h3 className="text-[26px] font-semibold mt-2 mb-[15px] text-dark-blue">
+              <h3 className="text-[26px] font-semibold mb-[15px] text-dark-blue">
                 Get Instant <span className="text-lime"> Quote</span>
               </h3>
             </div>
 
-            <div className="w-full bg-white shadow-md  px-[20px] py-[23px]">
+            <div className="w-full bg-white shadow-md  px-[20px] py-[25px]">
               <div className="mb-[25px]">
-                <h6 className="text-dark-blue block font-semibold text-[21px] mb-[14px]">
+                <h6 className="text-dark-blue block font-semibold text-[21px] mb-[19px]">
                   Select Your Property Type
                 </h6>
                 <label
@@ -596,7 +596,7 @@ const DrawerComponent = ({}: any) => {
                   onClick={() => getFilterServices("residential_property")}
                 >
                   <FontAwesomeIcon
-                    className="w-8 text-dark-blue absolute left-[14px]"
+                    className="w-8 h-[35px] text-dark-blue absolute left-[14px] text-[35px]"
                     icon={faHouse}
                   />
                   Residential Property
@@ -613,7 +613,7 @@ const DrawerComponent = ({}: any) => {
                   onClick={() => getFilterServices("commercial_property")}
                 >
                   <FontAwesomeIcon
-                    className="w-[26px] ,w-3 text-dark-blue  absolute left-[14px]"
+                      className="w-8 h-[35px] text-dark-blue absolute left-[14px] text-[35px]"
                     icon={faBuilding}
                   />
                   Commercial Property
@@ -645,7 +645,7 @@ const DrawerComponent = ({}: any) => {
                   required={true}
                   errors={errors}
                   register={register}
-                  className="text-lg text-dark-blue font-semibold my-3"
+                  className="text-xl text-dark-blue font-semibold my-3 font-opensans"
                   inputClass="border-grey-500 py-2.5 px-3 mt-3"
                   errorClass="text-[#ff0000] text-sm font-semibold"
                 />
