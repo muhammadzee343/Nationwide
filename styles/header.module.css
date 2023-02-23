@@ -1,6 +1,6 @@
 
 .tNavLinks{
-    @apply text-white text-[14px] hover:text-lime hover:ease-in duration-300
+    @apply text-white text-[14px] hover:text-lime hover:ease-in duration-300 font-opensans
 }
 .mNavList{
     @apply xl:flex xl:items-center z-[-1] xl:z-auto h-[72px]

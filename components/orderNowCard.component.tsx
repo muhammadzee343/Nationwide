@@ -1,7 +1,9 @@
 import React from "react";
 import ButtonComponent from "./button.component";
+import {useRouter} from "next/router";
 
 function OrderNowCard(props: any) {
+  const router = useRouter();
   return (
     <div className="px-3">
       <div className="px-3 bg-dark-blue py-[30px] px-[35px]">
@@ -18,6 +20,12 @@ function OrderNowCard(props: any) {
             <ButtonComponent
               text="ORDER NOW"
               className="bg-lime text-sm font-semibold uppercase text-white px-[22px] py-[13px] hover:text-dark-blue ease-in duration-200 "
+              type="button"
+              onClick={() =>{
+                router?.push({
+                  pathname: "/order-now",
+                });
+              }}
             />
           </div>
         </div>

@@ -32,6 +32,7 @@ import StepperComponent from "../components/stepper.component";
 import ButtonComponent from "../components/button.component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CarouselComponent from "../components/carousel.component";
+import {useRouter} from "next/router";
 
 library.add(
   faCartShopping,
@@ -51,6 +52,7 @@ library.add(
 export default function Home() {
   const { smallDevice, middleDevice, largeDevice }: any =
     useContext(DeviceContext);
+  const router = useRouter();
   return (
     <div className="ml-auto mr-auto">
       <Head>
@@ -212,6 +214,12 @@ export default function Home() {
                 <ButtonComponent
                   text="Instant Quote and order here"
                   className=" flex font-semibold uppercase border-2 border-dark-blue hover:bg-dark-blue hover:text-white px-[28px] py-[12px] text-sm ease-in duration-200"
+                  type="button"
+                  onClick={() =>{
+                    router?.push({
+                      pathname: "/order-now",
+                    });}
+                  }
                 >
                   <span className="flex mt-1.5 ml-2">
                     <FontAwesomeIcon className="w-1.5" icon={faChevronRight} />

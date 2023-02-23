@@ -265,6 +265,7 @@ function Checkout(props: any) {
             order_id: orderId,
           },
         });
+        setCount(0);
         setIsLoading(false);
         // placeOrder(data,result.token.id);
       }
