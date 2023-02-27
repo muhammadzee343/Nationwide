@@ -5,7 +5,7 @@ import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import ButtonComponent from "./button.component";
-import { OverlayContext } from "../context/sidebarContext";
+import {OverlayContext, UuidContext} from "../context/sidebarContext";
 import AwesomeDebouncePromise from "awesome-debounce-promise";
 
 
@@ -20,6 +20,8 @@ function CardTable({ cart, getCart }: any) {
     { title: "Other" },
   ];
   const router = useRouter();
+
+  const { uuid, setUuid } = useContext(UuidContext);
 
   const [open, setOpen] = useState(false);
 
@@ -135,7 +137,7 @@ function CardTable({ cart, getCart }: any) {
         }
       } else {
         const data = await response.json();
-        getCart();
+        getCart(uuid);
       }
     } catch (err) {}
   };

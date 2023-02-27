@@ -20,7 +20,7 @@ function ServiceHeader(props: any) {
           <div className="w-full flex justify-around">
             <div className="w-full md:container flex flex-col md:flex-row justify-center items-center md:px-6">
               <div className="w-5/12 flex flex-col">
-                {epcPoints.map((ele: any, index) => {
+                {props?.servicesDec.map((ele: any, index) => {
                   return (
                     <div key={index} className="flex gap-3 my-2">
                       <span className="w-6 h-6 bg-lime flex justify-center rounded-full">
@@ -66,7 +66,7 @@ function ServiceHeader(props: any) {
         <div className="w-full flex justify-around">
           <div className="w-full md:container flex flex-col md:flex-row justify-center md:items-center px-6">
             <div className=" w-full md:w-5/12 flex flex-col">
-              {epcPoints.map((ele: any, index) => {
+              {props?.servicesDec.map((ele: any, index) => {
                 return (
                   <div key={index} className="flex gap-3 my-2">
                     <span className="w-6 h-6 bg-lime flex justify-center rounded-full">

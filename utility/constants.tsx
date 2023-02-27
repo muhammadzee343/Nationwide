@@ -435,6 +435,16 @@ export const service = [
         "<p>The Government is complying with the Energy Performance of Building Directive (EPBD) with the introduction of the Energy Performance Certificate. The EPC shows a record of the energy efficiency levels and CO2 emissions of a building, by using a standard table from A to G (A being very efficient, G being very inefficient).</p>\n" +
         "</div>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
+    metaData:{
+     "description":"Nationwide Surveyors offer all types of Landlord Certifications &amp; reports for domestic and commercial properties at competitive prices with Nationwide Coverage.",
+     "keywords":"Load Removal"
+    }
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",

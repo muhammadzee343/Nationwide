@@ -38,6 +38,21 @@ function BillingForm(props: any) {
   const handleChange = (value: string) => {
     setValue("postAddress", value, { shouldValidate: true });
   };
+
+  useEffect(() => {
+    const detail = props.billingDetails;
+
+    for (const key in detail) {
+        if (key){
+          // @ts-ignore
+          setValue(key, detail[key], { shouldValidate: true });
+        }
+
+    }
+  }, [props.billingDetails]);
+
+
+
   const getPropertyAddress = async (isFinalReq = false) => {
     if (postcode) {
       setIsLoading(true);

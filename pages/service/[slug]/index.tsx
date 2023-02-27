@@ -11,11 +11,22 @@ import ServiceHeader from "../../../components/serviceHeader.component";
 function Service({ certificate }: any) {
   return (
     <>
-      <ServiceHeader />
+      {certificate[0]?.servicesDec && <ServiceHeader servicesDec={certificate[0]?.servicesDec} />}
       <div className="w-full flex justify-center bg-grey-200">
         <div className="w-full xxl:container flex flex-col lg:flex-row">
           <Head>
             <title>{certificate[0].title}</title>
+            {
+              certificate[0]?.metaData && Object.entries(certificate[0]?.metaData).map((data) => {
+                return (
+                  <meta
+                    name={data[0]}
+                    content={data[1]}
+                  />
+                );
+              })
+            }
+
           </Head>
           <div className="xl:w-4/12 2xl:w-4/12 bg-grey-200 flex justify-end items-start pt-20 ">
             <div className="w-full flex xl:w-8/12 2xl:w-6/12 lg:mr-5 justify-end items-start top-[60px] sticky">

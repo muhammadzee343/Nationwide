@@ -37,6 +37,8 @@ import { useForm } from "react-hook-form";
 import TermsConditionComponent from "../components/terms&condition.component";
 import Link from "next/link";
 import GoogePayComponent from "../components/googePay.component";
+import {service} from "../utility/constants";
+import Service from "./service/[slug]";
 
 
 const stripePromise = loadStripe("pk_test_96JJ6DEa2MKGHUR9ubWNXJDT00EC1yyjzn");
@@ -83,28 +85,39 @@ function Checkout(props: any) {
   const [selectedServiceId, setSelectedServiceId] = useState<string[]>([]);
   const [paymentType, setPaymentType] = useState<string>("");
   const [cardError, setCardError] = useState("");
+  const [billingDetails, setBillingDetails] = useState({});
 
   const { isLoading, setIsLoading } = useContext<any>(OverlayContext);
 
-  useLayoutEffect(() => {
-    getCartValues();
+  const { setCount } = useContext(CartCountContext);
+
+  useEffect(() => {
+    if (!router?.query?.aquote && !router?.query?.bquote) {
+      {
+        getCartValues(uuid);
+      }
+    }
   }, [uuid]);
 
   useEffect(() => {
     if (router?.query?.aquote) {
+      const Uuid = uuidv4();
+      localStorage.setItem("session_id", Uuid);
+      setUuid(Uuid);
       //@ts-ignore
-      postQuoteApi(router?.query.aquote, true);
+      postQuoteApi(router?.query.aquote, true,Uuid);
     } else if (router?.query?.bquote) {
+      const Uuid = uuidv4();
+      localStorage.setItem("session_id", Uuid);
+      setUuid(Uuid);
       //@ts-ignore
-      postQuoteApi(router?.query.bquote, false);
+      postQuoteApi(router?.query.bquote, false,Uuid);
     }
   }, [router]);
 
-  const postQuoteApi = async (quote: string, isAQuote = false) => {
+  const postQuoteApi = async (quote: string, isAQuote = false, Uuid : string) => {
     setCount(0);
-    const Uuid = uuidv4();
-    localStorage.setItem("session_id", Uuid);
-    setUuid(Uuid);
+
     const body = {
       session_id: Uuid,
     };
@@ -128,16 +141,20 @@ function Checkout(props: any) {
     );
 
     if (response.ok) {
-      getCartValues();
+      getCartValues(Uuid);
+      getBillingDetailsCart(quote,isAQuote)
     }
   };
 
   useEffect(() => {}, [cart]);
-  const { setCount } = useContext(CartCountContext);
-  const getCartValues = async () => {
+
+
+
+
+  const getCartValues = async (uid) => {
     setIsLoading(true);
     const response = await fetch(
-      `${process.env.BASE_URL_DEV}shopping_carts?session_id=${uuid}`
+      `${process.env.BASE_URL_DEV}shopping_carts?session_id=${uid}`
     );
     const data = await response.json();
     if (data.shopping_cart_products) {
@@ -166,6 +183,41 @@ function Checkout(props: any) {
     setIsLoading(false);
   };
 
+  const getBillingDetailsCart = async (token : string , quote : boolean) => {
+    setIsLoading(true);
+
+    let url  = `${process.env.BASE_URL_DEV}orders/get_billing_detail`
+
+    if (quote){
+      url +=`?aquote=${token}`
+    }else {
+      url +=`?bquote=${token}`
+    }
+
+    const response = await fetch(
+        url
+    );
+    const data = await response.json();
+
+    const billingDetails = {
+      firstName: data.billing_details.billing_first_name,
+      lastName: data.billing_details.billing_last_name,
+      company: "",
+      postcode: data.billing_details.billing_postcode,
+      streetAddress: data.billing_details.billing_address,
+      phone: data.billing_details.billing_phone,
+      phone2: data.billing_details.billing_phone_2,
+      email: data.billing_details.billing_email,
+      postAddress: data.billing_details.billing_address,
+    }
+
+    setBillingDetails(billingDetails);
+    setIsLoading(false);
+  };
+
+
+
+
   useEffect(() => {
     return () => {
       if (router?.query?.aquote || router?.query?.bquote) {
@@ -176,6 +228,8 @@ function Checkout(props: any) {
       }
     };
   }, []);
+
+
   const { propertyType } = useContext<any>(SidebarContext);
 
   const getIntent = async (data) => {
@@ -248,7 +302,6 @@ function Checkout(props: any) {
 
       //@ts-ignore
       // const result = await stripObj?.stripe.createToken(card);
-      console.log({ error });
       if (error) {
         setIsLoading(false);
         const element = document.getElementById("card");
@@ -259,14 +312,15 @@ function Checkout(props: any) {
         });
         setCardError(error.message ?? "An unknown error occured");
       } else {
+        setCount(0);
+        setIsLoading(false);
         router?.push({
           pathname: "/order-received",
           query: {
             order_id: orderId,
           },
         });
-        setCount(0);
-        setIsLoading(false);
+
         // placeOrder(data,result.token.id);
       }
     }
@@ -417,7 +471,7 @@ function Checkout(props: any) {
               onClick={() => setPaymentType("payByBank")}
             />
             <br />
-            {paymentType !== "" && <BillingForm chargeCard={chargeCard} />}
+            {paymentType !== "" && <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} />}
           </div>
           <div className="w-full lg:w-[25%] pt-[35px] pb-[25px] px-4 mt-[10px]">
             {pricing.discount > 0 && (
@@ -514,5 +568,6 @@ function OrderSummary({ subTotal, discount }: any) {
     </div>
   );
 }
+
 
 export default Checkout;
