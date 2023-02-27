@@ -1,0 +1,13 @@
+variables:
+  PRODUCTION_APP_NAME: nationwidefrontend
+stages:
+- production
+deploy-production:
+  image: ilyasemenov/gitlab-ci-git-push
+  stage: production
+  environment:
+    name: production
+  only:
+  - development
+  script:
+  - git-push ssh://dokku@52.56.73.59/$PRODUCTION_APP_NAME
