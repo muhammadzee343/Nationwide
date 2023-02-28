@@ -170,7 +170,7 @@ const MainNavComponent = () => {
             )}
           </>
         </ul>
-        {collapseIcon && <MobileScreenNav />}
+        {collapseIcon && <MobileScreenNav toggleMenuOnClick={setCollapseIcon} />}
       </nav>
     </div>
   );

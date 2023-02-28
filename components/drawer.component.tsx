@@ -124,20 +124,21 @@ const DrawerComponent = ({}: any) => {
 
   //SUBMIT FORM1 GET INTSANT QUOTE
   const getInstantQuote = async (data: any, e: any) => {
-    const code = data.property_postcode.replace(/\s/g, "");
 
-    if (postcodeValidator(code, 'UK') || postcodeValidator(code, 'US')){
-      setValidPostcode(true);
+    const code = data.property_postcode.replace(/\s/g, "");
       if (checkFormValidity() && selectedService.length > 0) {
-        setAttributes((attr) => {
-          return { ...attr, ...data };
-        });
-        saveLogs(data);
-        setStep(false);
+        if (postcodeValidator(code, 'UK') || postcodeValidator(code, 'US')) {
+          setValidPostcode(true);
+          setAttributes((attr) => {
+            return {...attr, ...data};
+          });
+          saveLogs(data);
+          setStep(false);
+        } else{
+            setValidPostcode(false);
+          }
       }
-    }else{
-      setValidPostcode(false);
-    }
+
   };
 
 

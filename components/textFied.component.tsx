@@ -11,7 +11,7 @@ function TextField({
   type = "text",
   pattern = "",
   errors = {},
-  errorClass = "",
+  errorClass = "", reactHookValidations = {},
 }: any) {
   return (
     <div className="w-full">
@@ -29,6 +29,7 @@ function TextField({
         {...register(name, {
           required: { value: required, message: "Field is Required" },
           pattern: { value: pattern, message: "Enter Valid Email" },
+            ...reactHookValidations
         })}
       />
       {errors[name] && (

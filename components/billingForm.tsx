@@ -5,6 +5,7 @@ import TextField from "./textFied.component";
 import Link from "next/link";
 import { Select } from "antd";
 import { OverlayContext } from "../context/sidebarContext";
+import {VALIDATION_CONFIG} from "../config/validation.config";
 
 function BillingForm(props: any) {
   const [addresses, setAddresseses] = useState([]);
@@ -172,6 +173,10 @@ function BillingForm(props: any) {
                 register={register}
                 errors={errors}
                 inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
+                reactHookValidations={{
+                  required: VALIDATION_CONFIG.required,
+                  validate: VALIDATION_CONFIG.postCode,
+                }}
               />
             </div>
             <div className="mt-5 md:mt-8">
@@ -251,6 +256,7 @@ function BillingForm(props: any) {
             register={register}
             label="I have read and agree to the website"
             required={true}
+            errors={errors}
           />
           <div className="w-[300px]  mt-3 mb-1 items-center">
             <ButtonComponent
@@ -265,13 +271,14 @@ function BillingForm(props: any) {
   );
 }
 
-function CheckBox({ register, label, required, className }: any) {
+function CheckBox({ register, label, required, className , errors }: any) {
   return (
     <div className="form-group form-check">
       <input
         name="acceptTerms"
         type="checkbox"
         {...register("acceptTerms")}
+          required
         id="acceptTerms"
         className="w-[13px] h-[13px] rounded-sm"
       />
@@ -288,6 +295,34 @@ function CheckBox({ register, label, required, className }: any) {
         </Link>
         {required && <span className="text-[#ff0000] text-xl ml-1">*</span>}
       </label>
+      {errors["acceptTerms"] && (
+          // <div className={`p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-40 ${errorClass}`}
+          //      role="alert">
+          //     {errors[name].message}
+          // </div>
+          <div
+              className={
+                `flex  text-sm text-red-800 rounded-lg mt-2 dark:bg-gray-800 dark:text-red-400 `
+              }
+              role="alert"
+          >
+            <svg
+                aria-hidden="true"
+                className="flex-shrink-0 inline w-5 h-5 mr-3"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                  fill-rule="evenodd"
+                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                  clip-rule="evenodd"
+              />
+            </svg>
+            <span className="sr-only">Info</span>
+            <div>{errors["acceptTerms"].message}</div>
+          </div>
+      )}
     </div>
   );
 }

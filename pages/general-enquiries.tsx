@@ -111,7 +111,7 @@ function GeneralEnquiries({ Services }: any) {
         body: JSON.stringify(body),
       };
       const response = await fetch(
-        `${process.env.BASE_URL_DEV}quotation_logs`,
+        `${process.env.BASE_URL_DEV}contact_forms`,
         requestOptions
       );
 
