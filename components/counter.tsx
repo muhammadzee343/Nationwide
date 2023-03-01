@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 function Counter({
@@ -10,21 +10,26 @@ function Counter({
 }: any) {
   const [count, setCount] = useState<number>(preValue || minValue);
 
-    console.log({count});
+    // console.log({count});
+
+    useEffect(() => {
+        setValue((types) => {
+            return { ...types, [label]: count };
+        });
+    }, [count]);
+
+
   function increment() {
     setCount(function (prevCount) {
-      setValue((types) => {
-        return { ...types, [label]: prevCount };
-      });
       return (prevCount += 1);
     });
   }
 
   function decrement() {
     setCount(function (prevCount) {
-      setValue((types: any) => {
-        return { ...types, [label]: prevCount };
-      });
+      // setValue((types: any) => {
+      //   return { ...types, [label]: prevCount };
+      // });
       if (prevCount > minValue) {
         return (prevCount -= 1);
       } else {
