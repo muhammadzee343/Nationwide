@@ -80,6 +80,8 @@ const DrawerComponent = ({}: any) => {
     setPropertyType,
   } = useContext<any>(SidebarContext);
 
+  console.log({distribution_boards:attribute.distribution_boards});
+
   const { isLoading, setIsLoading } = useContext<any>(OverlayContext);
   useLayoutEffect(() => {
     fetchData(propertyType);

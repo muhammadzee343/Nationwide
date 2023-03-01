@@ -9,6 +9,8 @@ function Counter({
   className = "",
 }: any) {
   const [count, setCount] = useState<number>(preValue || minValue);
+
+    console.log({count});
   function increment() {
     setCount(function (prevCount) {
       setValue((types) => {
