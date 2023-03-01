@@ -152,35 +152,37 @@ function Checkout(props: any) {
 
 
   const getCartValues = async (uid) => {
-    setIsLoading(true);
-    const response = await fetch(
-      `${process.env.BASE_URL_DEV}shopping_carts?session_id=${uid}`
-    );
-    const data = await response.json();
-    if (data.shopping_cart_products) {
-      setCart({
-        shopping_cart_products: data.shopping_cart_products,
-        shopping_cart_bundles: data.shopping_cart_bundles,
-      });
-      setPricing({
-        totalAmount: data.total_amount,
-        discount: data.total_discount,
-      });
-      setCount(data.products_count);
-      setOrderId(data.order_id);
-    } else {
-      setCart({
-        shopping_cart_products: [],
-        shopping_cart_bundles: [],
-      });
-      setPricing({
-        totalAmount: "0",
-        discount: "0",
-      });
-      setCount(0);
-      setOrderId(null);
+    if (uid) {
+      setIsLoading(true);
+      const response = await fetch(
+          `${process.env.BASE_URL_DEV}shopping_carts?session_id=${uid}`
+      );
+      const data = await response.json();
+      if (data.shopping_cart_products) {
+        setCart({
+          shopping_cart_products: data.shopping_cart_products,
+          shopping_cart_bundles: data.shopping_cart_bundles,
+        });
+        setPricing({
+          totalAmount: data.total_amount,
+          discount: data.total_discount,
+        });
+        setCount(data.products_count);
+        setOrderId(data.order_id);
+      } else {
+        setCart({
+          shopping_cart_products: [],
+          shopping_cart_bundles: [],
+        });
+        setPricing({
+          totalAmount: "0",
+          discount: "0",
+        });
+        setCount(0);
+        setOrderId(null);
+      }
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   const getBillingDetailsCart = async (token : string , quote : boolean) => {

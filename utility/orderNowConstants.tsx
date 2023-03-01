@@ -8,9 +8,9 @@ export const contactOptions = [
 ];
 
 export const paymentTypes = {
-  "card":"Debit/Credit Card",
-  "pay_over_phone":"Pay Over Phone",
-  "bank_transfer":"Bank Transfer",
+  "stripe":"Debit/Credit Card",
+  "cod":"Pay Over Phone",
+  "bacs":"Bank Transfer",
   "google_pay":"Payment Request (Stripe)",
   "apple_pay":"Payment Request (Stripe)"
 }

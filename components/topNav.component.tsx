@@ -1,9 +1,29 @@
-import React from "react";
+import React, {useContext, useEffect} from "react";
 import Link from "next/link";
 import styles from "../styles/header.module.css";
 import Head from "next/head";
+import {CartCountContext, UuidContext} from "../context/sidebarContext";
 
 export default function TopNavComponent() {
+
+  const { setCount } = useContext(CartCountContext);
+  const { uuid, setUuid } = useContext(UuidContext);
+  useEffect(() => {
+    getCartValues(uuid)
+  }, [uuid]);
+
+  const getCartValues = async (uuid) => {
+  if (uuid){
+    const response = await fetch(
+        `${process.env.BASE_URL_DEV}shopping_carts?session_id=${uuid}`
+    );
+    const data = await response.json();
+    setCount(data.products_count);
+  }
+
+  };
+
+
   return (
     <>
       <div className="bg-blue lg:py-[13px] py-2 lg:px-[52px] xl:px-[48px] md:h-[50px]">
