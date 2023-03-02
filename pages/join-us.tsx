@@ -233,16 +233,22 @@ const JoinUs = (props: any) => {
                   <div className="flex gap-3">
                     <RadioInput
                       label="Yes"
+                      required={true}
                       register={register}
                       name="experience"
                       value={true}
+                      errors={errors}
+                      errorClass="text-[#ff0000] text-sm font-semibold float-right"
                       className="text-sm text-dark-blue font-semibold mb-3"
                     />
                     <RadioInput
                       label="No"
+                      required={true}
+                      errors={errors}
                       register={register}
                       name="experience"
-                      value={true}
+                      value={false}
+                      errorClass="text-[#ff0000] text-sm font-semibold float-right"
                       className="text-sm text-dark-blue font-semibold mb-3"
                     />
                   </div>
@@ -255,16 +261,22 @@ const JoinUs = (props: any) => {
                   <div className="flex gap-3">
                     <RadioInput
                       label="Yes"
+                      required={true}
                       register={register}
+                      errors={errors}
                       name="qualification"
                       value={true}
+                      errorClass="text-[#ff0000] text-sm font-semibold float-right"
                       className="text-sm text-dark-blue font-semibold mb-3"
                     />
                     <RadioInput
                       label="No"
+                      required={true}
+                      errors={errors}
                       register={register}
                       name="qualification"
                       value={false}
+                      errorClass="text-[#ff0000] text-sm font-semibold float-right"
                       className="text-sm text-dark-blue font-semibold mb-3"
                     />
                   </div>
@@ -277,16 +289,22 @@ const JoinUs = (props: any) => {
                   <div className="flex gap-3">
                     <RadioInput
                       label="Yes"
+                      required={true}
                       register={register}
+                      errors={errors}
                       name="membership_holder"
                       value={true}
+                      errorClass="text-[#ff0000] text-sm font-semibold float-right"
                       className="text-sm text-dark-blue font-semibold mb-3"
                     />
                     <RadioInput
                       label="No"
+                      required={true}
                       register={register}
+                      errors={errors}
                       name="membership_holder"
                       value={false}
+                      errorClass="text-[#ff0000] text-sm font-semibold float-right"
                       className="text-sm text-dark-blue font-semibold mb-3"
                     />
                   </div>
