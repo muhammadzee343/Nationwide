@@ -14,7 +14,7 @@ function PrivacyPolicy() {
         <HeaderComponent
           header="Privacy Policy"
           breadcrumb="Privacy Policy"
-          className="bg-zinc-800 bg-blend-overlay bg-home_bg_image"
+          className="bg-[#182333/0.85] bg-home_bg_image"
         />
         <div className="w-full flex flex-col xl:max-w-[1114px] pt-[60px] pb-[40px] px-3 xl:px-0">
           <p className={`${styles.footerParagraph}`}>

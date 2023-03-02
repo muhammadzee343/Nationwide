@@ -63,6 +63,8 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   const router = useRouter();
 
+  const [next, setNext] = useState(false)
+
   const { bundle, ser, value, keys, property, postCode, item, address } =
     router.query;
 
@@ -189,7 +191,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         const data = await response.json();
         router.push({ pathname: "/checkout" });
       }
-    } catch (err) {}
+    } catch (err) { }
   };
 
   const changePropertyType = (property_type: string) => {
@@ -223,7 +225,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
           const addresses = [...data.addresses];
           setAddresseses([...addresses]);
         }
-      } catch (err) {}
+      } catch (err) { }
     }
   };
   const setPropertyAddress = (address: string) => {
@@ -323,13 +325,15 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         <div
           key={i}
           className="w-full md:w-[47.5%] xxl:w-[48%]"
-          onClick={() => selectService(service)}
+          onClick={() => {
+            selectService(service);
+            setNext(false);
+          }}
         >
           <ServiceSelectionCard
             title={service.name}
-            className={`${
-              selectedServiceId.includes(service.id) ? "bg-lime self-end " : ""
-            } text-[15px] py-[11px] border-lime`}
+            className={`${selectedServiceId.includes(service.id) ? "bg-lime self-end " : ""
+              } text-[15px] py-[11px] border-lime`}
           />
         </div>
       );
@@ -358,11 +362,10 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
               key={index}
             >
               <h3
-                className={`text-[21px] font-semibold font-bold my-[20px] ${
-                  formDirty && attribute[ele.attr] === ""
-                    ? "text-[#ff0000]"
-                    : "text-dark-blue"
-                }`}
+                className={`text-[21px] font-semibold font-bold my-[20px] ${formDirty && attribute[ele.attr] === ""
+                  ? "text-[#ff0000]"
+                  : "text-dark-blue"
+                  }`}
               >
                 {ele.headings}
               </h3>
@@ -379,14 +382,13 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                             value={opt.value}
                             lable={ele.attr}
                             selectattribute={setAttributes}
-                            className={`${
-                              attribute[ele.attr] == opt.value ||
+                            className={`${attribute[ele.attr] == opt.value ||
                               (options.length - 1 === index &&
                                 attribute[ele.attr] >= opt.value &&
                                 typeof opt.value === "number")
-                                ? "bg-lime"
-                                : "border border-grey-500"
-                            } border border-grey-500 w-4 h-4 sm:w-5 sm:h-5`}
+                              ? "bg-lime"
+                              : "border border-grey-500"
+                              } border border-grey-500 w-4 h-4 sm:w-5 sm:h-5`}
                             pClass="text-[18px] font-semibold"
                           />
                         </div>
@@ -456,12 +458,11 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                               value={x.value}
                               lable={ele.radioQuestion1.attr}
                               selectattribute={setAttributes}
-                              className={`${
-                                eval(attribute[ele.radioQuestion1.attr]) ==
+                              className={`${eval(attribute[ele.radioQuestion1.attr]) ==
                                 x.value
-                                  ? "bg-lime"
-                                  : "border border-grey-500"
-                              } border border-grey-500 w-4 h-4 sm:w-5 sm:h-5`}
+                                ? "bg-lime"
+                                : "border border-grey-500"
+                                } border border-grey-500 w-4 h-4 sm:w-5 sm:h-5`}
                             />
                           </>
                         );
@@ -483,12 +484,11 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                             value={x.value}
                             lable={ele.radioQuestion2.attr}
                             selectattribute={setAttributes}
-                            className={`${
-                              eval(attribute[ele.radioQuestion2.attr]) ==
+                            className={`${eval(attribute[ele.radioQuestion2.attr]) ==
                               x.value
-                                ? "bg-lime"
-                                : "border border-grey-500"
-                            } border border-grey-500 w-4 h-4 sm:w-5 sm:h-5`}
+                              ? "bg-lime"
+                              : "border border-grey-500"
+                              } border border-grey-500 w-4 h-4 sm:w-5 sm:h-5`}
                           />
                         );
                       })}
@@ -585,13 +585,13 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                 </div>
                 <hr className=" h-[2px] mt-8  w-10/12 md:w-8/12 bg-[#dfdfdf]" />
                 {selectedServiceId.length <= 0 && (
-                  <NextBottom setpropType={() => {}} />
+                  <NextBottom setpropType={() => { }} />
                 )}
               </div>
             </section>
           )}
 
-          {selectedService.length > 0 && (
+          {(selectedService.length > 0 && next) && (
             <section className="animate-fade-in-up" ref={attributeSection}>
               <div className="flex flex-col justify-center items-center px-5">
                 {serviceAttribute}
@@ -665,6 +665,20 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
               </div>
             </section>
           )}
+          {
+            (!next && selectedService.length > 0 ) && (
+              <div className="flex flex-col justify-center items-center my-5">
+                <div className="inline-block w-[180px] justify-center">
+                  <ButtonComponent
+                    onClick={()=> setNext(true)}
+                    text="Next"
+                    className="bg-dark-blue uppercase text-white font-semibold px-[20px] py-[13px] hover:bg-lime
+            ease-in duration-200"
+                  />
+                </div>
+              </div>
+            )
+          }
         </div>
       </div>
     </>

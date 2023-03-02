@@ -299,7 +299,7 @@ const JoinUs = (props: any) => {
                     lable="If YES, please provide brief details of your
 past experience."
                     className="mt-[15px] mb-[10px] text-sm font-semibold text-[#1a1a1a]"
-                    inputClass="border-[#DEDEDE] py-7 px-3 mt-3"
+                    inputClass="border-[#DEDEDE] py-7 px-3 mt-3 "
                     register={register}
                     name="experience_detail"
                   />
