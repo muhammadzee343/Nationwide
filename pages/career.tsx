@@ -60,6 +60,9 @@ function Career() {
               iconMinusColor="#c2cf10"
               iconPlusColor="#000"
               headerTitleColor="text-black"
+              activeHeadBackgorund="border border-gray-300"
+              activeHeaderColor="text-black"
+
             />
           </div>
         </div>

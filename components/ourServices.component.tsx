@@ -18,7 +18,7 @@ function OurServicesComponent({ list, title }: any) {
               className="border border-transparent border-b-grey-300 pb-[5px] mb-[5px] cursor-pointer"
             >
               <Link
-                href={"#"}
+                href={`service${ele.link}`}
                 className="text-white text-sm pb-[6px] mb-[6px] hover:text-black
                         transition-all ease-in duration-300"
               >

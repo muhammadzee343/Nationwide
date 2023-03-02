@@ -365,35 +365,49 @@ export const ourServices = [
   {
     title: "Domestic & Commercial Certifications",
     list: [
-      { text: "Energy Performance Certificate", link: "#" },
-      { text: "Commercial EPC", link: "#" },
-      { text: "Emergency Light Test Report", link: "#" },
-      { text: "Fire Alarm Test Report", link: "#" },
-      { text: "Fire Risk Assessment", link: "#" },
+      { text: "Energy Performance Certificate", link: "/domestic-epc" },
+      { text: "Commercial EPC", link: "/commercial-epc" },
+      { text: "Emergency Light Test Report", link: "/emergency-light-test-report" },
+      { text: "Fire Alarm Test Report", link: "/fire-alarm-test-report" },
+      { text: "Fire Risk Assessment", link: "/fire-risk-assessment" },
+
+
     ],
   },
   {
     title: "Gas Safety Certificate",
     list: [
-      { text: "Gas Safety Certificate", link: "#" },
-      { text: "Boiler Service", link: "#" },
+      { text: "Gas Safety Certificate", link: "/gas-safety-certificate" },
+      { text: "Boiler Service", link: "/boiler-service" },
     ],
   },
   {
     title: "Electrical Reports & Remedial Work",
     list: [
-      { text: "Electrical Installation Condition Report (EICR)", link: "#" },
-      { text: "Electrical Portable Appliance Test (PAT)", link: "#" },
-      { text: "EICR Remedial Work", link: "#" },
+      {
+        text: "Electrical Installation Condition Report (EICR)",
+        link: "/electrical-installation-condition-report",
+      },
+      {
+        text: "Electrical Portable Appliance Test (PAT)",
+        link: "/electrical-portable-appliance-test",
+      },
+      { text: "EICR Remedial Work", link: "/eicr-remedial-work" },
+
     ],
   },
   {
     title: "Other Services",
     list: [
-      { text: "Floor Plans", link: "#" },
-      { text: "Building Surveys", link: "#" },
-      { text: "Legionella Risk Assessment", link: "#" },
-      { text: "SAP Assessments", link: "#" },
+
+      { text: "Floor Plans", link: "/floor-plans" },
+      { text: "Building Surveys", link: "/building-surveys" },
+      {
+        text: "Legionella Risk Assessment",
+        link: "/legionella-risk-assessment",
+      },
+      { text: "SAP Assessments", link: "/sap-assessments-2" },
+
     ],
   },
 ];
