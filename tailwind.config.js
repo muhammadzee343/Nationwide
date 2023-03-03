@@ -38,6 +38,7 @@ module.exports = {
 
       backgroundImage: {
         home_bg_image: "url('../public/mainbg.jpg')",
+        home_bg_dull_image: "url('../public/mainbg3.jpg')",
         footer_bg_image: "url('../public/footer-bg.jpg')",
         header_bg: "url('../public/bg-header.jpg')",
         head: "url('../public/bs1.jpg')",

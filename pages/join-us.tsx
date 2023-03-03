@@ -210,7 +210,7 @@ const JoinUs = (props: any) => {
                     options={gender}
                   />
                 </div>
-                <div className="w-full md:w-[31.5%]">
+                <div className="w-full ">
                   <Select
                     label="Position looking for ?"
                     className="text-sm leading-8 text-dark-blue font-semibold"
@@ -226,7 +226,7 @@ const JoinUs = (props: any) => {
               </div>
 
               <div className="flex flex-wrap justify-between justify-center">
-                <div className="w-full md:w-[31.5%]">
+                <div className="w-full p-0 md:w-[31.5%]">
                   <p className="mt-[15px] mb-[10px] text-sm font-semibold text-[#1a1a1a] ">
                     Do you have hands on field experience of your trade?
                   </p>
@@ -252,8 +252,18 @@ const JoinUs = (props: any) => {
                       className="text-sm text-dark-blue font-semibold mb-3"
                     />
                   </div>
+                  <div className="w-full">
+                  <TextArea
+                    lable="If YES, please provide brief details of your
+                    past experience."
+                    className="mt-[15px] mb-[10px] text-sm font-semibold text-[#1a1a1a]"
+                    inputClass="border-[#DEDEDE] py-7 px-3 mt-3 "
+                    register={register}
+                    name="experience_detail"
+                  />
                 </div>
-                <div className="w-full md:w-[31.5%]">
+                </div>
+                <div className="w-full p-0 md:w-[31.5%]">
                   <p className="mt-[15px] mb-[10px] text-sm font-semibold text-[#1a1a1a] ">
                     Do you hold relevant qualification(s) related to the role
                     you are applying for?
@@ -280,6 +290,15 @@ const JoinUs = (props: any) => {
                       className="text-sm text-dark-blue font-semibold mb-3"
                     />
                   </div>
+                  <div className="w-full ">
+                  <TextArea
+                    lable="If YES, please provide details of all relevant qualification you hold."
+                    className="mt-[15px] mb-[10px] text-sm font-semibold text-[#1a1a1a]"
+                    inputClass="border-[#DEDEDE] py-7 px-3 mt-3"
+                    register={register}
+                    name="qualification_detail"
+                  />
+                </div>
                 </div>
                 <div className="w-full md:w-[31.5%]">
                   <p className="mt-[15px] mb-[10px] text-sm font-semibold text-[#1a1a1a] ">
@@ -308,30 +327,7 @@ const JoinUs = (props: any) => {
                       className="text-sm text-dark-blue font-semibold mb-3"
                     />
                   </div>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap justify-between justify-center">
-                <div className="w-full md:w-[31.5%]">
-                  <TextArea
-                    lable="If YES, please provide brief details of your
-past experience."
-                    className="mt-[15px] mb-[10px] text-sm font-semibold text-[#1a1a1a]"
-                    inputClass="border-[#DEDEDE] py-7 px-3 mt-3 "
-                    register={register}
-                    name="experience_detail"
-                  />
-                </div>
-                <div className="w-full md:w-[31.5%]">
-                  <TextArea
-                    lable="If YES, please provide details of all relevant qualification you hold."
-                    className="mt-[15px] mb-[10px] text-sm font-semibold text-[#1a1a1a]"
-                    inputClass="border-[#DEDEDE] py-7 px-3 mt-3"
-                    register={register}
-                    name="qualification_detail"
-                  />
-                </div>
-                <div className="w-full md:w-[31.5%]">
+                  <div className="w-full ">
                   <TextArea
                     lable="If YES, please provide the details of your membership(s)."
                     className="mt-[15px] mb-[10px] text-sm font-semibold text-[#1a1a1a]"
@@ -339,6 +335,7 @@ past experience."
                     register={register}
                     name="membership_detail"
                   />
+                </div>
                 </div>
               </div>
             </FormContainer>

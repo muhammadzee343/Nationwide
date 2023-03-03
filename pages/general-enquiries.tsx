@@ -7,8 +7,15 @@ import ButtonComponent from "../components/button.component";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import styles from "../styles/footer.module.css";
+import { faSlack } from "@fortawesome/free-brands-svg-icons";
+import { postcodeValidator, postcodeValidatorExistsForCountry } from 'postcode-validator';
+
 
 function GeneralEnquiries({ Services }: any) {
+
+
+  let postVariable = true;
   const radioQuestions = [
     {
       question: "Is this enquiry related to an existing job?",
@@ -47,10 +54,22 @@ function GeneralEnquiries({ Services }: any) {
 
   const [contactType, setContactType] = useState({ contact_by: "" });
 
+  const [requestSubmitted, setrequestSubmitted] = useState(false);
+
+  const [validPostCode, setValidPostcode] = useState(true);
+
+  const [temp, setTemp] = useState(true)
+
   const [intialQ, setIntialQ] = useState<any>({
     type_of_enquiry: "",
     existing_job_enquiry: "",
   });
+
+
+  const validatePostCode = (data) => {
+    console.log('data', data);
+  }
+
   const {
     register,
     handleSubmit,
@@ -92,10 +111,33 @@ function GeneralEnquiries({ Services }: any) {
     }
   }, []);
 
+  useEffect(()=>{
+    console.log('i ran', validPostCode)
+    setTemp(validPostCode)
+  },[validPostCode]);
+
   const requestCallback = async (data: any) => {
+
+
+    const code = data.post_code.replace(/\s/g, "");
+
+    console.log('Before validating', validPostCode);
+
+    if (postcodeValidator(code, 'UK') || postcodeValidator(code, 'US')) {
+      console.log(validPostCode,'truecase')
+      
+      setValidPostcode(true);
+    } else {
+      console.log(validPostCode,'false case');
+      setValidPostcode(false);
+    }
+
+    console.log('After validating', validPostCode);
+
+    console.log(temp)
     if (
       checkFormValidity(Object.keys(contactType), contactType) &&
-      selectedServiceId.length
+      selectedServiceId.length && temp
     ) {
       const body = {
         contact_form: {
@@ -117,6 +159,8 @@ function GeneralEnquiries({ Services }: any) {
 
       if (response.ok) {
         let data = await response.json();
+        setrequestSubmitted(true);
+
       } else {
         alert("Something Went wrong");
       }
@@ -141,9 +185,8 @@ function GeneralEnquiries({ Services }: any) {
         >
           <ServiceSelectionCard
             title={service.name}
-            className={`${
-              selectedServiceId.includes(service.id) ? "bg-lime self-end " : ""
-            } text-[15px] py-[11px] border-lime`}
+            className={`${selectedServiceId.includes(service.id) ? "bg-lime self-end " : ""
+              } text-[15px] py-[11px] border-lime`}
           />
         </div>
       );
@@ -173,192 +216,221 @@ function GeneralEnquiries({ Services }: any) {
   };
 
   return (
-    <div className="w-full flex justify-center pt-[82px]">
-      <Head>
-        <title>General Enquiries - Nationwide Surveyors</title>
-      </Head>
-      <form onSubmit={handleSubmit(requestCallback)}>
-        <div className=" w-full px-8 xl:px-0 xl:max-w-[1114px]  flex flex-col">
-          <div className="border-l-[6px] border-lime mb-[20px] px-5">
-            <h2 className="text-[36px] text-dark-blue font-semibold">
-              Request a callback
-            </h2>
-          </div>
-          <p className="text-[15px] mb-[40px] text-[#1a1a1a] leading-7 ">
-            Please complete short form below and we’ll get the right person to
-            call you back. We aim to respond within 60 minutes of receiving
-            callback requests during our working hours. We apologise if you
-            experience any delays and ask for your understanding and patience at
-            this time.
-          </p>
-          <div className="flex flex-col">
-            <div className="">
-              {radioQuestions.map((ele: any, index) => {
-                return (
-                  <div className="pb-8" key={index}>
-                    <p className=" text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
-                      {ele.question}
-                    </p>
-                    <div className="flex flex-wrap gap-5 justify-between max-w-[400px]">
-                      {ele.options.map((opt: any, index: number) => {
-                        return (
-                          <RadioButton
-                            key={index}
-                            title={opt.title}
-                            value={opt.value}
-                            lable={ele.attr}
-                            selectattribute={setIntialQ}
-                            className={`border border-grey-500 border border-grey-500 w-6 h-6 sm:w-7 sm:h-7
-                            ${
-                              intialQ[ele.attr] == opt.value
-                                ? "bg-lime"
-                                : "border border-grey-500"
-                            }`}
-                            pClass={opt.pclass}
-                          />
-                        );
-                      })}
+    <>
+      {!requestSubmitted &&
+        <div className="w-full flex justify-center pt-[82px]">
+          <Head>
+            <title>General Enquiries - Nationwide Surveyors</title>
+          </Head>
+          <form onSubmit={handleSubmit(requestCallback)}>
+            <div className=" w-full px-8 xl:px-0 xl:max-w-[1114px]  flex flex-col">
+              <div className="border-l-[6px] border-lime mb-[20px] px-5">
+                <h2 className="text-[36px] text-dark-blue font-semibold">
+                  Request a callback
+                </h2>
+              </div>
+              <p className="text-[15px] mb-[40px] text-[#1a1a1a] leading-7 ">
+                Please complete short form below and we’ll get the right person to
+                call you back. We aim to respond within 60 minutes of receiving
+                callback requests during our working hours. We apologise if you
+                experience any delays and ask for your understanding and patience at
+                this time.
+              </p>
+              <div className="flex flex-col">
+                <div className="">
+                  {radioQuestions.map((ele: any, index) => {
+                    return (
+                      <div className="pb-8" key={index}>
+                        <p className=" text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
+                          {ele.question}
+                        </p>
+                        <div className="flex flex-wrap gap-5 justify-between max-w-[400px]">
+                          {ele.options.map((opt: any, index: number) => {
+                            return (
+                              <RadioButton
+                                key={index}
+                                title={opt.title}
+                                value={opt.value}
+                                lable={ele.attr}
+                                selectattribute={setIntialQ}
+                                className={`border border-grey-500 border border-grey-500 w-6 h-6 sm:w-7 sm:h-7
+                          ${intialQ[ele.attr] == opt.value
+                                    ? "bg-lime"
+                                    : "border border-grey-500"
+                                  }`}
+                                pClass={opt.pclass}
+                              />
+                            );
+                          })}
+                        </div>
+                      </div>
+                    );
+                  })}
+                  <div className="w-full">
+                    <div className="pb-8 w-6/12">
+                      <p className=" text-lg text-dark-blue my-3 font-semibold mr-3 ">
+                        Postcode where services are required
+                      </p>
+                      <p className="text-sm my-3">
+                        This is to check the availability and converage
+                      </p>
+                      <TextField
+                        placeholder="Enter postcode here"
+                        className="text-lg text-dark-blue font-semibold"
+                        errors={errors}
+                        register={register}
+                        errorClass="text-[#ff0000] text-sm font-semibold float-right"
+                        required={true}
+                        name="post_code"
+                        inputClass="border-grey-500 py-2.5 px-3"
+                      />
+                      {!temp && (
+                        <p className="text-[#ff0000] text-sm font-semibold">
+                          Enter a Valid Code
+                        </p>
+                      )}
+                      {errors.firstName?.type === "required" && (
+                        <p role="alert">First name is required</p>
+                      )}
                     </div>
                   </div>
-                );
-              })}
-              <div className="w-full">
-                <div className="pb-8 w-6/12">
-                  <p className=" text-lg text-dark-blue my-3 font-semibold mr-3 ">
-                    Postcode where services are required
-                  </p>
-                  <p className="text-sm my-3">
-                    This is to check the availability and converage
-                  </p>
-                  <TextField
-                    placeholder="Enter postcode here"
-                    className="text-lg text-dark-blue font-semibold"
-                    errors={errors}
-                    register={register}
-                    errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    required={true}
-                    name="post_code"
-                    inputClass="border-grey-500 py-2.5 px-3"
-                  />
-                  {errors.firstName?.type === "required" && (
-                    <p role="alert">First name is required</p>
-                  )}
-                </div>
-              </div>
 
-              <div className="w-full flex flex-wrap gap-y-3  justify-between">
-                {services}
-              </div>
-              <div className=" my-12">
-                <TextArea
-                  lable="Please use box below to provide any further information related to your enquiry"
-                  className="text-lg text-dark-blue font-semibold my-1"
-                  inputClass="border-grey-500 py-2.5 px-3"
-                  errors={errors}
-                  register={register}
-                  errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                  required={true}
-                  name="enquiry"
-                />
-              </div>
-              <div className="w-full flex flex-col md:flex-row flex-wrap gap-y-6 justify-between">
-                <div className="w-full md:w-[49%]">
-                  <TextField
-                    lable="First Name"
-                    name="first_name"
-                    className="text-lg text-dark-blue font-semibold"
-                    errors={errors}
-                    register={register}
-                    errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    required={true}
-                    inputClass="border-grey-500 py-2.5 px-3"
-                  />
-                </div>
-                <div className="w-full md:w-[49%]">
-                  <TextField
-                    lable="Last Name"
-                    name="last_name"
-                    errors={errors}
-                    register={register}
-                    errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    required={true}
-                    className="text-lg text-dark-blue font-semibold"
-                    inputClass="border-grey-500 py-2.5 px-3"
-                  />
-                </div>
-                <div className="w-full md:w-[49%]">
-                  <TextField
-                    lable="Phone"
-                    name="phone"
-                    errors={errors}
-                    register={register}
-                    errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    required={true}
-                    className="text-lg text-dark-blue font-semibold"
-                    inputClass="border-grey-500 py-2.5 px-3"
-                  />
-                </div>
-                <div className="w-full md:w-[49%]">
-                  <TextField
-                    lable="Email"
-                    name="email"
-                    errors={errors}
-                    register={register}
-                    errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    pattern={/^\S+@\S+$/i}
-                    required={true}
-                    className="text-lg text-dark-blue font-semibold"
-                    inputClass="border-grey-500 py-2.5 px-3"
-                  />
-                </div>
-              </div>
-              <div className="py-8">
-                <p className=" text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
-                  How would you prefer to be contacted?
-                </p>
-                <div className="my-4">
-                  <RadioButton
-                    title="By Phone"
-                    value="phone"
-                    lable="contact_by"
-                    className={`border border-grey-500 border border-grey-500 w-6 h-6 sm:w-7 sm:h-7
-                            ${
-                              contactType["contact_by"] == "phone"
-                                ? "bg-lime"
-                                : "border border-grey-500"
-                            }`}
-                    pClass="font-semibold"
-                    selectattribute={setContactType}
-                  />
-                </div>
-                <div className="my-4">
-                  <RadioButton
-                    title="By Email"
-                    value="email"
-                    lable="contact_by"
-                    className={`border border-grey-500 border border-grey-500 w-6 h-6 sm:w-7 sm:h-7
-                            ${
-                              contactType["contact_by"] == "email"
-                                ? "bg-lime"
-                                : "border border-grey-500"
-                            }`}
-                    pClass="font-semibold"
-                    selectattribute={setContactType}
-                  />
-                </div>
-              </div>
+                  <div className="w-full flex flex-wrap gap-y-3  justify-between">
+                    {services}
+                  </div>
+                  <div className=" my-12">
+                    <TextArea
+                      lable="Please use box below to provide any further information related to your enquiry"
+                      className="text-lg text-dark-blue font-semibold my-1"
+                      inputClass="border-grey-500 py-2.5 px-3"
+                      errors={errors}
+                      register={register}
+                      errorClass="text-[#ff0000] text-sm font-semibold float-right"
+                      required={true}
+                      name="enquiry"
+                    />
+                  </div>
+                  <div className="w-full flex flex-col md:flex-row flex-wrap gap-y-6 justify-between">
+                    <div className="w-full md:w-[49%]">
+                      <TextField
+                        lable="First Name"
+                        name="first_name"
+                        className="text-lg text-dark-blue font-semibold"
+                        errors={errors}
+                        register={register}
+                        errorClass="text-[#ff0000] text-sm font-semibold float-right"
+                        required={true}
+                        inputClass="border-grey-500 py-2.5 px-3"
+                      />
+                    </div>
+                    <div className="w-full md:w-[49%]">
+                      <TextField
+                        lable="Last Name"
+                        name="last_name"
+                        errors={errors}
+                        register={register}
+                        errorClass="text-[#ff0000] text-sm font-semibold float-right"
+                        required={true}
+                        className="text-lg text-dark-blue font-semibold"
+                        inputClass="border-grey-500 py-2.5 px-3"
+                      />
+                    </div>
+                    <div className="w-full md:w-[49%]">
+                      <TextField
+                        lable="Phone"
+                        name="phone"
+                        errors={errors}
+                        register={register}
+                        errorClass="text-[#ff0000] text-sm font-semibold float-right"
+                        required={true}
+                        pattern={/^\(?(?:(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?\(?(?:0\)?[\s-]?\(?)?|0)(?:\d{5}\)?[\s-]?\d{4,5}|\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3})|\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4}|\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}|8(?:00[\s-]?11[\s-]?11|45[\s-]?46[\s-]?4\d))(?:(?:[\s-]?(?:x|ext\.?\s?|\#)\d+)?)$/}
+                        className="text-lg text-dark-blue font-semibold"
+                        inputClass="border-grey-500 py-2.5 px-3"
+                      />
+                    </div>
+                    <div className="w-full md:w-[49%]">
+                      <TextField
+                        lable="Email"
+                        name="email"
+                        errors={errors}
+                        register={register}
+                        errorClass="text-[#ff0000] text-sm font-semibold float-right"
+                        pattern={/^\S+@\S+$/i}
+                        required={true}
+                        className="text-lg text-dark-blue font-semibold"
+                        inputClass="border-grey-500 py-2.5 px-3"
+                      />
+                    </div>
+                  </div>
+                  <div className="py-8">
+                    <p className=" text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
+                      How would you prefer to be contacted?
+                    </p>
+                    <div className="my-4">
+                      <RadioButton
+                        title="By Phone"
+                        value="phone"
+                        lable="contact_by"
+                        className={`border border-grey-500 border border-grey-500 w-6 h-6 sm:w-7 sm:h-7
+                          ${contactType["contact_by"] == "phone"
+                            ? "bg-lime"
+                            : "border border-grey-500"
+                          }`}
+                        pClass="font-semibold"
+                        selectattribute={setContactType}
+                      />
+                    </div>
+                    <div className="my-4">
+                      <RadioButton
+                        title="By Email"
+                        value="email"
+                        lable="contact_by"
+                        className={`border border-grey-500 border border-grey-500 w-6 h-6 sm:w-7 sm:h-7
+                          ${contactType["contact_by"] == "email"
+                            ? "bg-lime"
+                            : "border border-grey-500"
+                          }`}
+                        pClass="font-semibold"
+                        selectattribute={setContactType}
+                      />
+                    </div>
+                  </div>
 
-              <div className="my-8">
-                <ButtonComponent
-                  text="Submit"
-                  className="bg-dark-blue text-white uppercase text-sm px-[2px] sm:px-[20px] py-[13px] hover:bg-lime hover:text-white ease-in duration-200"
-                />
+                  <div className="my-8">
+                    <ButtonComponent
+                      text="Submit"
+                      className="bg-dark-blue text-white uppercase text-sm px-[2px] sm:px-[20px] py-[13px] hover:bg-lime hover:text-white ease-in duration-200"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
+          </form>
+        </div>}
+      {
+        requestSubmitted && <div className='w-full flex justify-center'>
+          <div className="flex flex-col pt-[65px] pb-[40px] px-3 xl:px-0 w-full lg:max-w-[900px] xl:max-w-[1050px]">
+            <div className='border-l-[6px] pl-4 p-y-2 border-lime'>
+              <h1 className={`${styles.footerPagesHeading} `}>
+                Request a callback
+              </h1>
+            </div>
+            <br />
+            <p className={`pb-3 ${styles.footerSmallHead}`}>
+              We have recieved your inquiry and would like to thank you for writing us. if your inquiry is urgent,
+              please use the telephone number listed below to talk to one of our staff members during our
+              working hours.
+            </p>
+            <p className={`pb-3 ${styles.footerSmallHead}`}>
+              Otherwise, we will get back to you as sson as possible.
+            </p>
+            <p className={`pb-3 ${styles.footerSmallHead}`}>
+              Talk to you soon
+            </p>
           </div>
         </div>
-      </form>
-    </div>
+      }
+    </>
   );
 }
 
