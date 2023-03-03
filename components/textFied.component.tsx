@@ -28,7 +28,7 @@ function TextField({
         className={`border w-full  focus:border-lime  outline-none focus:ring-transparent shadow-sm ${inputClass}`}
         {...register(name, {
           required: { value: required, message: "Field is Required" },
-          pattern: { value: pattern, message: "Enter Valid Email" },
+          pattern: { value: pattern, message: `Enter Valid ${name}` },
             ...reactHookValidations
         })}
       />
