@@ -84,3 +84,7 @@ input[type='radio']:checked{
 .ant-select-selector:hover, .ant-select-selector:focus-within {
   border: 1px #C2CF10 solid  !important;
 }
+
+.privacy-image-bg {
+  background-position: 0% 0%;
+}

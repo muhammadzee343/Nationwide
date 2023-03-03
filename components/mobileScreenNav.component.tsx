@@ -20,7 +20,7 @@ export default function MobileScreenNav({toggleMenuOnClick}) {
           setToggleMenu(!toggleMenu);
         }}
       >
-        <Link href="/ourServices" className="text-[15px] font-[600] ">
+        <Link href="/our-services" className="text-[15px] font-[600] ">
           OUR SERVICES
         </Link>
         <FontAwesomeIcon

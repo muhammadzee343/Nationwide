@@ -14,6 +14,7 @@ function FaqAccordion({
   hoverHeadBackground = "",
   headerTitleColor = "",
   defaultActiveaccordion = "",
+    activeHeaderColor = "",
   navigateFromFAQ,
 }: any) {
   const [active, setActive] = useState(defaultActiveaccordion);
@@ -54,7 +55,7 @@ function FaqAccordion({
                 <span
                   className={`${
                     active === (index + 1).toString()
-                      ? "text-white"
+                      ?  activeHeaderColor ? activeHeaderColor :  "text-white"
                       : `${headerTitleColor}`
                   } text-[17px] leading-4 font-lg`}
                 >

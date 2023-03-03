@@ -118,9 +118,9 @@ const MainNavComponent = () => {
               onMouseOut={handleMouseOut}
             >
               <Link
-                href="/ourServices"
+                href="/our-services"
                 className={`${
-                  router.pathname === "/ourServices" || isSticky
+                  router.pathname === "/our-services" || isSticky
                     ? "text-white"
                     : "text-dark-blue"
                 } text-[15px] tracking-wide  block hover:text-white relative font-semibold flex`}
