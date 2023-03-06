@@ -2,10 +2,13 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import MegaMenu from "./megaMenu.component";
-import { useState } from "react";
+import {useEffect, useState} from "react";
+
 
 export default function MobileScreenNav({toggleMenuOnClick}) {
   const [toggleMenu, setToggleMenu] = useState(false);
+
+
 
   return (
     <ul className="absolute w-11/12 inset-x-0 mx-auto flex-col px-6 py-2 align-center bg-white shadow-sm rounded border z-[100] ">

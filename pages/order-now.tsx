@@ -189,7 +189,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         }
       } else {
         const data = await response.json();
-        router.push({ pathname: "/checkout" });
+        router.push({ pathname: "/new-checkout" });
       }
     } catch (err) { }
   };

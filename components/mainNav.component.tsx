@@ -34,7 +34,13 @@ const MainNavComponent = () => {
   }, []);
   const router = useRouter();
   const { count } = useContext(CartCountContext);
-  useEffect(() => {}, [count]);
+  useEffect(() => {
+
+  }, [count]);
+
+  useEffect(()=>{
+    setCollapseIcon(false);
+  },[router.asPath])
 
   const handleMediaQueryChange = (matches: any) => {
     // matches will be true or false based on the value for the media query
