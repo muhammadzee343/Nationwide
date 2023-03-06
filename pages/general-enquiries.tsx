@@ -58,8 +58,6 @@ function GeneralEnquiries({ Services }: any) {
 
   const [validPostCode, setValidPostcode] = useState(true);
 
-  const [temp, setTemp] = useState(true)
-
   const [intialQ, setIntialQ] = useState<any>({
     type_of_enquiry: "",
     existing_job_enquiry: "",
@@ -75,7 +73,7 @@ function GeneralEnquiries({ Services }: any) {
     handleSubmit,
     formState: { errors },
     setValue,
-  } = useForm();
+  } = useForm({mode: "onChange"});
 
   useEffect(() => {
     switch (enquiryOrder) {
@@ -110,12 +108,6 @@ function GeneralEnquiries({ Services }: any) {
         });
     }
   }, []);
-
-  useEffect(()=>{
-    console.log('i ran', validPostCode)
-    setTemp(validPostCode)
-  },[validPostCode]);
-
   const requestCallback = async (data: any) => {
 
 
@@ -124,46 +116,40 @@ function GeneralEnquiries({ Services }: any) {
     console.log('Before validating', validPostCode);
 
     if (postcodeValidator(code, 'UK') || postcodeValidator(code, 'US')) {
-      console.log(validPostCode,'truecase')
-      
-      setValidPostcode(true);
-    } else {
-      console.log(validPostCode,'false case');
-      setValidPostcode(false);
-    }
 
-    console.log('After validating', validPostCode);
+      if (
+          checkFormValidity(Object.keys(contactType), contactType) &&
+          selectedServiceId.length
+      ) {
+        const body = {
+          contact_form: {
+            ...data,
+            ...intialQ,
+            ...contactType,
+          },
+          services: [...selectedServiceId],
+        };
+        const requestOptions = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        };
+        const response = await fetch(
+            `${process.env.BASE_URL_DEV}contact_forms`,
+            requestOptions
+        );
 
-    console.log(temp)
-    if (
-      checkFormValidity(Object.keys(contactType), contactType) &&
-      selectedServiceId.length && temp
-    ) {
-      const body = {
-        contact_form: {
-          ...data,
-          ...intialQ,
-          ...contactType,
-        },
-        services: [...selectedServiceId],
-      };
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      };
-      const response = await fetch(
-        `${process.env.BASE_URL_DEV}contact_forms`,
-        requestOptions
-      );
+        if (response.ok) {
+          let data = await response.json();
+          setrequestSubmitted(true);
 
-      if (response.ok) {
-        let data = await response.json();
-        setrequestSubmitted(true);
-
-      } else {
-        alert("Something Went wrong");
+        } else {
+          alert("Something Went wrong");
+        }
       }
+
+    }else{
+      setValidPostcode(false)
     }
   };
 
@@ -284,7 +270,7 @@ function GeneralEnquiries({ Services }: any) {
                         name="post_code"
                         inputClass="border-grey-500 py-2.5 px-3"
                       />
-                      {!temp && (
+                      {!validPostCode && (
                         <p className="text-[#ff0000] text-sm font-semibold">
                           Enter a Valid Code
                         </p>
