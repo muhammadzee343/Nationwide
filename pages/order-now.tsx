@@ -69,17 +69,33 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     router.query;
 
   useEffect(() => {
-    setTimeout(() => {
-      attributeSection.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-      });
-    }, 500);
+
     addOtherService();
     if (bundle) {
       selectBundle();
     }
     populateForms();
+
+    if (ser && value && keys) {
+      let obj = Object.fromEntries(keys?.map((k, i) => [k, value[i]]));
+      if (obj) {
+        setNext(true)
+        setTimeout(() => {
+          attributeSection.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "end",
+          });
+        }, 500);
+
+      }
+    }else{
+      setTimeout(() => {
+        attributeSection.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+        });
+      }, 500);
+    }
   }, []);
 
   const scrollIntoViewClick = () => {
@@ -189,7 +205,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         }
       } else {
         const data = await response.json();
-        router.push({ pathname: "/new-checkout" });
+        router.push({ pathname: "/checkout" });
       }
     } catch (err) { }
   };

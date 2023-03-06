@@ -10,6 +10,7 @@ import Head from "next/head";
 import styles from "../styles/footer.module.css";
 import { faSlack } from "@fortawesome/free-brands-svg-icons";
 import { postcodeValidator, postcodeValidatorExistsForCountry } from 'postcode-validator';
+import {VALIDATION_CONFIG} from "../config/validation.config";
 
 
 function GeneralEnquiries({ Services }: any) {
@@ -52,7 +53,7 @@ function GeneralEnquiries({ Services }: any) {
 
   const [selectedServiceId, setSelectedServiceId] = useState([]);
 
-  const [contactType, setContactType] = useState({ contact_by: "" });
+  const [contactType, setContactType] = useState({ contact_by: "phone" });
 
   const [requestSubmitted, setrequestSubmitted] = useState(false);
 
@@ -113,7 +114,6 @@ function GeneralEnquiries({ Services }: any) {
 
     const code = data.post_code.replace(/\s/g, "");
 
-    console.log('Before validating', validPostCode);
 
     if (postcodeValidator(code, 'UK') || postcodeValidator(code, 'US')) {
 
@@ -269,15 +269,11 @@ function GeneralEnquiries({ Services }: any) {
                         required={true}
                         name="post_code"
                         inputClass="border-grey-500 py-2.5 px-3"
+                        reactHookValidations={{
+                          required: VALIDATION_CONFIG.required,
+                          validate: VALIDATION_CONFIG.postCode,
+                        }}
                       />
-                      {!validPostCode && (
-                        <p className="text-[#ff0000] text-sm font-semibold">
-                          Enter a Valid Code
-                        </p>
-                      )}
-                      {errors.firstName?.type === "required" && (
-                        <p role="alert">First name is required</p>
-                      )}
                     </div>
                   </div>
 
