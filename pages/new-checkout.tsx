@@ -5,8 +5,8 @@ import React, {
     useMemo,
     useState,
 } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTag } from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faPlus, faTag} from "@fortawesome/free-solid-svg-icons";
 import Head from "next/head";
 import {
     CartCountContext,
@@ -14,9 +14,9 @@ import {
     SidebarContext,
     UuidContext,
 } from "../context/sidebarContext";
-import { useRouter } from "next/router";
-import { v4 as uuidv4 } from "uuid";
-import { loadStripe } from "@stripe/stripe-js";
+import {useRouter} from "next/router";
+import {v4 as uuidv4} from "uuid";
+import {loadStripe} from "@stripe/stripe-js";
 import {
     CardElement,
     CardNumberElement,
@@ -33,7 +33,7 @@ import CardComponent from "../components/card.component";
 import CheckoutStepper from "../components/checkoutStepper.component";
 import RequestCallBack from "../components/requestCallBack.component";
 import RadioInput from "../components/radioInput.component";
-import { useForm } from "react-hook-form";
+import {useForm} from "react-hook-form";
 import TermsConditionComponent from "../components/terms&condition.component";
 import Link from "next/link";
 import GoogePayComponent from "../components/googePay.component";
@@ -66,7 +66,7 @@ function Checkout(props: any) {
         supply_type: "",
         circuits: "",
     };
-    const { register, handleSubmit } = useForm({
+    const {register, handleSubmit} = useForm({
         defaultValues: {
             orderNotes: "",
             payment: "",
@@ -78,18 +78,18 @@ function Checkout(props: any) {
         shopping_cart_products: [],
         shopping_cart_bundles: [],
     });
-    const [pricing, setPricing] = useState({ totalAmount: "0", discount: "0" });
+    const [pricing, setPricing] = useState({totalAmount: "0", discount: "0"});
     const [orderId, setOrderId] = useState(null);
-    const { uuid, setUuid } = useContext(UuidContext);
+    const {uuid, setUuid} = useContext(UuidContext);
     const [attribute, setAttributes] = useState<any>(attributeState);
     const [selectedServiceId, setSelectedServiceId] = useState<string[]>([]);
     const [paymentType, setPaymentType] = useState<string>("");
     const [cardError, setCardError] = useState("");
     const [billingDetails, setBillingDetails] = useState({});
 
-    const { isLoading, setIsLoading } = useContext<any>(OverlayContext);
+    const {isLoading, setIsLoading} = useContext<any>(OverlayContext);
 
-    const { setCount } = useContext(CartCountContext);
+    const {setCount} = useContext(CartCountContext);
 
     useEffect(() => {
         if (!router?.query?.aquote && !router?.query?.bquote) {
@@ -105,17 +105,17 @@ function Checkout(props: any) {
             localStorage.setItem("session_id", Uuid);
             setUuid(Uuid);
             //@ts-ignore
-            postQuoteApi(router?.query.aquote, true,Uuid);
+            postQuoteApi(router?.query.aquote, true, Uuid);
         } else if (router?.query?.bquote) {
             const Uuid = uuidv4();
             localStorage.setItem("session_id", Uuid);
             setUuid(Uuid);
             //@ts-ignore
-            postQuoteApi(router?.query.bquote, false,Uuid);
+            postQuoteApi(router?.query.bquote, false, Uuid);
         }
     }, [router]);
 
-    const postQuoteApi = async (quote: string, isAQuote = false, Uuid : string) => {
+    const postQuoteApi = async (quote: string, isAQuote = false, Uuid: string) => {
         setCount(0);
 
         const body = {
@@ -142,13 +142,12 @@ function Checkout(props: any) {
 
         if (response.ok) {
             getCartValues(Uuid);
-            getBillingDetailsCart(quote,isAQuote)
+            getBillingDetailsCart(quote, isAQuote)
         }
     };
 
-    useEffect(() => {}, [cart]);
-
-
+    useEffect(() => {
+    }, [cart]);
 
 
     const getCartValues = async (uid) => {
@@ -185,15 +184,15 @@ function Checkout(props: any) {
         }
     };
 
-    const getBillingDetailsCart = async (token : string , quote : boolean) => {
+    const getBillingDetailsCart = async (token: string, quote: boolean) => {
         setIsLoading(true);
 
-        let url  = `${process.env.BASE_URL_DEV}orders/get_billing_detail`
+        let url = `${process.env.BASE_URL_DEV}orders/get_billing_detail`
 
-        if (quote){
-            url +=`?aquote=${token}`
-        }else {
-            url +=`?bquote=${token}`
+        if (quote) {
+            url += `?aquote=${token}`
+        } else {
+            url += `?bquote=${token}`
         }
 
         const response = await fetch(
@@ -218,8 +217,6 @@ function Checkout(props: any) {
     };
 
 
-
-
     useEffect(() => {
         return () => {
             if (router?.query?.aquote || router?.query?.bquote) {
@@ -232,7 +229,7 @@ function Checkout(props: any) {
     }, []);
 
 
-    const { propertyType } = useContext<any>(SidebarContext);
+    const {propertyType} = useContext<any>(SidebarContext);
 
     const getIntent = async (data) => {
         const body = {
@@ -254,7 +251,7 @@ function Checkout(props: any) {
 
         const requestOptions = {
             method: "POST",
-            headers: { "Content-type": "application/json" },
+            headers: {"Content-type": "application/json"},
             body: JSON.stringify(body),
         };
 
@@ -295,7 +292,7 @@ function Checkout(props: any) {
 
             const clientSecret = await getIntent(data);
 
-            const { error, paymentIntent } =
+            const {error, paymentIntent} =
                 await stripObj?.stripe!.confirmCardPayment(clientSecret, {
                     payment_method: {
                         card: card!,
@@ -368,7 +365,7 @@ function Checkout(props: any) {
         }
         const requestOptions = {
             method: "POST",
-            headers: { "Content-type": "application/json" },
+            headers: {"Content-type": "application/json"},
             body: JSON.stringify(body),
         };
 
@@ -394,7 +391,7 @@ function Checkout(props: any) {
 
     const GooglePayButton = useMemo(() => {
         return (
-            <GoogePayComponent pricing={pricing} uuid={uuid} orderId={orderId} />
+            <GoogePayComponent pricing={pricing} uuid={uuid} orderId={orderId}/>
         );
     }, [pricing, uuid, orderId]);
     // @ts-ignore
@@ -405,106 +402,110 @@ function Checkout(props: any) {
                     <title>Checkout - Nationwide Surveyors</title>
                 </Head>
                 <div className="w-[70%] lg:w-[50%] xl:w-[43%]">
-                    <CheckoutStepper />
+                    <CheckoutStepper/>
                 </div>
                 <div className="w-full flex flex-wrap justify-center items-start sm:gap-x-22">
-                    <div className="w-full lg:w-[50%] flex flex-col justify-center items-center  pt-[35px] pb-[25px] px-2">
+                    <div
+                        className="w-full lg:w-[60%] flex flex-col justify-center items-center  pt-[35px] pb-[25px] px-2">
                         <div className="w-full my-3">
                             {cart?.shopping_cart_products.length ||
                             cart?.shopping_cart_bundles.length ? (
-                                <CardTable cart={cart} getCart={getCartValues} />
+                                <CardTable cart={cart} getCart={getCartValues}/>
                             ) : null}
                         </div>
-                        {/*<ButtonComponent*/}
-                        {/*  text="Add an other service"*/}
-                        {/*  className=" flex justify-center text-[13px] hover:text-white font-medium border-2 border-dark-blue hover:border-lime*/}
-                        {/* hover:bg-lime px-[28px] py-[12px] uppercase rounded"*/}
-                        {/*/>*/}
-                        {/*<br />*/}
+                        <ButtonComponent
+                          text="Add an other service"
+                          className=" flex justify-center text-[13px] hover:text-white font-medium border-2 border-dark-blue hover:border-lime
+                         hover:bg-lime px-[28px] py-[12px] uppercase rounded"
+                        />
+                        <br />
                         <div className=" flex w-full md:hidden">
                             <OrderSummary
                                 discount={pricing.discount}
                                 subTotal={pricing.totalAmount}
                             />
                         </div>
-                        <br />
+                        <br/>
                         <div className="w-full">
-                            {pricing.totalAmount != "0" ? GooglePayButton : null}
                             <ButtonComponent
-                                text="Pay by debit/credit card"
-                                className={`flex justify-center text-[13px] font-bold hover:text-white border-2 border-lime
-           hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
-                                    paymentType === "payByCard" && "text-white bg-lime rounded-b-none"
-                                }`}
-                                onClick={() => setPaymentType("payByCard")}
+                                text="Add an other property"
+                                className={`flex justify-center  flex-row-reverse bg-white text-[13px] font-bold hover:text-lime border-2 border-lime
+           hover:bg-white px-[22px] py-[12px] uppercase rounded `}
+                                onClick={() => router.push('order-now')}
+                            >
+                                <FontAwesomeIcon icon={faPlus} className="hidden md:flex text-black h-2 mr-5 hover:text-lime md:h-4 px-2 lg: h-8"/>
+                            </ButtonComponent>
+                            <CardComponent
+                                className="bg-lime shadow px-[20px] pt-[15px] pb-[20px] my-[25px]"
+                                hClass="text-xl mb-[15px] text-black font-bold text-center"
+                                pClass="font-semibold text-justify text-base"
+                                heading="WHAT’S NEXT AFTER ORDER PLACEMENT?"
+                                paragraph="Once an order is placed online, we aim to call you or your agent/tenants
+           within 60 minutes of receiving your order (during our working hours) to organise suitable
+            appointment(s). Depending on the availability of access to the property, our normal wait time is
+             currently between 1 to 3 working days. If you need help placing new order or got a question,
+              please don’t hesitate to call us free at 0800 048 7474."
                             />
-                            {paymentType === "payByCard" && (
-                                <div className="w-full" id="card">
-                                    <div className="bg-white space-y-6">
-                                        <div className="p-[14px] border-lime border-r-2 border-b-2 border-l-2 rounded-b">
-                                            <CardFormComponent
-                                                stripObj={stripObj}
-                                                cardError={cardError}
-                                                setCardError={setCardError}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
                         </div>
 
-                        <br />
-                        <ButtonComponent
-                            text="Pay Over Phone"
-                            className={`flex justify-center text-[13px] font-bold hover:text-white border-2 border-lime
-              hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
-                                paymentType === "payOverPhone" &&
-                                "text-white bg-lime rounded-b-none"
-                            }`}
-                            onClick={() => setPaymentType("payOverPhone")}
-                        />
-                        <br />
-                        <ButtonComponent
-                            text="Pay By Bank Transfer"
-                            className={` flex justify-center text-[13px] font-bold hover:text-white border-2 border-lime
-           hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
-                                paymentType === "payByBank" && "text-white bg-lime rounded-b-none"
-                            }`}
-                            onClick={() => setPaymentType("payByBank")}
-                        />
-                        <br />
-                        {paymentType !== "" && <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} />}
                     </div>
-                    <div className="w-full lg:w-[25%] pt-[35px] pb-[25px] px-4 mt-[10px]">
-                        {pricing.discount > 0 && (
-                            <div className=" bg-dark-blue flex rounded-sm py-[10px] pl-[45px] pr-[20px]">
-                                <FontAwesomeIcon
-                                    className="text-lime w-8 xxl:w-4  mr-2"
-                                    icon={faTag}
-                                />
-                                <p className="text-white text-[15px] font-semibold">
-                                    Congratulations! £10 multi-service-order Discount has been
-                                    applied.
-                                </p>
-                            </div>
-                        )}
+                    <div className="w-full lg:w-[30%] pt-[35px] pb-[25px] px-4 mt-[10px]">
+
                         <div className="hidden md:w-full md:flex">
                             <OrderSummary
                                 discount={pricing.discount}
                                 subTotal={pricing.totalAmount}
                             />
                         </div>
-                        <CardComponent
-                            className="bg-lime shadow px-[20px] pt-[15px] pb-[20px] my-[25px]"
-                            hClass="text-xl mb-[15px] text-black font-bold text-center"
-                            pClass="font-semibold text-justify text-base"
-                            heading="WHAT’S NEXT AFTER ORDER PLACEMENT?"
-                            paragraph="Once an order is placed online, we aim to call you or your agent/tenants
-           within 60 minutes of receiving your order (during our working hours) to organise suitable
-            appointment(s). Depending on the availability of access to the property, our normal wait time is
-             currently between 1 to 3 working days. If you need help placing new order or got a question,
-              please don’t hesitate to call us free at 0800 048 7474."
-                        />
+                        <div className='mt-5'>
+                            {pricing.totalAmount != "0" ? GooglePayButton : null}
+                        </div>
+                        <div className='mt-5'>
+                            <ButtonComponent
+                                text="Pay by debit/credit card"
+                                className={`flex justify-center text-[13px] font-bold hover:text-white border-[1px] border-lime
+           hover:bg-lime px-[22px] py-[12px] uppercase rounded ${
+                                    paymentType === "payByCard" && "text-white bg-lime rounded-b-none"
+                                }`}
+                                onClick={() => setPaymentType("payByCard")}
+                            />
+                            <div className='w-full'>
+                                {paymentType === "payByCard" &&
+                                    <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
+                                }
+                            </div>
+                            <br/>
+                            <ButtonComponent
+                                text="Pay Over Phone"
+                                className={`flex justify-center text-[13px] font-bold hover:text-white border-[1px] border-lime
+              hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
+                                    paymentType === "payOverPhone" &&
+                                    "text-white bg-lime rounded-b-none"
+                                }`}
+                                onClick={() => setPaymentType("payOverPhone")}
+                            />
+                            <div className='w-full'>
+                                {paymentType === "payOverPhone" &&
+                                    <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
+                                }
+                            </div>
+                            <br/>
+                            <ButtonComponent
+                                text="Pay By Bank Transfer"
+                                className={` flex justify-center text-[13px] font-bold hover:text-white border-[1px] border-lime
+           hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
+                                    paymentType === "payByBank" && "text-white bg-lime rounded-b-none"
+                                }`}
+                                onClick={() => setPaymentType("payByBank")}
+                            />
+                            <br/>
+                            <div className='w-full'>
+                                {paymentType === "payByBank" &&
+                                        <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
+                                    }
+                            </div>
+
+                        </div>
                         <RequestCallBack
                             attributes={attribute}
                             services={selectedServiceId}
@@ -520,25 +521,33 @@ function Checkout(props: any) {
     );
 }
 
-function Note({ content }: any) {
+function Note({content}: any) {
     return (
         <div className="relative bg-[#dfdcde]  px-8 py-3 rounded-sm my-3">
             <div className="text-gray-800 text-[13px] text-[#515151]">{content}</div>
-            <div className="absolute top-0 left-[39px] transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-4 h-4 bg-[#dfdcde]"></div>
+            <div
+                className="absolute top-0 left-[39px] transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-4 h-4 bg-[#dfdcde]"></div>
         </div>
     );
 }
-function OrderSummary({ subTotal, discount }: any) {
+
+function OrderSummary({subTotal, discount}: any) {
     return (
+
         <div
-            className={`flex justify-center flex-col md:flex-row flex-col items-stretch w-full space-y-4 md:space-y-0
-     md:space-x-6 xl:space-x-8 ${discount > 0 && "mt-6"}`}
-        >
-            <div className="flex flex-col px-4 py-6 md:p-6 xl:p-8 w-full bg-white shadow-xl border border-slate-100 space-y-6">
+            className={`flex justify-center flex-col w-full space-y-1  ${discount > 0 && "mt-6"}`}>
+            <header className='flex justify-between items-center mt-1 bg-dark-blue h-[45px] mb-[15px]'>
+                <h3 className=" font-base font-semibold text-white px-[25px] ">
+                    Payment summary
+                </h3>
+            </header>
+            <div
+                className="flex flex-col border-lime border-t-4 px-2 py-6 md:p-4 xl:p-4 w-full bg-white shadow-md space-y-6">
                 <h3 className="text-xl dark:text-white font-semibold leading-5 text-gray-800">
                     Summary
                 </h3>
-                <div className="flex justify-center items-center w-full space-y-4 flex-col border-[#9badad] border-b pb-4">
+                <div
+                    className="flex justify-center items-center w-full space-y-4 flex-col border-[#9badad] border-b pb-4">
                     <div className="flex justify-between w-full">
                         <p className="text-base dark:text-white leading-4 text-gray-800">
                             Subtotal
@@ -547,7 +556,7 @@ function OrderSummary({ subTotal, discount }: any) {
                             &#163;{`${Number(subTotal) - Number(discount)}`}
                         </p>
                     </div>
-                    {discount > 0 && (
+                    {discount > -1 && (
                         <div className="flex justify-between items-center w-full">
                             <p className="text-base dark:text-white leading-4 text-gray-800">
                                 Discount
@@ -556,6 +565,7 @@ function OrderSummary({ subTotal, discount }: any) {
                                 -&#163;({discount})
                             </p>
                         </div>
+
                     )}
                 </div>
                 <div className="flex justify-between items-center w-full">
@@ -566,6 +576,18 @@ function OrderSummary({ subTotal, discount }: any) {
                         &#163;{subTotal}
                     </p>
                 </div>
+                {discount > -1 && (
+                    <div className=" bg-dark-blue flex rounded-sm py-[10px] px-[15px] justify-center items-center">
+                        <FontAwesomeIcon
+                            className="text-lime w-8 xxl:w-6  mr-2"
+                            icon={faTag}
+                        />
+                        <p className="text-white text-[10px] font-semibold">
+                            Congratulations! £10 multi-service-order Discount has been
+                            applied.
+                        </p>
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -7,7 +7,8 @@ import TextArea from "./textArea.component";
 import ButtonComponent from "./button.component";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-
+import Image from 'next/image';
+import callback from "../public/callback.png";
 function RequestCallBack({
   attributes,
   services,
@@ -111,32 +112,18 @@ function RequestCallBack({
   };
   return (
     <div className="bg-white shadow-md relative">
-      {!collapse && (
-        <span
-          className="absolute top-[17px] right-[12px] bg-white rounded-full
-       w-6 h-6 flex justify-center items-center cursor-pointer"
-          onClick={() => setCollapse(!collapse)}
-        >
-          <FontAwesomeIcon className="text-dark-blue w-3" icon={faXmark} />
-        </span>
-      )}
-      <div>
+      <div className='w-full px-[25px] py-[30px] '>
+        <Image src={callback} alt='kachra' className='w-4 h-4 rounded-full'/>
         <h4
-          className={`px-[25px] pt-[15px] pb-[15px] ${
+          className={`px-[25px] py-[30px] ${
             !collapse
-              ? "bg-dark-blue text-white text-[17px] font-semibold"
-              : "bg-lime hover:bg-dark-blue hover:text-white ease-in duration-200" +
-                " text-dark-blue text-[17px] font-bold"
+              ? "bg-lime text-white text-[17px] "
+              : "bg-dark-blue hover:bg-dark-blue hover:text-white ease-in duration-200" +
+                " text-white text-[17px]"
           } flex gap-2 cursor-pointer`}
           onClick={handleCallbackClick}
         >
           REQUEST A CALLBACK
-          {collapse && (
-            <FontAwesomeIcon
-              className="w-3 absolute top-[17px] right-[15px]"
-              icon={faChevronRight}
-            />
-          )}
         </h4>
       </div>
       {/*Content*/}

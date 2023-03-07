@@ -87,20 +87,20 @@ const CardFormComponent = ({ stripObj, cardError, setCardError }: any) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="w-full flex flex-row items-center justify-between mb-10">
-        <p className="font-bold">Debit/Credit Card payment</p>
+      <div className="w-full flex flex-row items-center justify-between mb-4">
+        <p className="font-sm text-[10px]">Debit/Credit Card payment</p>
         <div className="flex flex-row gap-x-3">
           <FontAwesomeIcon
-            className="text-yellow-500 w-10"
+            className="text-yellow-500 w-5"
             icon={faCcMastercard}
           />
-          <FontAwesomeIcon className="text-indigo-800 w-10" icon={faCcVisa} />
-          <FontAwesomeIcon className="text-black w-10" icon={faCcDiscover} />
-          <FontAwesomeIcon className="text-indigo-600 w-10" icon={faStripe} />
+          <FontAwesomeIcon className="text-indigo-800 w-5" icon={faCcVisa} />
+          <FontAwesomeIcon className="text-black w-5" icon={faCcDiscover} />
+          <FontAwesomeIcon className="text-indigo-600 w-5" icon={faStripe} />
         </div>
       </div>
-      <div className="w-full flex flex-col md:flex-row justify-between mb-3 space-x-3">
-        <div className="w-full">
+      <div className="w-full flex flex-col md:flex-row justify-between mb-3">
+        <div className="w-full border-[#DEDEDE] py-2 px-3 rounded-md border">
           <CardElement
             options={options}
             onChange={(e) => {
