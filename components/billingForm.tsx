@@ -204,12 +204,12 @@ function BillingForm(props: any) {
                 }}
               />
             </div>
-            <div className="self-end">
+            <div className="self-end w-[30%] ">
               <ButtonComponent
                 type="button"
                 text="FIND ADDRESS"
-                className=" bg-dark-blue text-white text-[8px] px-[13px] py-[14px]
-                 hover:bg-lime hover:text-white ease-in duration-200"
+                className=" bg-dark-blue text-white mb-0.5 text-[8px] px-[13px] py-[14px]
+                 hover:bg-lime hover:text-white ease-in duration-200 lg:text-[6px] lg:px-[10px] py-[13px] xl:text-[10px] xl:px-[13px] py-[13px]"
                 onClick={() => {
                   getPropertyAddress();
                 }}

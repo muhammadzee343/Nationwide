@@ -413,32 +413,32 @@ function Checkout(props: any) {
                                 <CardTable cart={cart} getCart={getCartValues}/>
                             ) : null}
                         </div>
-                        <ButtonComponent
-                          text="Add an other service"
-                          className=" flex justify-center text-[13px] hover:text-white font-medium border-2 border-dark-blue hover:border-lime
-                         hover:bg-lime px-[28px] py-[12px] uppercase rounded"
-                        />
-                        <br />
-                        <div className=" flex w-full md:hidden">
-                            <OrderSummary
-                                discount={pricing.discount}
-                                subTotal={pricing.totalAmount}
-                            />
-                        </div>
+                        {/*<ButtonComponent*/}
+                        {/*  text="Add an other service"*/}
+                        {/*  className=" flex justify-center text-[13px] hover:text-white font-medium border-2 border-dark-blue hover:border-lime*/}
+                        {/* hover:bg-lime px-[28px] py-[12px] uppercase rounded"*/}
+                        {/*/>*/}
+                        {/*<br />*/}
+                        {/*<div className=" flex w-full md:hidden">*/}
+                        {/*    <OrderSummary*/}
+                        {/*        discount={pricing.discount}*/}
+                        {/*        subTotal={pricing.totalAmount}*/}
+                        {/*    />*/}
+                        {/*</div>*/}
                         <br/>
                         <div className="w-full">
                             <ButtonComponent
                                 text="Add an other property"
-                                className={`flex justify-center  flex-row-reverse bg-white text-[13px] font-bold hover:text-lime border-2 border-lime
-           hover:bg-white px-[22px] py-[12px] uppercase rounded `}
+                                className={`flex justify-center items-center border-lime border flex-row-reverse bg-white text-[13px] font-bold
+                                            hover:bg-lime px-[22px] py-[12px] uppercase rounded `}
                                 onClick={() => router.push('order-now')}
                             >
-                                <FontAwesomeIcon icon={faPlus} className="hidden md:flex text-black h-2 mr-5 hover:text-lime md:h-4 px-2 lg: h-8"/>
+                                <FontAwesomeIcon icon={faPlus} className="text-black h-4 mr-5 hover: md:h-5 lg:h-5"/>
                             </ButtonComponent>
                             <CardComponent
-                                className="bg-lime shadow px-[20px] pt-[15px] pb-[20px] my-[25px]"
+                                className="bg-lime shadow px-[20px] pt-[15px] pb-[20px] my-[25px] "
                                 hClass="text-xl mb-[15px] text-black font-bold text-center"
-                                pClass="font-semibold text-justify text-base"
+                                pClass=" text-justify text-base"
                                 heading="WHAT’S NEXT AFTER ORDER PLACEMENT?"
                                 paragraph="Once an order is placed online, we aim to call you or your agent/tenants
            within 60 minutes of receiving your order (during our working hours) to organise suitable
@@ -449,9 +449,9 @@ function Checkout(props: any) {
                         </div>
 
                     </div>
-                    <div className="w-full lg:w-[30%] pt-[35px] pb-[25px] px-4 mt-[10px]">
+                    <div className="w-full mt-0 lg:mt-[10px] lg:w-[30%] pt-[35px] pb-[25px] px-4 ">
 
-                        <div className="hidden md:w-full md:flex">
+                        <div className="md:w-full md:flex">
                             <OrderSummary
                                 discount={pricing.discount}
                                 subTotal={pricing.totalAmount}
@@ -536,7 +536,7 @@ function OrderSummary({subTotal, discount}: any) {
 
         <div
             className={`flex justify-center flex-col w-full space-y-1  ${discount > 0 && "mt-6"}`}>
-            <header className='flex justify-between items-center mt-1 bg-dark-blue h-[45px] mb-[15px]'>
+            <header className='flex justify-between items-center bg-dark-blue h-[46px] mb-[15px]'>
                 <h3 className=" font-base font-semibold text-white px-[25px] ">
                     Payment summary
                 </h3>
@@ -556,7 +556,7 @@ function OrderSummary({subTotal, discount}: any) {
                             &#163;{`${Number(subTotal) - Number(discount)}`}
                         </p>
                     </div>
-                    {discount > -1 && (
+                    {discount > 0 && (
                         <div className="flex justify-between items-center w-full">
                             <p className="text-base dark:text-white leading-4 text-gray-800">
                                 Discount
@@ -576,13 +576,13 @@ function OrderSummary({subTotal, discount}: any) {
                         &#163;{subTotal}
                     </p>
                 </div>
-                {discount > -1 && (
+                {discount > 0 && (
                     <div className=" bg-dark-blue flex rounded-sm py-[10px] px-[15px] justify-center items-center">
                         <FontAwesomeIcon
                             className="text-lime w-8 xxl:w-6  mr-2"
                             icon={faTag}
                         />
-                        <p className="text-white text-[10px] font-semibold">
+                        <p className="text-white text-[9px] font-semibold">
                             Congratulations! £10 multi-service-order Discount has been
                             applied.
                         </p>

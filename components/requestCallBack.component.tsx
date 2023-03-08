@@ -111,16 +111,11 @@ function RequestCallBack({
     // setPaymentType("");
   };
   return (
-    <div className="bg-white shadow-md relative">
-      <div className='w-full px-[25px] py-[30px] '>
-        <Image src={callback} alt='kachra' className='w-4 h-4 rounded-full'/>
+    <div className="bg-white shadow-md relative mt-5">
+      <div className='flex justify-center items-center w-full bg-dark-blue px-[25px] py-[25px]  '>
+        <Image src={callback} alt='callback' className='w-10 h-10 rounded-full mr-4'/>
         <h4
-          className={`px-[25px] py-[30px] ${
-            !collapse
-              ? "bg-lime text-white text-[17px] "
-              : "bg-dark-blue hover:bg-dark-blue hover:text-white ease-in duration-200" +
-                " text-white text-[17px]"
-          } flex gap-2 cursor-pointer`}
+          className='text-white cursor-pointer'
           onClick={handleCallbackClick}
         >
           REQUEST A CALLBACK
@@ -205,7 +200,6 @@ function RequestCallBack({
                         inputClass="border-grey-500 px-3"
                       />
                     </div>
-                    <hr className="h-[2px] bg-[#ececec] my-[25px]" />
                     <TextArea
                       lable="Additional Notes"
                       placeholder="Any additional information"
@@ -215,11 +209,10 @@ function RequestCallBack({
                       required={false}
                       name="customer_note"
                     />
-                    <hr className="h-[2px] bg-[#ececec] my-[25px]" />
                     <ButtonComponent
                       text="Submit"
                       className="flex font-bold uppercase justify-center items-center text-sm bg-lime
-             border border-lime hover:bg-dark-blue hover:text-white px-[28px] py-[12px] ease-in duration-200"
+             border border-lime mt-6 hover:bg-dark-blue hover:text-white px-[28px] py-[12px] ease-in duration-200"
                     />
                   </div>
                 </form>

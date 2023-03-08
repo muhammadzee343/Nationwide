@@ -188,24 +188,25 @@ function CardTable({ cart, getCart }: any) {
             className="border-[#e5e7eb] rounded-sm my-2 py-3 shadow-md"
             key={cartNo}
           >
-            <div className="w-full flex px-4 py-2 justify-between items-center">
-              <div className='w-[65%]'>
-                <p className="text-[8px]  md:text-[15px] text-dark-blue ">
+            <div className="w-full flex flex flex-col px-4 py-2 gap-2 justify-between items-center md:flex-row gap-0">
+              <div className='w-[100%] mb-3 md:w-[65%] md:mb-0'>
+                <p className="text-[17px] text-dark-blue text-center md:text-left mb-0">
                   {cartItemData[0]?.property_address}
                 </p>
 
               </div>
               {!router?.query?.aquote && !router?.query.bquote &&
                   (
-                      <div className="px-3 border-lime w-[2   9%]"  >
+                      <div className="px-3 border-lime w-[100%] md:w-[32%]"  >
                         <ButtonComponent
                             text="Add an other service"
                             type="button"
-                            className="flex flex-row-reverse  justify-center items-center px-[1px] text-[6px] hover:text-white font-medium border-[1px] border-lime hover:border-lime
-           hover:bg-lime py-[10px] uppercase md:px-[8px] md:text-[9px] lg:text-[10px]"
+                            className="flex w-full flex-row-reverse justify-center items-center px-[1px] text-[12px]
+                            hover:text-white font-medium border-[1px] border-lime hover:border-lime
+                            hover:bg-lime py-[10px] uppercase md:text-[14px] lg:px-1 lg:text-[10px] xxl:text-[14px]"
                             onClick={() => addAnotherService(cartNo)}
                         >
-                          <FontAwesomeIcon icon={faPlus} className="hidden md:text-lime h-2 hover:text-white md:h-4 px-2 lg: h-8"/>
+                          <FontAwesomeIcon icon={faPlus} className="text-lime h-3 hover:text-white md:h-4 px-2 lg: h-8"/>
                         </ButtonComponent>
                       </div>
                   )
@@ -225,10 +226,10 @@ function CardTable({ cart, getCart }: any) {
                       <div className="flex items-center justify-between mt-2.5">
                         <FontAwesomeIcon
                             icon={faTrashAlt}
-                            className="text-[#ff0000] h-[17px] cursor-pointer"
+                            className="text-[#ff0000] h-[19px] w-[20px] cursor-pointer"
                             onClick={() => deleteService( e.order_id,"",e.id,e.property_address)}
                         />
-                        <p className="text-[13px] md:text-[14px] ml-4 text-dark-blue ">
+                        <p className="text-[14px] md:text-[17px] ml-4 text-dark-blue ">
                           {e?.name}
                         </p>
                       </div>
@@ -245,18 +246,18 @@ function CardTable({ cart, getCart }: any) {
 
             <div className="w-full px-4 my-4">
               <div  className='border-[1px] border-lime '>
-                <div onClick={()=> {showContactInfo ? setShowContactInfo(null):setShowContactInfo(section)}} className='flex justify-between item-center h-12 bg-lime'>
+                <div onClick={()=> {showContactInfo===section ? setShowContactInfo(null):setShowContactInfo(section)}} className='flex justify-between item-center h-12 bg-lime'>
                   <div className='flex justify-between items-center'>
                     <FontAwesomeIcon className="ml-2 w-5 mr-3" icon={faInfoCircle} />
                     <p className="text-dark-blue text-[18px] text-center flex">
                       Contact for Access
                     </p>
                   </div>
-                  <FontAwesomeIcon className="ml-2 w-5 mr-3" icon={showContactInfo===cartNo ? faChevronUp:faChevronDown} />
+                  <FontAwesomeIcon className="ml-2 w-5 mr-3" icon={showContactInfo===section ? faChevronUp:faChevronDown} />
               </div>
                 {showContactInfo===section &&
-                <div className='px-10 pb-4 mt-4' >
-                  <div className="flex items-center justify-between">
+                <div className='px-5 pb-4 mt-4 md:px-10' >
+                  <div className="flex items-center justify-between flex-wrap">
                     {contactType.map((type, index) => {
                       return (
                           <RadioInput
@@ -269,7 +270,7 @@ function CardTable({ cart, getCart }: any) {
                               index={cartNo}
                               changeContactType={changeContactType}
                               obj="shopping_cart_products"
-                              className="text-sm text-dark-blue  mb-3"
+                              className="text-[17px] text-dark-blue  mb-3"
                           />
                       );
                     })}
@@ -297,7 +298,7 @@ function CardTable({ cart, getCart }: any) {
                     placeholder="You can provide any special instructions/notes to help us deal with your order."
                     name="orderNotes"
                     defaultValue={cartItemData[0]?.customer_note}
-                    className={`border w-full text-sm focus:border-lime outline-none focus:ring-transparent shadow-sm border-[#DEDEDE] py-2 px-3 rounded-md border`}
+                    className={`border w-full h-[75px] text-sm focus:border-lime outline-none focus:ring-transparent shadow-sm border-[#DEDEDE] py-2 px-3 rounded-md border`}
                     onChange={(e) => {
                     changeInfo("customer_note", e.target.value, cartNo,"shopping_cart_products");
                   }}
@@ -323,17 +324,17 @@ function CardTable({ cart, getCart }: any) {
         i++;
         return (
             <div
-                className="border-[#e5e7eb] rounded-sm my-2 py-3 shadow-md"
+                className="border-[#e5e7eb] rounded-sm my-2 pt-3 pb-7 shadow-md"
                 key={cartNo}
             >
               <div className="w-full flex px-4 py-1  justify-between">
                 <div className="w-full flex items-center">
                   <FontAwesomeIcon
                       icon={faTrashAlt}
-                      className="text-[#ff0000] h-[15px] cursor-pointer"
+                      className="text-[#ff0000] h-[20px] w-[21px] cursor-pointer"
                       onClick={() => deleteService( cartItemData[0].order_id,cartItemData[0].bundle_id,"",cartItemData[0]?.property_address)}
                   />
-                  <p className="text-[13px] md:text-[14px] ml-4 text-dark-blue ">
+                  <p className="text-[14px] md:text-[17px] ml-4 text-dark-blue ">
                     {cartItemData[0]?.property_address}
                   </p>
                 </div>
@@ -345,14 +346,14 @@ function CardTable({ cart, getCart }: any) {
                     return (
                         <li
                             key={index}
-                            className="py-1.5 flex justify-between border-b border-[#e5e7eb]"
+                            className="py-1.5 flex justify-between items-center border-b border-[#e5e7eb]"
                         >
                           <div className="flex">
-                            <p className="text-[13px] md:text-[14px] ml-4 text-dark-blue ">
+                            <p className="text-[14px] md:text-[17px] ml-4 text-dark-blue ">
                               <span style={{fontSize: 24}}>⤷</span> {e?.name}
                             </p>
                           </div>
-                          <p className="text-[13px] md:text-[14px] text-dark-blue font-semibold">
+                          <p className="text-[13px] w-[20%] text-right md:text-[14px] text-dark-blue font-semibold">
                             &#163; {e.total_amount}
                           </p>
                         </li>
@@ -378,18 +379,18 @@ function CardTable({ cart, getCart }: any) {
 
               <div className="w-full px-4">
                 <div  className='border-[1px] border-lime '>
-                  <div onClick={()=> {showContactInfo ? setShowContactInfo(null):setShowContactInfo(section)}} className='flex justify-between item-center h-12 bg-lime'>
+                  <div onClick={()=> {showContactInfo===section ? setShowContactInfo(null):setShowContactInfo(section)}} className='flex justify-between item-center h-12 bg-lime'>
                     <div className='flex justify-between items-center'>
                       <FontAwesomeIcon className="ml-2 w-5 mr-3" icon={faInfoCircle} />
                       <p className="text-dark-blue text-[18px] text-center flex">
                         Contact for Access
                       </p>
                     </div>
-                    <FontAwesomeIcon className="ml-2 w-5 mr-3" icon={showContactInfo===cartNo ? faChevronUp:faChevronDown} />
+                    <FontAwesomeIcon className="ml-2 w-5 mr-3" icon={showContactInfo===section ? faChevronUp:faChevronDown} />
                   </div>
                   {showContactInfo===section &&
-                      <div className='px-10 pb-4 mt-4' >
-                        <div className="flex items-center justify-between">
+                      <div className='px-5 pb-4 mt-4 md:px-10' >
+                        <div className="flex items-center justify-between flex-wrap">
                           {contactType.map((type, index) => {
                             return (
                                 <RadioInput
@@ -402,7 +403,7 @@ function CardTable({ cart, getCart }: any) {
                                     index={cartNo}
                                     changeContactType={changeContactType}
                                     obj="shopping_cart_products"
-                                    className="text-sm text-dark-blue  mb-3"
+                                    className="text-[17px] text-dark-blue mb-3"
                                 />
                             );
                           })}
@@ -429,17 +430,14 @@ function CardTable({ cart, getCart }: any) {
                                     placeholder="You can provide any special instructions/notes to help us deal with your order."
                                     name="orderNotes"
                                     defaultValue={cartItemData[0]?.customer_note}
-                                    className={`border w-full text-sm focus:border-lime outline-none focus:ring-transparent shadow-sm border-[#DEDEDE] py-2 px-3 rounded-md border`}
+                                    className={`border h-[75px] w-full text-sm focus:border-lime outline-none focus:ring-transparent shadow-sm border-[#DEDEDE] py-2 px-3 rounded-md border`}
                                     onChange={(e) => {
                                       changeInfo("customer_note", e.target.value, cartNo,"shopping_cart_products");
                                     }}
                                 />
                               </div>
                             </>
-                        )
-
-                        }
-
+                        )}
                       </div>
                   }
                 </div>
@@ -466,12 +464,12 @@ const RadioInput = ({
 }: any) => {
   return (
     <label className={`${className}`}>
-      <div className="my-1.5">
+      <div className="my-1.5 mx-1.5 md:mx-0">
         <input
           type="radio"
           value={value}
           defaultChecked={value === activeVal}
-          className="mb-[2px] mr-[5px] h-[13px] w-[13px]"
+          className="mb-[2px] mr-[5px] h-[16px] w-[16px]"
           name={`${name}${index}`}
           onChange={() => changeContactType(value, index, obj)}
         />
