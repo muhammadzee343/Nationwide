@@ -36,6 +36,7 @@ import Legion2 from "../public/Legion2.jpg";
 import Sap2 from "../public/sap1.jpg";
 import Sap1 from "../public/sap2.jpg";
 import localFont from "@next/font/local";
+import CallBack from "../public/callback.png";
 
 export const myFont = localFont({
   src: [
@@ -89,6 +90,7 @@ const images = {
   legion2: Legion2,
   sap1: Sap1,
   sap2: Sap2,
+  callback:CallBack
 };
 
 export const LEC = {

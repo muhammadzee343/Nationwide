@@ -7,7 +7,8 @@ import TextArea from "./textArea.component";
 import ButtonComponent from "./button.component";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-
+import Image from 'next/image';
+import callback from "../public/callback.png";
 function RequestCallBack({
   attributes,
   services,
@@ -110,33 +111,14 @@ function RequestCallBack({
     // setPaymentType("");
   };
   return (
-    <div className="bg-white shadow-md relative">
-      {!collapse && (
-        <span
-          className="absolute top-[17px] right-[12px] bg-white rounded-full
-       w-6 h-6 flex justify-center items-center cursor-pointer"
-          onClick={() => setCollapse(!collapse)}
-        >
-          <FontAwesomeIcon className="text-dark-blue w-3" icon={faXmark} />
-        </span>
-      )}
-      <div>
+    <div className="bg-white shadow-md relative mt-5">
+      <div className='flex justify-center items-center w-full bg-dark-blue px-[25px] py-[25px]  '>
+        <Image src={callback} alt='callback' className='w-10 h-10 rounded-full mr-4'/>
         <h4
-          className={`px-[25px] pt-[15px] pb-[15px] ${
-            !collapse
-              ? "bg-dark-blue text-white text-[17px] font-semibold"
-              : "bg-lime hover:bg-dark-blue hover:text-white ease-in duration-200" +
-                " text-dark-blue text-[17px] font-bold"
-          } flex gap-2 cursor-pointer`}
+          className='text-white cursor-pointer'
           onClick={handleCallbackClick}
         >
           REQUEST A CALLBACK
-          {collapse && (
-            <FontAwesomeIcon
-              className="w-3 absolute top-[17px] right-[15px]"
-              icon={faChevronRight}
-            />
-          )}
         </h4>
       </div>
       {/*Content*/}
@@ -218,7 +200,6 @@ function RequestCallBack({
                         inputClass="border-grey-500 px-3"
                       />
                     </div>
-                    <hr className="h-[2px] bg-[#ececec] my-[25px]" />
                     <TextArea
                       lable="Additional Notes"
                       placeholder="Any additional information"
@@ -228,11 +209,10 @@ function RequestCallBack({
                       required={false}
                       name="customer_note"
                     />
-                    <hr className="h-[2px] bg-[#ececec] my-[25px]" />
                     <ButtonComponent
                       text="Submit"
                       className="flex font-bold uppercase justify-center items-center text-sm bg-lime
-             border border-lime hover:bg-dark-blue hover:text-white px-[28px] py-[12px] ease-in duration-200"
+             border border-lime mt-6 hover:bg-dark-blue hover:text-white px-[28px] py-[12px] ease-in duration-200"
                     />
                   </div>
                 </form>

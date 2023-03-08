@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Select } from "antd";
 import { OverlayContext } from "../context/sidebarContext";
 import {VALIDATION_CONFIG} from "../config/validation.config";
+import CardFormComponent from "./cardForm.component";
 
 function BillingForm(props: any) {
   const [addresses, setAddresseses] = useState([]);
@@ -51,6 +52,11 @@ function BillingForm(props: any) {
 
     }
   }, [props.billingDetails]);
+
+  const stripObj = {
+    strip: null,
+    element: null,
+  };
 
 
 
@@ -112,14 +118,33 @@ function BillingForm(props: any) {
     <form
       autoComplete={"off"}
       onSubmit={handleSubmit(submitHandler)}
-      className="w-full flex justify-between flex-wrap bg-white shadow-xl border border-slate-100 space-y-6 p-[20px]"
+      className="w-full flex justify-between flex-wrap bg-white shadow-xl border border-lime space-y-6 p-[20px]"
     >
       <div className="w-full">
-        <h3 className="text-[28px] text-dark-blue leading-7 mb-[15px] font-semibold">
+
+        <div className="flex flex-wrap justify-between justify-center">
+          <div className='w-full mb-1'>
+            {props.paymentType === "payByCard" && (
+                <div className="w-full" id="card">
+                  <div className="bg-white space-y-6">
+                    <div
+                        className="p-[5px] font-md">
+                      <CardFormComponent
+                          stripObj={stripObj}
+                          cardError={props.cardError}
+                          setCardError={props.setCardError}
+                      />
+                    </div>
+                  </div>
+                </div>
+            )}
+          </div>
+
+        <h3 className="text-[23px] text-dark-blue leading-7 mb-[15px] font-semibold">
           BILLING DETAILS
         </h3>
-        <div className=" flex flex-wrap justify-between justify-center">
-          <div className="md:w-[48%] mb-1">
+
+          <div className="w-full mb-1">
             <TextField
               className="text-sm leading-8 text-dark-blue font-semibold"
               lable="First Name"
@@ -130,7 +155,7 @@ function BillingForm(props: any) {
               inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
           </div>
-          <div className="md:w-[48%] mb-1">
+          <div className="w-full mb-1">
             <TextField
               className="text-sm leading-8 text-dark-blue font-semibold"
               lable="Last Name"
@@ -141,7 +166,7 @@ function BillingForm(props: any) {
               inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
           </div>
-          <div className="md:w-[48%] mb-1">
+          <div className="w-full mb-1">
             <TextField
               className="text-sm leading-8 text-dark-blue font-semibold"
               lable="Company Name (optional)"
@@ -151,9 +176,9 @@ function BillingForm(props: any) {
               inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
           </div>
-          <div className="md:w-[48%] mb-1">
+          <div className="w-full mb-1">
             <TextField
-              className="text-sm leading-8 text-dark-blue font-semibold"
+              className="w-full text-sm leading-8 text-dark-blue font-semibold"
               lable="Email"
               required={true}
               name="email"
@@ -163,8 +188,8 @@ function BillingForm(props: any) {
               inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
           </div>
-          <div className="md:w-[48%] flex flex-col md:flex-row justify-between">
-            <div className="md:w-[60%]">
+          <div className="w-full flex items-center md:flex-row justify-between">
+            <div className="w-[65%]">
               <TextField
                 className="text-sm leading-8 text-dark-blue font-semibold"
                 lable="PostCode"
@@ -179,12 +204,12 @@ function BillingForm(props: any) {
                 }}
               />
             </div>
-            <div className="mt-5 md:mt-8">
+            <div className="self-end w-[30%] ">
               <ButtonComponent
                 type="button"
                 text="FIND ADDRESS"
-                className="bg-dark-blue text-white text-[13px] px-[20px] py-[10px]
-                 hover:bg-lime hover:text-white ease-in duration-200"
+                className=" bg-dark-blue text-white mb-0.5 text-[8px] px-[13px] py-[14px]
+                 hover:bg-lime hover:text-white ease-in duration-200 lg:text-[6px] lg:px-[10px] py-[13px] xl:text-[10px] xl:px-[13px] py-[13px]"
                 onClick={() => {
                   getPropertyAddress();
                 }}
@@ -229,7 +254,7 @@ function BillingForm(props: any) {
             </div>
           </div>
 
-          <div className="w-[48%] mb-1">
+          <div className="w-full mb-1">
             <TextField
               className="text-sm leading-8 text-dark-blue font-semibold"
               lable="Phone"
@@ -240,7 +265,7 @@ function BillingForm(props: any) {
               inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
           </div>
-          <div className="w-[48%] mb-1">
+          <div className="w-full mb-1">
             <TextField
               className="text-sm leading-8 text-dark-blue font-semibold"
               lable="Phone 2 (optional)"
@@ -258,7 +283,7 @@ function BillingForm(props: any) {
             required={true}
             errors={errors}
           />
-          <div className="w-[300px]  mt-3 mb-1 items-center">
+          <div className="w-full mt-3 mb-1 items-center">
             <ButtonComponent
               text="PLACE ORDER"
               className="bg-dark-blue text-white text-[13px] px-[20px] py-[10px]
@@ -284,16 +309,16 @@ function CheckBox({ register, label, required, className , errors }: any) {
       />
       <label
         htmlFor="acceptTerms"
-        className="text-sm text-[#1a1a1a] font-semibold ml-2"
+        className="text-sm text-[#1a1a1a] ml-2"
       >
         {label}
         <Link
           href="/privacy-policy"
-          className="pl-1 hover:text-lime ease-in duration-200 font-bold "
+          className="pl-1 text-sm hover:text-lime ease-in duration-200 font-bold "
         >
           Accept Terms & Conditions
         </Link>
-        {required && <span className="text-[#ff0000] text-xl ml-1">*</span>}
+        {required && <span className="text-[#ff0000] text ml-1">*</span>}
       </label>
       {errors["acceptTerms"] && (
           // <div className={`p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-40 ${errorClass}`}
