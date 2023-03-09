@@ -9,6 +9,7 @@ let pr = null;
 const GoogePayComponent = ({ uuid, pricing, orderId }) => {
   const stripe = useStripe();
   const [paymentRequest, setPaymentRequest] = useState(null);
+  const [canMakePayment, setCanMakePayment] = useState(false);
 
   const router = useRouter();
 
@@ -120,7 +121,7 @@ const GoogePayComponent = ({ uuid, pricing, orderId }) => {
       pr = null;
       setPaymentRequest(null);
     };
-  }, [stripe, pricing.totalAmount]);
+  }, [stripe, pricing.totalAmount,]);
 
   useEffect(() => {
     return () => {
@@ -129,20 +130,31 @@ const GoogePayComponent = ({ uuid, pricing, orderId }) => {
     };
   }, []);
 
+
+  useEffect(() => {
+    paymentRequest?.canMakePayment().then((res)=>{
+      if(res?.applePay || res.googlePay || res.link){
+        setCanMakePayment(true);
+      }
+    });
+  }, [paymentRequest]);
+
+
   const paymentbutton = useMemo(() => {
-    if (paymentRequest) {
+
+    if (paymentRequest && canMakePayment) {
       return (
         <>
           <PaymentRequestButtonElement options={{ paymentRequest }} />
-          <div className="w-full text-center mt-3 mb-3">
-            <p className=" text-[15px] font-semibold">---OR---</p>
+          <div className="w-full text-center mt-3">
+            <p className=" text-[15px] font-semibold">OR</p>
           </div>
         </>
       );
     } else {
       return null;
     }
-  }, [paymentRequest]);
+  }, [paymentRequest, canMakePayment]);
   if (paymentRequest) {
     return paymentbutton;
   }

@@ -389,6 +389,8 @@ function Checkout(props: any) {
         }
     };
 
+
+
     const GooglePayButton = useMemo(() => {
         return (
             <GoogePayComponent pricing={pricing} uuid={uuid} orderId={orderId}/>
@@ -457,7 +459,10 @@ function Checkout(props: any) {
                                 subTotal={pricing.totalAmount}
                             />
                         </div>
-                        <div className='mt-5'>
+                        <div className='px-3 mt-4 mb-2'>
+                            <p>Payment options</p>
+                        </div>
+                        <div className='mt-3'>
                             {pricing.totalAmount != "0" ? GooglePayButton : null}
                         </div>
                         <div className='mt-5'>
