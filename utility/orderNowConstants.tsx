@@ -146,8 +146,8 @@ export const attributes = {
     exactNumber2: "",
     radioQuestion: [],
     options: [
-      { type: "radio", title: "Pre 1940", value: "pre_1940" },
-      { type: "radio", title: "Post 1940", value: "post_1940" },
+      { type: "radio", title: "Pre 1940", value: "pre-1940" },
+      { type: "radio", title: "Post 1940", value: "post-1940" },
     ],
   },
   property_price: {
@@ -160,10 +160,10 @@ export const attributes = {
     radioQuestion: [],
     className: "w-24",
     options: [
-      { type: "radio", title: "Upto £100k", value: 100000 },
-      { type: "radio", title: "Upto £300k", value: 300000 },
-      { type: "radio", title: "Upto £600k", value: 600000 },
-      { type: "radio", title: "Upto £1M", value: 1000000 },
+      { type: "radio", title: "Upto £100k", value: '1-100' },
+      { type: "radio", title: "Upto £300k", value: '101-300' },
+      { type: "radio", title: "Upto £600k", value: '301-600' },
+      { type: "radio", title: "Upto £1M", value: "601-1000" },
       { type: "radio", title: "Upto £1000K+", value: 1000001 },
     ],
   },
@@ -246,14 +246,14 @@ export const attributes = {
       {
         type: "radio",
         title: "Upto 10 Circuits",
-        value: 10,
+        value: '1-10',
       },
       {
         type: "radio",
         title: "Upto 20 Circuits",
-        value: 20,
+        value: '11-20',
       },
-      { type: "radio", title: "Upto 30 Circuits", value: 30 },
+      { type: "radio", title: "Upto 30 Circuits", value: '21-30' },
       { type: "radio", title: "30+ Circuits", value: 31 },
     ],
   },
