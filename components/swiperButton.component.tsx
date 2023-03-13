@@ -1,5 +1,8 @@
 import React from "react";
 import { useSwiper } from "swiper/react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
+import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 function SwiperButton(props: any) {
   const swiper = useSwiper();
   const changeSlide = () => {
@@ -11,11 +14,11 @@ function SwiperButton(props: any) {
   };
   return (
     <div
-      className={`border border-[#a0a0a0] absolute w-[33px] h-[45px] bg-white 
+      className={`bg-opacity-50 rounded-full absolute p-2 bg-slate-400 
           z-[600] flex justify-center items-center cursor-pointer ${props.className}`}
       onClick={changeSlide}
     >
-      <p className="text-[19px] text-dark-blue font-bold"> {props.charset}</p>
+      <p className="text-[19px] opacity-100 text-dark-blue font-bold"><FontAwesomeIcon icon={props.directionArrow==='left' ? faArrowLeft:faArrowRight} className={'h-4'}/></p>
     </div>
   );
 }
