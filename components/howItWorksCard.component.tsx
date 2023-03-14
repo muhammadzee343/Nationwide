@@ -1,26 +1,31 @@
+import Image from 'next/image'
+
 export default function HowItWorks({
   title = "",
   paragraph = "",
   index = 0,
+  image=null,
   type = "",
 }) {
   return (
     <>
-      <div className="bg-lime  font-semibold top-[-14px] z-[200]  mx-auto text-white md:hidden text-center w-[30px] h-[30px] sticky rounded-full mb-[-20px]">
-        {index + 1}
-      </div>
+
       <div
         className={`${
           type === "service" ? "px-[6px] py-[5px]" : "md:px-[16px] py-[5px]"
         } md:w-4/12 text-center drop-shadow-lg`}
       >
+
         <div
           className={`${
             type === "service"
               ? "mb-[15px] px-[10px] pt-[12px] pb-[38px]"
-              : "mb-[15px] px-[10px] pt-[12px] pb-[38px]"
-          } bg-lime flex flex-col justify-center rounded min-h-[250px] min-w-[200px]`}
+              : "mb-[15px] px-[10px] pt-[50px] pb-[38px]"
+          } bg-lime flex flex-col border-b-4 border-black justify-center rounded min-h-[330px] lg:min-h-[310px] min-w-[200px]`}
         >
+            <div className='flex items-center justify-center w-24 h-24 rounded-full bg-white absolute self-center -top-12'>
+                <Image src={image} alt='order' className='w-20px'/>
+            </div>
           <h2
             className={`${
               type === "service"

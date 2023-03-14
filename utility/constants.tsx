@@ -37,9 +37,9 @@ import Sap2 from "../public/sap1.jpg";
 import Sap1 from "../public/sap2.jpg";
 import localFont from "@next/font/local";
 import CallBack from "../public/callback.png";
-// import whyChooseUs from '../public/image7.png'
-// import Epc from '../public/image27.png'
-// import gasSafetImage from '../public/image28.png'
+import placeOrder from '../public/Student.png'
+import assesment from '../public/check.png'
+import certificate from '../public/Verified.png'
 
 export const myFont = localFont({
   src: [
@@ -424,6 +424,7 @@ export const ourServices = [
 export const howItWorks = [
   {
     title: "Place Order Online",
+    image: placeOrder,
     paragraph:
       "Please select the services required and place order online 24/7." +
       " Our services can be ordered individually or as a combined Bundle" +
@@ -431,6 +432,7 @@ export const howItWorks = [
   },
   {
     title: "Assessment Survey Booked",
+    image:assesment,
     paragraph:
       "Once you placed order online, our planning team will get in touch with you" +
       " to arrange a suitable date and time to carry out" +
@@ -438,6 +440,7 @@ export const howItWorks = [
   },
   {
     title: "Certificates Issued",
+    image:certificate,
     paragraph:
       "Certificates / Reports will be issued digitally for each service ordered and sent to you by email, within 48 hours of Assessor’s visit. However," +
       " if it’s urgent, please advise this in your order notes or let us know when booking appointment(s).",

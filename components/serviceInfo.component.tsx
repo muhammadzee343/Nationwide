@@ -41,7 +41,7 @@ function ServiceInfo({ className, content }: any) {
               <p className={styles.servicePara2}>{content.paragraph2}</p>
             </div>
             {content.link && (
-                <div className='flex flex-row hover:text-dark-blue'>
+                <div className={'flex flex-row hover:text-dark-blue'}>
                 <span className="flex mr-2 text-lime">
                   <FontAwesomeIcon className="w-5" icon={faArrowRightLong} />
                 </span>

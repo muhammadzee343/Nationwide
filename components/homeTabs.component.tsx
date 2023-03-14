@@ -15,12 +15,12 @@ const HomeTab = () => {
                     {SERVICES.map((ele, index) => {
                         return (
                             <li
-                                className="min-w-[143px] mr-3 mb-3 lg:mr-0 lg:mb-0  md:w-[230px] lg:w-[160px] xl:w-[230px]"
+                                className="min-w-[143px] md:w-[300px] mr-3 mb-3 lg:mr-0 lg:mb-0  md:w-[230px] lg:w-[160px] xl:w-[230px]"
                                 key={index}
                                 onClick={() => setService(ele.slug)}
                             >
                                 <div
-                                    className={`px-2 pt-4 min-h-[80px] lg:rounded-none font-bold text-[11px] md:px-5 md:py-5 md:text-[16px]
+                                    className={`flex items-center px-3 min-h-[80px] md:py-8 lg:py-0 lg:rounded-none font-bold text-[11px] md:px-5 md:text-[19px]
                                      lg:px-7 lg:py-6 lg:text-[16px] ${
                                         activeService.title === ele.slug.title
                                             ? 'bg-lime'
@@ -38,8 +38,8 @@ const HomeTab = () => {
                 </ul>
             </div>
 
-            <div className="animate-fade-in-up mb-10 lg:mb-0 lg:w-[50%]">
-                <h2 className="text-[20px] font text-[35px] leading-10 text-black mb-4 animate-fade-in-up">
+            <div className="animate-fade-in-up flex flex-col md:px-11 lg:mb-0 lg:w-[50%]">
+                <h2 className="text-[26px] md:text-[30px] font-bold leading-10 text-white lg:text-[30px] lg:text-dark-blue mb-4 animate-fade-in-up">
                     {activeService.title}
                 </h2>
                 <div className="flex flex-row">
@@ -48,7 +48,7 @@ const HomeTab = () => {
                     </h3>
                     <p className="text-[#c2cf10] mt-4">*</p>
                 </div>
-                <ul className="marker:text-lime marker:text-[20px] list-disc text-black ml-5">
+                <ul className="marker:text-lime marker:text-[20px] list-disc text-white lg:text-black ml-5">
                     {activeService.points.map((ele, index) => {
                         return (
                             <li key={index} className="text-sm p-2">
@@ -58,7 +58,7 @@ const HomeTab = () => {
                     })}
                 </ul>
                 <button
-                    className="flex flex-row items-center justify-center bg-dark-blue hover:bg-lime text-white hover:text-white px-5 py-[6px]
+                    className="flex flex-row items-center self-center lg:self-start justify-center bg-lime lg:bg-dark-blue hover:bg-lime text-white hover:text-white px-5 py-[6px]
         ease-in duration-200 ease-out duration-200 text-[15px] my-4 uppercase"
                 >
                     <Image src={arrow} alt={'Arrow'} className='mr-3'/>
