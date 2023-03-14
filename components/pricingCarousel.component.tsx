@@ -61,7 +61,6 @@ function PricingCarouselComponent(props: any) {
             charset="&#8250;"
             className="top-[49%] right-3 sm:right-[30px]"
             direction="next"
-
           />
         </Swiper>
       </div>

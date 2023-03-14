@@ -22,7 +22,7 @@ export default function SelectProperty() {
       >
         <form id="instantquote_main" method="post">
           <div className='bg-white rounded pb-6'>
-          <h3 className="text-white uppercase text-[26px] mx-25 bg-dark-blue py-[35px] px-[25px] block rounded-lg drop-shadow-lg">
+          <h3 className="text-white uppercase text-[26px] mx-25 bg-dark-blue py-[35px] px-[25px] block rounded drop-shadow-lg">
             Get Instant Quote
           </h3>
           <div className="mb-[25px] mt-0 py-[20px] px-[25px] h-[291px] text-center ">

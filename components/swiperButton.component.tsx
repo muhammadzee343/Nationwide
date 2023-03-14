@@ -14,7 +14,7 @@ function SwiperButton(props: any) {
   };
   return (
     <div
-      className={`bg-opacity-50 rounded-full absolute p-2 bg-slate-400 
+      className={`bg-opacity-50 rounded-full absolute p-2 bg-slate-300
           z-[600] flex justify-center items-center cursor-pointer ${props.className}`}
       onClick={changeSlide}
     >

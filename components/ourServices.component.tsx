@@ -6,8 +6,8 @@ import Image from 'next/image';
 
 function OurServicesComponent({ list, title, image }: any) {
   return (
-      <div className={'shadow-lg rounded overflow-hidden'}>
-    <Image src={image} alt={title} className={'h-[180px] w-full'}/>
+      <div className='shadow-lg rounded overflow-hidden'>
+    <Image src={image} alt={title} className='h-[180px] w-full'/>
     <div
       className="h-full lg:w-[275px] lg:max-w-[300px] leading-4 border-t-4 border-lime
         hover: transition-all ease-in duration-300  p-[20px] flex flex-col"

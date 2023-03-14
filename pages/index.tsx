@@ -64,7 +64,7 @@ export default function Home() {
         />
       </Head>
       <div className="w-full  bg-white lg:min-h-[530px] lg:px-10 pt-[40px] flex flex-wrap justify-around ">
-            <div className="w-full mt-4 lg:mt-0 bg-dark-blue order-2 mx-auto md:bg-white md:order-1 w-[90%] lg:w-[63.5%] xl:w-[62.4%]">
+            <div className="w-full mt-4 lg:mt-0 bg-dark-blue order-2 mx-auto md:bg-white md:order-1 lg:w-[63.5%] xl:w-[62.4%]">
               <HomeTab />
             </div>
             <div className="md:order-2 w-[95%] lg:w-[27.5%] xl:w-[26.7%] ">
@@ -72,8 +72,8 @@ export default function Home() {
             </div>
       </div>
       <BoxBackgroundComponent className='h-[700px] pt-5'
-        greyStyle={'w-[60%] h-[50%] md:w-[40%]'}
-        limeStyle={'right-0 bottom-0 w-[60%] h-[40%] md:w-[40%]'}
+        greyStyle='w-[60%] h-[50%] md:w-[40%]'
+        limeStyle='right-0 bottom-0 w-[60%] h-[40%] md:w-[40%]'
       >
         <div className='w-full py-5 mt-3 lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto'>
           <div className='px-2 ml-4 md:ml-0'>
@@ -111,7 +111,7 @@ export default function Home() {
             <div className="w-full flex flex-col items-start md:items-center justify-center px-3">
               <div className="w-full md:container flex flex-wrap pb-[60px]">
                 <div className="mb-[30px] px-5 py-2">
-                  <div className={'border-lime border-b-[2px] w-[40%] mb-3'}></div>
+                  <div className='border-lime border-b-[2px] w-[40%] mb-3'></div>
                   <h2 className="text-dark-blue text-4xl font-medium font-bold">
                     All Our Services
                   </h2>
