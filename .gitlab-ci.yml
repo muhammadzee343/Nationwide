@@ -8,6 +8,6 @@ deploy-production:
   environment:
     name: production
   only:
-  - development
+  - design-development
   script:
   - git-push ssh://dokku@52.56.73.59:2221/$PRODUCTION_APP_NAME
