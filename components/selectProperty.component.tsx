@@ -17,18 +17,18 @@ export default function SelectProperty() {
   return (
     <>
       <div
-        className=" bg-white text-center z-[250] drop-shadow-2xl"
+        className="bg-white text-center border-transparent drop-shadow-xl rounded-full"
         id="main_quote_form"
       >
         <form id="instantquote_main" method="post">
-          <h3 className="text-white font-semibold uppercase text-[26px] mx-25 bg-dark-blue py-[15px] px-[25px] block">
-            Get Instant
-            <span className="text-lime block font-semibold">Quote</span>
+          <div className='bg-white rounded pb-6'>
+          <h3 className="text-white uppercase text-[26px] mx-25 bg-dark-blue py-[35px] px-[25px] block rounded drop-shadow-lg">
+            Get Instant Quote
           </h3>
-          <div className="border border:grey-600 bg-white mb-[25px] mt-0 py-[20px] px-[25px] h-[291px] text-center ">
+          <div className="mb-[25px] mt-0 py-[20px] px-[25px] h-[291px] text-center ">
             <div className="text-left relative" id="default_screen">
-              <h6 className="text-dark-blue block font-bold text-base my-[12px]">
-                Select Your Property Type
+              <h6 className="text-dark-blue block text-base my-[12px] text-center">
+                Select Your Property as appropraite and get quote in 30 seconds!
               </h6>
               <div className="justify-center h-[158px] flex-col">
                 <div className="cat_box">
@@ -65,6 +65,7 @@ export default function SelectProperty() {
                 type="button"
               />
             </div>
+          </div>
           </div>
         </form>
       </div>

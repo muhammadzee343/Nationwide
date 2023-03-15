@@ -58,7 +58,8 @@ export default function Footer() {
                 Limited, Company No: 12010871 Kemp House, 160 City Road London,
                 EC1V 2NX
               </p>
-              <h3 className="mb-6 text-lg font-semibold text-gray-900 pl-3  text-white border-l-4 border-lime font-opensans">
+              <div className="border-lime border-b-2 w-8 mb-2"></div>
+              <h3 className="mb-6 text-lg font-semibold text-gray-900 text-white font-opensans">
                 Opening Hours
               </h3>
               <ul className="md:pr-5">
@@ -87,28 +88,70 @@ export default function Footer() {
             </div>
             <div className="grid  grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-6 mt-20 md:mt-0 lg:grid-cols-3 ">
               <div className="pl-[15px] pr-[15px]">
-                <h3 className="mb-6 text-lg font-semibold  pl-3  text-white border-l-4 border-lime">
+                <div className="border-lime border-b-2 w-8 mb-2"></div>
+                <h3 className="mb-6 text-lg font-semibold text-white ">
                   Our Services
                 </h3>
 
                 <ul className="text-gray-600 text-gray-400">
-                  {OurServices.map((el, index) => {
-                    return (
-                      <li className="pb-1.5" key={index}>
-                        <Link
-                          href={`/service/${el.pageLink}`}
-                          className="text-white text-[14px] hover:text-lime hover:ease-in duration-300 font-opensans leading-7"
-                        >
-                          {el.title}
-                        </Link>
-                      </li>
-                    );
-                  })}
+
+                  <li className="py-2">
+                    <Link
+                        href="/our-services"
+                        className="text-white hover:text-lime text-[15px]"
+                    >
+                      Services
+                    </Link>
+                  </li>
+
+                  <li className="py-2">
+                    <Link
+                        href="/contact-us"
+                        className="text-white hover:text-lime text-[15px]"
+                    >
+                      Contact Us
+                    </Link>
+                  </li>
+
+                  <li className="py-2">
+                    <Link
+                        href="/career"
+                        className="text-white hover:text-lime text-[15px]"
+                    >
+                      Career
+                    </Link>
+                  </li>
+                  <li className="py-2">
+                    <Link
+                        href="/join-us"
+                        className="text-white hover:text-lime text-[15px]"
+                    >
+                      Join Us
+                    </Link>
+                  </li>
+                  <li className="py-2">
+                    <Link
+                        href="/business-enquiries"
+                        className="text-white hover:text-lime text-[15px]"
+                    >
+                      Business Enquiries
+                    </Link>
+                  </li>
+                  <li className="py-2">
+                    <Link
+                        href="/bulk-order-discounts"
+                        className="text-white hover:text-lime text-[15px]"
+                    >
+                      Bulk Order Discounts
+                    </Link>
+                  </li>
+
                 </ul>
               </div>
               <div className="pl-[15px] pr-[15px]">
-                <h3 className="mb-6 text-lg font-semibold text-gray-900 pl-3 text-white border-l-4 border-lime  ">
-                  Useful Links
+                <div className="border-lime border-b-2 w-8 mb-2"></div>
+                <h3 className="mb-6 text-lg font-semibold text-gray-900 text-white">
+                  Links
                 </h3>
 
                 <ul className="text-gray-600 dark:text-gray-400">
@@ -124,67 +167,29 @@ export default function Footer() {
                       </li>
                     );
                   })}
-                  <li className="mt-5">
-                    <button className="font-bold transition-colors text-white text-sm border-2 border-white p-3 hover:text-black hover:bg-white hover:font-normal  ">
-                      SEE ALL OUR SERVICES
-                    </button>
-                  </li>
+
                 </ul>
               </div>
 
               <div className="pl-[15px] pr-[15px]">
-                <h3 className="mb-6 text-lg font-semibold text-gray-900 pl-3  text-white border-l-4 border-lime">
+                <div className="border-lime border-b-2 w-8 mb-2"></div>
+                <h3 className="mb-6 text-lg font-semibold text-gray-900 text-white ">
                   Prefer to Talk ?<br />
                   Please Call Us Free
                 </h3>
 
                 <ul className="text-gray-600 text-gray-400">
-                  <li className="mb-10">
+                  <li className="mb-24">
                     <h2 className="text-lime text-[29px] font-semibold mb-2">
                       0800 048 7474
                     </h2>
                   </li>
-                  <li className="py-1">
-                    <Link
-                      href="/contact-us"
-                      className="text-white hover:text-lime text-[15px]"
-                    >
-                      Contact Us
-                    </Link>
+                  <li className="mt-5">
+                    <button className="w-[90%] transition-colors text-sm bg-lime p-3 hover:text-black hover:bg-white hover:font-normal  ">
+                      SEE ALL OUR SERVICES
+                    </button>
                   </li>
-                  <li className="py-1">
-                    <Link
-                      href="/business-enquiries"
-                      className="text-white hover:text-lime text-[15px]"
-                    >
-                      Business Enquiries
-                    </Link>
-                  </li>
-                  <li className="py-1">
-                    <Link
-                      href="/career"
-                      className="text-white hover:text-lime text-[15px]"
-                    >
-                      Career
-                    </Link>
-                  </li>
-                  <li className="py-1">
-                    <Link
-                      href="/join-us"
-                      className="text-white hover:text-lime text-[15px]"
-                    >
-                      Join Us
-                    </Link>
-                  </li>
-                  <li className="py-1">
-                    <Link
-                      href="/bulk-order-discounts"
-                      className="text-white hover:text-lime text-[15px]"
-                    >
-                      Bulk Order Discounts
-                    </Link>
-                  </li>
-                  <li className="py-1">
+                  <li className="py-4">
                     <Link
                       href="mailto:info@nationwidesurveyors.org.uk"
                       className="text-white hover:text-lime text-[15px]"
@@ -198,8 +203,8 @@ export default function Footer() {
           </div>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto border-gray-700 lg:my-8" />
-        <div className="w-full  flex justify-center">
-          <div className="sm:flex sm:items-center sm:justify-between lg:min-w-[970px] xl:min-w-[1170px]">
+        <div className="w-full flex-row justify-center">
+          <div className="w-full sm:flex sm:items-center sm:justify-between lg:min-w-[970px] xl:min-w-[1170px]">
             <span className="text-sm text-gray-500 sm:text-center text-gray-400">
               Copyright © 2021
               <a href="#" className="text-white hover:text-lime">
@@ -219,36 +224,6 @@ export default function Footer() {
                 Privacy Policy
               </Link>
             </span>
-            <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-              <a
-                href="#"
-                className="text-gray-500 hover:text-gray-900 hover:text-white"
-              >
-                <FontAwesomeIcon className="w-[10px]" icon={faFacebookF} />
-                <span className="sr-only">Facebook page</span>
-              </a>
-              <a
-                href="#"
-                className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
-              >
-                <FontAwesomeIcon className="w-4" icon={faTwitter} />
-                <span className="sr-only">Twitter page</span>
-              </a>
-              <a
-                href="#"
-                className="text-gray-500 hover:text-gray-900 hover:text-white"
-              >
-                <FontAwesomeIcon className="w-4" icon={faFlickr} />
-                <span className="sr-only">flickr page</span>
-              </a>
-              <a
-                href="#"
-                className="text-gray-500 hover:text-gray-900 hover:text-white"
-              >
-                <FontAwesomeIcon className="w-4" icon={faLinkedin} />
-                <span className="sr-only">LinkedIn account</span>
-              </a>
-            </div>
           </div>
         </div>
       </footer>

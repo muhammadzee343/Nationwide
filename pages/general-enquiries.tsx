@@ -22,9 +22,9 @@ function GeneralEnquiries({ Services }: any) {
       question: "Is this enquiry related to an existing job?",
       attr: "existing_job_enquiry",
       options: [
-        { title: "Yes", value: "yes", pclass: "font-semibold" },
-        { title: "No", value: "no", pclass: "font-semibold" },
-        { title: "Not Sure", value: "not_sure", pclass: "font-semibold" },
+        { title: "Yes", value: "yes", pclass: "text-sm md:text-base" },
+        { title: "No", value: "no", pclass: "text-sm md:text-base" },
+        { title: "Not Sure", value: "not_sure", pclass: "text-sm md:text-base" },
       ],
     },
     {
@@ -34,14 +34,14 @@ function GeneralEnquiries({ Services }: any) {
         {
           title: "Help or advice about the services we offer",
           value: "help_or_advice",
-          pclass: "",
+          pclass: "text-sm md:text-base",
         },
         {
           title: "Confirm availability and Quotations",
           value: "availability_or_quotation",
-          pclass: "",
+          pclass: "text-sm md:text-base",
         },
-        { title: "Other", value: "other", pclass: "" },
+        { title: "Other", value: "other", pclass: "text-sm md:text-base" },
       ],
     },
   ];
@@ -152,7 +152,6 @@ function GeneralEnquiries({ Services }: any) {
       setValidPostcode(false)
     }
   };
-
   const checkFormValidity = (keys, obj) => {
     return keys.every((data) => {
       return obj[data] !== "";
@@ -166,13 +165,13 @@ function GeneralEnquiries({ Services }: any) {
       elements.push(
         <div
           key={i}
-          className="w-full md:w-[47.5%] xxl:w-[48%]"
+          className="w-full "
           onClick={() => selectService(service)}
         >
           <ServiceSelectionCard
             title={service.name}
             className={`${selectedServiceId.includes(service.id) ? "bg-lime self-end " : ""
-              } text-[15px] py-[11px] border-lime`}
+              } text-[15px] py-[11px] border-0`}
           />
         </div>
       );
@@ -209,28 +208,37 @@ function GeneralEnquiries({ Services }: any) {
             <title>General Enquiries - Nationwide Surveyors</title>
           </Head>
           <form onSubmit={handleSubmit(requestCallback)}>
-            <div className=" w-full px-8 xl:px-0 xl:max-w-[1114px]  flex flex-col">
-              <div className="border-l-[6px] border-lime mb-[20px] px-5">
+            <div className="w-full md:px-8  xl:max-w-[1114px]  flex flex-col">
+              <div className="mb-[20px] px-4 md:px-0">
+                <div className="border-b-4 border-lime w-[85px] mb-3"></div>
                 <h2 className="text-[36px] text-dark-blue font-semibold">
                   Request a callback
                 </h2>
               </div>
-              <p className="text-[15px] mb-[40px] text-[#1a1a1a] leading-7 ">
+              <p className="text-[15px] mb-[40px] px-4 md:px-0 text-[#1a1a1a] leading-7 ">
                 Please complete short form below and we’ll get the right person to
                 call you back. We aim to respond within 60 minutes of receiving
                 callback requests during our working hours. We apologise if you
                 experience any delays and ask for your understanding and patience at
                 this time.
               </p>
-              <div className="flex flex-col">
-                <div className="">
+              <div className="flex flex-col md:gap-5 md:flex-row">
+                <div className="w-full md:w-[50%] bg-white rounded-lg md:drop-shadow-lg px-4 md:px-8 pt-8">
+                  <div >
+                    <p className="text-[20px] text-dark-blue mr-3 ">
+                      Your Contact Details
+                    </p>
+                    <p className="text-[10px] text-slate-500 mr-3 ">
+                      This is to check the availability
+                    </p>
+                  </div>
                   {radioQuestions.map((ele: any, index) => {
                     return (
-                      <div className="pb-8" key={index}>
-                        <p className=" text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
+                      <div className="w-full" key={index}>
+                        <p className="text-[15px] xl:text-lg text-dark-blue my-8 font-semibold mr-3 ">
                           {ele.question}
                         </p>
-                        <div className="flex flex-wrap gap-5 justify-between max-w-[400px]">
+                        <div className="flex flex-wrap gap-5 justify-between md:max-w-[340px] max-w-[320px]">
                           {ele.options.map((opt: any, index: number) => {
                             return (
                               <RadioButton
@@ -239,7 +247,7 @@ function GeneralEnquiries({ Services }: any) {
                                 value={opt.value}
                                 lable={ele.attr}
                                 selectattribute={setIntialQ}
-                                className={`border border-grey-500 border border-grey-500 w-6 h-6 sm:w-7 sm:h-7
+                                className={`border border-grey-500 border border-grey-500 w-6 h-6
                           ${intialQ[ele.attr] == opt.value
                                     ? "bg-lime"
                                     : "border border-grey-500"
@@ -252,8 +260,8 @@ function GeneralEnquiries({ Services }: any) {
                       </div>
                     );
                   })}
-                  <div className="w-full">
-                    <div className="pb-8 w-6/12">
+                  <div className="w-full gap-y-6 " >
+                    <div className="pb-8">
                       <p className=" text-lg text-dark-blue my-3 font-semibold mr-3 ">
                         Postcode where services are required
                       </p>
@@ -268,123 +276,139 @@ function GeneralEnquiries({ Services }: any) {
                         errorClass="text-[#ff0000] text-sm font-semibold float-right"
                         required={true}
                         name="post_code"
-                        inputClass="border-grey-500 py-2.5 px-3"
+                        inputClass=" border-lime py-2.5 px-3"
                         reactHookValidations={{
                           required: VALIDATION_CONFIG.required,
                           validate: VALIDATION_CONFIG.postCode,
                         }}
                       />
+                      <div className="w-full flex flex-col md:flex-row flex-wrap gap-y-6 mt-5 justify-between">
+                        <div className="w-full ">
+                          <TextField
+                              lable="First Name"
+                              name="first_name"
+                              className="text-lg text-dark-blue"
+                              errors={errors}
+                              register={register}
+                              errorClass="text-[#ff0000] text-sm float-right"
+                              required={true}
+                              inputClass="border-lime py-2.5 px-3"
+                          />
+                        </div>
+                        <div className="w-full">
+                          <TextField
+                              lable="Last Name"
+                              name="last_name"
+                              errors={errors}
+                              register={register}
+                              errorClass="text-[#ff0000] text-sm float-right"
+                              required={true}
+                              className="text-lg text-dark-blue"
+                              inputClass="border-lime py-2.5 px-3"
+                          />
+                        </div>
+                        <div className="w-full ">
+                          <TextField
+                              lable="Phone"
+                              name="phone"
+                              errors={errors}
+                              register={register}
+                              errorClass="text-[#ff0000] text-sm float-right"
+                              required={true}
+                              pattern={/^\(?(?:(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?\(?(?:0\)?[\s-]?\(?)?|0)(?:\d{5}\)?[\s-]?\d{4,5}|\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3})|\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4}|\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}|8(?:00[\s-]?11[\s-]?11|45[\s-]?46[\s-]?4\d))(?:(?:[\s-]?(?:x|ext\.?\s?|\#)\d+)?)$/}
+                              className="text-lg text-dark-blue"
+                              inputClass="border-lime py-2.5 px-3"
+                          />
+                        </div>
+                        <div className="w-full ">
+                          <TextField
+                              lable="Email"
+                              name="email"
+                              errors={errors}
+                              register={register}
+                              errorClass="text-[#ff0000] text-sm float-right"
+                              pattern={/^\S+@\S+$/i}
+                              required={true}
+                              className="text-lg text-dark-blue"
+                              inputClass="border-lime py-2.5 px-3"
+                          />
+                        </div>
+                      </div>
+                      <div className="w-full py-8">
+                        <p className="text-lg text-dark-blue my-3 font-semibold mr-3 ">
+                          How would you prefer to be contacted?
+                        </p>
+                        <div className="w-full flex flex-row gap-x-4 pr-4 md:pr-0">
+                          <div
+                              onClick={()=> setContactType({contact_by: "phone"})}
+                              className={`cursor-pointer border-lime border-[2px] text-dark-blue text-base min-w-[50%] flex items-center justify-center sm:px-[20px] mb-2 py-[10px] ${contactType["contact_by"] == "phone" ? "bg-lime":"bg-white"}`}
+                          >Phone</div>
+                          <div
+                              onClick={()=> setContactType({contact_by: "email"})}
+                              className={`cursor-pointer border-lime border-[2px] text-dark-blue text-base min-w-[50%] flex items-center justify-center sm:px-[20px] mb-2 py-[13px] ${contactType["contact_by"] == "email" ? "bg-lime":"bg-white"}`}
+                          >Email</div>
+                        </div>
+                        {/*<div className="my-4">*/}
+                        {/*  <RadioButton*/}
+                        {/*      title="By Phone"*/}
+                        {/*      value="phone"*/}
+                        {/*      lable="contact_by"*/}
+                        {/*      className={`border border-lime border border-grey-500 w-6 h-6 sm:w-7 sm:h-7*/}
+                        {/*  ${contactType["contact_by"] == "phone"*/}
+                        {/*          ? "bg-lime"*/}
+                        {/*          : "border border-grey-500"*/}
+                        {/*      }`}*/}
+                        {/*      pClass="font-semibold"*/}
+                        {/*      selectattribute={setContactType}*/}
+                        {/*  />*/}
+                        {/*</div>*/}
+                        {/*<div className="my-4">*/}
+                        {/*  <RadioButton*/}
+                        {/*      title="By Email"*/}
+                        {/*      value="email"*/}
+                        {/*      lable="contact_by"*/}
+                        {/*      className={`border border-grey-500 border border-grey-500 w-6 h-6 sm:w-7 sm:h-7*/}
+                        {/*  ${contactType["contact_by"] == "email"*/}
+                        {/*          ? "bg-lime"*/}
+                        {/*          : "border border-grey-500"*/}
+                        {/*      }`}*/}
+                        {/*      pClass="font-semibold"*/}
+                        {/*      selectattribute={setContactType}*/}
+                        {/*  />*/}
+                        {/*</div>*/}
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="w-full flex flex-wrap gap-y-3  justify-between">
-                    {services}
-                  </div>
-                  <div className=" my-12">
-                    <TextArea
-                      lable="Please use box below to provide any further information related to your enquiry"
-                      className="text-lg text-dark-blue font-semibold my-1"
-                      inputClass="border-grey-500 py-2.5 px-3"
-                      errors={errors}
-                      register={register}
-                      errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                      required={true}
-                      name="enquiry"
-                    />
-                  </div>
-                  <div className="w-full flex flex-col md:flex-row flex-wrap gap-y-6 justify-between">
-                    <div className="w-full md:w-[49%]">
-                      <TextField
-                        lable="First Name"
-                        name="first_name"
-                        className="text-lg text-dark-blue font-semibold"
-                        errors={errors}
-                        register={register}
-                        errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                        required={true}
-                        inputClass="border-grey-500 py-2.5 px-3"
-                      />
-                    </div>
-                    <div className="w-full md:w-[49%]">
-                      <TextField
-                        lable="Last Name"
-                        name="last_name"
-                        errors={errors}
-                        register={register}
-                        errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                        required={true}
-                        className="text-lg text-dark-blue font-semibold"
-                        inputClass="border-grey-500 py-2.5 px-3"
-                      />
-                    </div>
-                    <div className="w-full md:w-[49%]">
-                      <TextField
-                        lable="Phone"
-                        name="phone"
-                        errors={errors}
-                        register={register}
-                        errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                        required={true}
-                        pattern={/^\(?(?:(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?\(?(?:0\)?[\s-]?\(?)?|0)(?:\d{5}\)?[\s-]?\d{4,5}|\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3})|\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4}|\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}|8(?:00[\s-]?11[\s-]?11|45[\s-]?46[\s-]?4\d))(?:(?:[\s-]?(?:x|ext\.?\s?|\#)\d+)?)$/}
-                        className="text-lg text-dark-blue font-semibold"
-                        inputClass="border-grey-500 py-2.5 px-3"
-                      />
-                    </div>
-                    <div className="w-full md:w-[49%]">
-                      <TextField
-                        lable="Email"
-                        name="email"
-                        errors={errors}
-                        register={register}
-                        errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                        pattern={/^\S+@\S+$/i}
-                        required={true}
-                        className="text-lg text-dark-blue font-semibold"
-                        inputClass="border-grey-500 py-2.5 px-3"
-                      />
-                    </div>
-                  </div>
-                  <div className="py-8">
-                    <p className=" text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
-                      How would you prefer to be contacted?
-                    </p>
-                    <div className="my-4">
-                      <RadioButton
-                        title="By Phone"
-                        value="phone"
-                        lable="contact_by"
-                        className={`border border-grey-500 border border-grey-500 w-6 h-6 sm:w-7 sm:h-7
-                          ${contactType["contact_by"] == "phone"
-                            ? "bg-lime"
-                            : "border border-grey-500"
-                          }`}
-                        pClass="font-semibold"
-                        selectattribute={setContactType}
-                      />
-                    </div>
-                    <div className="my-4">
-                      <RadioButton
-                        title="By Email"
-                        value="email"
-                        lable="contact_by"
-                        className={`border border-grey-500 border border-grey-500 w-6 h-6 sm:w-7 sm:h-7
-                          ${contactType["contact_by"] == "email"
-                            ? "bg-lime"
-                            : "border border-grey-500"
-                          }`}
-                        pClass="font-semibold"
-                        selectattribute={setContactType}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="my-8">
-                    <ButtonComponent
-                      text="Submit"
-                      className="bg-dark-blue text-white uppercase text-sm px-[2px] sm:px-[20px] py-[13px] hover:bg-lime hover:text-white ease-in duration-200"
-                    />
                   </div>
                 </div>
+
+                  <div className="w-full md:w-[50%] bg-white rounded-lg md:drop-shadow-lg mb-6 md:mb-0 md:pt-8">
+                    <div className="">
+                      <p className="text-[20px] px-4 md:px-8 text-dark-blue mr-3 ">
+                        Please choose the services you'd like to discuss
+                      </p>
+                    </div>
+                  <div className="w-full flex flex-col gap-y-3 justify-between items-center p-4">
+                    {services}
+                  </div>
+                </div>
+              </div>
+              <div className="my-6 px-4 md:px-0">
+                <TextArea
+                    lable="Please use box below to provide any further information related to your enquiry"
+                    className="text-lg text-dark-blue font-semibold my-2"
+                    inputClass="border-grey-500 py-2.5 px-3"
+                    errors={errors}
+                    register={register}
+                    errorClass="text-[#ff0000] text-sm font-semibold float-right"
+                    required={true}
+                    name="enquiry"
+                />
+              </div>
+              <div className="mb-14 px-4 md:px-0">
+                <ButtonComponent
+                    text="Submit"
+                    className="bg-lime text-dark-blue uppercase text-lg font-semibold px-[2px] sm:px-[20px] py-[16px] hover:bg-dark-blue hover:text-white ease-in duration-200"
+                />
               </div>
             </div>
           </form>

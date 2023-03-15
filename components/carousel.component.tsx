@@ -21,6 +21,7 @@ function CarouselComponent({ list, component, className = "" }: any) {
             paragraph: ele?.paragraph,
             index: index,
             list: ele.list,
+            image:ele.image
           })}
         </SwiperSlide>
       );
@@ -38,7 +39,7 @@ function CarouselComponent({ list, component, className = "" }: any) {
         modules={[Pagination, Navigation]}
         onSlideChange={() => {}}
         onSwiper={(swiper) => {}}
-        className={`mySwiper w-full flex justify-center ${className} h-[360px] relative`}
+        className={`mySwiper w-full flex justify-center ${className} min-h-[460px] relative`}
         style={{
           "--swiper-pagination-color": "#c2cf10",
           "--swiper-pagination-bullet-inactive-color": "#182333",
@@ -50,6 +51,7 @@ function CarouselComponent({ list, component, className = "" }: any) {
       >
         <SwiperButton
           charset="&#8249;"
+          directionArrow={'left'}
           className="top-[42%]
        left-1  sm:left-[30px]"
           direction="prev"
@@ -57,6 +59,7 @@ function CarouselComponent({ list, component, className = "" }: any) {
         {lists}
         <SwiperButton
           charset="&#8250;"
+          directionArrow={'right'}
           className="top-[42%] right-3 sm:right-[30px]"
           direction="next"
         />

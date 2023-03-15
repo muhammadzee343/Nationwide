@@ -15,7 +15,7 @@ function PricingCarouselComponent(props: any) {
 
   return (
     <>
-      <div className="flex lg:hidden relative -ml-3 -mr-3 md:ml-0 md:mr-0 md:pl-6 mx-auto md:px-12 xl:px-32 mt-[10px] xl:mt-[-200]px]">
+      <div className="flex lg:hidden relative -ml-3 -mr-3 md:ml-0 md:mr-0 md:pl-0 mx-auto md:px-12 xl:px-32 mt-[10px] xl:mt-[-200]px]">
         <Swiper
           spaceBetween={0}
           slidesPerView={"auto"}
@@ -25,7 +25,7 @@ function PricingCarouselComponent(props: any) {
           modules={[Pagination, Navigation]}
           onSlideChange={() => {}}
           onSwiper={(swiper) => {}}
-          className=" mySwiper w-full flex justify-center min-h-[560px] relative
+          className="mySwiper w-full flex justify-center min-h-[580px] relative
           "
           style={{
             "--swiper-pagination-color": "#c2cf10",
@@ -41,6 +41,7 @@ function PricingCarouselComponent(props: any) {
             className="top-[49%]
        left-3  sm:left-[30px]"
             direction="prev"
+            directionArrow='left'
           />
           {bundles.map(({ className, content }, index) => {
             return (

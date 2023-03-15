@@ -1,9 +1,9 @@
 import Image from "../public/electrical-1-1024x410-1.jpg";
-import Survey from "../public/surveyor-1.jpg";
+import Survey from "../public/image7.png";
 import Electrical from "../public/electrical-1-1024x410-1.jpg";
-import Electrical2 from "../public/eicr7.jpg";
-import Certificate from "../public/0001-1-1.jpg";
-import Engineer from "../public/Engineer-.jpg";
+import Electrical2 from "../public/image11.png";
+import Certificate from "../public/image27.png";
+import Engineer from "../public/image28.png";
 import epc from "../public/domesticepc.png";
 import epcSurveyor from "../public/epcSurveyor.jpg";
 import commercialEpc from "../public/Commercial-epc.jpg";
@@ -37,6 +37,9 @@ import Sap2 from "../public/sap1.jpg";
 import Sap1 from "../public/sap2.jpg";
 import localFont from "@next/font/local";
 import CallBack from "../public/callback.png";
+import placeOrder from '../public/Student.png'
+import assesment from '../public/Group1398.png'
+import certificate from '../public/Group1834.png'
 
 export const myFont = localFont({
   src: [
@@ -366,6 +369,7 @@ export const megaMenu = [
 export const ourServices = [
   {
     title: "Domestic & Commercial Certifications",
+    image:images.engineer,
     list: [
       { text: "Energy Performance Certificate", link: "/domestic-epc" },
       { text: "Commercial EPC", link: "/commercial-epc" },
@@ -378,6 +382,7 @@ export const ourServices = [
   },
   {
     title: "Gas Safety Certificate",
+    image:images.gasCertificate,
     list: [
       { text: "Gas Safety Certificate", link: "/gas-safety-certificate" },
       { text: "Boiler Service", link: "/boiler-service" },
@@ -385,6 +390,7 @@ export const ourServices = [
   },
   {
     title: "Electrical Reports & Remedial Work",
+    image:images.gasCertificate,
     list: [
       {
         text: "Electrical Installation Condition Report (EICR)",
@@ -400,6 +406,7 @@ export const ourServices = [
   },
   {
     title: "Other Services",
+    image:images.gasCertificate,
     list: [
 
       { text: "Floor Plans", link: "/floor-plans" },
@@ -417,6 +424,7 @@ export const ourServices = [
 export const howItWorks = [
   {
     title: "Place Order Online",
+    image: placeOrder,
     paragraph:
       "Please select the services required and place order online 24/7." +
       " Our services can be ordered individually or as a combined Bundle" +
@@ -424,6 +432,7 @@ export const howItWorks = [
   },
   {
     title: "Assessment Survey Booked",
+    image:assesment,
     paragraph:
       "Once you placed order online, our planning team will get in touch with you" +
       " to arrange a suitable date and time to carry out" +
@@ -431,6 +440,7 @@ export const howItWorks = [
   },
   {
     title: "Certificates Issued",
+    image:certificate,
     paragraph:
       "Certificates / Reports will be issued digitally for each service ordered and sent to you by email, within 48 hours of Assessor’s visit. However," +
       " if it’s urgent, please advise this in your order notes or let us know when booking appointment(s).",

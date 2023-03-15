@@ -13,7 +13,7 @@ function HowItWorks() {
         <HeaderComponent
           header="How It Works"
           breadcrumb="How It Works"
-          className="bg-blend-overlay bg-home_bg_image"
+          className="bg-blend-overlay home_bg_image"
         />
         <div className="flex flex-col pt-[65px] pb-[40px] px-3 xl:px-0 w-full lg:max-w-[970px] xl:max-w-[1170px]">
           <h1 className={`text-4xl ${styles.footerPagesHeading}`}>

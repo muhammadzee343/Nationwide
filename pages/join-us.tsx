@@ -103,7 +103,7 @@ const JoinUs = (props: any) => {
         <Header />
         {!submitted && (
           <>
-            <FormContainer heading="JOIN US">
+            <FormContainer heading="Your Information">
               <div className="flex flex-wrap justify-between justify-center">
                 <div className="w-full md:w-[31.5%] mb-1">
                   <TextField
@@ -114,7 +114,7 @@ const JoinUs = (props: any) => {
                     errors={errors}
                     register={register}
                     errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
                 <div className="w-full md:w-[31.5%] mb-1">
@@ -126,7 +126,7 @@ const JoinUs = (props: any) => {
                     errors={errors}
                     register={register}
                     errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
                 <div className="w-full md:w-[31.5%] mb-1">
@@ -138,9 +138,10 @@ const JoinUs = (props: any) => {
                     errors={errors}
                     register={register}
                     errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
+
               </div>
 
               <div className="flex flex-wrap justify-between justify-center">
@@ -153,7 +154,7 @@ const JoinUs = (props: any) => {
                     errors={errors}
                     register={register}
                     errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
                 <div className="w-full md:w-[31.5%] mb-1">
@@ -165,9 +166,10 @@ const JoinUs = (props: any) => {
                     errors={errors}
                     register={register}
                     errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
+
                 <div className="w-full md:w-[31.5%] mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
@@ -178,7 +180,7 @@ const JoinUs = (props: any) => {
                     required={true}
                     register={register}
                     errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
               </div>
@@ -192,25 +194,25 @@ const JoinUs = (props: any) => {
                     errors={errors}
                     register={register}
                     errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                     required={true}
                     options={ageGroup}
                   />
                 </div>
                 <div className="w-full md:w-[31.5%]">
                   <Select
-                    label="Gender:"
-                    className="text-sm leading-8 text-dark-blue font-semibold"
-                    name="gender"
-                    errors={errors}
-                    register={register}
-                    errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    inputClass="border-[#DEDEDE] py-2 px-3"
-                    required={true}
-                    options={gender}
+                      label="Gender:"
+                      className="text-sm leading-8 text-dark-blue font-semibold"
+                      name="gender"
+                      errors={errors}
+                      register={register}
+                      errorClass="text-[#ff0000] text-sm font-semibold float-right"
+                      inputClass="border-lime py-2 px-3"
+                      required={true}
+                      options={gender}
                   />
                 </div>
-                <div className="w-full ">
+                <div className="w-full md:w-[31.5%]">
                   <Select
                     label="Position looking for ?"
                     className="text-sm leading-8 text-dark-blue font-semibold"
@@ -218,7 +220,7 @@ const JoinUs = (props: any) => {
                     errors={errors}
                     register={register}
                     errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                     required={true}
                     options={positions}
                   />
@@ -227,7 +229,7 @@ const JoinUs = (props: any) => {
 
               <div className="flex flex-wrap justify-between justify-center">
                 <div className="w-full p-0 md:w-[31.5%]">
-                  <p className="mt-[15px] mb-[10px] text-sm font-semibold text-[#1a1a1a] ">
+                  <p className="mt-[15px] mb-[10px] text-sm  text-[#1a1a1a] ">
                     Do you have hands on field experience of your trade?
                   </p>
                   <div className="flex gap-3">
@@ -256,15 +258,15 @@ const JoinUs = (props: any) => {
                   <TextArea
                     lable="If YES, please provide brief details of your
                     past experience."
-                    className="mt-[15px] mb-[10px] text-sm font-semibold text-[#1a1a1a]"
-                    inputClass="border-[#DEDEDE] py-7 px-3 mt-3 "
+                    className="mt-[15px] mb-[10px] text-sm  text-[#1a1a1a]"
+                    inputClass="border-lime py-7 px-3 mt-3 "
                     register={register}
                     name="experience_detail"
                   />
                 </div>
                 </div>
                 <div className="w-full p-0 md:w-[31.5%]">
-                  <p className="mt-[15px] mb-[10px] text-sm font-semibold text-[#1a1a1a] ">
+                  <p className="mt-[15px] mb-[10px] text-sm  text-[#1a1a1a] ">
                     Do you hold relevant qualification(s) related to the role
                     you are applying for?
                   </p>
@@ -293,15 +295,15 @@ const JoinUs = (props: any) => {
                   <div className="w-full ">
                   <TextArea
                     lable="If YES, please provide details of all relevant qualification you hold."
-                    className="mt-[15px] mb-[10px] text-sm font-semibold text-[#1a1a1a]"
-                    inputClass="border-[#DEDEDE] py-7 px-3 mt-3"
+                    className="mt-[15px] mb-[10px] text-sm  text-[#1a1a1a]"
+                    inputClass="border-lime py-7 px-3 mt-3"
                     register={register}
                     name="qualification_detail"
                   />
                 </div>
                 </div>
                 <div className="w-full md:w-[31.5%]">
-                  <p className="mt-[15px] mb-[10px] text-sm font-semibold text-[#1a1a1a] ">
+                  <p className="mt-[15px] mb-[10px] text-sm  text-[#1a1a1a] ">
                     Do you hold membership(s) of the relevant schemes/trade
                     bodies?
                   </p>
@@ -330,8 +332,8 @@ const JoinUs = (props: any) => {
                   <div className="w-full ">
                   <TextArea
                     lable="If YES, please provide the details of your membership(s)."
-                    className="mt-[15px] mb-[10px] text-sm font-semibold text-[#1a1a1a]"
-                    inputClass="border-[#DEDEDE] py-7 px-3 mt-3"
+                    className="mt-[15px] mb-[10px] text-sm  text-[#1a1a1a]"
+                    inputClass="border-lime py-7 px-3 mt-3"
                     register={register}
                     name="membership_detail"
                   />
@@ -339,10 +341,11 @@ const JoinUs = (props: any) => {
                 </div>
               </div>
             </FormContainer>
-
+            <div className="w-full flex flex-col md:flex md:flex-row gap-x-5">
+              <div className="w-full md:w-[50%]">
             <FormContainer heading="First Reference">
               <div className="flex flex-wrap justify-between justify-center">
-                <div className="w-full md:w-[31.5%] mb-1">
+                <div className="w-full mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
                     lable="Title"
@@ -351,10 +354,10 @@ const JoinUs = (props: any) => {
                     errors={errors}
                     errorClass="text-[#ff0000] text-sm font-semibold float-right"
                     register={register}
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
-                <div className="w-full md:w-[31.5%] mb-1">
+                <div className="w-full mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
                     lable=" Full Name"
@@ -363,10 +366,10 @@ const JoinUs = (props: any) => {
                     errors={errors}
                     register={register}
                     errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
-                <div className="w-full md:w-[31.5%] mb-1">
+                <div className="w-full mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
                     lable="Address 1:"
@@ -375,32 +378,32 @@ const JoinUs = (props: any) => {
                     errors={errors}
                     register={register}
                     errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
               </div>
               <div className="flex flex-wrap justify-between justify-center">
-                <div className="w-full md:w-[31.5%] mb-1">
+                <div className="w-full mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
                     lable="Postcode:"
                     name="postcode1"
                     required={false}
                     register={register}
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
-                <div className="w-full md:w-[31.5%] mb-1">
+                <div className="w-full mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
                     lable="Telephone:"
                     name="telephone1"
                     required={false}
                     register={register}
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
-                <div className="w-full md:w-[31.5%] mb-1">
+                <div className="w-full mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
                     lable="Mobile:"
@@ -409,47 +412,48 @@ const JoinUs = (props: any) => {
                     errors={errors}
                     register={register}
                     errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
               </div>
               <div className="flex flex-wrap justify-between justify-center">
-                <div className="w-full md:w-[31.5%] mb-1">
+                <div className="w-full mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
                     lable="E-mail"
                     name="email1"
                     required={false}
                     register={register}
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
-                <div className="w-full md:w-[31.5%] mb-1">
+                <div className="w-full mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
                     lable="Relation:"
                     name="relation1"
                     required={false}
                     register={register}
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
-                <div className="w-full md:w-[31.5%] mb-1">
+                <div className="w-full mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
                     lable="How long have you known this person?"
                     name="acquaintance_period1"
                     required={false}
                     register={register}
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
               </div>
             </FormContainer>
-
+            </div>
+              <div className="w-full md:w-[50%]">
             <FormContainer heading="Second Reference">
               <div className="flex flex-wrap justify-between justify-center">
-                <div className="w-full md:w-[31.5%] mb-1">
+                <div className="w-full mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
                     lable="Title"
@@ -458,10 +462,10 @@ const JoinUs = (props: any) => {
                     errors={errors}
                     register={register}
                     errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
-                <div className="w-full md:w-[31.5%] mb-1">
+                <div className="w-full mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
                     lable=" Full Name"
@@ -470,10 +474,10 @@ const JoinUs = (props: any) => {
                     errors={errors}
                     register={register}
                     errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
-                <div className="w-full md:w-[31.5%] mb-1">
+                <div className="w-full mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
                     lable="Address 1:"
@@ -482,12 +486,12 @@ const JoinUs = (props: any) => {
                     errors={errors}
                     register={register}
                     errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
               </div>
               <div className="flex flex-wrap justify-between justify-center">
-                <div className="w-full md:w-[31.5%] mb-1">
+                <div className="w-full mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
                     lable="Postcode:"
@@ -496,20 +500,20 @@ const JoinUs = (props: any) => {
                     errors={errors}
                     register={register}
                     errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
-                <div className="w-full md:w-[31.5%] mb-1">
+                <div className="w-full mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
                     lable="Telephone:"
                     name="telephone2"
                     required={false}
                     register={register}
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
-                <div className="w-full md:w-[31.5%] mb-1">
+                <div className="w-full mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
                     lable="Mobile:"
@@ -518,49 +522,51 @@ const JoinUs = (props: any) => {
                     errors={errors}
                     register={register}
                     errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
               </div>
               <div className="flex flex-wrap justify-between justify-center">
-                <div className="w-full md:w-[31.5%] mb-1">
+                <div className="w-full mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
                     lable="E-mail"
                     name="email2"
                     required={false}
                     register={register}
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
-                <div className="w-full md:w-[31.5%] mb-1">
+                <div className="w-full mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
                     lable="Relation:"
                     name="relation2"
                     required={false}
                     register={register}
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
-                <div className="w-full md:w-[31.5%] mb-1">
+                <div className="w-full mb-1">
                   <TextField
                     className="text-sm leading-8 text-dark-blue font-semibold"
                     lable="How long have you known this person?"
                     name="acquaintance_period2"
                     required={false}
                     register={register}
-                    inputClass="border-[#DEDEDE] py-2 px-3"
+                    inputClass="border-lime py-2 px-3"
                   />
                 </div>
               </div>
             </FormContainer>
+              </div>
+            </div>
             <FormContainer heading="">
               <div className="w-full">
                 <TextArea
                   lable="Why you want to join Nationwide Services-UK?"
                   className="mt-[15px] mb-[10px] text-sm font-semibold text-[#1a1a1a]"
-                  inputClass="border-[#DEDEDE] py-7 px-3 mt-1"
+                  inputClass="border-lime py-7 px-3 mt-1"
                   errors={errors}
                   register={register}
                   errorClass="text-[#ff0000] text-sm font-semibold mb-2"
@@ -568,11 +574,11 @@ const JoinUs = (props: any) => {
                   name="inspiration_detail"
                 />
               </div>
-              <div>
+              <div className="mt-4">
                 <ButtonComponent
                   onClick={handleSubmit(onSubmit)}
                   text="SUBMIT APPLICATION"
-                  className="bg-lime text-white font-semibold  text-sm uppercase px-[20px] py-[13px] ease-in duration-200"
+                  className="bg-lime text-white font-semibold text-sm uppercase px-[20px] py-[13px] ease-in duration-200 hover:bg-dark-blue"
                 />
               </div>
             </FormContainer>
@@ -601,13 +607,14 @@ const JoinUs = (props: any) => {
 
 const Header = () => {
   return (
-    <div className="grid place-items-center">
-      <h1 className="font-semibold text-4xl text-center mb-3 text-dark-blue">
+    <div className="flex flex-col">
+      <div className="border-b-4 border-lime w-[65px] mb-3"></div>
+      <h1 className="font-semibold text-4xl mb-3 text-dark-blue">
         Join Us
       </h1>
-      <div className="h-1.5 w-20 bg-lime" />
+
       <br />
-      <p className=" w-5/6 sm:w-4/6 text-center text-[15px] leading-7 sm:px-16">
+      <p className="md:w-5/6 sm:w-4/6 text-[15px] leading-7 sm:px-16 md:px-0">
         We are always looking to partner with reliable and committed
         professionals. If you have a passion for customer service then complete
         application below and we will get in touch with you soon.
@@ -618,9 +625,9 @@ const Header = () => {
 };
 const FormContainer = ({ children, heading }: any) => {
   return (
-    <div className="w-full bg-[#dddddd] py-[30px] mt-5 shadow">
+    <div className="w-full pb-[30px] mt-5 shadow-lg">
       {heading && (
-        <h4 className="bg-dark-blue text-white text-[17px] font-semibold inline-block px-[35px] py-[8px] mb-[25px]">
+        <h4 className="w-full text-center uppercase bg-dark-blue text-white text-[23px] md:text-[27px]  inline-block px-[25px] py-[17px] mb-[25px]">
           {heading}
         </h4>
       )}
@@ -650,7 +657,7 @@ const Select = ({
           required: { value: true, message: "Field is Required" },
         })}
         name={name}
-        className={`border w-full outline-none focus:border-[#DEDEDE] focus:ring-transparent shadow-sm text-[15px] text-[#555555] ${inputClass}`}
+        className={`border w-full outline-none focus:border-lime focus:ring-transparent shadow-sm text-[15px] text-[#555555] ${inputClass}`}
       >
         {options.map(({ value, title }: any, index: number) => {
           return (

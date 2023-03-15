@@ -15,21 +15,22 @@ function PricingCard({
   return (
     <>
       <div
-        className={`w-[284px] p-0 py-12 drop-shadow-md  text-[15px] relative${styles.specialBUndle}`}
+        className={`w-[284px] mx-2 p-0 pb-12 bg-white  drop-shadow-md text-[15px] relative${styles.specialBUndle}`}
       >
-        {content?.bundleName === "Service Bundle Three" && (
-          <div className="flex text-white bg-lime absolute top-[-1px] justify-center items-center w-full h-[50px]">
-            <FontAwesomeIcon className="w-4 mr-2" icon={faStar} />
-            <p className="font-semibold">MOST POPULAR</p>
-          </div>
-        )}
-        <div className={`p-[30px] ${className} bg-cream`}>
+        <div className="w-full py-8 shadow-lg bg-dark-blue justify-center items-center">
+          {content?.bundleName === "Service Bundle Three" && (
+              <div className="flex flex-row text-white bg-lime absolute -top-3 left-[30%] justify-center items-center w-[40%] p-1.5 rounded ">
+                <FontAwesomeIcon className="w-4 mr-2" icon={faStar} />
+                <p className='text-[9px]'>MOST POPULAR</p>
+              </div>
+          )}
+          <h3 className='text-2xl text-center text-white '>{content?.bundleName}</h3>
+        </div>
+        <div className={`p-[30px]  bg-white`}>
           <div className="block">
             <div className="block ">
               <div className="block relative text-left ">
-                <div className="text-xl text-grey-900 text-left pt-4 pb-4">
-                  <h3 className={styles.pricingTitle}>{content?.bundleName}</h3>
-                </div>
+
                 <div className="relative inline-block mt-[37px] mb-0 text-left">
                   <div
                     className={` ${styles.poppinsFamily}  text-lime absolute top-0 font-semibold text-xl  inline-block`}

@@ -9,6 +9,7 @@ import OrderNowCard from "../../../components/orderNowCard.component";
 import ServiceHeader from "../../../components/serviceHeader.component";
 
 function Service({ certificate }: any) {
+  console.log({certificate})
   return (
     <>
       {certificate[0]?.servicesDec && <ServiceHeader servicesDec={certificate[0]?.servicesDec} />}
@@ -66,7 +67,7 @@ function Service({ certificate }: any) {
                     </div>
                     <StepperComponent />
                     <div className="w-full flex flex-col md:flex-row justify-center md:items-center xl:flex-nowrap gap-1 xl:gap-7">
-                      {howItWorks.map(({ title, paragraph }: any, index) => {
+                      {howItWorks.map(({ title, paragraph , image }: any, index) => {
                         return (
                           <HowItWorks
                             key={index}
@@ -74,6 +75,7 @@ function Service({ certificate }: any) {
                             paragraph={paragraph}
                             type="service"
                             index={index}
+                            image={image}
                           />
                         );
                       })}
