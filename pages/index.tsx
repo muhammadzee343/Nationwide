@@ -89,10 +89,10 @@ export default function Home() {
           {/*SERVICE INFO*/}
 
           <section>
-            <div className="w-full flex flex-col">
-              <div className="w-[10%] border-b-2 border-dark-blue flex justify-around">
-                <div className="h-2 bg-lime w-[25%]"></div>
-                <div className="h-2 bg-lime w-[25%]"> </div>
+            <div className="w-full flex flex-row ">
+              <div className="w-[2%] flex flex-col bg-dark-blue h-full flex justify-around">
+                <div className="h-[25%] bg-lime "></div>
+                <div className=" w-2 bg-lime "> </div>
               </div>
               <div className="w-[90%] flex flex-col items-center justify-center px-3 ">
                 {homeServices.map(({ className, content }: any, index: any) => {

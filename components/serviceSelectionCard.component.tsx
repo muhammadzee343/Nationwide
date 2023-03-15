@@ -8,7 +8,7 @@ function ServiceSelectionCard({ title = "", className = "" }: any) {
       className={` ${className} border  drop-shadow-xl shadow-lime  cursor-pointer`}
     >
       <div className="flex items-center pl-[20px] justify-between pr-[10px]">
-        <p className="font-semibold   pr-[20px] sm:pr-[45px] xl:pr-[25px]">
+        <p className="pr-[20px] sm:pr-[45px] xl:pr-[25px]">
           {title}
         </p>
         {className.includes("bg-lime") && (

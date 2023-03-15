@@ -24,7 +24,7 @@ export default function HowItWorks({
           } bg-lime flex flex-col border-b-4 border-black justify-center rounded min-h-[330px] lg:min-h-[310px] min-w-[200px]`}
         >
             <div className='flex items-center justify-center w-24 h-24 rounded-full bg-white absolute self-center -top-12'>
-                <Image src={image} alt='order' className='w-20px'/>
+                <Image src={image} alt='order' className='w-[36px]'/>
             </div>
           <h2
             className={`${

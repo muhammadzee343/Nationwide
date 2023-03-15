@@ -38,8 +38,8 @@ import Sap1 from "../public/sap2.jpg";
 import localFont from "@next/font/local";
 import CallBack from "../public/callback.png";
 import placeOrder from '../public/Student.png'
-import assesment from '../public/check.png'
-import certificate from '../public/Verified.png'
+import assesment from '../public/Group1398.png'
+import certificate from '../public/Group1834.png'
 
 export const myFont = localFont({
   src: [

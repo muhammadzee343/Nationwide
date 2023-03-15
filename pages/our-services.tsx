@@ -172,9 +172,10 @@ function OurServices(props: any) {
                                       className="w-full flex mt-5  bg-lime self-start font-semibold uppercase items-center justify-center hover:bg-dark-blue hover:text-white px-[28px] py-[12px] text-sm ease-in duration-200"
                                       type="button"
                                       onClick={() =>{
-                                          router?.push({
-                                              pathname: "/order-now",
-                                          });}
+                                          // router?.push({
+                                          //     pathname: "/order-now",
+                                          // });
+                                      }
                                       }
                                   >
                                   </ButtonComponent>
@@ -196,9 +197,10 @@ function OurServices(props: any) {
                               className="w-full flex  bg-lime self-start font-semibold uppercase items-center justify-center hover:bg-dark-blue hover:text-white px-[28px] py-[12px] text-sm ease-in duration-200"
                               type="button"
                               onClick={() =>{
-                                  router?.push({
-                                      pathname: "/order-now",
-                                  });}
+                                  // router?.push({
+                                  //     pathname: "/order-now",
+                                  // });
+                              }
                               }
                           >
                           </ButtonComponent>
