@@ -4,7 +4,7 @@ import {
   faBars,
   faCartShopping,
   faChevronDown,
-  faChevronRight,
+  faChevronRight, faCircleDot, faLocationCrosshairs,
   faPhone,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
@@ -77,7 +77,7 @@ export default function Home() {
       >
         <div className='w-full py-5 mt-3 lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto'>
           <div className='px-2 ml-4 md:ml-0'>
-            <div className='border-[2px] w-[70px] mt-2 mb-1 md:w-28 border-lime'/>
+            <div className='border-[2px] w-[70px] rounded-full mt-2 mb-1 md:w-28 border-lime'/>
             <h2 className='text-[18px] font-semibold md:text-[30px] mb-4'>Services Bundle Offers</h2>
           </div>
           <PricingCarouselComponent />
@@ -85,40 +85,41 @@ export default function Home() {
         </div>
       </BoxBackgroundComponent>
 
-        <div className="w-full py-5 lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto">
-          {/*SERVICE INFO*/}
-
-          <section>
+        <div className="w-full py-5 lg:min-[950px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto">
             <div className="w-full flex flex-row ">
-              <div className="w-[2%] flex flex-col bg-dark-blue h-full flex justify-around">
-                <div className="h-[25%] bg-lime "></div>
-                <div className=" w-2 bg-lime "> </div>
+              <div className="flex flex-col justify-between items-center py-5">
+                <div className="w-[1px] items-center justify-between py-10 flex flex-col bg-dark-blue h-full">
+                  <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
+                  <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
+                  <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
+                  <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
+                </div>
               </div>
-              <div className="w-[90%] flex flex-col items-center justify-center px-3 ">
-                {homeServices.map(({ className, content }: any, index: any) => {
-                  return (
+                <div className="flex flex-col items-center justify-center px-3 ">
+                  {homeServices.map(({ className, content }: any, index: any) => {
+                    return (
                       <div
-                          className={`${
-                              index % 2 == 0
-                                  ? " flex-col lg:flex-row"
-                                  : "flex-col-reverse lg:flex-row-reverse"
-                          } pb-[60px] flex gap-6`}
-                          key={index}
+                        className={`${
+                          index % 2 == 0
+                            ? "flex-col lg:flex-row"
+                            : "flex-col-reverse  lg:flex-row-reverse"
+                        } pb-[60px] flex gap-6`}
+                        key={index}
                       >
                         <ServiceInfo content={content} className={className} />
                       </div>
-                  );
-                })}
+                    );
+                  })}
               </div>
             </div>
-
-          </section>
+        </div>
           {/*ALL OUR SERVICES*/}
+          <div className="w-full py-5 lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto">
           <section>
             <div className="w-full flex flex-col items-start md:items-center justify-center px-3">
               <div className="w-full md:container flex flex-wrap pb-[60px]">
-                <div className="mb-[30px] px-5 py-2">
-                  <div className='border-lime border-b-4 w-[40%] mb-3'></div>
+                <div className="mb-[30px] pr-5 py-2">
+                  <div className='border-lime border-b-4 rounded-full w-[40%] mb-3'></div>
                   <h2 className="text-dark-blue text-4xl font-medium font-bold">
                     All Our Services
                   </h2>
@@ -139,7 +140,7 @@ export default function Home() {
                   <CarouselComponent
                       list={ourServices}
                       component={OurServicesComponent}
-                      className="h-[320px]"
+                      className="h-[420px]"
                   />
                 </div>
               </div>
@@ -152,7 +153,7 @@ export default function Home() {
             <div className="w-full flex flex-col items-center justify-center px-3">
               <div className="  w-full md:container flex flex-col flex-wrap pb-[0px]">
                 <div className=" border-lime mb-[30px] py-2">
-                  <div className="border-b-4 border-lime w-[85px] mb-3"></div>
+                  <div className="border-b-4 border-lime rounded-full w-[85px] mb-3"></div>
                   <h2 className="text-dark-blue text-4xl font-medium font-bold">
                     How it works?
                   </h2>
@@ -173,7 +174,7 @@ export default function Home() {
                   })}
                 </div>
                 <div className="flex mt-10  md:hidden w-full h-[300px] justify-center xl:flex-nowrap gap-1 xl:gap-7">
-                  <CarouselComponent list={howItWorks} component={HowItWorks} className='min-h-400px '/>
+                  <CarouselComponent list={howItWorks} component={HowItWorks} className='min-h-520px '/>
                 </div>
               </div>
             </div>
@@ -185,7 +186,7 @@ export default function Home() {
           <div className="w-full lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto px-3">
             <div className="w-full flex flex-row justify-between items-start flex-wrap pt-[80px] pb-[60px]">
               <div className="flex flex-col border-white mb-[30px] py-2">
-                <div className='border-b-4 border-lime w-[70px] mb-3'></div>
+                <div className='border-b-4 border-lime rounded-full w-[70px] mb-3'></div>
                 <h4 className="text-sm mb-[2px] mt-[5px] uppercase font-semibold text-dark-blue tracking-[1px]">
                   Placing Repeat Orders ?
                 </h4>

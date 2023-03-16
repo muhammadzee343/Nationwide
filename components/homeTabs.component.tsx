@@ -15,12 +15,12 @@ const HomeTab = () => {
                     {SERVICES.map((ele, index) => {
                         return (
                             <li
-                                className="min-w-[143px] md:w-[300px] mr-3 mb-3 lg:mr-0 lg:mb-0  md:w-[230px] lg:w-[160px] xl:w-[230px]"
+                                className="min-w-[143px] md:w-[300px] mr-3 mb-3 lg:mr-0 lg:mb-0 md:w-[230px] lg:w-[160px] xl:w-[230px]"
                                 key={index}
                                 onClick={() => setService(ele.slug)}
                             >
                                 <div
-                                    className={`flex items-center px-3 min-h-[80px] md:py-8 lg:py-0 lg:rounded-none font-bold text-[11px] md:px-5 md:text-[19px]
+                                    className={`flex items-center px-3 border-white ${index !==0 ? "border-t-[1px]":"border-t-[0px]"} min-h-[80px] md:py-8 lg:py-0 lg:rounded-none font-bold text-[11px] md:px-5 md:text-[17px]
                                      lg:px-7 lg:py-6 lg:text-[16px] ${
                                         activeService.title === ele.slug.title
                                             ? 'bg-lime'

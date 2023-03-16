@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import styles from "../styles/footer.module.css";
 import serviceStyle from "../styles/service.module.css";
 import { Collapse } from "antd";
-import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 const { Panel } = Collapse;
 
 function FaqAccordion({
@@ -14,7 +15,7 @@ function FaqAccordion({
   hoverHeadBackground = "",
   headerTitleColor = "",
   defaultActiveaccordion = "",
-    activeHeaderColor = "",
+  activeHeaderColor = "",
   navigateFromFAQ,
 }: any) {
   const [active, setActive] = useState(defaultActiveaccordion);
@@ -31,23 +32,21 @@ function FaqAccordion({
             accordion
             activeKey={active}
             onChange={onChange}
-            expandIconPosition={"end"}
+            expandIconPosition={"start"}
             expandIcon={({ isActive }) =>
               isActive ? (
-                <MinusOutlined
-                  className="text-xl"
-                  style={{
-                    color: `${iconMinusColor}`,
-                  }}
+                <FontAwesomeIcon
+                  className="w-6 h-6 text-white mr-5"
+                  icon={faMinus}
                 />
               ) : (
-                <PlusOutlined
-                  className="text-xl"
-                  style={{ color: `${iconPlusColor}` }}
+                <FontAwesomeIcon
+                  className="w-6 h-6 mr-5"
+                  icon={faPlus}
                 />
               )
             }
-            className="font-opensans mb-5 w-full font-medium"
+            className="font-opensans w-full "
             style={{ color: "#fff" }}
           >
             <Panel
@@ -55,9 +54,9 @@ function FaqAccordion({
                 <span
                   className={`${
                     active === (index + 1).toString()
-                      ?  activeHeaderColor ? activeHeaderColor :  "text-white"
-                      : `${headerTitleColor}`
-                  } text-[17px] leading-4 font-lg`}
+                      ?  activeHeaderColor ? activeHeaderColor :  "text-dark-blue"
+                      : `text-dark-blue`
+                  } text-[18px] leading-4 font-bold`}
                 >
                   {item?.title}
                 </span>
@@ -66,31 +65,30 @@ function FaqAccordion({
               className={`${
                 active === (index + 1).toString()
                   ? `${activeHeadBackgorund}`
-                  : "border border-gray-300"
+                  : "bg-slate-50"
               } hover:${hoverHeadBackground} ${headerBackground} ${
                 navigateFromFAQ ? serviceStyle.parent : null
-              } `}
+              } py-2`}
             >
               <div
                 className={`${
                   active === (index + 1).toString()
-                    ? "border-t-0 border-l border-r border-b border-lime shadow-md"
+                    ? ""
                     : null
-                } p-5`}
+                } py-5 px-12`}
               >
                 <h1 className="font-semibold text-base">{item.head1}</h1>
                 {item?.description.map((desc: any) => {
                   return (
-                    <>
-                      <p className={styles.footerParagraph}>{desc?.para1}</p>
-                      <p className={styles.footerParagraph}>{desc?.para2}</p>
-                      <p className={styles.footerParagraph}>{desc?.para3}</p>
-                      <p className={styles.footerParagraph}>{desc?.para4}</p>
-                    </>
+                    <div className="border-lime border-l-2 rounded-sm pl-4">
+                      <p className={`${styles.footerParagraph} text-justify`}>{desc?.para1}</p>
+                      <p className={`${styles.footerParagraph} text-justify`}>{desc?.para2}</p>
+                      <p className={`${styles.footerParagraph} text-justify`}>{desc?.para3}</p>
+                      <p className={`${styles.footerParagraph} text-justify`}>{desc?.para4}</p>
+                    </div>
                   );
                 })}
                 <h1 className="font-semibold text-base">{item.head2}</h1>
-                <br />
                 {item?.requirementList?.map((desc: any, index: number) => {
                   return (
                     <div className="flex flex-row" key={index}>

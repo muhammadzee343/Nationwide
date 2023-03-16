@@ -3,6 +3,9 @@ import { faBuilding, faHouse } from "@fortawesome/free-solid-svg-icons";
 import ButtonComponent from "./button.component";
 import React, { useContext } from "react";
 import { SidebarContext } from "../context/sidebarContext";
+import Image from 'next/image'
+import Home from '../public/Home.png';
+import Builiding from '../public/Building.png'
 
 export default function SelectProperty() {
   const { setShowDrawer, setOverlay, setPropertyType, propertyType } =
@@ -38,10 +41,11 @@ export default function SelectProperty() {
                    hover:bg-lime"
                     onClick={() => displayDrawer("residential_property")}
                   >
-                    <FontAwesomeIcon
-                      className="w-8 text-dark-blue absolute left-[14px]"
-                      icon={faHouse}
-                    />
+                    <Image src={Home} alt='home' className="h-7 w-7 mr-4"/>
+                    {/*<FontAwesomeIcon*/}
+                    {/*  className="w-8 text-dark-blue absolute left-[14px]"*/}
+                    {/*  icon={faHouse}*/}
+                    {/*/>*/}
                     Residential Property
                   </label>
 
@@ -50,10 +54,11 @@ export default function SelectProperty() {
                    pl-[55px] font-[15px] font-bold text-dark-blue cursor-pointer mb-[15px] hover:bg-lime"
                     onClick={() => displayDrawer("commercial_property")}
                   >
-                    <FontAwesomeIcon
-                      className="w-[26px] ,w-3 text-dark-blue  absolute left-[14px]"
-                      icon={faBuilding}
-                    />
+                    <Image src={Builiding} alt='home' className="h-7 w-7 mr-4"/>
+                    {/*<FontAwesomeIcon*/}
+                    {/*  className="w-[26px] ,w-3 text-dark-blue  absolute left-[14px]"*/}
+                    {/*  icon={faBuilding}*/}
+                    {/*/>*/}
                     Commercial Property
                   </label>
                 </div>

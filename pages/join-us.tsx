@@ -608,7 +608,7 @@ const JoinUs = (props: any) => {
 const Header = () => {
   return (
     <div className="flex flex-col">
-      <div className="border-b-4 border-lime w-[65px] mb-3"></div>
+      <div className="border-b-4 rounded-full border-lime w-[65px] mb-3"></div>
       <h1 className="font-semibold text-4xl mb-3 text-dark-blue">
         Join Us
       </h1>

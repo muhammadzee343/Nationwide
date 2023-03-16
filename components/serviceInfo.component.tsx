@@ -11,18 +11,18 @@ function ServiceInfo({ className, content }: any) {
   const cleanContent = DOMPurify.sanitize(content.content);
   return (
     <>
-      {/*{content.image && (*/}
-      {/*  <BoxBackgroundComponent className={'h-[300px] w-full lg:w-5/12 p-2 lg:h-auto'}*/}
-      {/*  greyStyle='w-[30%] h-[50%] top-[0] right-[0] '*/}
-      {/*  limeStyle='w-[30%] h-[50%] bottom-[0] left-[0]'*/}
-      {/*  contentStyle='p-4 m-auto'>*/}
-      {/*          <Image*/}
-      {/*              className="h-full cursor-pointer"*/}
-      {/*              src={content.image}*/}
-      {/*              alt="ServiceInfo"*/}
-      {/*          />*/}
-      {/*  </BoxBackgroundComponent>*/}
-      {/*)}*/}
+      {content.image && (
+        <BoxBackgroundComponent className={'h-[300px] w-full lg:w-5/12 p-2 lg:h-auto'}
+        greyStyle='w-[30%] h-[50%] top-[0] right-[0] '
+        limeStyle='w-[30%] h-[50%] bottom-[0] left-[0]'
+        contentStyle='p-4  m-auto'>
+                <Image
+                    className="h-full w-full cursor-pointer"
+                    src={content.image}
+                    alt="ServiceInfo"
+                />
+        </BoxBackgroundComponent>
+      )}
       <div
         className={`${content.image ? "lg:w-[58%]" : "lg:w-12/12"} py-4 px-1`}
       >
@@ -36,12 +36,12 @@ function ServiceInfo({ className, content }: any) {
                 {content.title}
               </h2>
             </div>
-            <p className={styles.servicePara2}>{content.paragraph1}</p>
+            <p className={`${styles.servicePara2}`}>{content.paragraph1}</p>
             <div>
               <p className={styles.servicePara2}>{content.paragraph2}</p>
             </div>
             {content.link && (
-                <div className={'flex flex-row hover:text-dark-blue'}>
+                <div className={"flex flex-row hover:text-dark-blue"}>
                 <span className="flex mr-2 text-lime">
                   <FontAwesomeIcon className="w-5" icon={faArrowRightLong} />
                 </span>

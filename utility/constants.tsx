@@ -255,7 +255,7 @@ export const homeServices = [
     className: "flex flex-col-reverse lg:flex-row-reverse",
     content: {
       type: "Home",
-      link: "More about Domestic and Commercial EICRs ",
+      link: "/service/electrical-installation-condition-report",
       image: images.electrical2,
       subTitle: "WHAT IS AN EICR AND WHO MAY REQUIRE IT?",
       title: "Electrical Installation Condition Report (EICR)",
@@ -271,7 +271,7 @@ export const homeServices = [
     className: "flex flex-col-reverse lg:flex-row-reverse",
     content: {
       type: "Home",
-      link: "MORE ABOUT Energy Performance Certificate ",
+      link: "service/domestic-epc",
       image: images.certificate,
       subTitle: "DOMESTIC AND COMMERCIAL",
       title: "Energy Performance Certificate (EPC)",
@@ -288,7 +288,7 @@ export const homeServices = [
     className: "flex flex-col-reverse lg:flex-row-reverse",
     content: {
       type: "Home",
-      link: "MORE ABOUT Gas Safety Certificate",
+      link: "service/gas-safety-certificate",
       image: images.engineer,
       subTitle: "LANDLORD / HOMEOWNER",
       title: "Gas Safety Certificate",
