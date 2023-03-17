@@ -173,6 +173,12 @@ export default function Home() {
                 </div>
               </div>
                 <div className="flex flex-col items-center justify-center px-3 ">
+                  <div className='flex flex-col self-start'>
+                    <div className='border-lime border-b-4 rounded-full w-[40%] mb-3'></div>
+                    <h2 className="text-lime text-4xl font-medium font-semibold">
+                      All Our Services
+                    </h2>
+                  </div>
                   {
                     homeServices.map(({ className, content }: any, index: any) => {
                       if(index!==0){
