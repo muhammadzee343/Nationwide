@@ -37,9 +37,13 @@ import Sap2 from "../public/sap1.jpg";
 import Sap1 from "../public/sap2.jpg";
 import localFont from "@next/font/local";
 import CallBack from "../public/callback.png";
-import placeOrder from '../public/Student.png'
-import assesment from '../public/Group1398.png'
-import certificate from '../public/Group1834.png'
+import placeOrder from "../public/Student.png";
+import assesment from "../public/Group1398.png";
+import certificate from "../public/Group1834.png";
+import as2 from "../public/image26.png";
+import as3 from "../public/Rectangle308.png";
+import as4 from "../public/Rectangle305.png";
+import as1 from "../public/image30.png";
 
 export const myFont = localFont({
   src: [
@@ -94,13 +98,14 @@ const images = {
   sap1: Sap1,
   sap2: Sap2,
   callback:CallBack
+
 };
 
 export const LEC = {
   title: "Electrical Installation Condition Report (EICR)",
   subTitle: "From Only £79",
   points: [
-    "Foe Landlords, Home Buyers & Sellers",
+    "For Landlords, Home Buyers & Sellers",
     "Flexible Available & Fast Turnaround",
     "Get Instant Quote & Order Online",
     "Qualified & Registered Electricians",
@@ -255,7 +260,7 @@ export const homeServices = [
     className: "flex flex-col-reverse lg:flex-row-reverse",
     content: {
       type: "Home",
-      link: "More about Domestic and Commercial EICRs ",
+      link: "/service/electrical-installation-condition-report",
       image: images.electrical2,
       subTitle: "WHAT IS AN EICR AND WHO MAY REQUIRE IT?",
       title: "Electrical Installation Condition Report (EICR)",
@@ -271,7 +276,7 @@ export const homeServices = [
     className: "flex flex-col-reverse lg:flex-row-reverse",
     content: {
       type: "Home",
-      link: "MORE ABOUT Energy Performance Certificate ",
+      link: "service/domestic-epc",
       image: images.certificate,
       subTitle: "DOMESTIC AND COMMERCIAL",
       title: "Energy Performance Certificate (EPC)",
@@ -288,7 +293,7 @@ export const homeServices = [
     className: "flex flex-col-reverse lg:flex-row-reverse",
     content: {
       type: "Home",
-      link: "MORE ABOUT Gas Safety Certificate",
+      link: "service/gas-safety-certificate",
       image: images.engineer,
       subTitle: "LANDLORD / HOMEOWNER",
       title: "Gas Safety Certificate",
@@ -369,7 +374,7 @@ export const megaMenu = [
 export const ourServices = [
   {
     title: "Domestic & Commercial Certifications",
-    image:images.engineer,
+    image:as2,
     list: [
       { text: "Energy Performance Certificate", link: "/domestic-epc" },
       { text: "Commercial EPC", link: "/commercial-epc" },
@@ -382,7 +387,7 @@ export const ourServices = [
   },
   {
     title: "Gas Safety Certificate",
-    image:images.gasCertificate,
+    image:as1,
     list: [
       { text: "Gas Safety Certificate", link: "/gas-safety-certificate" },
       { text: "Boiler Service", link: "/boiler-service" },
@@ -390,7 +395,7 @@ export const ourServices = [
   },
   {
     title: "Electrical Reports & Remedial Work",
-    image:images.gasCertificate,
+    image:as4,
     list: [
       {
         text: "Electrical Installation Condition Report (EICR)",
@@ -406,7 +411,7 @@ export const ourServices = [
   },
   {
     title: "Other Services",
-    image:images.gasCertificate,
+    image:as3,
     list: [
 
       { text: "Floor Plans", link: "/floor-plans" },

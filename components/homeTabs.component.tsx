@@ -1,9 +1,7 @@
 import Link from "next/link";
 import React, { useMemo, useState } from "react";
-import styles from "../styles/Home.module.css";
 import { SERVICES, LEC, EPC, GSC, BHR } from "../utility/constants";
 import Image from 'next/image'
-import hero from "../public/heroHomePage.png";
 import arrow from "../public/trending_flat.png";
 const HomeTab = () => {
     const [activeService, setService] = useState(LEC);
@@ -15,16 +13,16 @@ const HomeTab = () => {
                     {SERVICES.map((ele, index) => {
                         return (
                             <li
-                                className="min-w-[143px] md:w-[300px] mr-3 mb-3 lg:mr-0 lg:mb-0  md:w-[230px] lg:w-[160px] xl:w-[230px]"
+                                className="min-w-[143px] md:w-[300px] mr-3 mb-3 lg:mr-0 lg:mb-0 md:w-[230px] lg:w-[160px] xl:w-[230px]"
                                 key={index}
                                 onClick={() => setService(ele.slug)}
                             >
                                 <div
-                                    className={`flex items-center px-3 min-h-[80px] md:py-8 lg:py-0 lg:rounded-none font-bold text-[11px] md:px-5 md:text-[19px]
+                                    className={`flex items-center px-3 border-white ${index !==0 ? "border-t-[1px]":"border-t-[0px]"} min-h-[80px] md:py-8 lg:py-0 lg:rounded-none font-bold text-[11px] md:px-5 md:text-[17px]
                                      lg:px-7 lg:py-6 lg:text-[16px] ${
                                         activeService.title === ele.slug.title
                                             ? 'bg-lime'
-                                            : 'bg-white text-dark-blue lg:bg-dark-blue opacity-90 lg:text-white hover:bg-lime hover:opacity-100'
+                                            : 'bg-white text-black lg:bg-dark-blue opacity-90 lg:text-white hover:bg-lime hover:opacity-100'
                                     } w-full`}
                                 >
                                     <Link href="#" onClick={(event) => event.preventDefault()}>
@@ -39,7 +37,7 @@ const HomeTab = () => {
             </div>
 
             <div className="animate-fade-in-up flex flex-col md:px-11 lg:mb-0 lg:w-[50%]">
-                <h2 className="text-[26px] md:text-[30px] font-bold leading-10 text-white lg:text-[30px] lg:text-dark-blue mb-4 animate-fade-in-up">
+                <h2 className="text-[26px] md:text-[30px] font-bold leading-10 text-white lg:text-[30px] lg:text-black mb-4 animate-fade-in-up">
                     {activeService.title}
                 </h2>
                 <div className="flex flex-row">

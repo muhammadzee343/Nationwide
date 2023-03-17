@@ -183,7 +183,7 @@ function ContactUsNew({ Services }: any) {
               <form onSubmit={handleSubmit(requestCallback)}>
                   <div className="w-full md:px-8  xl:max-w-[1114px] flex flex-col items-center">
                       <div className="self-start mb-[20px] px-4 md:px-0">
-                          <div className="border-b-4 border-lime w-[85px] mb-3"></div>
+                          <div className="border-b-4 rounded-full border-lime w-[85px] mb-3"></div>
                           <h2 className="text-[36px] text-dark-blue font-semibold">
                               Join Us
                           </h2>

@@ -88,7 +88,7 @@ export default function Footer() {
             </div>
             <div className="grid  grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-6 mt-20 md:mt-0 lg:grid-cols-3 ">
               <div className="pl-[15px] pr-[15px]">
-                <div className="border-lime border-b-2 w-8 mb-2"></div>
+                <div className="border-lime border-b-2 rounded-full w-8 mb-2"></div>
                 <h3 className="mb-6 text-lg font-semibold text-white ">
                   Our Services
                 </h3>
@@ -149,7 +149,7 @@ export default function Footer() {
                 </ul>
               </div>
               <div className="pl-[15px] pr-[15px]">
-                <div className="border-lime border-b-2 w-8 mb-2"></div>
+                <div className="border-lime border-b-2 rounded-full w-8 mb-2"></div>
                 <h3 className="mb-6 text-lg font-semibold text-gray-900 text-white">
                   Links
                 </h3>
@@ -172,7 +172,7 @@ export default function Footer() {
               </div>
 
               <div className="pl-[15px] pr-[15px]">
-                <div className="border-lime border-b-2 w-8 mb-2"></div>
+                <div className="border-lime border-b-2 rounded-full w-8 mb-2"></div>
                 <h3 className="mb-6 text-lg font-semibold text-gray-900 text-white ">
                   Prefer to Talk ?<br />
                   Please Call Us Free
