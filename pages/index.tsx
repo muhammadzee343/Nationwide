@@ -57,8 +57,6 @@ library.add(
 
 const content = homeServices[0].content;
 
-
-
 export default function Home() {
   const { smallDevice, middleDevice, largeDevice }: any =
     useContext(DeviceContext);
