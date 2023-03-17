@@ -1,9 +1,7 @@
 import Link from "next/link";
 import React, { useMemo, useState } from "react";
-import styles from "../styles/Home.module.css";
 import { SERVICES, LEC, EPC, GSC, BHR } from "../utility/constants";
 import Image from 'next/image'
-import hero from "../public/heroHomePage.png";
 import arrow from "../public/trending_flat.png";
 const HomeTab = () => {
     const [activeService, setService] = useState(LEC);
@@ -24,7 +22,7 @@ const HomeTab = () => {
                                      lg:px-7 lg:py-6 lg:text-[16px] ${
                                         activeService.title === ele.slug.title
                                             ? 'bg-lime'
-                                            : 'bg-white text-dark-blue lg:bg-dark-blue opacity-90 lg:text-white hover:bg-lime hover:opacity-100'
+                                            : 'bg-white text-black lg:bg-dark-blue opacity-90 lg:text-white hover:bg-lime hover:opacity-100'
                                     } w-full`}
                                 >
                                     <Link href="#" onClick={(event) => event.preventDefault()}>
@@ -39,7 +37,7 @@ const HomeTab = () => {
             </div>
 
             <div className="animate-fade-in-up flex flex-col md:px-11 lg:mb-0 lg:w-[50%]">
-                <h2 className="text-[26px] md:text-[30px] font-bold leading-10 text-white lg:text-[30px] lg:text-dark-blue mb-4 animate-fade-in-up">
+                <h2 className="text-[26px] md:text-[30px] font-bold leading-10 text-white lg:text-[30px] lg:text-black mb-4 animate-fade-in-up">
                     {activeService.title}
                 </h2>
                 <div className="flex flex-row">

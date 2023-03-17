@@ -7,7 +7,7 @@ import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import DOMPurify from "isomorphic-dompurify";
 import BoxBackgroundComponent from "./boxBackground.component";
 
-function ServiceInfo({ className, content }: any) {
+function ServiceInfo({ className, content, index }: any) {
   const cleanContent = DOMPurify.sanitize(content.content);
   return (
     <>

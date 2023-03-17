@@ -11,6 +11,7 @@ import BoxBackgroundComponent from "../components/boxBackground.component";
 import ButtonComponent from "../components/button.component";
 import ServiceInfo from "../components/serviceInfo.component";
 import SelectProperty from "../components/selectProperty.component";
+import {router} from "next/client";
 
 function OurServices(props: any) {
   return (
@@ -47,34 +48,38 @@ function OurServices(props: any) {
               {/*SERVICE INFO*/}
           <div className="w-full px-5 md:px-10 lg:px-0 py-5 lg:min-[950px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto">
               <div className='border-b-4 rounded-full border-lime w-[110px] mb-3'></div>
-              <h2 className="text-dark-blue text-4xl font-medium">
+              <h2 className="text-black text-4xl font-semibold">
                   All Our Services
               </h2>
               <div className="w-full flex flex-row ">
-                  <div className="flex flex-col justify-between items-center py-5">
-                      <div className="w-[1px] items-center justify-between py-10 flex flex-col bg-dark-blue h-full">
-                          <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
-                          <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
-                          <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
-                          <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
+                  <div className="w-full flex flex-row gap-x-2">
+                      <div className="flex flex-col justify-between items-center py-5 mb-8">
+                          <div className="w-[1px] items-center justify-between py-10 flex flex-col bg-dark-blue h-full">
+                              <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
+                              <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
+                              <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
+                              <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
+                          </div>
                       </div>
-                  </div>
-                  <div className="flex flex-col  justify-center  ">
-
-                      {homeServices.map(({ className, content }: any, index: any) => {
-                          return (
-                            <div
-                              className={`${
-                                index % 2 == 0
-                                  ? "flex-col lg:flex-row"
-                                  : "flex-col-reverse lg:flex-row-reverse"
-                              } pb-[60px] flex gap-6`}
-                              key={index}
-                            >
-                                <ServiceInfo content={content} className={className} />
-                            </div>
-                          );
-                      })}
+                      <div className="flex flex-col items-center justify-center px-3 ">
+                          {
+                              homeServices.map(({ className, content }: any, index: any) => {
+                                  if(index!==0){
+                                      return (
+                                        <div
+                                          className={`${
+                                            index % 2 == 0
+                                              ? "flex-col lg:flex-row"
+                                              : "flex-col-reverse  lg:flex-row-reverse"
+                                          } pb-[60px] flex gap-6`}
+                                          key={index}
+                                        >
+                                            <ServiceInfo content={content} index={index} className={className} />
+                                        </div>
+                                      );
+                                  }
+                              })}
+                      </div>
                   </div>
               </div>
           </div>
@@ -87,7 +92,7 @@ function OurServices(props: any) {
                       <div className="w-full md:container flex flex-wrap pb-[60px]">
                           <div className="mb-[30px]  py-2">
                               <div className='border-lime rounded-full border-b-4 w-[40%] mb-3'></div>
-                              <h2 className="text-dark-blue text-4xl font-medium font-bold">
+                              <h2 className="text-black text-4xl font-semibold ">
                                   All Our Services
                               </h2>
                           </div>
@@ -136,7 +141,7 @@ function OurServices(props: any) {
                       <div className="  w-full md:container flex flex-col flex-wrap pb-[0px]">
                           <div className="border-lime mb-[30px] py-2">
                               <div className='border-b-4 rounded-full border-lime w-[85px] mb-3'></div>
-                              <h2 className="text-dark-blue text-4xl font-medium font-bold">
+                              <h2 className="text-black text-4xl font-medium font-semibold">
                                   How it works?
                               </h2>
                           </div>
@@ -169,22 +174,21 @@ function OurServices(props: any) {
                       <div className="w-full flex flex-row justify-between items-start flex-wrap pt-[80px] pb-[60px]">
                           <div className="flex flex-col border-white mb-[30px] py-2">
                               <div className='border-b-4 rounded-full border-lime w-[70px] mb-3'></div>
-                              <h4 className="text-sm mb-[2px] mt-[5px] uppercase font-semibold text-dark-blue tracking-[1px]">
+                              <h4 className="text-sm mb-[2px] mt-[5px] uppercase font-semibold text-black tracking-[1px]">
                                   Placing Repeat Orders ?
                               </h4>
-                              <h2 className="text-4xl text-dark-blue font-semibold">
-                                  Why Not Join Our B2B
-                                  Service
+                              <h2 className="text-4xl text-black font-semibold">
+                                  READY TO PLACE ORDER
                               </h2>
                               <div className="hidden w-[60%] lg:flex ">
                                   <ButtonComponent
                                       text="Instant Quote and order here"
-                                      className="w-full flex mt-5  bg-lime self-start font-semibold uppercase items-center justify-center hover:bg-dark-blue hover:text-white px-[28px] py-[12px] text-sm ease-in duration-200"
+                                      className="w-full flex mt-5  bg-lime self-start font-semibold uppercase items-center justify-center hover:bg-dark-blue hover:text-white px-[22px] py-[12px] text-[12px] ease-in duration-200"
                                       type="button"
                                       onClick={() =>{
-                                          // router?.push({
-                                          //     pathname: "/order-now",
-                                          // });
+                                          router?.push({
+                                              pathname: "/order-now",
+                                          });
                                       }
                                       }
                                   >
@@ -192,7 +196,7 @@ function OurServices(props: any) {
                               </div>
                           </div>
                           <div className="w-full self-center xl:w-[44%]">
-                              <p className="text-dark-blue text-[15px] leading-[27px]">
+                              <p className="text-black text-[15px] leading-[27px]">
                                   For those customers needing to make regular orders you can get
                                   direct access to our bespoke order management system for live
                                   updates.We offer a fully national service and can provide
@@ -207,9 +211,9 @@ function OurServices(props: any) {
                               className="w-full flex  bg-lime self-start font-semibold uppercase items-center justify-center hover:bg-dark-blue hover:text-white px-[28px] py-[12px] text-sm ease-in duration-200"
                               type="button"
                               onClick={() =>{
-                                  // router?.push({
-                                  //     pathname: "/order-now",
-                                  // });
+                                  router?.push({
+                                      pathname: "/order-now",
+                                  });
                               }
                               }
                           >

@@ -42,7 +42,7 @@ function Service({ certificate }: any) {
           <div className="w-full py-10 lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto">
             <div className=" px-5">
               <div className="border-b-4 border-lime w-[105px] rounded-full mb-3"></div>
-              <h2 className="text-lime text-4xl font-medium lg:mb-5">
+              <h2 className="text-lime text-4xl lg:mb-5">
                 Services
               </h2>
               {certificate?.map(({ className, content }: any, index: any) => {
@@ -109,7 +109,7 @@ function Service({ certificate }: any) {
                       headerTitleColor="text-gray-400"
                       activeHeadBackgorund="bg-white"
                       hoverHeadBackground="bg-lime"
-                      defaultActiveaccordion="1"
+                      defaultActiveaccordion="3"
                       navigateFromFAQ
                     />
                   </div>

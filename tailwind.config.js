@@ -21,7 +21,7 @@ module.exports = {
         blue: "#2d3c51",
         "blue-transparent": "#182333cc",
         "light-blue": "#213148",
-        "dark-blue": "#182333",
+        "dark-blue": "#2D3C51",
         grey: {
           200: "#f8f9fa",
           300: "#667181",
@@ -39,6 +39,7 @@ module.exports = {
       backgroundImage: {
         home_bg_image: "url('../public/mainbg.jpg')",
         home_bg_dull_image: "url('../public/mainbg3.jpg')",
+        contact_us: "url('../public/image33.png')",
         our_services: "url('../public/image17.png')",
         privacy_policy_image: "url('../public/privacy_image.jpg')",
         footer_bg_image: "url('../public/footer-bg.jpg')",

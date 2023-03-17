@@ -6,7 +6,7 @@ import { bundles } from "../utility/constants";
 const Pricing = () => {
   return (
     <>
-      <div className=" hidden w-full lg:flex md:justify-center md:flex-nowrap flex-wrap px-6 sm:px-0 ">
+      <div className="hidden w-full lg:flex md:justify-center md:flex-nowrap flex-wrap px-6 sm:px-0 ">
         {bundles.map(({ className, content }, index) => {
           return (
             <PricingCard

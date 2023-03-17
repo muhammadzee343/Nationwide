@@ -30,20 +30,20 @@ export default function SelectProperty() {
           </h3>
           <div className="mb-[25px] mt-0 py-[20px] px-[25px] h-[291px] text-center ">
             <div className="text-left relative" id="default_screen">
-              <h6 className="text-dark-blue block text-base my-[12px] text-center">
+              <h6 className="text-black block text-base my-[12px] text-center">
                 Select Your Property as appropraite and get quote in 30 seconds!
               </h6>
               <div className="justify-center h-[158px] flex-col">
                 <div className="cat_box">
                   <label
                     className=" relative flex items-center border-2 border-lime py-[16px] px-[5px]
-                   pl-[55px] font-[15px] font-bold text-dark-blue cursor-pointer mb-[15px]
+                   pl-[55px] font-[15px] font-bold text-black cursor-pointer mb-[15px]
                    hover:bg-lime"
                     onClick={() => displayDrawer("residential_property")}
                   >
                     <Image src={Home} alt='home' className="h-7 w-7 mr-4"/>
                     {/*<FontAwesomeIcon*/}
-                    {/*  className="w-8 text-dark-blue absolute left-[14px]"*/}
+                    {/*  className="w-8 text-black absolute left-[14px]"*/}
                     {/*  icon={faHouse}*/}
                     {/*/>*/}
                     Residential Property

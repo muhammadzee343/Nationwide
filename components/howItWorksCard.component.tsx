@@ -31,14 +31,14 @@ export default function HowItWorks({
               type === "service"
                 ? "text-[16px] mb-[8px]"
                 : "text-[20px] mb-[15px]"
-            } text-dark-blue font-bold uppercase`}
+            } text-black font-bold uppercase`}
           >
             {title}
           </h2>
           <p
             className={`${
               type === "service" ? "text-[15px]" : "text-basic"
-            } text-dark-blue pl-2.5 pr-2.5`}
+            } text-black pl-2.5 pr-2.5`}
           >
             {paragraph}
           </p>

@@ -15,7 +15,7 @@ function PricingCard({
   return (
     <>
       <div
-        className={`w-[284px] mx-2 p-0 pb-12 bg-white  drop-shadow-md text-[15px] relative${styles.specialBUndle}`}
+        className={`w-[284px] mt-3 lg:mt-0 mx-2 p-0 pb-12 bg-white  drop-shadow-md text-[15px] relative${styles.specialBUndle}`}
       >
         <div className="w-full py-8 shadow-lg bg-dark-blue justify-center items-center">
           {content?.bundleName === "Service Bundle Three" && (
@@ -24,7 +24,7 @@ function PricingCard({
                 <p className='text-[9px]'>MOST POPULAR</p>
               </div>
           )}
-          <h3 className='text-2xl text-center text-white '>{content?.bundleName}</h3>
+          <h3 className='text-xl uppercase text-center text-white '>{content?.bundleName}</h3>
         </div>
         <div className={`p-[30px]  bg-white`}>
           <div className="block">
@@ -56,7 +56,7 @@ function PricingCard({
                       return (
                         <li
                           key={index}
-                          className="relative pl-[25px]  pt-[12px] pb-[11px] leading-[22px] border-b border-b-grey-400 flex text-sm text-[#1a1a1a]"
+                          className="relative pl-[25px]  pt-[12px] pb-[11px] leading-[22px] border-b border-b-slate-100 flex text-sm text-black"
                         >
                           <span className=" absolute left-[-2px] top-[16px]">
                             <FontAwesomeIcon className="w-4" icon={faCheck} />
