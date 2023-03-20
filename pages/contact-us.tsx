@@ -61,7 +61,7 @@ export default ContactUs;
 
 function Enquiry({ text, link, query }: any) {
   return (
-    <div className="rounded-sm flex flex-row justify-start px-10 items-center text-dark-blue border-lime mb-2 md:mb-0 border-[2px] hover:bg-dark-blue hover:border-0 hover:text-white ease-in duration-200">
+    <div className="rounded-sm flex flex-row justify-start px-10 items-center text-black border-lime mb-2 md:mb-0 border-[2px] hover:bg-dark-blue hover:border-0 hover:text-white ease-in duration-200">
       <Image src={arrow} alt="Arrow right"/>
       <Link
         href={{ pathname: link, query: query }}
@@ -78,19 +78,19 @@ function ContactUsCard(props: any) {
     <div className="w-full flex flex-row h-[550px] items-center justify-center sm:w-11/12 md:w-full bg-lime  drop-shadow-lg sm:px-3 border-lime items-end">
       <div className="my-[22px] mx-[10px]">
         <div className="px-2">
-          <h4 className="font-semibold text-[25px] leading-7 text-dark-blue text-left mb-[15px]">
+          <h4 className="font-semibold text-[25px] leading-7 text-black text-left mb-[15px]">
             Contact Us
           </h4>
           <div className="flex flex-row gap-2">
             <div className="flex flex-col justify-between items-center py-5">
               <FontAwesomeIcon
-                  className="w-6 h-5 text-dark-blue "
+                  className="w-6 h-5 text-black "
                   icon={faLocationCrosshairs}
               />
               <div className="w-[1px] bg-dark-blue h-full">
               </div>
               <FontAwesomeIcon
-                  className="w-3 h-3 text-dark-blue"
+                  className="w-3 h-3 text-black"
                   icon={faCircleDot}
               />
             </div>
@@ -120,31 +120,31 @@ function ContactUsCard(props: any) {
           <ul>
             <li className="flex items-center gap-5 text-sm md:text-[12px] lg:text-sm py-[5px] ">
               <FontAwesomeIcon
-                className="w-6 h-5 text-dark-blue mt-1"
+                className="w-6 h-5 text-black mt-1"
                 icon={faPhone}
               />
               0800 048 7474
             </li>
             <li className="flex items-center gap-5 text-sm md:text-[12px] lg:text-sm py-[5px] ">
               <FontAwesomeIcon
-                className=" w-6 h-5 text-dark-blue mt-1"
+                className=" w-6 h-5 text-black mt-1"
                 icon={faMessage}
               />
               <Link
                 href="mailto:info@nationwidesurveyors.org.uk"
-                className="text-sm md:text-[11px] lg:text-sm leading-5 lg:leading-6 hover:text-dark-blue ease-in duration-200 break-all"
+                className="text-sm md:text-[11px] lg:text-sm leading-5 lg:leading-6 hover:text-black ease-in duration-200 break-all"
               >
                 info@nationwidesurveyors.org.uk
               </Link>
             </li>
             <li className="flex items-center gap-5 text-sm md:text-[11px] lg:text-sm py-[5px]  ">
               <FontAwesomeIcon
-                className=" w-6 h-5 text-dark-blue mt-1"
+                className=" w-6 h-5 text-black mt-1"
                 icon={faGlobe}
               />
               <a
                 href="https://nationwide-surveyors.org.uk/"
-                className="text-sm md:text-[11px] lg:text-sm leading-5 lg:leading-6 hover:text-dark-blue ease-in duration-200 break-all"
+                className="text-sm md:text-[11px] lg:text-sm leading-5 lg:leading-6 hover:text-black ease-in duration-200 break-all"
               >
                 www.nationwidesurveyors.org.uk
               </a>

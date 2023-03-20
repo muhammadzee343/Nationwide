@@ -5,7 +5,7 @@ import Head from "next/head";
 import HowItWorks from "../../../components/howItWorksCard.component";
 import ServiceHeader from "../../../components/serviceHeader.component";
 import ButtonComponent from "../../../components/button.component";
-import {router} from "next/client";
+import router from "next/router";
 import { faqCardData, faqAccordionData } from "../../../utility/constants";
 import FaqAccordionComponent from "../../../components/faqAccordion.component";
 import BoxBackgroundComponent from "../../../components/boxBackground.component";
@@ -65,11 +65,11 @@ function Service({ certificate }: any) {
             </div>
             <div className="2xl:w-8/12 px-4">
               <section>
-                <div className=" w-full flex flex-col items-center justify-center px-3">
+                <div className="w-full flex flex-col items-center justify-center px-3">
                   <div className="w-full md:container flex flex-col  flex-wrap  pb-[60px]">
                     <div className="pt-6 pb-20">
                       <div className="border-b-4 border-lime w-[85px] rounded-full mb-3"></div>
-                      <h2 className="text-dark-blue text-4xl font-medium ">
+                      <h2 className="text-black text-4xl font-medium ">
                         How it works?
                       </h2>
                     </div>
@@ -94,10 +94,10 @@ function Service({ certificate }: any) {
                 <div className="w-full flex flex-col gap-y-4 md:flex-row md:justify-between">
                   <div className="w-full md:w-[50%]">
                     <div className="border-b-4 border-lime w-[85px] rounded-full mb-3"></div>
-                    <h2 className="text-dark-blue text-3xl font-medium ">
+                    <h2 className="text-black text-3xl font-medium ">
                       Frequently Asked Questions
                     </h2>
-                    <p className="text-dark-blue text-[15px] leading-[27px] mt-5 mb-10">
+                    <p className="text-black text-[15px] leading-[27px] mt-5 mb-10">
                       I am promo text. Click edit button to change this text. Lorem ipsum dolor sit amet,
                       consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo
                     </p>
@@ -120,10 +120,10 @@ function Service({ certificate }: any) {
                       limeStyle='-left-3 lg:-left-5 bottom-10 w-[60%] h-[40%] md:w-[40%]'
                     >
                       <div className=" h-full rounded-lg p-5 border-lime border-t-8 bg-white drop-shadow-lg self-center">
-                        <h2 className="text-dark-blue text-3xl font-medium ">
+                        <h2 className="text-black text-3xl font-medium ">
                           Ask A Different Questions
                         </h2>
-                        <p className="text-dark-blue text-[15px] leading-[27px] mt-2 mb-10">
+                        <p className="text-black text-[15px] leading-[27px] mt-2 mb-10">
                           Ask your query by filling this form.
                         </p>
                         <form onSubmit={{}}>
@@ -132,7 +132,7 @@ function Service({ certificate }: any) {
                                         <TextField
                                           lable="First Name"
                                           name="first_name"
-                                          className="text-lg text-dark-blue"
+                                          className="text-lg text-black"
                                           errors={errors}
                                           register={register}
                                           errorClass="text-[#ff0000] text-sm float-right"
@@ -142,7 +142,7 @@ function Service({ certificate }: any) {
                                       </div>
                                       <div className="w-full" >
                                         <div className="">
-                                          <p className="text-base md:text-lg text-dark-blue font-semibold mr-3 ">
+                                          <p className="text-base md:text-lg text-black font-semibold mr-3 ">
                                             Postcode where your property exist?
                                           </p>
                                           <p className="text-[10px] md:text-sm my-1">
@@ -150,7 +150,7 @@ function Service({ certificate }: any) {
                                           </p>
                                           <TextField
                                             placeholder="Enter postcode here"
-                                            className="text-lg text-dark-blue font-semibold"
+                                            className="text-lg text-black font-semibold"
                                             errors={errors}
                                             register={register}
                                             errorClass="text-[#ff0000] text-sm font-semibold float-right"
@@ -173,7 +173,7 @@ function Service({ certificate }: any) {
                                           errorClass="text-[#ff0000] text-sm float-right"
                                           required={true}
                                           pattern={/^\(?(?:(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?\(?(?:0\)?[\s-]?\(?)?|0)(?:\d{5}\)?[\s-]?\d{4,5}|\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3})|\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4}|\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}|8(?:00[\s-]?11[\s-]?11|45[\s-]?46[\s-]?4\d))(?:(?:[\s-]?(?:x|ext\.?\s?|\#)\d+)?)$/}
-                                          className="text-lg text-dark-blue"
+                                          className="text-lg text-black"
                                           inputClass="border-lime py-2.5 px-3"
                                         />
                                       </div>
@@ -186,14 +186,14 @@ function Service({ certificate }: any) {
                                           errorClass="text-[#ff0000] text-sm float-right"
                                           pattern={/^\S+@\S+$/i}
                                           required={true}
-                                          className="text-lg text-dark-blue"
+                                          className="text-lg text-black"
                                           inputClass="border-lime py-2.5 px-3"
                                         />
                                       </div>
                                       <div className="w-full md:px-0">
                                         <ButtonComponent
                                           text="Next"
-                                          className="bg-lime text-dark-blue uppercase text-lg font-semibold px-[2px] sm:px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"
+                                          className="bg-lime text-black uppercase text-lg font-semibold px-[2px] sm:px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"
                                         />
                                       </div>
                           </div>
@@ -208,10 +208,10 @@ function Service({ certificate }: any) {
                   <div className="w-full flex flex-row justify-between items-start flex-wrap ">
                     <div className="flex flex-col border-white lg:mb-[30px] py-2">
                       <div className='border-b-4 border-lime w-[70px] mb-3'></div>
-                      <h2 className="text-xl lg:text-4xl text-dark-blue font-semibold">
+                      <h2 className="text-xl lg:text-4xl text-black font-semibold">
                         READY TO PLACE ORDER
                       </h2>
-                      <p className="text-[10px] md:text-[12px] mt-[5px] uppercase text-dark-blue ">
+                      <p className="text-[10px] md:text-[12px] mt-[5px] uppercase text-black ">
                         Click on ‘Order Now’ to place a new order.
                       </p>
                       <div className="hidden w-[60%] lg:flex ">
@@ -230,7 +230,7 @@ function Service({ certificate }: any) {
                       </div>
                     </div>
                     <div className="w-full self-center xl:w-[44%]">
-                      <p className="text-dark-blue text-[15px] leading-[27px]">
+                      <p className="text-black text-[15px] leading-[27px]">
                         New orders can be placed anytime through our website with a smooth and quick online order form.
                       </p>
                     </div>
