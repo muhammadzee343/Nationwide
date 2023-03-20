@@ -14,7 +14,7 @@ import {
   SidebarContext,
   UuidContext,
 } from "../context/sidebarContext";
-import router from "next/router";
+import {useRouter} from "next/router";
 import {v4 as uuidv4} from "uuid";
 import {loadStripe} from "@stripe/stripe-js";
 import {
