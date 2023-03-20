@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "../styles/ourServices.module.css";
 import {homeServices, howItWorks, ourServices} from "../utility/constants";
 import OurServicesComponent from "../components/ourServices.component";
 import Head from "next/head";
@@ -11,7 +10,7 @@ import BoxBackgroundComponent from "../components/boxBackground.component";
 import ButtonComponent from "../components/button.component";
 import ServiceInfo from "../components/serviceInfo.component";
 import SelectProperty from "../components/selectProperty.component";
-import {router} from "next/client";
+import router from "next/router";
 
 function OurServices(props: any) {
   return (
@@ -222,8 +221,6 @@ function OurServices(props: any) {
                   </div>
               </div>
           </section>
-
-
       </div>
   );
 }

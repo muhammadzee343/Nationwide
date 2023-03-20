@@ -211,7 +211,7 @@ function GeneralEnquiries({ Services }: any) {
             <div className="w-full md:px-8  xl:max-w-[1114px]  flex flex-col">
               <div className="mb-[20px] px-4 md:px-0">
                 <div className="border-b-4 rounded-full border-lime w-[85px] mb-3"></div>
-                <h2 className="text-[36px] text-dark-blue font-semibold">
+                <h2 className="text-[36px] text-black font-semibold">
                   Request a callback
                 </h2>
               </div>
@@ -225,7 +225,7 @@ function GeneralEnquiries({ Services }: any) {
               <div className="flex flex-col md:gap-5 md:flex-row">
                 <div className="w-full md:w-[50%] bg-white rounded-lg md:drop-shadow-lg px-4 md:px-8 pt-8">
                   <div >
-                    <p className="text-[20px] text-dark-blue mr-3 ">
+                    <p className="text-[20px] text-black mr-3 ">
                       Your Contact Details
                     </p>
                     <p className="text-[10px] text-slate-500 mr-3 ">
@@ -235,7 +235,7 @@ function GeneralEnquiries({ Services }: any) {
                   {radioQuestions.map((ele: any, index) => {
                     return (
                       <div className="w-full" key={index}>
-                        <p className="text-[15px] xl:text-lg text-dark-blue my-8 font-semibold mr-3 ">
+                        <p className="text-[15px] xl:text-lg text-black my-8 font-semibold mr-3 ">
                           {ele.question}
                         </p>
                         <div className="flex flex-wrap gap-5 justify-between md:max-w-[340px] max-w-[320px]">
@@ -262,7 +262,7 @@ function GeneralEnquiries({ Services }: any) {
                   })}
                   <div className="w-full gap-y-6 " >
                     <div className="pb-8">
-                      <p className=" text-lg text-dark-blue my-3 font-semibold mr-3 ">
+                      <p className=" text-lg text-black my-3 font-semibold mr-3 ">
                         Postcode where services are required
                       </p>
                       <p className="text-sm my-3">
@@ -270,7 +270,7 @@ function GeneralEnquiries({ Services }: any) {
                       </p>
                       <TextField
                         placeholder="Enter postcode here"
-                        className="text-lg text-dark-blue font-semibold"
+                        className="text-lg text-black font-semibold"
                         errors={errors}
                         register={register}
                         errorClass="text-[#ff0000] text-sm font-semibold float-right"
@@ -287,7 +287,7 @@ function GeneralEnquiries({ Services }: any) {
                           <TextField
                               lable="First Name"
                               name="first_name"
-                              className="text-lg text-dark-blue"
+                              className="text-lg text-black"
                               errors={errors}
                               register={register}
                               errorClass="text-[#ff0000] text-sm float-right"
@@ -303,7 +303,7 @@ function GeneralEnquiries({ Services }: any) {
                               register={register}
                               errorClass="text-[#ff0000] text-sm float-right"
                               required={true}
-                              className="text-lg text-dark-blue"
+                              className="text-lg text-black"
                               inputClass="border-lime py-2.5 px-3"
                           />
                         </div>
@@ -316,7 +316,7 @@ function GeneralEnquiries({ Services }: any) {
                               errorClass="text-[#ff0000] text-sm float-right"
                               required={true}
                               pattern={/^\(?(?:(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?\(?(?:0\)?[\s-]?\(?)?|0)(?:\d{5}\)?[\s-]?\d{4,5}|\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3})|\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4}|\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}|8(?:00[\s-]?11[\s-]?11|45[\s-]?46[\s-]?4\d))(?:(?:[\s-]?(?:x|ext\.?\s?|\#)\d+)?)$/}
-                              className="text-lg text-dark-blue"
+                              className="text-lg text-black"
                               inputClass="border-lime py-2.5 px-3"
                           />
                         </div>
@@ -329,23 +329,23 @@ function GeneralEnquiries({ Services }: any) {
                               errorClass="text-[#ff0000] text-sm float-right"
                               pattern={/^\S+@\S+$/i}
                               required={true}
-                              className="text-lg text-dark-blue"
+                              className="text-lg text-black"
                               inputClass="border-lime py-2.5 px-3"
                           />
                         </div>
                       </div>
                       <div className="w-full py-8">
-                        <p className="text-lg text-dark-blue my-3 font-semibold mr-3 ">
+                        <p className="text-lg text-black my-3 font-semibold mr-3 ">
                           How would you prefer to be contacted?
                         </p>
                         <div className="w-full flex flex-row gap-x-4 pr-4 md:pr-0">
                           <div
                               onClick={()=> setContactType({contact_by: "phone"})}
-                              className={`cursor-pointer border-lime border-[2px] text-dark-blue text-base min-w-[50%] flex items-center justify-center sm:px-[20px] mb-2 py-[10px] ${contactType["contact_by"] == "phone" ? "bg-lime":"bg-white"}`}
+                              className={`cursor-pointer border-lime border-[2px] text-black text-base min-w-[50%] flex items-center justify-center sm:px-[20px] mb-2 py-[10px] ${contactType["contact_by"] == "phone" ? "bg-lime":"bg-white"}`}
                           >Phone</div>
                           <div
                               onClick={()=> setContactType({contact_by: "email"})}
-                              className={`cursor-pointer border-lime border-[2px] text-dark-blue text-base min-w-[50%] flex items-center justify-center sm:px-[20px] mb-2 py-[13px] ${contactType["contact_by"] == "email" ? "bg-lime":"bg-white"}`}
+                              className={`cursor-pointer border-lime border-[2px] text-black text-base min-w-[50%] flex items-center justify-center sm:px-[20px] mb-2 py-[13px] ${contactType["contact_by"] == "email" ? "bg-lime":"bg-white"}`}
                           >Email</div>
                         </div>
                         {/*<div className="my-4">*/}
@@ -383,7 +383,7 @@ function GeneralEnquiries({ Services }: any) {
 
                   <div className="w-full md:w-[50%] bg-white rounded-lg md:drop-shadow-lg mb-6 md:mb-0 md:pt-8">
                     <div className="">
-                      <p className="text-[20px] px-4 md:px-8 text-dark-blue mr-3 ">
+                      <p className="text-[20px] px-4 md:px-8 text-black mr-3 ">
                         Please choose the services you'd like to discuss
                       </p>
                     </div>
@@ -395,7 +395,7 @@ function GeneralEnquiries({ Services }: any) {
               <div className="my-6 px-4 md:px-0">
                 <TextArea
                     lable="Please use box below to provide any further information related to your enquiry"
-                    className="text-lg text-dark-blue font-semibold my-2"
+                    className="text-lg text-black font-semibold my-2"
                     inputClass="border-grey-500 py-2.5 px-3"
                     errors={errors}
                     register={register}
@@ -407,7 +407,7 @@ function GeneralEnquiries({ Services }: any) {
               <div className="mb-14 px-4 md:px-0">
                 <ButtonComponent
                     text="Submit"
-                    className="bg-lime text-dark-blue uppercase text-lg font-semibold px-[2px] sm:px-[20px] py-[16px] hover:bg-dark-blue hover:text-white ease-in duration-200"
+                    className="bg-lime text-black uppercase text-lg font-semibold px-[2px] sm:px-[20px] py-[16px] hover:bg-dark-blue hover:text-white ease-in duration-200"
                 />
               </div>
             </div>
