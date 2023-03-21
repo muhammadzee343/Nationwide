@@ -21,7 +21,7 @@ function PricingCard({
           {content?.bundleName === "Service Bundle Three" && (
               <div className="flex flex-row text-white bg-lime absolute -top-3 left-[30%] justify-center items-center w-[40%] p-1.5 rounded ">
                 <FontAwesomeIcon className="w-4 mr-2" icon={faStar} />
-                <p className='text-[9px]'>MOST POPULAR</p>
+                <p className='text-[9px] lg:text-[7px] xl:text-[9px]'>MOST POPULAR</p>
               </div>
           )}
           <h3 className='text-xl uppercase text-center text-white '>{content?.bundleName}</h3>

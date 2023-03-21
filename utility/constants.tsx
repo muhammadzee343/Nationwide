@@ -1,7 +1,7 @@
 import Image from "../public/electrical-1-1024x410-1.jpg";
-import Survey from "../public/image7.png";
+import Survey from "../public/surveyor-1.jpg";
 import Electrical from "../public/electrical-1-1024x410-1.jpg";
-import Electrical2 from "../public/image11.png";
+import Electrical2 from "../public/eicr7.jpg";
 import Certificate from "../public/image27.png";
 import Engineer from "../public/image28.png";
 import epc from "../public/domesticepc.png";
@@ -43,7 +43,7 @@ import certificate from "../public/Group1834.png";
 import as2 from "../public/image26.png";
 import as3 from "../public/Rectangle308.png";
 import as4 from "../public/Rectangle305.png";
-import as1 from "../public/image30.png";
+import as1 from "../public/image28.png";
 
 export const myFont = localFont({
   src: [

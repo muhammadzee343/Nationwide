@@ -21,7 +21,7 @@ function ContactUs(props: any) {
         <title>Nationwide Surveyors | Contact Us</title>
       </Head>
       <div className="bg-contact_us bg-cover w-full block">
-        <div className="flex w-full bg-blue-transparent backdrop-brightness-100 pt-[45px] pb-[30px] md:min-h-[350px] lg:min-h-[440px] flex flex-row flex-wrap justify-start lg:px-32">
+        <div className="flex w-full bg-[#000000]/70 backdrop-brightness-100 pt-[45px] pb-[30px] md:min-h-[350px] lg:min-h-[440px] flex flex-row flex-wrap justify-start lg:px-32">
           <div className="w-full mb-3 px-4 md:w-[60%] lg:mt-10 xl:w-[40.5%] xl:w-[36.7%]">
             <div className="border-b-4 rounded-full border-lime w-[85px] mb-3"></div>
             <h4 className="text-white uppercase text-[23px] ">GET IN TOUCH</h4>

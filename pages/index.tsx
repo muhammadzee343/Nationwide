@@ -91,8 +91,8 @@ export default function Home() {
           <Pricing />
         </div>
       </BoxBackgroundComponent>
-      <div className="w-full py-5 lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto ">
-        <div className="pb-[60px] flex gap-6 flex-col lg:flex-row">
+      <div className="w-[95%] py-5 lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto ">
+        <div className="pb-[60px] flex gap-6 flex-col flex-col-reverse lg:flex-row">
           <>
             {content.image && (
               <BoxBackgroundComponent className={'h-[300px] w-full lg:w-5/12 p-2 lg:h-auto'}
@@ -162,7 +162,7 @@ export default function Home() {
       </div>
       <div className="w-full py-5 ">
             <div className="w-full flex flex-row justify-center">
-              <div className="flex flex-col justify-between items-center py-5 mb-8 ml-8">
+              <div className="flex flex-col justify-between items-center py-5 mb-8 lg:pr-10">
                 <div className="w-[1px] items-center justify-between py-10 flex flex-col bg-dark-blue h-full">
                   <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
                   <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
@@ -171,7 +171,7 @@ export default function Home() {
                 </div>
               </div>
                 <div className="flex justify-center ">
-                  <div className="lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px]">
+                  <div className="w-[95%] lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px]">
                     <div className="flex flex-col items-center justify-center ">
                       <div className='flex flex-col self-start'>
                         <div className='border-lime border-b-4 rounded-full w-[40%] mb-3'></div>
@@ -186,7 +186,7 @@ export default function Home() {
                               <div
                                 className={`${
                                   index % 2 == 0
-                                    ? "flex-col lg:flex-row"
+                                    ? "flex-col-reverse lg:flex-row"
                                     : "flex-col-reverse  lg:flex-row-reverse"
                                 } pb-[60px] flex gap-6`}
                                 key={index}
