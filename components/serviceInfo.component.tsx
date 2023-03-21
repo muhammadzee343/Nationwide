@@ -24,21 +24,21 @@ function ServiceInfo({ className, content, index }: any) {
         </BoxBackgroundComponent>
       )}
       <div
-        className={`${content.image ? "lg:w-[58%]" : "lg:w-12/12"} py-4 px-1`}
+        className={`w-full ${content.image ? "lg:w-[58%]" : "lg:w-12/12"} py-4`}
       >
         {content.type !== "Service" && (
           <>
             <div className="mb-[30px] py-2">
-              <h4 className="text-sm mb-[2px] mt-[5px] uppercase font-semibold text-[#1a1a1a] tracking-[1px]">
+              <h4 className="text-[10px] xl:text-sm mb-[2px] mt-[5px] uppercase font-semibold text-[#1a1a1a] tracking-[1px]">
                 {content.subTitle}
               </h4>
-              <h2 className="text-4xl text-[#1a1a1a] font-medium">
+              <h2 className="text-2xl xl:text-4xl text-[#1a1a1a] font-medium">
                 {content.title}
               </h2>
             </div>
             <p className={`${styles.servicePara2}`}>{content.paragraph1}</p>
             <div>
-              <p className={styles.servicePara2}>{content.paragraph2}</p>
+              <p className={`${styles.servicePara2}`}>{content.paragraph2}</p>
             </div>
             {content.link && (
                 <div className={"flex flex-row hover:text-dark-blue"}>
@@ -56,14 +56,14 @@ function ServiceInfo({ className, content, index }: any) {
           </>
         )}
         {content.type === "Service" && (
-          <div className="flex flex-col leading-relaxed list-disc w-[80%]">
+          <div className="flex flex-col leading-relaxed list-disc">
             <h3
               className={`text-[26px] font-semibold mb-2 ${styles.serviceHeading}`}
             >
               {content.heading}
             </h3>
             <div
-              className="text-[#1A1A1A] text-[15px]"
+              className="text-[#1A1A1A] text-[15px] text-justify"
               dangerouslySetInnerHTML={{
                 __html: `${cleanContent}`,
               }}

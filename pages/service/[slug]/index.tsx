@@ -49,11 +49,11 @@ function Service({ certificate }: any) {
                 return (
                   <>
                     <div
-                      className={`${
+                      className={`flex ${
                         index % 2 != 0
-                          ? "flex flex-col lg:flex-row"
-                          : "flex flex-col-reverse lg:flex-row-reverse"
-                      } pb-[60px] gap-6 `}
+                          ? "flex-col-reverse lg:flex-row"
+                          : "flex-col-reverse lg:flex-row-reverse"
+                      } pb-[60px] gap-6`}
                       key={index}
                     >
                       <ServiceInfo content={content} className={className} />

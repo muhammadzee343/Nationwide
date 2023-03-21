@@ -23,7 +23,7 @@ function OurServices(props: any) {
               />
           </Head>
           <div className="bg-our_services bg-cover w-full">
-              <div className="flex w-full bg-blue-transparent backdrop-brightness-100 pt-[45px] pb-[30px] min-h-[500px] lg:min-h-[50px] flex flex-row flex-wrap justify-around">
+              <div className="flex w-full bg-[#000000]/70 backdrop-brightness-100 pt-[45px] pb-[30px] min-h-[500px] lg:min-h-[50px] flex flex-row flex-wrap justify-around">
                   <div className="w-full px-5 md:px-10 lg:px-0 lg:mt-10 lg:w-[40.5%] xl:w-[35.7%]">
                       <div className="border-b-4 border-lime rounded-full w-[85px] mb-3"></div>
                       <h4 className="font-bold text-white uppercase text-[26px] ">Our Services</h4>
@@ -68,7 +68,7 @@ function OurServices(props: any) {
                                         <div
                                           className={`${
                                             index % 2 == 0
-                                              ? "flex-col lg:flex-row"
+                                              ? "flex-col-reverse lg:flex-row"
                                               : "flex-col-reverse  lg:flex-row-reverse"
                                           } pb-[60px] flex gap-6`}
                                           key={index}
@@ -95,15 +95,15 @@ function OurServices(props: any) {
                                   All Our Services
                               </h2>
                           </div>
-                          <div className=" hidden lg:flex lg:gap-2 xl:gap-6 xxl:gap-9">
+                          <div className="hidden lg:flex w-full flex-row justify-between">
                               {ourServices.map(({ list, title, image }, index) => {
                                   return (
-                                      <OurServicesComponent
-                                          key={index}
-                                          list={list}
-                                          title={title}
-                                          image={image}
-                                      />
+                                    <OurServicesComponent
+                                      key={index}
+                                      list={list}
+                                      title={title}
+                                      image={image}
+                                    />
                                   );
                               })}
                           </div>

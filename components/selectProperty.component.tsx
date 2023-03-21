@@ -25,19 +25,19 @@ export default function SelectProperty() {
       >
         <form id="instantquote_main" method="post">
           <div className='bg-white rounded pb-6'>
-          <h3 className="text-white uppercase text-[26px] mx-25 bg-dark-blue py-[35px] px-[25px] block rounded drop-shadow-lg">
+          <h3 className="text-white uppercase text-[26px] lg:text-[20px] xl:text-[26px] mx-25 bg-dark-blue py-[35px] px-[20px] block rounded drop-shadow-lg">
             Get Instant Quote
           </h3>
-          <div className="mb-[25px] mt-0 py-[20px] px-[25px] h-[291px] text-center ">
+          <div className="mb-[25px] mt-0 py-[20px] px-[20px] h-[291px] text-center ">
             <div className="text-left relative" id="default_screen">
-              <h6 className="text-black block text-base my-[12px] text-center">
+              <h6 className="text-black block text-base lg:text-sm xl:text-base my-[12px] text-center">
                 Select Your Property as appropraite and get quote in 30 seconds!
               </h6>
               <div className="justify-center h-[158px] flex-col">
                 <div className="cat_box">
                   <label
-                    className=" relative flex items-center border-2 border-lime py-[16px] px-[5px]
-                   pl-[55px] font-[15px] font-bold text-black cursor-pointer mb-[15px]
+                    className="relative flex items-center justify-center border-2 border-lime py-[10px] xl:py-[16px] px-[5px]
+                   text-[15px] font-bold text-black cursor-pointer mb-[15px]
                    hover:bg-lime"
                     onClick={() => displayDrawer("residential_property")}
                   >
@@ -50,13 +50,13 @@ export default function SelectProperty() {
                   </label>
 
                   <label
-                    className="relative flex items-center border-2 border-lime py-[16px] px-[5px]
-                   pl-[55px] font-[15px] font-bold text-dark-blue cursor-pointer mb-[15px] hover:bg-lime"
+                    className="relative flex items-center justify-center border-2 border-lime py-[10px] xl:py-[16px] px-[5px]
+                    text-[14px] font-bold text-black cursor-pointer mb-[15px] hover:bg-lime"
                     onClick={() => displayDrawer("commercial_property")}
                   >
                     <Image src={Builiding} alt='home' className="h-7 w-7 mr-4"/>
                     {/*<FontAwesomeIcon*/}
-                    {/*  className="w-[26px] ,w-3 text-dark-blue  absolute left-[14px]"*/}
+                    {/*  className="w-[26px] ,w-3 text-black  absolute left-[14px]"*/}
                     {/*  icon={faBuilding}*/}
                     {/*/>*/}
                     Commercial Property
@@ -65,7 +65,7 @@ export default function SelectProperty() {
               </div>
               <ButtonComponent
                 text="Quote Now"
-                className="bg-lime text-dark-blue font-semibold uppercase px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"
+                className="bg-lime text-black font-semibold uppercase px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"
                 onClick={() => displayDrawer("residential_property")}
                 type="button"
               />

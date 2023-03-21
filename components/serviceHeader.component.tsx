@@ -13,7 +13,7 @@ function ServiceHeader(props: any) {
   ];
   return (
     <>
-      <div className="bg-header_bg bg-blue-transparent bg-cover bg-no-repeat relative h-[230px] sm:h-[300px] md:h-fit  w-full">
+      <div className="bg-header_bg bg-[#000000]/70 bg-cover bg-no-repeat relative h-[230px] sm:h-[300px] md:h-fit  w-full">
         <div className="md:bg-blue-transparent hidden md:block w-full py-[32px]">
           <div className="w-full flex justify-between">
             <div className="w-full flex flex-col md:flex-row justify-between items-center md:px-10 lg:px-16">

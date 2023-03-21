@@ -88,3 +88,7 @@ input[type='radio']:checked{
 .privacy-image-bg {
   background-position: 0% 0%;
 }
+
+.swiper-pagination-bullet{
+  border-radius: 0 !important;
+}

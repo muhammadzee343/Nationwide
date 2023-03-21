@@ -15,13 +15,13 @@ function PricingCard({
   return (
     <>
       <div
-        className={`w-[284px] mt-3 lg:mt-0 mx-2 p-0 pb-12 bg-white  drop-shadow-md text-[15px] relative${styles.specialBUndle}`}
+        className={`w-[284px] mt-3 lg:mt-0 mx-2 p-0 pb-6 min-h-[528px] bg-white  drop-shadow-md text-[15px] relative${styles.specialBUndle}`}
       >
         <div className="w-full py-8 shadow-lg bg-dark-blue justify-center items-center">
           {content?.bundleName === "Service Bundle Three" && (
               <div className="flex flex-row text-white bg-lime absolute -top-3 left-[30%] justify-center items-center w-[40%] p-1.5 rounded ">
                 <FontAwesomeIcon className="w-4 mr-2" icon={faStar} />
-                <p className='text-[9px]'>MOST POPULAR</p>
+                <p className='text-[9px] lg:text-[7px] xl:text-[9px]'>MOST POPULAR</p>
               </div>
           )}
           <h3 className='text-xl uppercase text-center text-white '>{content?.bundleName}</h3>
@@ -56,7 +56,7 @@ function PricingCard({
                       return (
                         <li
                           key={index}
-                          className="relative pl-[25px]  pt-[12px] pb-[11px] leading-[22px] border-b border-b-slate-100 flex text-sm text-black"
+                          className="relative pl-[25px] pt-[12px] pb-[11px] leading-[22px] border-b border-b-slate-100 flex text-sm lg:text-[12px] xl:text-sm text-black"
                         >
                           <span className=" absolute left-[-2px] top-[16px]">
                             <FontAwesomeIcon className="w-4" icon={faCheck} />
@@ -79,7 +79,7 @@ function PricingCard({
                       content?.bundleName === "Service Bundle Three"
                         ? "bg-lime text-dark-blue bg-lime hover:bg-dark-blue hover:text-white "
                         : "bg-dark-blue text-white hover:bg-lime hover:text-white"
-                    } ease-in duration-200 px-[20px] py-[13px] uppercase`}
+                    } ease-in duration-200 px-[20px] lg:px-[10px] xl:px-[20px] py-[13px] uppercase`}
                   />
                 </Link>
               </div>
