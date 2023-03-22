@@ -92,3 +92,25 @@ input[type='radio']:checked{
 .swiper-pagination-bullet{
   border-radius: 0 !important;
 }
+
+
+@media screen and (min-width: 768px) {
+  .line-container-homepage {
+    width:4%;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .line-container-homepage {
+    width:35%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .line-container-homepage {
+    width:4%;
+  }
+}
+
+
+
+
+

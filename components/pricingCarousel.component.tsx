@@ -55,7 +55,7 @@ function PricingCarouselComponent(props: any) {
             directionArrow='left'
           />
           {bundles.map(({ className, content }, index) => {
-            console.log(index, content.bundleName);
+
             return (
               <SwiperSlide
                 key={index}

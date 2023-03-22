@@ -1,5 +1,5 @@
 import React from "react";
-import {homeServices, howItWorks, ourServices} from "../utility/constants";
+import {ourServices, howItWorks} from "../utility/constants";
 import OurServicesComponent from "../components/ourServices.component";
 import Head from "next/head";
 import HowItWorks from "../components/howItWorksCard.component";
@@ -11,6 +11,7 @@ import ButtonComponent from "../components/button.component";
 import ServiceInfo from "../components/serviceInfo.component";
 import SelectProperty from "../components/selectProperty.component";
 import router from "next/router";
+import OurServices2 from "../components/ourServices2.component";
 
 function OurServices(props: any) {
   return (
@@ -52,7 +53,7 @@ function OurServices(props: any) {
               </h2>
               <div className="w-full flex flex-row ">
                   <div className="w-full flex flex-row gap-x-2">
-                      <div className="flex flex-col justify-between items-center py-5 mb-8">
+                      <div className="flex flex-col justify-between items-center py-5 mb-8 ">
                           <div className="w-[1px] items-center justify-between py-10 flex flex-col bg-dark-blue h-full">
                               <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
                               <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
@@ -60,23 +61,21 @@ function OurServices(props: any) {
                               <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
                           </div>
                       </div>
-                      <div className="flex flex-col items-center justify-center px-3 ">
+                      <div className="w-full flex flex-col items-center">
                           {
-                              homeServices.map(({ className, content }: any, index: any) => {
-                                  if(index!==0){
+                              ourServices.map(({ list, title, image }, index) => {
                                       return (
                                         <div
-                                          className={`${
-                                            index % 2 == 0
+                                          className={`w-full ${
+                                            index % 2 != 0
                                               ? "flex-col-reverse lg:flex-row"
                                               : "flex-col-reverse  lg:flex-row-reverse"
                                           } pb-[60px] flex gap-6`}
                                           key={index}
                                         >
-                                            <ServiceInfo content={content} index={index} className={className} />
+                                            <OurServices2 title={title} image={image} list={list}/>
                                         </div>
                                       );
-                                  }
                               })}
                       </div>
                   </div>

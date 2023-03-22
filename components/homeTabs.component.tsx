@@ -8,7 +8,7 @@ const HomeTab = () => {
 
     return (
         <div className="lg:flex gap-x-10 xl:gap-x-20 p-6 lg:py-3 lg:px-0 md:min-h-[421px]">
-            <div className="relative self-start lg:min-h-[450px] lg:bg-hero lg:w-[50%] mb-5 lg:mb-0 ">
+            <div className="relative self-start lg:min-h-[450px] lg:bg-hero bg-cover lg:w-[50%] mb-5 lg:mb-0 ">
                 <ul className="flex justify-center flex-wrap align-center lg:flex-col lg:absolute -right-7 -bottom-[6%] z-10 lg:mt-6">
                     {SERVICES.map((ele, index) => {
                         return (
