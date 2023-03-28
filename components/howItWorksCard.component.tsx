@@ -29,7 +29,7 @@ export default function HowItWorks({
           <h2
             className={`${
               type === "service"
-                ? "text-[16px] mb-[8px]"
+                ? "text-[17px] mb-[8px]"
                 : "text-[20px] mb-[15px]"
             } text-black font-bold uppercase`}
           >

@@ -15,7 +15,7 @@ function PricingCard({
   return (
     <>
       <div
-        className={`w-[284px] mt-3 lg:mt-0 mx-2 p-0 pb-6 min-h-[528px] bg-white  drop-shadow-md text-[15px] relative${styles.specialBUndle}`}
+        className={`w-[284px] mt-3 lg:mt-0 mx-2 p-0  bg-white  drop-shadow-md text-[15px] relative ${styles.specialBUndle}`}
       >
         <div className="w-full py-8 shadow-lg bg-dark-blue justify-center items-center">
           {content?.bundleName === "Service Bundle Three" && (
