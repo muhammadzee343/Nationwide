@@ -18,12 +18,12 @@ export default function SelectProperty() {
     }, 1);
   };
   return (
-      <div
-        className="bg-white text-center border-transparent drop-shadow-xl lg:max-w-[382px] max-h-[400px]"
-        id="main_quote_form"
-      >
-        <form id="instantquote_main" method="post">
-          <div className='bg-white rounded'>
+    <div
+      className="bg-white text-center border-transparent drop-shadow-xl lg:max-w-[382px] max-h-[400px] rounded "
+      id="main_quote_form"
+    >
+      <form id="instantquote_main" method="post">
+        <div className='bg-white rounded'>
           <h3 className="text-white uppercase text-[26px] lg:text-[20px] xl:text-[26px] mx-25 bg-dark-blue py-[35px] lg:py-[25px] xl:py-[35px] px-[20px] block rounded drop-shadow-lg">
             Get Instant Quote
           </h3>
@@ -70,8 +70,8 @@ export default function SelectProperty() {
               />
             </div>
           </div>
-          </div>
-        </form>
-      </div>
+        </div>
+      </form>
+    </div>
   );
 }

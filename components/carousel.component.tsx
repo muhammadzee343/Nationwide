@@ -39,7 +39,7 @@ function CarouselComponent({ list, component, className = "" }: any) {
         modules={[Pagination, Navigation]}
         onSlideChange={() => {}}
         onSwiper={(swiper) => {}}
-        className={`mySwiper w-full flex justify-center ${className} min-h-[420px] relative`}
+        className={`mySwiper w-full flex justify-center ${className} min-h-[280px] relative`}
         style={{
           "--swiper-pagination-color": "#c2cf10",
           "--swiper-pagination-bullet-inactive-color": "#182333",

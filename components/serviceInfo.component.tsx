@@ -12,15 +12,15 @@ function ServiceInfo({ className, content, index }: any) {
   return (
     <>
       {content.image && (
-        <BoxBackgroundComponent className={'h-[300px] w-full lg:w-5/12 p-2 lg:h-auto'}
-        greyStyle='w-[30%] h-[50%] top-[0] right-[0] '
-        limeStyle='w-[30%] h-[50%] bottom-[0] left-[0]'
-        contentStyle='p-4  m-auto'>
-                <Image
-                    className="h-full w-full cursor-pointer"
-                    src={content.image}
-                    alt="ServiceInfo"
-                />
+        <BoxBackgroundComponent className={'min-h-[300px] md:min-h-[400px] lg:min-h-[300px] xl:min-h-[350px]  w-full lg:w-5/12 p-2 lg:h-auto'}
+                                greyStyle='w-[30%] h-[50%] top-[0] right-[0] '
+                                limeStyle='w-[30%] h-[50%] bottom-[0] left-[0]'
+                                contentStyle='p-4  m-auto'>
+          <Image
+            className="h-full w-full cursor-pointer"
+            src={content.image}
+            alt="ServiceInfo"
+          />
         </BoxBackgroundComponent>
       )}
       <div
@@ -41,17 +41,17 @@ function ServiceInfo({ className, content, index }: any) {
               <p className={`${styles.servicePara2}`}>{content.paragraph2}</p>
             </div>
             {content.link && (
-                <div className={"flex flex-row hover:text-dark-blue"}>
+              <div className={"flex flex-row hover:text-dark-blue"}>
                 <span className="flex mr-2 text-lime">
                   <FontAwesomeIcon className="w-5" icon={faArrowRightLong} />
                 </span>
-              <Link
-                href={content.link}
-                className="text-sm border-slate-700 border-b-[1px] uppercase text-lime hover:text-dark-blue flex"
-              >
+                <Link
+                  href={content.link}
+                  className="text-sm border-slate-700 border-b-[1px] uppercase text-lime hover:text-dark-blue flex"
+                >
                   Read More
-              </Link>
-            </div>
+                </Link>
+              </div>
             )}
           </>
         )}
