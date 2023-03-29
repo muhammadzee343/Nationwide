@@ -505,12 +505,12 @@ const DrawerComponent = ({}: any) => {
                 <ul className="mb-[20px]">
                   {selectedService.map((ele, index) => {
                     return (
-                      <li className="mb-[9px]" key={index}>
-                        <p className="text-left text-[19px] font-semibold">
-                          <span className="pr-[25px] font-bold">&#187;</span>
-                          {ele}
-                        </p>
-                      </li>
+                        <li className="mb-[9px] flex flex-row" key={index}>
+                          <span className="pr-[20px] font-bold">&#187;</span>
+                          <p className="text-left text-[19px] font-semibold">
+                            {ele}
+                          </p>
+                        </li>
                     );
                   })}
                 </ul>
@@ -544,7 +544,7 @@ const DrawerComponent = ({}: any) => {
                 {selectedService.length > 1 && (
                   <div className=" bg-dark-blue flex rounded-lg py-[10px] pl-[45px] pr-[20px]">
                     <FontAwesomeIcon
-                      className="text-lime w-4 mr-2"
+                      className="text-lime w-10 md:w-6 mr-2"
                       icon={faTag}
                     />
                     <p className="text-white text-[15px] font-semibold">
