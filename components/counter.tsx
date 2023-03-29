@@ -38,7 +38,7 @@ function Counter({
     });
   }
   return (
-    <div className="flex cursor-pointer">
+    <div className="flex cursor-pointer items-center">
       <div className="mr-3 flex items-center" onClick={decrement}>
           <span className=" w-5 h-5 bg-lime flex justify-center items-center items-center rounded-full">
           <FontAwesomeIcon

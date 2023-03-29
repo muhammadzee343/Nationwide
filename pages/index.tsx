@@ -90,8 +90,8 @@ export default function Home() {
             </div>
       </div>
       <BoxBackgroundComponent className='h-[650px] pt-1'
-        greyStyle='w-[60%] h-[50%] md:w-[40%]'
-        limeStyle='right-0 bottom-0 w-[60%] h-[40%] md:w-[60%]'
+        greyStyle='w-[60%] h-[50%] md:w-[40%] hidden md:block'
+        limeStyle='right-0 bottom-0 w-[60%] h-[40%] md:w-[60%] hidden md:block'
       >
         <div className='w-full py-4 mt-3 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1190px] mx-auto'>
           <div className='px-2 ml-4 md:ml-0'>
@@ -173,7 +173,7 @@ export default function Home() {
       </div>
       <div className="relative w-full ">
         <div className="relative w-full flex flex-row justify-center">
-          <div className="flex flex-col justify-between items-center py-5 mb-8 xxl:w-[1%]">
+          <div className="flex flex-col justify-between items-center py-5 mb-8 lg:w-[2%] xxl:w-[1%]">
             <div className="w-[1px] items-center justify-between py-10 flex flex-col bg-dark-blue h-full">
               <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
               <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
@@ -181,7 +181,7 @@ export default function Home() {
               <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
             </div>
           </div>
-          <div className="flex justify-center content-container-homepage xxl:w-[95%]">
+          <div className="flex justify-center lg:justify-start xl:justify-center content-container-homepage lg:w-[93%] xxl:w-[95%]">
             <div className="w-[90%] lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px]">
               <div className="flex flex-col items-center justify-center ">
                 <div className='flex flex-col self-start'>
