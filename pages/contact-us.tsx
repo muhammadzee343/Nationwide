@@ -75,7 +75,7 @@ function Enquiry({ text, link, query }: any) {
 
 function ContactUsCard(props: any) {
   return (
-    <div className="w-full flex flex-row h-[550px] items-center justify-center sm:w-11/12 md:w-full bg-lime  drop-shadow-lg sm:px-3 border-lime items-end">
+    <div className="w-full flex flex-row h-[400px] md:h-[450px] lg:h-[550px] items-center justify-center sm:w-11/12 md:w-full bg-lime  drop-shadow-lg sm:px-3 border-lime items-end">
       <div className="my-[22px] mx-[10px]">
         <div className="px-2">
           <h4 className="font-semibold text-[25px] leading-7 text-black text-left mb-[15px]">

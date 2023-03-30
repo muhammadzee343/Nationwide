@@ -18,7 +18,7 @@ function TextField({
       <label className={`${className}`}>
         {lable}
         {required && lable && (
-          <span className="text-[#ff0000] text-xl ml-1">*</span>
+          <span className="text-black text-xl ml-1">*</span>
         )}
       </label>
       <input

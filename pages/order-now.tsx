@@ -219,6 +219,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
   };
 
   const getPropertyAddress = async () => {
+    setValue("property_address", '')
     if (!propertyAddress) {
       const requestOptions = {
         method: "POST",
@@ -646,6 +647,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                         <label className="text-lg text-dark-blue font-semibold">
                           Property Address
                         </label>
+                        <p onClick={()=> setValue("property_address", '')}>Clear Address</p>
                         <input
                           type="text"
                           placeholder="Enter full address here"

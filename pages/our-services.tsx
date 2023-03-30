@@ -24,7 +24,7 @@ function OurServices(props: any) {
               />
           </Head>
           <div className="bg-our_services bg-cover w-full">
-              <div className="flex w-full bg-[#000000]/70 backdrop-brightness-100 pt-[45px] pb-[30px] lg:min-h-[450px] xl:min-h-[552px] flex flex-row flex-wrap justify-around">
+              <div className="flex w-full bg-[#000000]/70 backdrop-brightness-100 pt-[45px] pb-[50px] lg:pb-[30px] lg:min-h-[450px] xl:min-h-[552px] flex flex-row flex-wrap justify-around">
                   <div className="w-full px-5 md:px-10 lg:px-0 lg:mt-10 lg:w-[40.5%] xl:w-[35.7%]">
                       <div className="border-b-4 border-lime rounded-full w-[85px] mb-3"></div>
                       <h4 className="font-bold text-white uppercase text-[26px] ">Our Services</h4>
@@ -110,7 +110,7 @@ function OurServices(props: any) {
                               <CarouselComponent
                                 list={ourServices}
                                 component={OurServicesComponent}
-                                className="h-[320px]"
+                                className="h-[420px]"
                               />
                           </div>
                       </div>
