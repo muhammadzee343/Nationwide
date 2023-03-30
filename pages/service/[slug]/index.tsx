@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { howItWorks, service } from "../../../utility/constants";
 import ServiceInfo from "../../../components/serviceInfo.component";
 import Head from "next/head";
@@ -6,20 +6,86 @@ import HowItWorks from "../../../components/howItWorksCard.component";
 import ServiceHeader from "../../../components/serviceHeader.component";
 import ButtonComponent from "../../../components/button.component";
 import router from "next/router";
-import { faqCardData, faqAccordionData } from "../../../utility/constants";
+import { faqAccordionData } from "../../../utility/constants";
 import FaqAccordionComponent from "../../../components/faqAccordion.component";
 import BoxBackgroundComponent from "../../../components/boxBackground.component";
 import TextField from "../../../components/textFied.component";
 import {VALIDATION_CONFIG} from "../../../config/validation.config";
 import { useForm } from "react-hook-form";
+import TextArea from "../../../components/textArea.component";
 
 function Service({ certificate }: any) {
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
+    reset
   } = useForm({mode: "onChange"});
+  const [next, setNext] = useState(false )
+  const [service, setService] = useState(null)
+  const requestCallBack = async (data:any)=>{
+    const body = {
+      contact_form: {
+        first_name: data.full_name,
+        last_name: "",
+        phone: data.phone,
+        email: data.email,
+        existing_job_enquiry: "not_sure",
+        "type_of_enquiry": "availability_or_quotation",
+        post_code: data.post_code,
+        "contact_by": "email",
+        enquiry: data.enquiry
+      },
+      services: [service],
+    };
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    };
+    const response = await fetch(
+      `${process.env.BASE_URL_DEV}contact_forms`,
+      requestOptions
+    );
+
+    if (response.ok) {
+      let data = await response.json();
+      reset({
+        full_name: "",
+        phone: "",
+        email:"",
+        post_code: "",
+        enquiry: ""
+      })
+      setNext(false)
+    } else {
+      alert("Something Went wrong");
+    }
+  }
+
+  const getServices = async () =>{
+    const res = await fetch(`${process.env.BASE_URL_DEV}/services/list_services`);
+    const data = await res.json();
+    let { slug } = router.query;
+      let service = slug?.replace(/-/g, " ")
+      data.services.map((item:any)=>{
+        if(item.name.toUpperCase() === service.toUpperCase()){
+          setService(item.id)
+        }
+      })
+  }
+
+  useEffect(() => {
+    getServices();
+  }, []);
+
+  useEffect(() => {
+    if(!errors.enquiry && (errors.email || errors.post_code || errors.full_name || errors.phone)){
+      setNext(false)
+    }
+  }, [errors]);
+
   return (
     <>
       {certificate[0]?.servicesDec && <ServiceHeader servicesDec={certificate[0]?.servicesDec} />}
@@ -123,78 +189,103 @@ function Service({ certificate }: any) {
                         <h2 className="text-black text-3xl font-medium ">
                           Ask A Different Questions
                         </h2>
-                        <p className="text-black text-[15px] leading-[27px] mt-2 mb-10">
+                        <p className="text-black text-[15px] leading-[27px] mt-2 mb-6">
                           Ask your query by filling this form.
                         </p>
-                        <form onSubmit={{}}>
-                                    <div className="w-full flex flex-col items-center md:flex-row flex-wrap gap-y-3 lg:gap-y-6 mt-5 justify-between">
-                                      <div className="w-full">
-                                        <TextField
-                                          lable="First Name"
-                                          name="first_name"
-                                          className="text-lg text-black"
-                                          errors={errors}
-                                          register={register}
-                                          errorClass="text-[#ff0000] text-sm float-right"
-                                          required={true}
-                                          inputClass="border-lime py-2.5 px-3"
-                                        />
+                        <form onSubmit={handleSubmit(requestCallBack)}>
+                                    <div className="w-full flex flex-col items-center md:flex-row flex-wrap gap-y-3 lg:gap-y-4 mt-2 justify-between">
+                                      <div className={`${!next ? 'flex':'hidden'} w-full  flex-col items-center md:flex-row flex-wrap gap-y-3 lg:gap-y-4 justify-between`}>
+                                          <div className="w-full">
+                                              <TextField
+                                                  lable="Full Name"
+                                                  name="full_name"
+                                                  className="text-lg text-black"
+                                                  errors={errors}
+                                                  register={register}
+                                                  errorClass="text-[#ff0000] text-sm float-right "
+                                                  required={true}
+                                                  inputClass="border-lime py-2.5 px-3"
+                                              />
+                                          </div>
+                                          <div className="w-full" >
+                                              <div className="">
+                                                  <p className="text-base md:text-lg text-black  mr-3 ">
+                                                      Postcode where your property exist?
+                                                  </p>
+                                                  <p className="text-[10px] md:text-[12px] my-1">
+                                                      This is to check the availability and converage
+                                                  </p>
+                                                  <TextField
+                                                      placeholder="Enter postcode here"
+                                                      className="text-lg text-black font-semibold"
+                                                      errors={errors}
+                                                      register={register}
+                                                      errorClass="text-[#ff0000] text-sm  float-right"
+                                                      required={true}
+                                                      name="post_code"
+                                                      inputClass=" border-lime py-2.5 px-3"
+                                                      reactHookValidations={{
+                                                        required: VALIDATION_CONFIG.required,
+                                                        validate: VALIDATION_CONFIG.postCode,
+                                                      }}
+                                                  />
+                                              </div>
+                                          </div>
+                                          <div className="w-full ">
+                                              <TextField
+                                                  lable="Phone"
+                                                  name="phone"
+                                                  errors={errors}
+                                                  register={register}
+                                                  errorClass="text-[#ff0000] text-sm float-right"
+                                                  required={true}
+                                                  pattern={/^\(?(?:(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?\(?(?:0\)?[\s-]?\(?)?|0)(?:\d{5}\)?[\s-]?\d{4,5}|\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3})|\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4}|\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}|8(?:00[\s-]?11[\s-]?11|45[\s-]?46[\s-]?4\d))(?:(?:[\s-]?(?:x|ext\.?\s?|\#)\d+)?)$/}
+                                                  className="text-lg text-black"
+                                                  inputClass="border-lime py-2.5 px-3"
+                                              />
+                                          </div>
+                                          <div className="w-full ">
+                                              <TextField
+                                                  lable="Email"
+                                                  name="email"
+                                                  errors={errors}
+                                                  register={register}
+                                                  errorClass="text-[#ff0000] text-sm float-right"
+                                                  pattern={/^\S+@\S+$/i}
+                                                  required={true}
+                                                  className="text-lg text-black"
+                                                  inputClass="border-lime py-2.5 px-3"
+                                              />
+                                          </div>
+                                          <div className="w-full md:px-0">
+                                              <ButtonComponent
+                                                  text="Next"
+                                                  type="button"
+                                                  onClick={()=> setNext(true)}
+                                                  className="bg-lime text-black uppercase text-lg mt-4 font-semibold px-[2px] sm:px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"
+                                              />
+                                          </div>
                                       </div>
-                                      <div className="w-full" >
-                                        <div className="">
-                                          <p className="text-base md:text-lg text-black font-semibold mr-3 ">
-                                            Postcode where your property exist?
-                                          </p>
-                                          <p className="text-[10px] md:text-sm my-1">
-                                            This is to check the availability and converage
-                                          </p>
-                                          <TextField
-                                            placeholder="Enter postcode here"
-                                            className="text-lg text-black font-semibold"
-                                            errors={errors}
-                                            register={register}
-                                            errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                                            required={true}
-                                            name="post_code"
-                                            inputClass=" border-lime py-2.5 px-3"
-                                            reactHookValidations={{
-                                              required: VALIDATION_CONFIG.required,
-                                              validate: VALIDATION_CONFIG.postCode,
-                                            }}
-                                          />
-                                        </div>
-                                      </div>
-                                      <div className="w-full ">
-                                        <TextField
-                                          lable="Phone"
-                                          name="phone"
-                                          errors={errors}
-                                          register={register}
-                                          errorClass="text-[#ff0000] text-sm float-right"
-                                          required={true}
-                                          pattern={/^\(?(?:(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?\(?(?:0\)?[\s-]?\(?)?|0)(?:\d{5}\)?[\s-]?\d{4,5}|\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3})|\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4}|\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}|8(?:00[\s-]?11[\s-]?11|45[\s-]?46[\s-]?4\d))(?:(?:[\s-]?(?:x|ext\.?\s?|\#)\d+)?)$/}
-                                          className="text-lg text-black"
-                                          inputClass="border-lime py-2.5 px-3"
-                                        />
-                                      </div>
-                                      <div className="w-full ">
-                                        <TextField
-                                          lable="Email"
-                                          name="email"
-                                          errors={errors}
-                                          register={register}
-                                          errorClass="text-[#ff0000] text-sm float-right"
-                                          pattern={/^\S+@\S+$/i}
-                                          required={true}
-                                          className="text-lg text-black"
-                                          inputClass="border-lime py-2.5 px-3"
-                                        />
-                                      </div>
-                                      <div className="w-full md:px-0">
-                                        <ButtonComponent
-                                          text="Next"
-                                          className="bg-lime text-black uppercase text-lg font-semibold px-[2px] sm:px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"
-                                        />
+
+                                      <div className={`${next ? 'flex':'hidden'} w-full  flex-col items-center md:flex-row flex-wrap gap-y-3 lg:gap-y-6 mt-5 justify-between`}>
+                                          <div className="my-6 px-4 md:px-0">
+                                              <TextArea
+                                                  lable="Please use box below to provide any further information related to your enquiry"
+                                                  className="text-sm text-black"
+                                                  inputClass="border-grey-500 py-2.5 px-3 "
+                                                  errors={errors}
+                                                  register={register}
+                                                  errorClass="text-[#ff0000] text-sm font-semibold float-right"
+                                                  required={true}
+                                                  name="enquiry"
+                                              />
+                                          </div>
+                                          <div className="w-full md:px-0">
+                                              <ButtonComponent
+                                                  text="Submit"
+                                                  className="bg-lime text-black uppercase text-lg font-semibold px-[2px] sm:px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"
+                                              />
+                                          </div>
                                       </div>
                           </div>
                         </form>

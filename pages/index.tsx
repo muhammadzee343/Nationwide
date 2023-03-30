@@ -90,7 +90,7 @@ export default function Home() {
             </div>
       </div>
       <BoxBackgroundComponent className='h-[650px] pt-1'
-        greyStyle='w-[60%] h-[50%] md:w-[40%]'
+        greyStyle='w-[60%] h-[50%] md:w-[35%]'
         limeStyle='right-0 bottom-0 w-[60%] h-[40%] md:w-[60%]'
       >
         <div className='w-full py-4 mt-3 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1190px] mx-auto'>
@@ -103,12 +103,12 @@ export default function Home() {
         </div>
       </BoxBackgroundComponent>
       <div className="w-[90%] py-5 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto">
-        <div className="pb-[60px] flex gap-6 flex-col flex-col-reverse lg:flex-row">
+        <div className="pb-[60px] pt-10 flex gap-6 flex-col flex-col-reverse justify-between lg:flex-row">
           <>
             {content.image && (
-              <BoxBackgroundComponent className={'h-[300px] w-[100%] lg:w-5/12 p-2 lg:h-auto'}
-                                      greyStyle='w-[15%] h-[50%] top-[0] right-[0] '
-                                      limeStyle='w-[15%] h-[95.5%] top-[5%] -right-[5%]'
+              <BoxBackgroundComponent className={'h-[300px] w-[100%] lg:w-[40%] p-2 lg:h-auto'}
+                                      greyStyle='w-[15%] h-[50%] -top-[6%] -right-[4%] '
+                                      limeStyle='w-[15%] h-[95%] top-[5%] -right-[8%]'
                                       contentStyle='m-auto'>
                 <Image
                   className="h-full w-full cursor-pointer"
@@ -118,7 +118,7 @@ export default function Home() {
               </BoxBackgroundComponent>
             )}
             <div
-              className={`${content.image ? "lg:w-[58%]" : "lg:w-12/12"} py-4 px-3`}
+              className={`${content.image ? "lg:w-[56%]" : "lg:w-12/12"} py-4 px-3`}
             >
               {content.type !== "Service" && (
                 <>
