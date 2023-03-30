@@ -393,7 +393,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                   if (opt.type === "radio") {
                     return (
                       <>
-                        <div key={index} className="w-full md:w-5/12">
+                        <div key={index} className="w-full md:w-5/12 mt-2">
                           <RadioButton
                             title={opt.title}
                             value={opt.value}
@@ -405,7 +405,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                                 typeof opt.value === "number")
                               ? "bg-lime"
                               : "border border-grey-500"
-                              } border border-grey-500 w-4 h-4 sm:w-5 sm:h-5`}
+                              } border border-grey-500 w-6 h-6 sm:w-8 sm:h-8`}
                             pClass="text-[18px] font-semibold"
                           />
                         </div>
@@ -602,7 +602,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                 </div>
                 <hr className=" h-[2px] mt-8  w-10/12 md:w-8/12 bg-[#dfdfdf]" />
                 {selectedServiceId.length <= 0 && (
-                  <NextBottom setpropType={() => { }} />
+                    <NextBottom setpropType={() => { }} />
                 )}
               </div>
             </section>
@@ -619,24 +619,24 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                   <div className="flex flex-col sm:flex-row w-full">
                     <div className="sm:w-6/12 flex flex-col px-1 lg:px-0">
                       <div className=" w-full flex gap-1 sm:gap-2">
-                        <div className="w-full sm:w-7/12 flex flex-col justify-center">
+                        <div className="w-full sm:w-7/12 flex flex-col">
                           <div>
                             <TextField
-                              lable="Property Postcode"
-                              register={register}
-                              name="property_postcode"
-                              className="text-lg text-dark-blue font-semibold"
-                              inputClass="border-grey-500 py-2.5 px-3"
-                              placeholder="Enter full postcode here"
+                                lable="Property Postcode"
+                                register={register}
+                                name="property_postcode"
+                                className="text-lg text-dark-blue font-semibold"
+                                inputClass="border-grey-500 py-2.5 px-3"
+                                placeholder="Enter full postcode here"
                             />
                           </div>
                         </div>
                         <div className=" w-full sm:w-4/12 flex items-end">
                           <ButtonComponent
-                            text="Find Address"
-                            className="bg-[#252525] text-white text-[11px] sm:text-[12px] font-semibold px-[2px]
-                             sm:px-[20px] py-[13px] hover:bg-lime hover:text-white ease-in duration-200"
-                            onClick={getPropertyAddress}
+                              text="Find Address"
+                              className="bg-[#252525] text-white text-[11px] sm:text-[12px] font-semibold px-[2px]
+                             sm:px-[20px] py-[14.5px] hover:bg-lime hover:text-white ease-in duration-200"
+                              onClick={getPropertyAddress}
                           />
                         </div>
                       </div>
