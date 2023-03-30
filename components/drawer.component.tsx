@@ -488,13 +488,16 @@ const DrawerComponent = ({}: any) => {
             }`}
         aria-labelledby="drawer-right-label"
       >
-        <span
-          className=" fixed top-[8px] right-[29px] z-[900] bg-[#ff0000] rounded-full
+        <div className="sticky top-[8px] left-[29px] z-[900]
+         w-full flex justify-end items-center cursor-pointer">
+          <span
+              className="sticky top-[8px] left-[29px] z-[900] bg-[#ff0000] rounded-full
          w-7 h-7 flex justify-center items-center cursor-pointer"
-          onClick={() => displayDrawer()}
-        >
+              onClick={() => displayDrawer()}
+          >
           <FontAwesomeIcon className="text-white w-4" icon={faXmark} />
         </span>
+        </div>
         {!step && (
           <>
             <div className="bg-white shadow-md mb-[20px]">
