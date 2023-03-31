@@ -438,7 +438,11 @@ function Checkout(props: any) {
                 >
                   <FontAwesomeIcon icon={faPlus} className="text-black h-4 mr-5 hover: md:h-5 lg:h-5"/>
                 </ButtonComponent>
-                <p className="mt-10">Payment options</p>
+                <header className='flex justify-between items-center bg-dark-blue h-[45px] mb-[20px] mt-8'>
+                <h3 className="font-base font-semibold text-white px-[25px] ">
+                  Payment options
+                </h3>
+                </header>
                 <div className='mt-4'>
                   {pricing.totalAmount != "0" ? GooglePayButton : null}
                 </div>
@@ -491,9 +495,9 @@ function Checkout(props: any) {
               </div>
 
             </div>
-            <div className="w-full mt-0 lg:mt-[10px] lg:w-[30%] pt-[35px] pb-[25px] px-4 ">
+            <div className="sticky top-14 w-full mt-0 lg:mt-[10px] lg:w-[30%] pt-[35px] pb-[25px] px-4 ">
 
-              <div className="md:w-full md:flex">
+              <div className="sticky top-0 md:w-full md:flex">
                 <OrderSummary
                     discount={pricing.discount}
                     subTotal={pricing.totalAmount}
@@ -548,9 +552,7 @@ function OrderSummary({subTotal, discount}: any) {
         </header>
         <div
             className="flex flex-col border-lime border-t-4 px-2 py-6 md:p-4 xl:p-4 w-full bg-white shadow-md space-y-6">
-          <h3 className="text-xl dark:text-white font-semibold leading-5 text-gray-800">
-            Summary
-          </h3>
+
           <div
               className="flex justify-center items-center w-full space-y-4 flex-col border-[#9badad] border-b pb-4">
             <div className="flex justify-between w-full">
