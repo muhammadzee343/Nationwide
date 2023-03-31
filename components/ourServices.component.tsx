@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 function OurServicesComponent({ list, title, image }: any) {
   return (
-    <div className='shadow-lg md:w-[370px] transition-all ease-in duration-300 w-11/12 lg:w-[220px] xl:w-[270px] lg:max-w-[300px] h-full rounded overflow-hidden'>
+    <div className='shadow-lg md:w-[280px] hover:bg-dark-blue transition-all ease-in duration-300 lg:w-[220px] min-h-[410px] xl:w-[270px] lg:max-w-[300px] lg:h-full rounded overflow-hidden'>
     <Image src={image} alt={title} className='h-[170px] lg:h-[180px] w-full'/>
     <div
       className="h-full bg-white text-black hover:bg-dark-blue hover:text-white leading-4 border-t-4 border-lime
