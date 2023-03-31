@@ -185,7 +185,7 @@ function CardTable({ cart, getCart }: any) {
         i++;
         return (
           <div
-            className="border-[#e5e7eb] rounded-sm my-2 py-3 shadow-md"
+            className="border-[#e5e7eb] rounded-sm my-2 py-3 shadow-md border-slate-350 border-t-[2px]"
             key={cartNo}
           >
             <div className="w-full flex flex flex-col px-4 py-2 gap-2 justify-between items-center md:flex-row gap-0">
@@ -324,7 +324,7 @@ function CardTable({ cart, getCart }: any) {
         i++;
         return (
             <div
-                className="border-[#e5e7eb] rounded-sm my-2 pt-3 pb-7 shadow-md"
+                className="border-lime border-t-[1px]  rounded-sm my-2 pt-3 pb-7 shadow-md"
                 key={cartNo}
             >
               <div className="w-full flex px-4 py-1  justify-between">

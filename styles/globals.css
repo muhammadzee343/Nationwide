@@ -98,21 +98,6 @@ input[type='radio']:checked{
 }
 
 
-@media screen and (min-width: 768px) {
-  .line-container-homepage {
-    width:4%;
-  }
-}
-@media screen and (min-width: 1400px) {
-  .line-container-homepage {
-    width:35%;
-  }
-}
-@media screen and (min-width: 1024px) {
-  .line-container-homepage {
-    width:4%;
-  }
-}
 
 
 

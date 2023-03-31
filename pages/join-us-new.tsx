@@ -1,23 +1,17 @@
 import React, { useEffect, useMemo, useState } from "react";
-import RadioButton from "../components/radioButton.component";
 import TextField from "../components/textFied.component";
 import ServiceSelectionCard from "../components/serviceSelectionCard.component";
-import TextArea from "../components/textArea.component";
 import ButtonComponent from "../components/button.component";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import styles from "../styles/footer.module.css";
-import { faSlack } from "@fortawesome/free-brands-svg-icons";
-import { postcodeValidator, postcodeValidatorExistsForCountry } from 'postcode-validator';
-import {VALIDATION_CONFIG} from "../config/validation.config";
 import Image from 'next/image';
 import formImage from '../public/Rectangle394.png'
+import CreatableSelect from 'react-select/creatable';
+import {VALIDATION_CONFIG} from "../config/validation.config";
 
 
 function ContactUsNew({ Services }: any) {
-
-
 
   const router = useRouter();
   const { enquiryOrder } = router.query;
@@ -26,111 +20,74 @@ function ContactUsNew({ Services }: any) {
 
   const [selectedServiceId, setSelectedServiceId] = useState([]);
 
-  const [contactType, setContactType] = useState({ contact_by: "phone" });
+  const [postCodes, setPostCodes] = useState([])
 
-  const [requestSubmitted, setrequestSubmitted] = useState(false);
-
-  const [validPostCode, setValidPostcode] = useState(true);
-
-  const [intialQ, setIntialQ] = useState<any>({
-    type_of_enquiry: "",
-    existing_job_enquiry: "",
-  });
-
-
-  const validatePostCode = (data) => {
-    console.log('data', data);
+  const getPostCodes = async () =>{
+    const res = await fetch(`${process.env.BASE_URL_DEV}/postcodes`);
+    const data = await res.json();
+    let newData = data.postcodes.map((item:any)=>{
+      return { value: item, label: item.toUpperCase() }
+    })
+    setPostCodes(newData)
   }
+
+  useEffect(() => {
+    getPostCodes()
+  }, []);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
+    control,
+    reset,
+    setError
   } = useForm({mode: "onChange"});
 
-  useEffect(() => {
-    switch (enquiryOrder) {
-      case "existing":
-        setIntialQ({
-          type_of_enquiry: "other",
-          existing_job_enquiry: "yes",
-        });
-        break;
-      case "looking_advice":
-        setIntialQ({
-          type_of_enquiry: "help_or_advice",
-          existing_job_enquiry: "no",
-        });
-        break;
-      case "new_quote":
-        setIntialQ({
-          type_of_enquiry: "availability_or_quotation",
-          existing_job_enquiry: "not_sure",
-        });
-        break;
-      case "enquire":
-        setIntialQ({
-          type_of_enquiry: "other",
-          existing_job_enquiry: "no",
-        });
-        break;
-      default:
-        setIntialQ({
-          type_of_enquiry: "",
-          existing_job_enquiry: "",
-        });
+  const join = async (data: any) => {
+    if (!selectedService.length) {
+      return;
     }
-  }, []);
-  const requestCallback = async (data: any) => {
+    let postCodes = ""
+    data.postCodes.map((item: any, index: any) => {
+      if (index !== (data.postCodes.length-1)) {
+         postCodes += item.value + ", "
+      }else {}
+      postCodes += item.value
+    })
+    const body = {
+      join_us_form:{
+        full_name: data.full_name,
+        postcode: postCodes,
+        mobile: data.phone,
+        email: data.email
+      },
+      services: [...selectedServiceId],
+    };
 
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    };
+    const response = await fetch(
+      `${process.env.BASE_URL_DEV}join_us_forms/join_as_service_provider`,
+      requestOptions
+    );
 
-    const code = data.post_code.replace(/\s/g, "");
-
-
-    if (postcodeValidator(code, 'UK') || postcodeValidator(code, 'US')) {
-
-      if (
-        checkFormValidity(Object.keys(contactType), contactType) &&
-        selectedServiceId.length
-      ) {
-        const body = {
-          contact_form: {
-            ...data,
-            ...intialQ,
-            ...contactType,
-          },
-          services: [...selectedServiceId],
-        };
-        const requestOptions = {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        };
-        const response = await fetch(
-          `${process.env.BASE_URL_DEV}contact_forms`,
-          requestOptions
-        );
-
-        if (response.ok) {
-          let data = await response.json();
-          setrequestSubmitted(true);
-
-        } else {
-          alert("Something Went wrong");
-        }
-      }
-
-    }else{
-      setValidPostcode(false)
+    if (response.ok) {
+      let data = await response.json();
+      reset({
+        full_name: "",
+        phone: "",
+        email:"",
+        postCodes: "",
+      })
+    } else {
+      alert("Something Went wrong");
     }
   };
 
-  const checkFormValidity = (keys, obj) => {
-    return keys.every((data) => {
-      return obj[data] !== "";
-    });
-  };
   const services = useMemo<JSX.Element[]>(() => {
     const elements: JSX.Element[] = [];
     const services = Services;
@@ -145,18 +102,17 @@ function ContactUsNew({ Services }: any) {
           <ServiceSelectionCard
             title={service.name}
             className={`${selectedServiceId.includes(service.id) ? "bg-lime self-end " : ""
-            } text-[15px] py-[11px] border-0`}
+            } text-[15px] py-[11px] border-lime border-[1px]`}
           />
         </div>
       );
     }
-
     return elements;
   }, [, selectedService]);
 
+
   const selectService = ({ name, id }: any) => {
     const temp = name;
-
     const condition = selectedService.findIndex((ele) => name === ele) === -1;
 
     if (condition) {
@@ -180,7 +136,7 @@ function ContactUsNew({ Services }: any) {
               <Head>
                   <title>Join Us - Nationwide Surveyors</title>
               </Head>
-              <form onSubmit={handleSubmit(requestCallback)}>
+              <form onSubmit={handleSubmit(join)}>
                   <div className="w-full md:px-8  xl:max-w-[1114px] flex flex-col items-center">
                       <div className="self-start mb-[20px] px-4 md:px-0">
                           <div className="border-b-4 rounded-full border-lime w-[85px] mb-3"></div>
@@ -198,13 +154,17 @@ function ContactUsNew({ Services }: any) {
                             <Image src={formImage} alt="Form Image here "/>
                           </div>
                           <div className="px-4 md:px-8 pt-8">
+                            <h2 className="text-[21px] font-bold">Your Contact Details</h2>
+                            <p className="text-[12px] text-gray-600">This is to check the availability</p>
+                          </div>
+                          <div className="px-4 md:px-8 pt-4">
                               <div className="w-full gap-y-6 " >
                                   <div className="pb-8">
                                       <div className="w-full flex flex-col md:flex-row flex-wrap gap-y-6 mt-5 justify-between">
                                           <div className="w-full ">
                                               <TextField
-                                                  lable="First Name"
-                                                  name="first_name"
+                                                  lable="Full Name"
+                                                  name="full_name"
                                                   className="text-lg text-dark-blue"
                                                   errors={errors}
                                                   register={register}
@@ -240,16 +200,18 @@ function ContactUsNew({ Services }: any) {
                                               />
                                           </div>
                                           <div className="w-full">
-                                              <Select
-                                                  label="PostCodes you cover"
-                                                  className="text-sm leading-8 text-dark-blue font-semibold"
-                                                  name="position"
+                                              <SelectPostCode
+                                                  label="Postcodes you cover"
+                                                  className="text-lg leading-8 text-dark-blue"
+                                                  name="postCodes"
                                                   errors={errors}
                                                   register={register}
+                                                  options={postCodes}
+                                                  setError={setError}
                                                   errorClass="text-[#ff0000] text-sm font-semibold float-right"
                                                   inputClass="border-lime py-2.5 px-3"
                                                   required={true}
-                                                  options={{}}
+                                                  control={control}
                                               />
                                           </div>
                                       </div>
@@ -259,8 +221,8 @@ function ContactUsNew({ Services }: any) {
                         </div>
                           <div className="w-full md:w-[50%] bg-white rounded-lg md:drop-shadow-lg mb-6 md:mb-0 md:pt-8">
                               <div className="">
-                                  <p className="text-[20px] px-4 md:px-8 text-dark-blue mr-3 ">
-                                      Please choose the services you'd like to discuss
+                                  <p className="text-[24px] capitalize font-bold px-4 md:px-8 text-dark-blue mr-3 ">
+                                       Choose services you offer
                                   </p>
                               </div>
                               <div className="w-full flex flex-col gap-y-3 justify-between items-center p-4">
@@ -296,23 +258,42 @@ export const getServerSideProps = async () => {
   };
 };
 
-const Select = ({
+const SelectPostCode = ({
                   label,
-                  register,
                   name,
                   required,
-                  inputClass,
                   className,
+                  options,
+                  setError,
                   errors = {},
+                  control,
                   errorClass = "",
-                  options = [],
                 }: any) => {
-  const option = [
-    { title: "Please Select", value: "" },
-    { title: "Male", value: "male" },
-    { title: "Female", value: "female" },
-    { title: "Other", value: "other" },
-  ];
+
+  const customStyles = {
+    control: (provided:any) => ({
+      ...provided,
+      border: '1px solid #C2CF10',
+      boxShadow: 'none',
+      borderRadius:'none',
+      minHeight:'46px'
+    }),
+    option: (provided:any, state:any) => ({
+      ...provided,
+      backgroundColor: state.isSelected ? '#F0F0F0' : 'white',
+      color: '#374151',
+    }),
+
+  };
+  const [values, setValues] = useState([])
+
+  useEffect(() => {
+   values.map((data:any)=>{
+      const res = VALIDATION_CONFIG.postCode(data.value)
+     res!==true ? setError('postCodes', 'Please enter valid post code'):''
+   })
+  }, [values]);
+
   return (
 
     <>
@@ -320,23 +301,48 @@ const Select = ({
         {label}
         {required && <span className="text-[#ff0000] text-xl ml-1">*</span>}
       </label>
-      <select
-        {...register(name, {
-          required: { value: true, message: "Field is Required" },
-        })}
+
+      <Controller
         name={name}
-        className={`border w-full outline-none focus:border-lime focus:ring-transparent shadow-sm text-[15px] text-[#555555] ${inputClass}`}
-      >
-        {option.map(({ value, title }: any, index: number) => {
-          return (
-            <option key={index} value={value}>
-              {title}
-            </option>
-          );
-        })}
-      </select>
+        control={control}
+        defaultValue={null}
+        rules={{ required: required }}
+        render={({ field,fieldState: { error}  }) => <CreatableSelect
+          {...field}
+          value={values}
+          isSearchable={true}
+          onChange={(newValue:any)=> {
+            setValues([...newValue])
+          }}
+          isMulti
+          placeholder="Please select post code"
+          styles={customStyles}
+          name={name}
+        />}
+      />
       {errors[name] && (
-        <p className={`${errorClass}`}>{errors[name].message}</p>
+        <div
+          className={
+            `flex  text-sm text-red-800 rounded-lg mt-2 dark:bg-gray-800 dark:text-red-400 ${errorClass}`
+          }
+          role="alert"
+        >
+          <svg
+            aria-hidden="true"
+            className="flex-shrink-0 inline w-5 h-5 mr-3"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          <span className="sr-only">Info</span>
+          <div>Inavlid post codes</div>
+        </div>
       )}
     </>
   );
