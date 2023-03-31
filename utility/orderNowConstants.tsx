@@ -146,8 +146,8 @@ export const attributes = {
     exactNumber2: "",
     radioQuestion: [],
     options: [
-      { type: "radio", title: "Pre 1940", value: "pre-1940" },
-      { type: "radio", title: "Post 1940", value: "post-1940" },
+      { type: "radio", title: "Pre 1940", value: "pre_1940" },
+      { type: "radio", title: "Post 1940", value: "post_1940" },
     ],
   },
   property_price: {

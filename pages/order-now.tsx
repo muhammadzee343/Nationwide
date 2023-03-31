@@ -15,6 +15,7 @@ import Head from "next/head";
 import { UuidContext } from "../context/sidebarContext";
 import { bundles } from "../utility/constants";
 
+
 function OrderNow({ commercialProperties, residentialProperties }: any) {
   const attributeState = {
     property_type: "",
@@ -36,7 +37,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   const { uuid } = useContext(UuidContext);
 
-  const { register, handleSubmit, setValue, watch } = useForm();
+  const { register, handleSubmit, setValue, watch, } = useForm();
 
   const postcode = watch("property_postcode", "");
   const propertyAddress = watch("property_address");
@@ -64,6 +65,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
   const router = useRouter();
 
   const [next, setNext] = useState(false)
+
 
   const { bundle, ser, value, keys, property, postCode, item, address } =
     router.query;
@@ -211,8 +213,8 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
   };
 
   const changePropertyType = (property_type: string) => {
+    scrollTo({top:500, left:200, behavior:'smooth'})
     setPropertyType(property_type);
-    scrollIntoViewClick();
     setSelectedService([]);
     setSelectedServiceId([]);
     setAttributes(attributeState);
@@ -539,6 +541,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   return (
     <>
+
       <div className="flex justify-center" onClick={() => setAddresseses([])}>
         <Head>
           <title>Order Now - Nationwide Surveyors</title>

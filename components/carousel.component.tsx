@@ -14,7 +14,7 @@ function CarouselComponent({ list, component, className = "" }: any) {
       rows.push(
         <SwiperSlide
           key={index}
-          className={`${Styles.customSlide} xl:flex xl:justify-center `}
+          className={`${Styles.customSlide} xl:flex xl:justify-center max-w-[300px]`}
         >
           {React.createElement(component, {
             title: ele?.title,
@@ -31,21 +31,23 @@ function CarouselComponent({ list, component, className = "" }: any) {
   return (
     <div className="w-full relative">
       <Swiper
-        spaceBetween={10}
-        slidesPerView={1}
+        spaceBetween={20}
+        slidesPerView={"auto"}
         centeredSlides={true}
         pagination={true}
         navigation={false}
+        initialSlide={0}
         modules={[Pagination, Navigation]}
         onSlideChange={() => {}}
         onSwiper={(swiper) => {}}
-        className={`mySwiper w-full flex justify-center ${className} min-h-[280px] relative`}
+        className={`mySwiper w-full flex justify-center relative ${className} `}
         style={{
           "--swiper-pagination-color": "#c2cf10",
           "--swiper-pagination-bullet-inactive-color": "#182333",
           "--swiper-pagination-bullet-inactive-opacity": "1",
-          "--swiper-pagination-bullet-size": "14px",
+          "--swiper-pagination-bullet-size": "12px",
           "--swiper-pagination-bullet-horizontal-gap": "6px",
+          "--swiper-pagination-bullet-border-radius": "0px !important",
           swiperButtonNext: "#0000",
         }}
       >
