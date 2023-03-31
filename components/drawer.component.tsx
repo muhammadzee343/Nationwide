@@ -290,7 +290,7 @@ const DrawerComponent = ({}: any) => {
               selectedService.includes(service.name)
                 ? " border-lime bg-lime self-end "
                 : "border-[#9b9b9b] "
-            } text-[17px] py-[7px]`}
+            } text-[17px] py-[7px] font-semibold`}
           />
         </div>
       );
@@ -483,7 +483,7 @@ const DrawerComponent = ({}: any) => {
       <div
         id="drawer-right-example"
         className={`h-screen relative p-4 overflow-y-auto bg-row_bg_two py-[30px] px-[15px] sm:px-[30px] 
-            bg-gray-800  ease-in-out duration-1000 w-[100%] xl:w-[50%] xxl:w-[36.5%] ${
+            bg-gray-800  ease-in-out duration-1000 w-[100%] xl:w-[60%] xxl:w-[55%] ${
               showDrawer ? "translate-x-[0%]" : "translate-x-[100%]"
             }`}
         aria-labelledby="drawer-right-label"
@@ -581,7 +581,7 @@ const DrawerComponent = ({}: any) => {
         {step && (
           <>
             <div className="flex justify-between">
-              <h3 className="text-[26px] font-semibold mb-[15px] text-dark-blue">
+              <h3 className="text-[26px] font-semibold mb-[15px] text-dark-blue font-opensans">
                 Get Instant <span className="text-lime"> Quote</span>
               </h3>
             </div>
