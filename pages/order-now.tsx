@@ -644,10 +644,12 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
                     <div className="sm:w-6/12 w-full flex flex-col justify-center">
                       <div className="w-full relative">
-                        <label className="text-lg text-dark-blue font-semibold">
-                          Property Address
-                        </label>
-                        <p onClick={()=> setValue("property_address", '')}>Clear Address</p>
+                        <div className="w-full flex justify-between pr-1 text-[12px] items-center cursor-pointer text-gray-600">
+                          <label className="text-lg text-dark-blue font-semibold">
+                            Property Address
+                          </label>
+                          <p onClick={()=> setValue("property_address", '')}>Clear Address</p>
+                        </div>
                         <input
                           type="text"
                           placeholder="Enter full address here"
