@@ -403,8 +403,9 @@ function Checkout(props: any) {
           <Head>
             <title>Checkout - Nationwide Surveyors</title>
           </Head>
-          <div className="w-[70%] lg:w-[50%] xl:w-[43%]">
-            <CheckoutStepper/>
+          <div className="flex w-full  flex-col justify-center items-start  pt-[35px] px-2 lg:px-20">
+            <div className='border-[2px] w-[40px] rounded-full mt-2 mb-1 md:w-18 border-lime'/>
+            <h2 className='text-[18px] font-semibold md:text-[30px] mb-4'>Checkout</h2>
           </div>
           <div className="w-full flex flex-wrap justify-center items-start sm:gap-x-22">
             <div
@@ -437,17 +438,56 @@ function Checkout(props: any) {
                 >
                   <FontAwesomeIcon icon={faPlus} className="text-black h-4 mr-5 hover: md:h-5 lg:h-5"/>
                 </ButtonComponent>
-                <CardComponent
-                    className="bg-lime shadow px-[20px] pt-[15px] pb-[20px] my-[25px] "
-                    hClass="text-xl mb-[15px] text-black font-bold text-center"
-                    pClass=" text-justify text-base"
-                    heading="WHAT’S NEXT AFTER ORDER PLACEMENT?"
-                    paragraph="Once an order is placed online, we aim to call you or your agent/tenants
-           within 60 minutes of receiving your order (during our working hours) to organise suitable
-            appointment(s). Depending on the availability of access to the property, our normal wait time is
-             currently between 1 to 3 working days. If you need help placing new order or got a question,
-              please don’t hesitate to call us free at 0800 048 7474."
-                />
+                <p className="mt-10">Payment options</p>
+                <div className='mt-4'>
+                  {pricing.totalAmount != "0" ? GooglePayButton : null}
+                </div>
+                <div className='mt-4'>
+                  <ButtonComponent
+                    text="Pay by debit/credit card"
+                    className={`flex justify-center text-[13px] font-bold hover:text-white border-[1px] border-lime
+           hover:bg-lime px-[22px] py-[12px] uppercase rounded ${
+                      paymentType === "payByCard" && "text-white bg-lime rounded-b-none"
+                    }`}
+                    onClick={() => setPaymentType("payByCard")}
+                  />
+                  <div className='w-full'>
+                    {paymentType === "payByCard" &&
+                        <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
+                    }
+                  </div>
+                  <br/>
+                  <ButtonComponent
+                    text="Pay Over Phone"
+                    className={`flex justify-center text-[13px] font-bold hover:text-white border-[1px] border-lime
+              hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
+                      paymentType === "payOverPhone" &&
+                      "text-white bg-lime rounded-b-none"
+                    }`}
+                    onClick={() => setPaymentType("payOverPhone")}
+                  />
+                  <div className='w-full'>
+                    {paymentType === "payOverPhone" &&
+                        <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
+                    }
+                  </div>
+                  <br/>
+                  <ButtonComponent
+                    text="Pay By Bank Transfer"
+                    className={` flex justify-center text-[13px] font-bold hover:text-white border-[1px] border-lime
+           hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
+                      paymentType === "payByBank" && "text-white bg-lime rounded-b-none"
+                    }`}
+                    onClick={() => setPaymentType("payByBank")}
+                  />
+                  <br/>
+                  <div className='w-full'>
+                    {paymentType === "payByBank" &&
+                        <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
+                    }
+                  </div>
+
+                </div>
               </div>
 
             </div>
@@ -459,58 +499,18 @@ function Checkout(props: any) {
                     subTotal={pricing.totalAmount}
                 />
               </div>
-              <div className='px-3 mt-4 mb-2'>
-                <p>Payment options</p>
-              </div>
-              <div className='mt-3'>
-                {pricing.totalAmount != "0" ? GooglePayButton : null}
-              </div>
-              <div className='mt-5'>
-                <ButtonComponent
-                    text="Pay by debit/credit card"
-                    className={`flex justify-center text-[13px] font-bold hover:text-white border-[1px] border-lime
-           hover:bg-lime px-[22px] py-[12px] uppercase rounded ${
-                        paymentType === "payByCard" && "text-white bg-lime rounded-b-none"
-                    }`}
-                    onClick={() => setPaymentType("payByCard")}
-                />
-                <div className='w-full'>
-                  {paymentType === "payByCard" &&
-                  <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
-                  }
-                </div>
-                <br/>
-                <ButtonComponent
-                    text="Pay Over Phone"
-                    className={`flex justify-center text-[13px] font-bold hover:text-white border-[1px] border-lime
-              hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
-                        paymentType === "payOverPhone" &&
-                        "text-white bg-lime rounded-b-none"
-                    }`}
-                    onClick={() => setPaymentType("payOverPhone")}
-                />
-                <div className='w-full'>
-                  {paymentType === "payOverPhone" &&
-                  <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
-                  }
-                </div>
-                <br/>
-                <ButtonComponent
-                    text="Pay By Bank Transfer"
-                    className={` flex justify-center text-[13px] font-bold hover:text-white border-[1px] border-lime
-           hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
-                        paymentType === "payByBank" && "text-white bg-lime rounded-b-none"
-                    }`}
-                    onClick={() => setPaymentType("payByBank")}
-                />
-                <br/>
-                <div className='w-full'>
-                  {paymentType === "payByBank" &&
-                  <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
-                  }
-                </div>
 
-              </div>
+              <CardComponent
+                className="bg-lime shadow px-[20px] pt-[15px] pb-[20px] my-[25px] "
+                hClass="text-xl mb-[15px] text-black font-bold text-center"
+                pClass=" text-justify text-base"
+                heading="WHAT’S NEXT AFTER ORDER PLACEMENT?"
+                paragraph="Once an order is placed online, we aim to call you or your agent/tenants
+           within 60 minutes of receiving your order (during our working hours) to organise suitable
+            appointment(s). Depending on the availability of access to the property, our normal wait time is
+             currently between 1 to 3 working days. If you need help placing new order or got a question,
+              please don’t hesitate to call us free at 0800 048 7474."
+              />
               <RequestCallBack
                   attributes={attribute}
                   services={selectedServiceId}

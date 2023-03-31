@@ -27,6 +27,9 @@ export default function MobileScreenNav({toggleMenuOnClick}) {
           OUR SERVICES
         </Link>
         <FontAwesomeIcon
+          onClick={() => {
+            setToggleMenu(!toggleMenu);
+          }}
           className="w-4 ,w-3 ml-2 mb-1 cursor-pointer"
           icon={faChevronDown}
         />

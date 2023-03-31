@@ -6,19 +6,25 @@ import arrow from "../public/trending_flat.png";
 const HomeTab = () => {
     const [activeService, setService] = useState(LEC);
 
+    console.log(activeService);
+
     return (
-        <div className="lg:flex gap-x-14 xxl:gap-x-16 xl:gap-x-[] p-6 lg:py-3 lg:px-0 md:min-h-[421px]">
-            <div className="relative self-start lg:min-h-[380px] xl:min-h-[450px] lg:bg-hero bg-cover lg:w-[50%] mb-5 lg:mb-0 ">
+        <div className="lg:flex gap-x-14 xxl:gap-x-16 xl:gap-x-[] px-3 py-6 lg:py-3 lg:px-0 md:min-h-[421px]">
+            <div className={`relative self-start lg:min-h-[380px] xl:min-h-[450px]  
+              ${activeService.title === 'Electrical Installation Condition Report (EICR)' ? "lg:bg-hero": 
+              activeService.title === 'Energy Performance Certificate'? "lg:bg-hero_EPC":
+                activeService.title === 'Gas Safety Certificate' ? "lg:bg-hero_gas_safety":
+                  activeService.title === 'Building Survey & HomeBuyer Reports' ? "bg-hero_building_survey":""} bg-cover lg:w-[50%] mb-5 lg:mb-0`}>
                 <ul className="flex justify-center flex-wrap align-center lg:flex-col lg:absolute -right-7 -bottom-[6%] z-10 lg:mt-6">
                     {SERVICES.map((ele, index) => {
                         return (
                             <li
-                                className="min-w-[143px] md:w-[300px] mr-3 mb-3 lg:mr-0 lg:mb-0 md:w-[230px] lg:w-[180px] xl:w-[230px]"
+                                className="min-w-[160px] bg-white lg:min-h-min min-h-[117px] md:w-[320px] mr-2 mb-2 lg:mr-0 lg:mb-0 md:w-[230px] lg:w-[180px] xl:w-[230px]"
                                 key={index}
                                 onClick={() => setService(ele.slug)}
                             >
                                 <div
-                                    className={`flex items-center px-3 border-white ${index !==0 ? "border-t-[1px]":"border-t-[0px]"} py-6 lg:min-h-[50px] xl:min-h-[80px] md:py-8 lg:rounded-none font-bold text-[11px] md:px-5 lg:px-3 xl:px-5 md:text-[17px]
+                                    className={`flex items-center px-3 border-white ${index !==0 ? "border-t-[1px]":"border-t-[0px]"} lg:min-h-[50px] min-h-full xl:min-h-[80px] font-bold text-[13px] md:px-5 xl:px-5 md:text-[17px]
                                      lg:px-7 lg:py-[17px] lg:text-[10px] xl:text-[16px] ${
                                         activeService.title === ele.slug.title
                                             ? 'bg-lime opacity-90'
