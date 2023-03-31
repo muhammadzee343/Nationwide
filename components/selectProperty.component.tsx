@@ -19,7 +19,8 @@ export default function SelectProperty() {
   };
   return (
     <div
-      className="bg-white text-center border-transparent drop-shadow-xl lg:max-w-[382px] max-h-[400px] rounded "
+      className="bg-white text-center border-transparent lg:max-w-[382px] max-h-[400px] rounded "
+      style={{boxShadow: '3px 2px 5px 5px #c2c4c3'}}
       id="main_quote_form"
     >
       <form id="instantquote_main" method="post">

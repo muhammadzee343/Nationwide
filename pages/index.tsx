@@ -171,9 +171,9 @@ export default function Home() {
           </>
         </div>
       </div>
-      <div className="relative w-full ">
+      <div className="relative w-full xxl:max-w-[1440px] xxl:mx-auto">
         <div className="relative w-full flex flex-row justify-center">
-          <div className="flex flex-col justify-between items-center py-5 mb-8 lg:w-[2%] xxl:w-[1%]">
+          <div className="flex flex-col justify-between items-center py-5 mb-8 lg:w-[2%] xxl:w-[1%] hidden md:block">
             <div className="w-[1px] items-center justify-between py-10 flex flex-col bg-dark-blue h-full">
               <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
               <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
