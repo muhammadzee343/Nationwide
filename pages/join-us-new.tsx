@@ -93,19 +93,21 @@ function ContactUsNew({ Services }: any) {
     const services = Services;
     for (let i = 0; i < services.length; i++) {
       const service = services[i];
-      elements.push(
-        <div
-          key={i}
-          className="w-full "
-          onClick={() => selectService(service)}
-        >
-          <ServiceSelectionCard
-            title={service.name}
-            className={`${selectedServiceId.includes(service.id) ? "bg-lime self-end " : ""
-            } text-[15px] py-[11px] border-lime border-[1px]`}
-          />
-        </div>
-      );
+      if(!service.name.includes('Commercial') && !service.name.includes('EICR-Remedial') && !service.name.includes('Additional Charges')){
+        elements.push(
+          <div
+            key={i}
+            className="w-full "
+            onClick={() => selectService(service)}
+          >
+            <ServiceSelectionCard
+              title={service.name}
+              className={`${selectedServiceId.includes(service.id) ? "bg-lime self-end " : ""
+              } text-[15px] py-[11px] border-lime border-[1px]`}
+            />
+          </div>
+        );
+      }
     }
     return elements;
   }, [, selectedService]);

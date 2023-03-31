@@ -10,6 +10,7 @@ function TextArea({
   register,
   errors = {},
   errorClass = "",
+  customStyle
 }: any) {
   return (
     <div className="w-full">
@@ -28,6 +29,7 @@ function TextArea({
         {...register(name, {
           required: { value: required, message: "This Field is required" },
         })}
+          style={customStyle}
       ></textarea>
       {errors[name] && (
         <p className={`${errorClass}`}>{errors[name].message}</p>

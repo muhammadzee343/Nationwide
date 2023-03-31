@@ -182,11 +182,11 @@ function Service({ certificate }: any) {
                   <div className="w-full  md:w-[40%]">
                     <BoxBackgroundComponent
                       className='h-[700px] pt-5 '
-                      greyStyle='-right-3 lg:-right-5 top-10 w-[60%] h-[50%] md:w-[40%]'
-                      limeStyle='-left-3 lg:-left-5 bottom-10 w-[60%] h-[40%] md:w-[40%]'
+                      greyStyle='-right-3 lg:-right-5 top-10 w-[60%] h-[40%] md:w-[40%] lg:h-[45%]'
+                      limeStyle='-left-3 lg:-left-5 bottom-36 w-[60%] h-[40%] md:w-[40%] xl:bottom-28'
                     >
-                      <div className=" h-full rounded-lg p-5 border-lime border-t-8 bg-white drop-shadow-lg self-center">
-                        <h2 className="text-black text-3xl font-medium ">
+                      <div className="rounded-lg p-5 border-lime border-t-8 bg-white drop-shadow-lg self-center">
+                        <h2 className="text-black text-xl lg:text-2xl font-medium ">
                           Ask A Different Questions
                         </h2>
                         <p className="text-black text-[15px] leading-[27px] mt-2 mb-6">
@@ -199,7 +199,7 @@ function Service({ certificate }: any) {
                                               <TextField
                                                   lable="Full Name"
                                                   name="full_name"
-                                                  className="text-lg text-black"
+                                                  className="text-sm text-black font-semibold"
                                                   errors={errors}
                                                   register={register}
                                                   errorClass="text-[#ff0000] text-sm float-right "
@@ -209,7 +209,7 @@ function Service({ certificate }: any) {
                                           </div>
                                           <div className="w-full" >
                                               <div className="">
-                                                  <p className="text-base md:text-lg text-black  mr-3 ">
+                                                  <p className="text-sm text-black mr-3 font-semibold lg:bold">
                                                       Postcode where your property exist?
                                                   </p>
                                                   <p className="text-[10px] md:text-[12px] my-1">
@@ -240,7 +240,7 @@ function Service({ certificate }: any) {
                                                   errorClass="text-[#ff0000] text-sm float-right"
                                                   required={true}
                                                   pattern={/^\(?(?:(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?\(?(?:0\)?[\s-]?\(?)?|0)(?:\d{5}\)?[\s-]?\d{4,5}|\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3})|\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4}|\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}|8(?:00[\s-]?11[\s-]?11|45[\s-]?46[\s-]?4\d))(?:(?:[\s-]?(?:x|ext\.?\s?|\#)\d+)?)$/}
-                                                  className="text-lg text-black"
+                                                  className="text-sm text-black mr-3 font-semibold lg:bold"
                                                   inputClass="border-lime py-2.5 px-3"
                                               />
                                           </div>
@@ -253,7 +253,7 @@ function Service({ certificate }: any) {
                                                   errorClass="text-[#ff0000] text-sm float-right"
                                                   pattern={/^\S+@\S+$/i}
                                                   required={true}
-                                                  className="text-lg text-black"
+                                                  className="text-sm text-black mr-3 font-semibold lg:bold"
                                                   inputClass="border-lime py-2.5 px-3"
                                               />
                                           </div>
@@ -262,25 +262,26 @@ function Service({ certificate }: any) {
                                                   text="Next"
                                                   type="button"
                                                   onClick={()=> setNext(true)}
-                                                  className="bg-lime text-black uppercase text-lg mt-4 font-semibold px-[2px] sm:px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"
+                                                  className="bg-lime text-black uppercase text-sm lg:text-lg mt-4 font-semibold px-[2px] sm:px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"
                                               />
                                           </div>
                                       </div>
 
                                       <div className={`${next ? 'flex':'hidden'} w-full  flex-col items-center md:flex-row flex-wrap gap-y-3 lg:gap-y-6 mt-5 justify-between`}>
-                                          <div className="my-6 px-4 md:px-0">
+                                          <div className="px-4 md:px-0">
                                               <TextArea
                                                   lable="Please use box below to provide any further information related to your enquiry"
                                                   className="text-sm text-black"
-                                                  inputClass="border-grey-500 py-2.5 px-3 "
+                                                  inputClass="border-grey-500 py-2.5 px-3 mt-3.5"
                                                   errors={errors}
                                                   register={register}
                                                   errorClass="text-[#ff0000] text-sm font-semibold float-right"
                                                   required={true}
                                                   name="enquiry"
+                                                  customStyle={{ height: 'auto', minHeight: '300px' }}
                                               />
                                           </div>
-                                          <div className="w-full md:px-0">
+                                          <div className="w-full md:px-0 mt-6">
                                               <ButtonComponent
                                                   text="Submit"
                                                   className="bg-lime text-black uppercase text-lg font-semibold px-[2px] sm:px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"

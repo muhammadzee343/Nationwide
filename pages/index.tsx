@@ -239,7 +239,7 @@ export default function Home() {
                   <CarouselComponent
                       list={ourServices}
                       component={OurServicesComponent}
-                      className="h-[420px]"
+                      className="h-[470px]"
                   />
                 </div>
               </div>
@@ -273,7 +273,7 @@ export default function Home() {
                   })}
                 </div>
                 <div className="flex mt-10  md:hidden w-full h-[300px] justify-center xl:flex-nowrap gap-1 lg:gap-7">
-                  <CarouselComponent list={howItWorks} component={HowItWorks} className='min-h-520px '/>
+                  <CarouselComponent list={howItWorks} component={HowItWorks} className='h-420px '/>
                 </div>
               </div>
             </div>
