@@ -7,8 +7,8 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from 'next/image';
 import formImage from '../public/Rectangle394.png'
-import Select from 'react-select';
-
+import CreatableSelect from 'react-select/creatable';
+import {VALIDATION_CONFIG} from "../config/validation.config";
 
 
 function ContactUsNew({ Services }: any) {
@@ -40,7 +40,8 @@ function ContactUsNew({ Services }: any) {
     handleSubmit,
     formState: { errors },
     control,
-    reset
+    reset,
+    setError
   } = useForm({mode: "onChange"});
 
   const join = async (data: any) => {
@@ -101,7 +102,7 @@ function ContactUsNew({ Services }: any) {
           <ServiceSelectionCard
             title={service.name}
             className={`${selectedServiceId.includes(service.id) ? "bg-lime self-end " : ""
-            } text-[15px] py-[11px] border-lime border-2`}
+            } text-[15px] py-[11px] border-lime border-[1px]`}
           />
         </div>
       );
@@ -153,6 +154,10 @@ function ContactUsNew({ Services }: any) {
                             <Image src={formImage} alt="Form Image here "/>
                           </div>
                           <div className="px-4 md:px-8 pt-8">
+                            <h2 className="text-[21px] font-bold">Your Contact Details</h2>
+                            <p className="text-[12px] text-gray-600">This is to check the availability</p>
+                          </div>
+                          <div className="px-4 md:px-8 pt-4">
                               <div className="w-full gap-y-6 " >
                                   <div className="pb-8">
                                       <div className="w-full flex flex-col md:flex-row flex-wrap gap-y-6 mt-5 justify-between">
@@ -202,6 +207,7 @@ function ContactUsNew({ Services }: any) {
                                                   errors={errors}
                                                   register={register}
                                                   options={postCodes}
+                                                  setError={setError}
                                                   errorClass="text-[#ff0000] text-sm font-semibold float-right"
                                                   inputClass="border-lime py-2.5 px-3"
                                                   required={true}
@@ -258,6 +264,7 @@ const SelectPostCode = ({
                   required,
                   className,
                   options,
+                  setError,
                   errors = {},
                   control,
                   errorClass = "",
@@ -278,6 +285,14 @@ const SelectPostCode = ({
     }),
 
   };
+  const [values, setValues] = useState([])
+
+  useEffect(() => {
+   values.map((data:any)=>{
+      const res = VALIDATION_CONFIG.postCode(data.value)
+     res!==true ? setError('postCodes', 'Please enter valid post code'):''
+   })
+  }, [values]);
 
   return (
 
@@ -292,17 +307,18 @@ const SelectPostCode = ({
         control={control}
         defaultValue={null}
         rules={{ required: required }}
-        render={({ field }) => (
-          <Select
-            {...field}
-            isSearchable={true}
-            isMulti
-            options={options}
-            placeholder="Please select post code"
-            styles={customStyles}
-            name={name}
-          />
-        )}
+        render={({ field,fieldState: { error}  }) => <CreatableSelect
+          {...field}
+          value={values}
+          isSearchable={true}
+          onChange={(newValue:any)=> {
+            setValues([...newValue])
+          }}
+          isMulti
+          placeholder="Please select post code"
+          styles={customStyles}
+          name={name}
+        />}
       />
       {errors[name] && (
         <div
@@ -325,7 +341,7 @@ const SelectPostCode = ({
             />
           </svg>
           <span className="sr-only">Info</span>
-          <div>Field is Required</div>
+          <div>Inavlid post codes</div>
         </div>
       )}
     </>

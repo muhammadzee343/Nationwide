@@ -48,7 +48,10 @@ module.exports = {
         row_bg: "url('../public/row-bg.png')",
         energy_performance_header_bg: "url('../public/test.jpg')",
         row_bg_two: "url('../public/row-bg-two.jpg')",
-        hero:"url('../public/heroHomePage.png')"
+        hero:"url('../public/heroHomePage.png')",
+        hero_EPC:"url('../public/energy-performance-certificate.png')",
+        hero_gas_safety:"url('../public/gas-safety.png')",
+        hero_building_survey:"url('../public/building-survey.png')"
       },
 
       keyframes: {
