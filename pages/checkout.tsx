@@ -406,12 +406,11 @@ function Checkout(props: any) {
             <title>Checkout - Nationwide Surveyors</title>
           </Head>
           <div className="flex w-full  flex-col justify-center items-start  pt-[35px] px-2 lg:px-20">
-            <div className='border-[2px] w-[40px] rounded-full mt-2 mb-1 md:w-18 border-lime'/>
-            <h2 className='text-[18px] font-semibold md:text-[30px] mb-4'>Checkout</h2>
+            <div className='border-[1.5px] w-[65px] rounded-full mt-2 md:w-18 border-lime'/>
+            <h2 className='text-[24px] font-semibold md:text-[30px] '>Checkout</h2>
           </div>
           <div className="w-full flex flex-wrap justify-center items-start sm:gap-x-22">
-            <div
-                className="w-full lg:w-[60%] flex flex-col justify-center items-center  pt-[35px] pb-[25px] px-2">
+            <div className="w-full lg:w-[60%] flex flex-col justify-center items-center pt-[5px] pb-[25px] px-2">
               <div className="w-full my-3">
                 {cart?.shopping_cart_products.length ||
                 cart?.shopping_cart_bundles.length ? (
@@ -440,6 +439,12 @@ function Checkout(props: any) {
                 >
                   <FontAwesomeIcon icon={faPlus} className="text-black h-4 mr-5 hover: md:h-5 lg:h-5"/>
                 </ButtonComponent>
+                <div className="lg:hidden mt-8">
+                  <OrderSummary
+                    discount={pricing.discount}
+                    subTotal={pricing.totalAmount}
+                  />
+                </div>
                 <header className='flex justify-between items-center bg-dark-blue h-[45px] mb-[20px] mt-8'>
                 <h3 className="font-base font-semibold text-white px-[25px] ">
                   Payment options
@@ -497,9 +502,9 @@ function Checkout(props: any) {
               </div>
 
             </div>
-            <div className="sticky top-14 w-full mt-0 lg:mt-[10px] lg:w-[30%] pt-[35px] pb-[25px] px-4 ">
+            <div className="w-full  lg:mt-[10px] lg:w-[30%] pt-[8px] pb-[25px] px-4 ">
 
-              <div className="sticky top-0 md:w-full md:flex">
+              <div className="hidden lg:w-full lg:flex">
                 <OrderSummary
                     discount={pricing.discount}
                     subTotal={pricing.totalAmount}
@@ -507,7 +512,7 @@ function Checkout(props: any) {
               </div>
 
               <CardComponent
-                className="bg-lime shadow px-[20px] pt-[15px] pb-[20px] my-[25px] "
+                className="bg-lime shadow px-[20px] pt-[15px] pb-[20px] lg:my-[25px] "
                 hClass="text-xl mb-[15px] text-black font-bold text-center"
                 pClass=" text-justify text-base"
                 heading="WHAT’S NEXT AFTER ORDER PLACEMENT?"

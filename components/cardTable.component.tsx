@@ -187,20 +187,20 @@ function CardTable({ cart, getCart }: any) {
             className="rounded-sm my-2 py-3 shadow-md border-[#b4c1c1] border-t-[2px]"
             key={cartNo}
           >
-            <div className="w-full flex flex flex-col px-4 py-2 gap-2 justify-between items-center md:flex-row gap-0">
-              <div className='w-[100%] mb-3 md:w-[65%] md:mb-0'>
-                <p className="text-[17px] text-dark-blue text-center md:text-left mb-0">
+            <div className="w-full flex px-4 py-2 justify-between items-center">
+              <div className="min-w-[75%]  md:min-w-[60%] ">
+                <p className="text-[14px] md:text-[17px] text-black text-left">
                   {cartItemData[0]?.property_address}
                 </p>
-
               </div>
               {!router?.query?.aquote && !router?.query.bquote &&
                   (
+                    <>
                       <div className="px-3 border-lime w-[100%] md:w-[32%]"  >
                         <ButtonComponent
                             text="Add an other service"
                             type="button"
-                            className="flex w-full flex-row-reverse justify-center items-center px-[1px] text-[12px]
+                            className="hidden md:flex flex-row-reverse justify-center items-center px-[1px] text-[12px]
                             hover:text-white font-medium border-[1px] border-lime hover:border-lime
                             hover:bg-lime py-[10px] uppercase md:text-[14px] lg:px-1 lg:text-[10px] xxl:text-[14px]"
                             onClick={() => addAnotherService(cartNo)}
@@ -208,8 +208,15 @@ function CardTable({ cart, getCart }: any) {
                           <FontAwesomeIcon icon={faPlus} className="text-lime h-3 hover:text-white md:h-4 px-2 lg: h-8"/>
                         </ButtonComponent>
                       </div>
+                      <div
+                      className="flex w-[40px] h-[40px] md:hidden flex-row-reverse justify-center items-center px-1.5 text-[12px]
+                                text-white font-medium bg-lime uppercase md:text-[14px] cursor-pointer "
+                      onClick={() => addAnotherService(cartNo)}
+                      >
+                        <FontAwesomeIcon icon={faPlus} className="h-5 hover:text-white md:h-4 px-2 lg: h-8"/>
+                      </div>
+                    </>
                   )
-
               }
             </div>
 
