@@ -51,7 +51,7 @@ const HomeTab = () => {
                     </h3>
                     <p className="text-[#c2cf10] mt-4">*</p>
                 </div>
-                <ul className="marker:text-lime marker:text-[20px] list-disc text-white lg:text-black ml-5">
+                <ul className="marker:text-lime marker:text-[20px] list-disc text-white lg:text-black ml-9 lg:ml-5">
                     {activeService.points.map((ele, index) => {
                         return (
                             <li key={index} className="text-sm lg:text-[13px] xl:text-[14px] mb-[12px] xl:mb-[16px]">

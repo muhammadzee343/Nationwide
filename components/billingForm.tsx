@@ -19,8 +19,7 @@ function BillingForm(props: any) {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      firstName: "",
-      lastName: "",
+      fullname:"",
       company: "",
       postcode: "",
       streetAddress: "",
@@ -147,46 +146,37 @@ function BillingForm(props: any) {
           <div className="w-full mb-1">
             <TextField
               className="text-sm leading-8 text-dark-blue font-semibold"
-              lable="First Name"
-              name="firstName"
+              lable="Full Name"
+              name="fullname"
               required={true}
               register={register}
               errors={errors}
               inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
           </div>
-          <div className="w-full mb-1">
-            <TextField
-              className="text-sm leading-8 text-dark-blue font-semibold"
-              lable="Last Name"
-              required={true}
-              name="lastName"
-              register={register}
-              errors={errors}
-              inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
-            />
-          </div>
-          <div className="w-full mb-1">
-            <TextField
-              className="text-sm leading-8 text-dark-blue font-semibold"
-              lable="Company Name (optional)"
-              name="company"
-              register={register}
-              errors={errors}
-              inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
-            />
-          </div>
-          <div className="w-full mb-1">
-            <TextField
-              className="w-full text-sm leading-8 text-dark-blue font-semibold"
-              lable="Email"
-              required={true}
-              name="email"
-              type="email"
-              register={register}
-              errors={errors}
-              inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
-            />
+          <div className="w-full mb-1 flex flex-col md:flex-row md:justify-between">
+            <div className="w-full md:w-[49%]">
+              <TextField
+                className="text-sm leading-8 text-dark-blue font-semibold"
+                lable="Company Name (optional)"
+                name="company"
+                register={register}
+                errors={errors}
+                inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
+              />
+            </div>
+            <div className="w-full md:w-[49%]">
+              <TextField
+                className="w-full text-sm leading-8 text-dark-blue font-semibold"
+                lable="Email"
+                required={true}
+                name="email"
+                type="email"
+                register={register}
+                errors={errors}
+                inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
+              />
+            </div>
           </div>
           <div className="w-full flex items-center md:flex-row justify-between">
             <div className="w-[65%]">
@@ -254,7 +244,8 @@ function BillingForm(props: any) {
             </div>
           </div>
 
-          <div className="w-full mb-1">
+          <div className="w-full mb-1 flex flex-col md:flex-row md:justify-between">
+            <div className="w-full md:w-[49%]">
             <TextField
               className="text-sm leading-8 text-dark-blue font-semibold"
               lable="Phone"
@@ -265,7 +256,7 @@ function BillingForm(props: any) {
               inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
           </div>
-          <div className="w-full mb-1">
+          <div className="w-full md:w-[49%]">
             <TextField
               className="text-sm leading-8 text-dark-blue font-semibold"
               lable="Phone 2 (optional)"
@@ -274,6 +265,7 @@ function BillingForm(props: any) {
               errors={errors}
               inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
+          </div>
           </div>
         </div>
         <div className="w-full p-[14px] mb-[15px]">

@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import styles from "../styles/footer.module.css";
-import { faSlack } from "@fortawesome/free-brands-svg-icons";
 import { postcodeValidator, postcodeValidatorExistsForCountry } from 'postcode-validator';
 import {VALIDATION_CONFIG} from "../config/validation.config";
 
@@ -121,9 +120,16 @@ function GeneralEnquiries({ Services }: any) {
           checkFormValidity(Object.keys(contactType), contactType) &&
           selectedServiceId.length
       ) {
+
+        const name =  data.full_name.split(" ");
         const body = {
           contact_form: {
-            ...data,
+            email:data.email,
+            enquiry:data.enquiry,
+            first_name:name[0],
+            last_name:name[1],
+            phone:data.phone,
+            post_code:data.post_code,
             ...intialQ,
             ...contactType,
           },
@@ -285,25 +291,13 @@ function GeneralEnquiries({ Services }: any) {
                       <div className="w-full flex flex-col md:flex-row flex-wrap gap-y-6 mt-5 justify-between">
                         <div className="w-full ">
                           <TextField
-                              lable="First Name"
-                              name="first_name"
+                              lable="Full Name"
+                              name="full_name"
                               className="text-lg text-black"
                               errors={errors}
                               register={register}
                               errorClass="text-[#ff0000] text-sm float-right"
                               required={true}
-                              inputClass="border-lime py-2.5 px-3"
-                          />
-                        </div>
-                        <div className="w-full">
-                          <TextField
-                              lable="Last Name"
-                              name="last_name"
-                              errors={errors}
-                              register={register}
-                              errorClass="text-[#ff0000] text-sm float-right"
-                              required={true}
-                              className="text-lg text-black"
                               inputClass="border-lime py-2.5 px-3"
                           />
                         </div>

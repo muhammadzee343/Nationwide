@@ -20,48 +20,50 @@ function Service({ certificate }: any) {
     register,
     handleSubmit,
     formState: { errors },
+    trigger,
     reset
   } = useForm({mode: "onChange"});
   const [next, setNext] = useState(false )
   const [service, setService] = useState(null)
   const requestCallBack = async (data:any)=>{
-    const body = {
-      contact_form: {
-        first_name: data.full_name,
-        last_name: "",
-        phone: data.phone,
-        email: data.email,
-        existing_job_enquiry: "not_sure",
-        "type_of_enquiry": "availability_or_quotation",
-        post_code: data.post_code,
-        "contact_by": "email",
-        enquiry: data.enquiry
-      },
-      services: [service],
-    };
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    };
-    const response = await fetch(
-      `${process.env.BASE_URL_DEV}contact_forms`,
-      requestOptions
-    );
 
-    if (response.ok) {
-      let data = await response.json();
-      reset({
-        full_name: "",
-        phone: "",
-        email:"",
-        post_code: "",
-        enquiry: ""
-      })
-      setNext(false)
-    } else {
-      alert("Something Went wrong");
-    }
+      const body = {
+        contact_form: {
+          first_name: data.full_name,
+          last_name: "",
+          phone: data.phone,
+          email: data.email,
+          existing_job_enquiry: "not_sure",
+          "type_of_enquiry": "availability_or_quotation",
+          post_code: data.post_code,
+          "contact_by": "email",
+          enquiry: data.enquiry
+        },
+        services: [service],
+      };
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      };
+      const response = await fetch(
+        `${process.env.BASE_URL_DEV}contact_forms`,
+        requestOptions
+      );
+
+      if (response.ok) {
+        let data = await response.json();
+        reset({
+          full_name: "",
+          phone: "",
+          email:"",
+          post_code: "",
+          enquiry: ""
+        })
+        setNext(false)
+      } else {
+        alert("Something Went wrong");
+      }
   }
 
   const getServices = async () =>{
@@ -80,17 +82,12 @@ function Service({ certificate }: any) {
     getServices();
   }, []);
 
-  useEffect(() => {
-    if(!errors.enquiry && (errors.email || errors.post_code || errors.full_name || errors.phone)){
-      setNext(false)
-    }
-  }, [errors]);
 
   return (
     <>
       {certificate[0]?.servicesDec && <ServiceHeader servicesDec={certificate[0]?.servicesDec} />}
       <div className="w-full flex justify-center bg-white">
-        <div className="w-full xxl:container flex flex-col lg:flex-row">
+        <div className="w-full xxl:continer flex flex-col lg:flex-row">
           <Head>
             <title>{certificate[0].title}</title>
             {
@@ -261,7 +258,13 @@ function Service({ certificate }: any) {
                                               <ButtonComponent
                                                   text="Next"
                                                   type="button"
-                                                  onClick={()=> setNext(true)}
+                                                  onClick={()=> {
+                                                    trigger().then(isValid => {
+                                                      if (errors?.enquiry?.message && Object.keys(errors).length === 1) {
+                                                        setNext(true)
+                                                      }
+                                                    });}
+                                                  }
                                                   className="bg-lime text-black uppercase text-lg mt-4 font-semibold px-[2px] sm:px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"
                                               />
                                           </div>
