@@ -29,8 +29,8 @@ function Layout({ children }) {
           {children}
           <Footer />
           {!router.asPath.includes("checkout") && !router.asPath.includes("order-now") &&
-            <div className="absolute bottom-5 ml-5 sticky z-[1000] flex items-center lg:hidden">
-              <div className="static  bg-lime text-white h-16 w-16 rounded-full flex items-center border-gray-900 border-2">
+            <div className="bottom-5 ml-5 fixed z-[1000] flex items-center lg:hidden">
+              <div className="static bottom auto bg-lime text-white h-16 w-16 rounded-full flex items-center border-gray-900 border-2">
                 <Link href="/order-now">
                   <p className="text-center text-[14px] font-semibold">
                     Order Online
