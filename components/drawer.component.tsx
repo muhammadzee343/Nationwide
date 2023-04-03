@@ -351,7 +351,7 @@ const DrawerComponent = ({}: any) => {
                               typeof opt.value === "number")
                               ? "bg-lime"
                               : "border border-grey-500"
-                          } border border-grey-500 w-4 h-4 sm:w-5 sm:h-5`}
+                          } border border-grey-500 w-6 h-6 sm:w-5 sm:h-5`}
                         />
                       </div>
                     );
@@ -420,7 +420,7 @@ const DrawerComponent = ({}: any) => {
                               attribute[ele.radioQuestion1.attr] === x.value
                                 ? "bg-lime"
                                 : "border border-grey-500"
-                            } border border-grey-500 w-4 h-4 sm:w-5 sm:h-5`}
+                            } border border-grey-500 w-6 h-6 sm:w-5 sm:h-5`}
                           />
                         );
                       })}
@@ -483,7 +483,7 @@ const DrawerComponent = ({}: any) => {
       <div
         id="drawer-right-example"
         className={`h-screen relative p-4 overflow-y-auto bg-row_bg_two py-[30px] px-[15px] sm:px-[30px] 
-            bg-gray-800  ease-in-out duration-1000 w-[100%] xl:w-[60%] xxl:w-[55%] ${
+            bg-gray-800  ease-in-out duration-1000 w-[100%] lg:w-[50%] xxl:w-[35%] ${
               showDrawer ? "translate-x-[0%]" : "translate-x-[100%]"
             }`}
         aria-labelledby="drawer-right-label"
