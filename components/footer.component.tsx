@@ -29,7 +29,6 @@ export default function Footer() {
   ];
 
   const UsefulLinkes = [
-    { title: "Frequently Asked Questions", pageLink: "faq" },
     { title: "How It Works", pageLink: "how-it-works" },
     { title: "Who Needs an EPC", pageLink: "who-needs-an-epc" },
     {
@@ -38,11 +37,12 @@ export default function Footer() {
     },
     { title: "Who needs EICR", pageLink: "who-needs-eicr" },
     { title: "Terms & Condition", pageLink: "terms-condition" },
+    { title: "Frequently Asked Questions", pageLink: "faq" },
   ];
 
   return (
     <>
-      <footer className="p-4 bg-white sm:p-6 bg-gray-900 bg-footer_bg_image bg-no-repeat bg-cover">
+      <footer className="p-4 bg-white sm:p-6 bg-gray-900 bg-footer_bg_image bg-no-repeat bg-cover w-full xxl:max-w-[1440px] mx-auto lg:min-h-[530px] md:px-0 xl:px-[39px] flex flex-wrap justify-center lg:justify-between">
         <div className="flex flex-wrap justify-center my-10 md:mx-10">
           <div className="md:flex md:justify-between w-full lg:max-w-[970px] xl:max-w-[1170px]">
             <div className="mb-6 md:mb-0 pl-[15px] pr-[15px]">
@@ -90,7 +90,7 @@ export default function Footer() {
               <div className="pl-[15px] pr-[15px]">
                 <div className="border-lime border-b-2 rounded-full w-8 mb-2 "></div>
                 <h3 className="mb-6 text-lg font-semibold text-white ">
-                  Our Services
+                  Explore
                 </h3>
 
                 <ul className="text-gray-600 text-gray-400">
@@ -123,7 +123,7 @@ export default function Footer() {
                   </li>
                   <li className="py-2">
                     <Link
-                        href="/join-us"
+                        href="/join-us-new"
                         className="text-white hover:text-lime text-[15px]"
                     >
                       Join Us
@@ -202,28 +202,30 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <hr className="my-6 border-gray-200 sm:mx-auto border-gray-700 lg:my-8" />
+        <hr className="border-gray-200 sm:mx-auto border-gray-700" />
         <div className="w-full flex-row justify-center">
           <div className="w-full sm:flex sm:items-center sm:justify-between lg:min-w-[970px] xl:min-w-[1170px]">
-            <span className="text-sm text-gray-500 sm:text-center text-gray-400">
+            <div className="w-full flex justify-center">
+              <span className="text-sm text-gray-500 sm:text-center text-gray-400">
               Copyright © 2021
               <a href="#" className="text-white hover:text-lime">
                 Nationwide Surveyors.
               </a>
               All Rights Reserved.
               <Link
-                href="/cookie-policy"
-                className="text-white hover:text-lime ml-3"
+                  href="/cookie-policy"
+                  className="text-white hover:text-lime ml-3"
               >
                 Cookie Policy
               </Link>
               <Link
-                href="/privacy-policy"
-                className="text-white hover:text-lime ml-3"
+                  href="/privacy-policy"
+                  className="text-white hover:text-lime ml-3"
               >
                 Privacy Policy
               </Link>
             </span>
+            </div>
           </div>
         </div>
       </footer>

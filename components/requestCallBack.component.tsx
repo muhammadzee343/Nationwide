@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronRight, faVolumeControlPhone, faXmark
+} from "@fortawesome/free-solid-svg-icons";
 import AlertBox from "./alertBox.component";
 import TextField from "./textFied.component";
 import TextArea from "./textArea.component";
@@ -112,23 +114,24 @@ function RequestCallBack({
   };
   return (
     <div className="bg-white shadow-md relative mt-5">
-      <div className='flex justify-center items-center w-full bg-dark-blue hover:bg-lime ease-in duration-200 px-[25px] py-[25px] cursor-pointer' onClick={handleCallbackClick}>
-        <Image src={callback} alt='callback' className='w-10 h-10 rounded-full mr-4'/>
+      <div className='flex justify-center items-center w-full bg-dark-blue hover:bg-lime ease-in duration-200 px-[25px] py-[25px] text-white hover:text-black cursor-pointer' onClick={handleCallbackClick}>
+        {/*<Image src={callback} alt='callback' className='w-10 h-10 rounded-full mr-4 filter grayscale hover:invert-100'/>*/}
+        <FontAwesomeIcon className="w-8 mr-6" icon={faVolumeControlPhone} />
         <h4
-          className='text-white mr-8'
+          className='mr-8'
           // onClick={handleCallbackClick}
         >
           REQUEST A CALLBACK
         </h4>
         {collapse &&
             <span className="flex mt-1.5 ml-2 mb-1">
-          <FontAwesomeIcon className="w-4 text-white " icon={faChevronRight} />
+          <FontAwesomeIcon className="w-4" icon={faChevronRight} />
         </span>}
         {!collapse &&
             <span
                 className="absolute top-[20] right-[29px] z-[900] flex mt-1.5 ml-2 mb-1"
             >
-          <FontAwesomeIcon className="text-white w-4" icon={faXmark} />
+          <FontAwesomeIcon className="w-4" icon={faXmark} />
         </span>
         }
       </div>
