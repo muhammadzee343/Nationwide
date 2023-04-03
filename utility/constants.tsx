@@ -491,6 +491,12 @@ export const service = [
         "<p>An energy survey is performed by a qualified energy assessor who visits the property and examines key items within the premises such as loft insulation, domestic boiler, hot water tank, radiators, windows for double glazing, etc.</p>" +
         "<br/><p>Once this information is obtained it is then placed into a software programme which carries out and calculates the level of energy efficiency and CO2 emissions and advises us on the best measures in improving the energy performance of a property with an estimated cost and savings.</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -517,6 +523,12 @@ export const service = [
         "<p>An energy survey is performed by a qualified energy assessor who visits the property and examines key items within the premises such as loft insulation, domestic boiler, hot water tank, radiators, windows for double glazing, etc.</p>" +
         "<br/><p>Once this information is obtained it is then placed into a software programme which carries out and calculates the level of energy efficiency and CO2 emissions and advises us on the best measures in improving the energy performance of a property with an estimated cost and savings.</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
 
   {
@@ -531,6 +543,12 @@ export const service = [
         "<p>It’s a legal requirement for all commercial and industrial buildings to have emergency lighting system installed and maintained with emergency light testing conducted on a regular intervals by a competent person, as this will ensure a safe passage in case of an emergy evacuation.</p>" +
         "<br/><p>Emergency light testing is therefore a vital part of this process, it allows for proper maintenance of the system which in turn makes certain that the emergency light system itself is fit for purpose. Importantly, this is a statutory requirement and most insurance companies require it, not only this but your life, the lives of staff and employees could depend on you, having had emergency light testing when needed.</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -552,6 +570,12 @@ export const service = [
         "<li>General Information on Emergency Lighting</li>\n" +
         "</ul>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
 
   {
@@ -572,6 +596,12 @@ export const service = [
         "<li>Above all, for the safety of yourself, tenants, employees and your customers</li>\n" +
         "</ul>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
 
   {
@@ -591,6 +621,12 @@ export const service = [
         "<li>Recording works &amp; parts used in fire log book</li>\n" +
         "</ul>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
 
   {
@@ -608,6 +644,12 @@ export const service = [
         " comprehensive Assemssents and provide you with an easy to understand report that sets out clearly what" +
         " actions you need to take.</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -631,6 +673,12 @@ export const service = [
         "<li>Significant Findings Action Plan</li>\n" +
         "</ul>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
 
   {
@@ -646,6 +694,12 @@ export const service = [
         " are also required to have their gas appliances serviced regularly to make sure they’re efficient and safe." +
         " It’s the law, as stated in the <a class='hover:text-lime ease-in duration-100' href='http://www.legislation.gov.uk/uksi/1998/2451/contents/made?_ga=2.57176426.1191280566.1669616964-1647189842.1667901178' target='_blank' rel='noopener noreferrer'>Gas Safety (Installation and Use) Regulations 1998</a></p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -664,6 +718,12 @@ export const service = [
         "<p class='mb-2'>Make sure you keep hold of old certificates as CP12s need to be kept for at least two years.</p>" +
         "<p class='mb-2'><span class=''><span class=''>&nbsp;</span></span></p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
 
   {
@@ -680,6 +740,12 @@ export const service = [
         "<p>A boiler service is the best way to ensure your boiler doesn’t unexpectedly let you down or fall out of " +
         "warranty. If you know your boiler needs servicing, please place your order online and leave rest with us.</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -742,6 +808,12 @@ export const service = [
         </ul>
       `,
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
 
   {
@@ -757,6 +829,12 @@ export const service = [
         "<p>A boiler service is the best way to ensure your boiler doesn’t unexpectedly let you down or fall out of " +
         "warranty. If you know your boiler needs servicing, please place your order online and leave rest with us.</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -771,6 +849,12 @@ export const service = [
         "<p>A boiler service is the best way to ensure your boiler doesn’t unexpectedly let you down or fall out of " +
         "warranty. If you know your boiler needs servicing, please place your order online and leave rest with us.</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
 
   {
@@ -786,6 +870,12 @@ export const service = [
         " are safe to use, which consists of visual inspections and the testing of the appliance, each test result" +
         " in either a PASS or a FAIL.</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -810,6 +900,12 @@ export const service = [
 </li>
 </ul>`,
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
 
   {
@@ -836,6 +932,12 @@ export const service = [
         "<p>It is vital that these issues are resolved, in order to receive a satisfactory report. Until the remedial" +
         " work is completed, your installation will not be compliant with Health and Safety regulations and legislations.</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -859,6 +961,12 @@ export const service = [
         "<li>Replacement of lighting including LED</li>\n" +
         "</ul>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -875,6 +983,12 @@ export const service = [
         " 2D and 3D floor plans are the most effective tool for presenting property’s layout, size, dimensions and" +
         " furniture configuration.</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -888,6 +1002,12 @@ export const service = [
         "<p>Our trained property surveyors can visit a property across the mainland UK and supply the finalized" +
         "marketing floor plans to you, in most cases the next working day after we visit your property.</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -905,6 +1025,12 @@ export const service = [
         " When commissioning a Chartered Surveyor to carry out a survey you should be able to feel confident that the" +
         " results will be appropriate for your needs.</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -927,6 +1053,12 @@ export const service = [
         " Inspector or Energy Assessor.&nbsp; This does not have a standard format, and so you will really need to" +
         " discuss your requirements prior to the commencement of any work to make sure you are getting everything you need.</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -941,6 +1073,12 @@ export const service = [
         "<p>If you manage any water system within a building you need to have a risk assessment and some good control" +
         " measures in place. We can help you achieve this.</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -955,6 +1093,12 @@ export const service = [
         " develop the right combination of training, skills, experience and knowledge to carry out their role" +
         " effectively.</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
 
   {
@@ -972,6 +1116,12 @@ export const service = [
         " United Kingdom under construction require a Predicted Energy Assessment (PEA) and an On Construction" +
         " Energy Performance Certificate (OCEPC).</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -986,6 +1136,12 @@ export const service = [
         " Building Control approval for the property; a legal requirement in the UK, according to Part L1a" +
         " of Building Regulations.</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
 ];
 //Terms and condition lists

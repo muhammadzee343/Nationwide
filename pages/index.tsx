@@ -317,10 +317,10 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="mb-5 lg:hidden">
+            <div className="w-full mb-5 lg:hidden justify-center flex">
               <ButtonComponent
                   text="Instant Quote and order here"
-                  className="w-full flex  bg-lime self-start font-semibold uppercase items-center justify-center hover:bg-dark-blue hover:text-white px-[28px] py-[12px] text-sm ease-in duration-200"
+                  className="w-[80%] flex  bg-lime self-start font-semibold uppercase items-center justify-center hover:bg-dark-blue hover:text-white px-[28px] py-[12px] text-[12px] ease-in duration-200"
                   type="button"
                   onClick={() =>{
                     router?.push({

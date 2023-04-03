@@ -332,10 +332,12 @@ function Checkout(props: any) {
   const placeOrder = async (data, token) => {
     setIsLoading(true);
 
+    const name =  data.full_name.split(" ");
+
     const body = {
       payment_detail: {
-        billing_first_name: data.firstName,
-        billing_last_name: data.lastName,
+        billing_first_name: name[0],
+        billing_last_name: name[1],
         billing_address: data.streetAddress,
         billing_city: "data.city",
         billing_state: "Punjab",

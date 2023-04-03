@@ -14,6 +14,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { UuidContext } from "../context/sidebarContext";
 import { bundles } from "../utility/constants";
+import Swal from 'sweetalert2';
 
 
 function OrderNow({ commercialProperties, residentialProperties }: any) {
@@ -65,6 +66,8 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
   const router = useRouter();
 
   const [next, setNext] = useState(false)
+
+  const [error, setError] = useState(false)
 
 
   const { bundle, ser, value, keys, property, postCode, item, address } =
@@ -151,65 +154,77 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     }
   };
 
+
+
   const orderNow = async () => {
-    setFormDirty(true);
-    const body = {
-      order: {
-        service_category: propertyType,
-        session_id: uuid,
-      },
-      order_product: {
-        ...attribute,
-        number_bedrooms_manual: attribute.bedrooms >= 5,
-        no_of_gas_appliances_manual: attribute.gas_appliances >= 4,
-        no_of_distribution_boards_manual: true,
-        no_of_electric_appliances_manual: attribute.electrical_appliances >= 30,
-        no_of_floors_manual: attribute.floors >= 4,
-        no_of_bathrooms_manual: true,
-        no_of_circuits_manual: attribute.circuits >= 31,
-        property_price_manual: attribute.property_price >= 1000001,
-        property_postcode: postcode,
-        property_address: propertyAddress,
-      },
-      services: [...selectedServiceId],
-    };
+    if(formDirty && (!propertyAddress || error)){
+      Swal.fire({
+        title: 'Something missing!',
+        text: 'Please fill all visible fields for a better price',
+        icon: 'warning',
+        confirmButtonText: 'Ok',
+        confirmButtonColor:'rgb(140, 212, 245)'
+      })
+    }else{
+      setFormDirty(true);
+      const body = {
+        order: {
+          service_category: propertyType,
+          session_id: uuid,
+        },
+        order_product: {
+          ...attribute,
+          number_bedrooms_manual: attribute.bedrooms >= 5,
+          no_of_gas_appliances_manual: attribute.gas_appliances >= 4,
+          no_of_distribution_boards_manual: true,
+          no_of_electric_appliances_manual: attribute.electrical_appliances >= 30,
+          no_of_floors_manual: attribute.floors >= 4,
+          no_of_bathrooms_manual: true,
+          no_of_circuits_manual: attribute.circuits >= 31,
+          property_price_manual: attribute.property_price >= 1000001,
+          property_postcode: postcode,
+          property_address: propertyAddress,
+        },
+        services: [...selectedServiceId],
+      };
 
-    if (bundle) {
-      //@ts-ignore
-      const bundleData = bundles.find((data) => data.content.service == bundle);
+      if (bundle) {
+        //@ts-ignore
+        const bundleData = bundles.find((data) => data.content.service == bundle);
 
-      if (bundleData) {
-        let notSame = false;
-        selectedServiceId.map((data) => {
-          if (!bundleData.content.value.includes(data)) {
-            notSame = true;
+        if (bundleData) {
+          let notSame = false;
+          selectedServiceId.map((data) => {
+            if (!bundleData.content.value.includes(data)) {
+              notSame = true;
+            }
+          });
+          if (!notSame) {
+            //@ts-ignore
+            body.bundle_id = bundle;
           }
-        });
-        if (!notSame) {
-          //@ts-ignore
-          body.bundle_id = bundle;
         }
       }
-    }
 
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(body),
-    };
-    try {
-      const response = await fetch(
-        `${process.env.BASE_URL_DEV}orders`,
-        requestOptions
-      );
-      if (!response.ok) {
-        switch (response.status) {
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(body),
+      };
+      try {
+        const response = await fetch(
+          `${process.env.BASE_URL_DEV}orders`,
+          requestOptions
+        );
+        if (!response.ok) {
+          switch (response.status) {
+          }
+        } else {
+          const data = await response.json();
+          router.push({ pathname: "/checkout" });
         }
-      } else {
-        const data = await response.json();
-        router.push({ pathname: "/checkout" });
-      }
-    } catch (err) { }
+      } catch (err) { }
+    }
   };
 
   const changePropertyType = (property_type: string) => {
@@ -221,6 +236,8 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
   };
 
   const getPropertyAddress = async () => {
+
+
     setValue("property_address", '')
     if (!propertyAddress) {
       const requestOptions = {
@@ -331,6 +348,8 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     }
   };
 
+
+
   const services = useMemo<JSX.Element[]>(() => {
     const elements: JSX.Element[] = [];
     const services =
@@ -361,7 +380,9 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     return elements;
   }, [propertyType, selectedService, selectedServiceId]);
 
+
   const serviceAttribute = useMemo<JSX.Element[]>(() => {
+
     const elements: JSX.Element[] = [];
 
     serviceAttributes.forEach((key, index) => {
@@ -374,6 +395,11 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         });
       }
       if (ele && Object.keys(ele).length !== 0) {
+        if(attribute[ele.attr] === ""){
+          setError(true)
+        }else {
+          setError(false)
+        }
         elements.push(
           <>
             <div
@@ -384,7 +410,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                 className={`text-[21px] font-semibold font-bold my-[20px] ${formDirty && attribute[ele.attr] === ""
                   ? "text-[#ff0000]"
                   : "text-dark-blue"
-                  }`}
+                  } `}
               >
                 {ele.headings}
               </h3>
@@ -539,6 +565,20 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     return elements;
   }, [propertyType, serviceAttributes, selectedService, attribute, formDirty]);
 
+  useEffect(() => {
+    if(formDirty && error){
+      Swal.fire({
+        title: 'Something missing!',
+        text: 'Please fill all visible fields for a better price',
+        icon: 'warning',
+        confirmButtonText: 'Ok',
+        confirmButtonColor:'rgb(140, 212, 245)'
+      })
+    }
+  }, [formDirty, error]);
+
+
+
   return (
     <>
 
@@ -647,7 +687,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
                     <div className="sm:w-6/12 w-full flex flex-col justify-center">
                       <div className="w-full relative">
-                        <div className="w-full flex justify-between pr-1 text-[12px] items-center cursor-pointer text-gray-600">
+                        <div className="w-full flex justify-between pr-1 text-[12px] items-baseline cursor-pointer text-gray-600">
                           <label className="text-lg text-dark-blue font-semibold">
                             Property Address
                           </label>
