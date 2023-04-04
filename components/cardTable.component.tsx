@@ -11,7 +11,6 @@ import { useForm } from "react-hook-form";
 import ButtonComponent from "./button.component";
 import {OverlayContext, UuidContext} from "../context/sidebarContext";
 import AwesomeDebouncePromise from "awesome-debounce-promise";
-import Component from "react-responsive/src/Component";
 
 
 
@@ -272,18 +271,19 @@ function CardTable({ cart, getCart }: any) {
                   <div className="flex items-center justify-between flex-wrap">
                     {contactType.map((type, index) => {
                       return (
-                          <Component
-                              key={index}
-                              label={type.title}
-                              name="contact_type1"
-                              value={type.title}
-                              activeVal={cartItemData[0].contact_type}
-                              cart={cart}
-                              index={cartNo}
-                              changeContactType={changeContactType}
-                              obj="shopping_cart_products"
-                              className="text-[17px] text-dark-blue  mb-3"
-                          />
+                          <div key={index} className={isSmallScreen && "w-[30%]"}>
+                              <Component
+                                  label={type.title}
+                                  name="contact_type1"
+                                  value={type.title}
+                                  activeVal={cartItemData[0].contact_type}
+                                  cart={cart}
+                                  index={cartNo}
+                                  changeContactType={changeContactType}
+                                  obj="shopping_cart_products"
+                                  className="text-[17px] text-dark-blue  mb-3"
+                              />
+                          </div>
                       );
                     })}
                   </div>
@@ -504,11 +504,8 @@ const ContectAccessOption = ({
                     }: any) => {
   return (
       <label className={`${className}`}>
-        <div className={`px-3 mx-2 mt-2 py-1 border-[1px] font-semibold text-[12px] font-opensans border-gray-500 w-full flex flex-row ${value === activeVal  ? 'bg-lime' : ''}`} onClick={() => changeContactType(value, index, obj)}>
+        <div className={`px-3 mx-2 mt-2 py-1 border-[1px] font-semibold text-[12px] font-opensans border-gray-500 w-full flex flex-row justify-center ${value === activeVal  ? 'bg-lime' : ''}`} onClick={() => changeContactType(value, index, obj)}>
           {label}
-          {value === activeVal &&
-              <FontAwesomeIcon className="ml-2 w-5" icon={faCheck} />
-          }
         </div>
       </label>
   );
@@ -523,7 +520,7 @@ function KeyHolderInfo({
   obj
 }: any) {
   return (
-    <div className="relative border-t border-t-[#182333]">
+    <div className="relative border-t border-t-[#182333] mt-3">
       <div className="py-1">
         {/*<span*/}
         {/*  className="absolute top-[-20px] rounded right-3 cursor-pointer text-sm text-dark-blue font-bold"*/}
