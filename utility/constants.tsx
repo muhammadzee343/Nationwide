@@ -514,6 +514,12 @@ export const service = [
         "<p>An energy survey is performed by a qualified energy assessor who visits the property and examines key items within the premises such as loft insulation, domestic boiler, hot water tank, radiators, windows for double glazing, etc.</p>" +
         "<br/><p>Once this information is obtained it is then placed into a software programme which carries out and calculates the level of energy efficiency and CO2 emissions and advises us on the best measures in improving the energy performance of a property with an estimated cost and savings.</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -527,12 +533,7 @@ export const service = [
         "<p>An energy survey is performed by a qualified energy assessor who visits the property and examines key items within the premises such as loft insulation, domestic boiler, hot water tank, radiators, windows for double glazing, etc.</p>" +
         "<br/><p>Once this information is obtained it is then placed into a software programme which carries out and calculates the level of energy efficiency and CO2 emissions and advises us on the best measures in improving the energy performance of a property with an estimated cost and savings.</p>",
     },
-    servicesDec:[
-      "EICR certificate shared same day",
-      "Failings repaired on half hour rate",
-      "Knowledge & advice you can trust",
-      "Charged at £30.00 ex VAT per circuit",
-    ],
+
   },
 
   {
