@@ -90,8 +90,8 @@ export default function Home() {
             </div>
       </div>
       <BoxBackgroundComponent className='h-[650px] pt-1'
-        greyStyle='w-[60%] h-[50%] md:w-[35%]'
-        limeStyle='right-0 bottom-0 w-[60%] h-[40%] md:w-[60%]'
+        greyStyle='w-[60%] h-[50%] md:w-[35%] hidden lg:block'
+        limeStyle='right-0 bottom-0 w-[60%] h-[40%] md:w-[60%] hidden lg:block'
       >
         <div className='w-full py-4 mt-3 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1190px] mx-auto'>
           <div className='px-2 ml-4 md:ml-0'>
