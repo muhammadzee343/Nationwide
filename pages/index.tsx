@@ -102,7 +102,7 @@ export default function Home() {
           <Pricing />
         </div>
       </BoxBackgroundComponent>
-      <div className="w-[90%] py-5 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto">
+      <div className="w-[85%] py-5 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto">
         <div className="pb-[60px] pt-10 flex gap-6 flex-col flex-col-reverse justify-between lg:flex-row">
           <>
             {content.image && (
@@ -118,7 +118,7 @@ export default function Home() {
               </BoxBackgroundComponent>
             )}
             <div
-              className={`${content.image ? "lg:w-[56%]" : "lg:w-12/12"} py-4 px-3`}
+              className={`${content.image ? "lg:w-[56%]" : "lg:w-12/12"} py-4`}
             >
               {content.type !== "Service" && (
                 <>
@@ -182,7 +182,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex justify-center lg:justify-start xl:justify-center content-container-homepage lg:w-[93%] xxl:w-[95%]">
-            <div className="w-[90%] lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px]">
+            <div className="w-[85%] lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto">
               <div className="flex flex-col items-center justify-center ">
                 <div className='flex flex-col self-start'>
                   <div className='border-lime border-b-4 rounded-full w-[40%] mb-3'></div>
@@ -282,7 +282,7 @@ export default function Home() {
       {/*B2B SECTION*/}
       <section>
         <div className="w-full flex justify-center">
-          <div className="w-[95%] lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto px-3">
+          <div className="w-[90%] lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto px-3">
             <div className="w-full flex flex-row justify-between items-start flex-wrap pt-[80px] pb-[60px]">
               <div className="flex flex-col border-white mb-[30px] py-2">
                 <div className='border-b-4 border-lime rounded-full w-[70px] mb-3'></div>
@@ -308,7 +308,7 @@ export default function Home() {
                   </div>
                 </div>
               <div className="w-full self-center xl:w-[44%]">
-                <p className="text-black text-[15px] leading-[27px]">
+                <p className="text-black text-[15px] text-justify leading-[27px]">
                   For those customers needing to make regular orders you can get
                   direct access to our bespoke order management system for live
                   updates.We offer a fully national service and can provide

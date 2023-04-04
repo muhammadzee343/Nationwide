@@ -236,8 +236,6 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
   };
 
   const getPropertyAddress = async () => {
-
-
     setValue("property_address", '')
     if (!propertyAddress) {
       const requestOptions = {
@@ -685,9 +683,9 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                       </div>
                     </div>
 
-                    <div className="sm:w-6/12 w-full flex flex-col justify-center">
+                    <div className="sm:w-6/12 w-full flex flex-col justify-center ">
                       <div className="w-full relative">
-                        <div className="w-full flex justify-between pr-1 text-[12px] items-baseline cursor-pointer text-gray-600">
+                        <div className="w-full flex justify-between pr-1 text-[12px] items-baseline cursor-pointer text-gray-600 mt-4 md:mt-0">
                           <label className="text-lg text-dark-blue font-semibold">
                             Property Address
                           </label>
@@ -698,12 +696,12 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                           placeholder="Enter full address here"
                           name="property_address"
                           required={true}
-                          className={`border w-full  focus:border-lime  outline-none focus:ring-transparent
+                          className={`border w-full focus:border-lime  outline-none focus:ring-transparent
                            shadow-sm border-grey-500 py-2.5 px-3`}
                           {...register("property_address", { required: true })}
                         />
                         {addresses.length > 0 && (
-                          <div className="w-[97%] max-h-[300px] overflow-y-auto border border-lime absolute bg-white ">
+                          <div className="w-full max-h-[300px] overflow-y-auto border border-lime absolute bg-white ">
                             {addresses.map((ele, index) => {
                               return (
                                 <div
