@@ -1,20 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import {faCheck, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { faTag } from "@fortawesome/free-solid-svg-icons";
+import { useMediaQuery } from '@react-hook/media-query';
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import ButtonComponent from "./button.component";
 import {OverlayContext, UuidContext} from "../context/sidebarContext";
 import AwesomeDebouncePromise from "awesome-debounce-promise";
+import Component from "react-responsive/src/Component";
 
 
 
 function CardTable({ cart, getCart }: any) {
+
+  const isSmallScreen = useMediaQuery('(max-width: 768px)');
+  const Component = isSmallScreen ? ContectAccessOption : RadioInput
+
   const contactType = [
     { title: "Me" },
     { title: "Seller" },
@@ -148,6 +153,7 @@ function CardTable({ cart, getCart }: any) {
     } catch (err) {}
   };
 
+  console.log(showContactInfo);
 
   const addAnotherService = (cartNo: number) => {
 
@@ -266,7 +272,7 @@ function CardTable({ cart, getCart }: any) {
                   <div className="flex items-center justify-between flex-wrap">
                     {contactType.map((type, index) => {
                       return (
-                          <RadioInput
+                          <Component
                               key={index}
                               label={type.title}
                               name="contact_type1"
@@ -485,6 +491,28 @@ const RadioInput = ({
   );
 };
 
+const ContectAccessOption = ({
+                      label,
+                      value,
+                      name,
+                      className = "",
+                      activeVal,
+                      changeContactType,
+                      index,
+                      cart,
+                      obj
+                    }: any) => {
+  return (
+      <label className={`${className}`}>
+        <div className={`px-3 mx-2 mt-2 py-1 border-[1px] font-semibold text-[12px] font-opensans border-gray-500 w-full flex flex-row ${value === activeVal  ? 'bg-lime' : ''}`} onClick={() => changeContactType(value, index, obj)}>
+          {label}
+          {value === activeVal &&
+              <FontAwesomeIcon className="ml-2 w-5" icon={faCheck} />
+          }
+        </div>
+      </label>
+  );
+};
 function KeyHolderInfo({
   item,
   setItem,
