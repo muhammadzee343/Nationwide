@@ -229,7 +229,7 @@ function CardTable({ cart, getCart }: any) {
             <div className="w-full">
               <ul className="w-full px-4">
                 {cartItemData?.map((e, index) => {
-
+                  let price = parseFloat(e?.total_amount)
                   return (
                     <li
                       key={index}
@@ -246,7 +246,7 @@ function CardTable({ cart, getCart }: any) {
                         </p>
                       </div>
                       <p className="text-[13px] md:text-[14px] text-dark-blue font-semibold w-14 ">
-                        &#163; {e.total_amount}
+                        &#163; {price.toFixed(2)}
                       </p>
                     </li>
                   );
@@ -355,6 +355,7 @@ function CardTable({ cart, getCart }: any) {
               <div className="w-full">
                 <ul className="w-full px-4">
                   {cartItemData?.map((e, index) => {
+                    let price = parseFloat(e.total_amount)
                     return (
                         <li
                             key={index}
@@ -365,8 +366,8 @@ function CardTable({ cart, getCart }: any) {
                               <span style={{fontSize: 24}}>⤷</span> {e?.name}
                             </p>
                           </div>
-                          <p className="text-[13px] w-[20%] text-right md:text-[14px] text-dark-blue font-semibold">
-                            &#163; {e.total_amount}
+                          <p className="text-[13px] w-[7%] text-left md:text-[14px] text-dark-blue font-semibold">
+                            &#163; {price.toFixed(2)}
                           </p>
                         </li>
                     );
