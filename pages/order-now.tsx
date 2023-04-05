@@ -468,11 +468,11 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                   </div>
                 )}
                 {ele.exactNumber && attribute[ele.attr] >= ele.minValue && (
-                  <div className="w-full flex lg:gap-x-28">
-                    <p className=" font-opensans text-lg text-dark-blue font-semibold mr-3 w-5/12">
+                  <div className="w-full flex lg:gap-x-28 py-3">
+                    <p className="text-[17px] text-dark-blue font-semibold mr-3">
                       {ele.exactNumber}
                     </p>
-                    <div className="w-2/4 pl-[24px] lg:pl-[12px]">
+                    <div className="w-2/4 pl-[24px] lg:pl-[12px] mt-2">
                       <Counter
                         minValue={ele.minValue}
                         label={ele.attr}
@@ -488,7 +488,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                 )}
                 {ele?.radioQuestion1 && (
                   <div className="flex flex-col w-full">
-                    <p className=" font-opensans text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
+                    <p className="text-[17px] text-dark-blue my-5 font-semibold mr-3 ">
                       {ele.radioQuestion1.question}
                     </p>
                     <div className="flex flex-wrap gap-9">
@@ -515,7 +515,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                 )}
                 {ele?.radioQuestion2 && attribute[ele?.radioQuestion1.attr] && (
                   <div className="flex flex-col w-full">
-                    <p className=" font-opensans text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
+                    <p className="text-[17px] text-dark-blue my-5 font-semibold mr-3">
                       {ele.radioQuestion2.question}
                     </p>
                     <div className="flex flex-wrap gap-9">
@@ -676,7 +676,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                           <ButtonComponent
                               text="Find Address"
                               className="bg-[#252525] text-white text-[11px] sm:text-[12px] font-semibold px-[2px]
-                             sm:px-[20px] py-[14.5px] hover:bg-lime hover:text-white ease-in duration-200"
+                             sm:px-[20px] py-[15px] md:py-[14px] hover:bg-lime hover:text-white ease-in duration-200"
                               onClick={getPropertyAddress}
                           />
                         </div>

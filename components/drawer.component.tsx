@@ -234,6 +234,7 @@ const DrawerComponent = ({}: any) => {
   //SHOW/HIDE DRAWER
   const displayDrawer = () => {
     setShowDrawer(false);
+    document.body.style.overflow = 'unset';
     setTimeout(() => {
       setOverlay(false);
     }, 1000);
@@ -271,6 +272,7 @@ const DrawerComponent = ({}: any) => {
     });
     setShowDrawer(false);
     setOverlay(false);
+    document.body.style.overflow = 'unset';
   };
 
   const services = useMemo<JSX.Element[]>(() => {
