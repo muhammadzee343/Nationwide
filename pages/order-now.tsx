@@ -676,7 +676,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                           <ButtonComponent
                               text="Find Address"
                               className="bg-[#252525] text-white text-[11px] sm:text-[12px] font-semibold px-[2px]
-                             sm:px-[20px] py-[14.5px] hover:bg-lime hover:text-white ease-in duration-200"
+                             sm:px-[20px] py-[15px] md:py-[14px] hover:bg-lime hover:text-white ease-in duration-200"
                               onClick={getPropertyAddress}
                           />
                         </div>

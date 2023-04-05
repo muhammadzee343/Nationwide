@@ -12,6 +12,7 @@ export default function SelectProperty() {
   const displayDrawer = (propertyType: string) => {
     setPropertyType(propertyType);
     setOverlay(true);
+    document.body.style.overflow = 'hidden';
     setTimeout(() => {
       setShowDrawer(true);
     }, 1);
