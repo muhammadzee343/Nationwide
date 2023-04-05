@@ -33,8 +33,15 @@ function RequestCallBack({
   };
 
   const requestCBCheckout = async (data: any) => {
+
+    const name = data.full_name.split(' ')
+
     const body = {
-      ...data,
+      customer_note:data.customer_note,
+      email_address:data.email_address,
+      first_name:name[0],
+      last_name:name[1],
+      phone:data.phone,
       session_id: uuid,
     };
 
@@ -166,25 +173,13 @@ function RequestCallBack({
                 />
                 <form onSubmit={handleSubmit(submitForm)}>
                   <div className="flex flex-col my-[25px]">
-                    <div className=" w-full">
-                      <TextField
-                        handleChange={() => {}}
-                        className="text-sm leading-8 font-semibold"
-                        lable="First Name"
-                        required={true}
-                        name="first_name"
-                        register={register}
-                        placeholder="Enter first name here"
-                        inputClass="border-grey-500 px-3"
-                      />
-                    </div>
                     <div className="w-full">
                       <TextField
                         handleChange={() => {}}
                         className="text-sm leading-8 font-semibold"
-                        lable="Last Name"
+                        lable="Full Name"
                         required={true}
-                        name="last_name"
+                        name="full_name"
                         register={register}
                         placeholder="Enter last name here"
                         inputClass="border-grey-500 px-3"

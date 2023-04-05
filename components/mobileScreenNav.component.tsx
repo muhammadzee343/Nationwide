@@ -6,12 +6,12 @@ import {useEffect, useState} from "react";
 
 
 export default function MobileScreenNav({toggleMenuOnClick}) {
-  const [toggleMenu, setToggleMenu] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(true);
 
 
 
   return (
-    <ul className="absolute w-11/12 inset-x-0 mx-auto flex-col px-6 py-2 align-center bg-white shadow-sm rounded border z-[100] ">
+    <ul className="absolute w-full inset-x-0 min-h-full mx-auto flex-col px-6 py-2 align-center bg-white shadow-sm rounded border z-[100] ">
       <li className="flex items-center border-b border-grey-500   xl:my-0 h-12  text-dark-blue">
         <Link href="/" onClick={() => toggleMenuOnClick(false)} className="text-[15px] font-[600] ">
           HOME

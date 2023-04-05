@@ -27,8 +27,11 @@ import { OverlayContext, SidebarContext } from "../context/sidebarContext";
 import { useForm } from "react-hook-form";
 import Select from "./select.component";
 import { useRouter } from "next/router";
+import Home from '../public/Home.png';
+import Builiding from '../public/Building.png'
 
 import { postcodeValidator, postcodeValidatorExistsForCountry } from 'postcode-validator';
+import Image from "next/image";
 
 const DrawerComponent = ({}: any) => {
   const attributeState = {
@@ -482,7 +485,7 @@ const DrawerComponent = ({}: any) => {
     <div className="w-screen h-screen bg-[#000000cc] fixed z-[2999] flex items-end flex-col ">
       <div
         id="drawer-right-example"
-        className={`h-screen relative p-4 overflow-y-auto bg-row_bg_two py-[30px] px-[15px] sm:px-[30px] 
+        className={`h-screen relative p-4 overflow-y-auto bg-dark-blue/90 py-[30px] px-[15px] sm:px-[30px] 
             bg-gray-800  ease-in-out duration-1000 w-[100%] lg:w-[50%] xxl:w-[35%] ${
               showDrawer ? "translate-x-[0%]" : "translate-x-[100%]"
             }`}
@@ -545,13 +548,13 @@ const DrawerComponent = ({}: any) => {
                   </span>
                 </div>
                 {selectedService.length > 1 && (
-                  <div className=" bg-dark-blue flex rounded-lg py-[10px] pl-[45px] pr-[20px]">
+                  <div className=" bg-dark-blue flex rounded-lg py-[10px] pl-[20px] pr-[10px]">
                     <FontAwesomeIcon
-                      className="text-lime w-10 md:w-6 mr-2"
+                      className="text-lime w-9 md:w-6 mr-2"
                       icon={faTag}
                     />
-                    <p className="text-white text-[15px] font-semibold">
-                      Congratulations! £10 multi-service-order Discount has been
+                    <p className="text-white text-[11px] md:text-[15px] font-semibold">
+                      <span className="text-[14px] font-bold">Congratulations!</span> <br/> £10 multi-service-order Discount has been
                       applied.
                     </p>
                   </div>
@@ -581,8 +584,8 @@ const DrawerComponent = ({}: any) => {
         {step && (
           <>
             <div className="flex justify-between">
-              <h3 className="text-[26px] font-semibold mb-[15px] text-dark-blue font-opensans">
-                Get Instant <span className="text-lime"> Quote</span>
+              <h3 className="text-[26px] font-semibold mb-[15px] text-lime font-opensans">
+                Get Instant <span className="text-white"> Quote</span>
               </h3>
             </div>
 
@@ -592,7 +595,7 @@ const DrawerComponent = ({}: any) => {
                   Select Your Property Type
                 </h6>
                 <label
-                  className={`relative flex items-center border-2 py-[16px] px-[5px]
+                  className={`relative flex items-center border-2 py-[11px] px-[5px]
                    pl-[55px] font-[15px] font-bold text-dark-blue cursor-pointer mb-[15px] ${
                      propertyType === "residential_property"
                        ? "bg-lime border-lime"
@@ -601,15 +604,16 @@ const DrawerComponent = ({}: any) => {
                    hover:bg-lime`}
                   onClick={() => getFilterServices("residential_property")}
                 >
-                  <FontAwesomeIcon
-                    className="w-8 h-[35px] text-dark-blue absolute left-[14px] text-[35px]"
-                    icon={faHouse}
-                  />
+                  <Image src={Home} alt='home' className="h-8 w-8 mr-5"/>
+                  {/*<FontAwesomeIcon*/}
+                  {/*  className="w-8 h-[35px] text-dark-blue absolute left-[14px] text-[35px]"*/}
+                  {/*  icon={faHouse}*/}
+                  {/*/>*/}
                   Residential Property
                 </label>
 
                 <label
-                  className={`relative flex items-center border-2 border-[#ececec] py-[16px] px-[5px]
+                  className={`relative flex items-center border-2 border-[#ececec] py-[11px] px-[5px]
                    pl-[55px] font-[15px] font-bold text-dark-blue cursor-pointer mb-[15px] hover:bg-lime
                     cursor-pointer  ${
                       propertyType === "commercial_property"
@@ -618,10 +622,11 @@ const DrawerComponent = ({}: any) => {
                     }`}
                   onClick={() => getFilterServices("commercial_property")}
                 >
-                  <FontAwesomeIcon
-                      className="w-8 h-[35px] text-dark-blue absolute left-[14px] text-[35px]"
-                    icon={faBuilding}
-                  />
+                  <Image src={Builiding} alt='home' className="h-8 w-8 mr-5"/>
+                  {/*<FontAwesomeIcon*/}
+                  {/*    className="w-8 h-[35px] text-dark-blue absolute left-[14px] text-[35px]"*/}
+                  {/*  icon={faBuilding}*/}
+                  {/*/>*/}
                   Commercial Property
                 </label>
               </div>

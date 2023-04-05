@@ -194,7 +194,7 @@ function BillingForm(props: any) {
                 }}
               />
             </div>
-            <div className="self-end w-[30%] ">
+            <div className="w-[30%] ">
               <ButtonComponent
                 type="button"
                 text="FIND ADDRESS"

@@ -13,9 +13,9 @@ import TextField from "../../../components/textFied.component";
 import {VALIDATION_CONFIG} from "../../../config/validation.config";
 import { useForm } from "react-hook-form";
 import TextArea from "../../../components/textArea.component";
+import Swal from "sweetalert2";
 
 function Service({ certificate }: any) {
-
   const {
     register,
     handleSubmit,
@@ -24,7 +24,6 @@ function Service({ certificate }: any) {
     reset
   } = useForm({mode: "onChange"});
   const [next, setNext] = useState(false )
-  const [service, setService] = useState(null)
   const requestCallBack = async (data:any)=>{
 
       const body = {
@@ -39,7 +38,7 @@ function Service({ certificate }: any) {
           "contact_by": "email",
           enquiry: data.enquiry
         },
-        services: [service],
+        services: [certificate[0].id],
       };
       const requestOptions = {
         method: "POST",
@@ -53,6 +52,13 @@ function Service({ certificate }: any) {
 
       if (response.ok) {
         let data = await response.json();
+        Swal.fire({
+          title: 'Success!',
+          text: 'We have received your query',
+          icon: 'success',
+          confirmButtonText: 'Close',
+          confirmButtonColor:'#c2cf10'
+        })
         reset({
           full_name: "",
           phone: "",
@@ -62,30 +68,20 @@ function Service({ certificate }: any) {
         })
         setNext(false)
       } else {
+        reset({
+          full_name: "",
+          phone: "",
+          email:"",
+          post_code: "",
+          enquiry: ""
+        })
         alert("Something Went wrong");
       }
   }
 
-  const getServices = async () =>{
-    const res = await fetch(`${process.env.BASE_URL_DEV}/services/list_services`);
-    const data = await res.json();
-    let { slug } = router.query;
-      let service = slug?.replace(/-/g, " ")
-      data.services.map((item:any)=>{
-        if(item.name.toUpperCase() === service.toUpperCase()){
-          setService(item.id)
-        }
-      })
-  }
-
-  useEffect(() => {
-    getServices();
-  }, []);
-
-
   return (
     <>
-      {certificate[0]?.servicesDec && <ServiceHeader servicesDec={certificate[0]?.servicesDec} />}
+      {certificate[0]?.servicesDec && <ServiceHeader servicesDec={certificate[0]?.servicesDec} serviceTitle={certificate[0]?.bannerTitle} />}
       <div className="w-full flex justify-center bg-white">
         <div className="w-full xxl:continer flex flex-col lg:flex-row">
           <Head>
@@ -262,6 +258,7 @@ function Service({ certificate }: any) {
                                                     trigger().then(isValid => {
                                                       if (errors?.enquiry?.message && Object.keys(errors).length === 1) {
                                                         setNext(true)
+                                                        delete errors.enquiry
                                                       }
                                                     });}
                                                   }

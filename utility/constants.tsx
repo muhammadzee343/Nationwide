@@ -458,6 +458,8 @@ export const service = [
   {
     className: "flex flex-col lg:flex-row",
     title: "Get an EPC from £35 only | Energy Performance Certificate",
+    id: 1,
+    bannerTitle:'Energy Performance Certificate',
     content: {
       type: "Service",
       certificate: "domestic-epc",
@@ -501,6 +503,8 @@ export const service = [
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
     title: "Get Commercial EPC For as Little as £150",
+    id:2,
+    bannerTitle: 'Commercial EPC',
     content: {
       type: "Service",
       certificate: "commercial-epc",
@@ -510,6 +514,12 @@ export const service = [
         "<p>An energy survey is performed by a qualified energy assessor who visits the property and examines key items within the premises such as loft insulation, domestic boiler, hot water tank, radiators, windows for double glazing, etc.</p>" +
         "<br/><p>Once this information is obtained it is then placed into a software programme which carries out and calculates the level of energy efficiency and CO2 emissions and advises us on the best measures in improving the energy performance of a property with an estimated cost and savings.</p>",
     },
+    servicesDec:[
+      "EICR certificate shared same day",
+      "Failings repaired on half hour rate",
+      "Knowledge & advice you can trust",
+      "Charged at £30.00 ex VAT per circuit",
+    ],
   },
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -523,17 +533,14 @@ export const service = [
         "<p>An energy survey is performed by a qualified energy assessor who visits the property and examines key items within the premises such as loft insulation, domestic boiler, hot water tank, radiators, windows for double glazing, etc.</p>" +
         "<br/><p>Once this information is obtained it is then placed into a software programme which carries out and calculates the level of energy efficiency and CO2 emissions and advises us on the best measures in improving the energy performance of a property with an estimated cost and savings.</p>",
     },
-    servicesDec:[
-      "EICR certificate shared same day",
-      "Failings repaired on half hour rate",
-      "Knowledge & advice you can trust",
-      "Charged at £30.00 ex VAT per circuit",
-    ],
+
   },
 
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
     title: "Emergency Lights Test Certificate | Become BS5266 Compliant",
+    id:3,
+    bannerTitle: 'Emergency Lights Test Report',
     content: {
       type: "Service",
       certificate: "emergency-light-test-report",
@@ -581,6 +588,8 @@ export const service = [
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
     title: "Fire Alarm Testing BS5839",
+    id:4,
+    bannerTitle: 'Fire Alarm Test Report',
     content: {
       type: "Service",
       certificate: "fire-alarm-test-report",
@@ -632,6 +641,8 @@ export const service = [
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
     title: "Fire Risk Assessment",
+    id:5,
+    bannerTitle: 'Fire Risk Assessment',
     content: {
       type: "Service",
       certificate: "fire-risk-assessment",
@@ -684,6 +695,8 @@ export const service = [
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
     title: "Gas Safety Certificate for Landlords from £49 Only",
+    id:7,
+    bannerTitle: 'Gas Safety Certificate',
     content: {
       type: "Service",
       certificate: "gas-safety-certificate",
@@ -728,8 +741,9 @@ export const service = [
 
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
-    title:
-      "Boiler Service | Completed by our Gas Safe Registered Engineers only",
+    title: "Boiler Service | Completed by our Gas Safe Registered Engineers only",
+    id:8,
+    bannerTitle: 'Boiler Service',
     content: {
       type: "Service",
       certificate: "boiler-service",
@@ -819,6 +833,8 @@ export const service = [
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
     title: "Landlord EICR Certificate | Electrical Safety Check & Inspection",
+    id:10,
+    bannerTitle: 'Electrical Installation Condition Report (EICR)',
     content: {
       type: "Service",
       certificate: "electrical-installation-condition-report",
@@ -860,6 +876,8 @@ export const service = [
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
     title: "PAT Testing & Certificates | Domestic & Commercial",
+    id:11,
+    bannerTitle: 'Electrical Portable Appliance Test (PAT)',
     content: {
       type: "Service",
       certificate: "electrical-portable-appliance-test",
@@ -912,6 +930,8 @@ export const service = [
     className: "flex flex-col-reverse lg:flex-row-reverse",
     title:
       "Electrical Remedial Work & Landlord Electrcial Safety Reports | Order Now",
+    id:13,
+    bannerTitle: 'EICR Remedial Work',
     content: {
       type: "Service",
       certificate: "eicr-remedial-work",
@@ -971,6 +991,8 @@ export const service = [
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
     title: "2D / 3D Floor Plans",
+    id:14,
+    bannerTitle: 'Floor Plans',
     content: {
       type: "Service",
       certificate: "floor-plans",
@@ -1012,6 +1034,8 @@ export const service = [
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
     title: "Home Buyer Reports and Surveys",
+    id:15,
+    bannerTitle: 'Building Surveys',
     content: {
       type: "Service",
       certificate: "building-surveys",
@@ -1063,6 +1087,8 @@ export const service = [
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
     title: "Legionella Risk Assessment",
+    id:16,
+    bannerTitle: 'Legionella Risk Assessment',
     content: {
       type: "Service",
       certificate: "legionella-risk-assessment",
@@ -1104,6 +1130,8 @@ export const service = [
   {
     className: "flex flex-col-reverse lg:flex-row-reverse",
     title: "SAP Assessment",
+    id:17,
+    bannerTitle: 'SAP Assessments',
     content: {
       type: "Service",
       certificate: "sap-assessments-2",

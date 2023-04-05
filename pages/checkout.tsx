@@ -39,6 +39,7 @@ import Link from "next/link";
 import GoogePayComponent from "../components/googePay.component";
 import {service} from "../utility/constants";
 import Service from "./service/[slug]";
+import floatFn from "async-validator/dist-types/validator/float";
 
 
 const stripePromise = loadStripe("pk_test_96JJ6DEa2MKGHUR9ubWNXJDT00EC1yyjzn");
@@ -548,6 +549,9 @@ function Note({content}: any) {
 }
 
 function OrderSummary({subTotal, discount}: any) {
+  let floatSubTotal = parseFloat(subTotal)
+  let floatDiscount = parseFloat(discount)
+  let subtotal = floatSubTotal-floatDiscount
   return (
 
       <div
@@ -567,7 +571,7 @@ function OrderSummary({subTotal, discount}: any) {
                 Subtotal
               </p>
               <p className="text-base dark:text-gray-300 leading-4 text-gray-600">
-                &#163;{`${Number(subTotal) - Number(discount)}`}
+                &#163;{`${subtotal.toFixed(2)}`}
               </p>
             </div>
             {discount > 0 && (
@@ -576,7 +580,7 @@ function OrderSummary({subTotal, discount}: any) {
                     Discount
                   </p>
                   <p className="text-base dark:text-gray-300 leading-4 text-gray-600">
-                    -&#163;({discount})
+                    -&#163;({floatDiscount.toFixed(2)})
                   </p>
                 </div>
 
@@ -587,7 +591,7 @@ function OrderSummary({subTotal, discount}: any) {
               Total
             </p>
             <p className="text-base dark:text-gray-300 font-semibold leading-4 text-gray-600">
-              &#163;{subTotal}
+              &#163;{floatSubTotal.toFixed(2)}
             </p>
           </div>
           {discount > 0 && (
