@@ -3,6 +3,7 @@ import React, {
   useEffect,
   useLayoutEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -63,6 +64,8 @@ const DrawerComponent = ({}: any) => {
   const [formDirty, setFormDirty] = useState(false);
   const [attribute, setAttributes] = useState<any>(attributeState);
   const [validPostcode, setValidPostcode] = useState(true);
+  const qouteRef = useRef(null)
+  const requestACBRef = useRef(null)
 
   const router = useRouter();
 
@@ -82,8 +85,6 @@ const DrawerComponent = ({}: any) => {
     propertyType,
     setPropertyType,
   } = useContext<any>(SidebarContext);
-
-  console.log({distribution_boards:attribute.distribution_boards});
 
   const { isLoading, setIsLoading } = useContext<any>(OverlayContext);
   useLayoutEffect(() => {
@@ -118,6 +119,8 @@ const DrawerComponent = ({}: any) => {
     }
   };
 
+
+
   //FETCH SERVICES
   const fetchData = async (propertyType: any) => {
     const res = await fetch(
@@ -139,6 +142,7 @@ const DrawerComponent = ({}: any) => {
           });
           saveLogs(data);
           setStep(false);
+          qouteRef.current.scrollTop = 0 ;
         } else{
             setValidPostcode(false);
           }
@@ -483,15 +487,21 @@ const DrawerComponent = ({}: any) => {
     return elements;
   }, [serviceAttributes, selectedService, attribute, formDirty, propertyType]);
 
+
+  const requestACBSucess = ( ) =>{
+    requestACBRef.current.scrollIntoView({blocK:'start'})
+  }
+
   return (
     <div className="w-screen h-screen bg-[#000000cc] fixed z-[2999] flex items-end flex-col ">
       <div
         id="drawer-right-example"
-        className={`h-screen relative p-4 overflow-y-auto bg-dark-blue/90 py-[30px] px-[15px] sm:px-[30px] 
+        className={`h-screen relative p-4 overflow-y-auto bg-row_bg_two py-[30px] px-[15px] sm:px-[30px] 
             bg-gray-800  ease-in-out duration-1000 w-[100%] lg:w-[50%] xxl:w-[35%] ${
               showDrawer ? "translate-x-[0%]" : "translate-x-[100%]"
             }`}
         aria-labelledby="drawer-right-label"
+        ref={qouteRef}
       >
         <div className="sticky top-[8px] left-[29px] z-[900]
          w-full flex justify-end items-center cursor-pointer">
@@ -505,7 +515,7 @@ const DrawerComponent = ({}: any) => {
         </div>
         {!step && (
           <>
-            <div className="bg-white shadow-md mb-[20px]">
+            <div className="bg-white shadow-md mb-[20px]"  id="quote">
               <h4 className="text-[26px] bg-dark-blue text-center text-white font-semibold px-[25px] pt-[15px] pb-[15px] ">
                 QUOTE FOR
               </h4>
@@ -563,11 +573,14 @@ const DrawerComponent = ({}: any) => {
                 )}
               </div>
             </div>
-            <RequestCallBack
-              attributes={attribute}
-              services={selectedServiceId}
-              propertyType={propertyType}
-            />
+            <div ref={requestACBRef}>
+              <RequestCallBack
+                attributes={attribute}
+                requestACBSucess={requestACBSucess}
+                services={selectedServiceId}
+                propertyType={propertyType}
+              />
+            </div>
             <CardComponent
               className="bg-white shadow px-[20px] pt-[15px] pb-[20px] my-[25px]"
               hClass="text-xl mb-[15px] text-black font-bold text-center"
@@ -587,7 +600,7 @@ const DrawerComponent = ({}: any) => {
           <>
             <div className="flex justify-between">
               <h3 className="text-[26px] font-semibold mb-[15px] text-lime font-opensans">
-                Get Instant <span className="text-white"> Quote</span>
+                Get Instant <span className="text-dark-blue"> Quote</span>
               </h3>
             </div>
 

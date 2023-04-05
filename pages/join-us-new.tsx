@@ -9,6 +9,7 @@ import Image from 'next/image';
 import formImage from '../public/Rectangle394.png'
 import CreatableSelect from 'react-select/creatable';
 import {VALIDATION_CONFIG} from "../config/validation.config";
+import Swal from "sweetalert2";
 
 
 function ContactUsNew({ Services }: any) {
@@ -35,13 +36,15 @@ function ContactUsNew({ Services }: any) {
     getPostCodes()
   }, []);
 
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
     reset,
-    setError
+    setError,
+    clearErrors
   } = useForm({mode: "onChange"});
 
   const join = async (data: any) => {
@@ -76,12 +79,18 @@ function ContactUsNew({ Services }: any) {
     );
 
     if (response.ok) {
-      let data = await response.json();
+      Swal.fire({
+        title: 'Thanks!',
+        text: 'We will get back to you soon',
+        icon: 'success',
+        confirmButtonText: 'Close',
+        confirmButtonColor:'#c2cf10'
+      })
       reset({
         full_name: "",
         phone: "",
         email:"",
-        postCodes: "",
+        postCodes: [],
       })
     } else {
       alert("Something Went wrong");
@@ -210,6 +219,7 @@ function ContactUsNew({ Services }: any) {
                                                   register={register}
                                                   options={postCodes}
                                                   setError={setError}
+                                                  clearErrors={clearErrors}
                                                   errorClass="text-[#ff0000] text-sm font-semibold float-right"
                                                   inputClass="border-lime py-2.5 px-3"
                                                   required={true}
@@ -232,14 +242,14 @@ function ContactUsNew({ Services }: any) {
                               </div>
                           </div>
                       </div>
-                      <div className="flex w-[50%] mb-14 px-4 md:px-0 gap-x-4 mt-6">
+                      <div className="flex w-full md:w-[50%] mb-14 px-8 md:px-0 gap-x-4 mt-4">
                           <ButtonComponent
                               text="Submit"
-                              className="bg-lime  text-dark-blue uppercase text-lg font-semibold  py-[16px] hover:bg-dark-blue hover:text-white ease-in duration-200"
+                              className="bg-lime  text-dark-blue uppercase text-lg font-semibold  hover:bg-dark-blue hover:text-white ease-in duration-200"
                           />
                         <ButtonComponent
                           text="Cancel"
-                          className="border-[2px] border-dark-blue text-dark-blue uppercase text-lg font-semibold  py-[16px] hover:bg-dark-blue hover:text-white ease-in duration-200"
+                          className="border-[2px] border-dark-blue text-dark-blue uppercase text-lg font-semibold py-[9px] md:py-[12px] hover:bg-dark-blue hover:text-white ease-in duration-200"
                         />
                       </div>
                   </div>
@@ -252,7 +262,6 @@ function ContactUsNew({ Services }: any) {
 export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.BASE_URL_DEV}/services/list_services`);
   const data = await res.json();
-
   return {
     props: {
       Services: data.services,
@@ -267,6 +276,7 @@ const SelectPostCode = ({
                   className,
                   options,
                   setError,
+                  clearErrors,
                   errors = {},
                   control,
                   errorClass = "",
@@ -287,65 +297,73 @@ const SelectPostCode = ({
     }),
 
   };
-  const [values, setValues] = useState([])
-
-  useEffect(() => {
-   values.map((data:any)=>{
-      const res = VALIDATION_CONFIG.postCode(data.value)
-     res!==true ? setError('postCodes', 'Please enter valid post code'):''
-   })
-  }, [values]);
+  const validateOptions = (options:any) => {
+    const errors = []
+    if(options.length> 0){
+         options.map((data:any, index:any)=>{
+           const res = VALIDATION_CONFIG.postCode(data.value.toLowerCase())
+           if(res !== true){
+             console.log('here',data.value)
+             setError('postCodes', {type:'pattern', message:'Please enter valid post codes'})
+             errors[index] = "Please enter valid post code"
+           }else{
+             clearErrors('postCodes')
+           }
+         })
+       }
+    return errors.length>0 ? 'Please enter valid post code' : null;
+  }
 
   return (
-
     <>
       <label className={`${className}`}>
         {label}
         {required && <span className="text-[#ff0000] text-xl ml-1">*</span>}
       </label>
-
       <Controller
         name={name}
         control={control}
         defaultValue={null}
-        rules={{ required: required }}
-        render={({ field,fieldState: { error}  }) => <CreatableSelect
-          {...field}
-          value={values}
-          isSearchable={true}
-          onChange={(newValue:any)=> {
-            setValues([...newValue])
-          }}
-          isMulti
-          placeholder="Please select post code"
-          styles={customStyles}
-          name={name}
-        />}
+        rules={{validate:validateOptions, required:'Field is required'}}
+        render={({field ,fieldState: { error,}}) =>{
+          return(
+            <>
+              <CreatableSelect
+                {...field}
+                isSearchable={true}
+                isMulti
+                placeholder="Please select post code"
+                styles={customStyles}
+                name={name}/>
+              {error && (
+                <div
+                  className={
+                    `flex  text-sm text-red-800 rounded-lg mt-2 dark:bg-gray-800 dark:text-red-400 ${errorClass}`
+                  }
+                  role="alert"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="flex-shrink-0 inline w-5 h-5 mr-3"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span className="sr-only">Info</span>
+                  <div>{error.message}</div>
+                </div>
+              )}
+            </>
+          )
+        }
+      }
       />
-      {errors[name] && (
-        <div
-          className={
-            `flex  text-sm text-red-800 rounded-lg mt-2 dark:bg-gray-800 dark:text-red-400 ${errorClass}`
-          }
-          role="alert"
-        >
-          <svg
-            aria-hidden="true"
-            className="flex-shrink-0 inline w-5 h-5 mr-3"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-              clip-rule="evenodd"
-            />
-          </svg>
-          <span className="sr-only">Info</span>
-          <div>Inavlid post codes</div>
-        </div>
-      )}
     </>
   );
 };
