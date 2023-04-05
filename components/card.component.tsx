@@ -8,7 +8,7 @@ function CardComponent({
   pClass = "",
 }) {
   return (
-    <div className={`${className}`}>
+    <div className={`${className}`} >
       <div>
         <h4 className={`${hClass}`}>{heading}</h4>
         <p className={`${pClass}`}>{paragraph}</p>

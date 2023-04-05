@@ -202,16 +202,16 @@ function CardTable({ cart, getCart }: any) {
               {!router?.query?.aquote && !router?.query.bquote &&
                   (
                     <>
-                      <div className="px-3 border-lime w-[100%] md:w-[32%]"  >
+                      <div className="border-lime w-[100%] md:w-[32%]"  >
                         <ButtonComponent
                             text="Add an other service"
                             type="button"
                             className="hidden md:flex flex-row-reverse justify-center items-center px-[1px] text-[12px]
-                            hover:text-white font-medium border-[1px] border-lime hover:border-lime
+                            hover:text-dark-blue font-medium border-[1px] border-lime hover:border-lime
                             hover:bg-lime py-[10px] uppercase md:text-[14px] lg:px-1 lg:text-[10px] xxl:text-[14px]"
                             onClick={() => addAnotherService(cartNo)}
                         >
-                          <FontAwesomeIcon icon={faPlus} className="text-lime h-3 hover:text-white md:h-4 px-2 lg: h-8"/>
+                          <FontAwesomeIcon icon={faPlus} className="text-lime h-3  md:h-4 px-2 lg: h-8"/>
                         </ButtonComponent>
                       </div>
                       <div
@@ -245,7 +245,7 @@ function CardTable({ cart, getCart }: any) {
                           {e?.name}
                         </p>
                       </div>
-                      <p className="text-[13px] md:text-[14px] text-dark-blue font-semibold w-14 ">
+                      <p className="text-[13px] w-[20%] md:text-[14px] text-dark-blue font-semibold w-14 text-right">
                         &#163; {price.toFixed(2)}
                       </p>
                     </li>
@@ -366,9 +366,11 @@ function CardTable({ cart, getCart }: any) {
                               <span style={{fontSize: 24}}>⤷</span> {e?.name}
                             </p>
                           </div>
-                          <p className="text-[13px] w-[7%] text-left md:text-[14px] text-dark-blue font-semibold">
-                            &#163; {price.toFixed(2)}
-                          </p>
+                          <div className="w-[20%]">
+                            <p className="text-[13px] text-right md:text-[14px] text-dark-blue font-semibold">
+                              &#163; {price.toFixed(2)}
+                            </p>
+                          </div>
                         </li>
                     );
                   })}

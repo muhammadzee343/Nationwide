@@ -1,9 +1,9 @@
 import React, {
   useContext,
   useEffect,
-  useLayoutEffect,
   useMemo,
   useState,
+  useRef
 } from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus, faTag} from "@fortawesome/free-solid-svg-icons";
@@ -25,22 +25,13 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 
-import CardFormComponent from "../components/cardForm.component";
 import CardTable from "../components/cardTable.component";
 import ButtonComponent from "../components/button.component";
 import BillingForm from "../components/billingForm";
 import CardComponent from "../components/card.component";
-import CheckoutStepper from "../components/checkoutStepper.component";
 import RequestCallBack from "../components/requestCallBack.component";
-import RadioInput from "../components/radioInput.component";
 import {useForm} from "react-hook-form";
-import TermsConditionComponent from "../components/terms&condition.component";
-import Link from "next/link";
 import GoogePayComponent from "../components/googePay.component";
-import {service} from "../utility/constants";
-import Service from "./service/[slug]";
-import floatFn from "async-validator/dist-types/validator/float";
-
 
 const stripePromise = loadStripe("pk_test_96JJ6DEa2MKGHUR9ubWNXJDT00EC1yyjzn");
 
@@ -399,6 +390,15 @@ function Checkout(props: any) {
         <GoogePayComponent pricing={pricing} uuid={uuid} orderId={orderId}/>
     );
   }, [pricing, uuid, orderId]);
+
+  const requestACBRef = useRef(null)
+
+  const requestACBSucess =()=>{
+    let postion = requestACBRef.current.offsetTop
+    postion = postion-90
+    window.scrollTo({top:postion,behavior:'smooth'});
+  }
+
   // @ts-ignore
   return (
       <Elements stripe={stripePromise}>
@@ -523,14 +523,17 @@ function Checkout(props: any) {
              currently between 1 to 3 working days. If you need help placing new order or got a question,
               please don’t hesitate to call us free at 0800 048 7474."
               />
-              <RequestCallBack
+              <div ref={requestACBRef}>
+                <RequestCallBack
                   attributes={attribute}
+                  requestACBSucess={requestACBSucess}
                   services={selectedServiceId}
                   propertyType={propertyType}
                   setPaymentType={setPaymentType}
                   uuid={uuid}
                   order_id={orderId}
-              />
+                />
+              </div>
             </div>
           </div>
         </div>

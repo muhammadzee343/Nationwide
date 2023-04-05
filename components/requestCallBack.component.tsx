@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronRight, faVolumeControlPhone, faXmark
@@ -9,8 +9,7 @@ import TextArea from "./textArea.component";
 import ButtonComponent from "./button.component";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import Image from 'next/image';
-import callback from "../public/callback.png";
+
 function RequestCallBack({
   attributes,
   services,
@@ -19,6 +18,7 @@ function RequestCallBack({
   setPaymentType,
   order_id,
   uuid,
+  requestACBSucess
 }: any) {
   const [collapse, setCollapse] = useState(true);
   const [submitted, setSubmitted] = useState(false);
@@ -64,10 +64,11 @@ function RequestCallBack({
         });
       } else {
         setSubmitted(true);
+        requestACBSucess()
         const data = await response.json();
       }
     } catch (error) {
-      switch (error.cause.response.status) {
+      switch (error?.cause?.response?.status) {
         case 422:
           console.log("Error");
           break;
@@ -103,6 +104,7 @@ function RequestCallBack({
         });
       } else {
         setSubmitted(true);
+        requestACBSucess()
         const data = await response.json();
       }
     } catch (error) {
@@ -117,6 +119,7 @@ function RequestCallBack({
 
   const handleCallbackClick = () => {
     setCollapse(!collapse);
+
     // setPaymentType("");
   };
   return (
@@ -172,7 +175,7 @@ function RequestCallBack({
                   className="text-[14px]"
                 />
                 <form onSubmit={handleSubmit(submitForm)}>
-                  <div className="flex flex-col my-[25px]">
+                  <div className="flex flex-col mt-[25px]">
                     <div className="w-full">
                       <TextField
                         handleChange={() => {}}
@@ -181,7 +184,7 @@ function RequestCallBack({
                         required={true}
                         name="full_name"
                         register={register}
-                        placeholder="Enter last name here"
+                        placeholder="Enter full name here"
                         inputClass="border-grey-500 px-3"
                       />
                     </div>
