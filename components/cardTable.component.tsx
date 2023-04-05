@@ -176,10 +176,10 @@ function CardTable({ cart, getCart }: any) {
   return (
     <div>
       <header className='flex justify-between items-center bg-dark-blue h-[45px] mb-[15px]'>
-        <h3 className="font-base font-semibold text-white px-[25px] ">
+        <h3 className="font-base font-semibold text-white px-[18px] ">
           Property & Services
         </h3>
-        <h3 className=" font-base font-semibold text-white px-[25px] ">
+        <h3 className=" font-base font-semibold text-white px-[18px] ">
           Price
         </h3>
 
@@ -192,8 +192,8 @@ function CardTable({ cart, getCart }: any) {
             className="rounded-sm my-2 py-3 shadow-md border-[#b4c1c1] border-t-[2px]"
             key={cartNo}
           >
-            <div className="w-full flex px-4 py-2 justify-between items-center">
-              <div className="min-w-[75%]  md:min-w-[60%] ">
+            <div className="w-full flex px-4 md:px-0 py-2 justify-between items-center">
+              <div className="min-w-[75%]  md:min-w-[60%] lg-min-w-[70%] md:pl-4">
                 <p className="text-[14px] md:text-[17px] text-black text-left">
                   {cartItemData[0]?.property_address}
                 </p>
@@ -201,7 +201,7 @@ function CardTable({ cart, getCart }: any) {
               {!router?.query?.aquote && !router?.query.bquote &&
                   (
                     <>
-                      <div className="px-3 border-lime w-[100%] md:w-[32%]"  >
+                      <div className="px-3 border-lime w-[100%] md:w-[35%]"  >
                         <ButtonComponent
                             text="Add an other service"
                             type="button"
@@ -214,9 +214,9 @@ function CardTable({ cart, getCart }: any) {
                         </ButtonComponent>
                       </div>
                       <div
-                      className="flex w-[40px] h-[40px] md:hidden flex-row-reverse justify-center items-center px-1.5 text-[12px]
+                          className="flex w-[40px] h-[40px] md:hidden flex-row-reverse justify-center items-center px-1.5 text-[12px]
                                 text-white font-medium bg-lime uppercase md:text-[14px] cursor-pointer "
-                      onClick={() => addAnotherService(cartNo)}
+                          onClick={() => addAnotherService(cartNo)}
                       >
                         <FontAwesomeIcon icon={faPlus} className="h-5 hover:text-white md:h-4 px-2 lg: h-8"/>
                       </div>
@@ -234,7 +234,7 @@ function CardTable({ cart, getCart }: any) {
                       key={index}
                       className="py-1.5 flex justify-between items-center border-b border-[#e5e7eb]"
                     >
-                      <div className="flex items-center justify-between mt-2.5">
+                      <div className="flex items-center mt-2.5 w-[75%]">
                         <FontAwesomeIcon
                             icon={faTrashAlt}
                             className="text-[#ff0000] h-[19px] w-[20px] cursor-pointer"
@@ -244,7 +244,7 @@ function CardTable({ cart, getCart }: any) {
                           {e?.name}
                         </p>
                       </div>
-                      <p className="text-[13px] md:text-[14px] text-dark-blue font-semibold w-14 ">
+                      <p className="text-[13px] md:text-[14px] text-dark-blue font-semibold w-[25%] flex justify-end">
                         &#163; {price.toFixed(2)}
                       </p>
                     </li>
