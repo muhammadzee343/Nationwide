@@ -106,9 +106,9 @@ export default function Home() {
         <div className="pb-[60px] pt-10 flex gap-6 flex-col flex-col-reverse justify-between lg:flex-row">
           <>
             {content.image && (
-              <BoxBackgroundComponent className={'h-[300px] w-[100%] lg:w-[40%] p-2 lg:h-auto'}
+              <BoxBackgroundComponent className={'h-[200px] md:h-[350px] lg:h-[300px] w-[100%] lg:w-[40%] p-2 lg:h-auto'}
                                       greyStyle='w-[15%] h-[50%] -top-[6%] -right-[2%] lg:-right-[4%] '
-                                      limeStyle='w-[15%] h-[95%] top-[5%] -right-[3.5%]  lg:-right-[8%]'
+                                      limeStyle='w-[15%] h-[95%] top-[5%] -right-[2%]  lg:-right-[8%]'
                                       contentStyle='m-auto'>
                 <Image
                   className="h-full w-full cursor-pointer"

@@ -11,7 +11,6 @@ import { useForm } from "react-hook-form";
 import ButtonComponent from "./button.component";
 import {OverlayContext, UuidContext} from "../context/sidebarContext";
 import AwesomeDebouncePromise from "awesome-debounce-promise";
-import Component from "react-responsive/src/Component";
 
 
 
@@ -177,10 +176,10 @@ function CardTable({ cart, getCart }: any) {
   return (
     <div>
       <header className='flex justify-between items-center bg-dark-blue h-[45px] mb-[15px]'>
-        <h3 className="font-base font-semibold text-white px-[25px] ">
+        <h3 className="font-base font-semibold text-white px-[18px] ">
           Property & Services
         </h3>
-        <h3 className=" font-base font-semibold text-white px-[25px] ">
+        <h3 className=" font-base font-semibold text-white px-[18px] ">
           Price
         </h3>
 
@@ -193,8 +192,8 @@ function CardTable({ cart, getCart }: any) {
             className="rounded-sm my-2 py-3 shadow-md border-[#b4c1c1] border-t-[2px]"
             key={cartNo}
           >
-            <div className="w-full flex px-4 py-2 justify-between items-center">
-              <div className="min-w-[75%]  md:min-w-[60%] ">
+            <div className="w-full flex px-4 md:px-0 py-2 justify-between items-center">
+              <div className="min-w-[75%]  md:min-w-[60%] lg-min-w-[70%] md:pl-4">
                 <p className="text-[14px] md:text-[17px] text-black text-left">
                   {cartItemData[0]?.property_address}
                 </p>
@@ -215,9 +214,9 @@ function CardTable({ cart, getCart }: any) {
                         </ButtonComponent>
                       </div>
                       <div
-                      className="flex w-[40px] h-[40px] md:hidden flex-row-reverse justify-center items-center px-1.5 text-[12px]
+                          className="flex w-[40px] h-[40px] md:hidden flex-row-reverse justify-center items-center px-1.5 text-[12px]
                                 text-white font-medium bg-lime uppercase md:text-[14px] cursor-pointer "
-                      onClick={() => addAnotherService(cartNo)}
+                          onClick={() => addAnotherService(cartNo)}
                       >
                         <FontAwesomeIcon icon={faPlus} className="h-5 hover:text-white md:h-4 px-2 lg: h-8"/>
                       </div>
@@ -235,7 +234,7 @@ function CardTable({ cart, getCart }: any) {
                       key={index}
                       className="py-1.5 flex justify-between items-center border-b border-[#e5e7eb]"
                     >
-                      <div className="flex items-center justify-between mt-2.5">
+                      <div className="flex items-center mt-2.5 w-[75%]">
                         <FontAwesomeIcon
                             icon={faTrashAlt}
                             className="text-[#ff0000] h-[19px] w-[20px] cursor-pointer"
@@ -272,18 +271,19 @@ function CardTable({ cart, getCart }: any) {
                   <div className="flex items-center justify-between flex-wrap">
                     {contactType.map((type, index) => {
                       return (
-                          <Component
-                              key={index}
-                              label={type.title}
-                              name="contact_type1"
-                              value={type.title}
-                              activeVal={cartItemData[0].contact_type}
-                              cart={cart}
-                              index={cartNo}
-                              changeContactType={changeContactType}
-                              obj="shopping_cart_products"
-                              className="text-[17px] text-dark-blue  mb-3"
-                          />
+                          <div key={index} className={isSmallScreen && "w-[30%]"}>
+                              <Component
+                                  label={type.title}
+                                  name="contact_type1"
+                                  value={type.title}
+                                  activeVal={cartItemData[0].contact_type}
+                                  cart={cart}
+                                  index={cartNo}
+                                  changeContactType={changeContactType}
+                                  obj="shopping_cart_products"
+                                  className="text-[17px] text-dark-blue  mb-3"
+                              />
+                          </div>
                       );
                     })}
                   </div>
@@ -507,11 +507,8 @@ const ContectAccessOption = ({
                     }: any) => {
   return (
       <label className={`${className}`}>
-        <div className={`px-3 mx-2 mt-2 py-1 border-[1px] font-semibold text-[12px] font-opensans border-gray-500 w-full flex flex-row ${value === activeVal  ? 'bg-lime' : ''}`} onClick={() => changeContactType(value, index, obj)}>
+        <div className={`px-3 mx-2 mt-2 py-1 border-[1px] font-semibold text-[12px] font-opensans border-gray-500 w-full flex flex-row justify-center ${value === activeVal  ? 'bg-lime' : ''}`} onClick={() => changeContactType(value, index, obj)}>
           {label}
-          {value === activeVal &&
-              <FontAwesomeIcon className="ml-2 w-5" icon={faCheck} />
-          }
         </div>
       </label>
   );
@@ -526,7 +523,7 @@ function KeyHolderInfo({
   obj
 }: any) {
   return (
-    <div className="relative border-t border-t-[#182333]">
+    <div className="relative border-t border-t-[#182333] mt-3">
       <div className="py-1">
         {/*<span*/}
         {/*  className="absolute top-[-20px] rounded right-3 cursor-pointer text-sm text-dark-blue font-bold"*/}

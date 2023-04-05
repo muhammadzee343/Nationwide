@@ -39,7 +39,7 @@ function Counter({
   }
   return (
     <div className="flex cursor-pointer items-center">
-      <div className="mr-3 flex items-center" onClick={decrement}>
+      <div className="mr-2 flex items-center" onClick={decrement}>
           <span className=" w-5 h-5 bg-lime flex justify-center items-center items-center rounded-full">
           <FontAwesomeIcon
               className=" w-[17px] h-[20px] text-white"
@@ -48,7 +48,7 @@ function Counter({
         </span>
       </div>
       <input
-        className={`w-14 h-7 border border-grey-500 flex
+        className={`w-16 h-7 border border-grey-500 flex
       justify-center text-center text-base text-dark-blue font-semibold outline-none focus:ring-transparent ${className} `}
         type="number"
         step={1}
@@ -57,7 +57,7 @@ function Counter({
         onChange={() => {}}
       />
 
-      <div className="ml-3 flex items-center" onClick={increment}>
+      <div className="ml-2 flex items-center" onClick={increment}>
         <span className="w-5 h-5 bg-lime flex justify-center items-center rounded-full">
           <FontAwesomeIcon
               className=" w-[17px] h-[20px] text-white "
