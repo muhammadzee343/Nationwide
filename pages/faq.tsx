@@ -5,10 +5,13 @@ import ButtonComponent from "../components/button.component";
 import FaqAccordionComponent from "../components/faqAccordion.component";
 import { faqCardData, faqAccordionData } from "../utility/constants";
 import Link from "next/link";
+import Head from "next/head";
+import Meta from "../components/meta.component";
 
 function Feq() {
   return (
     <div className="w-full bg-white flex justify-center">
+      <Meta title="gjggjjgjgj"/>
       <div className="w-full flex flex-col items-center">
         <HeaderComponent
           header="FAQs"

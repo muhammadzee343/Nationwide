@@ -201,7 +201,7 @@ function CardTable({ cart, getCart }: any) {
               {!router?.query?.aquote && !router?.query.bquote &&
                   (
                     <>
-                      <div className="border-lime w-[100%] md:w-[32%]"  >
+                      <div className="border-lime w-[100%] md:w-[32%] pr-4"  >
                         <ButtonComponent
                             text="Add an other service"
                             type="button"

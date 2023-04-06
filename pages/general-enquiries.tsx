@@ -10,6 +10,7 @@ import Head from "next/head";
 import styles from "../styles/footer.module.css";
 import { postcodeValidator, postcodeValidatorExistsForCountry } from 'postcode-validator';
 import {VALIDATION_CONFIG} from "../config/validation.config";
+import Meta from "../components/meta.component";
 
 
 function GeneralEnquiries({ Services }: any) {
@@ -177,7 +178,7 @@ function GeneralEnquiries({ Services }: any) {
           <ServiceSelectionCard
             title={service.name}
             className={`${selectedServiceId.includes(service.id) ? "bg-lime self-end " : ""
-              } text-[15px] py-[11px] border-0`}
+              } text-[15px] py-[11px] border-0 border-lime border-[1px]`}
           />
         </div>
       );
@@ -208,18 +209,16 @@ function GeneralEnquiries({ Services }: any) {
 
   return (
     <>
+      <Meta title="General Enquiries - Nationwide Surveyors"/>
       {!requestSubmitted &&
         <div className="w-full flex justify-center pt-[82px]">
-          <Head>
-            <title>General Enquiries - Nationwide Surveyors</title>
-          </Head>
           <form onSubmit={handleSubmit(requestCallback)}>
             <div className="w-full md:px-8  xl:max-w-[1114px]  flex flex-col">
               <div className="mb-[20px] px-4 md:px-0">
                 <div className="border-b-4 rounded-full border-lime w-[85px] mb-3"></div>
-                <h2 className="text-[36px] text-black font-semibold">
+                <h1 className="text-[36px] text-black font-semibold">
                   Request a callback
-                </h2>
+                </h1>
               </div>
               <p className="text-[15px] mb-[40px] px-4 md:px-0 text-[#1a1a1a] leading-7 ">
                 Please complete short form below and we’ll get the right person to
@@ -231,10 +230,10 @@ function GeneralEnquiries({ Services }: any) {
               <div className="flex flex-col md:gap-5 md:flex-row">
                 <div className="w-full md:w-[50%] bg-white rounded-lg md:drop-shadow-lg px-4 md:px-8 pt-8">
                   <div >
-                    <p className="text-[20px] text-black mr-3 ">
+                    <p className="text-[21.41px] font-semibold text-black mr-3 ">
                       Your Contact Details
                     </p>
-                    <p className="text-[10px] text-slate-500 mr-3 ">
+                    <p className="text-[12.49px] text-slate-500 mr-3 ">
                       This is to check the availability
                     </p>
                   </div>

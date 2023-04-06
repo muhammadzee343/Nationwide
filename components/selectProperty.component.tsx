@@ -19,15 +19,15 @@ export default function SelectProperty() {
   };
   return (
     <div
-      className="bg-white text-center border-transparent drop-shadow-xl lg:max-w-[382px] max-h-[400px] rounded "
+      className="bg-white text-center drop-shadow-xl lg:max-w-[382px] max-h-[400px] rounded"
       id="main_quote_form"
     >
       <form id="instantquote_main" method="post">
-        <div className='bg-white rounded'>
-          <h3 className="text-white uppercase w-full text-[26px] lg:text-[20px] xl:text-[26px] mx-25 bg-dark-blue py-[35px] lg:py-[25px] xl:py-[35px] px-[20px] block rounded drop-shadow-lg">
+        <div className='w-full  rounded overflow-hidden'>
+          <h3 className="text-white uppercase w-full text-[26px] lg:text-[20px] xl:text-[26px] mx-25 bg-dark-blue py-[35px] lg:py-[25px] xl:py-[35px] px-[20px] block rounded-sm drop-shadow-lg">
             Get Instant Quote
           </h3>
-          <div className="mb-[25px] mt-0 px-[20px] h-[291px] xl:h-[320px] text-center ">
+          <div className="mb-[25px] mt-0 rounded px-[20px] bg-white h-[291px] xl:h-[320px] text-center ">
             <div className="text-left relative" id="default_screen">
               <h6 className="text-black block text-base lg:text-sm xl:text-base mt-[27px] mb-[25px] xl:mb-[31px] text-center">
                 Select Your Property as appropraite and get quote in 30 seconds!

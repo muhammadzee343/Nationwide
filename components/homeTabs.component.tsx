@@ -42,13 +42,13 @@ const HomeTab = () => {
                 </ul>
             </div>
             <div className="animate-fade-in-up flex flex-col md:px-11 lg:px-1 lg:mb-0 lg:w-[50%]">
-                <h2 className="text-[26px] md:text-[30px] font-bold leading-10 text-white lg:text-[20px] xl:text-[25px] xxl:text-[34px] lg:text-black mb-6 animate-fade-in-up">
+                <h1 className="text-[26px] md:text-[30px] font-bold leading-10 text-white lg:text-[20px] xl:text-[25px] xxl:text-[34px] lg:text-black mb-6 animate-fade-in-up">
                     {activeService.title}
-                </h2>
+                </h1>
                 <div className="flex flex-row">
-                    <h3 className="font-semibold text-3xl lg:text-2xl xxl:[29px] text-[#c2cf10] mb-6 animate-fade-in-up">
+                    <h2 className="font-semibold text-3xl lg:text-2xl xxl:[29px] text-[#c2cf10] mb-6 animate-fade-in-up">
                         {activeService.subTitle}
-                    </h3>
+                    </h2>
                     <p className="text-[#c2cf10] mt-4">*</p>
                 </div>
                 <ul className="marker:text-lime marker:text-[20px] list-disc text-white lg:text-black ml-9 lg:ml-5">

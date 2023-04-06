@@ -126,8 +126,7 @@ function BillingForm(props: any) {
             {props.paymentType === "payByCard" && (
                 <div className="w-full" id="card">
                   <div className="bg-white space-y-6">
-                    <div
-                        className="p-[5px] font-md">
+                    <div>
                       <CardFormComponent
                           stripObj={stripObj}
                           cardError={props.cardError}
@@ -178,7 +177,7 @@ function BillingForm(props: any) {
               />
             </div>
           </div>
-          <div className="w-full flex items-center md:flex-row justify-between">
+          <div className={`w-full flex ${errors['postcode'] ? 'items-center':'items-end'} md:flex-row justify-between`}>
             <div className="w-[65%]">
               <TextField
                 className="text-sm leading-8 text-dark-blue font-semibold"
@@ -194,11 +193,11 @@ function BillingForm(props: any) {
                 }}
               />
             </div>
-            <div className="w-[30%] ">
+            <div className="w-[30%]">
               <ButtonComponent
                 type="button"
                 text="FIND ADDRESS"
-                className=" bg-dark-blue text-white mb-0.5 text-[8px] px-[13px] py-[14px]
+                className="bg-dark-blue text-white rounded-md text-[8px] px-[13px] py-[14px]
                  hover:bg-lime hover:text-white ease-in duration-200 lg:text-[6px] lg:px-[10px] py-[13px] xl:text-[10px] xl:px-[13px] py-[13px]"
                 onClick={() => {
                   getPropertyAddress();
