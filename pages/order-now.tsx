@@ -369,7 +369,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
           <ServiceSelectionCard
             title={service.name}
             className={`${selectedServiceId.includes(service.id) ? "bg-lime self-end " : ""
-              } text-[15px] py-[11px] border-lime`}
+            } text-[15px] py-[11px]  border-lime border-[1px]`}
           />
         </div>
       );

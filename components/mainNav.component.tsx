@@ -109,7 +109,7 @@ const MainNavComponent = () => {
               <Link
                 href="/"
                 className={`${
-                  router.pathname === "/" || isSticky
+                  router.pathname === "/"
                     ? "text-white"
                     : "text-dark-blue"
                 } text-[15px]  font-[600] hover:text-white`}
@@ -126,7 +126,7 @@ const MainNavComponent = () => {
               <Link
                 href="/our-services"
                 className={`${
-                  router.pathname === "/our-services" || isSticky
+                  router.pathname === "/our-services" 
                     ? "text-white"
                     : "text-dark-blue"
                 } text-[15px] tracking-wide  block hover:text-white relative font-semibold flex`}
@@ -152,7 +152,7 @@ const MainNavComponent = () => {
               <Link
                 href="/contact-us"
                 className={`${
-                  router.pathname === "/contact-us" || isSticky
+                  router.pathname === "/contact-us" 
                     ? "text-white"
                     : "text-dark-blue"
                 } text-[15px]  font-[600] hover:text-white`}

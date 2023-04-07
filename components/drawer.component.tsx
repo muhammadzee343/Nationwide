@@ -413,7 +413,7 @@ const DrawerComponent = ({}: any) => {
                 )}
                 {ele?.radioQuestion1 && (
                   <div className="flex flex-col w-full">
-                    <p className=" font-opensans text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
+                    <p className=" font-opensans text-lg my-3 text-dark-blue mr-3 w-full">
                       {ele.radioQuestion1.question}
                     </p>
                     <div className="flex flex-wrap gap-9">
@@ -438,7 +438,7 @@ const DrawerComponent = ({}: any) => {
                 )}
                 {ele?.radioQuestion2 && attribute[ele?.radioQuestion1.attr] && (
                   <div className="flex flex-col w-full">
-                    <p className=" font-opensans text-lg text-dark-blue my-3 font-semibold mr-3 w-5/12">
+                    <p className=" font-opensans text-lg text-dark-blue my-3 font-semibold  w-full">
                       {ele.radioQuestion2.question}
                     </p>
                     <div className="flex flex-wrap gap-9">

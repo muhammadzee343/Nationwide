@@ -329,7 +329,7 @@ function Checkout(props: any) {
     const body = {
       payment_detail: {
         billing_first_name: name[0],
-        billing_last_name: name[1],
+        billing_last_name: name[1] ? name[1]:"",
         billing_address: data.streetAddress,
         billing_city: "data.city",
         billing_state: "Punjab",
@@ -446,58 +446,63 @@ function Checkout(props: any) {
                     subTotal={pricing.totalAmount}
                   />
                 </div>
-                <header className='flex justify-between items-center bg-dark-blue h-[45px] mb-[20px] mt-8'>
-                <h3 className="font-base font-semibold text-white px-[25px] ">
-                  Payment options
-                </h3>
-                </header>
-                <div className='mt-4'>
-                  {pricing.totalAmount != "0" ? GooglePayButton : null}
-                </div>
-                <div className='mt-4'>
+                {cart?.shopping_cart_products.length ||
+                cart?.shopping_cart_bundles.length ? (
+                  <>
+                    <header className='flex justify-between items-center bg-dark-blue h-[45px] mb-[20px] mt-8'>
+                      <h3 className="font-base font-semibold text-white px-[25px] ">
+                        Payment options
+                      </h3>
+                    </header>
+                  <div className='mt-4'>
+                {pricing.totalAmount != "0" ? GooglePayButton : null}
+                  </div>
+                  <div className='mt-4'>
                   <ButtonComponent
-                    text="Pay by debit/credit card"
-                    className={`flex justify-center text-[13px] font-bold hover:text-white border-[1px] border-lime
+                  text="Pay by debit/credit card"
+                  className={`flex justify-center text-[13px] font-bold hover:text-dark-blue border-[1px] border-lime
            hover:bg-lime px-[22px] py-[12px] uppercase rounded ${
-                      paymentType === "payByCard" && "text-white bg-lime rounded-b-none"
-                    }`}
-                    onClick={() => setPaymentType("payByCard")}
+                  paymentType === "payByCard" && "text-white bg-lime rounded-b-none"
+                }`}
+                  onClick={() => setPaymentType("payByCard")}
                   />
                   <div className='w-full'>
-                    {paymentType === "payByCard" &&
-                        <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
-                    }
+                {paymentType === "payByCard" &&
+                  <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
+                }
                   </div>
                   <br/>
                   <ButtonComponent
-                    text="Pay Over Phone"
-                    className={`flex justify-center text-[13px] font-bold hover:text-white border-[1px] border-lime
+                  text="Pay Over Phone"
+                  className={`flex justify-center text-[13px] font-bold hover:text-dark-blue border-[1px] border-lime
               hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
-                      paymentType === "payOverPhone" &&
-                      "text-white bg-lime rounded-b-none"
-                    }`}
-                    onClick={() => setPaymentType("payOverPhone")}
+                  paymentType === "payOverPhone" &&
+                  "text-white bg-lime rounded-b-none"
+                }`}
+                  onClick={() => setPaymentType("payOverPhone")}
                   />
                   <div className='w-full'>
-                    {paymentType === "payOverPhone" &&
-                        <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
-                    }
+                {paymentType === "payOverPhone" &&
+                  <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
+                }
                   </div>
                   <br/>
                   <ButtonComponent
-                    text="Pay By Bank Transfer"
-                    className={` flex justify-center text-[13px] font-bold hover:text-white border-[1px] border-lime
+                  text="Pay By Bank Transfer"
+                  className={` flex justify-center text-[13px] font-bold hover:text-dark-blue border-[1px] border-lime
                      hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
-                      paymentType === "payByBank" && "text-white bg-lime rounded-b-none"
-                    }`}
-                    onClick={() => setPaymentType("payByBank")}
+                  paymentType === "payByBank" && "text-white bg-lime rounded-b-none"
+                }`}
+                  onClick={() => setPaymentType("payByBank")}
                   />
                   <div className='w-full'>
-                    {paymentType === "payByBank" &&
-                        <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
-                    }
+                {paymentType === "payByBank" &&
+                  <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
+                }
                   </div>
-                </div>
+                  </div>
+                  </>
+                  ):null}
               </div>
 
             </div>

@@ -341,8 +341,8 @@ const JoinUs = (props: any) => {
                 </div>
               </div>
             </FormContainer>
-            <div className="w-full flex flex-col md:flex md:flex-row gap-x-5">
-              <div className="w-full md:w-[50%]">
+            <div className="w-full flex flex-col md:flex md:flex-row gap-x-5 self-center">
+              <div className="w-full md:w-[50%] flex justify-center">
             <FormContainer heading="First Reference">
               <div className="flex flex-wrap justify-between justify-center">
                 <div className="w-full mb-1">
@@ -450,7 +450,7 @@ const JoinUs = (props: any) => {
               </div>
             </FormContainer>
             </div>
-              <div className="w-full md:w-[50%]">
+              <div className="w-full md:w-[50%] flex justify-center">
             <FormContainer heading="Second Reference">
               <div className="flex flex-wrap justify-between justify-center">
                 <div className="w-full mb-1">
@@ -586,7 +586,7 @@ const JoinUs = (props: any) => {
         )}
         {submitted && (
           <div>
-            <p className="text-dark-blue text-[20px] leading-8 font-semibold mb-3">
+            <p className="text-dark-blue text-[20px]  leading-8 font-semibold mb-3">
               Thank you for applying to work with us. We have successfully
               received your application and our on-boarding team is currently
               reviewing all applications and we aim to update all applicants
@@ -607,14 +607,14 @@ const JoinUs = (props: any) => {
 
 const Header = () => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-[90%] lg:w-full">
       <div className="border-b-4 rounded-full border-lime w-[65px] mb-3"></div>
       <h1 className="font-semibold text-4xl mb-3 text-dark-blue">
         Join Us
       </h1>
 
       <br />
-      <p className="md:w-5/6 sm:w-4/6 text-[15px] leading-7 sm:px-16 md:px-0">
+      <p className="md:w-5/6 sm:w-4/6 text-[15px] text-justify leading-7 sm:px-16 md:px-0">
         We are always looking to partner with reliable and committed
         professionals. If you have a passion for customer service then complete
         application below and we will get in touch with you soon.
@@ -625,13 +625,13 @@ const Header = () => {
 };
 const FormContainer = ({ children, heading }: any) => {
   return (
-    <div className="w-full pb-[30px] mt-5 shadow-lg">
+    <div className="w-[90%] md:w-full pb-[30px] mt-5 shadow-lg">
       {heading && (
         <h4 className="w-full text-center uppercase bg-dark-blue text-white text-[23px] md:text-[27px]  inline-block px-[25px] py-[17px] mb-[25px]">
           {heading}
         </h4>
       )}
-      <div className="px-[40px]">{children}</div>
+      <div className="px-[10px] md:px-[20px] lg:px-[40px]">{children}</div>
     </div>
   );
 };

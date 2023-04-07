@@ -164,10 +164,10 @@ export const SERVICES = [
   },
   {
     title: "Energy Performance",
-    certificate: "Certificates",
+    certificate: "Certificate",
     slug: { ...EPC },
   },
-  { title: "Gas Safety", certificate: "Certificates", slug: { ...GSC } },
+  { title: "Gas Safety", certificate: "Certificate", slug: { ...GSC } },
   {
     title: "Building Survey &",
     certificate: "HomeBuyer Reports",

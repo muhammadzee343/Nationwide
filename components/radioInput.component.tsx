@@ -11,7 +11,7 @@ function RadioInput({ label, value, register, name, className = "", required, er
           {...register(name, {
             required: { value: required, message: "Field is Required" },
           })}
-          className="mb-[4px] mr-[13px] h-[13px] w-[13px]"
+          className="mb-[4px] mr-[13px] h-[20px] w-[20px]"
         />
         {label}
       </div>
