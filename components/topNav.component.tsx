@@ -27,9 +27,6 @@ export default function TopNavComponent() {
   return (
     <>
       <div className="bg-blue lg:py-[13px] py-2 lg:px-[52px] xl:px-[48px] md:h-[50px]">
-        <Head>
-          <title>FAQs - Nationwide Surveyors</title>
-        </Head>
         <nav>
           <div className="flex flex-wrap md:justify-between justify-center items-center pr-[13px]">
             <div className="flex items-center">

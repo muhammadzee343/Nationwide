@@ -487,18 +487,16 @@ function Checkout(props: any) {
                   <ButtonComponent
                     text="Pay By Bank Transfer"
                     className={` flex justify-center text-[13px] font-bold hover:text-white border-[1px] border-lime
-           hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
+                     hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
                       paymentType === "payByBank" && "text-white bg-lime rounded-b-none"
                     }`}
                     onClick={() => setPaymentType("payByBank")}
                   />
-                  <br/>
                   <div className='w-full'>
                     {paymentType === "payByBank" &&
                         <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
                     }
                   </div>
-
                 </div>
               </div>
 

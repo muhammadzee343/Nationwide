@@ -1,6 +1,14 @@
 import Head from "next/head";
+import {useEffect, useState} from "react";
 
 const Meta = ({ title, keywords, description }: any) => {
+
+  const [rendered , setRendered] = useState(false);
+  useEffect(() => {
+    setTimeout(()=>{
+      setRendered((toggle) =>!toggle);
+    },330)
+  }, []);
   return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,7 +22,7 @@ const Meta = ({ title, keywords, description }: any) => {
 };
 
 Meta.defaultProps = {
-  title: "Nationwide Surveyors",
+  title: "NationWide Surveyors",
   keywords: "",
   description: "",
 };

@@ -591,9 +591,9 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
           <section>
             <div className="flex flex-col justify-center items-center">
               <div className="w-full px-5 md:px-0 md:w-8/12 xxl:w-9/12">
-                <h3 className=" text-2xl md:text-3xl text-dark-blue font-bold my-[30px]">
+                <h1 className=" text-2xl md:text-3xl text-dark-blue font-bold my-[30px]">
                   Select your property type
-                </h3>
+                </h1>
               </div>
               <div className="flex justify-center">
                 <div className="md:container flex flex-col px-5 lg:px-0 justify-center ">

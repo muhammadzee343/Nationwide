@@ -24,10 +24,10 @@ function OurServices(props: any) {
               />
           </Head>
           <div className="bg-our_services bg-cover w-full">
-              <div className="flex w-full bg-[#000000]/70 backdrop-brightness-100 pt-[45px] pb-[50px] lg:pb-[30px] lg:min-h-[450px] xl:min-h-[552px] flex flex-row flex-wrap justify-around">
+              <div className="flex w-full bg-[#000000]/70 backdrop-brightness-100 pt-[45px] pb-[70px] lg:pb-[30px] lg:min-h-[450px] xl:min-h-[552px] flex flex-row flex-wrap justify-around">
                   <div className="w-full px-5 md:px-10 lg:px-0 lg:mt-10 lg:w-[40.5%] xl:w-[35.7%]">
                       <div className="border-b-4 border-lime rounded-full w-[85px] mb-3"></div>
-                      <h4 className="font-bold text-white uppercase text-[26px] ">Our Services</h4>
+                      <h1 className="font-bold text-white uppercase text-[26px] ">Our Services</h1>
                       <div>
                           <p className="pt-10 text-white text-justify">
                               We provide a wide range of domestic and commercial services to Private Landlords, Homeowners, Buyers, Sellers, Property Manager, Housing Associations and many more.

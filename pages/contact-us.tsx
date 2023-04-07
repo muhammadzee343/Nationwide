@@ -5,13 +5,12 @@ import {
   faGlobe,
   faLocationCrosshairs,
   faPhone,
-  faCircleDot
+  faCircleDot,
+  faArrowRightLong
 } from "@fortawesome/free-solid-svg-icons";
 import { faMessage } from "@fortawesome/free-regular-svg-icons";
 import { enquiries } from "../utility/contactUsConstants";
 import Head from "next/head";
-import Image from 'next/image'
-import arrow from  '../public/trending_flat.png';
 
 function ContactUs(props: any) {
   return (
@@ -24,13 +23,12 @@ function ContactUs(props: any) {
         <div className="flex w-full bg-[#000000]/70 backdrop-brightness-100 pt-[45px] pb-[30px] md:min-h-[350px] lg:min-h-[440px] flex flex-row flex-wrap justify-start lg:px-32">
           <div className="w-full mb-3 px-4 md:w-[60%] lg:mt-10 xl:w-[40.5%] xl:w-[36.7%]">
             <div className="border-b-4 rounded-full border-lime w-[85px] mb-3"></div>
-            <h4 className="text-white uppercase text-[23px] ">GET IN TOUCH</h4>
-            <h4 className="font-bold text-white text-[36px] ">For All Enquiries</h4>
+            <h2 className="text-white uppercase text-[23px] ">GET IN TOUCH</h2>
+            <h1 className="font-bold text-white text-[36px] ">For All Enquiries</h1>
             <div>
               <p className="pt-10 text-white text-justify">
                 Depending on the type and nature of your enquiry. Please select one of therelevant option below.
               </p>
-
             </div>
           </div>
         </div>
@@ -62,13 +60,17 @@ export default ContactUs;
 function Enquiry({ text, link, query }: any) {
   return (
     <div className="rounded-sm flex flex-row justify-start px-10 items-center text-black border-lime mb-2 md:mb-0 border-[2px] hover:bg-dark-blue hover:border-0 hover:text-white ease-in duration-200">
-      <Image src={arrow} alt="Arrow right"/>
-      <Link
-        href={{ pathname: link, query: query }}
-        className="text-[10px] lg:text-sm block font-semibold px-[20px]  lg:px-[30px] py-[15px]"
-      >
-        {text}
-      </Link>
+      <div>
+        <FontAwesomeIcon icon={faArrowRightLong} className='w-7 h-7  mr-2'/>
+      </div>
+      <div>
+        <Link
+          href={{ pathname: link, query: query }}
+          className="text-[10px] lg:text-sm block font-semibold px-[20px]  lg:px-[30px] py-[15px]"
+        >
+          {text}
+        </Link>
+      </div>
     </div>
   );
 }

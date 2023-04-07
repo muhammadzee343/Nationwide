@@ -42,7 +42,7 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="p-4 bg-white sm:p-6 bg-gray-900 bg-footer_bg_image bg-no-repeat bg-cover w-full xxl:max-w-[1440px] mx-auto lg:min-h-[530px] md:px-0 xl:px-[39px] flex flex-wrap justify-center lg:justify-between">
+      <footer className="p-4 bg-white sm:p-6 bg-gray-900 bg-footer_bg_image bg-no-repeat bg-cover w-full  md:px-0 xl:px-[39px] flex flex-wrap justify-center lg:justify-between">
         <div className="flex flex-wrap justify-center my-10 md:mx-10">
           <div className="md:flex md:justify-between w-full lg:max-w-[970px] xl:max-w-[1170px]">
             <div className="mb-6 md:mb-0 pl-[15px] pr-[15px]">
