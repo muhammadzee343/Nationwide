@@ -19,7 +19,7 @@ function PricingCard({
       >
         <div className="w-full py-8 shadow-lg bg-dark-blue justify-center items-center">
           {content?.bundleName === "Service Bundle Three" && (
-              <div className="flex flex-row text-white bg-lime absolute -top-3 left-[30%] justify-center items-center w-[40%] p-1.5 rounded ">
+              <div className="flex flex-row text-dark-blue bg-lime absolute -top-3 left-[30%] justify-center items-center w-[40%] p-1.5 rounded ">
                 <FontAwesomeIcon className="w-4 mr-2" icon={faStar} />
                 <p className='text-[9px] lg:text-[7px] xl:text-[9px]'>MOST POPULAR</p>
               </div>
@@ -56,7 +56,7 @@ function PricingCard({
                       return (
                         <li
                           key={index}
-                          className="relative pl-[25px] pt-[12px] pb-[11px] leading-[22px] border-b border-b-slate-100 flex text-sm lg:text-[12px] xl:text-sm text-black"
+                          className="relative pl-[25px] pt-[12px] pb-[11px] leading-[22px] border-b border-b-[#BFC8D6] flex text-sm lg:text-[12px] xl:text-sm text-black"
                         >
                           <span className=" absolute left-[-2px] top-[16px]">
                             <FontAwesomeIcon className="w-4" icon={faCheck} />
@@ -78,7 +78,7 @@ function PricingCard({
                     className={` ${
                       content?.bundleName === "Service Bundle Three"
                         ? "bg-lime text-dark-blue bg-lime hover:bg-dark-blue hover:text-white "
-                        : "bg-dark-blue text-white hover:bg-lime hover:text-white"
+                        : "bg-dark-blue text-white hover:bg-lime hover:text-dark-blue"
                     } ease-in duration-200 px-[20px] lg:px-[10px] xl:px-[20px] py-[13px] uppercase`}
                   />
                 </Link>

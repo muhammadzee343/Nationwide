@@ -146,7 +146,7 @@ function BillingForm(props: any) {
             <TextField
               className="text-sm leading-8 text-dark-blue font-semibold"
               lable="Full Name"
-              name="fullname"
+              name="full_name"
               required={true}
               register={register}
               errors={errors}

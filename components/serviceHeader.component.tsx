@@ -39,30 +39,34 @@ function ServiceHeader(props: any) {
           </div>
         </div>
       </div>
-      <div className="md:bg-blue-transparent md:hidden block w-full py-[32px] relative">
-        <h1 className=" text-[20px] md:text-[34px] md:text-[40px] bg-blue-transparent md:bg-transparent font-bold text-white mb-[25px] text-center absolute py-[3px] top-[-35px] md:top-[-51px] w-full">
-          Energy Performance Certificate
-        </h1>
+      <div className="md:bg-blue-transparent md:hidden block w-full pb-[32px] relative">
         <div className="w-full flex justify-around">
-          <div className="w-full md:container flex flex-col md:flex-row justify-center md:items-center px-6">
-            <div className=" w-full md:w-5/12 flex flex-col">
-              {props?.servicesDec.map((ele: any, index) => {
-                return (
-                  <div key={index} className="flex gap-3 my-2">
+          <div className="w-full">
+            <div className="md:container bg-header_bg flex flex-col md:flex-row justify-center md:items-center ">
+            <div className="w-full md:w-5/12 flex flex-col bg-[#000000]/70 bg-cover px-6 items-center py-4">
+              <h1 className=" text-[20px] md:text-[34px] md:text-[40px] md:bg-transparent font-bold text-white mb-[25px] text-center  py-[3px] top-[-35px] md:top-[-51px] w-full">
+                {props.serviceTitle}
+              </h1>
+              <div className="w-full">
+                {props?.servicesDec.map((ele: any, index) => {
+                  return (
+                    <div key={index} className="flex gap-3 my-2 justify-start">
                     <span className="w-6 h-6 flex justify-center rounded-full">
                       <FontAwesomeIcon
-                        className="w-2"
+                        className="w-2 text-white"
                         icon={faCircle}
                       ></FontAwesomeIcon>
                     </span>
-                    <p className="text-base text-dark-blue md:text-white font-semibold">
-                      {ele}
-                    </p>
-                  </div>
-                );
-              })}
+                      <p className="text-base text-white font-semibold">
+                        {ele}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-            <div className="md:hidden mt-10 ">
+            </div>
+            <div className="md:hidden mt-6 px-6">
               <SelectProperty />
             </div>
           </div>

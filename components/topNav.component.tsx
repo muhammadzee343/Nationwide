@@ -49,7 +49,7 @@ export default function TopNavComponent() {
                   </Link>
                 </p>
               </div>
-              <div>
+              <div className="flex justify-center">
                 <p className="text-white px-2 text-[14px] leading-6">
                   <strong className="text-[#fffffff2]">Call Us Free:</strong>
                   <Link

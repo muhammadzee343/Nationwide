@@ -24,12 +24,12 @@ function ServiceInfo({ className, content, index }: any) {
         </BoxBackgroundComponent>
       )}
       <div
-        className={`w-full ${content.image ? "lg:w-[58%]" : "lg:w-12/12"} py-4`}
+        className={`w-full ${content.image ? "lg:w-[58%]" : "lg:w-12/12"} pb-4`}
       >
         {content.type !== "Service" && (
           <>
-            <div className="mb-[30px] py-2">
-              <h4 className="text-[10px] xl:text-sm mb-[2px] mt-[5px] uppercase font-semibold text-[#1a1a1a] tracking-[1px]">
+            <div className="mb-[17px] lg:mb-[30px]">
+              <h4 className="text-[10px] xl:text-sm mb-[11px] md:[21px] uppercase font-semibold text-[#1a1a1a] tracking-[1px]">
                 {content.subTitle}
               </h4>
               <h2 className="text-2xl xl:text-4xl text-[#1a1a1a] font-medium">

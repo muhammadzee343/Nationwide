@@ -324,7 +324,7 @@ const SelectPostCode = ({
         name={name}
         control={control}
         defaultValue={null}
-        rules={{validate:validateOptions, required:'Field is required'}}
+        rules={{required:'Field is required'}}
         render={({field ,fieldState: { error,}}) =>{
           return(
             <>
