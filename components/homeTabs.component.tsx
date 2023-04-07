@@ -9,7 +9,7 @@ const HomeTab = () => {
     const [activeService, setService] = useState(LEC);
 
     return (
-        <div className="lg:flex gap-x-14 xxl:gap-x-16 xl:gap-x-[] px-3 py-6 lg:py-3 lg:px-0 md:min-h-[421px]">
+        <div className="lg:flex gap-x-14 xxl:gap-x-16 xl:gap-x-[] px-7 py-6 lg:py-3 lg:px-0 md:min-h-[421px]">
             <div className={`relative self-start lg:min-h-[380px] xl:min-h-[450px]  
               ${activeService.title === 'Electrical Installation Condition Report (EICR)' ? "lg:bg-hero": 
               activeService.title === 'Energy Performance Certificate'? "lg:bg-hero_EPC":
@@ -19,7 +19,7 @@ const HomeTab = () => {
                     {SERVICES.map((ele, index) => {
                         return (
                             <li
-                                className="w-[48%] md:w-[49%] bg-white lg:min-h-min min-h-[117px] lg:mr-0 lg:mb-0  lg:w-[180px] xl:w-[230px]"
+                                className="w-[100%] md:w-[49%] bg-white lg:min-h-min min-h-[60px] lg:mr-0 lg:mb-0  lg:w-[180px] xl:w-[230px]"
                                 key={index}
                                 onClick={() => setService(ele.slug)}
                             >
@@ -32,7 +32,7 @@ const HomeTab = () => {
                                     } w-full`}
                                 >
                                     <Link href="#" onClick={(event) => event.preventDefault()}>
-                                        {ele.title} <br />
+                                        {ele.title}
                                         {ele.certificate}
                                     </Link>
                                 </div>

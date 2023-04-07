@@ -14,6 +14,7 @@ import {VALIDATION_CONFIG} from "../../../config/validation.config";
 import { useForm } from "react-hook-form";
 import TextArea from "../../../components/textArea.component";
 import Swal from "sweetalert2";
+import CarouselComponent from "../../../components/carousel.component";
 
 function Service({ certificate }: any) {
   const {
@@ -98,7 +99,7 @@ function Service({ certificate }: any) {
             }
 
           </Head>
-          <div className="w-full py-10 lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto">
+          <div className="w-full py-10 lg:min-[970px] xl:min-w-[60%] xl:max-w-[60%] mx-auto xl:ml-[7%] ">
             <div className=" px-5">
               <div className="border-b-4 border-lime w-[105px] rounded-full mb-3"></div>
               <h2 className="text-lime text-4xl lg:mb-5">
@@ -122,231 +123,241 @@ function Service({ certificate }: any) {
                 );
               })}
             </div>
-            <div className="2xl:w-8/12 px-4">
-              <section>
-                <div className="w-full flex flex-col items-center justify-center px-3">
-                  <div className="w-full md:container flex flex-col  flex-wrap  pb-[60px]">
-                    <div className="pt-6 pb-20">
-                      <div className="border-b-4 border-lime w-[85px] rounded-full mb-3"></div>
-                      <h2 className="text-black text-4xl font-medium ">
-                        How it works?
-                      </h2>
-                    </div>
-                    <div className="w-full flex flex-col md:flex-row justify-center md:items-center xl:flex-nowrap gap-1 xl:gap-7 gap-y-10">
-                      {howItWorks.map(({ title, paragraph , image }: any, index) => {
-                        return (
-                          <HowItWorks
-                            key={index}
-                            title={title}
-                            paragraph={paragraph}
-                            type="service"
-                            index={index}
-                            image={image}
-                          />
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              </section>
-              <section>
-                <div className="w-full flex flex-col gap-y-4 md:flex-row md:justify-between">
-                  <div className="w-full md:w-[50%]">
-                    <div className="border-b-4 border-lime w-[85px] rounded-full mb-3"></div>
-                    <h2 className="text-black text-3xl font-medium ">
-                      Frequently Asked Questions
-                    </h2>
-                    <p className="text-black text-[15px] leading-[27px] mt-5 mb-10">
-                      I am promo text. Click edit button to change this text. Lorem ipsum dolor sit amet,
-                      consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo
-                    </p>
-                    <FaqAccordionComponent
-                      accordionData={faqAccordionData}
-                      iconMinusColor="#fff"
-                      iconPlusColor="#8d9297"
-                      headerBackground="bg-white"
-                      headerTitleColor="text-gray-400"
-                      activeHeadBackgorund="bg-white"
-                      hoverHeadBackground="bg-lime"
-                      defaultActiveaccordion="3"
-                      navigateFromFAQ
-                    />
-                  </div>
-                  <div className="w-full  md:w-[40%]">
-                    <BoxBackgroundComponent
-                      className='h-[700px] pt-5 '
-                      greyStyle='-right-3 lg:-right-5 top-10 w-[60%] h-[40%] md:w-[40%] lg:h-[45%]'
-                      limeStyle='-left-3 lg:-left-5 bottom-36 w-[60%] h-[40%] md:w-[40%] xl:bottom-28'
-                    >
-                      <div className="rounded-lg p-5 border-lime border-t-8 bg-white drop-shadow-lg self-center">
-                        <h2 className="text-black text-xl lg:text-2xl font-medium ">
-                          Ask A Different Questions
-                        </h2>
-                        <p className="text-black text-[15px] leading-[27px] mt-2 mb-6">
-                          Ask your query by filling this form.
-                        </p>
-                        <form onSubmit={handleSubmit(requestCallBack)}>
-                                    <div className="w-full flex flex-col items-center md:flex-row flex-wrap gap-y-3 lg:gap-y-4 mt-2 justify-between">
-                                      <div className={`${!next ? 'flex':'hidden'} w-full  flex-col items-center md:flex-row flex-wrap gap-y-3 lg:gap-y-4 justify-between`}>
-                                          <div className="w-full">
-                                              <TextField
-                                                  lable="Full Name"
-                                                  name="full_name"
-                                                  className="text-sm text-black font-semibold"
-                                                  errors={errors}
-                                                  register={register}
-                                                  errorClass="text-[#ff0000] text-sm float-right "
-                                                  required={true}
-                                                  inputClass="border-lime py-2.5 px-3"
-                                              />
-                                          </div>
-                                          <div className="w-full" >
-                                              <div className="">
-                                                  <p className="text-sm text-black mr-3 font-semibold lg:bold">
-                                                      Postcode where your property exist?
-                                                  </p>
-                                                  <p className="text-[10px] md:text-[12px] my-1">
-                                                      This is to check the availability and converage
-                                                  </p>
-                                                  <TextField
-                                                      placeholder="Enter postcode here"
-                                                      className="text-lg text-black font-semibold"
-                                                      errors={errors}
-                                                      register={register}
-                                                      errorClass="text-[#ff0000] text-sm  float-right"
-                                                      required={true}
-                                                      name="post_code"
-                                                      inputClass=" border-lime py-2.5 px-3"
-                                                      reactHookValidations={{
-                                                        required: VALIDATION_CONFIG.required,
-                                                        validate: VALIDATION_CONFIG.postCode,
-                                                      }}
-                                                  />
-                                              </div>
-                                          </div>
-                                          <div className="w-full ">
-                                              <TextField
-                                                  lable="Phone"
-                                                  name="phone"
-                                                  errors={errors}
-                                                  register={register}
-                                                  errorClass="text-[#ff0000] text-sm float-right"
-                                                  required={true}
-                                                  pattern={/^\(?(?:(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?\(?(?:0\)?[\s-]?\(?)?|0)(?:\d{5}\)?[\s-]?\d{4,5}|\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3})|\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4}|\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}|8(?:00[\s-]?11[\s-]?11|45[\s-]?46[\s-]?4\d))(?:(?:[\s-]?(?:x|ext\.?\s?|\#)\d+)?)$/}
-                                                  className="text-sm text-black mr-3 font-semibold lg:bold"
-                                                  inputClass="border-lime py-2.5 px-3"
-                                              />
-                                          </div>
-                                          <div className="w-full ">
-                                              <TextField
-                                                  lable="Email"
-                                                  name="email"
-                                                  errors={errors}
-                                                  register={register}
-                                                  errorClass="text-[#ff0000] text-sm float-right"
-                                                  pattern={/^\S+@\S+$/i}
-                                                  required={true}
-                                                  className="text-sm text-black mr-3 font-semibold lg:bold"
-                                                  inputClass="border-lime py-2.5 px-3"
-                                              />
-                                          </div>
-                                          <div className="w-full md:px-0">
-                                              <ButtonComponent
-                                                  text="Next"
-                                                  type="button"
-                                                  onClick={()=> {
-                                                    trigger().then(isValid => {
-                                                      if (errors?.enquiry?.message && Object.keys(errors).length === 1) {
-                                                        setNext(true)
-                                                        delete errors.enquiry
-                                                      }
-                                                    });}
-                                                  }
-                                                  className="bg-lime text-black uppercase text-sm lg:text-lg mt-4 font-semibold px-[2px] sm:px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"
-                                              />
-                                          </div>
-                                      </div>
-
-                                      <div className={`${next ? 'flex':'hidden'} w-full  flex-col items-center md:flex-row flex-wrap gap-y-3 lg:gap-y-6 mt-5 justify-between`}>
-                                          <div className="px-4 md:px-0">
-                                              <TextArea
-                                                  lable="Please use box below to provide any further information related to your enquiry"
-                                                  className="text-sm text-black"
-                                                  inputClass="border-grey-500 py-2.5 px-3 mt-3.5"
-                                                  errors={errors}
-                                                  register={register}
-                                                  errorClass="text-[#ff0000] text-sm font-semibold float-right"
-                                                  required={true}
-                                                  name="enquiry"
-                                                  customStyle={{ height: 'auto', minHeight: '300px' }}
-                                              />
-                                          </div>
-                                          <div className="w-full md:px-0 mt-6">
-                                              <ButtonComponent
-                                                  text="Submit"
-                                                  className="bg-lime text-black uppercase text-lg font-semibold px-[2px] sm:px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"
-                                              />
-                                          </div>
-                                      </div>
-                          </div>
-                        </form>
-                      </div>
-                    </BoxBackgroundComponent>
-                  </div>
-                </div>
-              </section>
-              <div className="w-full flex justify-center mt-10">
-                <div className="w-full lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto px-3">
-                  <div className="w-full flex flex-row justify-between items-start flex-wrap ">
-                    <div className="flex flex-col border-white lg:mb-[30px] py-2">
-                      <div className='border-b-4 border-lime w-[70px] mb-3'></div>
-                      <h2 className="text-xl lg:text-4xl text-black font-semibold">
-                        READY TO PLACE ORDER
-                      </h2>
-                      <p className="text-[10px] md:text-[12px] mt-[5px] uppercase text-black ">
-                        Click on ‘Order Now’ to place a new order.
-                      </p>
-                      <div className="hidden w-[60%] lg:flex ">
-                        <ButtonComponent
-                          text="Order Now"
-                          className="w-full flex mt-5  bg-lime self-start font-semibold uppercase items-center justify-center hover:bg-dark-blue hover:text-white px-[28px] py-[12px] text-sm ease-in duration-200"
-                          type="button"
-                          onClick={() =>{
-                            router?.push({
-                              pathname: "/order-now",
-                            });
-                          }
-                          }
-                        >
-                        </ButtonComponent>
-                      </div>
-                    </div>
-                    <div className="w-full self-center xl:w-[44%]">
-                      <p className="text-black text-[15px] leading-[27px]">
-                        New orders can be placed anytime through our website with a smooth and quick online order form.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="my-5 lg:hidden">
-                    <ButtonComponent
-                      text="Order Now"
-                      className="w-full flex  bg-lime self-start font-semibold uppercase items-center justify-center hover:bg-dark-blue hover:text-white px-[28px] py-[12px] text-sm ease-in duration-200"
-                      type="button"
-                      onClick={() =>{
-                        router?.push({
-                          pathname: "/order-now",
-                        });
-                        }
-                      }
-                    >
-                    </ButtonComponent>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
+        <div className="w-full flex justify-center bg-white">
+            <div className="w-full xxl:continer flex flex-col lg:flex-row">
+                <div className="w-full py-10 lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto  ">
+                    <div className="2xl:w-8/12 px-4">
+                        <section>
+                            <div className="w-full flex flex-col items-center justify-center px-3">
+                                <div className="w-full md:container flex flex-col flex-wrap pb-[0px]">
+                                    <div className=" border-lime mb-[30px] py-2">
+                                        <div className="border-b-4 border-lime rounded-full w-[85px] mb-3"></div>
+                                        <h2 className="text-black text-4xl font-medium font-semibold">
+                                            How it works?
+                                        </h2>
+                                    </div>
+                                    {/*<StepperComponent />*/}
+                                    <div className="hidden mt-10 w-full md:flex justify-center xl:flex-nowrap gap-1 xl:gap-7">
+                                        {howItWorks.map(({ title, paragraph, image }: any, index) => {
+                                            return (
+                                                <HowItWorks
+                                                    key={index}
+                                                    title={title}
+                                                    paragraph={paragraph}
+                                                    index={index}
+                                                    type="Home"
+                                                    image={image}
+                                                />
+                                            );
+                                        })}
+                                    </div>
+                                    <div className="flex mt-10  md:hidden w-full h-[300px] justify-center xl:flex-nowrap gap-1 lg:gap-7">
+                                        <CarouselComponent list={howItWorks} component={HowItWorks} className='h-420px '/>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <div className="w-full flex flex-col gap-y-4 md:flex-row md:justify-between">
+                                <div className="w-full md:w-[50%]">
+                                    <div className="border-b-4 border-lime w-[85px] rounded-full mb-3"></div>
+                                    <h2 className="text-black text-3xl font-medium ">
+                                        Frequently Asked Questions
+                                    </h2>
+                                    <p className="text-black text-[15px] leading-[27px] mt-5 mb-10">
+                                        I am promo text. Click edit button to change this text. Lorem ipsum dolor sit amet,
+                                        consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo
+                                    </p>
+                                    <FaqAccordionComponent
+                                        accordionData={faqAccordionData}
+                                        iconMinusColor="#fff"
+                                        iconPlusColor="#8d9297"
+                                        headerBackground="bg-white"
+                                        headerTitleColor="text-gray-400"
+                                        activeHeadBackgorund="bg-white"
+                                        hoverHeadBackground="bg-lime"
+                                        defaultActiveaccordion="3"
+                                        navigateFromFAQ
+                                    />
+                                </div>
+                                <div className="w-full  md:w-[40%]">
+                                    <BoxBackgroundComponent
+                                        className='h-[700px] pt-5 '
+                                        greyStyle='-right-3 lg:-right-5 top-10 w-[60%] h-[40%] md:w-[40%] lg:h-[45%]'
+                                        limeStyle='-left-3 lg:-left-5 bottom-36 w-[60%] h-[40%] md:w-[40%] xl:bottom-28'
+                                    >
+                                        <div className="rounded-lg p-5 border-lime border-t-8 bg-white drop-shadow-lg self-center">
+                                            <h2 className="text-black text-xl lg:text-2xl font-medium ">
+                                                Ask A Different Questions
+                                            </h2>
+                                            <p className="text-black text-[15px] leading-[27px] mt-2 mb-6">
+                                                Ask your query by filling this form.
+                                            </p>
+                                            <form onSubmit={handleSubmit(requestCallBack)}>
+                                                <div className="w-full flex flex-col items-center md:flex-row flex-wrap gap-y-3 lg:gap-y-4 mt-2 justify-between">
+                                                    <div className={`${!next ? 'flex':'hidden'} w-full  flex-col items-center md:flex-row flex-wrap gap-y-3 lg:gap-y-4 justify-between`}>
+                                                        <div className="w-full">
+                                                            <TextField
+                                                                lable="Full Name"
+                                                                name="full_name"
+                                                                className="text-sm text-black font-semibold"
+                                                                errors={errors}
+                                                                register={register}
+                                                                errorClass="text-[#ff0000] text-sm float-right "
+                                                                required={true}
+                                                                inputClass="border-lime py-2.5 px-3"
+                                                            />
+                                                        </div>
+                                                        <div className="w-full" >
+                                                            <div className="">
+                                                                <p className="text-sm text-black mr-3 font-semibold lg:bold">
+                                                                    Postcode where your property exist?
+                                                                </p>
+                                                                <p className="text-[10px] md:text-[12px] my-1">
+                                                                    This is to check the availability and converage
+                                                                </p>
+                                                                <TextField
+                                                                    placeholder="Enter postcode here"
+                                                                    className="text-lg text-black font-semibold"
+                                                                    errors={errors}
+                                                                    register={register}
+                                                                    errorClass="text-[#ff0000] text-sm  float-right"
+                                                                    required={true}
+                                                                    name="post_code"
+                                                                    inputClass=" border-lime py-2.5 px-3"
+                                                                    reactHookValidations={{
+                                                                        required: VALIDATION_CONFIG.required,
+                                                                        validate: VALIDATION_CONFIG.postCode,
+                                                                    }}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="w-full ">
+                                                            <TextField
+                                                                lable="Phone"
+                                                                name="phone"
+                                                                errors={errors}
+                                                                register={register}
+                                                                errorClass="text-[#ff0000] text-sm float-right"
+                                                                required={true}
+                                                                pattern={/^\(?(?:(?:0(?:0|11)\)?[\s-]?\(?|\+)44\)?[\s-]?\(?(?:0\)?[\s-]?\(?)?|0)(?:\d{5}\)?[\s-]?\d{4,5}|\d{4}\)?[\s-]?(?:\d{5}|\d{3}[\s-]?\d{3})|\d{3}\)?[\s-]?\d{3}[\s-]?\d{3,4}|\d{2}\)?[\s-]?\d{4}[\s-]?\d{4}|8(?:00[\s-]?11[\s-]?11|45[\s-]?46[\s-]?4\d))(?:(?:[\s-]?(?:x|ext\.?\s?|\#)\d+)?)$/}
+                                                                className="text-sm text-black mr-3 font-semibold lg:bold"
+                                                                inputClass="border-lime py-2.5 px-3"
+                                                            />
+                                                        </div>
+                                                        <div className="w-full ">
+                                                            <TextField
+                                                                lable="Email"
+                                                                name="email"
+                                                                errors={errors}
+                                                                register={register}
+                                                                errorClass="text-[#ff0000] text-sm float-right"
+                                                                pattern={/^\S+@\S+$/i}
+                                                                required={true}
+                                                                className="text-sm text-black mr-3 font-semibold lg:bold"
+                                                                inputClass="border-lime py-2.5 px-3"
+                                                            />
+                                                        </div>
+                                                        <div className="w-full md:px-0">
+                                                            <ButtonComponent
+                                                                text="Next"
+                                                                type="button"
+                                                                onClick={()=> {
+                                                                    trigger().then(isValid => {
+                                                                        if (errors?.enquiry?.message && Object.keys(errors).length === 1) {
+                                                                            setNext(true)
+                                                                            delete errors.enquiry
+                                                                        }
+                                                                    });}
+                                                                }
+                                                                className="bg-lime text-black uppercase text-sm lg:text-lg mt-4 font-semibold px-[2px] sm:px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"
+                                                            />
+                                                        </div>
+                                                    </div>
+
+                                                    <div className={`${next ? 'flex':'hidden'} w-full  flex-col items-center md:flex-row flex-wrap gap-y-3 lg:gap-y-6 mt-5 justify-between`}>
+                                                        <div className="px-4 md:px-0">
+                                                            <TextArea
+                                                                lable="Please use box below to provide any further information related to your enquiry"
+                                                                className="text-sm text-black"
+                                                                inputClass="border-grey-500 py-2.5 px-3 mt-3.5"
+                                                                errors={errors}
+                                                                register={register}
+                                                                errorClass="text-[#ff0000] text-sm font-semibold float-right"
+                                                                required={true}
+                                                                name="enquiry"
+                                                                customStyle={{ height: 'auto', minHeight: '300px' }}
+                                                            />
+                                                        </div>
+                                                        <div className="w-full md:px-0 mt-6">
+                                                            <ButtonComponent
+                                                                text="Submit"
+                                                                className="bg-lime text-black uppercase text-lg font-semibold px-[2px] sm:px-[20px] py-[13px] hover:bg-dark-blue hover:text-white ease-in duration-200"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </BoxBackgroundComponent>
+                                </div>
+                            </div>
+                        </section>
+                        <div className="w-full flex justify-center mt-10">
+                            <div className="w-full lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto px-3">
+                                <div className="w-full flex flex-row justify-between items-start flex-wrap ">
+                                    <div className="flex flex-col border-white lg:mb-[30px] py-2">
+                                        <div className='border-b-4 border-lime w-[70px] mb-3'></div>
+                                        <h2 className="text-xl lg:text-4xl text-black font-semibold">
+                                            READY TO PLACE ORDER
+                                        </h2>
+                                        <p className="text-[10px] md:text-[12px] mt-[5px] uppercase text-black ">
+                                            Click on ‘Order Now’ to place a new order.
+                                        </p>
+                                        <div className="hidden w-[60%] lg:flex ">
+                                            <ButtonComponent
+                                                text="Order Now"
+                                                className="w-full flex mt-5  bg-lime self-start font-semibold uppercase items-center justify-center hover:bg-dark-blue hover:text-white px-[28px] py-[12px] text-sm ease-in duration-200"
+                                                type="button"
+                                                onClick={() =>{
+                                                    router?.push({
+                                                        pathname: "/order-now",
+                                                    });
+                                                }
+                                                }
+                                            >
+                                            </ButtonComponent>
+                                        </div>
+                                    </div>
+                                    <div className="w-full self-center xl:w-[44%]">
+                                        <p className="text-black text-[15px] leading-[27px]">
+                                            New orders can be placed anytime through our website with a smooth and quick online order form.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="my-5 lg:hidden">
+                                    <ButtonComponent
+                                        text="Order Now"
+                                        className="w-full flex  bg-lime self-start font-semibold uppercase items-center justify-center hover:bg-dark-blue hover:text-white px-[28px] py-[12px] text-sm ease-in duration-200"
+                                        type="button"
+                                        onClick={() =>{
+                                            router?.push({
+                                                pathname: "/order-now",
+                                            });
+                                        }
+                                        }
+                                    >
+                                    </ButtonComponent>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </>
   );
 }

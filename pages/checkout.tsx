@@ -506,9 +506,9 @@ function Checkout(props: any) {
               </div>
 
             </div>
-            <div className="w-full  lg:mt-[10px] lg:w-[30%] pt-[8px] pb-[25px] px-4 ">
+            <div className="sticky top-16 w-full  lg:mt-[10px] lg:w-[30%] pt-[8px] pb-[25px] px-4 ">
 
-              <div className="hidden lg:w-full lg:flex">
+              <div className="hidden sticky top-0 lg:w-full lg:flex">
                 <OrderSummary
                     discount={pricing.discount}
                     subTotal={pricing.totalAmount}
