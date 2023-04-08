@@ -8,7 +8,7 @@ import Builiding from '../public/Building.png'
 
 export default function SelectProperty(sticky=false) {
 
-  const sticky_condition = sticky ? 'sticky top-14' : '';
+  const sticky_condition = sticky.sticky ? 'sticky top-14' : '';
   const { setShowDrawer, setOverlay, setPropertyType, propertyType } =
     useContext(SidebarContext);
   const displayDrawer = (propertyType: string) => {
