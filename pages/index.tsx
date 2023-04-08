@@ -85,7 +85,7 @@ export default function Home() {
             <div className="w-full mt-4 mt-16 lg:mt-0 bg-dark-blue order-2 lg:bg-white md:order-1 lg:w-[70%]">
               <HomeTab />
             </div>
-            <div className="lg:order-2 w-[95%] lg:w-[30%] xl:w-[30%] flex justify-center">
+            <div className="lg:order-2 w-[95%] lg:w-[30%] xl:w-[30%] flex justify-center px-2">
               <SelectProperty
                   sticky={false}/>
 
