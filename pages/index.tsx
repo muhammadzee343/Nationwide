@@ -82,7 +82,7 @@ export default function Home() {
         />
       </Head>
       <div className="w-full xxl:max-w-[1440px] mx-auto bg-white lg:min-h-[530px] md:px-0 xl:px-[39px] pt-[40px] flex flex-wrap justify-center lg:justify-between lg:mb-2">
-            <div className="w-full mt-4 mt-16 lg:mt-0 bg-dark-blue order-2 lg:bg-white md:order-1 lg:w-[70%]">
+            <div className="w-full mt-16 lg:mt-0 bg-dark-blue order-2 lg:bg-white md:order-1 lg:w-[70%]">
               <HomeTab />
             </div>
             <div className="lg:order-2 w-[95%] lg:w-[30%] xl:w-[30%] flex justify-center px-2">
