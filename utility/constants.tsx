@@ -158,18 +158,18 @@ export const BHR = {
 
 export const SERVICES = [
   {
-    title: "Domestic &",
+    title: "Domestic & ",
     certificate: "Commercial EICR",
     slug: { ...LEC },
   },
   {
-    title: "Energy Performance",
+    title: "Energy Performance ",
     certificate: "Certificate",
     slug: { ...EPC },
   },
-  { title: "Gas Safety", certificate: "Certificate", slug: { ...GSC } },
+  { title: "Gas Safety ", certificate: "Certificate", slug: { ...GSC } },
   {
-    title: "Building Survey &",
+    title: "Building Survey & ",
     certificate: "HomeBuyer Reports",
     slug: { ...BHR },
   },

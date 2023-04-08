@@ -86,11 +86,13 @@ export default function Home() {
               <HomeTab />
             </div>
             <div className="lg:order-2 w-[95%] lg:w-[30%] xl:w-[30%] flex justify-center">
-              <SelectProperty />
+              <SelectProperty
+                  sticky={false}/>
+
             </div>
       </div>
       <BoxBackgroundComponent className='h-[650px] pt-1'
-        greyStyle='w-[60%] h-[50%] md:w-[35%] hidden lg:block'
+        greyStyle='w-[40%] h-[50%] md:w-[40%] hidden lg:block'
         limeStyle='right-0 bottom-0 w-[60%] h-[40%] md:w-[60%] hidden lg:block'
       >
         <div className='w-full py-4 mt-3 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1190px] mx-auto'>

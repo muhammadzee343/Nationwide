@@ -40,7 +40,8 @@ function OurServices(props: any) {
                       </div>
                   </div>
                   <div className="mt-10 px-5 md:px-10 lg:px-0 lg:mt-0 lg:order-2  w-full lg:w-[27.5%] xl:w-[26.7%] ">
-                      <SelectProperty />
+                      <SelectProperty
+                          sticky={false}/>
                   </div>
               </div>
           </div>
@@ -119,8 +120,8 @@ function OurServices(props: any) {
           </div>
 
           <BoxBackgroundComponent className='h-[650px] pt-5'
-                                  greyStyle='w-[60%] h-[50%] md:w-[40%] hidden md:block'
-                                  limeStyle='right-0 bottom-0 w-[60%] h-[40%] md:w-[40%] hidden md:block'
+                                  greyStyle='w-[40%] h-[50%] md:w-[40%] hidden md:block'
+                                  limeStyle='right-0 bottom-0 w-[60%] h-[40%] md:w-[60%] hidden md:block'
           >
               <div className='w-full py-5 mt-3 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto'>
                   <div className='px-2 ml-4 md:ml-0'>

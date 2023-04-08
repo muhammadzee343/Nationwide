@@ -32,8 +32,9 @@ function ServiceHeader(props: any) {
                   );
                 })}
               </div>
-              <div className="lg:order-2 w-[95%] md:w-[45%] lg:w-[40.7%] xl:w-[30%] ">
-                <SelectProperty />
+              <div className="lg:order-2 w-[95%] md:w-[45%] lg:w-[40.7%] xl:w-[30%] xl:h-[1400px] h-max ">
+                <SelectProperty
+                  sticky={true}/>
               </div>
             </div>
           </div>
@@ -67,7 +68,8 @@ function ServiceHeader(props: any) {
             </div>
             </div>
             <div className="md:hidden mt-6 px-6">
-              <SelectProperty />
+              <SelectProperty
+                  sticky={false}/>
             </div>
           </div>
         </div>

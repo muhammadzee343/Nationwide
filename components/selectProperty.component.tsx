@@ -6,7 +6,9 @@ import Image from 'next/image'
 import Home from '../public/Home.png';
 import Builiding from '../public/Building.png'
 
-export default function SelectProperty() {
+export default function SelectProperty(sticky=false) {
+
+  const sticky_condition = sticky ? 'sticky top-14' : '';
   const { setShowDrawer, setOverlay, setPropertyType, propertyType } =
     useContext(SidebarContext);
   const displayDrawer = (propertyType: string) => {
@@ -19,11 +21,11 @@ export default function SelectProperty() {
   };
   return (
     <div
-      className="bg-white text-center drop-shadow-xl lg:max-w-[382px] max-h-[400px] rounded"
+      className={`${sticky_condition} bg-white text-center drop-shadow-xl lg:max-w-[382px] max-h-[400px] rounded`}
       id="main_quote_form"
     >
       <form id="instantquote_main" method="post">
-        <div className='w-full  rounded overflow-hidden'>
+        <div className={`w-full  rounded overflow-hidden`}>
           <h3 className="text-white uppercase w-full text-[26px] lg:text-[20px] xl:text-[26px] mx-25 bg-dark-blue py-[35px] lg:py-[25px] xl:py-[35px] px-[20px] block rounded-sm drop-shadow-lg">
             Get Instant Quote
           </h3>
