@@ -223,7 +223,15 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
           const data = await response.json();
           router.push({ pathname: "/checkout" });
         }
-      } catch (err) { }
+      } catch (err) {
+        Swal.fire({
+          title: 'Something missing!',
+          text: 'Please fill all visible fields for a better price',
+          icon: 'warning',
+          confirmButtonText: 'Ok',
+          confirmButtonColor:'rgb(140, 212, 245)'
+        })
+      }
     }
   };
 

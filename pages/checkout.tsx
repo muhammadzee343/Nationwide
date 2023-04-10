@@ -223,7 +223,7 @@ function Checkout(props: any) {
 
   const {propertyType} = useContext<any>(SidebarContext);
 
-  const getIntent = async (data) => {
+  const getIntent = async (data:any) => {
     const body = {
       payment_detail: {
         billing_first_name: data.firstName,
@@ -398,7 +398,6 @@ function Checkout(props: any) {
     postion = postion-90
     window.scrollTo({top:postion,behavior:'smooth'});
   }
-
   // @ts-ignore
   return (
       <Elements stripe={stripePromise}>
@@ -468,7 +467,7 @@ function Checkout(props: any) {
                   />
                   <div className='w-full'>
                 {paymentType === "payByCard" &&
-                  <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
+                  <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} stripeObj={stripObj} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
                 }
                   </div>
                   <br/>
@@ -589,7 +588,6 @@ function OrderSummary({subTotal, discount}: any) {
                     -&#163;({floatDiscount.toFixed(2)})
                   </p>
                 </div>
-
             )}
           </div>
           <div className="flex justify-between items-center w-full">

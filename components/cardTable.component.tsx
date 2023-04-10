@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
-import {faCheck, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
+import { faInfoCircle, faPlus} from "@fortawesome/free-solid-svg-icons";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from '@react-hook/media-query';
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -31,7 +30,7 @@ function CardTable({ cart, getCart }: any) {
 
   const { uuid, setUuid } = useContext(UuidContext);
 
-  const [open, setOpen] = useState(false);
+  const [bundlePrice, setBundlePrice] = useState(0);
 
   const [showContactInfo, setShowContactInfo] = useState(null)
 
@@ -41,6 +40,8 @@ function CardTable({ cart, getCart }: any) {
   });
 
   const { handleSubmit, register } = useForm();
+
+
 
   useEffect(() => {
     // cart?.forEach((item) => {
@@ -152,8 +153,6 @@ function CardTable({ cart, getCart }: any) {
     } catch (err) {}
   };
 
-  console.log(showContactInfo);
-
   const addAnotherService = (cartNo: number) => {
 
     const postCode = cartItems.shopping_cart_products[cartNo][0]?.property_postcode;
@@ -204,13 +203,13 @@ function CardTable({ cart, getCart }: any) {
                       <div className="border-lime w-[100%] md:w-[32%] pr-4"  >
                         <ButtonComponent
                             text="Add an other service"
+                            icon={faPlus}
                             type="button"
-                            className="hidden md:flex flex-row-reverse justify-center items-center px-[1px] text-[12px]
+                            className="hidden add-service md:flex justify-center items-center px-[1px] text-[12px]
                             hover:text-dark-blue font-medium border-[1px] border-lime hover:border-lime
                             hover:bg-lime py-[10px] uppercase md:text-[14px] lg:px-1 lg:text-[10px] xxl:text-[14px]"
                             onClick={() => addAnotherService(cartNo)}
                         >
-                          <FontAwesomeIcon icon={faPlus} className="text-lime h-3  md:h-4 px-2 lg: h-8"/>
                         </ButtonComponent>
                       </div>
                       <div
@@ -334,20 +333,29 @@ function CardTable({ cart, getCart }: any) {
       { cartItems?.shopping_cart_bundles?.map((cartItemData, cartNo, array) => {
         let section=i;
         i++;
+        let total = 0;
+        cartItemData.map((e, index)=>{
+          total = total + e.total_amount
+        })
         return (
             <div
                 className="border-[#b4c1c1] border-t-[2px] rounded-sm my-2 pt-3 pb-7 shadow-md"
                 key={cartNo}
             >
               <div className="w-full flex px-4 py-1  justify-between">
-                <div className="w-full flex items-center">
-                  <FontAwesomeIcon
+                <div className="w-full flex items-center justify-between">
+                  <div className="flex items-center">
+                    <FontAwesomeIcon
                       icon={faTrashAlt}
                       className="text-[#ff0000] h-[20px] w-[21px] cursor-pointer"
                       onClick={() => deleteService( cartItemData[0].order_id,cartItemData[0].bundle_id,"",cartItemData[0]?.property_address)}
-                  />
-                  <p className="text-[14px] md:text-[17px] ml-4 text-dark-blue ">
-                    {cartItemData[0]?.property_address}
+                    />
+                    <p className="text-[14px] md:text-[17px] ml-4 text-dark-blue ">
+                      {cartItemData[0]?.property_address}
+                    </p>
+                  </div>
+                  <p className="text-[13px] text-right md:text-[14px] text-dark-blue font-semibold">
+                    &#163; {total}
                   </p>
                 </div>
               </div>
@@ -366,30 +374,16 @@ function CardTable({ cart, getCart }: any) {
                               <span style={{fontSize: 24}}>⤷</span> {e?.name}
                             </p>
                           </div>
-                          <div className="w-[20%]">
-                            <p className="text-[13px] text-right md:text-[14px] text-dark-blue font-semibold">
-                              &#163; {price.toFixed(2)}
-                            </p>
-                          </div>
+                          {/*<div className="w-[20%]">*/}
+                          {/*  <p className="text-[13px] text-right md:text-[14px] text-dark-blue font-semibold">*/}
+                          {/*    &#163; {price.toFixed(2)}*/}
+                          {/*  </p>*/}
+                          {/*</div>*/}
                         </li>
                     );
                   })}
                 </ul>
               </div>
-           {/*   {!router?.query?.aquote && !router?.query.bquote &&*/}
-           {/*   (*/}
-           {/*       <div className="px-3">*/}
-           {/*         <ButtonComponent*/}
-           {/*             text="Add an other service"*/}
-           {/*             type="button"*/}
-           {/*             className=" flex justify-center text-[14px] hover:text-white font-medium border-2 border-dark-blue hover:border-lime*/}
-           {/*hover:bg-lime px-[28px] py-[12px] uppercase rounded"*/}
-           {/*             onClick={() => addAnotherService(cartNo)}*/}
-           {/*         />*/}
-           {/*       </div>*/}
-           {/*   )*/}
-
-           {/*   }*/}
               <br />
 
               <div className="w-full px-4">

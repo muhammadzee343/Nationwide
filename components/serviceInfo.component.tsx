@@ -29,7 +29,7 @@ function ServiceInfo({ className, content, index }: any) {
         {content.type !== "Service" && (
           <>
             <div className="mb-[17px] lg:mb-[30px]">
-              <h4 className="text-[10px] xl:text-sm mb-[11px] md:[21px] uppercase font-semibold text-[#1a1a1a] tracking-[1px]">
+              <h4 className="text-[10px] xl:text-sm mb-[21px] md:[21px] uppercase font-semibold text-[#1a1a1a] tracking-[1px]">
                 {content.subTitle}
               </h4>
               <h2 className="text-2xl xl:text-4xl text-[#1a1a1a] font-medium">
