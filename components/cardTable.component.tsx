@@ -334,8 +334,9 @@ function CardTable({ cart, getCart }: any) {
         let section=i;
         i++;
         let total = 0;
+        total = parseFloat(total)
         cartItemData.map((e, index)=>{
-          total = total + e.total_amount
+          total = total + parseFloat(e.total_amount)
         })
         return (
             <div
