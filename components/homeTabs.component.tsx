@@ -61,7 +61,7 @@ const HomeTab = () => {
                     })}
                 </ul>
                 <button
-                    className="flex flex-row gap-x-5 items-center self-center lg:self-start justify-center bg-lime lg:bg-dark-blue hover:bg-lime text-white hover:text-dark-blue px-5 py-2
+                    className="arrow-container flex flex-row gap-x-5 items-center self-center lg:self-start justify-center bg-lime lg:bg-dark-blue hover:bg-lime text-white hover:text-dark-blue px-5 py-2
                     ease-in duration-200 ease-out duration-200 text-[15px] lg:text-[11px] xl:text-[12px] my-4 uppercase"
                 >
                     <svg width="27" height="12" viewBox="0 0 38 16" className="fill-black group-hover:fill-white" fill="none" xmlns="http://www.w3.org/2000/svg">

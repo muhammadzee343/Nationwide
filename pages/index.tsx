@@ -105,8 +105,7 @@ export default function Home() {
         </div>
       </BoxBackgroundComponent>
       <div className="w-[85%] py-5 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto">
-        <div className="pb-[60px] pt-10 flex gap-6 flex-col flex-col-reverse justify-between lg:flex-row">
-          <>
+        <div className="pb-[60px] pt-10 flex flex-col flex-col-reverse justify-between lg:flex-row gap-x-8">
             {content.image && (
               <BoxBackgroundComponent className={'h-[200px] md:h-[350px] lg:h-[300px] w-[100%] lg:w-[40%] p-2 lg:h-auto'}
                                       greyStyle='w-[15%] h-[50%] -top-[10%] lg:-top-[6%] right-[5%] lg:-right-[4%] '
@@ -126,7 +125,7 @@ export default function Home() {
                 <>
                   <div className="mb-[30px] py-2">
                     <div className="flex flex-row items-baseline">
-                      <div className="border-lime border-b-[3px] w-[40px]"></div>
+                      <div className="border-lime border-b-[3px] w-[40px] mb-6"></div>
                       <h4 className="text-xl text-lime mb-[2px] mt-[5px] uppercase tracking-[1px]">
                         {content.subTitle}
                       </h4>
@@ -139,38 +138,9 @@ export default function Home() {
                   <div>
                     <p className={styles.servicePara2}>{content.paragraph2}</p>
                   </div>
-                  {content.link && (
-                    <div className={"flex flex-row hover:text-dark-blue"}>
-                <span className="flex mr-2 text-lime">
-                  <FontAwesomeIcon className="w-5" icon={faArrowRightLong} />
-                </span>
-                      <Link
-                        href={content.link}
-                        className="text-sm border-slate-700 border-b-[1px] uppercase text-lime hover:text-dark-blue flex"
-                      >
-                        Read More
-                      </Link>
-                    </div>
-                  )}
                 </>
               )}
-              {content.type === "Service" && (
-                <div className="flex flex-col leading-relaxed list-disc w-[80%]">
-                  <h3
-                    className={`text-[26px] font-semibold mb-2 ${styles.serviceHeading}`}
-                  >
-                    {content.heading}
-                  </h3>
-                  <div
-                    className="text-[#1A1A1A] text-[15px]"
-                    dangerouslySetInnerHTML={{
-                      __html: `${cleanContent}`,
-                    }}
-                  />
-                </div>
-              )}
             </div>
-          </>
         </div>
       </div>
       <div className="relative w-full xxl:max-w-[1440px] xxl:mx-auto">
@@ -186,7 +156,7 @@ export default function Home() {
           <div className="flex justify-center lg:justify-start xl:justify-center content-container-homepage lg:w-[93%] xxl:w-[95%]">
             <div className="w-[85%] lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto">
               <div className="flex flex-col items-center justify-center ">
-                <div className='flex flex-col self-start'>
+                <div className='flex flex-col self-start mb-6'>
                   <div className='border-lime border-b-4 rounded-full w-[40%] mb-3'></div>
                   <h2 className="text-lime text-4xl font-medium font-semibold">
                     Popular Services

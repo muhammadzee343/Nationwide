@@ -52,10 +52,10 @@ function BillingForm(props: any) {
     }
   }, [props.billingDetails]);
 
-  const stripObj = {
-    strip: null,
-    element: null,
-  };
+  // const stripObj = {
+  //   strip: null,
+  //   element: null,
+  // };
 
 
 
@@ -128,7 +128,7 @@ function BillingForm(props: any) {
                   <div className="bg-white space-y-6">
                     <div>
                       <CardFormComponent
-                          stripObj={stripObj}
+                          stripObj={props.stripeObj}
                           cardError={props.cardError}
                           setCardError={props.setCardError}
                       />

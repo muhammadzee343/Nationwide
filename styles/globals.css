@@ -96,9 +96,18 @@ input[type='radio']:checked{
 .swiper-pagination-bullet{
   border-radius: 0 !important;
 }
-
-
-
+.arrow-container:hover svg path{
+  fill: #2D3C51;
+}
+.arrow-container svg path{
+  fill: white;
+}
+.enquirey-container:hover svg path{
+  fill: white;
+}
+.add-service:hover{
+ color: #2D3C51 !important;
+}
 
 
 
