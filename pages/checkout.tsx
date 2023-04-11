@@ -465,11 +465,6 @@ function Checkout(props: any) {
                 }`}
                   onClick={() => setPaymentType("payByCard")}
                   />
-                  <div className='w-full'>
-                {paymentType === "payByCard" &&
-                  <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} stripeObj={stripObj} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
-                }
-                  </div>
                   <br/>
                   <ButtonComponent
                   text="Pay Over Phone"
@@ -480,23 +475,18 @@ function Checkout(props: any) {
                 }`}
                   onClick={() => setPaymentType("payOverPhone")}
                   />
-                  <div className='w-full'>
-                {paymentType === "payOverPhone" &&
-                  <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
-                }
-                  </div>
                   <br/>
                   <ButtonComponent
                   text="Pay By Bank Transfer"
-                  className={` flex justify-center text-[13px] font-bold hover:text-dark-blue border-[1px] border-lime
+                  className={`flex justify-center text-[13px] mb-2 font-bold hover:text-dark-blue border-[1px] border-lime
                      hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
-                  paymentType === "payByBank" && "text-white bg-lime rounded-b-none"
+                  paymentType === "payByBank" && "text-white bg-lime "
                 }`}
                   onClick={() => setPaymentType("payByBank")}
                   />
                   <div className='w-full'>
-                {paymentType === "payByBank" &&
-                  <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
+                {paymentType !== "" &&
+                    <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} setPaymentType={setPaymentType} stripeObj={stripObj} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
                 }
                   </div>
                   </div>

@@ -7,6 +7,7 @@ import { Select } from "antd";
 import { OverlayContext } from "../context/sidebarContext";
 import {VALIDATION_CONFIG} from "../config/validation.config";
 import CardFormComponent from "./cardForm.component";
+import RadioInput from "./radioInput.component";
 
 function BillingForm(props: any) {
   const [addresses, setAddresseses] = useState([]);
@@ -119,167 +120,232 @@ function BillingForm(props: any) {
       onSubmit={handleSubmit(submitHandler)}
       className="w-full flex justify-between flex-wrap bg-white shadow-xl border border-lime space-y-6 p-[20px]"
     >
-      <div className="w-full">
+      <div className="w-full flex flex-col lg:flex-row lg:gap-x-5">
+        <div className="w-full lg:w-[50%]">
+          <div className="flex flex-wrap justify-between justify-center">
+            <h3 className="text-[23px] text-dark-blue leading-7 mb-[15px] font-semibold">
+              BILLING DETAILS
+            </h3>
+            <div className="w-full mb-1">
+              <TextField
+                className="text-sm leading-8 text-dark-blue font-semibold"
+                lable="Full Name"
+                name="full_name"
+                required={true}
+                register={register}
+                errors={errors}
+                inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
+              />
+            </div>
+              <div className="w-full">
+                <TextField
+                  className="text-sm leading-8 text-dark-blue font-semibold"
+                  lable="Company Name (optional)"
+                  name="company"
+                  register={register}
+                  errors={errors}
+                  inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
+                />
+              </div>
+              <div className="w-full">
+                <TextField
+                  className="w-full text-sm leading-8 text-dark-blue font-semibold"
+                  lable="Email"
+                  required={true}
+                  name="email"
+                  type="email"
+                  register={register}
+                  errors={errors}
+                  inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
+                />
+              </div>
+            <div className={`w-full flex ${errors['postcode'] ? 'items-center':'items-end'} md:flex-row justify-between`}>
+              <div className="w-[65%]">
+                <TextField
+                  className="text-sm leading-8 text-dark-blue font-semibold"
+                  lable="PostCode"
+                  required={true}
+                  name="postcode"
+                  register={register}
+                  errors={errors}
+                  inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
+                  reactHookValidations={{
+                    required: VALIDATION_CONFIG.required,
+                    validate: VALIDATION_CONFIG.postCode,
+                  }}
+                />
+              </div>
+              <div className="w-[30%]">
+                <ButtonComponent
+                  type="button"
+                  text="FIND ADDRESS"
+                  className="bg-dark-blue text-white rounded-md text-[8px] px-[13px] py-[14px]
+                 hover:bg-lime hover:text-white ease-in duration-200 lg:text-[6px] lg:px-[10px] py-[13px] xl:text-[10px] xl:px-[13px] py-[13px]"
+                  onClick={() => {
+                    getPropertyAddress();
+                  }}
+                />
+              </div>
+            </div>
+            <div className="w-full mb-1">
+              <div className="mb-1 w-full relative">
+                <TextField
+                  className="text-sm leading-8 text-dark-blue font-semibold"
+                  placeholder=" House number and street name"
+                  lable="Address"
+                  required={true}
+                  name="streetAddress"
+                  register={register}
+                  errors={errors}
+                  inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
+                />
+                {addresses.length > 0 && (
+                  <div className="w-[100%] max-h-[300px] overflow-y-auto border border-lime absolute bg-white ">
+                    {addresses.map((ele, index) => {
+                      return (
+                        <div
+                          key={index}
+                          className="border-b border-b-grey-500 px-[20px] py-[10px] text-[15px] font-normal text-dark-blue"
+                          onClick={() => {
+                            setValue("postAddress", ele.value, {
+                              shouldValidate: true,
+                            });
+                            setValue("streetAddress", ele.value, {
+                              shouldValidate: true,
+                            });
+                            setAddresseses([]);
+                          }}
+                        >
+                          {ele.value}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </div>
+              <div className="w-full">
+                <TextField
+                  className="text-sm leading-8 text-dark-blue font-semibold"
+                  lable="Phone"
+                  required={true}
+                  name="phone"
+                  register={register}
+                  errors={errors}
+                  inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
+                />
+              </div>
+              <div className="w-full">
+                <TextField
+                  className="text-sm leading-8 text-dark-blue font-semibold"
+                  lable="Phone 2 (optional)"
+                  name="phone2"
+                  register={register}
+                  errors={errors}
+                  inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
+                />
+              </div>
+          </div>
+        </div>
+        <div className="w-full lg:w-[50%] flex flex-col items-center">
+          <h3 className="text-[23px] text-dark-blue leading-7 mb-[15px] mt-[15px] lg:mt-[0px] self-start">
+            Additional Information
+          </h3>
+          <div className="mt-1">
+            <label className="text-[15px]  text-dark-blue font-semibold ">
+              Order notes (optional)
+            </label>
+            <textarea
+              cols={80}
+              placeholder="You can provide any special instructions/notes to help us deal with your order."
+              name="orderNotes"
+              className={`border h-[75px] w-full text-sm focus:border-lime outline-none focus:ring-transparent shadow-sm border-[#DEDEDE] py-2 px-3 rounded-md border`}
+            />
+          </div>
+          <div className="w-full border-[#DEDEDE] border-[2px] p-3 my-3">
+            <div className="mb-2 flex flex-col items-center">
+              <div className="w-full flex">
+                <input
+                  type="radio"
+                  name="paymentRadio"
+                  onClick={()=>{
+                    props.setPaymentType("payByCard")
+                  }}
+                  checked={props.paymentType === "payByCard"}
+                  value="payByCard"
+                  className="mb-[4px] mr-[13px] h-[20px] w-[20px]"
+                />
+                <h3 className="ml-2 text-[17px] text-black leading-5 font-bold self-start">
+                  Debit / Credit Card
+                </h3>
+              </div>
+              {props.paymentType === "payByCard" && (
+              <div className='w-full mt-2 mb-1 border-[#DEDEDE] border-[1px] p-2'>
 
-        <div className="flex flex-wrap justify-between justify-center">
-          <div className='w-full mb-1'>
-            {props.paymentType === "payByCard" && (
-                <div className="w-full" id="card">
-                  <div className="bg-white space-y-6">
-                    <div>
-                      <CardFormComponent
+                  <div className="w-full" id="card">
+                    <p className="font-sm text-[17px] mb-3">Pay with Your Debit/Credit Card</p>
+                    <div className="bg-white space-y-6">
+                      <div>
+                        <CardFormComponent
                           stripObj={props.stripeObj}
                           cardError={props.cardError}
                           setCardError={props.setCardError}
-                      />
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-            )}
-          </div>
-
-        <h3 className="text-[23px] text-dark-blue leading-7 mb-[15px] font-semibold">
-          BILLING DETAILS
-        </h3>
-
-          <div className="w-full mb-1">
-            <TextField
-              className="text-sm leading-8 text-dark-blue font-semibold"
-              lable="Full Name"
-              name="full_name"
-              required={true}
-              register={register}
-              errors={errors}
-              inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
-            />
-          </div>
-          <div className="w-full mb-1 flex flex-col md:flex-row md:justify-between">
-            <div className="w-full md:w-[49%]">
-              <TextField
-                className="text-sm leading-8 text-dark-blue font-semibold"
-                lable="Company Name (optional)"
-                name="company"
-                register={register}
-                errors={errors}
-                inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
-              />
-            </div>
-            <div className="w-full md:w-[49%]">
-              <TextField
-                className="w-full text-sm leading-8 text-dark-blue font-semibold"
-                lable="Email"
-                required={true}
-                name="email"
-                type="email"
-                register={register}
-                errors={errors}
-                inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
-              />
-            </div>
-          </div>
-          <div className={`w-full flex ${errors['postcode'] ? 'items-center':'items-end'} md:flex-row justify-between`}>
-            <div className="w-[65%]">
-              <TextField
-                className="text-sm leading-8 text-dark-blue font-semibold"
-                lable="PostCode"
-                required={true}
-                name="postcode"
-                register={register}
-                errors={errors}
-                inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
-                reactHookValidations={{
-                  required: VALIDATION_CONFIG.required,
-                  validate: VALIDATION_CONFIG.postCode,
-                }}
-              />
-            </div>
-            <div className="w-[30%]">
-              <ButtonComponent
-                type="button"
-                text="FIND ADDRESS"
-                className="bg-dark-blue text-white rounded-md text-[8px] px-[13px] py-[14px]
-                 hover:bg-lime hover:text-white ease-in duration-200 lg:text-[6px] lg:px-[10px] py-[13px] xl:text-[10px] xl:px-[13px] py-[13px]"
-                onClick={() => {
-                  getPropertyAddress();
-                }}
-              />
-            </div>
-          </div>
-          <div className="w-full mb-1">
-            <div className="mb-1 w-full relative">
-              <TextField
-                className="text-sm leading-8 text-dark-blue font-semibold"
-                placeholder=" House number and street name"
-                lable="Address"
-                required={true}
-                name="streetAddress"
-                register={register}
-                errors={errors}
-                inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
-              />
-              {addresses.length > 0 && (
-                <div className="w-[100%] max-h-[300px] overflow-y-auto border border-lime absolute bg-white ">
-                  {addresses.map((ele, index) => {
-                    return (
-                      <div
-                        key={index}
-                        className="border-b border-b-grey-500 px-[20px] py-[10px] text-[15px] font-normal text-dark-blue"
-                        onClick={() => {
-                          setValue("postAddress", ele.value, {
-                            shouldValidate: true,
-                          });
-                          setValue("streetAddress", ele.value, {
-                            shouldValidate: true,
-                          });
-                          setAddresseses([]);
-                        }}
-                      >
-                        {ele.value}
-                      </div>
-                    );
-                  })}
-                </div>
+              </div>
               )}
             </div>
+            <div className="mb-2 flex items-center">
+              <input
+                type="radio"
+                name="paymentRadio"
+                onClick={()=>{
+                  props.setPaymentType("payByBank")
+                }}
+                checked={props.paymentType === "payByBank"}
+                value="payByBank"
+                className="mb-[4px] mr-[13px] h-[20px] w-[20px]"
+              />
+              <h3 className="ml-2 text-[17px] text-black leading-5 font-bold self-start">
+                Online Bank Transfer
+              </h3>
+            </div>
+            <div className="flex items-center">
+              <input
+                type="radio"
+                name="paymentRadio"
+                onClick={()=>{
+                  props.setPaymentType("payOverPhone")
+                }}
+                checked={props.paymentType === "payOverPhone"}
+                value="payOverPhone"
+                className="mb-[4px] mr-[13px] h-[20px] w-[20px]"
+              />
+              <h3 className="ml-2 text-[17px] text-black leading-5 font-bold self-start">
+                Pay Over Phone
+              </h3>
+            </div>
           </div>
-
-          <div className="w-full mb-1 flex flex-col md:flex-row md:justify-between">
-            <div className="w-full md:w-[49%]">
-            <TextField
-              className="text-sm leading-8 text-dark-blue font-semibold"
-              lable="Phone"
+          <div className="w-full">
+            <p className="font-sm text-[11px] mb-3 text-justify">Your personal data will be used to process your order, support your
+            experience throughout this website, and for other purposes described in our privacy policy.</p>
+          </div>
+          <div className="w-full mb-[15px]">
+            <CheckBox
+              register={register}
+              label="I have read and agree to the website"
               required={true}
-              name="phone"
-              register={register}
               errors={errors}
-              inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
             />
-          </div>
-          <div className="w-full md:w-[49%]">
-            <TextField
-              className="text-sm leading-8 text-dark-blue font-semibold"
-              lable="Phone 2 (optional)"
-              name="phone2"
-              register={register}
-              errors={errors}
-              inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
-            />
-          </div>
-          </div>
-        </div>
-        <div className="w-full p-[14px] mb-[15px]">
-          <CheckBox
-            register={register}
-            label="I have read and agree to the website"
-            required={true}
-            errors={errors}
-          />
-          <div className="w-full mt-3 mb-1 items-center">
-            <ButtonComponent
-              text="PLACE ORDER"
-              className="bg-dark-blue text-white text-[13px] px-[20px] py-[10px]
+            <div className="w-full mt-3 mb-1 items-center">
+              <ButtonComponent
+                text="PLACE ORDER"
+                className="bg-dark-blue text-white text-[13px] px-[20px] py-[10px]
                  hover:bg-lime hover:text-white ease-in duration-200"
-            />
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -304,7 +370,7 @@ function CheckBox({ register, label, required, className , errors }: any) {
       >
         {label}
         <Link
-          href="/privacy-policy"
+          href="/terms-condition"
           className="pl-1 text-sm hover:text-lime ease-in duration-200 font-bold "
         >
           Accept Terms & Conditions
