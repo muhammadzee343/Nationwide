@@ -356,7 +356,7 @@ function CardTable({ cart, getCart }: any) {
                     </p>
                   </div>
                   <p className="text-[13px] text-right md:text-[14px] text-dark-blue font-semibold">
-                    &#163; {total}
+                    &#163; {total.toFixed(2)}
                   </p>
                 </div>
               </div>

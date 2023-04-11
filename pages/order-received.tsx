@@ -78,7 +78,7 @@ const OrderReceived: React.FunctionComponent = ({ orderInfo }) => {
         <div className="flex flex-row mr-10 pt-5 pb-5 md:p-5">
           <div className="md:border-r border-gray-500 border-dotted md:pr-10">
             <p className="text-xs">{data.title}</p>
-            <p className="font-bold">{data.value}</p>
+            <p className="font-bold">{data.title !== "TOTAL:" ? data.value : "£" + parseFloat(data.value.replace("$", "")).toFixed(2)}</p>
           </div>
         </div>
       );
@@ -91,7 +91,7 @@ const OrderReceived: React.FunctionComponent = ({ orderInfo }) => {
         <title>Checkout - Nationwide Surveyors</title>
       </Head>
       <div className="w-full flex flex-wrap justify-center items-start sm:gap-x-22 mt-14 mb-14">
-        <div className="w-full lg:w-[90%] flex flex-col justify-center pt-[35px] pb-[25px] px-2">
+        <div className="w-full lg:w-[90%] flex flex-col justify-center pt-[35px] pb-[10px] px-2">
           <div className="w-3/4 md:w-1/4">
             <ButtonComponent
                 onClick={() =>{
@@ -112,8 +112,8 @@ const OrderReceived: React.FunctionComponent = ({ orderInfo }) => {
                         <p className="text-xl md:text-2xl xl:text-3xl font-semibold">Order details</p>
                         <div className="border-r border-l">
                             <div className="w-full bg-dark-blue flex flex-row py-3 md:mt-5 text-lg font-semibold">
-                                <div className="w-3/5 text-white items-center border-r md:border-r-0 border-gray-500">
-                                    <p className="text-center">PRODUCT</p>
+                                <div className="w-3/5 text-white self-start items-center border-r md:border-r-0 border-gray-500">
+                                    <p className="lg:pl-14">Property & Service</p>
                                 </div>
                                 <div className="w-2/5 text-white">
                                     <p className="text-center">TOTAL</p>
@@ -125,7 +125,7 @@ const OrderReceived: React.FunctionComponent = ({ orderInfo }) => {
                                     return(
                                         <div className={`w-full flex flex-row py-4 ${index != orderInfo.products.length-1 && "border-b-4 border-dark-blue"}`}>
                                             <div className="w-3/5 items-center">
-                                                <div className="w-full">
+                                                <div className="w-full flex justify-start lg:pl-14">
                                                     <p className="text-center font-medium text-xl">{item.name}</p>
                                                 </div>
                                                 <div className="pt-5 lg:pl-14 text-sm xxl:text-lg">
@@ -156,7 +156,7 @@ const OrderReceived: React.FunctionComponent = ({ orderInfo }) => {
                                                 </div>
                                             </div>
                                             <div className="w-2/5 m-auto">
-                                                <p className="text-center font-bold">${item.total_amount}</p>
+                                                <p className="text-center font-bold">{"£" + parseFloat(item.total_amount.replace("$", '')).toFixed(2)}</p>
                                             </div>
                                         </div>
                                     )
@@ -169,16 +169,41 @@ const OrderReceived: React.FunctionComponent = ({ orderInfo }) => {
                                             <p className="text-center">{item.title}</p>
                                         </div>
                                         <div className={`w-2/4 py-3 ${index === 0 && "border-t-2"} border-b-2 border-dark-blue`}>
-                                            <p className="text-center">{item.value}</p>
+                                            <p className="text-center">{item.value ==="Bank Transfer" ? item.value : "£" + parseFloat(item.value.replace('$', '')).toFixed(2)}</p>
                                         </div>
                                     </div>
                                 )
                             })}
                         </div>
-
                     </div>
                 </div>
             </div>
+            {orderData[3].value ==='Bank Transfer' && (
+                <div className="w-full lg:w-[90%] flex flex-col justify-center pb-[25px] px-2">
+                  <p>Note: Your order is on hold, pending receipt of the payment as shown above. we accept payments online, over the phone and through bank Transfer.</p>
+                  <br/>
+                  <p>To pay by bank transfer, make payment to:</p>
+                  <br/>
+                  <p className="text-xl md:text-2xl xl:text-3xl font-semibold">Our bank details</p>
+                  <br/>
+                  <p className="text-xl md:text-2xl xl:text-3xl font-semibold">Nationwide Services-UK Limited:</p>
+                  <div className="flex mt-4">
+                    <div className="border-r border-gray-500 border-dotted px-2 md:px-10">
+                      <p className="text-xs">BANK:</p>
+                      <p className="font-bold">Starling Bank</p>
+                    </div>
+                    <div className="border-r border-gray-500 border-dotted px-2 md:px-10">
+                      <p className="text-xs">ACCOUNT NUMBER:</p>
+                      <p className="font-bold">53831355</p>
+                    </div>
+                    <div className="md:border-r px-2 md:px-10">
+                      <p className="text-xs">SORT CODE:</p>
+                      <p className="font-bold">60-83-71</p>
+                    </div>
+                  </div>
+                </div>
+              )
+            }
         </div>
     )
 }

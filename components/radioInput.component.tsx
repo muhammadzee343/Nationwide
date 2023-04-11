@@ -1,7 +1,6 @@
 import React from "react";
 
 function RadioInput({ label, value, register, name, className = "", required, errors, errorClass="" }: any) {
-  console.log(name, errors[name])
   return (
     <label className={`${className}`}>
       <div className="my-1.5">
