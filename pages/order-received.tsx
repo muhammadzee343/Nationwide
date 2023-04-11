@@ -169,7 +169,7 @@ const OrderReceived: React.FunctionComponent = ({ orderInfo }) => {
                                             <p className="text-center">{item.title}</p>
                                         </div>
                                         <div className={`w-2/4 py-3 ${index === 0 && "border-t-2"} border-b-2 border-dark-blue`}>
-                                            <p className="text-center">{item.value ==="Bank Transfer" ? item.value : "£" + parseFloat(item.value.replace('$', '')).toFixed(2)}</p>
+                                            <p className="text-center">{item.title ==="PAYMENT METHOD" ? item.value : "£" + parseFloat(item.value.replace("$", '')).toFixed(2)}</p>
                                         </div>
                                     </div>
                                 )
