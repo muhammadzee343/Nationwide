@@ -433,7 +433,7 @@ function Checkout(props: any) {
               <div className="w-full">
                 <ButtonComponent
                     text="Add an other property"
-                    className={`flex justify-center items-center border-lime border flex-row-reverse bg-white text-[13px] font-bold
+                    className={`flex justify-center items-center border-lime border flex-row-reverse bg-white text-[13px] font-bold mb-5
                                             hover:bg-lime px-[22px] py-[12px] uppercase rounded `}
                     onClick={() => router.push('order-now')}
                 >
@@ -448,11 +448,11 @@ function Checkout(props: any) {
                 {cart?.shopping_cart_products.length ||
                 cart?.shopping_cart_bundles.length ? (
                   <>
-                    <header className='flex justify-between items-center bg-dark-blue h-[45px] mb-[20px] mt-8'>
+                    {/*<header className='flex justify-between items-center bg-dark-blue h-[45px] mb-[20px] mt-8'>
                       <h3 className="font-base font-semibold text-white px-[25px] ">
                         Payment options
                       </h3>
-                    </header>
+                    </header>*/}
                   <div className='mt-4'>
                 {pricing.totalAmount != "0" ? GooglePayButton : null}
                   </div>
@@ -484,6 +484,11 @@ function Checkout(props: any) {
                 }`}
                   onClick={() => setPaymentType("payByBank")}
                   />
+                    <header className='flex justify-between items-center bg-dark-blue h-[45px] mb-[20px] mt-8'>
+                      <h3 className="font-base font-semibold text-white px-[25px] ">
+                        Billing Details
+                      </h3>
+                    </header>
                   <div className='w-full'>
                 {paymentType !== "" &&
                     <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} setPaymentType={setPaymentType} stripeObj={stripObj} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
