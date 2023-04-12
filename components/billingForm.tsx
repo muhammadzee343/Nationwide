@@ -262,91 +262,93 @@ function BillingForm(props: any) {
               className={`border h-[75px] w-full text-sm focus:border-lime outline-none focus:ring-transparent shadow-sm border-[#DEDEDE] py-2 px-3 rounded-md border`}
             />
           </div>
-          <label className="text-sm leading-8 text-dark-blue font-semibold ">
-            Payment Options
-          </label>
-          <div className="w-full border-[#DEDEDE] border-[1px] shadow-md p-3 my-3">
-            <div className="mb-2 flex flex-col items-center">
-              <div className="w-full flex">
-                <input
-                  type="radio"
-                  name="paymentRadio"
-                  onClick={()=>{
-                    props.setPaymentType("payByCard")
-                  }}
-                  checked={props.paymentType === "payByCard"}
-                  value="payByCard"
-                  className="mb-[4px] mr-[13px] h-[20px] w-[20px]"
-                />
-                <h3 className="ml-2 text-[14px] text-black leading-5 font-bold self-start">
-                  Debit / Credit Card
-                </h3>
-              </div>
-              {props.paymentType === "payByCard" && (
-              <div className='w-full mt-2 mb-1 border-l-[5px] border-l-lime bg-cream p-2'>
+          <div className="w-full">
+            <label className="text-sm leading-8 text-dark-blue font-semibold ">
+              Payment Options
+            </label>
+            <div className="w-full border-[#DEDEDE] border-[1px] shadow-md p-3 my-3">
+              <div className="mb-2 flex flex-col items-center">
+                <div className="w-full flex">
+                  <input
+                      type="radio"
+                      name="paymentRadio"
+                      onClick={()=>{
+                        props.setPaymentType("payByCard")
+                      }}
+                      checked={props.paymentType === "payByCard"}
+                      value="payByCard"
+                      className="mb-[4px] mr-[13px] h-[20px] w-[20px]"
+                  />
+                  <h3 className="ml-2 text-[14px] text-black leading-5 font-bold self-start">
+                    Debit / Credit Card
+                  </h3>
+                </div>
+                {props.paymentType === "payByCard" && (
+                    <div className='w-full mt-2 mb-1 border-l-[5px] border-l-lime bg-cream p-2'>
 
-                  <div className="w-full mt-3" id="card">
-                    <div className=" space-y-6">
-                      <div>
-                        <CardFormComponent
-                          stripObj={props.stripeObj}
-                          cardError={props.cardError}
-                          setCardError={props.setCardError}
-                        />
+                      <div className="w-full mt-3" id="card">
+                        <div className=" space-y-6">
+                          <div>
+                            <CardFormComponent
+                                stripObj={props.stripeObj}
+                                cardError={props.cardError}
+                                setCardError={props.setCardError}
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                )}
               </div>
-              )}
-            </div>
-            <div className="mb-2 flex flex-col items-center">
-              <div className="w-full flex">
-                <input
-                  type="radio"
-                  name="paymentRadio"
-                  onClick={()=>{
-                    props.setPaymentType("payByBank")
-                  }}
-                  checked={props.paymentType === "payByBank"}
-                  value="payByBank"
-                  className="mb-[4px] mr-[13px] h-[20px] w-[20px]"
-                />
-                <h3 className="ml-2 text-[14px] text-black leading-5 font-bold self-start">
-                  Online Bank Transfer
-                </h3>
-              </div>
-              {props.paymentType === "payByBank" && (
-                  <div className='w-full mt-2 mb-1 border-l-[5px] border-l-lime bg-cream p-2'>
+              <div className="mb-2 flex flex-col items-center">
+                <div className="w-full flex">
+                  <input
+                      type="radio"
+                      name="paymentRadio"
+                      onClick={()=>{
+                        props.setPaymentType("payByBank")
+                      }}
+                      checked={props.paymentType === "payByBank"}
+                      value="payByBank"
+                      className="mb-[4px] mr-[13px] h-[20px] w-[20px]"
+                  />
+                  <h3 className="ml-2 text-[14px] text-black leading-5 font-bold self-start">
+                    Online Bank Transfer
+                  </h3>
+                </div>
+                {props.paymentType === "payByBank" && (
+                    <div className='w-full mt-2 mb-1 border-l-[5px] border-l-lime bg-cream p-2'>
 
-                    <div className="w-full mt-3" id="bank">
-                      <p className="font-sm text-[14px] mb-3">Payment Instructions will be provided once we received your order.</p>
+                      <div className="w-full mt-3" id="bank">
+                        <p className="font-sm text-[14px] mb-3">Payment Instructions will be provided once we received your order.</p>
+                      </div>
                     </div>
-                  </div>
-              )}
-            </div>
-            <div className="mb-2 flex flex-col items-center">
-              <div className="w-full flex">
-                <input
-                  type="radio"
-                  name="paymentRadio"
-                  onClick={()=>{
-                    props.setPaymentType("payOverPhone")
-                  }}
-                  checked={props.paymentType === "payOverPhone"}
-                  value="payOverPhone"
-                  className="mb-[4px] mr-[13px] h-[20px] w-[20px]"
-                />
-                <h3 className="ml-2 text-[14px] text-black leading-5 font-bold self-start">
-                  Pay Over Phone
-                </h3>
+                )}
               </div>
-              {props.paymentType === "payOverPhone" && (
-                  <div className='w-full mt-2 mb-1 border-l-[5px] border-l-lime bg-cream p-2'>
-                    <div className="w-full mt-3 " id="phone">
-                      <p className="font-sm text-[14px] mb-3">Payments by Credit or Debit Cards can be made over the phone.</p>
+              <div className="mb-2 flex flex-col items-center">
+                <div className="w-full flex">
+                  <input
+                      type="radio"
+                      name="paymentRadio"
+                      onClick={()=>{
+                        props.setPaymentType("payOverPhone")
+                      }}
+                      checked={props.paymentType === "payOverPhone"}
+                      value="payOverPhone"
+                      className="mb-[4px] mr-[13px] h-[20px] w-[20px]"
+                  />
+                  <h3 className="ml-2 text-[14px] text-black leading-5 font-bold self-start">
+                    Pay Over Phone
+                  </h3>
+                </div>
+                {props.paymentType === "payOverPhone" && (
+                    <div className='w-full mt-2 mb-1 border-l-[5px] border-l-lime bg-cream p-2'>
+                      <div className="w-full mt-3 " id="phone">
+                        <p className="font-sm text-[14px] mb-3">Payments by Credit or Debit Cards can be made over the phone.</p>
+                      </div>
                     </div>
-                  </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
           <div className="w-full">
