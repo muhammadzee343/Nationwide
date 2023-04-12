@@ -123,9 +123,9 @@ function BillingForm(props: any) {
       <div className="w-full flex flex-col lg:flex-row lg:gap-x-5">
         <div className="w-full lg:w-[50%]">
           <div className="flex flex-wrap justify-between justify-center">
-            <h3 className="text-[23px] text-dark-blue leading-7 mb-[15px] font-semibold">
+            {/*<h3 className="text-[23px] text-dark-blue leading-7 mb-[15px] font-semibold">
               BILLING DETAILS
-            </h3>
+            </h3>*/}
             <div className="w-full mb-1">
               <TextField
                 className="text-sm leading-8 text-dark-blue font-semibold"
@@ -248,11 +248,11 @@ function BillingForm(props: any) {
           </div>
         </div>
         <div className="w-full lg:w-[50%] flex flex-col items-center">
-          <h3 className="text-[23px] text-dark-blue leading-7 mb-[15px] mt-[15px] lg:mt-[0px] self-start">
+          {/*<h3 className="text-[23px] text-dark-blue leading-7 mb-[15px] mt-[15px] lg:mt-[0px] self-start">
             Additional Information
-          </h3>
-          <div className="mt-1">
-            <label className="text-[15px]  text-dark-blue font-semibold ">
+          </h3>*/}
+          <div className="mt-0">
+            <label className="text-sm leading-8 text-dark-blue font-semibold ">
               Order notes (optional)
             </label>
             <textarea
@@ -262,7 +262,10 @@ function BillingForm(props: any) {
               className={`border h-[75px] w-full text-sm focus:border-lime outline-none focus:ring-transparent shadow-sm border-[#DEDEDE] py-2 px-3 rounded-md border`}
             />
           </div>
-          <div className="w-full border-[#DEDEDE] border-[2px] p-3 my-3">
+          <label className="text-sm leading-8 text-dark-blue font-semibold ">
+            Payment Options
+          </label>
+          <div className="w-full border-[#DEDEDE] border-[1px] shadow-md p-3 my-3">
             <div className="mb-2 flex flex-col items-center">
               <div className="w-full flex">
                 <input
@@ -275,16 +278,15 @@ function BillingForm(props: any) {
                   value="payByCard"
                   className="mb-[4px] mr-[13px] h-[20px] w-[20px]"
                 />
-                <h3 className="ml-2 text-[17px] text-black leading-5 font-bold self-start">
+                <h3 className="ml-2 text-[14px] text-black leading-5 font-bold self-start">
                   Debit / Credit Card
                 </h3>
               </div>
               {props.paymentType === "payByCard" && (
-              <div className='w-full mt-2 mb-1 border-[#DEDEDE] border-[1px] p-2'>
+              <div className='w-full mt-2 mb-1 border-l-[5px] border-l-lime bg-cream p-2'>
 
-                  <div className="w-full" id="card">
-                    <p className="font-sm text-[17px] mb-3">Pay with Your Debit/Credit Card</p>
-                    <div className="bg-white space-y-6">
+                  <div className="w-full mt-3" id="card">
+                    <div className=" space-y-6">
                       <div>
                         <CardFormComponent
                           stripObj={props.stripeObj}
@@ -297,39 +299,58 @@ function BillingForm(props: any) {
               </div>
               )}
             </div>
-            <div className="mb-2 flex items-center">
-              <input
-                type="radio"
-                name="paymentRadio"
-                onClick={()=>{
-                  props.setPaymentType("payByBank")
-                }}
-                checked={props.paymentType === "payByBank"}
-                value="payByBank"
-                className="mb-[4px] mr-[13px] h-[20px] w-[20px]"
-              />
-              <h3 className="ml-2 text-[17px] text-black leading-5 font-bold self-start">
-                Online Bank Transfer
-              </h3>
+            <div className="mb-2 flex flex-col items-center">
+              <div className="w-full flex">
+                <input
+                  type="radio"
+                  name="paymentRadio"
+                  onClick={()=>{
+                    props.setPaymentType("payByBank")
+                  }}
+                  checked={props.paymentType === "payByBank"}
+                  value="payByBank"
+                  className="mb-[4px] mr-[13px] h-[20px] w-[20px]"
+                />
+                <h3 className="ml-2 text-[14px] text-black leading-5 font-bold self-start">
+                  Online Bank Transfer
+                </h3>
+              </div>
+              {props.paymentType === "payByBank" && (
+                  <div className='w-full mt-2 mb-1 border-l-[5px] border-l-lime bg-cream p-2'>
+
+                    <div className="w-full mt-3" id="bank">
+                      <p className="font-sm text-[14px] mb-3">Payment Instructions will be provided once we received your order.</p>
+                    </div>
+                  </div>
+              )}
             </div>
-            <div className="flex items-center">
-              <input
-                type="radio"
-                name="paymentRadio"
-                onClick={()=>{
-                  props.setPaymentType("payOverPhone")
-                }}
-                checked={props.paymentType === "payOverPhone"}
-                value="payOverPhone"
-                className="mb-[4px] mr-[13px] h-[20px] w-[20px]"
-              />
-              <h3 className="ml-2 text-[17px] text-black leading-5 font-bold self-start">
-                Pay Over Phone
-              </h3>
+            <div className="mb-2 flex flex-col items-center">
+              <div className="w-full flex">
+                <input
+                  type="radio"
+                  name="paymentRadio"
+                  onClick={()=>{
+                    props.setPaymentType("payOverPhone")
+                  }}
+                  checked={props.paymentType === "payOverPhone"}
+                  value="payOverPhone"
+                  className="mb-[4px] mr-[13px] h-[20px] w-[20px]"
+                />
+                <h3 className="ml-2 text-[14px] text-black leading-5 font-bold self-start">
+                  Pay Over Phone
+                </h3>
+              </div>
+              {props.paymentType === "payOverPhone" && (
+                  <div className='w-full mt-2 mb-1 border-l-[5px] border-l-lime bg-cream p-2'>
+                    <div className="w-full mt-3 " id="phone">
+                      <p className="font-sm text-[14px] mb-3">Payments by Credit or Debit Cards can be made over the phone.</p>
+                    </div>
+                  </div>
+              )}
             </div>
           </div>
           <div className="w-full">
-            <p className="font-sm text-[11px] mb-3 text-justify">Your personal data will be used to process your order, support your
+            <p className="font-sm text-[14px] mb-3 text-justify">Your personal data will be used to process your order, support your
             experience throughout this website, and for other purposes described in our privacy policy.</p>
           </div>
           <div className="w-full mb-[15px]">
@@ -369,7 +390,7 @@ function CheckBox({ register, label, required, className , errors }: any) {
         className="text-sm text-[#1a1a1a] ml-2"
       >
         {label}
-        <Link
+        <Link target="_blank"
           href="/terms-condition"
           className="pl-1 text-sm hover:text-lime ease-in duration-200 font-bold "
         >

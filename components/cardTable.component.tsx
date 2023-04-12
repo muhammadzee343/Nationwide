@@ -188,7 +188,7 @@ function CardTable({ cart, getCart }: any) {
         i++;
         return (
           <div
-            className="rounded-sm my-2 py-3 shadow-md border-[#b4c1c1] border-t-[2px]"
+            className="rounded-sm my-2 py-3 shadow-md border-lime border-t-[2px]"
             key={cartNo}
           >
             <div className="w-full flex px-4 md:px-0 py-2 justify-between items-center">
@@ -256,7 +256,7 @@ function CardTable({ cart, getCart }: any) {
 
             <div className="w-full px-4 my-4">
               <div  className='border-[1px] border-lime '>
-                <div onClick={()=> {showContactInfo===section ? setShowContactInfo(null):setShowContactInfo(section)}} className='flex justify-between item-center h-12 bg-lime'>
+                <div onClick={()=> {showContactInfo===section ? setShowContactInfo(null):setShowContactInfo(section)}} className='flex justify-between item-center h-12 bg-limea cursor-pointer'>
                   <div className='flex justify-between items-center'>
                     <FontAwesomeIcon className="ml-2 w-5 mr-3" icon={faInfoCircle} />
                     <p className="text-dark-blue text-[18px] text-center flex">
@@ -389,7 +389,7 @@ function CardTable({ cart, getCart }: any) {
 
               <div className="w-full px-4">
                 <div  className='border-[1px] border-lime '>
-                  <div onClick={()=> {showContactInfo===section ? setShowContactInfo(null):setShowContactInfo(section)}} className='flex justify-between item-center h-12 bg-lime'>
+                  <div onClick={()=> {showContactInfo===section ? setShowContactInfo(null):setShowContactInfo(section)}} className='flex justify-between item-center h-12 bg-limae cursor-pointer'>
                     <div className='flex justify-between items-center'>
                       <FontAwesomeIcon className="ml-2 w-5 mr-3" icon={faInfoCircle} />
                       <p className="text-dark-blue text-[18px] text-center flex">
