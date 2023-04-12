@@ -105,18 +105,18 @@ function Service({ certificate }: any) {
               <h2 className="text-lime text-4xl lg:mb-5">
                 Services
               </h2>
-              {certificate?.map(({ className, content }: any, index: any) => {
+              {certificate[0]?.content?.map((item: any, index: any) => {
                 return (
                   <>
                     <div
-                      className={`flex ${
+                      className={`flex chuu ${
                         index % 2 != 0
                           ? "flex-col-reverse lg:flex-row"
                           : "flex-col-reverse lg:flex-row-reverse"
                       } pb-[60px] gap-6`}
                       key={index}
                     >
-                      <ServiceInfo content={content} className={className} />
+                      <ServiceInfo content={item} className={item.className} />
                     </div>
 
                   </>
@@ -172,7 +172,7 @@ function Service({ certificate }: any) {
                                         consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo
                                     </p>
                                     <FaqAccordionComponent
-                                        accordionData={faqAccordionData}
+                                        accordionData={certificate[0]?.faq}
                                         iconMinusColor="#fff"
                                         iconPlusColor="#8d9297"
                                         headerBackground="bg-white"
@@ -365,7 +365,7 @@ function Service({ certificate }: any) {
 Service.getInitialProps = (props: any) => {
   const { slug } = props.query;
   const certificate: any = service.filter((ele) => {
-    return ele.content.certificate === slug;
+    return ele.certificate === slug;
   });
   return { certificate };
 };

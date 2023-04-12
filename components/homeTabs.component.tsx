@@ -61,10 +61,11 @@ const HomeTab = () => {
                     })}
                 </ul>
                 <button
-                    className="arrow-container flex flex-row gap-x-5 items-center self-center lg:self-start justify-center bg-lime lg:bg-dark-blue hover:bg-lime text-white hover:text-dark-blue px-5 py-2
-                    ease-in duration-200 ease-out duration-200 text-[15px] lg:text-[11px] xl:text-[12px] my-4 uppercase"
+                    className="arrow-container flex flex-row gap-x-5 items-center self-center lg:self-start justify-center bg-lime text-dark-blue lg:bg-dark-blue
+                    hover:bg-lime lg:text-white hover:text-dark-blue px-5 py-2 ease-in duration-200 ease-out duration-200 text-[15px] lg:text-[11px]
+                    xl:text-[12px] my-4 uppercase"
                 >
-                    <svg width="27" height="12" viewBox="0 0 38 16" className="fill-black group-hover:fill-white" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="27" height="12" viewBox="0 0 38 16" className="fill-black group-hover:fill-white" fill="none">
                       <path d="M29.8182 15.8077L28.766 14.7556L34.5531 8.96852H0.672668V7.49546H34.5531L28.766 1.70844L29.8182 0.65625L37.394 8.23199L29.8182 15.8077Z" />
                     </svg>
                     <Link href={`service/${activeService.btnLink}`}>

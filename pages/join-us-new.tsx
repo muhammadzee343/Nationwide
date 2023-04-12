@@ -288,14 +288,25 @@ const SelectPostCode = ({
       border: '1px solid #C2CF10',
       boxShadow: 'none',
       borderRadius:'none',
-      minHeight:'46px'
+      minHeight:'unset'
     }),
     option: (provided:any, state:any) => ({
       ...provided,
       backgroundColor: state.isSelected ? '#F0F0F0' : 'white',
       color: '#374151',
     }),
-
+      indicatorsContainer: (provided) => ({
+          ...provided,
+          display: 'none',
+      }),
+      dropdownIndicator: (provided) => ({
+          ...provided,
+          display: 'none',
+      }),
+      menu: (provided) => ({
+          ...provided,
+          display: 'none',
+      }),
   };
   const validateOptions = (options:any) => {
     const errors = []
