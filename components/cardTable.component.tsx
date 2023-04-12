@@ -1,22 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
-import { faInfoCircle, faPlus} from "@fortawesome/free-solid-svg-icons";
+import { faInfoCircle, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
-import { useMediaQuery } from '@react-hook/media-query';
+import { useMediaQuery } from "@react-hook/media-query";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import ButtonComponent from "./button.component";
-import {OverlayContext, UuidContext} from "../context/sidebarContext";
+import { OverlayContext, UuidContext } from "../context/sidebarContext";
 import AwesomeDebouncePromise from "awesome-debounce-promise";
 
-
-
 function CardTable({ cart, getCart }: any) {
-
-  const isSmallScreen = useMediaQuery('(max-width: 768px)');
-  const Component = isSmallScreen ? ContectAccessOption : RadioInput
+  const isSmallScreen = useMediaQuery("(max-width: 768px)");
+  const Component = isSmallScreen ? ContectAccessOption : RadioInput;
 
   const contactType = [
     { title: "Me" },
@@ -32,16 +29,14 @@ function CardTable({ cart, getCart }: any) {
 
   const [bundlePrice, setBundlePrice] = useState(0);
 
-  const [showContactInfo, setShowContactInfo] = useState(null)
+  const [showContactInfo, setShowContactInfo] = useState(null);
 
   const [cartItems, setCartItems] = useState({
-    shopping_cart_products:[],
-    shopping_cart_bundles:[]
+    shopping_cart_products: [],
+    shopping_cart_bundles: [],
   });
 
   const { handleSubmit, register } = useForm();
-
-
 
   useEffect(() => {
     // cart?.forEach((item) => {
@@ -54,28 +49,22 @@ function CardTable({ cart, getCart }: any) {
 
   const { setIsLoading } = useContext(OverlayContext);
 
-  const changeContactType = (data, index,obj) => {
-
+  const changeContactType = (data, index, obj) => {
     cart[obj][index][0].contact_type = data;
     setCartItems({
-      shopping_cart_products:cart.shopping_cart_products,
-      shopping_cart_bundles:cart.shopping_cart_bundles
+      shopping_cart_products: cart.shopping_cart_products,
+      shopping_cart_bundles: cart.shopping_cart_bundles,
     });
-
 
     const orderIds = cart[obj][index].map((data) => data.id);
 
-    asyncFunctionDebounced(index,orderIds,obj);
-
-
+    asyncFunctionDebounced(index, orderIds, obj);
   };
 
-
-
-  const updateOrder = async (index,orderIds,obj) => {
+  const updateOrder = async (index, orderIds, obj) => {
     const temp = cart[obj][index][0] || "";
     const body = {
-      order_product:{
+      order_product: {
         contact_type: temp?.contact_type,
         contact_name: temp?.contact_name,
         contact_1: temp?.contact_1,
@@ -83,7 +72,7 @@ function CardTable({ cart, getCart }: any) {
         contact_email: temp?.contact_email,
         customer_note: temp?.customer_note,
       },
-      order_product_ids : orderIds,
+      order_product_ids: orderIds,
     };
     const requestOptions = {
       method: "PUT",
@@ -92,8 +81,8 @@ function CardTable({ cart, getCart }: any) {
     };
     try {
       const response = await fetch(
-          `${process.env.BASE_URL_DEV}/order_products/update_products`,
-          requestOptions
+        `${process.env.BASE_URL_DEV}/order_products/update_products`,
+        requestOptions
       );
       if (!response.ok) {
         switch (response.status) {
@@ -102,35 +91,25 @@ function CardTable({ cart, getCart }: any) {
       } else {
         const data = await response.json();
       }
-
-    } catch (err) {
-
-    }
+    } catch (err) {}
   };
 
+  const asyncFunctionDebounced = AwesomeDebouncePromise(updateOrder, 500);
 
-  const asyncFunctionDebounced = AwesomeDebouncePromise(
-      updateOrder,
-      500,
-  );
-
-  const changeInfo = (name: string, data: any, index: number,obj:string) => {
+  const changeInfo = (name: string, data: any, index: number, obj: string) => {
     cart[obj][index][0][name] = data;
     const orderIds = cart[obj][index].map((data) => data.id);
 
-    asyncFunctionDebounced(index,orderIds,obj);
+    asyncFunctionDebounced(index, orderIds, obj);
   };
 
-
-
-  const deleteService = async (orderId, bundleId , productId,address) => {
-
+  const deleteService = async (orderId, bundleId, productId, address) => {
     const body = {
-      "order_id": orderId,
-      "bundle_id": bundleId,
-      "product_id": productId,
-      "address":address
-    }
+      order_id: orderId,
+      bundle_id: bundleId,
+      product_id: productId,
+      address: address,
+    };
 
     const requestOptions = {
       method: "DELETE",
@@ -154,9 +133,10 @@ function CardTable({ cart, getCart }: any) {
   };
 
   const addAnotherService = (cartNo: number) => {
-
-    const postCode = cartItems.shopping_cart_products[cartNo][0]?.property_postcode;
-    const address = cartItems.shopping_cart_products[cartNo][0]?.property_address;
+    const postCode =
+      cartItems.shopping_cart_products[cartNo][0]?.property_postcode;
+    const address =
+      cartItems.shopping_cart_products[cartNo][0]?.property_address;
     const selectedServiceId = cartItems.shopping_cart_products[cartNo].map(
       (ele) => ele.service_id
     );
@@ -171,19 +151,18 @@ function CardTable({ cart, getCart }: any) {
     });
   };
 
-  let i=1;
+  let i = 1;
   return (
     <div>
-      <header className='flex justify-between items-center bg-dark-blue h-[45px] mb-[15px]'>
+      <header className="flex justify-between items-center bg-dark-blue h-[45px] mb-[15px]">
         <h3 className="font-base font-semibold text-white px-[18px] ">
           Property & Services
         </h3>
         <h3 className=" font-base font-semibold text-white px-[18px] ">
           Price
         </h3>
-
       </header>
-      { cartItems?.shopping_cart_products?.map((cartItemData, cartNo, array) => {
+      {cartItems?.shopping_cart_products?.map((cartItemData, cartNo, array) => {
         let section = i;
         i++;
         return (
@@ -197,37 +176,37 @@ function CardTable({ cart, getCart }: any) {
                   {cartItemData[0]?.property_address}
                 </p>
               </div>
-              {!router?.query?.aquote && !router?.query.bquote &&
-                  (
-                    <>
-                      <div className="border-lime w-[100%] md:w-[32%] pr-4"  >
-                        <ButtonComponent
-                            text="Add an other service"
-                            icon={faPlus}
-                            type="button"
-                            className="hidden add-service md:flex justify-center items-center px-[1px] text-[12px]
+              {!router?.query?.aquote && !router?.query.bquote && (
+                <>
+                  <div className="border-lime w-[100%] md:w-[32%] pr-4">
+                    <ButtonComponent
+                      text="Add an other service"
+                      icon={faPlus}
+                      type="button"
+                      className="hidden add-service md:flex justify-center items-center px-[1px] text-[12px]
                             hover:text-dark-blue font-medium border-[1px] border-lime hover:border-lime
                             hover:bg-lime py-[10px] uppercase md:text-[14px] lg:px-1 lg:text-[10px] xxl:text-[14px]"
-                            onClick={() => addAnotherService(cartNo)}
-                        >
-                        </ButtonComponent>
-                      </div>
-                      <div
-                          className="flex w-[40px] h-[40px] md:hidden flex-row-reverse justify-center items-center px-1.5 text-[12px]
+                      onClick={() => addAnotherService(cartNo)}
+                    ></ButtonComponent>
+                  </div>
+                  <div
+                    className="flex w-[40px] h-[40px] md:hidden flex-row-reverse justify-center items-center px-1.5 text-[12px]
                                 text-white font-medium bg-lime uppercase md:text-[14px] cursor-pointer "
-                          onClick={() => addAnotherService(cartNo)}
-                      >
-                        <FontAwesomeIcon icon={faPlus} className="h-5 hover:text-white md:h-4 px-2 lg: h-8"/>
-                      </div>
-                    </>
-                  )
-              }
+                    onClick={() => addAnotherService(cartNo)}
+                  >
+                    <FontAwesomeIcon
+                      icon={faPlus}
+                      className="h-5 hover:text-white md:h-4 px-2 lg: h-8"
+                    />
+                  </div>
+                </>
+              )}
             </div>
 
             <div className="w-full">
               <ul className="w-full px-4">
                 {cartItemData?.map((e, index) => {
-                  let price = parseFloat(e?.total_amount)
+                  let price = parseFloat(e?.total_amount);
                   return (
                     <li
                       key={index}
@@ -235,9 +214,16 @@ function CardTable({ cart, getCart }: any) {
                     >
                       <div className="flex items-center mt-2.5 w-[75%]">
                         <FontAwesomeIcon
-                            icon={faTrashAlt}
-                            className="text-[#ff0000] h-[19px] w-[20px] cursor-pointer"
-                            onClick={() => deleteService( e.order_id,"",e.id,e.property_address)}
+                          icon={faTrashAlt}
+                          className="text-[#ff0000] h-[19px] w-[20px] cursor-pointer"
+                          onClick={() =>
+                            deleteService(
+                              e.order_id,
+                              "",
+                              e.id,
+                              e.property_address
+                            )
+                          }
                         />
                         <p className="text-[14px] md:text-[17px] ml-4 text-dark-blue ">
                           {e?.name}
@@ -252,211 +238,254 @@ function CardTable({ cart, getCart }: any) {
               </ul>
             </div>
 
-            <br className='text-slate-200'/>
+            <br className="text-slate-200" />
 
             <div className="w-full px-4 my-4">
-              <div  className='border-[1px] border-lime '>
-                <div onClick={()=> {showContactInfo===section ? setShowContactInfo(null):setShowContactInfo(section)}} className='flex justify-between item-center h-12 bg-limea cursor-pointer'>
-                  <div className='flex justify-between items-center'>
-                    <FontAwesomeIcon className="ml-2 w-5 mr-3" icon={faInfoCircle} />
+              <div className="border-[1px] border-lime ">
+                <div
+                  onClick={() => {
+                    showContactInfo === section
+                      ? setShowContactInfo(null)
+                      : setShowContactInfo(section);
+                  }}
+                  className="flex justify-between item-center h-12 bg-limea cursor-pointer"
+                >
+                  <div className="flex justify-between items-center">
+                    <FontAwesomeIcon
+                      className="ml-2 w-5 mr-3"
+                      icon={faInfoCircle}
+                    />
                     <p className="text-dark-blue text-[18px] text-center flex">
                       Contact for Access
                     </p>
                   </div>
-                  <FontAwesomeIcon className="ml-2 w-5 mr-3" icon={showContactInfo===section ? faChevronUp:faChevronDown} />
-              </div>
-                {showContactInfo===section &&
-                <div className='px-5 pb-4 mt-4 md:px-10' >
-                  <div className="flex items-center justify-between flex-wrap">
-                    {contactType.map((type, index) => {
-                      return (
-                          <div key={index} className={isSmallScreen && "w-[30%]"}>
-                              <Component
-                                  label={type.title}
-                                  name="contact_type1"
-                                  value={type.title}
-                                  activeVal={cartItemData[0].contact_type}
-                                  cart={cart}
-                                  index={cartNo}
-                                  changeContactType={changeContactType}
-                                  obj="shopping_cart_products"
-                                  className="text-[17px] text-dark-blue  mb-3"
-                              />
-                          </div>
-                      );
-                    })}
-                  </div>
-
-                  {cartItemData.length && cartItemData[0]?.contact_type !== "Me" && (
-                      <>
-                      <KeyHolderInfo
-                          item={cartItemData[0]}
-                          i={cartNo}
-                          setItem={setCartItems}
-                          cart={array}
-                          changeInfo={changeInfo}
-                          updateOrder={updateOrder}
-                          obj="shopping_cart_products"
-
-                      />
-
-                    <div className="mt-1">
-                    <label className="text-[15px] text-dark-blue font-semibold ">
-                    Additional note
-                    </label>
-                    <textarea
-                    cols={80}
-                    placeholder="You can provide any special instructions/notes to help us deal with your order."
-                    name="orderNotes"
-                    defaultValue={cartItemData[0]?.customer_note}
-                    className={`border w-full h-[75px] text-sm focus:border-lime outline-none focus:ring-transparent shadow-sm border-[#DEDEDE] py-2 px-3 rounded-md border`}
-                    onChange={(e) => {
-                    changeInfo("customer_note", e.target.value, cartNo,"shopping_cart_products");
-                  }}
-                    />
-                    </div>
-                      </>
-                  )
-
-                  }
-
+                  <FontAwesomeIcon
+                    className="ml-2 w-5 mr-3"
+                    icon={
+                      showContactInfo === section ? faChevronUp : faChevronDown
+                    }
+                  />
                 </div>
-                }
-              </div>
+                {showContactInfo === section && (
+                  <div className="px-5 pb-4 mt-4 md:px-10">
+                    <div className="flex items-center justify-between flex-wrap">
+                      {contactType.map((type, index) => {
+                        return (
+                          <div
+                            key={index}
+                            className={isSmallScreen && "w-[30%]"}
+                          >
+                            <Component
+                              label={type.title}
+                              name="contact_type1"
+                              value={type.title}
+                              activeVal={cartItemData[0].contact_type}
+                              cart={cart}
+                              index={cartNo}
+                              changeContactType={changeContactType}
+                              obj="shopping_cart_products"
+                              className="text-[17px] text-dark-blue  mb-3"
+                            />
+                          </div>
+                        );
+                      })}
+                    </div>
 
+                    {cartItemData.length &&
+                      cartItemData[0]?.contact_type !== "Me" && (
+                        <>
+                          <KeyHolderInfo
+                            item={cartItemData[0]}
+                            i={cartNo}
+                            setItem={setCartItems}
+                            cart={array}
+                            changeInfo={changeInfo}
+                            updateOrder={updateOrder}
+                            obj="shopping_cart_products"
+                          />
+
+                          <div className="mt-1">
+                            <label className="text-[15px] text-dark-blue font-semibold ">
+                              Additional note
+                            </label>
+                            <textarea
+                              cols={80}
+                              placeholder="You can provide any special instructions/notes to help us deal with your order."
+                              name="orderNotes"
+                              defaultValue={cartItemData[0]?.customer_note}
+                              className={`border w-full h-[75px] text-sm focus:border-lime outline-none focus:ring-transparent shadow-sm border-[#DEDEDE] py-2 px-3 rounded-md border`}
+                              onChange={(e) => {
+                                changeInfo(
+                                  "customer_note",
+                                  e.target.value,
+                                  cartNo,
+                                  "shopping_cart_products"
+                                );
+                              }}
+                            />
+                          </div>
+                        </>
+                      )}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         );
       })}
 
-
-      { cartItems?.shopping_cart_bundles?.map((cartItemData, cartNo, array) => {
-        let section=i;
+      {cartItems?.shopping_cart_bundles?.map((cartItemData, cartNo, array) => {
+        let section = i;
         i++;
         let total = 0;
-        total = parseFloat(total)
-        cartItemData.map((e, index)=>{
-          total = total + parseFloat(e.total_amount)
-        })
+        total = parseFloat(total);
+        cartItemData.map((e, index) => {
+          total = total + parseFloat(e.total_amount);
+        });
         return (
-            <div
-                className="border-[#b4c1c1] border-t-[2px] rounded-sm my-2 pt-3 pb-7 shadow-md"
-                key={cartNo}
-            >
-              <div className="w-full flex px-4 py-1  justify-between">
-                <div className="w-full flex items-center justify-between">
-                  <div className="flex items-center">
-                    <FontAwesomeIcon
-                      icon={faTrashAlt}
-                      className="text-[#ff0000] h-[20px] w-[21px] cursor-pointer"
-                      onClick={() => deleteService( cartItemData[0].order_id,cartItemData[0].bundle_id,"",cartItemData[0]?.property_address)}
-                    />
-                    <p className="text-[14px] md:text-[17px] ml-4 text-dark-blue ">
-                      {cartItemData[0]?.property_address}
-                    </p>
-                  </div>
-                  <p className="text-[13px] text-right md:text-[14px] text-dark-blue font-semibold">
-                    &#163; {total.toFixed(2)}
+          <div
+            className="border-[#b4c1c1] border-t-[2px] rounded-sm my-2 pt-3 pb-7 shadow-md"
+            key={cartNo}
+          >
+            <div className="w-full flex px-4 py-1  justify-between">
+              <div className="w-full flex items-center justify-between">
+                <div className="flex items-center">
+                  <FontAwesomeIcon
+                    icon={faTrashAlt}
+                    className="text-[#ff0000] h-[20px] w-[21px] cursor-pointer"
+                    onClick={() =>
+                      deleteService(
+                        cartItemData[0].order_id,
+                        cartItemData[0].bundle_id,
+                        "",
+                        cartItemData[0]?.property_address
+                      )
+                    }
+                  />
+                  <p className="text-[14px] md:text-[17px] ml-4 text-dark-blue ">
+                    {cartItemData[0]?.property_address}
                   </p>
                 </div>
-              </div>
-
-              <div className="w-full">
-                <ul className="w-full px-4">
-                  {cartItemData?.map((e, index) => {
-                    let price = parseFloat(e.total_amount)
-                    return (
-                        <li
-                            key={index}
-                            className="py-1.5 flex justify-between items-center border-b border-[#e5e7eb]"
-                        >
-                          <div className="flex">
-                            <p className="text-[14px] md:text-[17px] ml-4 text-dark-blue ">
-                              <span style={{fontSize: 24}}>⤷</span> {e?.name}
-                            </p>
-                          </div>
-                          {/*<div className="w-[20%]">*/}
-                          {/*  <p className="text-[13px] text-right md:text-[14px] text-dark-blue font-semibold">*/}
-                          {/*    &#163; {price.toFixed(2)}*/}
-                          {/*  </p>*/}
-                          {/*</div>*/}
-                        </li>
-                    );
-                  })}
-                </ul>
-              </div>
-              <br />
-
-              <div className="w-full px-4">
-                <div  className='border-[1px] border-lime '>
-                  <div onClick={()=> {showContactInfo===section ? setShowContactInfo(null):setShowContactInfo(section)}} className='flex justify-between item-center h-12 bg-limae cursor-pointer'>
-                    <div className='flex justify-between items-center'>
-                      <FontAwesomeIcon className="ml-2 w-5 mr-3" icon={faInfoCircle} />
-                      <p className="text-dark-blue text-[18px] text-center flex">
-                        Contact for Access
-                      </p>
-                    </div>
-                    <FontAwesomeIcon className="ml-2 w-5 mr-3" icon={showContactInfo===section ? faChevronUp:faChevronDown} />
-                  </div>
-                  {showContactInfo===section &&
-                      <div className='px-5 pb-4 mt-4 md:px-10' >
-                        <div className="flex items-center justify-between flex-wrap">
-                          {contactType.map((type, index) => {
-                            return (
-                                <RadioInput
-                                    key={index}
-                                    label={type.title}
-                                    name="contact_type1"
-                                    value={type.title}
-                                    activeVal={cartItemData[0].contact_type}
-                                    cart={cart}
-                                    index={cartNo}
-                                    changeContactType={changeContactType}
-                                    obj="shopping_cart_products"
-                                    className="text-[17px] text-dark-blue mb-3"
-                                />
-                            );
-                          })}
-                        </div>
-                        {cartItemData.length && cartItemData[0]?.contact_type !== "Me" && (
-                            <>
-                              <KeyHolderInfo
-                                  item={cartItemData[0]}
-                                  i={cartNo}
-                                  setItem={setCartItems}
-                                  cart={array}
-                                  changeInfo={changeInfo}
-                                  updateOrder={updateOrder}
-                                  obj="shopping_cart_products"
-
-                              />
-
-                              <div className="mt-1">
-                                <label className="text-[15px] text-dark-blue font-semibold ">
-                                  Additional note
-                                </label>
-                                <textarea
-                                    cols={80}
-                                    placeholder="You can provide any special instructions/notes to help us deal with your order."
-                                    name="orderNotes"
-                                    defaultValue={cartItemData[0]?.customer_note}
-                                    className={`border h-[75px] w-full text-sm focus:border-lime outline-none focus:ring-transparent shadow-sm border-[#DEDEDE] py-2 px-3 rounded-md border`}
-                                    onChange={(e) => {
-                                      changeInfo("customer_note", e.target.value, cartNo,"shopping_cart_products");
-                                    }}
-                                />
-                              </div>
-                            </>
-                        )}
-                      </div>
-                  }
-                </div>
+                <p className="text-[13px] text-right md:text-[14px] text-dark-blue font-semibold">
+                  &#163; {total.toFixed(2)}
+                </p>
               </div>
             </div>
+
+            <div className="w-full">
+              <ul className="w-full px-4">
+                {cartItemData?.map((e, index) => {
+                  let price = parseFloat(e.total_amount);
+                  return (
+                    <li
+                      key={index}
+                      className="py-1.5 flex justify-between items-center border-b border-[#e5e7eb]"
+                    >
+                      <div className="flex">
+                        <p className="text-[14px] md:text-[17px] ml-4 text-dark-blue ">
+                          <span style={{ fontSize: 24 }}>⤷</span> {e?.name}
+                        </p>
+                      </div>
+                      {/*<div className="w-[20%]">*/}
+                      {/*  <p className="text-[13px] text-right md:text-[14px] text-dark-blue font-semibold">*/}
+                      {/*    &#163; {price.toFixed(2)}*/}
+                      {/*  </p>*/}
+                      {/*</div>*/}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            <br />
+
+            <div className="w-full px-4">
+              <div className="border-[1px] border-lime ">
+                <div
+                  onClick={() => {
+                    showContactInfo === section
+                      ? setShowContactInfo(null)
+                      : setShowContactInfo(section);
+                  }}
+                  className="flex justify-between item-center h-12 bg-limae cursor-pointer"
+                >
+                  <div className="flex justify-between items-center">
+                    <FontAwesomeIcon
+                      className="ml-2 w-5 mr-3"
+                      icon={faInfoCircle}
+                    />
+                    <p className="text-dark-blue text-[18px] text-center flex">
+                      Contact for Access
+                    </p>
+                  </div>
+                  <FontAwesomeIcon
+                    className="ml-2 w-5 mr-3"
+                    icon={
+                      showContactInfo === section ? faChevronUp : faChevronDown
+                    }
+                  />
+                </div>
+                {showContactInfo === section && (
+                  <div className="px-5 pb-4 mt-4 md:px-10">
+                    <div className="flex items-center justify-between flex-wrap">
+                      {contactType.map((type, index) => {
+                        return (
+                          <RadioInput
+                            key={index}
+                            label={type.title}
+                            name="contact_type1"
+                            value={type.title}
+                            activeVal={cartItemData[0].contact_type}
+                            cart={cart}
+                            index={cartNo}
+                            changeContactType={changeContactType}
+                            obj="shopping_cart_products"
+                            className="text-[17px] text-dark-blue mb-3"
+                          />
+                        );
+                      })}
+                    </div>
+                    {cartItemData.length &&
+                      cartItemData[0]?.contact_type !== "Me" && (
+                        <>
+                          <KeyHolderInfo
+                            item={cartItemData[0]}
+                            i={cartNo}
+                            setItem={setCartItems}
+                            cart={array}
+                            changeInfo={changeInfo}
+                            updateOrder={updateOrder}
+                            obj="shopping_cart_products"
+                          />
+
+                          <div className="mt-1">
+                            <label className="text-[15px] text-dark-blue font-semibold ">
+                              Additional note
+                            </label>
+                            <textarea
+                              cols={80}
+                              placeholder="You can provide any special instructions/notes to help us deal with your order."
+                              name="orderNotes"
+                              defaultValue={cartItemData[0]?.customer_note}
+                              className={`border h-[75px] w-full text-sm focus:border-lime outline-none focus:ring-transparent shadow-sm border-[#DEDEDE] py-2 px-3 rounded-md border`}
+                              onChange={(e) => {
+                                changeInfo(
+                                  "customer_note",
+                                  e.target.value,
+                                  cartNo,
+                                  "shopping_cart_products"
+                                );
+                              }}
+                            />
+                          </div>
+                        </>
+                      )}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
         );
       })}
-
-
     </div>
   );
 }
@@ -470,7 +499,7 @@ const RadioInput = ({
   changeContactType,
   index,
   cart,
-  obj
+  obj,
 }: any) => {
   return (
     <label className={`${className}`}>
@@ -490,22 +519,27 @@ const RadioInput = ({
 };
 
 const ContectAccessOption = ({
-                      label,
-                      value,
-                      name,
-                      className = "",
-                      activeVal,
-                      changeContactType,
-                      index,
-                      cart,
-                      obj
-                    }: any) => {
+  label,
+  value,
+  name,
+  className = "",
+  activeVal,
+  changeContactType,
+  index,
+  cart,
+  obj,
+}: any) => {
   return (
-      <label className={`${className}`}>
-        <div className={`px-3 mx-2 mt-2 py-1 border-[1px] font-semibold text-[12px] font-opensans border-gray-500 w-full flex flex-row justify-center ${value === activeVal  ? 'bg-lime' : ''}`} onClick={() => changeContactType(value, index, obj)}>
-          {label}
-        </div>
-      </label>
+    <label className={`${className}`}>
+      <div
+        className={`px-3 mx-2 mt-2 py-1 border-[1px] font-semibold text-[12px] font-opensans border-gray-500 w-full flex flex-row justify-center ${
+          value === activeVal ? "bg-lime" : ""
+        }`}
+        onClick={() => changeContactType(value, index, obj)}
+      >
+        {label}
+      </div>
+    </label>
   );
 };
 function KeyHolderInfo({
@@ -515,7 +549,7 @@ function KeyHolderInfo({
   cart,
   changeInfo,
   updateOrder,
-  obj
+  obj,
 }: any) {
   return (
     <div className="relative border-t border-t-[#182333] mt-3">
@@ -584,7 +618,7 @@ function KeyHolderInfo({
                 </div>
                 <div className="flex-col w-full sm:flex-row sm:items-center">
                   <label className="text-sm font-semibold text-dark-blue">
-                   Email
+                    Email
                   </label>
                   <input
                     type="email"
@@ -602,7 +636,7 @@ function KeyHolderInfo({
               <div className="flex flex-col sm:flex-row gap-4">
                 <div className="flex-col w-full sm:flex-row sm:items-center">
                   <label className="text-sm font-semibold text-dark-blue">
-                   Contact 1
+                    Contact 1
                   </label>
                   <input
                     type="text"
@@ -619,7 +653,7 @@ function KeyHolderInfo({
 
                 <div className="flex-col w-full sm:flex-row sm:items-center">
                   <label className="text-sm font-semibold text-dark-blue">
-                   Contact 2
+                    Contact 2
                   </label>
                   <input
                     type="text"

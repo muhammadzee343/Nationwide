@@ -28,10 +28,13 @@ import { OverlayContext, SidebarContext } from "../context/sidebarContext";
 import { useForm } from "react-hook-form";
 import Select from "./select.component";
 import { useRouter } from "next/router";
-import Home from '../public/Home.png';
-import Builiding from '../public/Building.png'
+import Home from "../public/Home.png";
+import Builiding from "../public/Building.png";
 
-import { postcodeValidator, postcodeValidatorExistsForCountry } from 'postcode-validator';
+import {
+  postcodeValidator,
+  postcodeValidatorExistsForCountry,
+} from "postcode-validator";
 import Image from "next/image";
 
 const DrawerComponent = ({}: any) => {
@@ -64,8 +67,8 @@ const DrawerComponent = ({}: any) => {
   const [formDirty, setFormDirty] = useState(false);
   const [attribute, setAttributes] = useState<any>(attributeState);
   const [validPostcode, setValidPostcode] = useState(true);
-  const qouteRef = useRef(null)
-  const requestACBRef = useRef(null)
+  const qouteRef = useRef(null);
+  const requestACBRef = useRef(null);
 
   const router = useRouter();
 
@@ -119,8 +122,6 @@ const DrawerComponent = ({}: any) => {
     }
   };
 
-
-
   //FETCH SERVICES
   const fetchData = async (propertyType: any) => {
     const res = await fetch(
@@ -132,24 +133,21 @@ const DrawerComponent = ({}: any) => {
 
   //SUBMIT FORM1 GET INTSANT QUOTE
   const getInstantQuote = async (data: any, e: any) => {
-
     const code = data.property_postcode.replace(/\s/g, "");
-      if (checkFormValidity() && selectedService.length > 0) {
-        if (postcodeValidator(code, 'UK') || postcodeValidator(code, 'US')) {
-          setValidPostcode(true);
-          setAttributes((attr) => {
-            return {...attr, ...data};
-          });
-          saveLogs(data);
-          setStep(false);
-          qouteRef.current.scrollTop = 0 ;
-        } else{
-            setValidPostcode(false);
-          }
+    if (checkFormValidity() && selectedService.length > 0) {
+      if (postcodeValidator(code, "UK") || postcodeValidator(code, "US")) {
+        setValidPostcode(true);
+        setAttributes((attr) => {
+          return { ...attr, ...data };
+        });
+        saveLogs(data);
+        setStep(false);
+        qouteRef.current.scrollTop = 0;
+      } else {
+        setValidPostcode(false);
       }
-
+    }
   };
-
 
   //CHECK FORM VALIDITY
   const checkFormValidity = () => {
@@ -157,7 +155,6 @@ const DrawerComponent = ({}: any) => {
       return attribute[data] !== "";
     });
   };
-
 
   // SAVE LOGS
   const saveLogs = async (data: any) => {
@@ -238,7 +235,7 @@ const DrawerComponent = ({}: any) => {
   //SHOW/HIDE DRAWER
   const displayDrawer = () => {
     setShowDrawer(false);
-    document.body.style.overflow = 'unset';
+    document.body.style.overflow = "unset";
     setTimeout(() => {
       setOverlay(false);
     }, 1000);
@@ -276,7 +273,7 @@ const DrawerComponent = ({}: any) => {
     });
     setShowDrawer(false);
     setOverlay(false);
-    document.body.style.overflow = 'unset';
+    document.body.style.overflow = "unset";
   };
 
   const services = useMemo<JSX.Element[]>(() => {
@@ -409,7 +406,10 @@ const DrawerComponent = ({}: any) => {
                   </div>
                 )}
                 {ele.Alert && attribute[ele.attr] >= ele.minValue && (
-                  <AlertBox text={ele.Alert} className={"text-[16px] font-normal"} />
+                  <AlertBox
+                    text={ele.Alert}
+                    className={"text-[16px] font-normal"}
+                  />
                 )}
                 {ele?.radioQuestion1 && (
                   <div className="flex flex-col w-full">
@@ -487,35 +487,36 @@ const DrawerComponent = ({}: any) => {
     return elements;
   }, [serviceAttributes, selectedService, attribute, formDirty, propertyType]);
 
-
-  const requestACBSucess = ( ) =>{
-    requestACBRef.current.scrollIntoView({blocK:'start'})
-  }
+  const requestACBSucess = () => {
+    requestACBRef.current.scrollIntoView({ blocK: "start" });
+  };
 
   return (
     <div className="w-screen h-screen bg-[#000000cc] fixed z-[2999] flex items-end flex-col ">
       <div
         id="drawer-right-example"
         className={`h-screen relative p-4 overflow-y-auto bg-row_bg_two py-[30px] px-[15px] sm:px-[30px] 
-            bg-gray-800  ease-in-out duration-1000 w-[100%] lg:w-[50%] xxl:w-[35%] ${
+            bg-gray-800  ease-in-out duration-1000 w-[100%] md:w-[700px] ${
               showDrawer ? "translate-x-[0%]" : "translate-x-[100%]"
             }`}
         aria-labelledby="drawer-right-label"
         ref={qouteRef}
       >
-        <div className="sticky top-[8px] left-[29px] z-[900]
-         w-full flex justify-end items-center cursor-pointer">
+        <div
+          className="sticky top-[8px] left-[29px] z-[900]
+         w-full flex justify-end items-center cursor-pointer"
+        >
           <span
-              className="sticky top-[8px] left-[29px] z-[900] bg-[#ff0000] rounded-full
+            className="sticky top-[8px] left-[29px] z-[900] bg-[#ff0000] rounded-full
          w-7 h-7 flex justify-center items-center cursor-pointer"
-              onClick={() => displayDrawer()}
+            onClick={() => displayDrawer()}
           >
-          <FontAwesomeIcon className="text-white w-4" icon={faXmark} />
-        </span>
+            <FontAwesomeIcon className="text-white w-4" icon={faXmark} />
+          </span>
         </div>
         {!step && (
           <>
-            <div className="bg-white shadow-md mb-[20px]"  id="quote">
+            <div className="bg-white shadow-md mb-[20px]" id="quote">
               <h4 className="text-[26px] bg-dark-blue text-center text-white font-semibold px-[25px] pt-[15px] pb-[15px] ">
                 QUOTE FOR
               </h4>
@@ -523,12 +524,12 @@ const DrawerComponent = ({}: any) => {
                 <ul className="mb-[20px]">
                   {selectedService.map((ele, index) => {
                     return (
-                        <li className="mb-[9px] flex flex-row" key={index}>
-                          <span className="pr-[20px] font-bold">&#187;</span>
-                          <p className="text-left text-[19px] font-semibold">
-                            {ele}
-                          </p>
-                        </li>
+                      <li className="mb-[9px] flex flex-row" key={index}>
+                        <span className="pr-[20px] font-bold">&#187;</span>
+                        <p className="text-left text-[19px] font-semibold">
+                          {ele}
+                        </p>
+                      </li>
                     );
                   })}
                 </ul>
@@ -566,8 +567,10 @@ const DrawerComponent = ({}: any) => {
                       icon={faTag}
                     />
                     <p className="text-white text-[11px] md:text-[15px] font-semibold">
-                      <span className="text-[14px] font-bold">Congratulations!</span> <br/> £10 multi-service-order Discount has been
-                      applied.
+                      <span className="text-[14px] font-bold">
+                        Congratulations!
+                      </span>{" "}
+                      <br /> £10 multi-service-order Discount has been applied.
                     </p>
                   </div>
                 )}
@@ -619,7 +622,7 @@ const DrawerComponent = ({}: any) => {
                    hover:bg-lime`}
                   onClick={() => getFilterServices("residential_property")}
                 >
-                  <Image src={Home} alt='home' className="h-8 w-8 mr-5"/>
+                  <Image src={Home} alt="home" className="h-8 w-8 mr-5" />
                   {/*<FontAwesomeIcon*/}
                   {/*  className="w-8 h-[35px] text-dark-blue absolute left-[14px] text-[35px]"*/}
                   {/*  icon={faHouse}*/}
@@ -637,7 +640,7 @@ const DrawerComponent = ({}: any) => {
                     }`}
                   onClick={() => getFilterServices("commercial_property")}
                 >
-                  <Image src={Builiding} alt='home' className="h-8 w-8 mr-5"/>
+                  <Image src={Builiding} alt="home" className="h-8 w-8 mr-5" />
                   {/*<FontAwesomeIcon*/}
                   {/*    className="w-8 h-[35px] text-dark-blue absolute left-[14px] text-[35px]"*/}
                   {/*  icon={faBuilding}*/}
