@@ -484,11 +484,13 @@ function Checkout(props: any) {
                 }`}
                   onClick={() => setPaymentType("payByBank")}
                   />
-                    <header className='flex justify-between items-center bg-dark-blue h-[45px] mb-[20px] mt-8'>
-                      <h3 className="font-base font-semibold text-white px-[25px] ">
-                        Billing Details
-                      </h3>
-                    </header>
+                    {paymentType !== "" &&
+                        <header className='flex justify-between items-center bg-dark-blue h-[45px] mb-[0] mt-8'>
+                          <h3 className="font-base font-semibold text-white px-[25px] ">
+                            Billing Details
+                          </h3>
+                        </header>
+                    }
                   <div className='w-full'>
                 {paymentType !== "" &&
                     <BillingForm chargeCard={chargeCard} billingDetails={billingDetails} setPaymentType={setPaymentType} stripeObj={stripObj} paymentType={paymentType} cardError={cardError} setCardError={setCardError} />
