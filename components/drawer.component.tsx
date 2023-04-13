@@ -329,7 +329,7 @@ const DrawerComponent = ({}: any) => {
               key={index}
             >
               <h3
-                className={`text-[21px] font-semibold font-bold my-[20px] ${
+                className={`text-[21px] font-semibold font-bold my-[20px] font-opensans ${
                   formDirty && attribute[ele.attr] === ""
                     ? "text-[#ff0000]"
                     : "text-dark-blue"
@@ -391,8 +391,8 @@ const DrawerComponent = ({}: any) => {
                   </div>
                 )}
                 {ele.exactNumber && attribute[ele.attr] >= ele.minValue && (
-                  <div className="w-full flex">
-                    <p className=" font-opensans  text-base text-dark-blue font-semibold mr-3 w-2/4">
+                  <div className="w-full flex justify-center items-center">
+                    <p className="text-base text-dark-blue font-semibold mr-3 w-2/4">
                       {ele.exactNumber}
                     </p>
                     <div className="w-2/4 pl-[24px]">
@@ -413,7 +413,7 @@ const DrawerComponent = ({}: any) => {
                 )}
                 {ele?.radioQuestion1 && (
                   <div className="flex flex-col w-full">
-                    <p className=" font-opensans text-lg my-3 text-dark-blue mr-3 w-full">
+                    <p className="text-lg my-3 text-dark-blue mr-3 w-full font-semibold">
                       {ele.radioQuestion1.question}
                     </p>
                     <div className="flex flex-wrap gap-9">
@@ -463,7 +463,7 @@ const DrawerComponent = ({}: any) => {
                 )}
 
                 {ele.exactNumber2 && attribute[ele.attr] >= ele.minValue && (
-                  <div className="w-full flex my-4">
+                  <div className="w-full flex my-4 items-center">
                     <p className=" font-opensans text-base text-dark-blue font-semibold w-2/4">
                       {ele.exactNumber2}
                     </p>

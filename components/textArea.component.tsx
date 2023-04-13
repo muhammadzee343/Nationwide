@@ -24,7 +24,7 @@ function TextArea({
         cols={80}
         placeholder={placeholder}
         name={name}
-        className={`border w-full outline-none ${inputClass}`}
+        className={`border w-full focus:border-lime outline-none focus:ring-transparent shadow-sm ${inputClass}`}
         onChange={() => {}}
         {...register(name, {
           required: { value: required, message: "This Field is required" },
