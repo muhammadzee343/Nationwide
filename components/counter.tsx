@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 function Counter({
@@ -10,14 +10,11 @@ function Counter({
 }: any) {
   const [count, setCount] = useState<number>(preValue || minValue);
 
-    // console.log({count});
-
-    useEffect(() => {
-        setValue((types) => {
-            return { ...types, [label]: count };
-        });
-    }, [count]);
-
+  useEffect(() => {
+    setValue((types) => {
+      return { ...types, [label]: count };
+    });
+  }, [count]);
 
   function increment() {
     setCount(function (prevCount) {
@@ -40,10 +37,10 @@ function Counter({
   return (
     <div className="flex cursor-pointer items-center">
       <div className="mr-2 flex items-center" onClick={decrement}>
-          <span className=" w-5 h-5 bg-lime flex justify-center items-center items-center rounded-full">
+        <span className=" w-5 h-5 bg-lime flex justify-center items-center items-center rounded-full">
           <FontAwesomeIcon
-              className=" w-[17px] h-[20px] text-white"
-              icon={faMinus}
+            className=" w-[17px] h-[20px] text-white"
+            icon={faMinus}
           />
         </span>
       </div>
@@ -60,8 +57,8 @@ function Counter({
       <div className="ml-2 flex items-center" onClick={increment}>
         <span className="w-5 h-5 bg-lime flex justify-center items-center rounded-full">
           <FontAwesomeIcon
-              className=" w-[17px] h-[20px] text-white "
-              icon={faPlus}
+            className=" w-[17px] h-[20px] text-white "
+            icon={faPlus}
           />
         </span>
       </div>

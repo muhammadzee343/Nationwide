@@ -14,8 +14,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { UuidContext } from "../context/sidebarContext";
 import { bundles } from "../utility/constants";
-import Swal from 'sweetalert2';
-
+import Swal from "sweetalert2";
 
 function OrderNow({ commercialProperties, residentialProperties }: any) {
   const attributeState = {
@@ -38,7 +37,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   const { uuid } = useContext(UuidContext);
 
-  const { register, handleSubmit, setValue, watch, } = useForm();
+  const { register, handleSubmit, setValue, watch } = useForm();
 
   const postcode = watch("property_postcode", "");
   const propertyAddress = watch("property_address");
@@ -65,16 +64,14 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   const router = useRouter();
 
-  const [next, setNext] = useState(false)
+  const [next, setNext] = useState(false);
 
-  const [error, setError] = useState(false)
-
+  const [error, setError] = useState(false);
 
   const { bundle, ser, value, keys, property, postCode, item, address } =
     router.query;
 
   useEffect(() => {
-
     addOtherService();
     if (bundle) {
       selectBundle();
@@ -84,16 +81,15 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     if (ser && value && keys) {
       let obj = Object.fromEntries(keys?.map((k, i) => [k, value[i]]));
       if (obj) {
-        setNext(true)
+        setNext(true);
         setTimeout(() => {
           attributeSection.current?.scrollIntoView({
             behavior: "smooth",
             block: "end",
           });
         }, 500);
-
       }
-    }else{
+    } else {
       setTimeout(() => {
         attributeSection.current?.scrollIntoView({
           behavior: "smooth",
@@ -154,18 +150,16 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     }
   };
 
-
-
   const orderNow = async () => {
-    if(formDirty && (!propertyAddress || error)){
+    if (formDirty && (!propertyAddress || error)) {
       Swal.fire({
-        title: 'Something missing!',
-        text: 'Please fill all visible fields for a better price',
-        icon: 'warning',
-        confirmButtonText: 'Ok',
-        confirmButtonColor:'rgb(140, 212, 245)'
-      })
-    }else{
+        title: "Something missing!",
+        text: "Please fill all visible fields for a better price",
+        icon: "warning",
+        confirmButtonText: "Ok",
+        confirmButtonColor: "rgb(140, 212, 245)",
+      });
+    } else {
       setFormDirty(true);
       const body = {
         order: {
@@ -177,7 +171,8 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
           number_bedrooms_manual: attribute.bedrooms >= 5,
           no_of_gas_appliances_manual: attribute.gas_appliances >= 4,
           no_of_distribution_boards_manual: true,
-          no_of_electric_appliances_manual: attribute.electrical_appliances >= 30,
+          no_of_electric_appliances_manual:
+            attribute.electrical_appliances >= 30,
           no_of_floors_manual: attribute.floors >= 4,
           no_of_bathrooms_manual: true,
           no_of_circuits_manual: attribute.circuits >= 31,
@@ -190,7 +185,9 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
       if (bundle) {
         //@ts-ignore
-        const bundleData = bundles.find((data) => data.content.service == bundle);
+        const bundleData = bundles.find(
+          (data) => data.content.service == bundle
+        );
 
         if (bundleData) {
           let notSame = false;
@@ -225,18 +222,18 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         }
       } catch (err) {
         Swal.fire({
-          title: 'Something missing!',
-          text: 'Please fill all visible fields for a better price',
-          icon: 'warning',
-          confirmButtonText: 'Ok',
-          confirmButtonColor:'rgb(140, 212, 245)'
-        })
+          title: "Something missing!",
+          text: "Please fill all visible fields for a better price",
+          icon: "warning",
+          confirmButtonText: "Ok",
+          confirmButtonColor: "rgb(140, 212, 245)",
+        });
       }
     }
   };
 
   const changePropertyType = (property_type: string) => {
-    scrollTo({top:500, left:200, behavior:'smooth'})
+    scrollTo({ top: 500, left: 200, behavior: "smooth" });
     setPropertyType(property_type);
     setSelectedService([]);
     setSelectedServiceId([]);
@@ -244,7 +241,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
   };
 
   const getPropertyAddress = async () => {
-    setValue("property_address", '')
+    setValue("property_address", "");
     if (!propertyAddress) {
       const requestOptions = {
         method: "POST",
@@ -267,7 +264,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
           const addresses = [...data.addresses];
           setAddresseses([...addresses]);
         }
-      } catch (err) { }
+      } catch (err) {}
     }
   };
   const setPropertyAddress = (address: string) => {
@@ -354,8 +351,6 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     }
   };
 
-
-
   const services = useMemo<JSX.Element[]>(() => {
     const elements: JSX.Element[] = [];
     const services =
@@ -376,7 +371,8 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         >
           <ServiceSelectionCard
             title={service.name}
-            className={`${selectedServiceId.includes(service.id) ? "bg-lime self-end " : ""
+            className={`${
+              selectedServiceId.includes(service.id) ? "bg-lime self-end  " : ""
             } text-[15px] py-[11px]  border-lime border-[1px]`}
           />
         </div>
@@ -386,9 +382,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     return elements;
   }, [propertyType, selectedService, selectedServiceId]);
 
-
   const serviceAttribute = useMemo<JSX.Element[]>(() => {
-
     const elements: JSX.Element[] = [];
 
     serviceAttributes.forEach((key, index) => {
@@ -401,10 +395,10 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         });
       }
       if (ele && Object.keys(ele).length !== 0) {
-        if(attribute[ele.attr] === ""){
-          setError(true)
-        }else {
-          setError(false)
+        if (attribute[ele.attr] === "") {
+          setError(true);
+        } else {
+          setError(false);
         }
         elements.push(
           <>
@@ -413,10 +407,11 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
               key={index}
             >
               <h3
-                className={`text-[21px] font-semibold font-bold my-[20px] ${formDirty && attribute[ele.attr] === ""
-                  ? "text-[#ff0000]"
-                  : "text-dark-blue"
-                  } `}
+                className={`text-[21px] font-semibold font-bold my-[20px] ${
+                  formDirty && attribute[ele.attr] === ""
+                    ? "text-[#ff0000]"
+                    : "text-dark-blue"
+                } `}
               >
                 {ele.headings}
               </h3>
@@ -433,13 +428,14 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                             value={opt.value}
                             lable={ele.attr}
                             selectattribute={setAttributes}
-                            className={`${attribute[ele.attr] == opt.value ||
+                            className={`${
+                              attribute[ele.attr] == opt.value ||
                               (options.length - 1 === index &&
                                 attribute[ele.attr] >= opt.value &&
                                 typeof opt.value === "number")
-                              ? "bg-lime"
-                              : "border border-grey-500"
-                              } border border-grey-500 w-6 h-6 sm:w-8 sm:h-8`}
+                                ? "bg-lime"
+                                : "border border-grey-500"
+                            } border border-grey-500 w-6 h-6 sm:w-8 sm:h-8`}
                             pClass="text-[18px] font-semibold"
                           />
                         </div>
@@ -509,11 +505,12 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                               value={x.value}
                               lable={ele.radioQuestion1.attr}
                               selectattribute={setAttributes}
-                              className={`${eval(attribute[ele.radioQuestion1.attr]) ==
+                              className={`${
+                                eval(attribute[ele.radioQuestion1.attr]) ==
                                 x.value
-                                ? "bg-lime"
-                                : "border border-grey-500"
-                                } border border-grey-500 w-4 h-4 sm:w-5 sm:h-5`}
+                                  ? "bg-lime"
+                                  : "border border-grey-500"
+                              } border border-grey-500 w-4 h-4 sm:w-5 sm:h-5`}
                             />
                           </>
                         );
@@ -535,11 +532,12 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                             value={x.value}
                             lable={ele.radioQuestion2.attr}
                             selectattribute={setAttributes}
-                            className={`${eval(attribute[ele.radioQuestion2.attr]) ==
+                            className={`${
+                              eval(attribute[ele.radioQuestion2.attr]) ==
                               x.value
-                              ? "bg-lime"
-                              : "border border-grey-500"
-                              } border border-grey-500 w-4 h-4 sm:w-5 sm:h-5`}
+                                ? "bg-lime"
+                                : "border border-grey-500"
+                            } border border-grey-500 w-4 h-4 sm:w-5 sm:h-5`}
                           />
                         );
                       })}
@@ -572,22 +570,19 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
   }, [propertyType, serviceAttributes, selectedService, attribute, formDirty]);
 
   useEffect(() => {
-    if(formDirty && error){
+    if (formDirty && error) {
       Swal.fire({
-        title: 'Something missing!',
-        text: 'Please fill all visible fields for a better price',
-        icon: 'warning',
-        confirmButtonText: 'Ok',
-        confirmButtonColor:'rgb(140, 212, 245)'
-      })
+        title: "Something missing!",
+        text: "Please fill all visible fields for a better price",
+        icon: "warning",
+        confirmButtonText: "Ok",
+        confirmButtonColor: "rgb(140, 212, 245)",
+      });
     }
   }, [formDirty, error]);
 
-
-
   return (
     <>
-
       <div className="flex justify-center" onClick={() => setAddresseses([])}>
         <Head>
           <title>Order Now - Nationwide Surveyors</title>
@@ -651,13 +646,13 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                 </div>
                 <hr className=" h-[2px] mt-8  w-10/12 md:w-8/12 bg-[#dfdfdf]" />
                 {selectedServiceId.length <= 0 && (
-                    <NextBottom setpropType={() => { }} />
+                  <NextBottom setpropType={() => {}} />
                 )}
               </div>
             </section>
           )}
 
-          {(selectedService.length > 0 && next) && (
+          {selectedService.length > 0 && next && (
             <section className="animate-fade-in-up" ref={attributeSection}>
               <div className="flex flex-col justify-center items-center px-5">
                 {serviceAttribute}
@@ -671,21 +666,21 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                         <div className="w-full sm:w-7/12 flex flex-col">
                           <div>
                             <TextField
-                                lable="Property Postcode"
-                                register={register}
-                                name="property_postcode"
-                                className="text-lg text-dark-blue font-semibold"
-                                inputClass="border-grey-500 py-2.5 px-3"
-                                placeholder="Enter full postcode here"
+                              lable="Property Postcode"
+                              register={register}
+                              name="property_postcode"
+                              className="text-lg text-dark-blue font-semibold"
+                              inputClass="border-grey-500 py-2.5 px-3"
+                              placeholder="Enter full postcode here"
                             />
                           </div>
                         </div>
                         <div className=" w-full sm:w-4/12 flex items-end">
                           <ButtonComponent
-                              text="Find Address"
-                              className="bg-[#252525] text-white text-[11px] sm:text-[12px] font-semibold px-[2px]
+                            text="Find Address"
+                            className="bg-[#252525] text-white text-[11px] sm:text-[12px] font-semibold px-[2px]
                              sm:px-[20px] py-[15px] md:py-[14px] hover:bg-lime hover:text-white ease-in duration-200"
-                              onClick={getPropertyAddress}
+                            onClick={getPropertyAddress}
                           />
                         </div>
                       </div>
@@ -697,7 +692,9 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                           <label className="text-lg text-dark-blue font-semibold">
                             Property Address
                           </label>
-                          <p onClick={()=> setValue("property_address", '')}>Clear Address</p>
+                          <p onClick={() => setValue("property_address", "")}>
+                            Clear Address
+                          </p>
                         </div>
                         <input
                           type="text"
@@ -734,20 +731,18 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
               </div>
             </section>
           )}
-          {
-            (!next && selectedService.length > 0 ) && (
-              <div className="flex flex-col justify-center items-center my-5">
-                <div className="inline-block w-[180px] justify-center">
-                  <ButtonComponent
-                    onClick={()=> setNext(true)}
-                    text="Next"
-                    className="bg-dark-blue uppercase text-white font-semibold px-[20px] py-[13px] hover:bg-lime
+          {!next && selectedService.length > 0 && (
+            <div className="flex flex-col justify-center items-center my-5">
+              <div className="inline-block w-[180px] justify-center">
+                <ButtonComponent
+                  onClick={() => setNext(true)}
+                  text="Next"
+                  className="bg-dark-blue uppercase text-white font-semibold px-[20px] py-[13px] hover:bg-lime
             ease-in duration-200"
-                  />
-                </div>
+                />
               </div>
-            )
-          }
+            </div>
+          )}
         </div>
       </div>
     </>
