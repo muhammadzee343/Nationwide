@@ -179,44 +179,44 @@ function RequestCallBack({
                     <div className="w-full">
                       <TextField
                         handleChange={() => {}}
-                        className="text-sm leading-8 font-semibold"
+                        className="text-sm leading-8 text-dark-blue font-semibold"
                         lable="Full Name"
                         required={true}
                         name="full_name"
                         register={register}
                         placeholder="Enter full name here"
-                        inputClass="border-grey-500 px-3"
+                        inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
                       />
                     </div>
                     <div className="w-full">
                       <TextField
                         handleChange={() => {}}
-                        className="text-sm leading-8 font-semibold"
+                        className="text-sm leading-8 text-dark-blue font-semibold"
                         lable="Phone"
                         required={true}
                         name="phone"
                         placeholder="Enter a callback number"
                         register={register}
-                        inputClass="border-grey-500 px-3"
+                        inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
                       />
                     </div>
                     <div className="w-full">
                       <TextField
                         handleChange={() => {}}
-                        className="text-sm leading-8 font-semibold"
+                        className="text-sm leading-8 text-dark-blue font-semibold"
                         lable="Email"
                         required={false}
                         name="email_address"
                         placeholder="Enter email address"
                         register={register}
-                        inputClass="border-grey-500 px-3"
+                        inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border"
                       />
                     </div>
                     <TextArea
                       lable="Additional Notes"
                       placeholder="Any additional information"
-                      className="text-sm leading-8 font-semibold my-1"
-                      inputClass="border-grey-500 px-3"
+                      className="text-sm leading-8 text-dark-blue font-semibold"
+                      inputClass="border-[#DEDEDE] py-2 px-3 rounded-md border font-light text-sm border placeholder-gray-600 placeholder-opacity-70"
                       register={register}
                       required={false}
                       name="customer_note"

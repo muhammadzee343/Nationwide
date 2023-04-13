@@ -228,7 +228,7 @@ function GeneralEnquiries({ Services }: any) {
                 this time.
               </p>
               <div className="flex flex-col md:gap-5 md:flex-row">
-                <div className="w-full md:w-[50%] bg-white rounded-lg md:drop-shadow-lg px-4 md:px-8 pt-8">
+                <div className="w-full md:w-[50%] bg-white rounded-b-lg md:drop-shadow-lg px-4 md:px-8 pt-8 md:border-t-2 md:border-t-lime">
                   <div >
                     <p className="text-[21.41px] font-semibold text-black mr-3 ">
                       Your Contact Details
@@ -374,7 +374,7 @@ function GeneralEnquiries({ Services }: any) {
                   </div>
                 </div>
 
-                  <div className="w-full md:w-[50%] bg-white rounded-lg md:drop-shadow-lg mb-6 md:mb-0 md:pt-8">
+                  <div className="w-full md:w-[50%] bg-white rounded-b-lg md:drop-shadow-lg mb-6 md:mb-0 md:pt-8 md:border-t-2 md:border-t-lime">
                     <div className="">
                       <p className="text-[20px] px-4 md:px-8 text-black mr-3 ">
                         Please choose the services you'd like to discuss

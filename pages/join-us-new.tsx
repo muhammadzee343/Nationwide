@@ -52,12 +52,12 @@ function ContactUsNew({ Services }: any) {
       return;
     }
     let postCodes = ""
-    data.postCodes.map((item: any, index: any) => {
-      if (index !== (data.postCodes.length-1)) {
-         postCodes += item.value + ", "
-      }else {}
-      postCodes += item.value
-    })
+      data.postCodes.forEach((item: any, index: any) => {
+          postCodes += item.value;
+          if (index !== data.postCodes.length - 1) {
+              postCodes += ", ";
+          }
+      });
     const body = {
       join_us_form:{
         full_name: data.full_name,
