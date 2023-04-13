@@ -10,6 +10,8 @@ import { useForm } from "react-hook-form";
 import ButtonComponent from "./button.component";
 import { OverlayContext, UuidContext } from "../context/sidebarContext";
 import AwesomeDebouncePromise from "awesome-debounce-promise";
+import is from "@sindresorhus/is";
+import boolean = is.boolean;
 
 function CardTable({ cart, getCart }: any) {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
@@ -132,23 +134,45 @@ function CardTable({ cart, getCart }: any) {
     } catch (err) {}
   };
 
-  const addAnotherService = (cartNo: number) => {
-    const postCode =
-      cartItems.shopping_cart_products[cartNo][0]?.property_postcode;
-    const address =
-      cartItems.shopping_cart_products[cartNo][0]?.property_address;
-    const selectedServiceId = cartItems.shopping_cart_products[cartNo].map(
-      (ele) => ele.service_id
-    );
-    router?.push({
-      pathname: "/order-now",
-      query: {
-        property: "residential_property",
-        postCode,
-        address,
-        ser: selectedServiceId,
-      },
-    });
+  const addAnotherService = (cartNo: number, isBundle: boolean = false) => {
+    if (!isBundle) {
+      const postCode =
+        cartItems.shopping_cart_products[cartNo][0]?.property_postcode;
+      const address =
+        cartItems.shopping_cart_products[cartNo][0]?.property_address;
+      const selectedServiceId = cartItems.shopping_cart_products[cartNo].map(
+        (ele) => ele.service_id
+      );
+      router?.push({
+        pathname: "/order-now",
+        query: {
+          property: "residential_property",
+          postCode,
+          address,
+          ser: selectedServiceId,
+        },
+      });
+    } else {
+      const postCode =
+        cartItems.shopping_cart_bundles[cartNo][0]?.property_postcode;
+      const address =
+        cartItems.shopping_cart_bundles[cartNo][0]?.property_address;
+      const selectedServiceId = cartItems.shopping_cart_bundles[cartNo]?.map(
+        (ele) => {
+          return ele.service_id;
+        }
+      );
+      router?.push({
+        pathname: "/order-now",
+        query: {
+          property: "residential_property",
+          postCode,
+          address,
+          ser: selectedServiceId,
+          bundle: cartItems.shopping_cart_bundles[cartNo][0]?.bundle_id,
+        },
+      });
+    }
   };
 
   let i = 1;
@@ -173,6 +197,7 @@ function CardTable({ cart, getCart }: any) {
             <div className="w-full flex px-4 md:px-0 py-2 justify-between items-center">
               <div className="min-w-[75%]  md:min-w-[60%] lg-min-w-[70%] md:pl-4">
                 <p className="text-[14px] md:text-[17px] text-black text-left">
+                  <strong className="mr-2"> Address:</strong>
                   {cartItemData[0]?.property_address}
                 </p>
               </div>
@@ -344,10 +369,10 @@ function CardTable({ cart, getCart }: any) {
         });
         return (
           <div
-            className="border-[#b4c1c1] border-t-[2px] rounded-sm my-2 pt-3 pb-7 shadow-md"
+            className="border-lime border-t-[2px] rounded-sm my-2 pt-3 pb-7 shadow-md"
             key={cartNo}
           >
-            <div className="w-full flex px-4 py-1  justify-between">
+            <div className="w-full  px-4 py-1  ">
               <div className="w-full flex items-center justify-between">
                 <div className="flex items-center">
                   <FontAwesomeIcon
@@ -362,10 +387,59 @@ function CardTable({ cart, getCart }: any) {
                       )
                     }
                   />
+
                   <p className="text-[14px] md:text-[17px] ml-4 text-dark-blue ">
+                    <strong className="mr-2"> Address:</strong>
                     {cartItemData[0]?.property_address}
                   </p>
                 </div>
+                {!router?.query?.aquote && !router?.query.bquote && (
+                  <>
+                    <div className="border-lime w-[100%] md:w-[32%] pr-4">
+                      <ButtonComponent
+                        text="Add an other service"
+                        icon={faPlus}
+                        type="button"
+                        className="hidden add-service md:flex justify-center items-center px-[1px] text-[12px]
+                            hover:text-dark-blue font-medium border-[1px] border-lime hover:border-lime
+                            hover:bg-lime py-[10px] uppercase md:text-[14px] lg:px-1 lg:text-[10px] xxl:text-[14px]"
+                        onClick={() => addAnotherService(cartNo, true)}
+                      ></ButtonComponent>
+                    </div>
+                    <div
+                      className="flex w-[40px] h-[40px] md:hidden flex-row-reverse justify-center items-center px-1.5 text-[12px]
+                                text-white font-medium bg-lime uppercase md:text-[14px] cursor-pointer "
+                      onClick={() => addAnotherService(cartNo, true)}
+                    >
+                      <FontAwesomeIcon
+                        icon={faPlus}
+                        className="h-5 hover:text-white md:h-4 px-2 lg: h-8"
+                      />
+                    </div>
+                  </>
+                )}
+
+                {/*<p className="text-[13px] text-right md:text-[14px] text-dark-blue font-semibold">*/}
+                {/*  &#163; {total.toFixed(2)}*/}
+                {/*</p>*/}
+              </div>
+              <div class="flex justify-between mt-3">
+                <p className="text-[14px] md:text-[17px] ml-4 text-dark-blue ">
+                  {(() => {
+                    switch (cartItemData[0]?.bundle_id) {
+                      case 1:
+                        return <strong> Service Bundle 1 </strong>;
+                      case 2:
+                        return <strong> Service Bundle 2 </strong>;
+                      case 3:
+                        return <strong> Service Bundle 3 </strong>;
+                      case 4:
+                        return <strong> Service Bundle 4 </strong>;
+                      default:
+                        return null;
+                    }
+                  })()}
+                </p>
                 <p className="text-[13px] text-right md:text-[14px] text-dark-blue font-semibold">
                   &#163; {total.toFixed(2)}
                 </p>
@@ -386,11 +460,6 @@ function CardTable({ cart, getCart }: any) {
                           <span style={{ fontSize: 24 }}>⤷</span> {e?.name}
                         </p>
                       </div>
-                      {/*<div className="w-[20%]">*/}
-                      {/*  <p className="text-[13px] text-right md:text-[14px] text-dark-blue font-semibold">*/}
-                      {/*    &#163; {price.toFixed(2)}*/}
-                      {/*  </p>*/}
-                      {/*</div>*/}
                     </li>
                   );
                 })}
@@ -438,7 +507,7 @@ function CardTable({ cart, getCart }: any) {
                             cart={cart}
                             index={cartNo}
                             changeContactType={changeContactType}
-                            obj="shopping_cart_products"
+                            obj="shopping_cart_bundles"
                             className="text-[17px] text-dark-blue mb-3"
                           />
                         );
@@ -542,6 +611,7 @@ const ContectAccessOption = ({
     </label>
   );
 };
+
 function KeyHolderInfo({
   item,
   setItem,
