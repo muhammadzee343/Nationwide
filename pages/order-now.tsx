@@ -75,6 +75,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     addOtherService();
     if (bundle) {
       selectBundle();
+      setNext(true)
     }
     populateForms();
 
@@ -85,7 +86,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         setTimeout(() => {
           attributeSection.current?.scrollIntoView({
             behavior: "smooth",
-            block: "end",
+            block: "start",
           });
         }, 500);
       }
@@ -93,7 +94,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
       setTimeout(() => {
         attributeSection.current?.scrollIntoView({
           behavior: "smooth",
-          block: "end",
+          block: "start",
         });
       }, 500);
     }

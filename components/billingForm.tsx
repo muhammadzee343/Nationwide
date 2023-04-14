@@ -361,6 +361,7 @@ function BillingForm(props: any) {
               label="I have read and agree to the website"
               required={true}
               errors={errors}
+              name="acceptTerms"
             />
             <div className="w-full mt-3 mb-1 items-center">
               <ButtonComponent
@@ -376,14 +377,16 @@ function BillingForm(props: any) {
   );
 }
 
-function CheckBox({ register, label, required, className , errors }: any) {
+function CheckBox({ register, label, required, className , errors, name = "", errorClass = "", reactHookValidations = {} }: any) {
   return (
     <div className="form-group form-check">
       <input
-        name="acceptTerms"
+        name={name}
         type="checkbox"
-        {...register("acceptTerms")}
-          required
+        {...register(name, {
+          required: { value: required, message: "Please check this box if you want to proceed." },
+          ...reactHookValidations
+        })}
         id="acceptTerms"
         className="w-[13px] h-[13px] rounded-sm"
       />
@@ -400,14 +403,14 @@ function CheckBox({ register, label, required, className , errors }: any) {
         </Link>
         {required && <span className="text-[#ff0000] text ml-1">*</span>}
       </label>
-      {errors["acceptTerms"] && (
+      {errors[name] && (
           // <div className={`p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-40 ${errorClass}`}
           //      role="alert">
           //     {errors[name].message}
           // </div>
           <div
               className={
-                `flex  text-sm text-red-800 rounded-lg mt-2 dark:bg-gray-800 dark:text-red-400 `
+                `flex  text-sm text-red-800 rounded-lg mt-2 dark:bg-gray-800 dark:text-red-400 ${errorClass}`
               }
               role="alert"
           >
@@ -425,9 +428,10 @@ function CheckBox({ register, label, required, className , errors }: any) {
               />
             </svg>
             <span className="sr-only">Info</span>
-            <div>{errors["acceptTerms"].message}</div>
+            <div>{errors[name].message}</div>
           </div>
       )}
+
     </div>
   );
 }

@@ -90,10 +90,11 @@ function RequestEicrWithRecommendations(props: any) {
           {!isSubmitted && (
             <div>
               <h4 className="text-[28px] text-[#1a1a1a] mb-[20px] mt-[6px] font-normal leading-none">
-                Dear Tom Test
+                Dear {details.customer_first_name}
+                {details.customer_last_name}
               </h4>
               <h4 className="text-[28px] text-[#1a1a1a] mb-[20px] font-normal leading-none">
-                Ref: 7 Lansdown Road, London, E78NF
+                Ref: {details.customer_address}
               </h4>
               <p className="text-[15px] text-[#1a1a1a] font-normal mb-[20px]">
                 Many thanks for getting in touch to request EICR with

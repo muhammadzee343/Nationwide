@@ -112,7 +112,7 @@ export const LEC = {
     "Multi-Service Order Discount Available",
   ],
   btnText: "More About an EICR ",
-  btnLink: "/electrical-installation-condition-report",
+  btnLink: "electrical-installation-condition-report",
 };
 
 export const EPC = {
