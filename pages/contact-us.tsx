@@ -59,7 +59,7 @@ export default ContactUs;
 
 function Enquiry({ text, link, query }: any) {
   return (
-    <div className="enquirey-container rounded-sm flex flex-row justify-start px-10 items-center text-black border-lime mb-2 md:mb-0 border-[2px] hover:bg-dark-blue hover:border-0 hover:text-white ease-in duration-200">
+    <div className="enquirey-container rounded-sm flex flex-row justify-start px-10 items-center text-black border-lime mb-2 md:mb-0 border-[2px] hover:bg-dark-blue hover:border-dark-blue hover:text-white ease-in duration-200">
       <svg width="27" height="12" viewBox="0 0 38 16" className="fill-black group-hover:fill-white" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M29.8182 15.8077L28.766 14.7556L34.5531 8.96852H0.672668V7.49546H34.5531L28.766 1.70844L29.8182 0.65625L37.394 8.23199L29.8182 15.8077Z" />
       </svg>
