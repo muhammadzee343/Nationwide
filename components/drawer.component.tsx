@@ -151,9 +151,21 @@ const DrawerComponent = ({}: any) => {
 
   //CHECK FORM VALIDITY
   const checkFormValidity = () => {
-    return serviceAttributes.every((data) => {
-      return attribute[data] !== "";
-    });
+    let valid = [];
+    for (let i = 0; i < serviceAttributes.length; i++) {
+      if (
+        attribute["gas_fire"] === false &&
+        serviceAttributes[i] === "fire_back_boiler"
+      ) {
+        continue;
+      }
+      if (attribute[serviceAttributes[i]] === "") {
+        valid.push(false);
+      } else {
+        valid.push(true);
+      }
+    }
+    return !valid.includes(false);
   };
 
   // SAVE LOGS
@@ -507,7 +519,7 @@ const DrawerComponent = ({}: any) => {
          w-full flex justify-end items-center cursor-pointer"
         >
           <span
-            className="sticky top-[8px] left-[29px] z-[900] bg-[#ff0000] rounded-full
+            className="sticky top-[10px] left-[29px] z-[900] bg-[#ff0000] rounded-full
          w-7 h-7 flex justify-center items-center cursor-pointer"
             onClick={() => displayDrawer()}
           >
@@ -607,7 +619,7 @@ const DrawerComponent = ({}: any) => {
               </h3>
             </div>
 
-            <div className="w-full bg-white shadow-md  px-[20px] py-[25px]">
+            <div className="w-full bg-white shadow-md  px-[20px]  py-[90px] sm:py-[25px]">
               <div className="mb-[25px]">
                 <h6 className="text-dark-blue block font-semibold text-[21px] mb-[19px]">
                   Select Your Property Type
