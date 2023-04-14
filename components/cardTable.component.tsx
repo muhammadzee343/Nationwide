@@ -14,6 +14,23 @@ import is from "@sindresorhus/is";
 import boolean = is.boolean;
 
 function CardTable({ cart, getCart }: any) {
+  const attributeState: any = {
+    property_type: "",
+    property_age: "",
+    property_price: "",
+    bedrooms: "",
+    other_rooms: 0,
+    distribution_boards: 1,
+    electrical_appliances: "",
+    floors: "",
+    gas_appliances: "",
+    gas_fire: "",
+    fire_back_boiler: "",
+    post_code: "",
+    property_area: "",
+    supply_type: "",
+    circuits: "",
+  };
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
   const Component = isSmallScreen ? ContectAccessOption : RadioInput;
 
@@ -143,6 +160,22 @@ function CardTable({ cart, getCart }: any) {
       const selectedServiceId = cartItems.shopping_cart_products[cartNo].map(
         (ele) => ele.service_id
       );
+      cartItems.shopping_cart_products[cartNo]?.forEach((element: any) => {
+        for (const key in attributeState) {
+          // Check if the key exists in secondObject
+          if (element.hasOwnProperty(key)) {
+            // Update the value in firstObject with the value from secondObject
+            if (element[key] !== null) {
+              if (key === "bedrooms" && element["bedrooms"] === 0) {
+                attributeState["bedrooms"] = "s";
+              } else {
+                attributeState[key] = element[key];
+              }
+            }
+          }
+        }
+      });
+
       router?.push({
         pathname: "/order-now",
         query: {
@@ -150,6 +183,8 @@ function CardTable({ cart, getCart }: any) {
           postCode,
           address,
           ser: selectedServiceId,
+          keys: Object.keys(attributeState),
+          value: Object.values(attributeState),
         },
       });
     } else {
@@ -162,6 +197,23 @@ function CardTable({ cart, getCart }: any) {
           return ele.service_id;
         }
       );
+
+      cartItems.shopping_cart_bundles[cartNo]?.forEach((element: any) => {
+        for (const key in attributeState) {
+          // Check if the key exists in secondObject
+          if (element.hasOwnProperty(key)) {
+            // Update the value in firstObject with the value from secondObject
+            if (element[key] !== null) {
+              if (key === "bedrooms" && element["bedrooms"] === 0) {
+                attributeState["bedrooms"] = "s";
+              } else {
+                attributeState[key] = element[key];
+              }
+            }
+          }
+        }
+      });
+
       router?.push({
         pathname: "/order-now",
         query: {
@@ -170,6 +222,8 @@ function CardTable({ cart, getCart }: any) {
           address,
           ser: selectedServiceId,
           bundle: cartItems.shopping_cart_bundles[cartNo][0]?.bundle_id,
+          keys: Object.keys(attributeState),
+          value: Object.values(attributeState),
         },
       });
     }

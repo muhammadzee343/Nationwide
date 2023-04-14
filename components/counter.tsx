@@ -7,6 +7,8 @@ function Counter({
   setValue,
   preValue = 0,
   className = "",
+  containerClass = "w-5 h-5",
+  iconClass = "text-white",
 }: any) {
   const [count, setCount] = useState<number>(preValue || minValue);
 
@@ -37,9 +39,11 @@ function Counter({
   return (
     <div className="flex cursor-pointer items-center">
       <div className="mr-2 flex items-center" onClick={decrement}>
-        <span className=" w-5 h-5 bg-lime flex justify-center items-center items-center rounded-full">
+        <span
+          className={`bg-lime flex justify-center items-center items-center rounded-full ${containerClass}`}
+        >
           <FontAwesomeIcon
-            className=" w-[17px] h-[20px] text-white"
+            className={`w-[17px] h-[20px] ${iconClass}`}
             icon={faMinus}
           />
         </span>
@@ -55,9 +59,11 @@ function Counter({
       />
 
       <div className="ml-2 flex items-center" onClick={increment}>
-        <span className="w-5 h-5 bg-lime flex justify-center items-center rounded-full">
+        <span
+          className={`bg-lime flex justify-center items-center items-center rounded-full ${containerClass}`}
+        >
           <FontAwesomeIcon
-            className=" w-[17px] h-[20px] text-white "
+            className={`w-[17px] h-[20px] ${iconClass}`}
             icon={faPlus}
           />
         </span>
