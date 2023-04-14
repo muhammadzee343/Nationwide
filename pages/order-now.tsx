@@ -128,6 +128,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
   const populateForms = () => {
     if (ser && value && keys) {
       let obj = Object.fromEntries(keys?.map((k, i) => [k, value[i]]));
+
       setPropertyType(property);
       if (obj) {
         const services =
@@ -147,11 +148,15 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         setSelectedService(selectedService);
         setValue("property_area", obj.property_area);
         setValue("property_postcode", obj.property_postcode);
+        if (postCode) {
+          setValue("property_postcode", postCode);
+        }
       }
     }
   };
 
   const orderNow = async () => {
+    setFormDirty(true);
     if (formDirty && (!propertyAddress || error)) {
       Swal.fire({
         title: "Something missing!",
@@ -161,7 +166,6 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         confirmButtonColor: "rgb(140, 212, 245)",
       });
     } else {
-      setFormDirty(true);
       const body = {
         order: {
           service_category: propertyType,
@@ -408,7 +412,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
               key={index}
             >
               <h3
-                className={`text-[21px] font-semibold font-bold my-[20px] ${
+                className={`text-2xl md:text-3xl text-dark-blue font-bold my-[30px] ${
                   formDirty && attribute[ele.attr] === ""
                     ? "text-[#ff0000]"
                     : "text-dark-blue"
@@ -454,6 +458,8 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                           setValue={setAttributes}
                           preValue={+attribute[ele.attr]}
                           className="w-14"
+                          containerClass="w-6 h-6 sm:w-8 sm:h-8"
+                          iconClass="text-dark-blue"
                         />
                       </div>
                     );
@@ -473,7 +479,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                   </div>
                 )}
                 {ele.exactNumber && attribute[ele.attr] >= ele.minValue && (
-                  <div className="w-full flex lg:gap-x-28 py-3">
+                  <div className="w-full flex lg:gap-x-44 xl:gap-x-52 py-3 ">
                     <p className="text-[17px] text-dark-blue font-semibold mr-3">
                       {ele.exactNumber}
                     </p>
@@ -484,13 +490,21 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                         setValue={setAttributes}
                         preValue={+attribute[ele.attr]}
                         className={ele.className && ele.className}
+                        containerClass="w-6 h-6 sm:w-8 sm:h-8"
+                        iconClass="text-dark-blue"
                       />
                     </div>
                   </div>
                 )}
-                {ele.Alert && attribute[ele.attr] >= ele.minValue && (
+                {ele.Alert && ele.attr === "gas_appliances" && (
                   <AlertBox text={ele.Alert} className="text-[17px]" />
                 )}
+
+                {ele.Alert &&
+                  attribute[ele.attr] >= ele.minValue &&
+                  ele.attr !== "gas_appliances" && (
+                    <AlertBox text={ele.Alert} className="text-[17px]" />
+                  )}
                 {ele?.radioQuestion1 && (
                   <div className="flex flex-col w-full">
                     <p className="text-[17px] text-dark-blue my-5 font-semibold mr-3 ">
@@ -511,7 +525,8 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                                 x.value
                                   ? "bg-lime"
                                   : "border border-grey-500"
-                              } border border-grey-500 w-4 h-4 sm:w-5 sm:h-5`}
+                              } border border-grey-500 w-6 h-6 sm:w-8 sm:h-8`}
+                              pClass="text-[16px] font-semibold"
                             />
                           </>
                         );
@@ -538,7 +553,8 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                               x.value
                                 ? "bg-lime"
                                 : "border border-grey-500"
-                            } border border-grey-500 w-4 h-4 sm:w-5 sm:h-5`}
+                            } border border-grey-500 w-6 h-6 sm:w-8 sm:h-8`}
+                            pClass="text-[16px] font-semibold"
                           />
                         );
                       })}
@@ -546,7 +562,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                   </div>
                 )}
                 {ele.exactNumber2 && +attribute[ele.attr] >= ele.minValue && (
-                  <div className="w-full flex my-4 lg:gap-x-28">
+                  <div className="w-full flex my-4 lg:gap-x-44 xl:gap-x-52">
                     <p className=" font-opensans text-lg text-dark-blue font-semibold mr-3 w-2/4 ">
                       {ele.exactNumber2}
                     </p>
@@ -557,6 +573,8 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                         minValue={0}
                         preValue={+attribute[ele.attr]}
                         className="w-14"
+                        containerClass="w-6 h-6 sm:w-8 sm:h-8"
+                        iconClass="text-dark-blue"
                       />
                     </div>
                   </div>
