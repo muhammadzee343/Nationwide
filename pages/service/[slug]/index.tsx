@@ -126,40 +126,43 @@ function Service({ certificate }: any) {
           </div>
         </div>
       </div>
+        <div className="w-full py-5 lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto ">
+            <section>
+                <div className="w-full flex flex-col items-center justify-center px-3">
+                    <div className="w-full md:container flex flex-col flex-wrap pb-[0px]">
+                        <div className=" border-lime mb-[30px] py-2">
+                            <div className="border-b-4 border-lime rounded-full w-[85px] mb-3"></div>
+                            <h2 className="text-black text-4xl font-medium font-semibold">
+                                How it works?
+                            </h2>
+                        </div>
+                        {/*<StepperComponent />*/}
+                        <div className="hidden mt-10 w-full md:flex justify-center xl:flex-nowrap gap-1 xl:gap-7">
+                            {howItWorks.map(({ title, paragraph, image }: any, index) => {
+                                return (
+                                    <HowItWorks
+                                        key={index}
+                                        title={title}
+                                        paragraph={paragraph}
+                                        index={index}
+                                        type="Home"
+                                        image={image}
+                                    />
+                                );
+                            })}
+                        </div>
+                        <div className="flex mt-10  md:hidden w-full h-[300px] justify-center xl:flex-nowrap gap-1 lg:gap-7">
+                            <CarouselComponent list={howItWorks} component={HowItWorks} className='h-420px '/>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
         <div className="w-full flex justify-center bg-white">
             <div className="w-full xxl:continer flex flex-col lg:flex-row">
                 <div className="w-full py-10 lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto  ">
                     <div className="2xl:w-8/12 px-4">
-                        <section>
-                            <div className="w-full flex flex-col items-center justify-center px-3">
-                                <div className="w-full md:container flex flex-col flex-wrap pb-[0px]">
-                                    <div className=" border-lime mb-[30px] py-2">
-                                        <div className="border-b-4 border-lime rounded-full w-[85px] mb-3"></div>
-                                        <h2 className="text-black text-4xl font-medium font-semibold">
-                                            How it works?
-                                        </h2>
-                                    </div>
-                                    {/*<StepperComponent />*/}
-                                    <div className="hidden mt-10 w-full md:flex justify-center xl:flex-nowrap gap-1 xl:gap-7">
-                                        {howItWorks.map(({ title, paragraph, image }: any, index) => {
-                                            return (
-                                                <HowItWorks
-                                                    key={index}
-                                                    title={title}
-                                                    paragraph={paragraph}
-                                                    index={index}
-                                                    type="Home"
-                                                    image={image}
-                                                />
-                                            );
-                                        })}
-                                    </div>
-                                    <div className="flex mt-10  md:hidden w-full h-[300px] justify-center xl:flex-nowrap gap-1 lg:gap-7">
-                                        <CarouselComponent list={howItWorks} component={HowItWorks} className='h-420px '/>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
+
                         <section>
                             <div className="w-full flex flex-col gap-y-4 md:flex-row md:justify-between">
                                 <div className="w-full md:w-[50%]">

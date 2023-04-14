@@ -509,7 +509,7 @@ function Checkout(props: any) {
               ) : null}
             </div>
           </div>
-          <div className="sticky top-16 w-full  lg:mt-[10px] lg:w-[30%] pt-[8px] pb-[25px] px-4 ">
+          <div className="sticky top-20 w-full  lg:mt-[10px] lg:w-[30%] pt-[8px] pb-[25px] px-4 ">
             <div className="hidden sticky top-0 lg:w-full lg:flex">
               <OrderSummary
                 discount={pricing.discount}
