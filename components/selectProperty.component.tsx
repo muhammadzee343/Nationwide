@@ -25,7 +25,7 @@ export default function SelectProperty(sticky=false) {
       id="main_quote_form"
     >
       <form id="instantquote_main" method="post">
-        <div className={`w-full  rounded overflow-hidden`}>
+        <div className={`w-full overflow-hidden`}>
           <h3 className="text-white uppercase w-full text-[26px] lg:text-[20px] xl:text-[26px] mx-25 bg-dark-blue py-[35px] lg:py-[25px] xl:py-[35px] px-[20px] block rounded-sm drop-shadow-lg">
             Get Instant Quote
           </h3>
