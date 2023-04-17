@@ -533,7 +533,7 @@ function Checkout(props: any) {
                 subTotal={pricing.totalAmount}
               />
             </div>
-            {cart?.shopping_cart_products[0]?.length > 1 && (
+            {Number(pricing?.discount) > 0 && (
               <div className=" bg-dark-blue flex rounded-lg py-[10px] mt-3 pl-[20px] pr-[10px]">
                 <FontAwesomeIcon
                   className="text-lime w-9 md:w-6 mr-2"
@@ -542,8 +542,9 @@ function Checkout(props: any) {
                 <p className="text-white text-[11px] md:text-[15px] font-semibold">
                   <span className="text-[14px] font-bold">
                     Congratulations!
-                  </span>{" "}
-                  <br /> £10 multi-service-order Discount has been applied.
+                  </span>
+                  <br /> £{pricing?.discount} multi-service-order Discount has
+                  been applied.
                 </p>
               </div>
             )}
@@ -588,7 +589,7 @@ function Note({ content }: any) {
 function OrderSummary({ subTotal, discount }: any) {
   let floatSubTotal = parseFloat(subTotal);
   let floatDiscount = parseFloat(discount);
-  let subtotal = floatSubTotal - floatDiscount;
+  let subtotal = floatSubTotal + floatDiscount;
   return (
     <div
       className={`flex justify-center flex-col w-full space-y-1  ${
@@ -616,7 +617,7 @@ function OrderSummary({ subTotal, discount }: any) {
                 Discount
               </p>
               <p className="text-base dark:text-gray-300 leading-4 text-gray-600">
-                -&#163;({floatDiscount.toFixed(2)})
+                &#163;{floatDiscount.toFixed(2)}
               </p>
             </div>
           )}
@@ -629,18 +630,6 @@ function OrderSummary({ subTotal, discount }: any) {
             &#163;{floatSubTotal.toFixed(2)}
           </p>
         </div>
-        {discount > 0 && (
-          <div className=" bg-dark-blue flex rounded-sm py-[10px] px-[15px] justify-center items-center">
-            <FontAwesomeIcon
-              className="text-lime w-8 xxl:w-6  mr-2"
-              icon={faTag}
-            />
-            <p className="text-white text-[9px] font-semibold">
-              Congratulations! £10 multi-service-order Discount has been
-              applied.
-            </p>
-          </div>
-        )}
       </div>
     </div>
   );

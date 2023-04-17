@@ -448,20 +448,24 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                     );
                   } else if (opt.type !== "radio" && opt.type !== "select") {
                     return (
-                      <div key={index} className="w-full  flex ">
-                        <p className=" font-opensans text-lg text-dark-blue font-semibold mr-3">
-                          {opt.title}
-                        </p>
-                        <Counter
-                          label={ele.attr}
-                          minValue={ele.minValue}
-                          setValue={setAttributes}
-                          preValue={+attribute[ele.attr]}
-                          className="w-14"
-                          containerClass="w-6 h-6 sm:w-8 sm:h-8"
-                          iconClass="text-dark-blue"
-                        />
-                      </div>
+                      <>
+                        <div key={index} className="w-full md:w-5/12 mt-2 ">
+                          <p className=" font-opensans text-lg text-dark-blue font-semibold mr-3">
+                            {opt.title} p
+                          </p>
+                        </div>
+                        <div className="w-full md:w-5/12 mt-2">
+                          <Counter
+                            label={ele.attr}
+                            minValue={ele.minValue}
+                            setValue={setAttributes}
+                            preValue={+attribute[ele.attr]}
+                            className="w-14"
+                            containerClass="w-6 h-6 sm:w-8 sm:h-8"
+                            iconClass="text-dark-blue"
+                          />
+                        </div>
+                      </>
                     );
                   }
                 })}
@@ -479,11 +483,14 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                   </div>
                 )}
                 {ele.exactNumber && attribute[ele.attr] >= ele.minValue && (
-                  <div className="w-full flex lg:gap-x-44 xl:gap-x-52 py-3 ">
-                    <p className="text-[17px] text-dark-blue font-semibold mr-3">
-                      {ele.exactNumber}
-                    </p>
-                    <div className="w-2/4 pl-[24px] lg:pl-[12px] mt-2">
+                  <>
+                    <div className="w-full "></div>
+                    <div className="w-full md:w-5/12 mt-2">
+                      <p className="text-[17px] text-dark-blue font-semibold mr-3">
+                        {ele.exactNumber}
+                      </p>
+                    </div>
+                    <div className="w-full md:w-5/12 mt-2">
                       <Counter
                         minValue={ele.minValue}
                         label={ele.attr}
@@ -494,7 +501,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                         iconClass="text-dark-blue"
                       />
                     </div>
-                  </div>
+                  </>
                 )}
                 {ele.Alert && ele.attr === "gas_appliances" && (
                   <AlertBox text={ele.Alert} className="text-[17px]" />
@@ -534,39 +541,44 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                     </div>
                   </div>
                 )}
-                {ele?.radioQuestion2 && attribute[ele?.radioQuestion1.attr] && (
-                  <div className="flex flex-col w-full">
-                    <p className="text-[17px] text-dark-blue my-5 font-semibold mr-3">
-                      {ele.radioQuestion2.question}
-                    </p>
-                    <div className="flex flex-wrap gap-9">
-                      {ele.radioQuestion2.options.map((x, index: number) => {
-                        return (
-                          <RadioButton
-                            key={index}
-                            title={x.title}
-                            value={x.value}
-                            lable={ele.radioQuestion2.attr}
-                            selectattribute={setAttributes}
-                            className={`${
-                              eval(attribute[ele.radioQuestion2.attr]) ==
-                              x.value
-                                ? "bg-lime"
-                                : "border border-grey-500"
-                            } border border-grey-500 w-6 h-6 sm:w-8 sm:h-8`}
-                            pClass="text-[16px] font-semibold"
-                          />
-                        );
-                      })}
+                {ele?.radioQuestion2 &&
+                  attribute[ele?.radioQuestion1.attr] == true && (
+                    <div className="flex flex-col w-full">
+                      <p className="text-[17px] text-dark-blue my-5 font-semibold mr-3">
+                        {ele.radioQuestion2.question} pop{" "}
+                        {attribute[ele?.radioQuestion1.attr]}
+                      </p>
+                      <div className="flex flex-wrap gap-9">
+                        {ele.radioQuestion2.options.map((x, index: number) => {
+                          return (
+                            <RadioButton
+                              key={index}
+                              title={x.title}
+                              value={x.value}
+                              lable={ele.radioQuestion2.attr}
+                              selectattribute={setAttributes}
+                              className={`${
+                                eval(attribute[ele.radioQuestion2.attr]) ==
+                                x.value
+                                  ? "bg-lime"
+                                  : "border border-grey-500"
+                              } border border-grey-500 w-6 h-6 sm:w-8 sm:h-8`}
+                              pClass="text-[16px] font-semibold"
+                            />
+                          );
+                        })}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
                 {ele.exactNumber2 && +attribute[ele.attr] >= ele.minValue && (
-                  <div className="w-full flex my-4 lg:gap-x-44 xl:gap-x-52">
-                    <p className=" font-opensans text-lg text-dark-blue font-semibold mr-3 w-2/4 ">
-                      {ele.exactNumber2}
-                    </p>
-                    <div className="w-2/4">
+                  <>
+                    <div className="w-full md:w-5/12 mt-2">
+                      <p className=" font-opensans text-lg text-dark-blue font-semibold ">
+                        {ele.exactNumber2}
+                      </p>
+                    </div>
+
+                    <div className="w-full md:w-5/12 mt-2">
                       <Counter
                         setValue={setAttributes}
                         label="other_rooms"
@@ -577,7 +589,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                         iconClass="text-dark-blue"
                       />
                     </div>
-                  </div>
+                  </>
                 )}
               </div>
             </div>
