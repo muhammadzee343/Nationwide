@@ -279,6 +279,23 @@ function Checkout(props: any) {
       setIsLoading(true);
       const card = stripObj?.elements.getElement(CardElement);
 
+      const {error:errorData, paymentMethod} = await stripObj?.stripe.createPaymentMethod({
+        type: 'card',
+        card: stripObj?.elements.getElement(CardElement),
+      });
+
+      if (errorData){
+        setIsLoading(false);
+        const element = document.getElementById("card");
+        element?.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+          inline: "nearest",
+        });
+        setCardError(errorData.message ?? "An unknown error occured");
+        return;
+      }
+
       const clientSecret = await getIntent(data);
 
       const { error, paymentIntent } =

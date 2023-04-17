@@ -33,8 +33,7 @@ function BillingForm(props: any) {
       orderNotes: "",
       payment: "",
       postAddress: "",
-    },
-  });
+    }, mode: 'all'});
   const postcode = watch("postcode", "");
   const postAddress = watch("postAddress", "");
   const handleChange = (value: string) => {
@@ -103,17 +102,21 @@ function BillingForm(props: any) {
   };
 
   const submitHandler = (data: any) => {
-    getPropertyAddress(true).then((status) => {
-      if (status) {
-        if (data.postAddress.length > 5) {
-          props.chargeCard(data);
-        } else {
-          alert("Please select a valid address.");
+    if (data.streetAddress.length > 5) {
+      props.chargeCard(data);
+    } else {
+      getPropertyAddress(true).then((status) => {
+        if (status) {
+          if (data.streetAddress.length > 5) {
+            props.chargeCard(data);
+          } else {
+            alert("Please select a valid address.");
+          }
         }
-      }
-    });
-  };
+      });
+    }
 
+  };
   return (
     <form
       autoComplete={"off"}
@@ -177,6 +180,7 @@ function BillingForm(props: any) {
               </div>
               <div className="w-[30%]">
                 <ButtonComponent
+                  disabled={errors["postcode"]}
                   type="button"
                   text="FIND ADDRESS"
                   className="bg-dark-blue text-white rounded-md text-[8px] px-[13px] py-[14px]
