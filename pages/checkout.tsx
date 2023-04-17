@@ -276,7 +276,7 @@ function Checkout(props: any) {
         return;
       }
 
-      setIsLoading(true);
+
       const card = stripObj?.elements.getElement(CardElement);
 
       const {error:errorData, paymentMethod} = await stripObj?.stripe.createPaymentMethod({
@@ -295,7 +295,7 @@ function Checkout(props: any) {
         setCardError(errorData.message ?? "An unknown error occured");
         return;
       }
-
+      setIsLoading(true);
       const clientSecret = await getIntent(data);
 
       const { error, paymentIntent } =

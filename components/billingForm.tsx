@@ -20,7 +20,7 @@ function BillingForm(props: any) {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      fullname:"",
+      full_name:"",
       company: "",
       postcode: "",
       streetAddress: "",
@@ -101,8 +101,23 @@ function BillingForm(props: any) {
     }
   };
 
+  const getNames = (str: string) => {
+    let values = str.split(" ");
+    let f_name = values.shift();
+    let l_name = values.join(" ");
+    return{
+      f_name,
+      l_name
+    }
+  };
+
   const submitHandler = (data: any) => {
     if (data.streetAddress.length > 5) {
+      data = {
+        ...data,
+        firstName:getNames(data.full_name)?.f_name,
+        lastName:getNames(data.full_name)?.l_name
+      }
       props.chargeCard(data);
     } else {
       getPropertyAddress(true).then((status) => {
