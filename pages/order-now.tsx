@@ -75,7 +75,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
     addOtherService();
     if (bundle) {
       selectBundle();
-      setNext(true)
+      setNext(true);
     }
     populateForms();
 
@@ -571,7 +571,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                         setValue={setAttributes}
                         label="other_rooms"
                         minValue={0}
-                        preValue={+attribute[ele.attr]}
+                        preValue={+attribute["other_rooms"]}
                         className="w-14"
                         containerClass="w-6 h-6 sm:w-8 sm:h-8"
                         iconClass="text-dark-blue"
