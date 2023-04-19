@@ -41,7 +41,10 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   const postcode = watch("property_postcode", "");
   const propertyAddress = watch("property_address");
-
+  const propertyArea = watch("property_area");
+  watch((data, { name, type }) => {
+    attribute["property_area"] = data.property_area;
+  });
   const [propertyType, setPropertyType] = useState<string>("");
 
   const [ispropertySelected, setIsPropertySelected] = useState<boolean>(true);
@@ -371,7 +374,6 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
           className="w-full md:w-[47.5%] xxl:w-[48%]"
           onClick={() => {
             selectService(service);
-            setNext(false);
           }}
         >
           <ServiceSelectionCard
@@ -451,7 +453,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                       <>
                         <div key={index} className="w-full md:w-5/12 mt-2 ">
                           <p className=" font-opensans text-lg text-dark-blue font-semibold mr-3">
-                            {opt.title} p
+                            {opt.title}
                           </p>
                         </div>
                         <div className="w-full md:w-5/12 mt-2">
@@ -512,7 +514,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                   ele.attr !== "gas_appliances" && (
                     <AlertBox text={ele.Alert} className="text-[17px]" />
                   )}
-                {ele?.radioQuestion1 && (
+                {ele?.radioQuestion1 && attribute[ele.attr] > 1 && (
                   <div className="flex flex-col w-full">
                     <p className="text-[17px] text-dark-blue my-5 font-semibold mr-3 ">
                       {ele.radioQuestion1.question}

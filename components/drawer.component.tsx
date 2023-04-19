@@ -423,7 +423,7 @@ const DrawerComponent = ({}: any) => {
                     className={"text-[16px] font-normal"}
                   />
                 )}
-                {ele?.radioQuestion1 && (
+                {ele?.radioQuestion1 && attribute[ele.attr] > 1 && (
                   <div className="flex flex-col w-full">
                     <p className="text-lg my-3 text-dark-blue mr-3 w-full font-semibold">
                       {ele.radioQuestion1.question}

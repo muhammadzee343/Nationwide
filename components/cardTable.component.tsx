@@ -292,18 +292,22 @@ function CardTable({ cart, getCart }: any) {
                       className="py-1.5 flex justify-between items-center border-b border-[#e5e7eb]"
                     >
                       <div className="flex items-center mt-2.5 w-[75%]">
-                        <FontAwesomeIcon
-                          icon={faTrashAlt}
-                          className="text-[#ff0000] h-[19px] w-[20px] cursor-pointer"
-                          onClick={() =>
-                            deleteService(
-                              e.order_id,
-                              "",
-                              e.id,
-                              e.property_address
-                            )
-                          }
-                        />
+                        <a>
+                          {" "}
+                          <FontAwesomeIcon
+                            icon={faTrashAlt}
+                            className="text-[#ff0000] h-[19px] w-[20px] cursor-pointer"
+                            onClick={() =>
+                              deleteService(
+                                e.order_id,
+                                "",
+                                e.id,
+                                e.property_address
+                              )
+                            }
+                          />
+                        </a>
+
                         <p className="text-[14px] md:text-[17px] ml-4 text-dark-blue ">
                           {e?.name}
                         </p>
@@ -429,19 +433,20 @@ function CardTable({ cart, getCart }: any) {
             <div className="w-full  px-4 py-1  ">
               <div className="w-full flex items-center justify-between">
                 <div className="flex items-center">
-                  <FontAwesomeIcon
-                    icon={faTrashAlt}
-                    className="text-[#ff0000] h-[20px] w-[21px] cursor-pointer"
-                    onClick={() =>
-                      deleteService(
-                        cartItemData[0].order_id,
-                        cartItemData[0].bundle_id,
-                        "",
-                        cartItemData[0]?.property_address
-                      )
-                    }
-                  />
-
+                  <a>
+                    <FontAwesomeIcon
+                      icon={faTrashAlt}
+                      className="text-[#ff0000] h-[20px] w-[21px] cursor-pointer"
+                      onClick={() =>
+                        deleteService(
+                          cartItemData[0].order_id,
+                          cartItemData[0].bundle_id,
+                          "",
+                          cartItemData[0]?.property_address
+                        )
+                      }
+                    />
+                  </a>
                   <p className="text-[14px] md:text-[17px] ml-4 text-dark-blue ">
                     <strong className="mr-2"> Address:</strong>
                     {cartItemData[0]?.property_address}
