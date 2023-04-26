@@ -41,7 +41,6 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   const postcode = watch("property_postcode", "");
   const propertyAddress = watch("property_address");
-  const propertyArea = watch("property_area");
   watch((data, { name, type }) => {
     attribute["property_area"] = data.property_area;
   });
@@ -71,8 +70,17 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   const [error, setError] = useState(false);
 
-  const { bundle, ser, value, keys, property, postCode, item, address } =
-    router.query;
+  const {
+    bundle,
+    ser,
+    value,
+    keys,
+    property,
+    postCode,
+    item,
+    address,
+    checkout,
+  } = router.query;
 
   useEffect(() => {
     addOtherService();
@@ -131,7 +139,6 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
   const populateForms = () => {
     if (ser && value && keys) {
       let obj = Object.fromEntries(keys?.map((k, i) => [k, value[i]]));
-
       setPropertyType(property);
       if (obj) {
         const services =
@@ -146,9 +153,16 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
           .map((ele) => ele.name);
 
         setAttributes(obj);
-        setSelectedServiceId(temp);
+        // console.log(temp);
+        // console.log(selectedService);
+        if (checkout) {
+          setSelectedServiceId([]);
+          setSelectedService([]);
+        } else {
+          setSelectedServiceId(temp);
+          setSelectedService(selectedService);
+        }
         setAllAttributes(selectedService);
-        setSelectedService(selectedService);
         setValue("property_area", obj.property_area);
         setValue("property_postcode", obj.property_postcode);
         if (postCode) {
@@ -190,7 +204,6 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         },
         services: [...selectedServiceId],
       };
-
       if (bundle) {
         //@ts-ignore
         const bundleData = bundles.find(
@@ -350,10 +363,16 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
           return temp.includes(ele.id);
         })
         .map((ele) => ele.name);
-      setSelectedServiceId(temp);
+      if (checkout) {
+        setSelectedServiceId([]);
+        setSelectedService([]);
+      } else {
+        setSelectedServiceId(temp);
+        setSelectedService(selectedService);
+      }
 
       setAllAttributes(selectedService);
-      setSelectedService(selectedService);
+
       setValue("property_address", address);
       setValue("property_postcode", postCode);
     }
@@ -394,7 +413,6 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
     serviceAttributes.forEach((key, index) => {
       const ele = { ...attributes[key] };
-
       if (ele?.attr === "property_type") {
         let options = [...ele?.options];
         ele.options = options?.filter((opt: any) => {
@@ -547,7 +565,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                   attribute[ele?.radioQuestion1.attr] == true && (
                     <div className="flex flex-col w-full">
                       <p className="text-[17px] text-dark-blue my-5 font-semibold mr-3">
-                        {ele.radioQuestion2.question} pop{" "}
+                        {ele.radioQuestion2.question} pop
                         {attribute[ele?.radioQuestion1.attr]}
                       </p>
                       <div className="flex flex-wrap gap-9">
