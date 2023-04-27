@@ -205,25 +205,25 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         services: [...selectedServiceId],
       };
       if (bundle) {
+        body.bundle_id = bundle;
         //@ts-ignore
-        const bundleData = bundles.find(
-          (data) => data.content.service == bundle
-        );
-
-        if (bundleData) {
-          let notSame = false;
-          selectedServiceId.map((data) => {
-            if (!bundleData.content.value.includes(data)) {
-              notSame = true;
-            }
-          });
-          if (!notSame) {
-            //@ts-ignore
-            body.bundle_id = bundle;
-          }
-        }
+        // const bundleData = bundles.find(
+        //   (data) => data.content.service == bundle
+        // );
+        //
+        // if (bundleData) {
+        //   let notSame = false;
+        //   selectedServiceId.map((data) => {
+        //     if (!bundleData.content.value.includes(data)) {
+        //       notSame = true;
+        //     }
+        //   });
+        //   if (notSame) {
+        //     //@ts-ignore
+        //     body.bundle_id = bundle;
+        //   }
+        // }
       }
-
       const requestOptions = {
         method: "POST",
         headers: { "Content-type": "application/json" },
