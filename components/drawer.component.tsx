@@ -61,7 +61,7 @@ const DrawerComponent = ({}: any) => {
   const [selectedService, setSelectedService] = useState<string[]>([]);
   const [selectedServiceId, setSelectedServiceId] = useState<string[]>([]);
   const [serviceAttributes, setServiceAttributes] = useState<string[]>([]);
-  const [quote, setQuote] = useState<number>(0);
+  const [quote, setQuote] = useState<any>(0);
   const [ip, setIp] = useState("");
   const [step, setStep] = useState(true);
   const [formDirty, setFormDirty] = useState(false);
@@ -549,7 +549,7 @@ const DrawerComponent = ({}: any) => {
                   <span
                     className={`text-[40px] leading-7 text-lime font-semibold mb-[8px] ${styles.poppinsFamily}`}
                   >
-                    £{quote}
+                    £{quote.total_price}
                   </span>
                   <span className="text-sm text-[#b4b4b4] mb-[16px]">
                     Price including VAT where
@@ -572,7 +572,7 @@ const DrawerComponent = ({}: any) => {
                     start all over again
                   </span>
                 </div>
-                {selectedService.length > 1 && (
+                {selectedService.length > 1 && quote.discount > 0 && (
                   <div className=" bg-dark-blue flex rounded-lg py-[10px] pl-[20px] pr-[10px]">
                     <FontAwesomeIcon
                       className="text-lime w-9 md:w-6 mr-2"
@@ -582,7 +582,7 @@ const DrawerComponent = ({}: any) => {
                       <span className="text-[14px] font-bold">
                         Congratulations!
                       </span>
-                      <br /> £10 multi-service-order Discount has been applied.
+                      <br /> £{quote.discount} multi-service-order Discount has been applied.
                     </p>
                   </div>
                 )}
