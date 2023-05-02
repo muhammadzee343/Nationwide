@@ -185,16 +185,20 @@ const OrderReceived: React.FunctionComponent = ({ orderInfo, services }) => {
                           </div>
 
                           {item.service_attributes.map((att, index) => {
+                            console.log()
                             return (
                               <div key={index} className="flex flex-row mt-2">
-                                <p className="font-bold mr-4">
-                                  {Object.keys(att)[0].charAt(0).toUpperCase() +
-                                    Object.keys(att)[0]
-                                      .slice(1)
-                                      .replace("_", " ")}
+                                <p className="font-bold mr-4 capitalize">
+                                  {
+                                    Object.keys(att)[0].replaceAll("_", " ")
+                                  }
+                                  {/*{Object.keys(att)[0].charAt(0).toUpperCase() +*/}
+                                  {/*  Object.keys(att)[0]*/}
+                                  {/*    .slice(1)*/}
+                                  {/*    .replace("_", " ")}*/}
                                 </p>
 
-                                <p className="font-medium">
+                                <p className="font-medium capitalize">
                                   {item[Object.keys(att)[0]] === true
                                     ? "yes"
                                     : item[Object.keys(att)[0]] === false
@@ -202,7 +206,7 @@ const OrderReceived: React.FunctionComponent = ({ orderInfo, services }) => {
                                     : Object.keys(att)[0] === "bedrooms" &&
                                       item[Object.keys(att)[0]] === 0
                                     ? "Studio"
-                                    : item[Object.keys(att)[0]]}
+                                    : typeof(item[Object.keys(att)[0]]) === 'string' ? item[Object.keys(att)[0]].replace("_", " "):""}
                                 </p>
                               </div>
                             );
