@@ -352,10 +352,10 @@ function Checkout(props: any) {
         billing_phone_2: data.phone2,
         billing_email: data.email,
         payment_method: "stripe",
+        billing_method_notes: data.orderNotes
       },
       session_id: uuid,
     };
-
     let url = `${process.env.BASE_URL_DEV}orders/charge_card`;
     if (paymentType === "payByCard") {
       //@ts-ignore

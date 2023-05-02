@@ -276,6 +276,7 @@ function BillingForm(props: any) {
             </label>
             <textarea
               cols={80}
+              {...register("orderNotes")}
               placeholder="You can provide any special instructions/notes to help us deal with your order."
               name="orderNotes"
               className={`border h-[75px] w-full text-sm focus:border-lime outline-none focus:ring-transparent shadow-sm border-[#DEDEDE] py-2 px-3 rounded-md border`}
