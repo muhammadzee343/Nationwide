@@ -185,7 +185,9 @@ const OrderReceived: React.FunctionComponent = ({ orderInfo, services }) => {
                           </div>
 
                           {item.service_attributes.map((att, index) => {
-                            console.log()
+                            if (item[Object.keys(att)[0]] === null){
+                              return null
+                            }
                             return (
                               <div key={index} className="flex flex-row mt-2">
                                 <p className="font-bold mr-4 capitalize">
@@ -206,7 +208,7 @@ const OrderReceived: React.FunctionComponent = ({ orderInfo, services }) => {
                                     : Object.keys(att)[0] === "bedrooms" &&
                                       item[Object.keys(att)[0]] === 0
                                     ? "Studio"
-                                    : typeof(item[Object.keys(att)[0]]) === 'string' ? item[Object.keys(att)[0]].replace("_", " "):""}
+                                    : typeof(item[Object.keys(att)[0]]) === 'string' ? item[Object.keys(att)[0]].replace("_", " "):item[Object.keys(att)[0]]}
                                 </p>
                               </div>
                             );
