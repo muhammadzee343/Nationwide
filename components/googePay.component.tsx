@@ -13,18 +13,26 @@ const GoogePayComponent = ({ uuid, pricing, orderId }) => {
 
   const router = useRouter();
 
-  const placeOrder = async () => {
+  const placeOrder = async (data : object) => {
+
+    // @ts-ignore
+    const { paymentMethod:{billing_details} } = data
+
+    const name = billing_details?.name.split(" ");
+
+    const address = billing_details?.address;
+
     const body = {
       payment_detail: {
-        billing_first_name: "Muhammad",
-        billing_last_name: "Zubair",
-        billing_address: "PIA Society",
-        billing_city: "Lahore",
-        billing_state: "Punjab",
-        billing_postcode: "ABCDEF",
-        billing_phone: "03204149144",
-        billing_phone_2: "03351485091",
-        billing_email: "zubaironrails@gmail.com",
+        billing_first_name: name[0],
+        billing_last_name: name[1] ? name[1] : "",
+        billing_address: address.line1,
+        billing_city: address?.city,
+        billing_state: "",
+        billing_postcode: address?.postal_code,
+        billing_phone: billing_details?.phone,
+        billing_phone_2: "",
+        billing_email: "",
         payment_method: "google_pay",
       },
       session_id: uuid,
@@ -74,7 +82,7 @@ const GoogePayComponent = ({ uuid, pricing, orderId }) => {
       pr.on("paymentmethod", async (ev) => {
         // Confirm the PaymentIntent without handling potential next actions (yet).
 
-        const clientSecret = await placeOrder();
+        const clientSecret = await placeOrder(ev);
 
         const { paymentIntent, error: confirmError } =
           await stripe.confirmCardPayment(
