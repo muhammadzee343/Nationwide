@@ -25,8 +25,9 @@ function ServiceHeader(props: any) {
                           icon={faCircle}
                         ></FontAwesomeIcon>
                       </span>
-                      <p className="text-base lg:text-xl text-dark-blue md:text-white ">
-                        {ele}
+                      <p className="text-base lg:text-xl text-dark-blue md:text-white "dangerouslySetInnerHTML={{
+                        __html: `${ele}`,
+                      }}>
                       </p>
                     </div>
                   );

@@ -1258,10 +1258,12 @@ export const service = [
     title: "Landlord EICR Certificate | Electrical Safety Check & Inspection",
     bannerTitle: "Electrical Installation Condition Report (EICR)",
     servicesDec: [
-      "EICR certificate shared same day",
-      "Failings repaired on half hour rate",
-      "Knowledge & advice you can trust",
-      "Charged at £30.00 ex VAT per circuit",
+      "EICR For Landlords, Home Buyers & Sellers",
+      "EICR For Domestic & Commercial Properties",
+      "Flexible Availability & Nationwide Service",
+      "Get Instant Quote & Order Online",
+      "Multi-Service Order Discount Available",
+      "Prefer to Talk, Call Us Free <a class=\"phone\" href=\"tel:08000487474\">0800 048 7474</a>",
     ],
     certificate: "electrical-installation-condition-report",
     content: [
@@ -1269,21 +1271,61 @@ export const service = [
         className: "flex flex-col-reverse lg:flex-row-reverse",
         type: "Service",
         image: images.esr,
-        heading: "Electrical Safety Certificate",
+        heading: "What is an EICR Certificate?",
         content:
-          "<p>Our UK wide network of Gas Safe Registered Engineers can complete boiler services in a timely and efficient manner.</p> <br/>" +
-          "<p>A boiler service is the best way to ensure your boiler doesn’t unexpectedly let you down or fall out of " +
-          "warranty. If you know your boiler needs servicing, please place your order online and leave rest with us.</p>",
+          "<p>An EICR, or Electrical Installation Condition Report, checks whether your property’s wiring and electrics are safe. It is also known as Landlord Safety Test, Electrical Safety Certificate or the Homebuyer’s Test.</p> <br/>" +
+          "<p>Whether it’s a business or a domestic property you rent out; your electrical installation should always be covered by an in date EICR.</p> <br/>"+
+          "<p>To make sure your home is safe, we recommend you have an EICR every 10 years. If you rent out a property, you should have one every five years, a sooner re-inspection may be required if specified in the most recent report or for certain commercial properties.</p>",
       },
       {
         className: "flex flex-col-reverse lg:flex-row-reverse",
         type: "Service",
-        image: images.electrical2,
-        heading: "What Is Inspected In An EICR ?",
+        image: '',
+        heading: "What Happens During an EICR?",
         content:
-          "<p>Our UK wide network of Gas Safe Registered Engineers can complete boiler services in a timely and efficient manner.</p> <br/>" +
-          "<p>A boiler service is the best way to ensure your boiler doesn’t unexpectedly let you down or fall out of " +
-          "warranty. If you know your boiler needs servicing, please place your order online and leave rest with us.</p>",
+          "<p>During an EICR, the Fuse Board (Consumer Unit), wiring and electrical accessories are inspected and tested for faults or deviations from the Wiring Standards. Throughout the test, the following will be inspected and tested:</p> <br/>" +
+          "<p><ul class=\"list-disc list-inside\">" +
+            "<li>The adequacy of the main earthing and bonding(s).</li>" +
+            "<li>Devices for protection against fire and electric shock.</li>" +
+            "<li>Any damage or wear and tear that might affect the safety of the property’s inhabitants.</li>" +
+            "<li>Identification of any damaged electrical fittings and accessories.</li>" +
+            "<li>Identification of any exposed live wires that could cause a fire or injury.</li>" +
+            "</ul></p>",
+      },
+      {
+        className: "flex flex-col-reverse lg:flex-row-reverse",
+        type: "Service",
+        image: '',//images.electrical2
+        heading: "What Does It Means For Landlords?",
+        content:
+            "<p>From April-2021, It’s a legal requirement for landlords to provide copy of EICR to their existing or new tenants.</p> <br/>" +
+            "<p>As a landlord, you’re responsible for the safety of the electrics throughout the property – this includes the installation itself and any electrical appliances you’ve provided. You’ll need to make sure these are safe when a new tenant moves in and maintained for the duration of their tenancy.</p> <br/>" +
+            "<p>But if you don’t, you could face fines of up to £30,000 and your insurance could be invalidated. Banning orders may also be brought for serious or repeated&nbsp;offences.</p> <br/>",
+      },
+      {
+        className: "flex flex-col-reverse lg:flex-row-reverse",
+        type: "Service",
+        image: '',//images.electrical2
+        heading: "Do I Need an EICR When Buying or Selling?",
+        content:
+
+            "<p>EICRs may be required for a variety of purposes including buying, selling or renewal of lease/rental agreement and may have been requested by your solicitors.</p><br/>" +
+            "<p>Building Surveyors may recommend their clients to obtain an upto date EICR in thier Building Survey or HomeBuyer Report, based on their overall observation of the state of electrical system in a property.</p><br/>" +
+            "<p>Homeowners are recommended to have it carried out at-lease once every 10 years to ensure electrical safety within their property.</p><br/>",
+      },
+      {
+        className: "flex flex-col-reverse lg:flex-row-reverse",
+        type: "Service",
+        image: '',//images.electrical2
+        heading: "How Do I Book an EICR - Electrical Safety Certificate?",
+        content:
+            "<p>We’re here to help keep your property safe for you and your tenants. Order your EICR-Electrical Safety Certificate online or over the phone.</p><br/>" +
+            "<ul class=\"list-disc list-outside md:list-inside\">" +
+            "<li>If you are a landlord, simply provide us contact details of your tenants or property agent and we can coordinate directly with them to organise suitable appointment(s) according their earliest availability and keep you updated by automated emails.</li>" +
+            "<li>If you are buyer or seller, simply provide us with vendor’s or property agent’s contact details and leave it to us to coordinate and book suitable appointment(s) as per vendor’s/agent’s earliest availability.</li>" +
+            "<li>All the report(s)/certificate(s) are then shared only with yourself digitally via your email.</li>" +
+            "</ul>" +
+            "<p><strong>Call us free at <span style=\"color: #ff0000;\">0800 048 7474</span> to discuss a quotation and book. Alternately&nbsp; <a href=\"https://nationwide-surveyors.org.uk/order-now/\">Get Instant Quote Here and Order Online.</a></strong></p> <br/>",
       },
     ],
     faq: [

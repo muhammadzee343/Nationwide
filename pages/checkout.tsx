@@ -20,6 +20,7 @@ import {
 } from "@stripe/react-stripe-js";
 
 import CardTable from "../components/cardTable.component";
+import CheckoutStepper from "../components/checkoutStepper.component";
 import ButtonComponent from "../components/button.component";
 import BillingForm from "../components/billingForm";
 import CardComponent from "../components/card.component";
@@ -424,7 +425,9 @@ function Checkout(props: any) {
             Checkout
           </h2>
         </div>
+
         <div className="w-full flex flex-wrap justify-center items-start sm:gap-x-22">
+          {/*<CheckoutStepper/>*/}
           <div className="w-full lg:w-[60%] flex flex-col justify-center items-center pt-[5px] pb-[25px] px-2">
             <div className="w-full my-3">
               {cart?.shopping_cart_products.length ||
