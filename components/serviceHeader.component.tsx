@@ -13,7 +13,7 @@ function ServiceHeader(props: any) {
             <div className="w-full flex flex-col md:flex-row justify-between items-center md:px-10 lg:px-16">
               <div className="w-[50%] h-full pt-12 flex flex-col lg:ml-10 ">
                 <div className="border-b-4 border-lime w-[85px] rounded-full mb-3"></div>
-                <h1 className="text-[30px] md:text-[20px] lg:text-[39px] bg-blue-transparent md:bg-transparent  font-semibold text-white mb-[25px] ">
+                <h1 className="text-[30px] md:text-[20px] lg:text-[38px] bg-blue-transparent md:bg-transparent  font-semibold text-white mb-[25px] ">
                   {props.serviceTitle}
                 </h1>
                 {props?.servicesDec.map((ele: any, index) => {
