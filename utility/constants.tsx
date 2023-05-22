@@ -104,7 +104,7 @@ export const LEC = {
   subTitle: "From Only £79",
   points: [
     "For Landlords, Home Buyers & Sellers",
-    "Flexible Available & Fast Turnaround",
+    "Flexible Availability & Fast Turnaround",
     "Get Instant Quote & Order Online",
     "Qualified & Registered Electricians",
     "Multi-Service Order Discount Available",
@@ -337,7 +337,7 @@ export const megaMenu = [
   {
     heading: "Gas Safety Certificate",
     links: [
-      { title: "Gas Safety Certificate", link: "/gas-safety-certificate" },
+      { title: "Landlord Gas Safety Certificate (CP12)", link: "/gas-safety-certificate" },
       { title: "Boiler Service", link: "/boiler-service" },
     ],
   },

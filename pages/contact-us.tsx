@@ -27,7 +27,8 @@ function ContactUs(props: any) {
             <h1 className="font-bold text-white text-[36px] ">For All Enquiries</h1>
             <div>
               <p className="pt-10 text-white text-justify">
-                Depending on the type and nature of your enquiry. Please select one of therelevant option below.
+                Depending on the type and nature of your enquiry. Please select one of the
+                relevant option below.
               </p>
             </div>
           </div>
