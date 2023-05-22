@@ -99,7 +99,12 @@ function ContactUsNew({ Services }: any) {
 
   const services = useMemo<JSX.Element[]>(() => {
     const elements: JSX.Element[] = [];
-    const services = Services;
+    const services = Services.filter(
+        (data) => data.in_stock === true
+    ).filter(
+        (data) => data.category === "residential_property"
+    );
+
     for (let i = 0; i < services.length; i++) {
       const service = services[i];
       if(!service.name.includes('Commercial') && !service.name.includes('EICR-Remedial') && !service.name.includes('Additional Charges')){

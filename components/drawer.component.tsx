@@ -128,7 +128,6 @@ const DrawerComponent = ({}: any) => {
       `${process.env.BASE_URL_DEV}services/list_services`
     );
     const data = await res.json();
-    console.log(data);
     data.services = data.services.filter(
         (data) => data.in_stock === true
     );
