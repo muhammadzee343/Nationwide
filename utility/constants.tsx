@@ -436,7 +436,7 @@ export const howItWorks = [
     title: "Assessment Survey Booked",
     image: assesment,
     paragraph:
-      "Once you placed order online, our planning team will get in touch with you" +
+      "Once you placed order online, our customer support team will get in touch with you" +
       " to arrange a suitable date and time to carry out" +
       " the assessment survey for each service ordered, according to your suitability.",
   },
@@ -444,8 +444,8 @@ export const howItWorks = [
     title: "Certificates Issued",
     image: certificate,
     paragraph:
-      "Certificates / Reports will be issued digitally for each service ordered and sent to you by email, within 48 hours of Assessor’s visit. However," +
-      " if it’s urgent, please advise this in your order notes or let us know when booking appointment(s).",
+      "Certificates will be issued digitally for each service ordered and sent to you by email, within 48 hours of Assessor’s visit. Being an online customer," +
+      " you will also be able to download your certificates from your online account with us.",
   },
 ];
 // Services
@@ -456,10 +456,12 @@ export const service = [
     title: "Get an EPC from £35 only | Energy Performance Certificate",
     bannerTitle: "Energy Performance Certificate",
     servicesDec: [
-      "EICR certificate shared same day",
-      "Failings repaired on half hour rate",
-      "Knowledge & advice you can trust",
-      "Charged at £30.00 ex VAT per circuit",
+      "For Landlords, Home Buyers & Sellers", 
+      "For Domestic & Commercial Properties", 
+      "Flexible Availability & Fast Turnaround", 
+      "Instant Quotes & Nationwide Coverage", 
+      "Order Online or Over the Phone", 
+      "Prefer to Talk, Call Us 0800 048 7474",
     ],
     metaData: {
       description:
@@ -563,10 +565,12 @@ export const service = [
     title: "Get Commercial EPC For as Little as £150",
     bannerTitle: "Commercial EPC",
     servicesDec: [
-      "EICR certificate shared same day",
-      "Failings repaired on half hour rate",
-      "Knowledge & advice you can trust",
-      "Charged at £30.00 ex VAT per circuit",
+      "For Landlords, Home Buyers & Sellers",
+      "For Domestic & Commercial Properties",
+      "Flexible Availability & Fast Turnaround",
+      "Instant Quotes & Nationwide Coverage",
+      "Order Online or Over the Phone",
+      "Prefer to Talk, Call Us 0800 048 7474",
     ],
     certificate: "commercial-epc",
     content: [
@@ -576,8 +580,7 @@ export const service = [
         image: images.commercialEpc,
         heading: "Commercial EPCs",
         content:
-          "<p>An energy survey is performed by a qualified energy assessor who visits the property and examines key items within the premises such as loft insulation, domestic boiler, hot water tank, radiators, windows for double glazing, etc.</p>" +
-          "<br/><p>Once this information is obtained it is then placed into a software programme which carries out and calculates the level of energy efficiency and CO2 emissions and advises us on the best measures in improving the energy performance of a property with an estimated cost and savings.</p>",
+          "<p>Any property that is not considered to be a dwelling such as shops, hotels and industrial units will require a Commercial EPC. Our competitive pricing means that we have many regular clients ordering consistently to ensure compliance of their portfolios.</p>",
       },
       {
         className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -585,8 +588,7 @@ export const service = [
         image: images.commercialEpcRating,
         heading: "Who Needs a Commercial EPC?",
         content:
-          "<p>An energy survey is performed by a qualified energy assessor who visits the property and examines key items within the premises such as loft insulation, domestic boiler, hot water tank, radiators, windows for double glazing, etc.</p>" +
-          "<br/><p>Once this information is obtained it is then placed into a software programme which carries out and calculates the level of energy efficiency and CO2 emissions and advises us on the best measures in improving the energy performance of a property with an estimated cost and savings.</p>",
+          "<p>Before a building is put on the market the seller or landlord must commission an EPC for the building, which must be completed before the transaction can take place. We have expertly skilled level 3, 4 and 5 commercial energy assessors throughout the UK to cover the smallest coffee shops through to the largest shopping centers.</p>",
       },
     ],
     faq: [
@@ -665,10 +667,12 @@ export const service = [
     title: "Emergency Lights Test Certificate | Become BS5266 Compliant",
     bannerTitle: "Emergency Lights Test Report",
     servicesDec: [
-      "EICR certificate shared same day",
-      "Failings repaired on half hour rate",
-      "Knowledge & advice you can trust",
-      "Charged at £30.00 ex VAT per circuit",
+      "For Landlords, Home Buyers & Sellers",
+      "For Domestic & Commercial Properties",
+      "Flexible Availability & Fast Turnaround",
+      "Instant Quotes & Nationwide Coverage",
+      "Order Online or Over the Phone",
+      "Prefer to Talk, Call Us 0800 048 7474",
     ],
     certificate: "emergency-light-test-report",
     content: [
@@ -774,10 +778,12 @@ export const service = [
     title: "Fire Alarm Testing BS5839",
     bannerTitle: "Fire Alarm Test Report",
     servicesDec: [
-      "EICR certificate shared same day",
-      "Failings repaired on half hour rate",
-      "Knowledge & advice you can trust",
-      "Charged at £30.00 ex VAT per circuit",
+      "For Landlords, Home Buyers & Sellers",
+      "For Domestic & Commercial Properties",
+      "Flexible Availability & Fast Turnaround",
+      "Instant Quotes & Nationwide Coverage",
+      "Order Online or Over the Phone",
+      "Prefer to Talk, Call Us 0800 048 7474",
     ],
     certificate: "fire-alarm-test-report",
     content: [
@@ -886,10 +892,12 @@ export const service = [
     title: "Fire Risk Assessment",
     bannerTitle: "Fire Risk Assessment",
     servicesDec: [
-      "EICR certificate shared same day",
-      "Failings repaired on half hour rate",
-      "Knowledge & advice you can trust",
-      "Charged at £30.00 ex VAT per circuit",
+      "For Landlords, Home Buyers & Sellers",
+      "For Domestic & Commercial Properties",
+      "Flexible Availability & Fast Turnaround",
+      "Instant Quotes & Nationwide Coverage",
+      "Order Online or Over the Phone",
+      "Prefer to Talk, Call Us 0800 048 7474",
     ],
     certificate: "fire-risk-assessment",
     content: [
@@ -998,12 +1006,14 @@ export const service = [
   {
     id: 7,
     title: "Gas Safety Certificate for Landlords from £49 Only",
-    bannerTitle: "Gas Safety Certificate",
+    bannerTitle: "Landlord Gas Safety Certificate (CP12)",
     servicesDec: [
-      "EICR certificate shared same day",
-      "Failings repaired on half hour rate",
-      "Knowledge & advice you can trust",
-      "Charged at £30.00 ex VAT per circuit",
+      "Gas Safe Registered Engineers",
+      "Flexible Availability & Nationwide Service",
+      "Gas Safety Certificates Offered for Domestic and Commercial Properties",
+      "Get Instant Quote & Order Online",
+      "Multi-Service Order Discount Available",
+      "Prefer to Talk, Call Us Free 0800 048 7474",
     ],
     certificate: "gas-safety-certificate",
     content: [
@@ -1108,10 +1118,12 @@ export const service = [
       "Boiler Service | Completed by our Gas Safe Registered Engineers only",
     bannerTitle: "Boiler Service",
     servicesDec: [
-      "EICR certificate shared same day",
-      "Failings repaired on half hour rate",
-      "Knowledge & advice you can trust",
-      "Charged at £30.00 ex VAT per circuit",
+      "For Landlords, Home Buyers & Sellers",
+      "For Domestic & Commercial Properties",
+      "Flexible Availability & Fast Turnaround",
+      "Instant Quotes & Nationwide Coverage",
+      "Order Online or Over the Phone",
+      "Prefer to Talk, Call Us 0800 048 7474",
     ],
     certificate: "boiler-service",
     content: [
@@ -1153,32 +1165,7 @@ export const service = [
           <li>A gas rate test to ensure gas usage is correct</li>
           <li>Gas flue analysis</li>
           <li class='mb-3'>Service certification paperwork</li>
-          <ul class='pl-4 leading-7 text-[#1a1a1a]' style="list-style-type: circle">
-            <li>A pre-service check and fault analysis.</li>
-            <li>
-              Check installation and positioning comply with building
-              regulations
-            </li>
-            <li>
-              Check installation and positioning comply with gas safe
-              regulations
-            </li>
-            <li>
-              Installation and positioning complies to installation &amp;
-              British standards
-            </li>
-            <li>
-              Removal of outer casing &amp;Inspection of main internal
-              components (electrodes, fans etc)
-            </li>
-            <li>
-              Inspection of electrics, pipework (water &amp; gas), joints and
-              flue
-            </li>
-            <li>A gas rate test to ensure gas usage is correct</li>
-            <li>Gas flue analysis</li>
-            <li>Service certification paperwork</li>
-          </ul>
+
         </ul>
       `,
       },
@@ -1403,10 +1390,12 @@ export const service = [
     title: "PAT Testing & Certificates | Domestic & Commercial",
     bannerTitle: "Electrical Portable Appliance Test (PAT)",
     servicesDec: [
-      "EICR certificate shared same day",
-      "Failings repaired on half hour rate",
-      "Knowledge & advice you can trust",
-      "Charged at £30.00 ex VAT per circuit",
+      "For Landlords, Home Buyers & Sellers",
+      "For Domestic & Commercial Properties",
+      "Flexible Availability & Fast Turnaround",
+      "Instant Quotes & Nationwide Coverage",
+      "Order Online or Over the Phone",
+      "Prefer to Talk, Call Us 0800 048 7474",
     ],
     certificate: "electrical-portable-appliance-test",
     content: [
@@ -1517,10 +1506,12 @@ export const service = [
       "Electrical Remedial Work & Landlord Electrcial Safety Reports | Order Now",
     bannerTitle: "EICR Remedial Work",
     servicesDec: [
-      "EICR certificate shared same day",
-      "Failings repaired on half hour rate",
-      "Knowledge & advice you can trust",
-      "Charged at £30.00 ex VAT per circuit",
+      "For Landlords, Home Buyers & Sellers",
+      "For Domestic & Commercial Properties",
+      "Flexible Availability & Fast Turnaround",
+      "Instant Quotes & Nationwide Coverage",
+      "Order Online or Over the Phone",
+      "Prefer to Talk, Call Us 0800 048 7474",
     ],
     certificate: "eicr-remedial-work",
     content: [
@@ -1532,7 +1523,7 @@ export const service = [
         content:
           "<p>Once you have received your Electrical Installation Condition Report (EICR), under the OBSERVATIONS and" +
           " RECOMMENDATIONS section of your report, it may contain one or more of the following codes:</p>" +
-          "<ul>\n" +
+          "<ul  class='list-disc pl-4 leading-7'>\n" +
           "<li>C1 (Danger Present, Risk of Injury. Immediate Remedial Action Required)</li>\n" +
           "<li>C2 (Potentially Dangerous, Urgent Remedial Action Required),</li>\n" +
           "<li>C3 (Improvement Recommended</li>\n" +
@@ -1638,10 +1629,12 @@ export const service = [
     title: "2D / 3D Floor Plans",
     bannerTitle: "Floor Plans",
     servicesDec: [
-      "EICR certificate shared same day",
-      "Failings repaired on half hour rate",
-      "Knowledge & advice you can trust",
-      "Charged at £30.00 ex VAT per circuit",
+      "For Landlords, Home Buyers & Sellers",
+      "For Domestic & Commercial Properties",
+      "Flexible Availability & Fast Turnaround",
+      "Instant Quotes & Nationwide Coverage",
+      "Order Online or Over the Phone",
+      "Prefer to Talk, Call Us 0800 048 7474",
     ],
     certificate: "floor-plans",
     content: [
@@ -1664,7 +1657,7 @@ export const service = [
         heading: "Ordering Floor Plans through Nationwide Surveyors",
         content:
           "<p>Our trained property surveyors can visit a property across the mainland UK and supply the finalized" +
-          "marketing floor plans to you, in most cases the next working day after we visit your property.</p>",
+          " marketing floor plans to you, in most cases the next working day after we visit your property.</p>",
       },
     ],
     faq: [
@@ -1742,10 +1735,12 @@ export const service = [
     title: "Home Buyer Reports and Surveys",
     bannerTitle: "Building Surveys",
     servicesDec: [
-      "EICR certificate shared same day",
-      "Failings repaired on half hour rate",
-      "Knowledge & advice you can trust",
-      "Charged at £30.00 ex VAT per circuit",
+      "For Landlords, Home Buyers & Sellers",
+      "For Domestic & Commercial Properties",
+      "Flexible Availability & Fast Turnaround",
+      "Instant Quotes & Nationwide Coverage",
+      "Order Online or Over the Phone",
+      "Prefer to Talk, Call Us 0800 048 7474",
     ],
     certificate: "building-surveys",
     content: [
@@ -1856,10 +1851,12 @@ export const service = [
     title: "Legionella Risk Assessment",
     bannerTitle: "Legionella Risk Assessment",
     servicesDec: [
-      "EICR certificate shared same day",
-      "Failings repaired on half hour rate",
-      "Knowledge & advice you can trust",
-      "Charged at £30.00 ex VAT per circuit",
+      "For Landlords, Home Buyers & Sellers",
+      "For Domestic & Commercial Properties",
+      "Flexible Availability & Fast Turnaround",
+      "Instant Quotes & Nationwide Coverage",
+      "Order Online or Over the Phone",
+      "Prefer to Talk, Call Us 0800 048 7474",
     ],
     certificate: "legionella-risk-assessment",
     content: [
@@ -1959,10 +1956,12 @@ export const service = [
     title: "SAP Assessment",
     bannerTitle: "SAP Assessments",
     servicesDec: [
-      "EICR certificate shared same day",
-      "Failings repaired on half hour rate",
-      "Knowledge & advice you can trust",
-      "Charged at £30.00 ex VAT per circuit",
+      "For Landlords, Home Buyers & Sellers",
+      "For Domestic & Commercial Properties",
+      "Flexible Availability & Fast Turnaround",
+      "Instant Quotes & Nationwide Coverage",
+      "Order Online or Over the Phone",
+      "Prefer to Talk, Call Us 0800 048 7474",
     ],
     certificate: "sap-assessments-2",
     content: [
@@ -2108,7 +2107,7 @@ export const faqCardData = [
     ),
     headTitle: "Place Order Online",
     bodyContant:
-      "Please select the services required and place order online 24/7. Our services can be ordered individually or as a combined Bundle Package.Prefer to place order over the phone? please call us FREE at 0800 048 7474.",
+      "Please select the services required and place order online 24/7. Our services can be ordered individually or as a combined Bundle Package. Prefer to place order over the phone? please call us FREE at 0800 048 7474.",
   },
   {
     iconName: (
@@ -2143,7 +2142,7 @@ export const faqAccordionData = [
     description: [
       {
         para1:
-          "As of the 21st May 2010, if you decide to place your property on themarket for sale or rent in the UK you will need to purchase an EPC.This includes both residential and commercial properties. SinceApril 2018 it is also a legal requirement for the EPC rating to be aminimium of an ‘E’ rating in order for that property to be let to atenant.",
+          "As of the 21st May 2010, if you decide to place your property on the market for sale or rent in the UK you will need to purchase an EPC. This includes both residential and commercial properties. Since April 2018 it is also a legal requirement for the EPC rating to be a minimium of an ‘E’ rating in order for that property to be let to atenant.",
       },
     ],
   },

@@ -38,7 +38,7 @@ const EnergyPerformanceCertificate = () => {
             before the phased introduction of EPCs began in 2007.
           </p>
           <p className={`${styles.footerParagraph}`}>
-            <b>Commercial buildings– –</b> including the ones already placed on
+            <b>Commercial buildings –</b> including the ones already placed on
             the market. If you sell or rent a property during the transition
             period, you are obliged to purchase an EPC as soon as is practically
             possible.
