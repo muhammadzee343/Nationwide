@@ -8,7 +8,7 @@ import {
 } from "../context/sidebarContext";
 
 import "../styles/globals.css";
-
+import NextNProgress from 'nextjs-progressbar';
 import Overlay from "../components/overLay.component";
 import Layout from "../components/layout.component";
 export default function App({ Component, pageProps }: AppProps) {
@@ -38,7 +38,8 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <UuidContext.Provider value={{uuid,setUuid}}>
         <OverlayContext.Provider value={{ isLoading, setIsLoading }}>
-          {isLoading && <Overlay />}
+            <NextNProgress color="#C2CF10" startPosition={0.3} stopDelayMs={2000} height={5} showOnShallow={true} />
+            {isLoading && <Overlay />}
           <SidebarContext.Provider
             value={{
               showDrawer,
