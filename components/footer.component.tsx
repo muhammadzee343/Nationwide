@@ -35,11 +35,11 @@ export default function Footer() {
 
 
   const OtherLinkes = [
-    { title: "Contact Us", pageLink: "/contact-us" },
-    { title: "Business Enquiries", pageLink: "/business-enquiries" },
-    { title: "Career", pageLink: "/career" },
-    { title: "Join Us", pageLink: "/join-us-new" },
-    { title: "Bulk Order Discounts", pageLink: "/bulk-order-discounts" },
+    { title: "Contact Us", pageLink: "contact-us" },
+    { title: "Business Enquiries", pageLink: "business-enquiries" },
+    { title: "Career", pageLink: "career" },
+    { title: "Join Us", pageLink: "join-us-new" },
+    { title: "Bulk Order Discounts", pageLink: "bulk-order-discounts" },
     
   ];
 
