@@ -84,7 +84,7 @@ function Service({ certificate }: any) {
 
   return (
     <>
-      {certificate[0]?.servicesDec && <ServiceHeader servicesDec={certificate[0]?.servicesDec} serviceTitle={certificate[0]?.bannerTitle} />}
+      {certificate[0]?.servicesDec && <ServiceHeader servicesDec={certificate[0]?.servicesDec} serviceTitle={certificate[0]?.bannerTitle} serviceBanner={certificate[0]?.bannerImage} serviceBannerMobile={certificate[0]?.bannerImageMobile}/>}
       <div className="w-full flex justify-center bg-white">
         <div className="w-full xxl:continer flex flex-col lg:flex-row">
           <Head>

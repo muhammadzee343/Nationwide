@@ -44,6 +44,10 @@ import as2 from "../public/image26.png";
 import as3 from "../public/Rectangle308.png";
 import as4 from "../public/Rectangle305.png";
 
+// Images for services pages
+import deicr_banner_dasktop from "../public/services/electrical-installation-condition-report.jpg";
+import deicr_banner_mobile from "../public/services/electrical-installation-condition-report.jpg";
+
 export const myFont = localFont({
   src: [
     {
@@ -97,6 +101,8 @@ const images = {
   sap1: Sap1,
   sap2: Sap2,
   callback: CallBack,
+  deicr_banner_dasktop: deicr_banner_dasktop,
+  deicr_banner_mobile: deicr_banner_mobile,
 };
 
 export const LEC = {
@@ -455,6 +461,8 @@ export const service = [
     id: 1,
     title: "Get an EPC from £35 only | Energy Performance Certificate",
     bannerTitle: "Energy Performance Certificate",
+    bannerImage: images.deicr_banner_dasktop,
+    bannerImageMobile: images.deicr_banner_mobile,
     servicesDec: [
       "For Landlords, Home Buyers & Sellers", 
       "For Domestic & Commercial Properties", 
@@ -564,6 +572,8 @@ export const service = [
     id: 2,
     title: "Get Commercial EPC For as Little as £150",
     bannerTitle: "Commercial EPC",
+    bannerImage: images.deicr_banner_dasktop,
+    bannerImageMobile: images.deicr_banner_mobile,
     servicesDec: [
       "For Landlords, Home Buyers & Sellers",
       "For Domestic & Commercial Properties",
@@ -572,6 +582,11 @@ export const service = [
       "Order Online or Over the Phone",
       "Prefer to Talk, Call Us 0800 048 7474",
     ],
+    metaData: {
+      description:
+          "Nationwide Surveyors offer all types of Landlord Certifications &amp; reports for domestic and commercial properties at competitive prices with Nationwide Coverage.",
+      keywords: "Load Removal",
+    },
     certificate: "commercial-epc",
     content: [
       {
@@ -666,6 +681,8 @@ export const service = [
     id: 3,
     title: "Emergency Lights Test Certificate | Become BS5266 Compliant",
     bannerTitle: "Emergency Lights Test Report",
+    bannerImage: images.deicr_banner_dasktop,
+    bannerImageMobile: images.deicr_banner_mobile,
     servicesDec: [
       "For Landlords, Home Buyers & Sellers",
       "For Domestic & Commercial Properties",
@@ -674,6 +691,11 @@ export const service = [
       "Order Online or Over the Phone",
       "Prefer to Talk, Call Us 0800 048 7474",
     ],
+    metaData: {
+      description:
+          "Nationwide Surveyors offer all types of Landlord Certifications &amp; reports for domestic and commercial properties at competitive prices with Nationwide Coverage.",
+      keywords: "Load Removal",
+    },
     certificate: "emergency-light-test-report",
     content: [
       {
@@ -777,6 +799,8 @@ export const service = [
     id: 4,
     title: "Fire Alarm Testing BS5839",
     bannerTitle: "Fire Alarm Test Report",
+    bannerImage: images.deicr_banner_dasktop,
+    bannerImageMobile: images.deicr_banner_mobile,
     servicesDec: [
       "For Landlords, Home Buyers & Sellers",
       "For Domestic & Commercial Properties",
@@ -785,6 +809,11 @@ export const service = [
       "Order Online or Over the Phone",
       "Prefer to Talk, Call Us 0800 048 7474",
     ],
+    metaData: {
+      description:
+          "Nationwide Surveyors offer all types of Landlord Certifications &amp; reports for domestic and commercial properties at competitive prices with Nationwide Coverage.",
+      keywords: "Load Removal",
+    },
     certificate: "fire-alarm-test-report",
     content: [
       {
@@ -891,6 +920,8 @@ export const service = [
     id: 5,
     title: "Fire Risk Assessment",
     bannerTitle: "Fire Risk Assessment",
+    bannerImage: images.deicr_banner_dasktop,
+    bannerImageMobile: images.deicr_banner_mobile,
     servicesDec: [
       "For Landlords, Home Buyers & Sellers",
       "For Domestic & Commercial Properties",
@@ -899,6 +930,11 @@ export const service = [
       "Order Online or Over the Phone",
       "Prefer to Talk, Call Us 0800 048 7474",
     ],
+    metaData: {
+      description:
+          "Nationwide Surveyors offer all types of Landlord Certifications &amp; reports for domestic and commercial properties at competitive prices with Nationwide Coverage.",
+      keywords: "Load Removal",
+    },
     certificate: "fire-risk-assessment",
     content: [
       {
@@ -1007,6 +1043,8 @@ export const service = [
     id: 7,
     title: "Gas Safety Certificate for Landlords from £49 Only",
     bannerTitle: "Landlord Gas Safety Certificate (CP12)",
+    bannerImage: images.deicr_banner_dasktop,
+    bannerImageMobile: images.deicr_banner_mobile,
     servicesDec: [
       "Gas Safe Registered Engineers",
       "Flexible Availability & Nationwide Service",
@@ -1015,6 +1053,11 @@ export const service = [
       "Multi-Service Order Discount Available",
       "Prefer to Talk, Call Us Free 0800 048 7474",
     ],
+    metaData: {
+      description:
+          "Nationwide Surveyors offer all types of Landlord Certifications &amp; reports for domestic and commercial properties at competitive prices with Nationwide Coverage.",
+      keywords: "Load Removal",
+    },
     certificate: "gas-safety-certificate",
     content: [
       {
@@ -1114,9 +1157,10 @@ export const service = [
   //Boiler Service
   {
     id: 8,
-    title:
-      "Boiler Service | Completed by our Gas Safe Registered Engineers only",
+    title: "Boiler Service | Completed by our Gas Safe Registered Engineers only",
     bannerTitle: "Boiler Service",
+    bannerImage: images.deicr_banner_dasktop,
+    bannerImageMobile: images.deicr_banner_mobile,
     servicesDec: [
       "For Landlords, Home Buyers & Sellers",
       "For Domestic & Commercial Properties",
@@ -1125,6 +1169,11 @@ export const service = [
       "Order Online or Over the Phone",
       "Prefer to Talk, Call Us 0800 048 7474",
     ],
+    metaData: {
+      description:
+          "Nationwide Surveyors offer all types of Landlord Certifications &amp; reports for domestic and commercial properties at competitive prices with Nationwide Coverage.",
+      keywords: "Load Removal",
+    },
     certificate: "boiler-service",
     content: [
       {
@@ -1244,14 +1293,21 @@ export const service = [
     id: 10,
     title: "Landlord EICR Certificate | Electrical Safety Check & Inspection",
     bannerTitle: "Electrical Installation Condition Report (EICR)",
+    bannerImage: images.deicr_banner_dasktop,
+    bannerImageMobile: images.deicr_banner_mobile,
     servicesDec: [
       "EICR For Landlords, Home Buyers & Sellers",
       "EICR For Domestic & Commercial Properties",
       "Flexible Availability & Nationwide Service",
       "Get Instant Quote & Order Online",
       "Multi-Service Order Discount Available",
-      "<strong>Prefer to Talk, Call Us Free <a class=\"phone text-lime\" href=\"tel:08000487474\">0800 048 7474</a></strong>",
+      "<strong>Prefer to Talk, Call Us Free <a class='phone-red' href=\"tel:08000487474\">0800 048 7474</a></strong>",
     ],
+    metaData: {
+      description:
+          "Nationwide Surveyors offer all types of Landlord Certifications &amp; reports for domestic and commercial properties at competitive prices with Nationwide Coverage.",
+      keywords: "Load Removal",
+    },
     certificate: "electrical-installation-condition-report",
     content: [
       {
@@ -1389,6 +1445,8 @@ export const service = [
     id: 11,
     title: "PAT Testing & Certificates | Domestic & Commercial",
     bannerTitle: "Electrical Portable Appliance Test (PAT)",
+    bannerImage: images.deicr_banner_dasktop,
+    bannerImageMobile: images.deicr_banner_mobile,
     servicesDec: [
       "For Landlords, Home Buyers & Sellers",
       "For Domestic & Commercial Properties",
@@ -1397,6 +1455,11 @@ export const service = [
       "Order Online or Over the Phone",
       "Prefer to Talk, Call Us 0800 048 7474",
     ],
+    metaData: {
+      description:
+          "Nationwide Surveyors offer all types of Landlord Certifications &amp; reports for domestic and commercial properties at competitive prices with Nationwide Coverage.",
+      keywords: "Load Removal",
+    },
     certificate: "electrical-portable-appliance-test",
     content: [
       {
@@ -1502,9 +1565,10 @@ export const service = [
   //EICR Remedial Work
   {
     id: 13,
-    title:
-      "Electrical Remedial Work & Landlord Electrcial Safety Reports | Order Now",
+    title: "Electrical Remedial Work & Landlord Electrcial Safety Reports | Order Now",
     bannerTitle: "EICR Remedial Work",
+    bannerImage: images.deicr_banner_dasktop,
+    bannerImageMobile: images.deicr_banner_mobile,
     servicesDec: [
       "For Landlords, Home Buyers & Sellers",
       "For Domestic & Commercial Properties",
@@ -1513,6 +1577,11 @@ export const service = [
       "Order Online or Over the Phone",
       "Prefer to Talk, Call Us 0800 048 7474",
     ],
+    metaData: {
+      description:
+          "Nationwide Surveyors offer all types of Landlord Certifications &amp; reports for domestic and commercial properties at competitive prices with Nationwide Coverage.",
+      keywords: "Load Removal",
+    },
     certificate: "eicr-remedial-work",
     content: [
       {
@@ -1628,6 +1697,8 @@ export const service = [
     id: 14,
     title: "2D / 3D Floor Plans",
     bannerTitle: "Floor Plans",
+    bannerImage: images.deicr_banner_dasktop,
+    bannerImageMobile: images.deicr_banner_mobile,
     servicesDec: [
       "For Landlords, Home Buyers & Sellers",
       "For Domestic & Commercial Properties",
@@ -1636,6 +1707,11 @@ export const service = [
       "Order Online or Over the Phone",
       "Prefer to Talk, Call Us 0800 048 7474",
     ],
+    metaData: {
+      description:
+          "Nationwide Surveyors offer all types of Landlord Certifications &amp; reports for domestic and commercial properties at competitive prices with Nationwide Coverage.",
+      keywords: "Load Removal",
+    },
     certificate: "floor-plans",
     content: [
       {
@@ -1734,6 +1810,8 @@ export const service = [
     id: 15,
     title: "Home Buyer Reports and Surveys",
     bannerTitle: "Building Surveys",
+    bannerImage: images.deicr_banner_dasktop,
+    bannerImageMobile: images.deicr_banner_mobile,
     servicesDec: [
       "For Landlords, Home Buyers & Sellers",
       "For Domestic & Commercial Properties",
@@ -1742,6 +1820,11 @@ export const service = [
       "Order Online or Over the Phone",
       "Prefer to Talk, Call Us 0800 048 7474",
     ],
+    metaData: {
+      description:
+          "Nationwide Surveyors offer all types of Landlord Certifications &amp; reports for domestic and commercial properties at competitive prices with Nationwide Coverage.",
+      keywords: "Load Removal",
+    },
     certificate: "building-surveys",
     content: [
       {
@@ -1850,6 +1933,8 @@ export const service = [
     id: 16,
     title: "Legionella Risk Assessment",
     bannerTitle: "Legionella Risk Assessment",
+    bannerImage: images.deicr_banner_dasktop,
+    bannerImageMobile: images.deicr_banner_mobile,
     servicesDec: [
       "For Landlords, Home Buyers & Sellers",
       "For Domestic & Commercial Properties",
@@ -1858,6 +1943,11 @@ export const service = [
       "Order Online or Over the Phone",
       "Prefer to Talk, Call Us 0800 048 7474",
     ],
+    metaData: {
+      description:
+          "Nationwide Surveyors offer all types of Landlord Certifications &amp; reports for domestic and commercial properties at competitive prices with Nationwide Coverage.",
+      keywords: "Load Removal",
+    },
     certificate: "legionella-risk-assessment",
     content: [
       {
@@ -1955,6 +2045,8 @@ export const service = [
     id: 17,
     title: "SAP Assessment",
     bannerTitle: "SAP Assessments",
+    bannerImage: images.deicr_banner_dasktop,
+    bannerImageMobile: images.deicr_banner_mobile,
     servicesDec: [
       "For Landlords, Home Buyers & Sellers",
       "For Domestic & Commercial Properties",
@@ -1963,6 +2055,10 @@ export const service = [
       "Order Online or Over the Phone",
       "Prefer to Talk, Call Us 0800 048 7474",
     ],
+    metaData: {
+      description: "Nationwide Surveyors offer all types of Landlord Certifications &amp; reports for domestic and commercial properties at competitive prices with Nationwide Coverage.",
+      keywords: "Load Removal",
+    },
     certificate: "sap-assessments-2",
     content: [
       {

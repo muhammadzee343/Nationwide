@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import Image from 'next/image'
 import SelectProperty from "./selectProperty.component";
 
 function ServiceHeader(props: any) {
@@ -11,7 +12,13 @@ function ServiceHeader(props: any) {
         <div className="md:bg-white hidden h-full md:min-h-[500px] xl:min-h-[540px] md:block w-full pt-[40px]">
           <div className="w-full flex justify-between">
             <div className="w-full flex flex-col md:flex-row justify-between">
-              <div className="bg-eicr_bg w-[30%]  flex flex-col min-h-[456px] col_1"> </div>
+              <div className="bg-eicr_bg w-[30%]  flex flex-col min-h-[456px] col_1">
+                  <Image
+                      src={props.serviceBanner}
+                      alt={props.serviceTitle}
+                  />
+              </div>
+
               <div className="w-[40%] h-full pt-12 flex flex-col lg:ml-10 col_2">
                 <div className="border-b-4 border-lime w-[85px] rounded-full mb-3"></div>
                 <h1 className="text-[26px] md:text-[30px] font-bold leading-10 text-white lg:text-[20px] xl:text-[25px] xxl:text-[34px] lg:text-black mb-6 animate-fade-in-up">
