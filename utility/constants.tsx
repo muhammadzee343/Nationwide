@@ -1250,7 +1250,7 @@ export const service = [
       "Flexible Availability & Nationwide Service",
       "Get Instant Quote & Order Online",
       "Multi-Service Order Discount Available",
-      "Prefer to Talk, Call Us Free <a class=\"phone\" href=\"tel:08000487474\">0800 048 7474</a>",
+      "<strong>Prefer to Talk, Call Us Free <a class=\"phone text-lime\" href=\"tel:08000487474\">0800 048 7474</a></strong>",
     ],
     certificate: "electrical-installation-condition-report",
     content: [

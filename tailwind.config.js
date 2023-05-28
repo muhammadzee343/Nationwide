@@ -18,6 +18,7 @@ module.exports = {
     extend: {
       colors: {
         lime: "#c2cf10",
+        red: "#cc0000",
         blue: "#2d3c51",
         "blue-transparent": "#182333cc",
         "light-blue": "#213148",
@@ -51,7 +52,8 @@ module.exports = {
         hero:"url('../public/heroHomePage.png')",
         hero_EPC:"url('../public/energy-performance-certificate.png')",
         hero_gas_safety:"url('../public/gas-safety.png')",
-        hero_building_survey:"url('../public/building-survey.png')"
+        hero_building_survey:"url('../public/building-survey.png')",
+        eicr_bg: "url('../public/services/electrical-installation-condition-report.jpg')"
       },
 
       keyframes: {
