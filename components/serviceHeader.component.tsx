@@ -9,19 +9,19 @@ function ServiceHeader(props: any) {
   return (
     <>
       <div className="w-full xxl:max-w-[1440px] mx-auto bg-white lg:min-h-[530px] md:px-0 xl:px-[39px] bg-[#000000]/70 bg-cover bg-no-repeat relative md:min-h-[500px] xl:min-h-[540px] w-full">
-        <div className="md:bg-white hidden h-full md:min-h-[500px] xl:min-h-[540px] md:block w-full pt-[40px]">
+        <div className="md:bg-white hidden h-full md:min-h-[500px] xl:min-h-[540px] md:block w-full pt-[40px] lg:pr-[20px] lg:pl-[20px] md:pr-[20px] md:pl-[20px] xl:pl-[0px] xl:pr-[0px]">
           <div className="w-full flex justify-between">
             <div className="w-full flex flex-col md:flex-row justify-between">
-              <div className="bg-eicr_bg w-[30%]  flex flex-col min-h-[456px] col_1">
-                  <Image
+              <div className="md:hidden xl; lg:block bg-serviceBanner w-[33%] min-w-[444px]  flex flex-col min-h-[456px]">
+              <Image
                       src={props.serviceBanner}
                       alt={props.serviceTitle}
                   />
               </div>
 
-              <div className="w-[40%] h-full pt-12 flex flex-col lg:ml-10 col_2">
+              <div className="w-[37%] md:w-[70%] lg:w-[37%]  h-full pt-0 flex flex-col lg:ml-10 col_2 pr-5">
                 <div className="border-b-4 border-lime w-[85px] rounded-full mb-3"></div>
-                <h1 className="text-[26px] md:text-[30px] font-bold leading-10 text-white lg:text-[20px] xl:text-[25px] xxl:text-[34px] lg:text-black mb-6 animate-fade-in-up">
+                <h1 className="text-[26px] md:text-[30px] font-bold leading-10 lg:text-[24px] xl:text-[25px] xxl:text-[34px] lg:text-black mb-6 animate-fade-in-up">
                   {props.serviceTitle}
                   
                 </h1>
@@ -29,7 +29,7 @@ function ServiceHeader(props: any) {
                 {props?.servicesDec.map((ele: any, index) => {
                   return (
                     <div key={index} className="flex mx-2 gap-3 my-2 items-center">
-                      <span className="w-6 h-6 flex justify-center rounded-full bg-[#c2cf10]">
+                      <span className="w-[24px] min-w-[24px] h-[24px] flex justify-center rounded-full bg-[#c2cf10]">
                         <FontAwesomeIcon
                           className="w-2 fa-bold"
                           icon={faCheck}
@@ -52,7 +52,11 @@ function ServiceHeader(props: any) {
         </div>
       </div>
       <div className="md:bg-blue-transparent md:hidden block w-full pb-[32px] relative">
-      <div className="bg-eicr_bg w-[100%] bg-cover  flex flex-col min-h-[300px] relative">
+      <div className=" w-[100%] bg-cover  flex flex-col relative">
+      <Image
+                      src={props.serviceBannerMobile}
+                      alt={props.serviceTitle}
+                  />
       <h1 className="bg-[#182333]/80 text-[20px] md:text-[34px] md:text-[40px] md:bg-transparent font-bold  mb-[0px] text-center  bottom-[-0px]  w-full text-white py-[10px] px-[15px] absolute">
                 {props.serviceTitle}
               </h1>
@@ -66,7 +70,7 @@ function ServiceHeader(props: any) {
                 {props?.servicesDec.map((ele: any, index) => {
                   return (
                     <div key={index} className="flex gap-3 my-3 justify-start sm:text-[16px]">
-                    <span className="w-6 h-6 flex justify-center rounded-full bg-[#c2cf10]">
+                    <span className="w-[24px] min-w-[24px] h-[24px] flex justify-center rounded-full bg-[#c2cf10]">
                         <FontAwesomeIcon
                           className="w-2 fa-bold"
                           icon={faCheck}

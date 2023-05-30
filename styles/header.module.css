@@ -29,7 +29,11 @@
     @apply py-1
 }
 .megaMenuList > li{
-    @apply flex items-center text-sm cursor-pointer h-9  border-b border-b-[#00000008] text-[#666] hover:text-blue  hover:underline
+    @apply flex items-center text-sm h-9  border-b border-b-[#00000008] text-[#666]   
+}
+
+.megaMenuList > li a{
+    @apply hover:underline hover:text-blue
 }
 .activeLink{
     @apply text-lime
