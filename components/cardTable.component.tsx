@@ -116,10 +116,6 @@ function CardTable({ cart, getCart }: any) {
   const asyncFunctionDebounced = AwesomeDebouncePromise(updateOrder, 500);
 
   const changeInfo = (name: string, data: any, index: number, obj: string) => {
-    console.log(name);
-    console.log(obj);
-    console.log(index);
-    console.log(cart);
     cart[obj][index][0][name] = data;
     const orderIds = cart[obj][index].map((data) => data.id);
 
@@ -686,7 +682,6 @@ function KeyHolderInfo({
   updateOrder,
   obj,
 }: any) {
-  console.log(item);
   return (
     <div className="relative border-t border-t-[#182333] mt-3">
       <div className="py-1">
