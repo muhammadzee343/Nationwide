@@ -10,7 +10,8 @@ import {
   faHouse,
   faHome,
   faHouseChimney,
-  faHotel
+  faHotel,
+    faBuilding
 } from "@fortawesome/free-solid-svg-icons";
 export default function SelectProperty(sticky=false) {
 
@@ -61,7 +62,7 @@ export default function SelectProperty(sticky=false) {
                     {/*<Image src={Builiding} alt='home' className="h-7 w-7 mr-5"/>*/}
                     <FontAwesomeIcon
                         className="h-7 w-7 mr-5"
-                        icon={faHotel}
+                        icon={faBuilding}
                     />
                     Commercial Property
                   </label>
