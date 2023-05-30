@@ -5,7 +5,13 @@ import { SidebarContext } from "../context/sidebarContext";
 import Image from 'next/image'
 import Home from '../public/Home.png';
 import Builiding from '../public/Building.png'
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHouse,
+  faHome,
+  faHouseChimney,
+  faHotel
+} from "@fortawesome/free-solid-svg-icons";
 export default function SelectProperty(sticky=false) {
 
   const sticky_condition = sticky.sticky ? 'sticky top-14' : '';
@@ -42,11 +48,8 @@ export default function SelectProperty(sticky=false) {
                    hover:bg-lime"
                     onClick={() => displayDrawer("residential_property")}
                   >
-                    <Image src={Home} alt='home' className="h-8 w-8 mr-5"/>
-                    {/*<FontAwesomeIcon*/}
-                    {/*  className="w-8 text-black absolute left-[14px]"*/}
-                    {/*  icon={faHouse}*/}
-                    {/*/>*/}
+                    {/*<Image src={Home} alt='home' className="h-8 w-8 mr-5"/>*/}
+                    <FontAwesomeIcon className="h-8 w-8 mr-5" icon={faHouseChimney} />
                     Residential Property
                   </label>
 
@@ -55,11 +58,11 @@ export default function SelectProperty(sticky=false) {
                     text-[14px] xxl:text-[20px] text-black cursor-pointer mb-[20px] xl:mb-[37px] hover:bg-lime"
                     onClick={() => displayDrawer("commercial_property")}
                   >
-                    <Image src={Builiding} alt='home' className="h-7 w-7 mr-5"/>
-                    {/*<FontAwesomeIcon*/}
-                    {/*  className="w-[26px] ,w-3 text-black  absolute left-[14px]"*/}
-                    {/*  icon={faBuilding}*/}
-                    {/*/>*/}
+                    {/*<Image src={Builiding} alt='home' className="h-7 w-7 mr-5"/>*/}
+                    <FontAwesomeIcon
+                        className="h-7 w-7 mr-5"
+                        icon={faHotel}
+                    />
                     Commercial Property
                   </label>
                 </div>
