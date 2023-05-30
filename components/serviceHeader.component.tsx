@@ -6,18 +6,14 @@ import Image from 'next/image'
 import SelectProperty from "./selectProperty.component";
 
 function ServiceHeader(props: any) {
+    console.log(props.serviceBanner);
   return (
     <>
-      <div className="w-full xxl:max-w-[1440px] mx-auto bg-white lg:min-h-[530px] md:px-0 xl:px-[39px] bg-[#000000]/70 bg-cover bg-no-repeat relative md:min-h-[500px] xl:min-h-[540px] w-full">
+      <div className="w-full xxl:max-w-[1440px] mx-auto bg-white lg:min-h-[530px] md:px-0 xl:px-[39px] bg-cover bg-no-repeat relative md:min-h-[500px] xl:min-h-[540px] w-full">
         <div className="md:bg-white hidden h-full md:min-h-[500px] xl:min-h-[540px] md:block w-full pt-[40px] lg:pr-[20px] lg:pl-[20px] md:pr-[20px] md:pl-[20px] xl:pl-[0px] xl:pr-[0px]">
           <div className="w-full flex justify-between">
             <div className="w-full flex flex-col md:flex-row justify-between">
-              <div className="md:hidden xl; lg:block bg-serviceBanner w-[33%] min-w-[444px]  flex flex-col min-h-[456px]">
-              <Image
-                      src={props.serviceBanner}
-                      alt={props.serviceTitle}
-                  />
-              </div>
+              <div style={{'--image-url': `url(${props.serviceBanner.src})`}} className="md:hidden xl; lg:block w-[33%] min-w-[444px] flex flex-col min-h-[456px] bg-[image:var(--image-url)] bg-cover"></div>
 
               <div className="w-[37%] md:w-[70%] lg:w-[37%]  h-full pt-0 flex flex-col lg:ml-10 col_2 pr-5">
                 <div className="border-b-4 border-lime w-[85px] rounded-full mb-3"></div>
