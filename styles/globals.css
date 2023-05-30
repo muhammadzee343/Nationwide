@@ -108,7 +108,9 @@ input[type='radio']:checked{
 .add-service:hover{
  color: #2D3C51 !important;
 }
-
+.phone-red{
+  @apply text-red;
+}
 
 
 

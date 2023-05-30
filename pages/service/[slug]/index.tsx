@@ -84,7 +84,7 @@ function Service({ certificate }: any) {
 
   return (
     <>
-      {certificate[0]?.servicesDec && <ServiceHeader servicesDec={certificate[0]?.servicesDec} serviceTitle={certificate[0]?.bannerTitle} />}
+      {certificate[0]?.servicesDec && <ServiceHeader servicesDec={certificate[0]?.servicesDec} serviceTitle={certificate[0]?.bannerTitle} serviceBanner={certificate[0]?.bannerImage} serviceBannerMobile={certificate[0]?.bannerImageMobile}/>}
       <div className="w-full flex justify-center bg-white">
         <div className="w-full xxl:continer flex flex-col lg:flex-row">
           <Head>
@@ -101,8 +101,29 @@ function Service({ certificate }: any) {
             }
 
           </Head>
-          <div className="w-full py-10 lg:min-[970px] xl:min-w-[60%] xl:max-w-[60%] mx-auto xl:ml-[7%] ">
-            <div className=" px-5">
+          </div>
+          </div>
+          <div className="w-full pb-10 lg:min-[970px] xl:min-w-[100%] xl:max-w-[100%] ">
+          <BoxBackgroundComponent className='h-[650px] pt-1'
+                                greyStyle='w-[40%] h-[50%] md:w-[40%] hidden lg:block'
+                                limeStyle='right-0 bottom-0 w-[60%] h-[40%] md:w-[60%] hidden lg:block'
+        >
+            <div className='w-full py-4 mt-3 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1190px] mx-auto px-3'>
+                <div className='px-2 ml-4 md:ml-0'>
+                    <div className='border-[2px] w-[70px] rounded-full mt-2 mb-1 md:w-28 border-lime'/>
+                    <h2 className='text-[18px] font-semibold md:text-[30px] mb-4'>Services Bundle Offers</h2>
+                </div>
+                <PricingCarouselComponent />
+                <Pricing />
+            </div>
+        </BoxBackgroundComponent>
+
+            
+            </div>
+            <div className="w-full flex justify-center bg-white">
+        <div className="w-full xxl:continer flex flex-col lg:flex-row">
+          <div className="w-full py-5 lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto ">
+            <div className="px-5">
               <div className="border-b-4 border-lime w-[105px] rounded-full mb-3"></div>
               <h2 className="text-lime text-4xl lg:mb-5">
                 Services
@@ -128,19 +149,8 @@ function Service({ certificate }: any) {
           </div>
         </div>
       </div>
-        <BoxBackgroundComponent className='h-[650px] pt-1'
-                                greyStyle='w-[40%] h-[50%] md:w-[40%] hidden lg:block'
-                                limeStyle='right-0 bottom-0 w-[60%] h-[40%] md:w-[60%] hidden lg:block'
-        >
-            <div className='w-full py-4 mt-3 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1190px] mx-auto'>
-                <div className='px-2 ml-4 md:ml-0'>
-                    <div className='border-[2px] w-[70px] rounded-full mt-2 mb-1 md:w-28 border-lime'/>
-                    <h2 className='text-[18px] font-semibold md:text-[30px] mb-4'>Services Bundle Offers</h2>
-                </div>
-                <PricingCarouselComponent />
-                <Pricing />
-            </div>
-        </BoxBackgroundComponent>
+     
+
         <div className="w-full py-5 lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto ">
             <section>
                 <div className="w-full flex flex-col items-center justify-center px-3">
