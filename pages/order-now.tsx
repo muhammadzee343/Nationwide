@@ -803,8 +803,9 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.BASE_URL_DEV}/services/list_services`);
   const data = await res.json();
+  console.log({data});
   data.services = data.services.filter(
-      (data) => data.in_stock === true
+      (data) => data.show_on_order_now_and_sidebar === true
   );
   const commercialProperties = data.services.filter(
     (data) => data.category === "commercial_property"

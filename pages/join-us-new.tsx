@@ -100,7 +100,7 @@ function ContactUsNew({ Services }: any) {
   const services = useMemo<JSX.Element[]>(() => {
     const elements: JSX.Element[] = [];
     const services = Services.filter(
-        (data) => data.in_stock === true
+        (data) => data.show_on_join_us === true
     ).filter(
         (data) => data.category === "residential_property"
     );
