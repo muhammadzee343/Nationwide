@@ -27,7 +27,7 @@ function ServiceHeader(props: any) {
                 const icon = isLastItem ? faPhone : faCheck;
 
                 return (
-                  <div key={index} className="flex mx-2 gap-3 my-2 items-center">
+                  <div key={index} className="flex mx-2 gap-2.5 my-2.5 items-center">
                     <span className="w-[24px] min-w-[24px] h-[24px] flex justify-center rounded-full bg-[#c2cf10]">
                       <FontAwesomeIcon
                         className="w-3 fa-bold"
@@ -36,7 +36,7 @@ function ServiceHeader(props: any) {
                       ></FontAwesomeIcon>
                     </span>
                     <p
-                      className="text-base lg:text-[17px] font-semibold"
+                      className="text-base lg:text-[16px] font-semibold"
                       dangerouslySetInnerHTML={{
                         __html: `${ele}`,
                       }}

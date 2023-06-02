@@ -14,7 +14,7 @@ function CarouselComponent({ list, component, className = "" }: any) {
       rows.push(
         <SwiperSlide
           key={index}
-          className={`${Styles.customSlide} xl:flex xl:justify-center max-w-[300px]`}
+          className={`${Styles.customSlide} xl:flex xl:justify-center max-w-[300px] max-h-[425px]`}
         >
           {React.createElement(component, {
             title: ele?.title,

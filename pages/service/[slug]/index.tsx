@@ -131,16 +131,19 @@ function Service({ certificate }: any) {
               {certificate[0]?.content?.map((item: any, index: any) => {
                 return (
                   <>
+                    
                     <div
                       className={`flex chuu ${
                         index % 2 != 0
                           ? "flex-col-reverse lg:flex-row"
                           : "flex-col-reverse lg:flex-row-reverse"
-                      } pb-[60px] gap-6`}
+                      }  gap-6`}
                       key={index}
                     >
                       <ServiceInfo content={item} className={item.className} />
+                      
                     </div>
+                    <div className=" h-[0.05em] w-full my-[40px] bg-[#dfdfdf]"></div>
 
                   </>
                 );
@@ -176,7 +179,7 @@ function Service({ certificate }: any) {
                                 );
                             })}
                         </div>
-                        <div className="flex mt-10  md:hidden w-full h-[300px] justify-center xl:flex-nowrap gap-1 lg:gap-7">
+                        <div className="flex mt-10  md:hidden w-full  justify-center xl:flex-nowrap gap-1 lg:gap-7">
                             <CarouselComponent list={howItWorks} component={HowItWorks} className='h-420px '/>
                         </div>
                     </div>

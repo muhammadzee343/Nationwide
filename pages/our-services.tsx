@@ -199,7 +199,7 @@ function OurServices(props: any) {
                               </div>
                           </div>
                           <div className="w-full self-center xl:w-[44%]">
-                              <p className="text-black text-[15px] leading-[27px]">
+                              <p className="text-black text-[16px] leading-[27px]">
                                   For those customers needing to make regular orders you can get
                                   direct access to our bespoke order management system for live
                                   updates.We offer a fully national service and can provide
