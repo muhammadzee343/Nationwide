@@ -129,7 +129,7 @@ const DrawerComponent = ({}: any) => {
     );
     const data = await res.json();
     data.services = data.services.filter(
-        (data) => data.in_stock === true
+        (data) => data.show_on_order_now_and_sidebar === true
     );
     setServices(data.services);
   };

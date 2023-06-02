@@ -436,10 +436,12 @@ function GeneralEnquiries({ Services }: any) {
 export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.BASE_URL_DEV}/services/list_services`);
   const data = await res.json();
-
+  const services = data.services.filter(
+      (data) => data.show_on_contact_us === true
+  )
   return {
     props: {
-      Services: data.services,
+      Services: services,
     },
   };
 };
