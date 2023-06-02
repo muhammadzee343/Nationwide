@@ -215,11 +215,11 @@ function Service({ certificate }: any) {
                                     <BoxBackgroundComponent
                                         className='h-[550px] pt-5 sticky top-20'
                                         greyStyle='-right-3 lg:-right-5 top-10 w-[60%] h-[40%] md:w-[40%] lg:h-[45%]'
-                                        limeStyle='-left-3 lg:-left-5 bottom-36 w-[60%] h-[40%] md:w-[40%] xl:bottom-28'
+                                        limeStyle='-left-3 lg:-left-5 bottom-36 w-[60%] h-[40%] md:w-[40%] xl:bottom-0'
                                     >
                                         <div className="rounded-lg p-5 border-lime border-t-8 bg-white drop-shadow-lg self-center">
                                             <h2 className="text-black text-xl lg:text-2xl font-medium ">
-                                                Ask A Different Questions
+                                            Got a Different Question?
                                             </h2>
                                             <p className="text-black text-[15px] leading-[27px] mt-2 mb-6">
                                                 Ask your query by filling this form.

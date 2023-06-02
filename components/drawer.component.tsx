@@ -519,7 +519,7 @@ const DrawerComponent = ({}: any) => {
       >
         <div
           className="sticky top-[8px] left-[29px] z-[900]
-         w-full flex justify-end items-center cursor-pointer"
+         w-full flex justify-end items-center cursor-pointer  mb-[-27px]"
         >
           <span
             className="sticky top-[10px] left-[29px] z-[900] bg-[#ff0000] rounded-full

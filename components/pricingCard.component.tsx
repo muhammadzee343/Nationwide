@@ -15,13 +15,13 @@ function PricingCard({
   return (
     <>
       <div
-        className={`w-[284px] mt-3 lg:mt-0 mx-2 p-0  bg-white  drop-shadow-md text-[15px] relative ${styles.specialBUndle}`}
+        className={`w-[284px] mt-3 lg:mt-0 mx-2 p-0  bg-white  drop-shadow-md text-[15px] relative bundle_table  ${styles.specialBUndle}`}
       >
         <div className="w-full py-8 shadow-lg bg-dark-blue justify-center items-center">
           {content?.bundleName === "Service Bundle Three" && (
-              <div className="flex flex-row text-dark-blue bg-lime absolute -top-3 left-[30%] justify-center items-center w-[40%] p-1.5 rounded ">
+              <div className="flex flex-row text-dark-blue bg-lime absolute top-[-14px] left-[0%] right-[0%] mx-auto justify-center items-center w-[50%] p-1.5 rounded ">
                 <FontAwesomeIcon className="w-4 mr-2" icon={faStar} />
-                <p className='text-[9px] lg:text-[7px] xl:text-[9px]'>MOST POPULAR</p>
+                <p className='text-[12px] lg:text-[12px] xl:text-[12px] font-semibold'>MOST POPULAR</p>
               </div>
           )}
           <h3 className='text-xl uppercase text-center text-white '>{content?.bundleName}</h3>

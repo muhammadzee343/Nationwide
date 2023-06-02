@@ -59,8 +59,92 @@ export default function Footer() {
               <p className="md:w-[248px] text-[#a3a3a6] text-[15px] my-10 font-opensans">
               Nationwide Surveyors is a trading name of Nationwide Services-UK Limited, Company No: 12010871 Kemp House, 160 City Road London, EC1V 2NX
               </p>
-              <div className="border-lime border-b-2 w-8 mb-2"></div>
-              <h3 className="mb-6 text-lg font-semibold text-gray-900 text-white font-opensans">
+              
+              
+            </div>
+            <div className="lg:w-9/12 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6 mt-20 md:mt-0 lg:grid-cols-3 ">
+              <div className="pl-[15px] pr-[15px]">
+                <div className="border-lime border-b-2 rounded-full w-8 mb-2 "></div>
+                <h3 className="mb-6 text-lg font-semibold text-white ">
+                Useful Links
+                </h3>
+
+                <ul className="text-gray-600 dark:text-gray-400">
+                  {UsefulLinkes.map((items, index) => {
+                    return (
+                      <li className="pb-1.5" key={index}>
+                        <Link
+                          href={`/${items?.pageLink}`}
+                          className=" text-white hover:text-lime text-sm leading-7"
+                        >
+                          {items?.title}
+                        </Link>
+                      </li>
+                    );
+                  })}
+
+                </ul>
+              </div>
+              <div className="pl-[15px] pr-[15px]">
+                <div className="border-lime border-b-2 rounded-full w-8 mb-2"></div>
+                <h3 className="mb-6 text-lg font-semibold text-gray-900 text-white">
+                Other Links
+                </h3>
+
+                <ul className="text-gray-600 dark:text-gray-400">
+                  {OtherLinkes.map((items, index) => {
+                    return (
+                      <li className="pb-1.5" key={index}>
+                        <Link
+                          href={`/${items?.pageLink}`}
+                          className=" text-white hover:text-lime text-sm leading-7"
+                        >
+                          {items?.title}
+                        </Link>
+                      </li>
+                      
+                    );
+                  })}
+                  </ul>
+                <ul className="text-gray-600 dark:text-gray-400">
+                <li className="mt-5">
+                    <button className="w-[90%] transition-colors text-sm bg-lime p-3 hover:text-black hover:bg-white hover:font-normal  ">
+                      SEE ALL OUR SERVICES
+                    </button>
+                  </li>
+                  </ul>
+              </div>
+
+              <div className="pl-[15px] pr-[15px]">
+                <div className="border-lime border-b-2 rounded-full w-8 mb-2"></div>
+                <h3 className="mb-3 text-lg font-semibold text-gray-900 text-white ">
+                  Prefer to Talk ?<br />
+                  Please Call Us Free
+                </h3>
+
+                <ul className="text-gray-600 text-gray-400">
+                  <li className="mb-3">
+                    <h2 className="text-lime text-[29px] font-semibold mb-2">
+                      0800 048 7474
+                    </h2>
+                  </li>
+
+                  
+                </ul>
+
+                
+                  <ul className="text-gray-600 dark:text-gray-400">
+                  <li className="OtherLinkes mb-5">
+                    <Link
+                      href="mailto:info@nationwidesurveyors.org.uk"
+                      className="text-white hover:text-lime text-[15px]"
+                    >
+                      info@nationwidesurveyors.org.uk
+                    </Link>
+                  </li>
+                  </ul>
+                  <div className="border-lime border-b-2 w-8 mb-2"></div>
+                  <h3 className="mb-6 text-lg font-semibold text-gray-900 text-white font-opensans">
                 Opening Hours
               </h3>
               <ul className="md:pr-5">
@@ -86,157 +170,7 @@ export default function Footer() {
                 </li>
 
               </ul>
-            </div>
-            <div className="lg:w-9/12 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6 mt-20 md:mt-0 lg:grid-cols-3 ">
-              <div className="pl-[15px] pr-[15px]">
-                <div className="border-lime border-b-2 rounded-full w-8 mb-2 "></div>
-                <h3 className="mb-6 text-lg font-semibold text-white ">
-                Our Services
-                </h3>
-
-                <ul className="text-gray-600 text-gray-400">
-
-                  <li className="py-2">
-                    <Link
-                        href="/service/domestic-epc"
-                        className="text-white hover:text-lime text-[15px]"
-                    >
-                      Energy Performance Certificate
-                    </Link>
-                  </li>
-
-                  <li className="py-2">
-                    <Link
-                        href="/service/commercial-epc"
-                        className="text-white hover:text-lime text-[15px]"
-                    >
-                      Commercial EPC
-                    </Link>
-                  </li>
-
-                  <li className="py-2">
-                    <Link
-                        href="/service/gas-safety-certificate"
-                        className="text-white hover:text-lime text-[15px]"
-                    >
-                      Landlord Gas Safety Certificate (CP12)
-                    </Link>
-                  </li>
-                  <li className="py-2">
-                    <Link
-                        href="/service/boiler-service"
-                        className="text-white hover:text-lime text-[15px]"
-                    >
-                      Boiler Service
-                    </Link>
-                  </li>
-                  <li className="py-2">
-                    <Link
-                        href="/electrical-portable-appliance-test"
-                        className="text-white hover:text-lime text-[15px]"
-                    >
-                      Electrical Portable Appliance Tests
-                    </Link>
-                  </li>
-                  <li className="py-2">
-                    <Link
-                        href="/service/electrical-installation-condition-report"
-                        className="text-white hover:text-lime text-[15px]"
-                    >
-                      Electrical Installation Condition Report (EICR)
-                    </Link>
-                  </li>
-                  <li className="py-2">
-                    <Link
-                        href="/service/floor-plans"
-                        className="text-white hover:text-lime text-[15px]"
-                    >
-                     Floor Plans
-                    </Link>
-                  </li>
-                  <li className="py-2">
-                    <Link
-                        href="/service/building-surveys"
-                        className="text-white hover:text-lime text-[15px]"
-                    >
-                     Building Surveys
-                    </Link>
-                  </li>
-
-                  
-
-                </ul>
-              </div>
-              <div className="pl-[15px] pr-[15px]">
-                <div className="border-lime border-b-2 rounded-full w-8 mb-2"></div>
-                <h3 className="mb-6 text-lg font-semibold text-gray-900 text-white">
-                Useful Links
-                </h3>
-
-                <ul className="text-gray-600 dark:text-gray-400">
-                  {UsefulLinkes.map((items, index) => {
-                    return (
-                      <li className="pb-1.5" key={index}>
-                        <Link
-                          href={`/${items?.pageLink}`}
-                          className=" text-white hover:text-lime text-sm leading-7"
-                        >
-                          {items?.title}
-                        </Link>
-                      </li>
-                    );
-                  })}
-
-                </ul>
-                <ul className="text-gray-600 dark:text-gray-400">
-                <li className="mt-5">
-                    <button className="w-[90%] transition-colors text-sm bg-lime p-3 hover:text-black hover:bg-white hover:font-normal  ">
-                      SEE ALL OUR SERVICES
-                    </button>
-                  </li>
-                  </ul>
-              </div>
-
-              <div className="pl-[15px] pr-[15px]">
-                <div className="border-lime border-b-2 rounded-full w-8 mb-2"></div>
-                <h3 className="mb-6 text-lg font-semibold text-gray-900 text-white ">
-                  Prefer to Talk ?<br />
-                  Please Call Us Free
-                </h3>
-
-                <ul className="text-gray-600 text-gray-400">
-                  <li className="mb-5">
-                    <h2 className="text-lime text-[29px] font-semibold mb-2">
-                      0800 048 7474
-                    </h2>
-                  </li>
-
-                  
-                </ul>
-
-                <ul className="text-gray-600 dark:text-gray-400">
-                  {OtherLinkes.map((items, index) => {
-                    return (
-                      <li className="pb-1.5" key={index}>
-                        <Link
-                          href={`/${items?.pageLink}`}
-                          className=" text-white hover:text-lime text-sm leading-7"
-                        >
-                          {items?.title}
-                        </Link>
-                      </li>
-                      
-                    );
-                  })}
-                  <li className="OtherLinkes">
-                    <Link
-                      href="mailto:info@nationwidesurveyors.org.uk"
-                      className="text-white hover:text-lime text-[15px]"
-                    >
-                      info@nationwidesurveyors.org.uk
-                    </Link>
-                  </li>
-                </ul>
+                
               </div>
             </div>
           </div>

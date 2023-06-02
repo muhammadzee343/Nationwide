@@ -234,7 +234,7 @@ function CardTable({ cart, getCart }: any) {
   let i = 1;
   return (
     <div>
-      <header className="flex justify-between items-center bg-dark-blue h-[45px] mb-[15px]">
+      <header className="flex justify-between items-center bg-dark-blue h-[46px] mb-[15px]">
         <h3 className="font-base font-semibold text-white px-[18px] ">
           Property & Services
         </h3>
@@ -247,7 +247,7 @@ function CardTable({ cart, getCart }: any) {
         i++;
         return (
           <div
-            className="rounded-sm my-2 py-3 shadow-md border-lime border-t-[2px]"
+            className="rounded-sm my-5 py-3 shadow-md border-lime border-t-[3px]"
             key={cartNo}
           >
             <div className="w-full flex px-4 md:px-0 py-2 justify-between items-center">
@@ -285,7 +285,7 @@ function CardTable({ cart, getCart }: any) {
             </div>
 
             <div className="w-full">
-              <ul className="w-full px-4">
+              <ul className="w-full px-4 mt-2.5">
                 {cartItemData?.map((e, index) => {
                   let price = parseFloat(e?.total_amount);
                   return (
@@ -293,7 +293,7 @@ function CardTable({ cart, getCart }: any) {
                       key={index}
                       className="py-1.5 flex justify-between items-center border-b border-[#e5e7eb]"
                     >
-                      <div className="flex items-center mt-2.5 w-[75%]">
+                      <div className="flex items-center  w-[75%]">
                         <a>
                           {" "}
                           <FontAwesomeIcon
@@ -310,7 +310,7 @@ function CardTable({ cart, getCart }: any) {
                           />
                         </a>
 
-                        <p className="text-[14px] md:text-[17px] ml-4 text-dark-blue ">
+                        <p className="text-[14px] md:text-[14px] font-semibold ml-4 text-dark-blue ">
                           {e?.name}
                         </p>
                       </div>
@@ -337,7 +337,7 @@ function CardTable({ cart, getCart }: any) {
                 >
                   <div className="flex justify-between items-center">
                     <FontAwesomeIcon
-                      className="ml-2 w-5 mr-3"
+                      className="ml-10 w-5 mr-3"
                       icon={faInfoCircle}
                     />
                     <p className="text-dark-blue text-[18px] text-center flex">
@@ -540,7 +540,7 @@ function CardTable({ cart, getCart }: any) {
                 >
                   <div className="flex justify-between items-center">
                     <FontAwesomeIcon
-                      className="ml-2 w-5 mr-3"
+                      className="ml-10 w-5 mr-3"
                       icon={faInfoCircle}
                     />
                     <p className="text-dark-blue text-[18px] text-center flex">
