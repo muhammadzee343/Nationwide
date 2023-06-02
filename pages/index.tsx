@@ -147,10 +147,10 @@ export default function Home() {
         <div className="relative w-full flex flex-row justify-center">
           <div className="flex flex-col justify-between items-center py-5 mb-8 lg:w-[2%] xxl:w-[1%] hidden md:block">
             <div className="w-[1px] items-center justify-between py-10 flex flex-col bg-dark-blue h-full">
-              <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
-              <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
-              <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
-              <div className="bg-lime rounded-full w-[5px] h-[8%]"></div>
+              <div className="bg-lime rounded-full w-[5px] h-[8%] relative top-[-42px]"></div>
+              <div className="bg-lime rounded-full w-[5px] h-[8%] relative top-[-27px]"></div>
+              <div className="bg-lime rounded-full w-[5px] h-[8%] relative top-[-90px]"></div>
+              <div className="bg-lime rounded-full w-[5px] h-[8%] relative top-[-180px]"></div>
             </div>
           </div>
           <div className="flex justify-center lg:justify-start xl:justify-center content-container-homepage lg:w-[93%] xxl:w-[95%]">

@@ -216,7 +216,7 @@ function Service({ certificate }: any) {
                                 </div>
                                 <div className="w-full  md:w-[40%]">
                                     <BoxBackgroundComponent
-                                        className='h-[550px] pt-5 sticky top-20'
+                                        className='h-[550px] pt-5 sticky top-[100px]'
                                         greyStyle='-right-3 lg:-right-5 top-10 w-[60%] h-[40%] md:w-[40%] lg:h-[45%]'
                                         limeStyle='-left-3 lg:-left-5 bottom-36 w-[60%] h-[40%] md:w-[40%] xl:bottom-0'
                                     >
