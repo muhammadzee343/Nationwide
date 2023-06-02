@@ -9,7 +9,7 @@ function OurServicesComponent({ list, title, image }: any) {
     <div className='shadow-lg md:w-[280px] lg:hover:bg-dark-blue transition-all ease-in duration-300 lg:w-[220px] min-h-[410px] xl:w-[270px] lg:max-w-[300px] lg:h-full rounded overflow-hidden'>
     <Image src={image} alt={title} className='h-[170px] lg:h-[180px] w-full'/>
     <div
-      className="h-full bg-white text-black lg:hover:bg-dark-blue lg:hover:text-white leading-4 border-t-4 border-lime
+      className="h-full bg-white text-black lg:hover:bg-dark-blue lg:hover:text-white leading-4 border-t-3 border-lime
         hover: transition-all ease-in duration-300 p-4 flex flex-col"
     >
       <span className="uppercase text-[15px] font-bold mb-[10px] pb-[10px]  border border-transparent ">

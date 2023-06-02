@@ -1,23 +1,19 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faPhone } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import Image from 'next/image'
 import SelectProperty from "./selectProperty.component";
 
 function ServiceHeader(props: any) {
+    console.log(props.serviceBanner);
   return (
     <>
-      <div className="w-full xxl:max-w-[1440px] mx-auto bg-white lg:min-h-[530px] md:px-0 xl:px-[39px] bg-[#000000]/70 bg-cover bg-no-repeat relative md:min-h-[500px] xl:min-h-[540px] w-full">
-        <div className="md:bg-white hidden h-full md:min-h-[500px] xl:min-h-[540px] md:block w-full pt-[40px] lg:pr-[20px] lg:pl-[20px] md:pr-[20px] md:pl-[20px] xl:pl-[0px] xl:pr-[0px]">
+      <div className="w-full xxl:max-w-[1440px] mx-auto bg-white  md:px-0 xl:px-[39px] bg-cover bg-no-repeat relativew-full">
+        <div className="md:bg-white hidden h-full  md:block w-full pt-[40px] pb-[40px] lg:pr-[20px] lg:pl-[20px] md:pr-[20px] md:pl-[20px] xl:pl-[0px] xl:pr-[0px]">
           <div className="w-full flex justify-between">
             <div className="w-full flex flex-col md:flex-row justify-between">
-              <div className="md:hidden xl; lg:block bg-serviceBanner w-[33%] min-w-[444px]  flex flex-col min-h-[456px]">
-              <Image
-                      src={props.serviceBanner}
-                      alt={props.serviceTitle}
-                  />
-              </div>
+              <div style={{'--image-url': `url(${props.serviceBanner.src})`}} className="md:hidden xl; lg:block w-[33%] min-w-[444px] flex flex-col min-h-[416px] bg-[image:var(--image-url)] bg-cover"></div>
 
               <div className="w-[37%] md:w-[70%] lg:w-[37%]  h-full pt-0 flex flex-col lg:ml-10 col_2 pr-5">
                 <div className="border-b-4 border-lime w-[85px] rounded-full mb-3"></div>
@@ -27,21 +23,28 @@ function ServiceHeader(props: any) {
                 </h1>
 
                 {props?.servicesDec.map((ele: any, index) => {
-                  return (
-                    <div key={index} className="flex mx-2 gap-3 my-2 items-center">
-                      <span className="w-[24px] min-w-[24px] h-[24px] flex justify-center rounded-full bg-[#c2cf10]">
-                        <FontAwesomeIcon
-                          className="w-2 fa-bold"
-                          icon={faCheck}
-                        ></FontAwesomeIcon>
-                      </span>
-                      <p className="text-base lg:text-[17px] font-semibold"dangerouslySetInnerHTML={{
+                const isLastItem = index === props?.servicesDec.length - 1;
+                const icon = isLastItem ? faPhone : faCheck;
+
+                return (
+                  <div key={index} className="flex mx-2 gap-3 my-2 items-center">
+                    <span className="w-[24px] min-w-[24px] h-[24px] flex justify-center rounded-full bg-[#c2cf10]">
+                      <FontAwesomeIcon
+                        className="w-3 fa-bold"
+                        icon={icon}
+
+                      ></FontAwesomeIcon>
+                    </span>
+                    <p
+                      className="text-base lg:text-[17px] font-semibold"
+                      dangerouslySetInnerHTML={{
                         __html: `${ele}`,
-                      }}>
-                      </p>
-                    </div>
-                  );
-                })}
+                      }}
+                    ></p>
+                  </div>
+                );
+              })}
+
               </div>
               <div className="w-[30%] w-[95%] md:w-[45%] lg:w-[40.7%] xl:w-[30%] h-max col_3">
                 <SelectProperty
@@ -68,12 +71,14 @@ function ServiceHeader(props: any) {
               
               <div className="w-full">
                 {props?.servicesDec.map((ele: any, index) => {
+                  const isLastItem = index === props?.servicesDec.length - 1;
+                  const icon = isLastItem ? faPhone : faCheck;
                   return (
                     <div key={index} className="flex gap-3 my-3 justify-start sm:text-[16px]">
                     <span className="w-[24px] min-w-[24px] h-[24px] flex justify-center rounded-full bg-[#c2cf10]">
                         <FontAwesomeIcon
-                          className="w-2 fa-bold"
-                          icon={faCheck}
+                          className="w-3 fa-bold"
+                          icon={icon}
                         ></FontAwesomeIcon>
                       </span>
                       <p className="text-base font-semibold " dangerouslySetInnerHTML={{

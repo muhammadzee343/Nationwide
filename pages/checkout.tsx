@@ -427,7 +427,7 @@ function Checkout(props: any) {
         </div>
 
         <div className="w-full flex flex-wrap justify-center items-start sm:gap-x-22">
-          {/*<CheckoutStepper/>*/}
+          <CheckoutStepper/>
           <div className="w-full lg:w-[60%] flex flex-col justify-center items-center pt-[5px] pb-[25px] px-2">
             <div className="w-full my-3">
               {cart?.shopping_cart_products.length ||
@@ -457,6 +457,7 @@ function Checkout(props: any) {
               >
                 <FontAwesomeIcon
                   icon={faPlus}
+                  
                   className="text-black h-4 mr-5 hover: md:h-5 lg:h-5"
                 />
               </ButtonComponent>
@@ -600,12 +601,13 @@ function OrderSummary({ subTotal, discount }: any) {
         discount > 0 && "mt-6"
       }`}
     >
-      <header className="flex justify-between items-center bg-dark-blue h-[46px] mb-[15px]">
+      <header className="flex justify-between items-center bg-dark-blue h-[46px]">
         <h3 className=" font-base font-semibold text-white px-[25px] ">
           Payment summary
         </h3>
       </header>
-      <div className="flex flex-col border-lime border-t-4 px-2 py-6 md:p-4 xl:p-4 w-full bg-white shadow-md space-y-6">
+      <div className="pb-[15px] bg-white"></div>
+      <div className="flex flex-col border-lime border-t-[3px] px-2 py-6 md:p-4 xl:p-4 w-full bg-white shadow-md space-y-6 mt-[0px!important]">
         <div className="flex justify-center items-center w-full space-y-4 flex-col border-[#9badad] border-b pb-4">
           <div className="flex justify-between w-full">
             <p className="text-base dark:text-white leading-4 text-gray-800">
