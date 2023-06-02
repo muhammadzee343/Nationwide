@@ -12,7 +12,7 @@ export default function HowItWorks({
 
     <div
       className={`relative text-center bg-lime flex flex-col justify-center border-b-2 border-black rounded-sm 
-          mt-8 md:mt-0 shadow-xl min-h-[280px] md:min-h-[325px] lg:min-h-[260px] xl:min-h-[230px] md:max-w-[240px] lg:max-w-[310px]
+          mt-8 md:mt-0 shadow-xl min-h-[330px] md:min-h-[380px] lg:min-h-[345px] xl:min-h-[305px] md:max-w-[240px] lg:max-w-[310px]
           xl:max-w-[370px]`}
     >
       <div className='flex items-center justify-center drop-shadow-lg w-[80px] h-[80px] lg:w-[93px] lg:h-[93px] rounded-full bg-white absolute self-center -top-12'>
@@ -25,7 +25,7 @@ export default function HowItWorks({
       </h2>
       <p
         className={`${
-          type === "service" ? "text-[13px]" : "text-[13px]"
+          type === "service" ? "text-[16px]" : "text-[16px]"
         } text-black px-[10%] h-[60%]`}
       >
         {paragraph}

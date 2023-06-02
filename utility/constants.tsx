@@ -1425,7 +1425,7 @@ export const service = [
         content:
             "<p>From April-2021, It’s a legal requirement for landlords to provide copy of EICR to their existing or new tenants.</p> <br/>" +
             "<p>As a landlord, you’re responsible for the safety of the electrics throughout the property – this includes the installation itself and any electrical appliances you’ve provided. You’ll need to make sure these are safe when a new tenant moves in and maintained for the duration of their tenancy.</p> <br/>" +
-            "<p>But if you don’t, you could face fines of up to £30,000 and your insurance could be invalidated. Banning orders may also be brought for serious or repeated&nbsp;offences.</p> <br/>",
+            "<p>But if you don’t, you could face fines of up to £30,000 and your insurance could be invalidated. Banning orders may also be brought for serious or repeated&nbsp;offences.</p>",
       },
       {
         className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -1436,7 +1436,7 @@ export const service = [
 
             "<p>EICRs may be required for a variety of purposes including buying, selling or renewal of lease/rental agreement and may have been requested by your solicitors.</p><br/>" +
             "<p>Building Surveyors may recommend their clients to obtain an upto date EICR in thier Building Survey or HomeBuyer Report, based on their overall observation of the state of electrical system in a property.</p><br/>" +
-            "<p>Homeowners are recommended to have it carried out at-lease once every 10 years to ensure electrical safety within their property.</p><br/>",
+            "<p>Homeowners are recommended to have it carried out at-lease once every 10 years to ensure electrical safety within their property.</p>",
       },
       {
         className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -1445,7 +1445,7 @@ export const service = [
         heading: "How Do I Book an EICR - Electrical Safety Certificate?",
         content:
             "<p>We’re here to help keep your property safe for you and your tenants. Order your EICR-Electrical Safety Certificate online or over the phone.</p><br/>" +
-            "<ul class=\"list-disc list-outside md:list-inside\">" +
+            "<ul class=\"list-disc list-inside\">" +
             "<li>If you are a landlord, simply provide us contact details of your tenants or property agent and we can coordinate directly with them to organise suitable appointment(s) according their earliest availability and keep you updated by automated emails.</li>" +
             "<li>If you are buyer or seller, simply provide us with vendor’s or property agent’s contact details and leave it to us to coordinate and book suitable appointment(s) as per vendor’s/agent’s earliest availability.</li>" +
             "<li>All the report(s)/certificate(s) are then shared only with yourself digitally via your email.</li>" +

@@ -62,8 +62,8 @@ export default function Footer() {
               
               
             </div>
-            <div className="lg:w-9/12 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6 mt-20 md:mt-0 lg:grid-cols-3 ">
-              <div className="pl-[15px] pr-[15px]">
+            <div className="lg:w-9/12 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-3 sm:gap-6 mt-20 md:mt-0 lg:grid-cols-3 ">
+              <div className="mb-6 md:mb-0 pl-[15px] pr-[15px]">
                 <div className="border-lime border-b-2 rounded-full w-8 mb-2 "></div>
                 <h3 className="mb-6 text-lg font-semibold text-white ">
                 Useful Links
@@ -85,7 +85,7 @@ export default function Footer() {
 
                 </ul>
               </div>
-              <div className="pl-[15px] pr-[15px]">
+              <div className="mb-6 md:mb-0 pl-[15px] pr-[15px]">
                 <div className="border-lime border-b-2 rounded-full w-8 mb-2"></div>
                 <h3 className="mb-6 text-lg font-semibold text-gray-900 text-white">
                 Other Links
@@ -115,7 +115,7 @@ export default function Footer() {
                   </ul>
               </div>
 
-              <div className="pl-[15px] pr-[15px]">
+              <div className="mb-6 md:mb-0 pl-[15px] pr-[15px]">
                 <div className="border-lime border-b-2 rounded-full w-8 mb-2"></div>
                 <h3 className="mb-3 text-lg font-semibold text-gray-900 text-white ">
                   Prefer to Talk ?<br />

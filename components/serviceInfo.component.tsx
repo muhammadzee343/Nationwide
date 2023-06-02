@@ -24,7 +24,7 @@ function ServiceInfo({ className, content, index }: any) {
         </BoxBackgroundComponent>
       )}
       <div
-        className={`w-full ${content.image ? "lg:w-[58%]" : "lg:w-12/12"} pb-4`}
+        className={`w-full ${content.image ? "lg:w-[58%]" : "lg:w-12/12"} `}
       >
         {content.type !== "Service" && (
           <>
@@ -63,7 +63,7 @@ function ServiceInfo({ className, content, index }: any) {
               {content.heading}
             </h3>
             <div
-              className="text-[#1A1A1A] text-[15px] text-justify"
+              className="text-[#1A1A1A] text-[16px] text-justify"
               dangerouslySetInnerHTML={{
                 __html: `${cleanContent}`,
               }}
