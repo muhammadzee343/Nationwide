@@ -6,6 +6,7 @@ import Head from "next/head";
 import HowItWorks from "../../../components/howItWorksCard.component";
 import ServiceHeader from "../../../components/serviceHeader.component";
 import ButtonComponent from "../../../components/button.component";
+import QuoteButtonComponent from "../../../components/quoteButton.component";
 import router from "next/router";
 import { faqAccordionData } from "../../../utility/constants";
 import FaqAccordionComponent from "../../../components/faqAccordion.component";
@@ -122,7 +123,7 @@ function Service({ certificate }: any) {
       {certificate[0]?.servicesDec && <ServiceHeader servicesDec={certificate[0]?.servicesDec} serviceTitle={certificate[0]?.bannerTitle} serviceBanner={certificate[0]?.bannerImage} serviceBannerMobile={certificate[0]?.bannerImageMobile}/>}
       <div className="w-full flex justify-center bg-white">
       {showButton && (
-        <ButtonComponent
+        <QuoteButtonComponent
           text="GET INSTANT QUOTE"
           className="fixed top-[30%] right-[-77px] hidden lg:block bg-lime text-black font-semibold uppercase px-[20px] min-h-[52px]  hover:bg-dark-blue hover:text-white ease-in duration-200 w-[205px] rotate-[-90deg] rounded-t-[10px] z-40"
           onClick={() => displayDrawer("residential_property")}
