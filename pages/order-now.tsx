@@ -432,7 +432,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
               key={index}
             >
               <h3
-                className={`text-2xl md:text-3xl text-dark-blue font-bold my-[30px] ${
+                className={`text-2xl md:text-3xl text-dark-blue font-bold mb-[30px] ${
                   formDirty && attribute[ele.attr] === ""
                     ? "text-[#ff0000]"
                     : "text-dark-blue"
@@ -675,16 +675,19 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                   </div>
                 </div>
               </div>
-              <hr className=" h-[2px] mt-9  w-10/12 md:w-8/12 bg-[#dfdfdf]" />
+              
               {!propertyType && (
                 <NextBottom setpropType={setIsPropertySelected} />
               )}
             </div>
           </section>
-
+         
           {propertyType && (
+            <>
+             
             <section className="animate-fade-in-up" ref={servicesSection}>
               <div className="flex flex-col justify-center items-center px-5">
+              <hr className="h-[2px] mt-9 w-full xl:w-8/12 xxl:w-9/12 bg-[#dfdfdf]" />
                 <div className=" w-full  sm:px-5 md:px-0  md:w-8/12 xxl:w-9/12 my-[20px]">
                   <h3 className=" text-2xl md:text-3xl text-dark-blue font-bold ">
                     Choose Your Services
@@ -695,12 +698,13 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                     {services}
                   </div>
                 </div>
-                <hr className=" h-[2px] mt-8  w-10/12 md:w-8/12 bg-[#dfdfdf]" />
+                <hr className="h-[2px] mt-9 w-full xl:w-8/12 xxl:w-9/12 bg-[#dfdfdf]" />
                 {selectedServiceId.length <= 0 && (
                   <NextBottom setpropType={() => {}} />
                 )}
               </div>
             </section>
+            </>
           )}
 
           {selectedService.length > 0 && next && (
@@ -777,7 +781,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                     </div>
                   </div>
                 </div>
-                <hr className=" h-[2px] mt-8  w-10/12 md:w-8/12 bg-[#dfdfdf]" />
+                <hr className="h-[2px] mt-9 w-full xl:w-8/12 xxl:w-9/12 bg-[#dfdfdf]" />
                 <NextBottom setpropType={orderNow} />
               </div>
             </section>

@@ -78,6 +78,8 @@ export default function SelectProperty(sticky=false) {
           </div>
         </div>
       </form>
+
+     
     </div>
   );
 }

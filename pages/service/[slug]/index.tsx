@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
+import { SidebarContext } from "../../../context/sidebarContext";
 import { howItWorks, service } from "../../../utility/constants";
 import ServiceInfo from "../../../components/serviceInfo.component";
 import Head from "next/head";
@@ -18,7 +19,41 @@ import CarouselComponent from "../../../components/carousel.component";
 import PricingCarouselComponent from "../../../components/pricingCarousel.component";
 import Pricing from "../../../components/pricing.component";
 
+
+
+
+
+
 function Service({ certificate }: any) {
+
+  const { setShowDrawer, setOverlay, setPropertyType, propertyType } =
+    useContext(SidebarContext);
+    const displayDrawer = (propertyType: string) => {
+    setPropertyType(propertyType);
+    setOverlay(true);
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+    setShowDrawer(true);
+    }, 1);
+    };
+
+  //QUOTE BUTTON HIDE AND SHOW ON SCROLL
+  const [showButton, setShowButton] = useState(false);
+    useEffect(() => {
+        const scrollBar = () => {
+          if (window.scrollY >= 200) {
+            setShowButton(true);
+          } else {
+            setShowButton(false);
+          }
+        };
+        window.addEventListener('scroll', scrollBar);
+        return () => {
+          window.removeEventListener('scroll', scrollBar);
+        };
+      }, []);
+
+
   const {
     register,
     handleSubmit,
@@ -86,6 +121,14 @@ function Service({ certificate }: any) {
     <>
       {certificate[0]?.servicesDec && <ServiceHeader servicesDec={certificate[0]?.servicesDec} serviceTitle={certificate[0]?.bannerTitle} serviceBanner={certificate[0]?.bannerImage} serviceBannerMobile={certificate[0]?.bannerImageMobile}/>}
       <div className="w-full flex justify-center bg-white">
+      {showButton && (
+        <ButtonComponent
+          text="GET INSTANT QUOTE"
+          className="fixed top-[30%] right-[-77px] hidden lg:block bg-lime text-black font-semibold uppercase px-[20px] min-h-[52px]  hover:bg-dark-blue hover:text-white ease-in duration-200 w-[205px] rotate-[-90deg] rounded-t-[10px] z-40"
+          onClick={() => displayDrawer("residential_property")}
+          type="button"
+        />
+      )}
         <div className="w-full xxl:continer flex flex-col lg:flex-row">
           <Head>
             <title>{certificate[0].title}</title>
