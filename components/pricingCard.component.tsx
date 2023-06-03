@@ -19,7 +19,7 @@ function PricingCard({
       >
         <div className="w-full py-8 shadow-lg bg-dark-blue justify-center items-center">
           {content?.bundleName === "Service Bundle Three" && (
-              <div className="flex flex-row text-dark-blue bg-lime absolute top-[-14px] left-[0%] right-[0%] mx-auto justify-center items-center w-[50%] p-1.5 rounded h-[30px] ">
+              <div className="flex flex-row text-dark-blue bg-lime absolute top-[-14px] justify-center items-center w-[50%] p-1.5 rounded h-[30px] ml-[69px]">
                 <FontAwesomeIcon className="w-4 mr-2" icon={faStar} />
                 <p className='text-[12px] lg:text-[12px] xl:text-[12px] font-semibold'>MOST POPULAR</p>
               </div>

@@ -28,7 +28,7 @@ export default function SelectProperty(sticky=false) {
   };
   return (
     <div
-      className={`${sticky_condition} bg-white text-center drop-shadow-xl lg:max-w-[382px] max-h-[400px] rounded`}
+      className={`${sticky_condition} bg-white text-center drop-shadow-xl lg:max-w-[382px] max-h-[416px] rounded`}
       id="main_quote_form"
     >
       <form id="instantquote_main" method="post">
@@ -78,6 +78,8 @@ export default function SelectProperty(sticky=false) {
           </div>
         </div>
       </form>
+
+     
     </div>
   );
 }
