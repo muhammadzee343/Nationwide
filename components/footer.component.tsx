@@ -139,7 +139,7 @@ export default function Footer() {
 
                 <ul className="text-gray-600 text-gray-400">
                   <li className="mb-5">
-                    <h2 className="text-lime text-[29px] font-semibold mb-2">
+                    <h2 className="text-lime text-[29px] font-semibold mb-2 lg:text-[20px] xl:text-[29px]">
                       0800 048 7474
                     </h2>
                   </li>
@@ -154,21 +154,21 @@ export default function Footer() {
                 Opening Hours
               </h3>
               <ul className="md:pr-5">
-                <li className="flex justify-between text-[#a3a3a6]  text-[15px] py-3 font-opensans border-b border-b-white">
+                <li className="flex justify-between text-[#a3a3a6]  text-[15px] xl:text-[15px] lg:text-[13px] py-3 font-opensans border-b border-b-white">
                   Mon - Fri
                   <span>
                     <strong className="text-lime">09am - 06pm</strong>
                   </span>
                 </li>
 
-                <li className="flex justify-between text-[#a3a3a6] text-[15px]  py-3 font-opensans border-b border-b-white">
+                <li className="flex justify-between text-[#a3a3a6] text-[15px] xl:text-[15px] lg:text-[13px]  py-3 font-opensans border-b border-b-white">
                   Saturday
                   <span>
                     <strong className="text-lime">10am - 02pm</strong>
                   </span>
                 </li>
 
-                <li className="flex justify-between text-[#a3a3a6] text-[15px]  py-3 font-opensans border-b border-b-white">
+                <li className="flex justify-between text-[#a3a3a6] text-[15px] xl:text-[15px] lg:text-[13px]  py-3 font-opensans border-b border-b-white">
                   Sunday
                   <span>
                     <strong className="text-lime">Closed</strong>

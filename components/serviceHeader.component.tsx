@@ -13,9 +13,9 @@ function ServiceHeader(props: any) {
         <div className="md:bg-white hidden h-full  md:block w-full pt-[40px] pb-[40px] lg:pr-[20px] lg:pl-[20px] md:pr-[20px] md:pl-[20px] xl:pl-[0px] xl:pr-[0px]">
           <div className="w-full flex justify-between">
             <div className="w-full flex flex-col md:flex-row justify-between">
-              <div style={{'--image-url': `url(${props.serviceBanner.src})`}} className="md:hidden xl; lg:block w-[33%] min-w-[444px] flex flex-col min-h-[416px] bg-[image:var(--image-url)] bg-cover"></div>
+              <div style={{'--image-url': `url(${props.serviceBanner.src})`}} className="md:hidden lg:hidden xl:block w-[33%] lg:min-w-[444px] xl:min-w-[380px] xxl:min-w-[444px] flex flex-col min-h-[418px] bg-[image:var(--image-url)] bg-cover"></div>
 
-              <div className="w-[37%] md:w-[70%] lg:w-[37%]  h-full pt-0 flex flex-col lg:ml-10 col_2 pr-5">
+              <div className="w-[37%] md:w-[70%]  lg:w-[70%] xl:w-[37%]  h-full pt-0 flex flex-col lg:ml-10 col_2 pr-5">
                 <div className="border-b-4 border-lime w-[85px] rounded-full mb-3"></div>
                 <h1 className="text-[26px] md:text-[30px] font-bold leading-10 lg:text-[24px] xl:text-[25px] xxl:text-[34px] lg:text-black mb-6 animate-fade-in-up">
                   {props.serviceTitle}

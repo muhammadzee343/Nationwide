@@ -136,10 +136,10 @@ function BillingForm(props: any) {
     <form
       autoComplete={"off"}
       onSubmit={handleSubmit(submitHandler)}
-      className="w-full flex justify-between flex-wrap bg-white shadow-xl border border-lime space-y-6 p-[20px]"
+      className="w-full flex justify-between flex-wrap bg-white shadow-xl border border-lime space-y-6 p-[20px] "
     >
-      <div className="w-full flex flex-col lg:flex-row lg:gap-x-5">
-        <div className="w-full lg:w-[50%]">
+      <div className="w-full flex flex-col lg:flex-row lg:gap-x-5 lg:block xl:flex">
+        <div className="w-full lg:w-[100%] md:w-[50%] xl:w-[50%] sm:w-[100%]">
           <div className="flex flex-wrap justify-between justify-center">
             {/*<h3 className="text-[23px] text-dark-blue leading-7 mb-[15px] font-semibold">
               BILLING DETAILS
@@ -198,8 +198,8 @@ function BillingForm(props: any) {
                   disabled={errors["postcode"]}
                   type="button"
                   text="FIND ADDRESS"
-                  className="bg-dark-blue text-white rounded-md text-[8px] px-[13px] py-[14px]
-                 hover:bg-lime hover:text-white ease-in duration-200 lg:text-[6px] lg:px-[10px] py-[13px] xl:text-[10px] xl:px-[13px] py-[13px]"
+                  className="bg-dark-blue text-white rounded-md text-[10px] px-[13px] py-[14px]
+                 hover:bg-lime hover:text-white ease-in duration-200 lg:text-[10px] lg:px-[10px] py-[13px] xl:text-[10px] xl:px-[13px] py-[13px]"
                   onClick={() => {
                     getPropertyAddress();
                   }}
@@ -266,7 +266,7 @@ function BillingForm(props: any) {
               </div>
           </div>
         </div>
-        <div className="w-full lg:w-[50%] flex flex-col items-center">
+        <div className="w-full lg:w-[100%] md:w-[50%] xl:w-[50%] sm:w-[100%] flex flex-col items-center">
           {/*<h3 className="text-[23px] text-dark-blue leading-7 mb-[15px] mt-[15px] lg:mt-[0px] self-start">
             Additional Information
           </h3>*/}

@@ -28,17 +28,17 @@ export default function SelectProperty(sticky=false) {
   };
   return (
     <div
-      className={`${sticky_condition} bg-white text-center drop-shadow-xl lg:max-w-[382px] max-h-[416px] rounded`}
+      className={`${sticky_condition} bg-white text-center drop-shadow-xl lg:max-w-[382px] sm:max-h-[auto] max-h-[416px] lg:max-h-[375px] sm:w-[100%]  rounded`}
       id="main_quote_form"
     >
       <form id="instantquote_main" method="post">
         <div className={`w-full overflow-hidden`}>
-          <h3 className="text-white uppercase w-full text-[26px] lg:text-[20px] xl:text-[26px] mx-25 bg-dark-blue py-[35px] lg:py-[25px] xl:py-[35px] px-[20px] block rounded-sm drop-shadow-lg">
+          <h3 className="text-white uppercase w-full text-[26px] sm:text-[20px] lg:text-[20px] xl:text-[24px] mx-25 bg-dark-blue py-[35px] lg:py-[25px] xl:py-[35px] px-[20px] block rounded-sm drop-shadow-lg">
             Get Instant Quote
           </h3>
-          <div className="mb-[25px] mt-0 rounded px-[20px] bg-white h-[291px] xl:h-[287px] text-center ">
+          <div className="mb-[25px] mt-0 rounded px-[20px] bg-white h-[276px] sm:h-[auto] xl:h-[287px] xxl:h-[287px] text-center ">
             <div className="text-left relative" id="default_screen">
-              <h6 className="text-black block text-base lg:text-sm xl:text-base mt-[20px] mb-[20px] xl:mb-[20px] text-center">
+              <h6 className="text-black block text-base lg:text-sm  mt-[20px] mb-[20px] xl:mb-[20px] text-center xl:text-[14px]">
                 Select Your Property as appropraite and get quote in 30 seconds!
               </h6>
               <div className="justify-center  flex-col">

@@ -7,7 +7,7 @@ const HomeTab = () => {
   const [activeService, setService] = useState(LEC);
 
   return (
-    <div className="lg:flex gap-x-14 xxl:gap-x-16 xl:gap-x-[] px-7 py-0 lg:py-0 lg:px-0 md:min-h-[421px]">
+    <div className="lg:flex gap-x-14 xxl:gap-x-16 xl:gap-x-[] px-7 py-0 lg:py-0 lg:px-0 md:min-h-[421px] sm:pt-[30px] sm:pb-[15px]">
       <div
         className={`relative self-start lg:min-h-[380px] xl:min-h-[416px]  
               ${
@@ -76,7 +76,7 @@ const HomeTab = () => {
         </ul>
         <button
           className="arrow-container flex flex-row gap-x-5 items-center self-center lg:self-start justify-center bg-lime lg:bg-dark-blue hover:bg-lime  text-dark-blue md:text-white hover:text-dark-blue px-5 py-2
-                    ease-in duration-200 ease-out duration-200 text-[15px] lg:text-[11px] xl:text-[12px] my-4 uppercase"
+                    ease-in duration-200 ease-out duration-200 text-[15px] lg:text-[11px] xl:text-[12px] my-4 uppercase sm:self-start"
         >
           <svg
             width="27"
