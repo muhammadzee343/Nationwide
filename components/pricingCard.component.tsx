@@ -21,10 +21,10 @@ function PricingCard({
           {content?.bundleName === "Service Bundle Three" && (
               <div className="flex flex-row text-dark-blue bg-lime absolute top-[-14px] justify-center items-center w-[50%] p-1.5 rounded h-[30px] ml-[69px]">
                 <FontAwesomeIcon className="w-4 mr-2" icon={faStar} />
-                <p className='text-[12px] lg:text-[12px] xl:text-[12px] font-semibold'>MOST POPULAR</p>
+                <p className='text-[12px] lg:text-[9px] xl:text-[12px] font-semibold'>MOST POPULAR</p>
               </div>
           )}
-          <h3 className='text-xl uppercase text-center text-white '>{content?.bundleName}</h3>
+          <h3 className='text-xl uppercase text-center text-white xl:text-xl lg:text-[16px]'>{content?.bundleName}</h3>
         </div>
         <div className={`p-[30px]  bg-white`}>
           <div className="block">

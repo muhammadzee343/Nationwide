@@ -428,7 +428,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         elements.push(
           <>
             <div
-              className=" w-full sm:px-5 md:px-0 xl:w-8/12 xxl:w-9/12 mt-8 mb-2"
+              className=" w-full sm:px-0 md:px-0 xl:w-8/12 xxl:w-9/12 mt-8 mb-2"
               key={index}
             >
               <h3
@@ -441,7 +441,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                 {ele.headings}
               </h3>
             </div>
-            <div className="w-full flex sm:px-5 md:px-0 xl:w-8/12 xxl:w-9/12">
+            <div className="w-full flex sm:px-0 md:px-0 xl:w-8/12 xxl:w-9/12">
               <div className="w-full  flex flex-col md:flex-row flex-wrap  md:gap-y-6 lg:gap-y-6 xl:gap-y-6 xll:gap-y-6 sm:gap-y-2 gap-x-28 lg:justify-start">
                 {ele.options?.map((opt, index, options) => {
                   if (opt.type === "radio") {
@@ -688,13 +688,13 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
             <section className="animate-fade-in-up" ref={servicesSection}>
               <div className="flex flex-col justify-center items-center px-5">
               <hr className="h-[2px] mt-9 w-full xl:w-8/12 xxl:w-9/12 bg-[#dfdfdf]" />
-                <div className=" w-full  sm:px-5 md:px-0  md:w-8/12 xxl:w-9/12 my-[20px]">
+                <div className=" w-full  sm:px-0 md:px-0  md:w-8/12 xxl:w-9/12 my-[20px] sm:w-[100%!important]">
                   <h3 className=" text-2xl md:text-3xl text-dark-blue font-bold ">
                     Choose Your Services
                   </h3>
                 </div>
-                <div className="w-full md:w-8/12 xxl:w-9/12 flex justify-center sm:px-5  md:px-0">
-                  <div className=" w-full  flex flex-col md:flex-row flex-wrap justify-start gap-6  xxl:gap-x-8 xxl:gap-y-6">
+                <div className="w-full md:w-8/12 xxl:w-9/12 flex justify-center sm:px-0  md:px-0 sm:md:w-8/12  sm:w-[100%!important]">
+                  <div className=" w-full  flex flex-col md:flex-row flex-wrap justify-start gap-6  xxl:gap-x-8 xxl:gap-y-6  sm:w-[100% !important]">
                     {services}
                   </div>
                 </div>
@@ -711,7 +711,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
             <section className="animate-fade-in-up" ref={attributeSection}>
               <div className="flex flex-col justify-center items-center px-5">
                 {serviceAttribute}
-                <div className="w-full sm:px-5 md:px-0  xl:w-8/12 xxl:w-9/12 mt-8 mb-2">
+                <div className="w-full sm:px-0 md:px-0  xl:w-8/12 xxl:w-9/12 mt-8 mb-2">
                   <h3 className="text-2xl md:text-3xl text-dark-blue font-bold my-[30px]">
                     Property Information
                   </h3>
