@@ -17,7 +17,7 @@ function ServiceInfo({ className, content, index }: any) {
                                 limeStyle='w-[30%] h-[50%] bottom-[0] left-[0]'
                                 contentStyle='p-4  m-auto'>
           <Image
-            className="max-h-[350px]  w-full cursor-pointer"
+            className="h-full w-full cursor-pointer object-cover"
             src={content.image}
             alt="ServiceInfo"
           />

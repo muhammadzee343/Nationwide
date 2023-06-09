@@ -139,7 +139,7 @@ function BillingForm(props: any) {
       className="w-full flex justify-between flex-wrap bg-white shadow-xl border border-lime space-y-6 p-[20px] "
     >
       <div className="w-full flex flex-col lg:flex-row lg:gap-x-5 lg:block xl:flex">
-        <div className="w-full lg:w-[100%] md:w-[50%] xl:w-[50%] sm:w-[100%]">
+        <div className="w-full lg:w-[100%] md:w-[100%] xl:w-[50%] sm:w-[100%]">
           <div className="flex flex-wrap justify-between justify-center">
             {/*<h3 className="text-[23px] text-dark-blue leading-7 mb-[15px] font-semibold">
               BILLING DETAILS
@@ -266,7 +266,7 @@ function BillingForm(props: any) {
               </div>
           </div>
         </div>
-        <div className="w-full lg:w-[100%] md:w-[50%] xl:w-[50%] sm:w-[100%] flex flex-col items-center">
+        <div className="w-full lg:w-[100%] md:w-[100%] xl:w-[50%] sm:w-[100%] flex flex-col items-center">
           {/*<h3 className="text-[23px] text-dark-blue leading-7 mb-[15px] mt-[15px] lg:mt-[0px] self-start">
             Additional Information
           </h3>*/}

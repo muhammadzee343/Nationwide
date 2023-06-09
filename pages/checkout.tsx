@@ -428,7 +428,7 @@ function Checkout(props: any) {
 
         <div className="w-full flex flex-wrap justify-center items-start sm:gap-x-22">
           <CheckoutStepper/>
-          <div className="w-full lg:w-[60%] flex flex-col justify-center items-center pt-[5px] pb-[25px] px-2">
+          <div className="w-full lg:w-[60%] flex flex-col justify-center items-center pt-[5px] pb-[25px] px-2 md:px-5">
             <div className="w-full my-3">
               {cart?.shopping_cart_products.length ||
               cart?.shopping_cart_bundles.length ? (
@@ -531,7 +531,7 @@ function Checkout(props: any) {
               ) : null}
             </div>
           </div>
-          <div className="sticky top-20 w-full  lg:mt-[10px] lg:w-[30%] pt-[8px] pb-[25px] px-4 ">
+          <div className="sticky top-0 w-full lg:mt-[10px] lg:w-[30%] pt-[8px] pb-[25px] px-4 md:px-5 ">
             <div className="hidden sticky top-0 lg:w-full lg:flex">
               <OrderSummary
                 discount={pricing.discount}
@@ -606,7 +606,7 @@ function OrderSummary({ subTotal, discount }: any) {
           Payment summary
         </h3>
       </header>
-      <div className="pb-[15px] bg-white"></div>
+      <div className="pb-[19px] bg-white m-[0px!important]"></div>
       <div className="flex flex-col border-lime border-t-[3px] px-2 py-6 md:p-4 xl:p-4 w-full bg-white shadow-md space-y-6 mt-[0px!important]">
         <div className="flex justify-center items-center w-full space-y-4 flex-col border-[#9badad] border-b pb-4">
           <div className="flex justify-between w-full">

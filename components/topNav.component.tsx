@@ -26,10 +26,10 @@ export default function TopNavComponent() {
 
   return (
     <>
-      <div className="bg-blue lg:py-[13px] py-2 lg:px-[52px] xl:px-[48px] md:h-[50px]">
+      <div className="bg-blue lg:py-[13px] py-2 md:py-3 lg:px-[52px] xl:px-[48px] md:h-[50px]">
         <nav>
           <div className="flex flex-wrap md:justify-between justify-center items-center pr-[13px]">
-            <div className="flex items-center">
+            <div className="flex items-center pl-4">
               <Link
                 href="/faq"
                 className={`${styles.tNavLinks} text-[#fffffff2]`}

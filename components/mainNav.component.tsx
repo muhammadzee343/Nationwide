@@ -69,10 +69,10 @@ const MainNavComponent = () => {
 
   return (
     <div className="bg-lime sm:pl-11 sm:pr-14 static top auto ">
-      <nav className="pl-1.5 xl:flex xl:items-center xl:justify-between">
+      <nav className="pl-1.5 xl:flex xl:items-center xl:justify-between md:flex md:items-center md:justify-between">
         <div className="flex justify-between items-center py-5">
           <span
-            className="text-3xl cursor-pointer mx-2 xl:hidden block"
+            className="text-3xl cursor-pointer mx-2 xl:hidden md:hidden block"
             onClick={() => setCollapseIcon(!collapseIcon)}
           >
             <FontAwesomeIcon
@@ -84,14 +84,14 @@ const MainNavComponent = () => {
           <span className="text-2xl ml-[3px] font-[Poppins]">
             <Link href="/">
               <Image
-                className="h-10 w-[204px] inline cursor-pointer"
+                className="h-10 w-[204px] xl:w-[204px]  md:w-[150px] md:h-[auto] inline cursor-pointer"
                 src={logo}
                 alt="logo"
               />
             </Link>
           </span>
 
-          <span className="xl:hidden block mr-4">
+          <span className="xl:hidden md:hidden  block mr-4">
             <button
               className={styles.addToCartBtn}
               onClick={() => goToCheckout()}
@@ -105,21 +105,21 @@ const MainNavComponent = () => {
           className={`${styles.mNavList}${collapseIcon ? styles.showMenu : ""}`}
         >
           <>
-            <li className=" hidden xl:flex items-center px-7 my-6 xl:my-0 h-full">
+            <li className=" hidden xl:flex md:flex items-center px-7 my-6 xl:my-0 h-full">
               <Link
                 href="/"
                 className={`${
                   router.pathname === "/"
                     ? "text-white"
                     : "text-dark-blue"
-                } text-[15px]  font-[600] hover:text-white`}
+                } text-[15px]  md:text-[14px]  xl:text-[15px] font-[600] hover:text-white`}
               >
                 HOME
               </Link>
             </li>
 
             <li
-              className="hidden xl:flex items-center px-5 my-6 xl:my-0 hover:text-white h-full"
+              className="hidden xl:flex  md:flex items-center px-5 my-6 xl:my-0 hover:text-white h-full"
               onMouseOver={handleMouseOver}
               onMouseOut={handleMouseOut}
             >
@@ -129,7 +129,7 @@ const MainNavComponent = () => {
                   router.pathname === "/our-services" 
                     ? "text-white"
                     : "text-dark-blue"
-                } text-[15px] tracking-wide  block hover:text-white relative font-semibold flex`}
+                } text-[15px] md:text-[14px]  xl:text-[15px] tracking-wide  block hover:text-white relative font-semibold flex`}
                 onClick={() => setIsHovering(false)}
               >
                 OUR SERVICES
@@ -148,19 +148,19 @@ const MainNavComponent = () => {
               )}
             </li>
 
-            <li className="hidden xl:flex items-center px-5 my-6 xl:my-0 h-full">
+            <li className="hidden xl:flex md:flex items-center px-5 my-6 xl:my-0 h-full">
               <Link
                 href="/contact-us"
                 className={`${
                   router.pathname === "/contact-us" 
                     ? "text-white"
                     : "text-dark-blue"
-                } text-[15px]  font-[600] hover:text-white`}
+                } text-[15px]  md:text-[14px] md:text-[13px] xl:text-[15px] font-[600] hover:text-white`}
               >
                 CONTACT US
               </Link>
             </li>
-            <li className="hidden xl:flex items-center px-6 my-5 xl:my-0">
+            <li className="hidden md:flex  items-center px-6 my-5 md:my-0 ">
               <button
                 className={styles.addToCartBtn}
                 onClick={() => goToCheckout()}
@@ -170,7 +170,7 @@ const MainNavComponent = () => {
               </button>
             </li>
             {router.pathname !== "/order-now" && (
-              <button className="  hidden xl:flex items-center justify-center  h-[37px] w-[129px] py-2 bg-dark-blue text-white text-[12px] font-bold rounded-full uppercase">
+              <button className="  hidden xl:flex lg:flex items-center justify-center  h-[37px] w-[129px] py-2 bg-dark-blue text-white text-[12px] font-bold rounded-full uppercase">
                 <Link href="/order-now">Order Online</Link>
               </button>
             )}

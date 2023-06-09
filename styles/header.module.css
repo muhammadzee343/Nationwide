@@ -3,9 +3,9 @@
     @apply text-white text-[14px] hover:text-lime hover:ease-in duration-300 font-opensans
 }
 .mNavList{
-    @apply xl:flex xl:items-center z-[-1] xl:z-auto h-[72px]
-    xl:static absolute xl:bg-lime bg-white w-full left-0 xl:w-auto
-    xl:py-0 py-4 xl:pl-0 pl-7 xl:opacity-100 opacity-0 top-[-400px]
+    @apply md:flex md:items-center z-[-1] md:z-auto h-[72px]
+    md:static absolute md:bg-lime bg-white w-full left-0 md:w-auto
+    md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px]
     transition-all ease-in duration-200;
 }
 

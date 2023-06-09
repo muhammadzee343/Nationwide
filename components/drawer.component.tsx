@@ -510,7 +510,7 @@ const DrawerComponent = ({}: any) => {
     <div className="w-screen h-screen bg-[#000000cc] fixed z-[2999] flex items-end flex-col ">
       <div
         id="drawer-right-example"
-        className={`h-screen relative p-4 overflow-y-auto bg-row_bg_two py-[8px] px-[15px] sm:px-[30px] 
+        className={`h-screen min-h-[100%] relative p-4 overflow-y-auto bg-row_bg_two py-[8px] px-[15px] sm:px-[30px] 
             bg-gray-800  ease-in-out duration-1000 w-[100%] md:w-[700px] ${
               showDrawer ? "translate-x-[0%]" : "translate-x-[100%]"
             }`}
