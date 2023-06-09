@@ -37,6 +37,7 @@ function CarouselComponent({ list, component, className = "" }: any) {
         pagination={true}
         navigation={false}
         initialSlide={0}
+        loop={true}
         modules={[Pagination, Navigation]}
         onSlideChange={() => {}}
         onSwiper={(swiper) => {}}
