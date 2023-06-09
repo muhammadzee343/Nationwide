@@ -654,7 +654,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                   {!ispropertySelected && !propertyType && (
                     <p className="mb-3">Please select a category.</p>
                   )}
-                  <div className="flex flex-col lg:flex-row gap-8">
+                  <div className="flex flex-col lg:flex-row md:flex-row gap-8">
                     <PropertyTypeCardComponent
                       changePropertyType={changePropertyType}
                       propertyType={propertyType}
@@ -694,7 +694,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                   </h3>
                 </div>
                 <div className="w-full md:w-8/12 xxl:w-9/12 flex justify-center sm:px-0  md:px-0 sm:md:w-8/12  sm:w-[100%!important]">
-                  <div className=" w-full  flex flex-col md:flex-row flex-wrap justify-start gap-6  xxl:gap-x-8 xxl:gap-y-6  sm:w-[100% !important]">
+                  <div className=" w-full  flex flex-col md:flex-row flex-wrap md:justify-between gap-6  xxl:gap-x-8 xxl:gap-y-6  sm:w-[100% !important]">
                     {services}
                   </div>
                 </div>

@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function MegaMenu({ onLinkClick }: any) {
   return (
     <>
-      <div className="w-11/12 block xl:absolute inset-x-0 top-[75px] mx-auto pt-2 xl:bg-lime rounded  animate-fade-in-up drop-shadow-md">
+      <div className="w-11/12 block md:absolute inset-x-0 xl:top-[75px] md:top-[115px] md:z-[999] mx-auto pt-2 md:bg-lime rounded  animate-fade-in-up drop-shadow-md">
         <div
           id="mega-menu-full-dropdown"
           className="bg-white flex justify-center shadow-sm"

@@ -113,7 +113,7 @@ export default function Home() {
                                       limeStyle='w-[15%] h-full lg:h-[95%] top-0 lg:top-[5%] -right-[0%]  lg:-right-[8%]'
                                       contentStyle='m-auto w-[90%] lg:w-full'>
                 <Image
-                  className="h-full w-full cursor-pointer"
+                  className="h-full w-full cursor-pointer object-cover"
                   src={content.image}
                   alt="ServiceInfo"
                 />
