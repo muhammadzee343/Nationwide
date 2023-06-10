@@ -32,6 +32,7 @@ function PricingCarouselComponent(props: any) {
           pagination={pagination}
           navigation={false}
           initialSlide={2}
+          loop={true}
           modules={[Pagination, Navigation]}
           onSlideChange={() => {}}
           onSwiper={(swiper) => {}}
