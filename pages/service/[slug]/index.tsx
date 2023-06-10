@@ -152,8 +152,8 @@ function Service({ certificate }: any) {
                                 greyStyle='w-[40%] h-[50%] md:w-[40%] hidden lg:block'
                                 limeStyle='right-0 bottom-0 w-[60%] h-[40%] md:w-[60%] hidden lg:block'
         >
-            <div className='w-full py-4 mt-3 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1190px] mx-auto px-3'>
-                <div className='px-2 ml-4 md:ml-0'>
+            <div className='w-full py-4 mt-3 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1190px] mx-auto '>
+                <div className='px-[20px] lg:px-[0px]  md:ml-0'>
                     <div className='border-[2px] w-[70px] rounded-full mt-2 mb-1 md:w-28 border-lime'/>
                     <h2 className='text-[18px] font-semibold md:text-[30px] mb-4'>Services Bundle Offers</h2>
                 </div>
@@ -167,7 +167,7 @@ function Service({ certificate }: any) {
             <div className="w-full flex justify-center bg-white">
         <div className="w-full xxl:continer flex flex-col lg:flex-row">
           <div className="w-full py-5 lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto ">
-            <div className="px-5">
+            <div className="px-[20px]">
               <div className="border-b-4 border-lime w-[105px] rounded-full mb-3"></div>
               <h2 className="text-lime text-4xl lg:mb-5">
                 Services
@@ -200,7 +200,7 @@ function Service({ certificate }: any) {
 
         <div className="w-full py-5 lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto ">
             <section>
-                <div className="w-full flex flex-col items-center justify-center px-3">
+                <div className="w-full flex flex-col items-center justify-center px-[20px]">
                     <div className="w-full md:container flex flex-col flex-wrap pb-[0px]">
                         <div className=" border-lime mb-[30px] py-2">
                             <div className="border-b-4 border-lime rounded-full w-[85px] mb-3"></div>
@@ -209,7 +209,7 @@ function Service({ certificate }: any) {
                             </h2>
                         </div>
                         {/*<StepperComponent />*/}
-                        <div className="hidden mt-10 w-full md:flex justify-center xl:flex-nowrap gap-1 xl:gap-7">
+                        <div className="hidden mt-10 w-full md:flex justify-between xl:flex-nowrap gap-1 xl:gap-7">
                             {howItWorks.map(({ title, paragraph, image }: any, index) => {
                                 return (
                                     <HowItWorks
@@ -233,7 +233,7 @@ function Service({ certificate }: any) {
         <div className="w-full flex justify-center bg-white">
             <div className="w-full xxl:continer flex flex-col lg:flex-row">
                 <div className="w-full py-10 lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto  ">
-                    <div className="2xl:w-8/12 px-4">
+                    <div className="2xl:w-8/12 px-[20px]">
 
                         <section>
                             <div className="w-full flex flex-col gap-y-4 md:flex-row md:justify-between">
@@ -258,7 +258,7 @@ function Service({ certificate }: any) {
                                         navigateFromFAQ
                                     />
                                 </div>
-                                <div className="w-full  md:w-[40%]">
+                                <div className="w-full  lg:w-[40%] md:w-[47%]">
                                     <BoxBackgroundComponent
                                         className='h-[550px] pt-5 sticky top-[100px]'
                                         greyStyle='-right-3 lg:-right-5 top-10 w-[60%] h-[40%] md:w-[40%] lg:h-[45%]'

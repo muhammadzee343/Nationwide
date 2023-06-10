@@ -68,11 +68,11 @@ const MainNavComponent = () => {
   };
 
   return (
-    <div className="bg-lime sm:pl-11 sm:pr-14 static top auto ">
-      <nav className="pl-1.5 xl:flex xl:items-center xl:justify-between md:flex md:items-center md:justify-between">
+    <div className="bg-lime pl-[20px] pr-[20px] md:pl-[20px] md:pr-[20px] static top auto xl:pr-14 xl:pl-14">
+      <nav className="pl-0 xl:flex xl:items-center xl:justify-between md:flex md:items-center md:justify-between">
         <div className="flex justify-between items-center py-5">
           <span
-            className="text-3xl cursor-pointer mx-2 xl:hidden md:hidden block"
+            className="text-3xl cursor-pointer mx-0 xl:hidden md:hidden block"
             onClick={() => setCollapseIcon(!collapseIcon)}
           >
             <FontAwesomeIcon
@@ -91,7 +91,7 @@ const MainNavComponent = () => {
             </Link>
           </span>
 
-          <span className="xl:hidden md:hidden  block mr-4">
+          <span className="xl:hidden md:hidden  block mr-3">
             <button
               className={styles.addToCartBtn}
               onClick={() => goToCheckout()}
@@ -160,7 +160,7 @@ const MainNavComponent = () => {
                 CONTACT US
               </Link>
             </li>
-            <li className="hidden md:flex  items-center px-6 my-5 md:my-0 ">
+            <li className="hidden md:flex  items-center px-6 my-5 md:my-0">
               <button
                 className={styles.addToCartBtn}
                 onClick={() => goToCheckout()}
