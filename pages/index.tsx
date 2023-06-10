@@ -82,11 +82,11 @@ export default function Home() {
         />
       </Head>
 
-      <div className="w-full xxl:max-w-[1440px] mx-auto bg-white lg:min-h-[530px] md:px-0 xl:px-[39px] pt-[40px] flex flex-wrap justify-center lg:justify-between lg:mb-2">
+      <div className="w-full xxl:max-w-[1440px] mx-auto bg-white lg:min-h-[480px] xl:min-h-[530px] md:px-0 xl:px-[39px] pt-[40px] flex flex-wrap justify-center lg:justify-between lg:mb-2 pl-[0px] lg:pl-[20px] lg:pr-[5px] sm:pl-[0px] sm:pr-[0px] xl:pl-[39px]">
             <div className="w-full mt-16 lg:mt-0 bg-dark-blue order-2 lg:bg-white md:order-1 lg:w-[70%] sm:mt-[40px]">
               <HomeTab />
             </div>
-            <div className="lg:order-2 w-[95%] lg:w-[30%] xl:w-[30%] flex justify-center px-2 sm:px-[15px] sm:w-full">
+            <div className="lg:order-2 w-[95%] lg:w-[30%] xl:w-[30%] flex justify-center px-2 sm:px-[15px] sm:w-full xl:pr-[0px]">
               <SelectProperty
                   sticky={false}/>
 
@@ -97,7 +97,7 @@ export default function Home() {
                               limeStyle='right-0 bottom-0 w-[60%] h-[40%] md:w-[60%] hidden lg:block'
       >
         <div className='w-full py-4 mt-3 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1190px] mx-auto'>
-          <div className='px-2 ml-4 md:ml-0'>
+          <div className='px-[20px] lg:px-[0px] md:ml-0'>
             <div className='border-[2px] w-[70px] rounded-full mt-2 mb-1 md:w-28 border-lime'/>
             <h2 className='text-[18px] font-semibold md:text-[30px] mb-4'>Services Bundle Offers</h2>
           </div>
@@ -105,7 +105,7 @@ export default function Home() {
           <Pricing />
         </div>
       </BoxBackgroundComponent>
-      <div className="w-[85%] py-5 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto">
+      <div className="w-full py-5 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto px-[20px]">
         <div className="pb-[60px] pt-10 flex flex-col flex-col-reverse justify-between lg:flex-row gap-x-8">
             {content.image && (
               <BoxBackgroundComponent className={'h-[200px] md:h-[350px] lg:h-[300px] w-[100%] lg:w-[40%] p-2 lg:h-auto'}
@@ -155,7 +155,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex justify-center lg:justify-start xl:justify-center content-container-homepage lg:w-[93%] xxl:w-[95%]">
-            <div className="w-[85%] lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto">
+            <div className="w-[90%] lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto">
               <div className="flex flex-col items-center justify-center ">
                 <div className='flex flex-col self-start mb-6'>
                   <div className='border-lime border-b-4 rounded-full w-[40%] mb-3'></div>
@@ -222,7 +222,7 @@ export default function Home() {
           {/*HOW IT WORKS*/}
 
           <section>
-            <div className="w-full flex flex-col items-center justify-center px-3">
+            <div className="w-full flex flex-col items-center justify-center px-[20px]">
               <div className="w-full md:container flex flex-col flex-wrap pb-[0px]">
                 <div className=" border-lime mb-[30px] py-2">
                   <div className="border-b-4 border-lime rounded-full w-[85px] mb-3"></div>
@@ -231,7 +231,7 @@ export default function Home() {
                   </h2>
                 </div>
                 {/*<StepperComponent />*/}
-                <div className="hidden mt-10 w-full md:flex justify-center xl:flex-nowrap gap-1 xl:gap-7">
+                <div className="hidden mt-10 w-full md:flex justify-between xl:flex-nowrap gap-1 xl:gap-7">
                   {howItWorks.map(({ title, paragraph, image }: any, index) => {
                     return (
                         <HowItWorks
@@ -255,7 +255,7 @@ export default function Home() {
       {/*B2B SECTION*/}
       <section>
         <div className="w-full flex justify-center">
-          <div className="w-[90%] lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto px-3">
+          <div className="w-[90%] lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto">
             <div className="w-full flex flex-row justify-between items-start flex-wrap pt-[80px] pb-[60px]">
               <div className="flex flex-col border-white mb-[30px] py-2">
                 <div className='border-b-4 border-lime rounded-full w-[70px] mb-3'></div>

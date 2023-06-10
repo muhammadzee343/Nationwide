@@ -150,7 +150,7 @@ function OurServices(props: any) {
                               </h2>
                           </div>
                           {/*<StepperComponent />*/}
-                          <div className="hidden mt-10 w-full md:flex justify-center xl:flex-nowrap gap-1 xl:gap-7">
+                          <div className="hidden mt-10 w-full md:flex justify-between xl:flex-nowrap gap-1 xl:gap-7">
                               {howItWorks.map(({ title, paragraph, image }: any, index) => {
                                   return (
                                       <HowItWorks
