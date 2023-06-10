@@ -247,7 +247,7 @@ function CardTable({ cart, getCart }: any) {
         i++;
         return (
           <div
-            className="rounded-sm my-5 py-3 shadow-md border-lime border-t-[3px]"
+            className="rounded-sm my-5 py-3 shadow-md border-lime border-t-[3px] bg-[#f0f0f0] drop-shadow-[0 2px 4px rgb(0 0 0 / 21%)]"
             key={cartNo}
           >
             <div className="w-full flex px-4 md:px-0 py-2 justify-between items-center">
@@ -259,14 +259,14 @@ function CardTable({ cart, getCart }: any) {
               </div>
               {!router?.query?.aquote && !router?.query.bquote && (
                 <>
-                  <div className="border-lime w-[100%] md:w-[32%] pr-4">
+                  <div className="border-lime w-[100%] md:w-[32%] lg:w-[25%] pr-4">
                     <ButtonComponent
                       text="Add an other service"
                       icon={faPlus}
                       type="button"
                       className="hidden add-service md:flex justify-center items-center px-[1px] text-[12px]
                             hover:text-dark-blue font-medium border-[1px] border-lime hover:border-lime
-                            hover:bg-lime py-[10px] uppercase md:text-[13px] lg:px-1 lg:text-[12px] xxl:text-[14px] bg-lime shadow md:ml-[15px] md:min-w-[185px] md:mr-[-3px]"
+                            hover:bg-lime py-[10px] uppercase md:text-[13px] lg:px-1 lg:text-[12px] xxl:text-[12px] bg-lime shadow md:ml-[15px] md:min-w-[185px] md:mr-[-3px]"
                       onClick={() => addAnotherService(cartNo)}
                     ></ButtonComponent>
                   </div>
@@ -291,7 +291,7 @@ function CardTable({ cart, getCart }: any) {
                   return (
                     <li
                       key={index}
-                      className="py-1.5 flex justify-between items-center border-b border-[#e5e7eb]"
+                      className="py-1.5 flex justify-between items-center border-b border-[#acabab]"
                     >
                       <div className="flex items-center  w-[75%]">
                         <a>
@@ -326,21 +326,21 @@ function CardTable({ cart, getCart }: any) {
             <br className="text-slate-200" />
 
             <div className="w-full px-4 my-4">
-              <div className="border-[1px] border-lime ">
+              <div className="border-[1px] border-lime bg-[#ffffff]">
                 <div
                   onClick={() => {
                     showContactInfo === section
                       ? setShowContactInfo(null)
                       : setShowContactInfo(section);
                   }}
-                  className="flex justify-between item-center h-12 bg-limea cursor-pointer"
+                  className="flex justify-between item-center h-10 bg-limea cursor-pointer bg-[#fff]"
                 >
                   <div className="flex justify-between items-center">
                     <FontAwesomeIcon
-                      className="ml-10 w-5 mr-3"
+                      className="ml-[20px] w-5 mr-3"
                       icon={faInfoCircle}
                     />
-                    <p className="text-dark-blue text-[18px] text-center flex">
+                    <p className="text-dark-blue text-[16px] font-semibold text-center flex">
                       Contact for Access
                     </p>
                   </div>
@@ -352,7 +352,7 @@ function CardTable({ cart, getCart }: any) {
                   />
                 </div>
                 {showContactInfo === section && (
-                  <div className="px-5 pb-4 mt-4 md:px-10">
+                  <div className=" pb-4 mt-1 px-[20px] bg-[#ffffff]">
                     <div className="flex items-center justify-between flex-wrap">
                       {contactType.map((type, index) => {
                         return (
@@ -369,7 +369,7 @@ function CardTable({ cart, getCart }: any) {
                               index={cartNo}
                               changeContactType={changeContactType}
                               obj="shopping_cart_products"
-                              className="text-[17px] text-dark-blue  mb-3"
+                              className="text-[15px] text-dark-blue  mb-3"
                             />
                           </div>
                         );
@@ -456,7 +456,7 @@ function CardTable({ cart, getCart }: any) {
                 </div>
                 {!router?.query?.aquote && !router?.query.bquote && (
                   <>
-                    <div className="border-lime w-[100%] md:w-[32%] pr-4">
+                    <div className="border-lime w-[100%] md:w-[32%] lg:w-[25%] pr-4">
                       <ButtonComponent
                         text="Add an other service"
                         icon={faPlus}
@@ -529,21 +529,21 @@ function CardTable({ cart, getCart }: any) {
             <br />
 
             <div className="w-full px-4">
-              <div className="border-[1px] border-lime ">
+              <div className="border-[1px] border-lime  bg-[#ffffff]">
                 <div
                   onClick={() => {
                     showContactInfo === section
                       ? setShowContactInfo(null)
                       : setShowContactInfo(section);
                   }}
-                  className="flex justify-between item-center h-12 bg-limae cursor-pointer"
+                  className="flex justify-between item-center h-10 bg-limae cursor-pointer"
                 >
                   <div className="flex justify-between items-center">
                     <FontAwesomeIcon
-                      className="ml-10 w-5 mr-3"
+                      className="ml-[20px] w-5 mr-3"
                       icon={faInfoCircle}
                     />
-                    <p className="text-dark-blue text-[18px] text-center flex">
+                    <p className="text-dark-blue text-[16px] font-semibold text-center flex">
                       Contact for Access
                     </p>
                   </div>
@@ -555,7 +555,7 @@ function CardTable({ cart, getCart }: any) {
                   />
                 </div>
                 {showContactInfo === section && (
-                  <div className="px-5 pb-4 mt-4 md:px-10">
+                  <div className=" pb-4 mt-4 px-[20px]">
                     <div className="flex items-center justify-between flex-wrap">
                       {contactType.map((type, index) => {
                         return (
@@ -684,7 +684,7 @@ function KeyHolderInfo({
 }: any) {
   return (
     <div className="relative border-t border-t-[#182333] mt-3">
-      <div className="py-1">
+      <div className="py-1 mt-[10px]">
         {/*<span*/}
         {/*  className="absolute top-[-20px] rounded right-3 cursor-pointer text-sm text-dark-blue font-bold"*/}
         {/*  onClick={() => {*/}

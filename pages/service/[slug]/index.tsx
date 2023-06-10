@@ -166,8 +166,8 @@ function Service({ certificate }: any) {
             </div>
             <div className="w-full flex justify-center bg-white">
         <div className="w-full xxl:continer flex flex-col lg:flex-row">
-          <div className="w-full py-5 lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto ">
-            <div className="px-[20px]">
+          <div className="w-full py-5 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto ">
+            <div className="px-[20px] sm:px-[20px] md:px-[20px] lg:px-[0px]">
               <div className="border-b-4 border-lime w-[105px] rounded-full mb-3"></div>
               <h2 className="text-lime text-4xl lg:mb-5">
                 Services
@@ -232,8 +232,8 @@ function Service({ certificate }: any) {
         </div>
         <div className="w-full flex justify-center bg-white">
             <div className="w-full xxl:continer flex flex-col lg:flex-row">
-                <div className="w-full py-10 lg:min-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto  ">
-                    <div className="2xl:w-8/12 px-[20px]">
+                <div className="w-full py-10 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto  ">
+                    <div className="2xl:w-8/12 px-[20px] sm:px-[20px] md:px-[20px] lg:px-[0px]">
 
                         <section>
                             <div className="w-full flex flex-col gap-y-4 md:flex-row md:justify-between">

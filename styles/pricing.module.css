@@ -8,5 +8,22 @@
     width: 300px;
 }
 
+@media (min-width: 768px) { 
+
+    .priceCustomSlide {
+        width: 25%;
+    }
+
+ }
+
+
+ @media (min-width: 1024px) { 
+
+    .priceCustomSlide {
+        width: 200px;
+    }
+
+ }
+
 
 

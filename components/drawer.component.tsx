@@ -511,7 +511,7 @@ const DrawerComponent = ({}: any) => {
       <div
         id="drawer-right-example"
         className={`h-screen min-h-[100%] relative p-4 overflow-y-auto bg-row_bg_two pt-[8px] pb-[30px] px-[15px] sm:px-[30px] 
-            bg-gray-800  ease-in-out duration-1000 w-[100%] md:w-[700px] ${
+            bg-gray-800  ease-in-out duration-1000 w-[100%] md:w-[700px] md:pb[30px] lg:pb-[110px] xl:pb-[30px] ${
               showDrawer ? "translate-x-[0%]" : "translate-x-[100%]"
             }`}
         aria-labelledby="drawer-right-label"
