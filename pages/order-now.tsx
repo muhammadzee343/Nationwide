@@ -418,7 +418,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   const serviceAttribute = useMemo<JSX.Element[]>(() => {
     const elements: JSX.Element[] = [];
-
+    let isErrorPreset = false;
     serviceAttributes.forEach((key, index) => {
       const ele = { ...attributes[key] };
       if (ele?.attr === "property_type") {
@@ -428,10 +428,8 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         });
       }
       if (ele && Object.keys(ele).length !== 0) {
-        if (attribute[ele.attr] === "") {
-          setError(true);
-        } else {
-          setError(false);
+        if (attribute[ele.attr] == "") {
+          isErrorPreset = true;
         }
         elements.push(
           <>
@@ -625,6 +623,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         );
       }
     });
+    setError(isErrorPreset);
     return elements;
   }, [propertyType, serviceAttributes, selectedService, attribute, formDirty]);
 
@@ -683,16 +682,16 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                   </div>
                 </div>
               </div>
-              
+
               {!propertyType && (
                 <NextBottom setpropType={setIsPropertySelected} />
               )}
             </div>
           </section>
-         
+
           {propertyType && (
             <>
-             
+
             <section className="animate-fade-in-up" ref={servicesSection}>
               <div className="flex flex-col justify-center items-center px-5">
               <hr className="h-[2px] mt-9 w-full xl:w-8/12 xxl:w-9/12 bg-[#dfdfdf]" />
