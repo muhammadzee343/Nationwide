@@ -410,6 +410,23 @@ export const homeServices = [
 //MEGA MENU LINKS
 export const megaMenu = [
   {
+    heading: "Electrical Reports & Remedial Work",
+    links: [
+      {
+        title: "Electrical Installation Condition Report (EICR)",
+        link: "/electrical-installation-condition-report",
+      },
+      {
+        title: "Electrical Portable Appliance Test (PAT)",
+        link: "/electrical-portable-appliance-test",
+      },
+      {
+        title: "EICR Remedial Work",
+        link: "/eicr-remedial-work"
+      },
+    ],
+  },
+  {
     heading: "Domestic & Commercial Certifications",
     links: [
       { title: "Energy Performance Certificate", link: "/domestic-epc" },
@@ -429,21 +446,7 @@ export const megaMenu = [
       { title: "Boiler Service", link: "/boiler-service" },
     ],
   },
-  {
-    heading: "Electrical Reports & Remedial Work",
-    links: [
-      {
-        title: "Electrical Installation Condition Report (EICR)",
-        link: "/electrical-installation-condition-report",
-      },
-      {
-        title: "Electrical Portable Appliance Test (PAT)",
-        link: "/electrical-portable-appliance-test",
-      },
-      { title: "EICR Remedial Work", link: "/eicr-remedial-work" },
-    ],
-  },
-
+    
   {
     heading: "Other Services",
     links: [
@@ -538,7 +541,7 @@ export const howItWorks = [
 ];
 // Services
 export const service = [
-  //Energy Performance Certificates 
+  //Energy Performance Certificates
   {
     id: 1,
     title: "Get an EPC from £35 only | Energy Performance Certificate",
