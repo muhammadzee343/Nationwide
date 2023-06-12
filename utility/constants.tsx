@@ -538,7 +538,7 @@ export const howItWorks = [
 ];
 // Services
 export const service = [
-  //Energy Performance Certificate
+  //Energy Performance Certificates 
   {
     id: 1,
     title: "Get an EPC from £35 only | Energy Performance Certificate",
