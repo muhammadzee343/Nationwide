@@ -95,6 +95,10 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
       if (obj) {
         setNext(true);
         setTimeout(() => {
+          if( attributeSection.current && attributeSection.current.style ) {
+            const barHeight = "80px"
+            attributeSection.current.style.scrollMargin = barHeight;
+          }
           attributeSection.current?.scrollIntoView({
             behavior: "smooth",
             block: "start",
@@ -103,6 +107,10 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
       }
     } else {
       setTimeout(() => {
+        if( attributeSection.current && attributeSection.current.style ) {
+          const barHeight = "80px"
+          attributeSection.current.style.scrollMargin = barHeight;
+        }
         attributeSection.current?.scrollIntoView({
           behavior: "smooth",
           block: "start",
@@ -294,9 +302,9 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
   };
 
   const setAllAttributes = (selectedServicesData: string[]) => {
-    let attributes = new Set();
+  let attributes = new Set();
 
-    const services =
+  const services =
       propertyType === "commercial_property"
         ? commercialProperties
         : residentialProperties;
