@@ -25,7 +25,7 @@ export default function HowItWorks({
       </h2>
       <p
         className={`${
-          type === "service" ? "text-[16px]" : "text-[16px]"
+          type === "service" ? "text-[16px] sm:text-[14px] md:text-[15px] lg:text-[16px]" : "text-[16px] sm:text-[14px] md:text-[16px] lg:text-[16px]"
         } text-black px-[10%] h-[60%]`}
       >
         {paragraph}

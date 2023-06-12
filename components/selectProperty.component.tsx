@@ -28,7 +28,7 @@ export default function SelectProperty(sticky=false) {
   };
   return (
     <div
-      className={`${sticky_condition} bg-white text-center drop-shadow-xl lg:max-w-[382px] sm:max-h-[auto] max-h-[416px] lg:max-h-[375px] sm:w-[100%]  rounded`}
+      className={`${sticky_condition} bg-white text-center drop-shadow-xl lg:max-w-[382px] sm:max-h-[auto] max-h-[416px] lg:max-h-[375px] sm:w-[100%]  rounded ml-[auto]`}
       id="main_quote_form"
     >
       <form id="instantquote_main" method="post">
@@ -38,7 +38,7 @@ export default function SelectProperty(sticky=false) {
           </h3>
           <div className="mb-[25px] mt-0 rounded px-[20px] bg-white h-[276px] sm:h-[auto] xl:h-[287px] xxl:h-[287px] text-center ">
             <div className="text-left relative" id="default_screen">
-              <h6 className="text-black block text-base lg:text-sm  mt-[20px] mb-[20px] xl:mb-[20px] text-center xl:text-[14px]">
+              <h6 className="text-black block text-base lg:leading-[1.1rem] lg:text-[13px] lg:leading-[1.25rem] md:leading-[1.1rem] md:text-[13px] mt-[20px] mb-[20px] xl:mb-[20px] text-center xl:text-base">
                 Select Your Property as appropraite and get quote in 30 seconds!
               </h6>
               <div className="justify-center  flex-col">

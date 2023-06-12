@@ -48,7 +48,9 @@ export default function Footer() {
       <footer className="p-4 bg-white sm:p-6 bg-gray-900 bg-footer_bg_image bg-no-repeat bg-cover w-full  md:px-0 xl:px-[39px] flex flex-wrap justify-center lg:justify-between mx-auto">
         <div className="flex flex-wrap lg:w-full justify-center my-10 md:mx-10">
           <div className="md:flex md:justify-between w-full lg:max-w-[970px] xl:max-w-[1170px]">
-            <div className="mb-4 md:mb-0 pl-[15px] pr-[15px]">
+            
+            <div className="grid grid-cols-4 sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:mt-0 lg:grid-cols-4">
+            <div className="mb-6  pl-[15px] pr-[15px] order-1 md:order-1  xl:order-1  lg:order-1 mb-[25px]">
               <Link href="#" className="flex items-center">
                 <Image
                   className="h-10 w-52 inline cursor-pointer"
@@ -56,7 +58,7 @@ export default function Footer() {
                   alt="Nwlogo"
                 />
               </Link>
-              <p className="md:w-[248px] text-[#a3a3a6] text-[15px] my-6 font-opensans">
+              <p className="md:w-[248px] text-[#a3a3a6] text-[15px] lg:w-[200px] xl:w-[248px] my-6 font-opensans">
               Nationwide Surveyors is a trading name of Nationwide Services-UK Limited, Company No: 12010871 Kemp House, 160 City Road London, EC1V 2NX
               </p>
               <div className="border-lime border-b-2 rounded-full w-8 mb-2 "></div>
@@ -67,7 +69,7 @@ export default function Footer() {
                   <li className="OtherLinkes mb-5">
                     <Link
                       href="mailto:info@nationwidesurveyors.org.uk"
-                      className="text-white hover:text-lime text-[15px]"
+                      className="text-white hover:text-lime text-[14px]"
                     >
                       info@nationwidesurveyors.org.uk
                     </Link>
@@ -76,8 +78,7 @@ export default function Footer() {
               
               
             </div>
-            <div className="lg:w-9/12 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-3 sm:gap-6 mt-20 md:mt-0 lg:grid-cols-3 ">
-              <div className="mb-6 md:mb-0 pl-[15px] pr-[15px]">
+              <div className="mb-6  pl-[15px] pr-[15px] order-2 md:order-3  xl:order-2  lg:order-2 mb-[25px]">
                 <div className="border-lime border-b-2 rounded-full w-8 mb-2 "></div>
                 <h3 className="mb-6 text-lg font-semibold text-white ">
                 Useful Links
@@ -101,7 +102,7 @@ export default function Footer() {
 
 
               </div>
-              <div className="mb-6 md:mb-0 pl-[15px] pr-[15px]">
+              <div className="mb-6  pl-[15px] pr-[15px] order-3 md:order-4  xl:order-3  lg:order-3 mb-[25px]">
                 <div className="border-lime border-b-2 rounded-full w-8 mb-2"></div>
                 <h3 className="mb-6 text-lg font-semibold text-gray-900 text-white">
                 Other Links
@@ -131,7 +132,7 @@ export default function Footer() {
                   </ul>
               </div>
 
-              <div className="mb-6 md:mb-0 pl-[15px] pr-[15px]">
+              <div className="mb-6  pl-[15px] pr-[15px] order-4 md:order-2 xl:order-4  lg:order-4 mb-[25px]">
                 <div className="border-lime border-b-2 rounded-full w-8 mb-2"></div>
                 <h3 className="mb-2 text-lg font-semibold text-gray-900 text-white ">
                   Prefer to Talk ?
