@@ -7,7 +7,7 @@ const HomeTab = () => {
   const [activeService, setService] = useState(LEC);
 
   return (
-    <div className="lg:flex gap-x-14 xxl:gap-x-16 xl:gap-x-[] px-7 py-0 lg:py-0 lg:px-0 md:min-h-[421px] sm:pt-[30px] sm:pb-[15px]">
+    <div className="lg:flex md:flex gap-x-14 xxl:gap-x-16 xl:gap-x-[] px-7 py-0 lg:py-0 lg:px-0 md:min-h-[421px] sm:pt-[30px] sm:pb-[15px]">
       <div
         className={`relative self-start lg:min-h-[380px] xl:min-h-[416px]  
               ${
@@ -24,18 +24,18 @@ const HomeTab = () => {
                   : ""
               } bg-cover lg:w-[50%] mb-5 lg:mb-0`}
       >
-        <ul className="flex w-full lg:w-auto justify-between flex-wrap align-center gap-y-4 md:gap-y-4 lg:gap-y-0 lg:gap-x-0  lg:flex-col lg:absolute -right-7 -bottom-[6%] z-10 lg:mt-6">
+        <ul className="flex w-full lg:w-auto justify-between flex-wrap align-center gap-y-4 md:gap-y-4 lg:gap-y-0 lg:gap-x-0 md:flex-col  lg:flex-col lg:absolute -right-7 -bottom-[6%] z-10 lg:mt-6">
           {SERVICES.map((ele, index) => {
             return (
               <li
-                className="w-[100%] md:w-[49%] bg-white lg:min-h-min min-h-[60px] lg:mr-0 lg:mb-0  lg:w-[180px] xl:w-[230px]"
+                className="w-[100%] md:w-[100%] bg-white lg:min-h-min   min-h-[60px] lg:mr-0 lg:mb-0 md:w-[220px]  lg:w-[180px] xl:w-[230px]"
                 key={index}
                 onClick={() => setService(ele.slug)}
               >
                 <div
                   className={`flex items-center px-3 border-white ${
-                    index !== 0 ? "lg:border-t-[1px]" : "border-t-[0px]"
-                  } lg:min-h-[50px] min-h-full xl:min-h-[80px] font-bold text-[16px] md:px-5 xl:px-5 md:text-[17px]
+                    index !== 0 ? "lg:border-t-[1px]" : "border-t-[0px] md:min-h-[60px]"
+                  } lg:min-h-[50px] min-h-full md:min-h-[70px] xl:min-h-[80px] font-bold text-[16px] md:px-5 xl:px-5 md:text-[17px]
                                      lg:px-7 lg:py-[17px] lg:text-[10px] xl:text-[16px] ${
                                        activeService.title === ele.slug.title
                                          ? "bg-lime opacity-90"
@@ -53,7 +53,7 @@ const HomeTab = () => {
         </ul>
       </div>
       <div className="animate-fade-in-up flex flex-col lg:px-1 lg:mb-0 lg:w-[50%]">
-        <h1 className="text-[26px] md:text-[30px] font-bold leading-10 text-white lg:text-[20px] xl:text-[25px] xxl:text-[34px] lg:text-black mb-6 animate-fade-in-up">
+        <h1 className="text-[26px] md:text-[30px] font-bold leading-10 lg:leading-8 text-white lg:text-[20px] xl:text-[25px] xxl:text-[34px] lg:text-black mb-6 md:mb-4 animate-fade-in-up">
           {activeService.title}
         </h1>
         <div className="flex flex-row">

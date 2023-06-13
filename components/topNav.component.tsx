@@ -28,7 +28,7 @@ export default function TopNavComponent() {
     <>
       <div className="bg-blue lg:py-[13px] py-2 md:py-3 lg:px-[20px] px-[20px] xl:px-[48px] md:h-[50px]">
         <nav>
-          <div className="flex flex-wrap md:justify-between justify-center items-center">
+          <div className="flex flex-wrap md:justify-between justify-between items-center flex-col sm:flex-row">
             <div className="flex items-center">
               <Link
                 href="/faq"
@@ -49,8 +49,8 @@ export default function TopNavComponent() {
                   </Link>
                 </p>
               </div>
-              <div className="flex justify-center">
-                <p className="text-white px-2 text-[14px] leading-6">
+              <div className="flex justify-center sm:justify-start">
+                <p className="text-white px-2 sm:px-2 md:px-2 md:px-2 text-[14px] leading-6 sm:pl-[0px!important]">
                   <strong className="text-[#fffffff2]">Call Us Free:</strong>
                   <Link
                     href="tel:0800 048 7474"
