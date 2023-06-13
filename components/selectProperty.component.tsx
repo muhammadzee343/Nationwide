@@ -28,7 +28,7 @@ export default function SelectProperty(sticky=false) {
   };
   return (
     <div
-      className={`${sticky_condition} bg-white text-center drop-shadow-xl lg:max-w-[382px] sm:max-h-[auto] max-h-[416px] lg:max-h-[375px] sm:w-[100%]  rounded ml-[auto]`}
+      className={`${sticky_condition} bg-white text-center drop-shadow-xl lg:max-w-[382px] sm:max-h-[auto] max-h-[416px] lg:max-h-[375px] sm:w-[100%]  rounded ml-[auto] lg:min-w-[259px]`}
       id="main_quote_form"
     >
       <form id="instantquote_main" method="post">
