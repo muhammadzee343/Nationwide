@@ -428,8 +428,8 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         });
       }
       if (ele && Object.keys(ele).length !== 0) {
-        if (attribute[ele.attr] == "") {
-          isErrorPreset = true;
+        if (attribute[ele.attr] === "") {
+          setError(true);
         }
         elements.push(
           <>
@@ -623,7 +623,6 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         );
       }
     });
-    setError(isErrorPreset);
     return elements;
   }, [propertyType, serviceAttributes, selectedService, attribute, formDirty]);
 
