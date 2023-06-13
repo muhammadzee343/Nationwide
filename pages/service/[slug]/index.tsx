@@ -125,7 +125,7 @@ function Service({ certificate }: any) {
       {showButton && (
         <QuoteButtonComponent
           text="GET INSTANT QUOTE"
-          className="fixed top-[30%] right-[-77px] hidden lg:block bg-lime text-black font-semibold uppercase px-[20px] h-[52px] max-h-[52px]  hover:bg-dark-blue hover:text-white ease-in duration-200 w-[205px] rotate-[-90deg] rounded-t-[10px] z-40"
+          className="fixed top-[30%] right-[-77px] hidden lg:block hover:bg-lime hover:text-black font-semibold uppercase px-[20px] h-[52px] max-h-[52px]  bg-dark-blue text-white ease-in duration-200 w-[205px] rotate-[-90deg] rounded-t-[10px] z-40 drop-shadow-sm"
           onClick={() => displayDrawer("residential_property")}
           type="button"
         />

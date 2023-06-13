@@ -7,7 +7,7 @@ const HomeTab = () => {
   const [activeService, setService] = useState(LEC);
 
   return (
-    <div className="lg:flex md:flex gap-x-14 xxl:gap-x-16 xl:gap-x-[] px-7 py-0 lg:py-0 lg:px-0 md:min-h-[421px] sm:pt-[30px] sm:pb-[15px]">
+    <div className="lg:flex md:flex gap-x-14 xxl:gap-x-16 xl:gap-x-[] pt-[30px] px-7 py-0 lg:py-0 lg:px-0 md:min-h-[421px] sm:pt-[30px] sm:pb-[15px]">
       <div
         className={`relative self-start lg:min-h-[380px] xl:min-h-[416px]  
               ${

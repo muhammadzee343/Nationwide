@@ -19,9 +19,9 @@ function PricingCard({
       >
         <div className="w-full py-8 shadow-lg bg-dark-blue justify-center items-center">
           {content?.bundleName === "Service Bundle Three" && (
-              <div className="flex flex-row text-dark-blue bg-lime absolute top-[-14px] justify-center items-center w-[50%] p-1.5 rounded h-[30px] ml-[69px]">
+              <div className="flex flex-row text-dark-blue bg-lime absolute top-[-14px] justify-center items-center md:w-[60%] w-[50%] p-1.5 rounded h-[30px] ml-[auto] mr-[auto] left-[0] right-[0]">
                 <FontAwesomeIcon className="w-4 mr-2" icon={faStar} />
-                <p className='text-[11px] md:text-[7px] lg:text-[9px] xl:text-[12px] font-semibold'>MOST POPULAR</p>
+                <p className='text-[11px] md:text-[9px] lg:text-[9px] xl:text-[12px] font-semibold'>MOST POPULAR</p>
               </div>
           )}
           <h3 className='text-xl uppercase text-center text-white md:text-[14px]  xl:text-xl lg:text-[16px]'>{content?.bundleName}</h3>
@@ -50,7 +50,7 @@ function PricingCard({
               <div className="tm-ptablebox-content block text-left">
                 <div className="tm-ptablebox-features">
                   <ul
-                    className={`${styles.pricingMarkers}tm-feature-lines block text-left min-h-[216px]  pt-3 marker:dark-blue`}
+                    className={`${styles.pricingMarkers}tm-feature-lines block text-left min-h-[216px] md:min-h-[230px]  pt-3 marker:dark-blue`}
                   >
                     {content.list.map((ele, index) => {
                       return (

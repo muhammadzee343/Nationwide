@@ -721,9 +721,9 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                   <h3 className="text-2xl md:text-3xl text-dark-blue font-bold my-[30px]">
                     Property Information
                   </h3>
-                  <div className="flex flex-col sm:flex-row w-full">
-                    <div className="sm:w-6/12 flex flex-col px-1 lg:px-0">
-                      <div className=" w-full flex gap-1 sm:gap-2">
+                  <div className="flex flex-col sm:flex-col md:flex-row w-full">
+                    <div className="md:w-6/12 sm-full flex flex-col px-1 lg:px-0">
+                      <div className=" w-full flex gap-1 md:gap-2">
                         <div className="w-full sm:w-7/12 flex flex-col">
                           <div>
                             <TextField
@@ -736,7 +736,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                             />
                           </div>
                         </div>
-                        <div className=" w-full sm:w-4/12 flex items-end">
+                        <div className=" w-full sm:w-5/12 md:w-4/12 flex items-end">
                           <ButtonComponent
                             text="Find Address"
                             className="bg-[#252525] text-white text-[11px] sm:text-[12px] font-semibold px-[2px]
@@ -747,7 +747,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                       </div>
                     </div>
 
-                    <div className="sm:w-6/12 w-full flex flex-col justify-center ">
+                    <div className="sm:w-full md:w-6/12 w-full flex flex-col justify-center ">
                       <div className="w-full relative">
                         <div className="w-full flex justify-between pr-1 text-[12px] items-baseline cursor-pointer text-gray-600 mt-4 md:mt-0">
                           <label className="text-lg text-dark-blue font-semibold">
