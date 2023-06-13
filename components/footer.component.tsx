@@ -49,7 +49,7 @@ export default function Footer() {
         <div className="flex flex-wrap lg:w-full justify-center my-10 md:mx-10">
           <div className="md:flex md:justify-between w-full lg:max-w-[970px] xl:max-w-[1170px]">
             
-            <div className="grid grid-cols-4 sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:mt-0 lg:grid-cols-4">
+            <div className="grid  grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:mt-0 lg:grid-cols-4">
             <div className="mb-6  pl-[15px] pr-[15px] order-1 md:order-1  xl:order-1  lg:order-1 mb-[25px]">
               <Link href="#" className="flex items-center">
                 <Image
@@ -78,7 +78,7 @@ export default function Footer() {
               
               
             </div>
-              <div className="mb-6  pl-[15px] pr-[15px] order-2 md:order-3  xl:order-2  lg:order-2 mb-[25px]">
+              <div className="mb-6  pl-[15px] pr-[15px] order-3 md:order-3  xl:order-2  lg:order-2 mb-[25px]">
                 <div className="border-lime border-b-2 rounded-full w-8 mb-2 "></div>
                 <h3 className="mb-6 text-lg font-semibold text-white ">
                 Useful Links
@@ -102,7 +102,7 @@ export default function Footer() {
 
 
               </div>
-              <div className="mb-6  pl-[15px] pr-[15px] order-3 md:order-4  xl:order-3  lg:order-3 mb-[25px]">
+              <div className="mb-6  pl-[15px] pr-[15px] order-4 md:order-4  xl:order-3  lg:order-3 mb-[25px]">
                 <div className="border-lime border-b-2 rounded-full w-8 mb-2"></div>
                 <h3 className="mb-6 text-lg font-semibold text-gray-900 text-white">
                 Other Links
@@ -132,7 +132,7 @@ export default function Footer() {
                   </ul>
               </div>
 
-              <div className="mb-6  pl-[15px] pr-[15px] order-4 md:order-2 xl:order-4  lg:order-4 mb-[25px]">
+              <div className="mb-6  pl-[15px] pr-[15px] order-2 md:order-2 xl:order-4  lg:order-4 mb-[25px]">
                 <div className="border-lime border-b-2 rounded-full w-8 mb-2"></div>
                 <h3 className="mb-2 text-lg font-semibold text-gray-900 text-white ">
                   Prefer to Talk ?

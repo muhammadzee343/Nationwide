@@ -10,14 +10,15 @@ function ServiceHeader(props: any) {
   return (
     <>
       <div className="w-full xxl:max-w-[1440px] mx-auto bg-white  md:px-0 xl:px-[39px] bg-cover bg-no-repeat relativew-full">
-        <div className="md:bg-white hidden h-full  md:block w-full pt-[40px] pb-[40px] md:pr-[20px] md:pl-[20px] xl:pl-[0px] xl:pr-[0px] w-full lg:w-[970px] xl:min-w-[1170px] xl:w-[100%] m-auto lg:pl-[0px] lg:pr-[0px]">
+        <div className="md:bg-white hidden h-full  md:block w-full pt-[40px] pb-[40px] md:pr-[20px] md:pl-[20px] xl:pl-[0px] xl:pr-[0px] w-full xl:min-w-[1170px] xl:w-[100%] m-auto lg:pl-[20px] lg:pr-[20px]">
           <div className="w-full flex justify-between">
             <div className="w-full flex flex-col md:flex-row justify-between">
-              <div style={{'--image-url': `url(${props.serviceBanner.src})`}} className="md:hidden lg:hidden xl:block w-[33%] lg:min-w-[444px] xl:min-w-[380px] xxl:min-w-[444px] flex flex-col min-h-[418px] bg-[image:var(--image-url)] bg-cover"></div>
+              <div style={{'--image-url': `url(${props.serviceBanner.src})`}}
+               className="hidden xl:block lg:block w-[33%] lg:min-w-[375px] lg:min-h-[376px] xl:min-w-[380px] xxl:min-w-[444px] flex flex-col min-h-[418px] xl:min-h-[418px] bg-[image:var(--image-url)] bg-cover"></div>
 
-              <div className="w-[37%] md:w-[70%]  lg:w-[70%] xl:w-[37%]  h-full pt-0 flex flex-col xl:ml-10 md:ml-[0px] col_2 pr-5">
-                <div className="border-b-4 border-lime w-[85px] rounded-full mb-3"></div>
-                <h1 className="text-[26px] md:text-[30px] font-bold leading-10 lg:text-[24px] xl:text-[25px] xxl:text-[34px] lg:text-black mb-6 animate-fade-in-up">
+              <div className="w-[37%] md:w-[70%]  lg:w-[70%] xl:w-[37%] lg:pl-[25px] xl:pl-[0px] h-full pt-0 flex flex-col xl:ml-10 md:ml-[0px] col_2 pr-7">
+                <div className="border-b-4 border-lime w-[85px] rounded-full mb-3 lg:hidden xl:block"></div>
+                <h1 className="text-[26px] md:text-[30px] font-bold leading-10 lg:text-[20px] lg:leading-8 xl:leading-10  xl:text-[25px] xxl:text-[34px] lg:text-black mb-6 animate-fade-in-up lg:pr-[20px] xl:pr-[0px]">
                   {props.serviceTitle}
                   
                 </h1>
@@ -27,7 +28,7 @@ function ServiceHeader(props: any) {
                 const icon = isLastItem ? faPhone : faCheck;
 
                 return (
-                  <div key={index} className="flex mx-2 gap-2.5 my-2.5 items-center ml-[0px]">
+                  <div key={index} className="flex mx-2  gap-2.5  my-2.5 items-center ml-[0px]">
                     <span className="w-[24px] min-w-[24px] h-[24px] flex justify-center rounded-full bg-[#c2cf10]">
                       <FontAwesomeIcon
                         className="w-3 fa-bold"
@@ -36,7 +37,7 @@ function ServiceHeader(props: any) {
                       ></FontAwesomeIcon>
                     </span>
                     <p
-                      className="text-base lg:text-[16px] font-semibold"
+                      className="text-base  lg:text-[13px] xl:text-[16px] font-semibold"
                       dangerouslySetInnerHTML={{
                         __html: `${ele}`,
                       }}
@@ -46,7 +47,7 @@ function ServiceHeader(props: any) {
               })}
 
               </div>
-              <div className="w-[30%] w-[95%] md:w-[45%] lg:w-[40.7%] xl:w-[30%] h-max col_3">
+              <div className="w-[30%] w-[95%] md:w-[45%] lg:w-[50.3%] xl:w-[30%] h-max col_3">
                 <SelectProperty
                   sticky={false}/>
               </div>
