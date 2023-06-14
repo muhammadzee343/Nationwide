@@ -151,6 +151,10 @@ function ContactUsNew({ Services }: any) {
           <div className="w-full flex justify-center pt-[82px]">
               <Head>
                   <title>Join Us - Nationwide Surveyors</title>
+                  <meta
+                      name="description"
+                      content="Nationwide Surveyors are always looking to partner with reliable and committed professionals."
+                  />
               </Head>
               <form onSubmit={handleSubmit(join)}>
                   <div className="w-full md:px-8  xl:max-w-[1114px] flex flex-col items-center">

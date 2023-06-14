@@ -193,8 +193,7 @@ function Checkout(props: any) {
     const data = await response.json();
 
     const billingDetails = {
-      firstName: data.billing_details.billing_first_name,
-      lastName: data.billing_details.billing_last_name,
+      full_name: data.billing_details.billing_first_name + ' ' +data.billing_details.billing_last_name,
       company: "",
       postcode: data.billing_details.billing_postcode,
       streetAddress: data.billing_details.billing_address,
@@ -449,6 +448,7 @@ function Checkout(props: any) {
             {/*</div>*/}
             <br />
             <div className="w-full">
+              {!router?.query?.aquote && !router?.query.bquote && (
               <ButtonComponent
                 text="Add an other property"
                 className={`flex justify-center items-center border-lime border flex-row-reverse bg-white text-[13px] font-bold mb-5
@@ -461,6 +461,7 @@ function Checkout(props: any) {
                   className="text-black h-4 mr-5 hover: md:h-5 lg:h-5"
                 />
               </ButtonComponent>
+              )}
               <div className="lg:hidden mt-8">
                 <OrderSummary
                   discount={pricing.discount}
@@ -488,24 +489,26 @@ function Checkout(props: any) {
                       onClick={() => setPaymentType("payByCard")}
                     />
                     <br />
-                    <ButtonComponent
-                      text="Pay Over Phone"
-                      className={`flex justify-center text-[13px] font-bold hover:text-dark-blue border-[1px] border-lime
-              hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
-                paymentType === "payOverPhone" &&
-                "text-white bg-lime rounded-b-none"
-              }`}
+                    {!router?.query?.aquote && !router?.query.bquote && (
+                        <ButtonComponent
+                                    text="Pay Over Phone"
+                                    className={`flex justify-center text-[13px] font-bold hover:text-dark-blue border-[1px] border-lime
+                            hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
+                              paymentType === "payOverPhone" &&
+                              "text-white bg-lime rounded-b-none"
+                            }`}
                       onClick={() => setPaymentType("payOverPhone")}
-                    />
+                    />)}
                     <br />
-                    <ButtonComponent
-                      text="Pay By Bank Transfer"
-                      className={`flex justify-center text-[13px] mb-2 font-bold hover:text-dark-blue border-[1px] border-lime
-                     hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
-                       paymentType === "payByBank" && "text-white bg-lime "
-                     }`}
-                      onClick={() => setPaymentType("payByBank")}
-                    />
+                    {!router?.query?.aquote && !router?.query.bquote && (
+                      <ButtonComponent
+                        text="Pay By Bank Transfer"
+                        className={`flex justify-center text-[13px] mb-2 font-bold hover:text-dark-blue border-[1px] border-lime
+                       hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
+                         paymentType === "payByBank" && "text-white bg-lime "
+                       }`}
+                        onClick={() => setPaymentType("payByBank")}
+                      />)}
                     {paymentType !== "" && (
                       <header className="flex justify-between items-center bg-dark-blue h-[45px] mb-[0] mt-8">
                         <h3 className="font-base font-semibold text-white px-[25px] ">

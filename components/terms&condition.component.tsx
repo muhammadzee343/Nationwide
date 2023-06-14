@@ -234,7 +234,7 @@ export default function TermsConditionComponent(props) {
             If you are unhappy with our final resolution of your complaint then
             we recommend you approach The Citizens Advice, Trading Standards or
             seek independent advice. Complaints should be sent to: Nationwide
-            Services-UK Ltd | Kemp House, 160 City Road, London, United Kingdom,
+            Services-UK Ltd | 128 City Road, London, United Kingdom,
             EC1V 2NX, Phone: 0300 140 0023 |
             <a href="mailto:complaints@nationwidesurveyors.org.uk">
               complaints@nationwidesurveyors.org.uk

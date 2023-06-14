@@ -18,6 +18,10 @@ function ContactUs(props: any) {
     <div className="mb-20 w-full flex-row justify-center sm:mb-20 md:mb-12">
       <Head>
         <title>Nationwide Surveyors | Contact Us</title>
+        <meta
+            name="description"
+            content="We offer all type of Landlord Reports & Certifications for domestic and commercial properties at competitive prices with Nationwide Coverage."
+        />
       </Head>
       <div className="bg-contact_us bg-cover w-full block">
         <div className="flex w-full bg-[#000000]/70 backdrop-brightness-100 pt-[45px] pb-[30px] md:min-h-[350px] lg:min-h-[440px] flex flex-row flex-wrap justify-start lg:px-32">
@@ -102,7 +106,7 @@ function ContactUsCard(props: any) {
                <div className="text-sm md:text-[12px] lg:text-sm leading-5 lg:leading-6">
                  Head Office:
                  <br />
-                 Kemp House, 160 City Road
+                 128 City Road
                  <br />
                  London, EC1V 2NX
                </div>

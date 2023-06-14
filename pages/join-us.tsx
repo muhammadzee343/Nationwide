@@ -94,6 +94,10 @@ const JoinUs = (props: any) => {
     <div className="w-full flex justify-center">
       <Head>
         <title>Join Us - Nationwide Surveyors</title>
+        <meta
+            name="description"
+            content="Nationwide Surveyors are always looking to partner with reliable and committed professionals."
+        />
       </Head>
       <div
         className="w-full flex flex-col justify-center items-center

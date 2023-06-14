@@ -9,6 +9,10 @@ function PrivacyPolicy() {
     <div className="w-full bg-white flex justify-center">
       <Head>
         <title>Nationwide Surveyors - Privacy Policy</title>
+        <meta
+            name="description"
+            content="At Nationwide Surveyors, we are committed to preserving the privacy of all visitors to this website. This policy applies to personal information we hold about individuals, sole traders and partnerships."
+        />
       </Head>
       <div className="w-full flex flex-col items-center">
         <HeaderComponent

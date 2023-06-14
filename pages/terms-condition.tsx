@@ -9,6 +9,10 @@ const TermsCondition = () => {
     <div className="w-full bg-white flex justify-center">
       <Head>
         <title>Terms & Conditions - Nationwide Surveyors</title>
+        <meta
+            name="description"
+            content="Terms and conditions of your use of the Nationwide Surveyors."
+        />
       </Head>
       <div className="w-full flex flex-col items-center">
         <HeaderComponent
@@ -259,7 +263,7 @@ const TermsCondition = () => {
                 If you are unhappy with our final resolution of your complaint
                 then we recommend you approach The Citizens Advice, Trading
                 Standards or seek independent advice. Complaints should be sent
-                to: Nationwide Services-UK Ltd | Kemp House, 160 City Road,
+                to: Nationwide Services-UK Ltd | 128 City Road,
                 London, United Kingdom, EC1V 2NX, Phone: 0300 140 0023 |
                 complaints@nationwidesurveyors.org.uk
               </p>

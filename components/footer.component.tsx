@@ -59,7 +59,7 @@ export default function Footer() {
                 />
               </Link>
               <p className="md:w-[248px] text-[#a3a3a6] text-[15px] lg:w-[200px] xl:w-[248px] my-6 font-opensans">
-              Nationwide Surveyors is a trading name of Nationwide Services-UK Limited, Company No: 12010871 Kemp House, 160 City Road London, EC1V 2NX
+              Nationwide Surveyors is a trading name of Nationwide Services-UK Limited, Company No: 12010871,  128 City Road London, EC1V 2NX
               </p>
               <div className="border-lime border-b-2 rounded-full w-8 mb-2 "></div>
                 <h3 className="mb-4 text-lg font-semibold text-white ">
