@@ -609,8 +609,8 @@ function OrderSummary({ subTotal, discount }: any) {
           Payment summary
         </h3>
       </header>
-      <div className="pb-[19px] bg-white m-[0px!important]"></div>
-      <div className="flex flex-col border-lime border-t-[3px] px-2 py-6 md:p-4 xl:p-4 w-full bg-white shadow-md space-y-6 mt-[0px!important]">
+      <div className="pb-[19px] bg-[#f0f0f0] m-[0px!important]"></div>
+      <div className="flex flex-col border-lime border-t-[3px] px-2 py-6 md:p-4 xl:p-4 w-full bg-[#f0f0f0] shadow-md space-y-6 mt-[0px!important]">
         <div className="flex justify-center items-center w-full space-y-4 flex-col border-[#9badad] border-b pb-4">
           <div className="flex justify-between w-full">
             <p className="text-base dark:text-white leading-4 text-gray-800">

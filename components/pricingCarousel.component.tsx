@@ -23,7 +23,7 @@ function PricingCarouselComponent(props: any) {
 
   return (
     <>
-      <div className="flex lg:hidden relative md:ml-0 md:mr-0 md:pl-0 md:pr-0 mx-auto md:px-12 xl:px-32 mt-[10px] xl:mt-[-200]px]">
+      <div className=" flex lg:hidden relative md:ml-0 md:mr-0 md:pl-0 md:pr-0 mx-auto md:px-12 xl:px-32 mt-[10px] xl:mt-[-200]px]">
 
         <Swiper
           spaceBetween={0}
@@ -36,7 +36,7 @@ function PricingCarouselComponent(props: any) {
           modules={[Pagination, Navigation]}
           onSlideChange={() => {}}
           onSwiper={(swiper) => {}}
-          className="mySwiper w-full flex justify-center min-h-[580px] relative
+          className="mySwiper w-full flex justify-center min-h-[580px] relative px-[0.5rem!important] sm:px-[0rem!important]
           "
           style={{
             "--swiper-pagination-color": "#c2cf10",

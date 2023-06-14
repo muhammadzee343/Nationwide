@@ -250,23 +250,23 @@ function CardTable({ cart, getCart }: any) {
             className="rounded-sm my-5 py-3 shadow-md border-lime border-t-[3px] bg-[#f0f0f0] drop-shadow-[0 2px 4px rgb(0 0 0 / 21%)]"
             key={cartNo}
           >
-            <div className="w-full flex px-4 md:px-0 py-2 justify-between items-center">
+            <div className="w-full flex items-center justify-between ">
               <div className="min-w-[75%]  md:min-w-[60%] lg-min-w-[70%] md:pl-4">
-                <p className="text-[14px] md:text-[17px] text-black text-left">
+                <p className="text-[14px] md:text-[16px] text-black text-left">
                   <strong className="mr-2"> Address:</strong>
                   {cartItemData[0]?.property_address}
                 </p>
               </div>
               {!router?.query?.aquote && !router?.query.bquote && (
                 <>
-                  <div className="border-lime w-[100%] md:w-[32%] lg:w-[25%] pr-4">
+                  <div className="border-lime w-[100%] md:w-[32%] lg:w-[25%] pr-4  md:mt-[15px]">
                     <ButtonComponent
                       text="Add an other service"
                       icon={faPlus}
                       type="button"
                       className="hidden add-service md:flex justify-center items-center px-[1px] text-[12px]
                             hover:text-dark-blue font-medium border-[1px] border-lime hover:border-lime
-                            hover:bg-lime py-[10px] uppercase md:text-[13px] lg:px-1 lg:text-[12px] xxl:text-[12px] bg-lime shadow md:ml-[15px] md:min-w-[185px] md:mr-[-3px]"
+                            hover:bg-lime py-[10px] uppercase md:text-[13px] lg:px-1 lg:text-[12px] xxl:text-[12px] bg-lime shadow md:ml-[15px]  md:mr-[-3px]"
                       onClick={() => addAnotherService(cartNo)}
                     ></ButtonComponent>
                   </div>
@@ -429,7 +429,7 @@ function CardTable({ cart, getCart }: any) {
         });
         return (
           <div
-            className="border-lime border-t-[2px] rounded-sm my-2 pt-3 pb-7 shadow-md"
+            className="rounded-sm my-5 py-3 shadow-md border-lime border-t-[3px] bg-[#f0f0f0] drop-shadow-[0 2px 4px rgb(0 0 0 / 21%)]"
             key={cartNo}
           >
             <div className="w-full  px-4 py-1  ">
@@ -456,14 +456,14 @@ function CardTable({ cart, getCart }: any) {
                 </div>
                 {!router?.query?.aquote && !router?.query.bquote && (
                   <>
-                    <div className="border-lime w-[100%] md:w-[32%] lg:w-[25%] pr-4">
+                    <div className="border-lime w-[100%] md:w-[32%] lg:w-[25%] ">
                       <ButtonComponent
                         text="Add an other service"
                         icon={faPlus}
                         type="button"
                         className="hidden add-service md:flex justify-center items-center px-[1px] text-[12px]
-                            hover:text-dark-blue font-medium border-[1px] border-lime hover:border-lime
-                            hover:bg-lime py-[10px] uppercase md:text-[14px] lg:px-1 lg:text-[10px] xxl:text-[14px]"
+                        hover:text-dark-blue font-medium border-[1px] border-lime hover:border-lime
+                        hover:bg-lime py-[10px] uppercase md:text-[13px] lg:px-1 lg:text-[12px] xxl:text-[12px] bg-lime shadow md:ml-[15px]  md:mr-[-3px]"
                         onClick={() => addAnotherService(cartNo, true)}
                       ></ButtonComponent>
                     </div>
@@ -485,7 +485,7 @@ function CardTable({ cart, getCart }: any) {
                 {/*</p>*/}
               </div>
               <div class="flex justify-between mt-3">
-                <p className="text-[14px] md:text-[17px] ml-4 text-dark-blue ">
+                <p className="text-[14px] md:text-[16px] ml-4 text-dark-blue ">
                   {(() => {
                     switch (cartItemData[0]?.bundle_id) {
                       case 1:
@@ -514,10 +514,10 @@ function CardTable({ cart, getCart }: any) {
                   return (
                     <li
                       key={index}
-                      className="py-1.5 flex justify-between items-center border-b border-[#e5e7eb]"
+                      className="py-1.5 flex justify-between items-center border-b border-[#acabab]"
                     >
                       <div className="flex">
-                        <p className="text-[14px] md:text-[17px] ml-4 text-dark-blue ">
+                        <p className="text-[14px] md:text-[14px] font-semibold ml-4 text-dark-blue ">
                           <span style={{ fontSize: 24 }}>⤷</span> {e?.name}
                         </p>
                       </div>
