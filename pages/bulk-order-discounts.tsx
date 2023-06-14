@@ -7,7 +7,11 @@ function BuldOrderDiscount() {
   return (
     <>
       <Head>
-        <title>Energy Performance Certificate Rules And Regulations - Nationwide Surveyors</title>
+        <title>Bulk Orders - Nationwide Surveyors</title>
+        <meta
+            name="description"
+            content="We offer all type of Landlord Reports & Certifications for domestic and commercial properties at competitive prices with Nationwide Coverage."
+        />
       </Head>
     <div className="w-full bg-white flex justify-center">
       <div className="w-full flex flex-col items-center">

@@ -28,7 +28,7 @@ function PricingCarouselComponent(props: any) {
         <Swiper
           spaceBetween={0}
           slidesPerView={"auto"}
-          centeredSlides={false}
+          centeredSlides={true}
           pagination={pagination}
           navigation={false}
           initialSlide={2}
