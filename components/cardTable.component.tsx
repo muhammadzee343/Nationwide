@@ -250,7 +250,7 @@ function CardTable({ cart, getCart }: any) {
             className="rounded-sm my-5 py-3 shadow-md border-lime border-t-[3px] bg-[#f0f0f0] drop-shadow-[0 2px 4px rgb(0 0 0 / 21%)]"
             key={cartNo}
           >
-            <div className="w-full flex items-center justify-between ">
+            <div className="w-full flex items-center justify-between px-4 py-1">
               <div className="min-w-[75%]  md:min-w-[60%] lg-min-w-[70%] md:pl-4">
                 <p className="text-[14px] md:text-[16px] text-black text-left">
                   <strong className="mr-2"> Address:</strong>
@@ -559,18 +559,22 @@ function CardTable({ cart, getCart }: any) {
                     <div className="flex items-center justify-between flex-wrap">
                       {contactType.map((type, index) => {
                         return (
-                          <RadioInput
+                          <div
                             key={index}
-                            label={type.title}
-                            name="contact_type1"
-                            value={type.title}
-                            activeVal={cartItemData[0].contact_type}
-                            cart={cart}
-                            index={cartNo}
-                            changeContactType={changeContactType}
-                            obj="shopping_cart_bundles"
-                            className="text-[17px] text-dark-blue mb-3"
-                          />
+                            className={isSmallScreen && "w-[30%]"}
+                          >
+                            <Component
+                              label={type.title}
+                              name="contact_type1"
+                              value={type.title}
+                              activeVal={cartItemData[0].contact_type}
+                              cart={cart}
+                              index={cartNo}
+                              changeContactType={changeContactType}
+                              obj="shopping_cart_bundles"
+                              className="text-[15px] text-dark-blue  mb-3"
+                            />
+                          </div>
                         );
                       })}
                     </div>

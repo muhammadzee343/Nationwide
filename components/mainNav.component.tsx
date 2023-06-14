@@ -160,14 +160,14 @@ const MainNavComponent = () => {
                 CONTACT US
               </Link>
             </li>
-            <li className="hidden md:flex  items-center px-6 my-5 md:my-0">
-              <button
+            <li className="hidden md:flex  items-center px-6 my-5 md:my-0 cursor-pointer">
+              <a
                 className={styles.addToCartBtn}
                 onClick={() => goToCheckout()}
               >
                 <FontAwesomeIcon className="w-3" icon={faCartShopping} />
                 <span className={styles.cartCount}>{count || 0}</span>
-              </button>
+              </a>
             </li>
             {router.pathname !== "/order-now" && (
               <button className="  hidden xl:flex lg:flex items-center justify-center  h-[37px] w-[129px] py-2 bg-dark-blue text-white text-[12px] font-bold rounded-full uppercase">

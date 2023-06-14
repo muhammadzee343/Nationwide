@@ -427,7 +427,7 @@ function Checkout(props: any) {
 
         <div className="w-full flex flex-wrap justify-center items-start sm:gap-x-22">
           <CheckoutStepper/>
-          <div className="w-full lg:w-[60%] flex flex-col justify-center items-center pt-[5px] pb-[25px] px-2 md:px-5">
+          <div className="w-full lg:w-[60%] flex flex-col justify-center items-center pt-[5px] pb-[25px] px-5 md:px-5">
             <div className="w-full my-3">
               {cart?.shopping_cart_products.length ||
               cart?.shopping_cart_bundles.length ? (
