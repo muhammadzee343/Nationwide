@@ -148,7 +148,7 @@ function RequestCallBack({
       {/*Content*/}
       {!collapse && (
         <div>
-          <div className={`px-[20px] py-[25px] flex flex-col`}>
+          <div className={`px-[20px] py-[25px] flex flex-col bg-[#f0f0f0] drop-shadow-[0 2px 4px rgb(0 0 0 / 21%)]`}>
             {submitted && (
               <div>
                 <p className="text-dark-blue text-[20px] leading-8 font-semibold mb-15">
@@ -172,7 +172,7 @@ function RequestCallBack({
                   text="If you would like to discuss above quotation, check availability or got any other questions,
           please fill and submit call back request. We aim to respond within 60 minutes of receiving callback
            requests during our working hours."
-                  className="text-[14px]"
+                  className="text-[14px] bg-white"
                 />
                 <form onSubmit={handleSubmit(submitForm)}>
                   <div className="flex flex-col mt-[25px]">

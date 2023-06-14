@@ -433,6 +433,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         }
         elements.push(
           <>
+          <hr className="h-[2px] mt-9 w-full xl:w-8/12 xxl:w-9/12 bg-[#dfdfdf]" />
             <div
               className=" w-full sm:px-0 md:px-0 xl:w-8/12 xxl:w-9/12 mt-8 mb-2"
               key={index}
@@ -704,7 +705,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                     {services}
                   </div>
                 </div>
-                <hr className="h-[2px] mt-9 w-full xl:w-8/12 xxl:w-9/12 bg-[#dfdfdf]" />
+                
                 {selectedServiceId.length <= 0 && (
                   <NextBottom setpropType={() => {}} />
                 )}

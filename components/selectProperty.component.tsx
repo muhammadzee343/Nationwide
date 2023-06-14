@@ -61,7 +61,7 @@ export default function SelectProperty(sticky=false) {
                   >
                     {/*<Image src={Builiding} alt='home' className="h-7 w-7 mr-5"/>*/}
                     <FontAwesomeIcon
-                        className="h-7 w-7 mr-5"
+                        className="h-7 w-7 mr-5 relative left-[4px]"
                         icon={faBuilding}
                     />
                     Commercial Property
