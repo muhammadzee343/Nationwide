@@ -50,13 +50,13 @@ function PricingCard({
               <div className="tm-ptablebox-content block text-left">
                 <div className="tm-ptablebox-features">
                   <ul
-                    className={`${styles.pricingMarkers}tm-feature-lines block text-left min-h-[216px] md:min-h-[230px]  pt-3 marker:dark-blue`}
+                    className={`${styles.pricingMarkers}tm-feature-lines block text-left min-h-[216px]   pt-3 marker:dark-blue`}
                   >
                     {content.list.map((ele, index) => {
                       return (
                         <li
                           key={index}
-                          className="relative pl-[25px] pt-[12px] pb-[11px] leading-[22px] border-b border-b-[#BFC8D6] flex text-sm  md:text-[12px] lg:text-[12px] xl:text-sm text-black"
+                          className="relative pl-[25px] pt-[12px] pb-[11px] leading-[22px] border-b border-b-[#BFC8D6] flex text-sm   lg:text-[12px] xl:text-sm text-black"
                         >
                           <span className=" absolute left-[-2px] top-[16px]">
                             <FontAwesomeIcon className="w-4" icon={faCheck} />
