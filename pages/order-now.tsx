@@ -691,10 +691,12 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
           {propertyType && (
             <>
-
+            
             <section className="animate-fade-in-up" ref={servicesSection}>
               <div className="flex flex-col justify-center items-center px-5">
-              <hr className="h-[2px] mt-9 w-full xl:w-8/12 xxl:w-9/12 bg-[#dfdfdf]" />
+              <hr className="h-[2px] mt-9 w-full xl:w-8/12 xxl:w-9/12 bg-[#dfdfdf] mx-auto" />
+                <div className="w-full xl:w-8/12 xxl:w-9/12">
+              
                 <div className=" w-full  sm:px-0 md:px-0  md:w-8/12 xxl:w-9/12 my-[20px] sm:w-[100%!important]">
                   <h3 className=" text-2xl md:text-3xl text-dark-blue font-bold ">
                     Choose Your Services
@@ -709,6 +711,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
                 {selectedServiceId.length <= 0 && (
                   <NextBottom setpropType={() => {}} />
                 )}
+              </div>
               </div>
             </section>
             </>
