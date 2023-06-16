@@ -251,7 +251,7 @@ function CardTable({ cart, getCart }: any) {
             key={cartNo}
           >
             <div className="w-full flex items-center justify-between px-4 py-1">
-              <div className="min-w-[75%]  md:min-w-[60%] lg-min-w-[70%] md:pl-4">
+              <div className="min-w-[75%]  md:min-w-[60%] lg-min-w-[70%]">
                 <p className="text-[14px] md:text-[16px] text-black text-left">
                   <strong className="mr-2"> Address:</strong>
                   {cartItemData[0]?.property_address}
@@ -259,7 +259,7 @@ function CardTable({ cart, getCart }: any) {
               </div>
               {!router?.query?.aquote && !router?.query.bquote && (
                 <>
-                  <div className="border-lime w-[100%] md:w-[32%] lg:w-[25%] pr-4  md:mt-[15px]">
+                  <div className="border-lime w-[100%] md:w-[32%] lg:w-[25%]  md:mt-[15px]">
                     <ButtonComponent
                       text="Add an other service"
                       icon={faPlus}
@@ -449,7 +449,7 @@ function CardTable({ cart, getCart }: any) {
                       }
                     />
                   </a>
-                  <p className="text-[14px] md:text-[17px] ml-4 text-dark-blue ">
+                  <p className="text-[14px] md:text-[16px] ml-4 text-dark-blue  text-left">
                     <strong className="mr-2"> Address:</strong>
                     {cartItemData[0]?.property_address}
                   </p>
