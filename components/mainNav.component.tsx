@@ -164,6 +164,8 @@ const MainNavComponent = () => {
               <a
                 className={styles.addToCartBtn}
                 onClick={() => goToCheckout()}
+                href="/checkout"
+
               >
                 <FontAwesomeIcon className="w-3" icon={faCartShopping} />
                 <span className={styles.cartCount}>{count || 0}</span>
