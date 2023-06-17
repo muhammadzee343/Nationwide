@@ -251,7 +251,7 @@ function CardTable({ cart, getCart }: any) {
             key={cartNo}
           >
             <div className="w-full flex items-center justify-between px-4 py-1">
-              <div className="min-w-[75%]  md:min-w-[60%] lg-min-w-[70%]">
+              <div className="min-w-[75%]  md:min-w-[60%] lg-min-w-[60%]">
                 <p className="text-[14px] md:text-[16px] text-black text-left">
                   <strong className="mr-2"> Address:</strong>
                   {cartItemData[0]?.property_address}
@@ -259,14 +259,14 @@ function CardTable({ cart, getCart }: any) {
               </div>
               {!router?.query?.aquote && !router?.query.bquote && (
                 <>
-                  <div className="border-lime w-[100%] md:w-[32%] lg:w-[25%]  md:mt-[15px]">
+                  <div className="border-lime w-[100%] md:w-[32%] lg:w-[40%]">
                     <ButtonComponent
                       text="Add an other service"
                       icon={faPlus}
                       type="button"
                       className="hidden add-service md:flex justify-center items-center px-[1px] text-[12px]
                             hover:text-dark-blue font-medium border-[1px] border-lime hover:border-lime
-                            hover:bg-lime py-[10px] uppercase md:text-[13px] lg:px-1 lg:text-[12px] xxl:text-[12px] bg-lime shadow md:ml-[15px]  md:mr-[-3px]"
+                            hover:bg-lime py-[10px] uppercase md:text-[13px] lg:px-1 lg:text-[12px] xxl:text-[12px] bg-lime shadow md:ml-[15px]  md:mr-[-3px] min-w-[200px]"
                       onClick={() => addAnotherService(cartNo)}
                     ></ButtonComponent>
                   </div>
@@ -434,6 +434,7 @@ function CardTable({ cart, getCart }: any) {
           >
             <div className="w-full  px-4 py-1  ">
               <div className="w-full flex items-center justify-between">
+                <div className="min-w-[75%]  md:min-w-[60%] lg-min-w-[60%]">
                 <div className="flex items-center">
                   <a>
                     <FontAwesomeIcon
@@ -454,16 +455,17 @@ function CardTable({ cart, getCart }: any) {
                     {cartItemData[0]?.property_address}
                   </p>
                 </div>
+                </div>
                 {!router?.query?.aquote && !router?.query.bquote && (
                   <>
-                    <div className="border-lime w-[100%] md:w-[32%] lg:w-[25%] ">
+                    <div className="border-lime w-[100%] md:w-[32%] lg:w-[40%] ">
                       <ButtonComponent
                         text="Add an other service"
                         icon={faPlus}
                         type="button"
                         className="hidden add-service md:flex justify-center items-center px-[1px] text-[12px]
                         hover:text-dark-blue font-medium border-[1px] border-lime hover:border-lime
-                        hover:bg-lime py-[10px] uppercase md:text-[13px] lg:px-1 lg:text-[12px] xxl:text-[12px] bg-lime shadow md:ml-[15px]  md:mr-[-3px]"
+                        hover:bg-lime py-[10px] uppercase md:text-[13px] lg:px-1 lg:text-[12px] xxl:text-[12px] bg-lime shadow md:ml-[15px]  md:mr-[-3px] min-w-[200px]"
                         onClick={() => addAnotherService(cartNo, true)}
                       ></ButtonComponent>
                     </div>
