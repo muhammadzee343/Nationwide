@@ -7,19 +7,21 @@ function ButtonComponent({
   children,
   type = "submit",
   icon=null,
+  iconClassName = "",
   ...buttonProps
 }: any) {
+  const buttonClassName = `w-full text-center tracking-normal ease-in duration-200 ${className}`;
+  const iconClassNames = `h-5 md:h-4 px-2 lg: h-8 ${iconClassName}`;
   // @ts-ignore
   return (
     <>
       <div className="flex flex-wrap justify-center w-full">
         <button
-          className={`w-full   
-              text-center tracking-normal ease-in duration-200  ${className}`}
           type={type}
+          className={buttonClassName}
           {...buttonProps}
         >
-          {icon &&  <FontAwesomeIcon icon={icon} className="h-5  md:h-4 px-2 lg: h-8"/>}
+          {icon &&  <FontAwesomeIcon icon={icon} className={iconClassNames}/>}
           {text}
           {children}
         </button>

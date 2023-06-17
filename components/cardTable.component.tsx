@@ -263,10 +263,12 @@ function CardTable({ cart, getCart }: any) {
                     <ButtonComponent
                       text="Add an other service"
                       icon={faPlus}
+                      iconClassName="pl-[0px!important]"
                       type="button"
                       className="hidden add-service md:flex justify-center items-center px-[1px] text-[12px]
                             hover:text-dark-blue font-medium border-[1px] border-lime hover:border-lime
-                            hover:bg-lime py-[10px] uppercase md:text-[13px] lg:px-1 lg:text-[12px] xxl:text-[12px] bg-lime shadow md:ml-[15px]  md:mr-[-3px] min-w-[200px]"
+                            hover:bg-lime py-[10px] uppercase md:text-[13px] lg:px-1 lg:text-[12px] xxl:text-[12px] bg-lime shadow md:ml-[15px]  md:mr-[-3px] min-w-[180px]"
+                            
                       onClick={() => addAnotherService(cartNo)}
                     ></ButtonComponent>
                   </div>
@@ -463,9 +465,10 @@ function CardTable({ cart, getCart }: any) {
                         text="Add an other service"
                         icon={faPlus}
                         type="button"
+                        iconClassName="pl-[0px!important]"
                         className="hidden add-service md:flex justify-center items-center px-[1px] text-[12px]
                         hover:text-dark-blue font-medium border-[1px] border-lime hover:border-lime
-                        hover:bg-lime py-[10px] uppercase md:text-[13px] lg:px-1 lg:text-[12px] xxl:text-[12px] bg-lime shadow md:ml-[15px]  md:mr-[-3px] min-w-[200px]"
+                        hover:bg-lime py-[10px] uppercase md:text-[13px] lg:px-1 lg:text-[12px] xxl:text-[12px] bg-lime shadow md:ml-[15px]  md:mr-[-3px] min-w-[180px]" 
                         onClick={() => addAnotherService(cartNo, true)}
                       ></ButtonComponent>
                     </div>
