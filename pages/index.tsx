@@ -108,7 +108,7 @@ export default function Home() {
       <div className="w-full py-5 lg:w-[970px] xl:min-w-[1170px] xl:max-w-[1170px] mx-auto px-[20px]">
         <div className="pb-[60px] pt-10 flex flex-col flex-col-reverse justify-between lg:flex-row gap-x-8">
             {content.image && (
-              <BoxBackgroundComponent className={'h-[200px] md:h-[350px] lg:h-[300px] w-[100%] lg:w-[40%] p-2 lg:h-auto'}
+              <BoxBackgroundComponent className={'h-[200px] md:h-[300px] lg:h-[300px] w-[100%] lg:w-[40%] p-2 lg:h-auto'}
                                       greyStyle='w-[15%] h-[50%] -top-[10%] lg:-top-[6%] right-[5%] lg:-right-[4%] '
                                       limeStyle='w-[15%] h-full lg:h-[95%] top-0 lg:top-[5%] -right-[0%]  lg:-right-[8%]'
                                       contentStyle='m-auto w-[90%] lg:w-full'>
