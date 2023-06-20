@@ -182,15 +182,26 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   const orderNow = async () => {
     setFormDirty(true);
-    if (formDirty && (!propertyAddress || error)) {
-      Swal.fire({
-        title: "Something missing!",
-        text: "Please fill all visible fields for a better price",
-        icon: "warning",
-        confirmButtonText: "Ok",
-        confirmButtonColor: "rgb(140, 212, 245)",
-      });
+    let {property_type, bedrooms, distribution_boards, electrical_appliances, gas_appliances, gas_fire, fire_back_boiler} = attribute
+    let formError = property_type && bedrooms && distribution_boards && electrical_appliances
+    let gasFire = false
+    if(!gas_appliances){
+       gasFire = false
+    } else if(gas_appliances > 1) {
+      if(gas_fire === false ){
+         gasFire = true
+      } else {
+         if(fire_back_boiler !== ""){
+           gasFire = true
+         }else{
+           gasFire = false
+         }
+      }
     } else {
+      gasFire = true
+    }
+
+    if (formError && gasFire && propertyAddress) {
       const body = {
         order: {
           service_category: propertyType,
@@ -202,7 +213,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
           no_of_gas_appliances_manual: attribute.gas_appliances >= 4,
           no_of_distribution_boards_manual: true,
           no_of_electric_appliances_manual:
-            attribute.electrical_appliances >= 30,
+              attribute.electrical_appliances >= 30,
           no_of_floors_manual: attribute.floors >= 4,
           no_of_bathrooms_manual: true,
           no_of_circuits_manual: attribute.circuits >= 31,
@@ -239,8 +250,8 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
       };
       try {
         const response = await fetch(
-          `${process.env.BASE_URL_DEV}orders`,
-          requestOptions
+            `${process.env.BASE_URL_DEV}orders`,
+            requestOptions
         );
         if (!response.ok) {
           switch (response.status) {
@@ -258,6 +269,14 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
           confirmButtonColor: "rgb(140, 212, 245)",
         });
       }
+    } else {
+      Swal.fire({
+        title: "Something missing!",
+        text: "Please fill all visible fields for a better price",
+        icon: "warning",
+        confirmButtonText: "Ok",
+        confirmButtonColor: "rgb(140, 212, 245)",
+      });
     }
   };
 
@@ -428,9 +447,9 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
         });
       }
       if (ele && Object.keys(ele).length !== 0) {
-        if (attribute[ele.attr] === "") {
-          setError(true);
-        }
+        // if (attribute[ele.attr] === "") {
+        //   setError(true);
+        // }
         elements.push(
           <>
           <hr className="h-[2px] mt-9 w-full xl:w-8/12 xxl:w-9/12 bg-[#dfdfdf]" />
@@ -817,7 +836,7 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 export const getServerSideProps = async () => {
   const res = await fetch(`${process.env.BASE_URL_DEV}/services/list_services`);
   const data = await res.json();
-  console.log({data});
+
   data.services = data.services.filter(
       (data) => data.show_on_order_now_and_sidebar === true
   );

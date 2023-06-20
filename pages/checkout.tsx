@@ -405,12 +405,24 @@ function Checkout(props: any) {
   }, [pricing, uuid, orderId]);
 
   const requestACBRef = useRef(null);
-
+  const paymentSection = useRef<HTMLInputElement | any>();
   const requestACBSucess = () => {
     let postion = requestACBRef.current.offsetTop;
     postion = postion - 90;
     window.scrollTo({ top: postion, behavior: "smooth" });
   };
+  useEffect(() => {
+    setTimeout(() => {
+      if( paymentSection.current && paymentSection.current.style ) {
+        const barHeight = "80px"
+        paymentSection.current.style.scrollMargin = barHeight;
+      }
+      paymentSection.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 500);
+  },[paymentType])
 
   // @ts-ignore
   return (
@@ -519,15 +531,17 @@ function Checkout(props: any) {
                     )}
                     <div className="w-full">
                       {paymentType !== "" && (
-                        <BillingForm
-                          chargeCard={chargeCard}
-                          billingDetails={billingDetails}
-                          setPaymentType={setPaymentType}
-                          stripeObj={stripObj}
-                          paymentType={paymentType}
-                          cardError={cardError}
-                          setCardError={setCardError}
-                        />
+                        <section className="animate-fade-in-up" ref={paymentSection}>
+                          <BillingForm
+                            chargeCard={chargeCard}
+                            billingDetails={billingDetails}
+                            setPaymentType={setPaymentType}
+                            stripeObj={stripObj}
+                            paymentType={paymentType}
+                            cardError={cardError}
+                            setCardError={setCardError}
+                          />
+                        </section>
                       )}
                     </div>
                   </div>
