@@ -87,6 +87,7 @@ const DrawerComponent = ({}: any) => {
     setOverlay,
     propertyType,
     setPropertyType,
+    serviceId
   } = useContext<any>(SidebarContext);
 
   const { isLoading, setIsLoading } = useContext<any>(OverlayContext);
@@ -293,6 +294,11 @@ const DrawerComponent = ({}: any) => {
 
   const services = useMemo<JSX.Element[]>(() => {
     const elements: JSX.Element[] = [];
+    const index = filteredServices.findIndex(service => service.id === serviceId);
+    if (index !== -1) {
+      const selectedService = filteredServices.splice(index, 1)[0];
+      filteredServices.unshift(selectedService);
+    }
     const services = !showMore
       ? filteredServices.slice(0, 5)
       : filteredServices;
@@ -325,6 +331,7 @@ const DrawerComponent = ({}: any) => {
     showMore,
     formDirty,
   ]);
+
 
   const serviceAttribute = useMemo<JSX.Element[]>(() => {
     const elements: JSX.Element[] = [];

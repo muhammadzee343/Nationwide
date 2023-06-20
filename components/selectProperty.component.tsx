@@ -13,13 +13,14 @@ import {
     faBuilding,
     
 } from "@fortawesome/free-solid-svg-icons";
-export default function SelectProperty(sticky=false) {
+export default function SelectProperty({sticky = false, selectedServiceId}: {sticky: boolean, selectedServiceId: number}) {
 
-  const sticky_condition = sticky.sticky ? 'sticky top-14' : '';
-  const { setShowDrawer, setOverlay, setPropertyType, propertyType } =
+  const sticky_condition = sticky ? 'sticky top-14' : '';
+  const { setShowDrawer, setOverlay, setPropertyType, setServiceId } =
     useContext(SidebarContext);
   const displayDrawer = (propertyType: string) => {
     setPropertyType(propertyType);
+    setServiceId(selectedServiceId)
     setOverlay(true);
     document.body.style.overflow = 'hidden';
     setTimeout(() => {
