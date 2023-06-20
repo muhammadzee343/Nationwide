@@ -150,6 +150,8 @@ const DrawerComponent = ({}: any) => {
       } else {
         setValidPostcode(false);
       }
+    } else {
+      setFormDirty(true)
     }
   };
 
