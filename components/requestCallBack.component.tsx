@@ -25,10 +25,10 @@ function RequestCallBack({
   const { register, handleSubmit } = useForm();
   const router = useRouter();
   const submitForm = async (data: any, e: any) => {
-    if (router.pathname === "/") {
-      requestCBHome(data);
-    } else {
+    if (router.pathname === "/checkout") {
       requestCBCheckout(data);
+    } else {
+      requestCBHome(data);
     }
   };
 

@@ -16,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const [overlay, setOverlay] = useState(false);
   const [propertyType, setPropertyType] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+    const [serviceId, setServiceId] = useState(false);
   const [uuid, setUuid] = useState("");
 
   useEffect(() => {
@@ -48,6 +49,8 @@ export default function App({ Component, pageProps }: AppProps) {
               setOverlay,
               propertyType,
               setPropertyType,
+              serviceId,
+              setServiceId
             }}
           >
             <Layout>

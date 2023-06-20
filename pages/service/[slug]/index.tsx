@@ -120,7 +120,7 @@ function Service({ certificate }: any) {
 
   return (
     <>
-      {certificate[0]?.servicesDec && <ServiceHeader servicesDec={certificate[0]?.servicesDec} serviceTitle={certificate[0]?.bannerTitle} serviceBanner={certificate[0]?.bannerImage} serviceBannerMobile={certificate[0]?.bannerImageMobile}/>}
+      {certificate[0]?.servicesDec && <ServiceHeader servicesDec={certificate[0]?.servicesDec} serviceTitle={certificate[0]?.bannerTitle} serviceBanner={certificate[0]?.bannerImage} serviceBannerMobile={certificate[0]?.bannerImageMobile} certificate={certificate}/>}
       <div className="w-full flex justify-center bg-white">
       {showButton && (
         <QuoteButtonComponent

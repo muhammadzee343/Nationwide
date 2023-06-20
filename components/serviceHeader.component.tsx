@@ -6,7 +6,7 @@ import Image from 'next/image'
 import SelectProperty from "./selectProperty.component";
 
 function ServiceHeader(props: any) {
-    console.log(props.serviceBanner);
+
   return (
     <>
       <div className="w-full xxl:max-w-[1440px] mx-auto bg-white  md:px-0 xl:px-[39px] bg-cover bg-no-repeat relativew-full">
@@ -49,7 +49,8 @@ function ServiceHeader(props: any) {
               </div>
               <div className="w-[30%] w-[95%] md:w-[45%] lg:w-[50.3%] xl:w-[30%] h-max col_3">
                 <SelectProperty
-                  sticky={false}/>
+                  sticky={false}
+                  selectedServiceId={props.certificate[0].id}/>
               </div>
             </div>
           </div>
