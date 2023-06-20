@@ -157,11 +157,11 @@ const DrawerComponent = ({}: any) => {
   const checkFormValidity = () => {
     let valid = [];
     for (let i = 0; i < serviceAttributes.length; i++) {
-      if (
-        attribute["gas_fire"] === false &&
-        serviceAttributes[i] === "fire_back_boiler"
-      ) {
-        continue;
+      if(serviceAttributes[i] === "gas_fire" && attribute["gas_appliances"] == 1){
+        continue
+      }
+      if(serviceAttributes[i] === "fire_back_boiler" && attribute["gas_fire"] == false){
+        continue
       }
       if (attribute[serviceAttributes[i]] === "") {
         valid.push(false);
