@@ -96,20 +96,20 @@ function Checkout(props: any) {
   }, []);
 
   useEffect(() => {
-    if (router?.query?.aquote) {
+    if (aquote) {
       const Uuid = uuidv4();
       localStorage.setItem("session_id", Uuid);
       setUuid(Uuid);
       //@ts-ignore
-      postQuoteApi(router?.query.aquote, true, Uuid);
-    } else if (router?.query?.bquote) {
+      postQuoteApi(aquote, true, Uuid);
+    } else if (bquote) {
       const Uuid = uuidv4();
       localStorage.setItem("session_id", Uuid);
       setUuid(Uuid);
       //@ts-ignore
-      postQuoteApi(router?.query.bquote, false, Uuid);
+      postQuoteApi(bquote, false, Uuid);
     }
-  }, [router]);
+  }, [bquote,aquote]);
 
   const postQuoteApi = async (
     quote: string,
@@ -218,7 +218,7 @@ function Checkout(props: any) {
 
   useEffect(() => {
     return () => {
-      if (router?.query?.aquote || router?.query?.bquote) {
+      if (aquote || bquote) {
         setCount(0);
         const Uuid = uuidv4();
         localStorage.setItem("session_id", Uuid);
