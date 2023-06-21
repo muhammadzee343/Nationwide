@@ -2471,3 +2471,101 @@ export const infolistPoints = [
     point: "Help to prevent and detect fraud or loss; and",
   },
 ];
+
+//reviews data
+export const reviewDummyData = [
+  {reviewName: "Getrude  C.",
+    reviewRating: 2.5,
+    reviewScore: 5,
+    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. He kept in touch before and after the service. " +
+        "He did his job perfectly and i received feedback within the expected time frame.",
+    reviewData: "June 17, 2023",
+    reviewVerified: "Verified"
+  },
+  {reviewName: "Getrude  C.",
+    reviewRating: 2.5,
+    reviewScore: 5,
+    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. .",
+    reviewData: "June 17, 2023",
+    reviewVerified: "Verified"
+  },
+  {reviewName: "Getrude  C.",
+    reviewRating: 2.5,
+    reviewScore: 5,
+    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. He kept in touch before and after the service. " +
+        "He did his job perfectly and i received feedback within the expected time frame.",
+    reviewData: "June 17, 2023",
+    reviewVerified: "Verified"
+  },
+  {reviewName: "Getrude  C.",
+    reviewRating: 2.5,
+    reviewScore: 5,
+    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. He kept in touch before and after the service. " +
+        "He did his job perfectly and i received feedback within the expected time frame.",
+    reviewData: "June 17, 2023",
+    reviewVerified: "Verified"
+  },
+  {reviewName: "Getrude  C.",
+    reviewRating: 2.5,
+    reviewScore: 5,
+    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. He kept in touch before and after the service. " +
+        "He did his job perfectly and i received feedback within the expected time frame.",
+    reviewData: "June 17, 2023",
+    reviewVerified: "Verified"
+  },
+  {reviewName: "Getrude  C.",
+    reviewRating: 2.5,
+    reviewScore: 5,
+    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. He kept in touch before and after the service. " +
+        "He did his job perfectly and i received feedback within the expected time frame.",
+    reviewData: "June 17, 2023",
+    reviewVerified: "Verified"
+  },
+  {reviewName: "Getrude  C.",
+    reviewRating: 2.5,
+    reviewScore: 5,
+    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. He kept in touch before and after the service. " +
+        "He did his job perfectly and i received feedback within the expected time frame.",
+    reviewData: "June 17, 2023",
+    reviewVerified: "Verified"
+  },
+  {reviewName: "Getrude  C.",
+    reviewRating: 2.5,
+    reviewScore: 5,
+    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. .",
+    reviewData: "June 17, 2023",
+    reviewVerified: "Verified"
+  },
+  {reviewName: "Getrude  C.",
+    reviewRating: 2.5,
+    reviewScore: 5,
+    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. He kept in touch before and after the service. " +
+        "He did his job perfectly and i received feedback within the expected time frame.",
+    reviewData: "June 17, 2023",
+    reviewVerified: "Verified"
+  },
+  {reviewName: "Getrude  C.",
+    reviewRating: 2.5,
+    reviewScore: 5,
+    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. He kept in touch before and after the service. " +
+        "He did his job perfectly and i received feedback within the expected time frame.",
+    reviewData: "June 17, 2023",
+    reviewVerified: "Verified"
+  },
+  {reviewName: "Getrude  C.",
+    reviewRating: 2.5,
+    reviewScore: 5,
+    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. He kept in touch before and after the service. " +
+        "He did his job perfectly and i received feedback within the expected time frame.",
+    reviewData: "June 17, 2023",
+    reviewVerified: "Verified"
+  },
+  {reviewName: "Getrude  C.",
+    reviewRating: 2.5,
+    reviewScore: 5,
+    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. He kept in touch before and after the service. " +
+        "He did his job perfectly and i received feedback within the expected time frame.",
+    reviewData: "June 17, 2023",
+    reviewVerified: "Verified"
+  }
+]

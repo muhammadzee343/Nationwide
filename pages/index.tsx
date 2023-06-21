@@ -1,13 +1,13 @@
 import Head from "next/head";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
-  faArrowRightLong,
-  faBars,
-  faCartShopping,
-  faChevronDown,
-  faChevronRight,
-  faPhone,
-  faXmark,
+    faBars,
+    faCartShopping,
+    faChevronDown,
+    faChevronRight,
+    faPhone,
+    faXmark,
+    faCheck
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -26,18 +26,16 @@ import PricingCarouselComponent from "../components/pricingCarousel.component";
 import { DeviceContext } from "../components/deviceContext.component";
 import React, {useContext, useState, useLayoutEffect, useRef} from "react";
 import ServiceInfo from "../components/serviceInfo.component";
-import { homeServices, howItWorks, ourServices } from "../utility/constants";
+import {homeServices, howItWorks, ourServices, reviewDummyData} from "../utility/constants";
 import OurServicesComponent from "../components/ourServices.component";
 import HowItWorks from "../components/howItWorksCard.component";
-import StepperComponent from "../components/stepper.component";
 import ButtonComponent from "../components/button.component";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CarouselComponent from "../components/carousel.component";
 import {useRouter} from "next/router";
 import BoxBackgroundComponent from "../components/boxBackground.component";
 import Image from "next/image";
 import styles from "../styles/service.module.css";
-import Link from "next/link";
+import Reviews from "../components/reviews.component";
 
 library.add(
   faCartShopping,
@@ -52,7 +50,8 @@ library.add(
   faFacebookF,
   faLinkedin,
   faFlickr,
-  faChevronRight
+  faChevronRight,
+  faCheck
 );
 
 const content = homeServices[0].content;
@@ -307,6 +306,7 @@ export default function Home() {
         </div>
       </section>
 
+        <Reviews reviewDummyData={reviewDummyData}/>
     </div>
   );
 }
