@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from "react";
 import { SidebarContext } from "../../../context/sidebarContext";
-import { howItWorks, service } from "../../../utility/constants";
+import {howItWorks, service, updateServiceData} from "../../../utility/constants";
 import ServiceInfo from "../../../components/serviceInfo.component";
 import Head from "next/head";
 import HowItWorks from "../../../components/howItWorksCard.component";
@@ -8,7 +8,6 @@ import ServiceHeader from "../../../components/serviceHeader.component";
 import ButtonComponent from "../../../components/button.component";
 import QuoteButtonComponent from "../../../components/quoteButton.component";
 import router from "next/router";
-import { faqAccordionData } from "../../../utility/constants";
 import FaqAccordionComponent from "../../../components/faqAccordion.component";
 import BoxBackgroundComponent from "../../../components/boxBackground.component";
 import TextField from "../../../components/textFied.component";
@@ -20,12 +19,9 @@ import CarouselComponent from "../../../components/carousel.component";
 import PricingCarouselComponent from "../../../components/pricingCarousel.component";
 import Pricing from "../../../components/pricing.component";
 
-
-
-
-
-
-function Service({ certificate }: any) {
+function Service({ data, slug }: any) {
+    updateServiceData(data.services_content)
+    const certificate = service.filter((ele: any) => ele.certificate === slug);
 
   const { setShowDrawer, setOverlay, setPropertyType, propertyType } =
     useContext(SidebarContext);
@@ -132,7 +128,7 @@ function Service({ certificate }: any) {
       )}
         <div className="w-full xxl:continer flex flex-col lg:flex-row">
           <Head>
-            <title>{certificate[0].title}</title>
+            <title>{certificate[0]?.title}</title>
             {
               certificate[0]?.metaData && Object.entries(certificate[0]?.metaData).map((data) => {
                 return (
@@ -437,12 +433,18 @@ function Service({ certificate }: any) {
   );
 }
 
-Service.getInitialProps = (props: any) => {
-  const { slug } = props.query;
-  const certificate: any = service.filter((ele) => {
-    return ele.certificate === slug;
-  });
-  return { certificate };
+export const getServerSideProps = async (context: any) => {
+    const { slug } = context.query;
+    const res = await fetch(`${process.env.BASE_URL_DEV}/services/services_content`);
+    const data = await res.json();
+
+    return {
+        props: {
+            data,
+            slug
+        },
+    };
 };
+
 
 export default Service;

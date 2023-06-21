@@ -3,17 +3,16 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAnglesRight} from "@fortawesome/free-solid-svg-icons";
 import ReviewCard from "./reviewCard.component";
 
-const Reviews = ({reviewDummyData}: {reviewDummyData: any}) => {
+const Reviews = ({homeReviewsData}: {homeReviewsData: any}) => {
     const [displayedReviews, setDisplayedReviews] = useState(2);
 
     const reviewCards = useMemo(() => {
         const elements: JSX.Element[] = [];
-        reviewDummyData.forEach((review, index) => {
+        homeReviewsData?.forEach((review, index) => {
             elements.push(<ReviewCard indexNum={index} review={review} displayedReviews={displayedReviews}/>)
         })
         return elements
-    }, [reviewDummyData, displayedReviews]);
-
+    }, [homeReviewsData, displayedReviews]);
     const handleLoadMore = () => {
         setDisplayedReviews(prevCount => prevCount + 2);
     };
@@ -25,13 +24,13 @@ const Reviews = ({reviewDummyData}: {reviewDummyData: any}) => {
                     {reviewCards}
                 </div>
             </div>
-            <div className="flex justify-center items-center" onClick={handleLoadMore}>
+            {homeReviewsData.length && <div className="flex justify-center items-center" onClick={handleLoadMore}>
                 <p className="mt-4 mb-4">Load more</p>
                 <FontAwesomeIcon
                     icon={faAnglesRight}
                     className="text-lime cen h-3 mr-1 ml-2"
                 />
-            </div>
+            </div>}
         </div>
     )
 }

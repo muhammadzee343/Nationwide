@@ -24,9 +24,9 @@ import SelectProperty from "../components/selectProperty.component";
 import Pricing from "../components/pricing.component";
 import PricingCarouselComponent from "../components/pricingCarousel.component";
 import { DeviceContext } from "../components/deviceContext.component";
-import React, {useContext, useState, useLayoutEffect, useRef} from "react";
+import React, {useContext, useState, useLayoutEffect, useEffect} from "react";
 import ServiceInfo from "../components/serviceInfo.component";
-import {homeServices, howItWorks, ourServices, reviewDummyData} from "../utility/constants";
+import {homeReviewsData, homeServices, howItWorks, ourServices, updateHomeReviewsData} from "../utility/constants";
 import OurServicesComponent from "../components/ourServices.component";
 import HowItWorks from "../components/howItWorksCard.component";
 import ButtonComponent from "../components/button.component";
@@ -56,14 +56,43 @@ library.add(
 
 const content = homeServices[0].content;
 
-export default function Home() {
+export default function Home({data}: any) {
   const { smallDevice, middleDevice, largeDevice }: any =
     useContext(DeviceContext);
   const router = useRouter();
 
   const [width, setWidth] = useState(1000);
+    const [city, setCity] = useState('');
 
-  const ref = useRef(null);
+    useEffect(() => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                async (position) => {
+                    const { latitude, longitude } = position.coords;
+                    // `https://api.opencagedata.com/geocode/v1/json?key=AIzaSyDCQuX99IdPW8qdaGkhAAWL4Uj7U0fLibI&q=${latitude}+${longitude}&pretty=1`
+                    try {
+                        const response = await fetch(
+                            `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
+                        );
+                        const data = await response.json();
+                        if (data) {
+                            const city = data?.city;
+                            setCity(city);
+                        }
+                    } catch (error) {
+                        console.error('Error getting location ccc:', error);
+                    }
+                },
+                (error) => {
+                    console.error('Error getting location bbbb:', error?.message);
+                }
+            );
+        } else {
+            console.error('Geolocation is not supported by this browser.');
+        }
+    }, []);
+
+  updateHomeReviewsData(data.home_screen_reviews)
 
   useLayoutEffect(()=> {
     window.addEventListener('resize', ()=> {
@@ -306,7 +335,18 @@ export default function Home() {
         </div>
       </section>
 
-        <Reviews reviewDummyData={reviewDummyData}/>
+        <Reviews homeReviewsData={homeReviewsData}/>
     </div>
   );
 }
+
+export const getServerSideProps = async () => {
+    const res = await fetch(`${process.env.BASE_URL_DEV}/services/home_screen_reviews`);
+    const data = await res.json();
+
+    return {
+        props: {
+            data
+        },
+    };
+};

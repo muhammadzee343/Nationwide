@@ -59,9 +59,12 @@ function ServiceHeader(props: any) {
       <div className="md:bg-blue-transparent md:hidden block w-full pb-[32px] relative">
       <div className=" w-[100%] bg-cover  flex flex-col relative">
       <Image
-                      src={props.serviceBannerMobile}
-                      alt={props.serviceTitle}
-                  />
+          // src={props.serviceBannerMobile}
+          src={`/images/${props.serviceBannerMobile}`}
+          alt={props.serviceTitle}
+          width={500}
+          height={300}
+      />
       <h1 className="bg-[#182333]/80 text-[20px] md:text-[34px] md:text-[40px] md:bg-transparent font-bold  mb-[0px] text-center  bottom-[-0px]  w-full text-white py-[10px] px-[15px] absolute">
                 {props.serviceTitle}
               </h1>
