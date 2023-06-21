@@ -7,8 +7,7 @@ import {
     faChevronRight,
     faPhone,
     faXmark,
-    faCheck,
-    faAnglesRight
+    faCheck
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -25,19 +24,18 @@ import SelectProperty from "../components/selectProperty.component";
 import Pricing from "../components/pricing.component";
 import PricingCarouselComponent from "../components/pricingCarousel.component";
 import { DeviceContext } from "../components/deviceContext.component";
-import React, {useContext, useState, useLayoutEffect, useRef, useMemo} from "react";
+import React, {useContext, useState, useLayoutEffect, useRef} from "react";
 import ServiceInfo from "../components/serviceInfo.component";
 import {homeServices, howItWorks, ourServices, reviewDummyData} from "../utility/constants";
 import OurServicesComponent from "../components/ourServices.component";
 import HowItWorks from "../components/howItWorksCard.component";
 import ButtonComponent from "../components/button.component";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CarouselComponent from "../components/carousel.component";
 import {useRouter} from "next/router";
 import BoxBackgroundComponent from "../components/boxBackground.component";
 import Image from "next/image";
 import styles from "../styles/service.module.css";
-import ReviewCard from "../components/reviewCard.component";
+import Reviews from "../components/reviews.component";
 
 library.add(
   faCartShopping,
@@ -64,7 +62,6 @@ export default function Home() {
   const router = useRouter();
 
   const [width, setWidth] = useState(1000);
-    const [displayedReviews, setDisplayedReviews] = useState(2);
 
   const ref = useRef(null);
 
@@ -73,17 +70,6 @@ export default function Home() {
       setWidth(window.innerWidth);
     })
   }, [])
-
-    const reviewCards = useMemo(() => {
-        const elements: JSX.Element[] = [];
-        reviewDummyData.forEach((review, index) => {
-            elements.push(<ReviewCard indexNum={index} review={review} displayedReviews={displayedReviews}/>)
-        })
-        return elements
-    }, [reviewDummyData, displayedReviews]);
-    const handleLoadMore = () => {
-        setDisplayedReviews(prevCount => prevCount + 2);
-    };
 
   return (
     <div>
@@ -320,18 +306,7 @@ export default function Home() {
         </div>
       </section>
 
-        <div className="w-11/12 mx-auto relative flex">
-            <div className="columns-1 md:columns-3 gap-1">
-                {reviewCards}
-            </div>
-        </div>
-        <div className="flex justify-center items-center" onClick={handleLoadMore}>
-            <p className="mt-4 mb-4">Load more</p>
-            <FontAwesomeIcon
-                icon={faAnglesRight}
-                className="text-lime cen h-3 mr-1 ml-2"
-            />
-        </div>
+        <Reviews reviewDummyData={reviewDummyData}/>
     </div>
   );
 }
