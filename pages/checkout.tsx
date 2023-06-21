@@ -18,6 +18,8 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
+import { useSearchParams } from 'next/navigation'
+
 
 import CardTable from "../components/cardTable.component";
 import CheckoutStepper from "../components/checkoutStepper.component";
@@ -61,6 +63,9 @@ function Checkout(props: any) {
   });
 
   const router = useRouter();
+  const searchParams = useSearchParams()
+
+
   const [cart, setCart] = useState<any>({
     shopping_cart_products: [],
     shopping_cart_bundles: [],
@@ -78,13 +83,17 @@ function Checkout(props: any) {
 
   const { setCount } = useContext(CartCountContext);
 
+
+  const bquote = searchParams.get('bquote');
+  const aquote = searchParams.get('aquote');
+
   useEffect(() => {
-    if (!router?.query?.aquote && !router?.query?.bquote) {
+    if (!bquote && !aquote) {
       {
         getCartValues(uuid);
       }
     }
-  }, [uuid]);
+  }, []);
 
   useEffect(() => {
     if (router?.query?.aquote) {
@@ -470,7 +479,7 @@ function Checkout(props: any) {
               >
                 <FontAwesomeIcon
                   icon={faPlus}
-                  
+
                   className="text-black h-4 mr-5 hover: md:h-5 lg:h-5"
                 />
               </ButtonComponent>
@@ -658,5 +667,15 @@ function OrderSummary({ subTotal, discount }: any) {
     </div>
   );
 }
+
+export const getServerSideProps = async () => {
+
+
+  return {
+    props: {
+
+    },
+  };
+};
 
 export default Checkout;

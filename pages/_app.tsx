@@ -38,26 +38,30 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <UuidContext.Provider value={{uuid,setUuid}}>
-        <OverlayContext.Provider value={{ isLoading, setIsLoading }}>
-            <NextNProgress color="#C2CF10" startPosition={0.3} stopDelayMs={2000} height={5} showOnShallow={true} />
-            {isLoading && <Overlay />}
-          <SidebarContext.Provider
-            value={{
-              showDrawer,
-              setShowDrawer,
-              overlay,
-              setOverlay,
-              propertyType,
-              setPropertyType,
-              serviceId,
-              setServiceId
-            }}
-          >
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </SidebarContext.Provider>
-        </OverlayContext.Provider>
+          {uuid ?
+              <OverlayContext.Provider value={{ isLoading, setIsLoading }}>
+                  <NextNProgress color="#C2CF10" startPosition={0.3} stopDelayMs={2000} height={5} showOnShallow={true} />
+                  {isLoading && <Overlay />}
+                  <SidebarContext.Provider
+                      value={{
+                          showDrawer,
+                          setShowDrawer,
+                          overlay,
+                          setOverlay,
+                          propertyType,
+                          setPropertyType,
+                          serviceId,
+                          setServiceId
+                      }}
+                  >
+                      <Layout>
+                          <Component {...pageProps} />
+                      </Layout>
+                  </SidebarContext.Provider>
+              </OverlayContext.Provider> :
+              <></>
+          }
+
       </UuidContext.Provider>
     </>
   );
