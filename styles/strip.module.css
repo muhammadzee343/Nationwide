@@ -1,0 +1,32 @@
+
+.ElementsApp, .ElementsApp .InputElement {
+    color: #31325F;font-size: 15px;
+}
+.ElementsApp:not(.is-autofilled) .InputElement:-webkit-autofill {
+    color: #31325F;
+    -webkit-text-fill-color: #31325F;
+}
+.ElementsApp .Icon-fill {
+    fill: #666EE8;
+}
+.ElementsApp .InputElement + .InputContainer-placeholder--ie {
+    opacity: 1;color: #CFD7E0;
+}
+.ElementsApp .InputElement::-webkit-input-placeholder {
+    opacity: 1;color: #CFD7E0;
+}
+.ElementsApp .InputElement::-moz-placeholder {
+    opacity: 1;color: #CFD7E0;
+}
+.ElementsApp .InputElement:-ms-input-placeholder {
+    opacity: 1;color: #CFD7E0;
+}
+.ElementsApp .InputElement::placeholder {
+    opacity: 1;color: #CFD7E0;
+}
+
+/*border: 1px solid #ddd;*/
+/*margin: 5px 0;*/
+/*padding: 5px;*/
+/*background-color: #fff;*/
+/*outline: 0;*/

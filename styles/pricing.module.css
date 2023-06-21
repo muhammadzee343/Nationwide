@@ -1,0 +1,29 @@
+.customSlide {
+
+    width: 80% !important;
+    height: 370px !important;
+}
+
+.priceCustomSlide {
+    width: 300px;
+}
+
+@media (min-width: 768px) { 
+
+    .priceCustomSlide {
+        width: 32%;
+    }
+
+ }
+
+
+ @media (min-width: 1024px) { 
+
+    .priceCustomSlide {
+        width: 200px;
+    }
+
+ }
+
+
+

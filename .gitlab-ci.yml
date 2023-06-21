@@ -1,0 +1,24 @@
+variables:
+  STAGING_APP_NAME: nationwidefrontend
+  PRODUCTION_APP_NAME: nationwidefrontend-prod
+stages:
+- staging
+- production
+deploy-staging:
+  image: ilyasemenov/gitlab-ci-git-push
+  stage: staging
+  environment:
+    name: staging
+  only:
+  - design-development
+  script:
+  - git-push ssh://dokku@52.56.73.59:2221/$STAGING_APP_NAME
+deploy-production:
+  image: ilyasemenov/gitlab-ci-git-push
+  stage: production
+  environment:
+    name: production
+  only:
+    - main
+  script:
+    - git-push ssh://dokku@52.56.73.59:2221/$PRODUCTION_APP_NAME

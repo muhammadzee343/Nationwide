@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans", BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+input::-webkit-input-placeholder {
+  color: #9b9b9b;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+input:focus{
+  box-shadow: 0 0 4px 3px rgb(0 0 0 / 6%)
+}
+textarea:focus{
+  box-shadow: 0 0 4px 3px rgb(0 0 0 / 6%);
+  @apply border-grey-500
+}
+
+.ant-collapse-item {
+  /* border-bottom: 1px solid #ebe9e9 !important; */
+  border-radius: 0 !important;
+}
+.ant-collapse{
+  border-radius: 0 !important;
+  border: 0 !important;
+  /* border-bottom: 2px solid #cdcdcd !important; */
+}
+.ant-collapse-content {
+  border-radius: 0 !important;
+}
+
+.ant-collapse-content-box{
+  padding: 0 !important;
+}
+
+.ant-collapse-header{
+  padding: 16px 16px !important
+}
+.ant-collapse-header:hover{
+  color: white !important
+}
+.listStyleCircle{
+  list-style-type: circle
+}
+#main_quote_form, 
+.bundle_table{
+--tw-drop-shadow:drop-shadow(0px 20px 13px rgb(0 0 0 / 0.2))drop-shadow(0 8px 5px rgb(0 0 0 / 0.05));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+input[type='radio']:checked{
+  background-image: none;
+  color : rgb(194 207 16 );
+  background-color: rgb(194 207 16 );
+  border-color: rgb(194 207 16 );
+}
+
+[type='checkbox']:focus, [type='radio']:focus {
+    --tw-ring-color: rgb(194 207 16 );
+  }
+
+.ant-select-selector:hover, .ant-select-selector:focus-within {
+  border: 1px #C2CF10 solid  !important;
+}
+
+.privacy-image-bg {
+  background-position: 0% 0%;
+}
+
+.swiper-pagination-bullet{
+  border-radius: 0 !important;
+}
+.arrow-container:hover svg path{
+  fill: #2D3C51;
+}
+.arrow-container svg path{
+  @apply fill-dark-blue md:fill-white
+}
+.enquirey-container:hover svg path{
+  fill: white;
+}
+.add-service:hover{
+ color: #2D3C51 !important;
+}
+.phone-red{
+  @apply text-red;
+}
+
+
+
+
+
+

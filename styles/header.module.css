@@ -1,0 +1,43 @@
+
+.tNavLinks{
+    @apply text-white text-[14px] hover:text-lime hover:ease-in duration-300 font-opensans
+}
+.mNavList{
+    @apply md:flex md:items-center z-[-1] md:z-auto h-[72px]
+    md:static absolute md:bg-lime bg-white w-full left-0 md:w-auto
+    md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px]
+    transition-all ease-in duration-200;
+}
+
+.addToCartBtn{
+    @apply relative flex justify-center items-center w-[31px] h-[31px] px-2.5 py-2.5 sm:px-2.5 sm:py-2.5 bg-dark-blue text-white rounded-full drop-shadow
+}
+.addToCartBtn >span{
+    @apply absolute top-1 right-0 h-[18px] w-[18px] py-1 translate-x-1/2 -translate-y-1/2 bg-lime rounded-full drop-shadow text-xs text-dark-blue text-center
+}
+.cartCount{
+    padding: 0.1rem 0.4rem !important;
+    display: flex;
+    justify-content: center;
+}
+
+.showMenu{
+    @apply opacity-100 top-[250px] sm:top-[205px] md:top-[150px]
+}
+
+.megaMenuList{
+    @apply py-1
+}
+.megaMenuList > li{
+    @apply flex items-center text-sm h-9  border-b border-b-[#00000008] text-[#666]   
+}
+
+.megaMenuList > li a{
+    @apply hover:underline hover:text-blue
+}
+.activeLink{
+    @apply text-lime
+}
+.megaMenuList >a{
+    @apply text-blue
+}

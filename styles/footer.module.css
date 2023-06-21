@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Kolker+Brush&family=Ubuntu&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu&display=swap");
+
+.circleList {
+  list-style-type: circle;
+}
+
+.footerParagraph {
+  @apply mb-4 text-sm text-dark-blue leading-7 font-normal;
+}
+
+.footerPagesHeading {
+  @apply text-4xl font-semibold;
+}
+
+.footerPagesSubHeading {
+  @apply text-3xl font-semibold;
+}
+
+.footerSmallHead {
+  @apply text-xl font-semibold;
+}

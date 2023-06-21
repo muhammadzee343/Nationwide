@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Kolker+Brush&family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu&display=swap');
+.pointer {
+    @apply bg-lime hover:bg-white   relative h-[61px] w-full md:w-[230px]
+}
+.pointer a {
+    display: block;
+    position: relative;
+    margin-bottom: 15px;
+    color: #182333;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.2;
+    padding: 9px 20px;
+    height: 61px;
+    @apply before:lg:content-[""] before:lg:absolute before:lg:right-[-38px] before:lg:bottom-0 before:lg:w-0 before:lg:h-0
+    before:lg:border-l-[38px] before:lg:border-l-lime before:lg:border-t-[26px] before:lg:border-t-transparent before:lg:border-b-[35px] before:lg:border-b-transparent
+    hover:before:lg:border-l-[38px] hover:before:lg:border-l-white
+}
+
+.pointer:hover::before {
+    border-left: 38px solid white;
+}
+
+.pointerActive{
+    @apply bg-lime relative h-[61px]  w-full md:w-[230px] before:lg:content-[""] before:lg:absolute before:lg:right-[-38px] before:lg:bottom-0 before:lg:w-0 before:lg:h-0
+    before:lg:border-l-[38px] before:lg:border-l-white before:lg:border-t-[26px] before:lg:border-t-transparent before:lg:border-b-[35px] before:lg:border-b-transparent
+
+}
+.pointerActive a {
+    font-size: 16px;
+    line-height: 1.2;
+    @apply h-[61px] block relative py-[9px] px-[20px] mb-[15px] text-dark-blue font-bold
+}
+
+
+.pricingTitle{
+    @apply relative h-[37px] font-bold pb-[10px] mb-[10px] uppercase text-base border-b border-b-dark-blue
+    after:content-[''] after:absolute after:bottom-[-1px] after:inset-x-0 after:h-[1px] after:w-[70px] after:bg-lime
+}
+.poppinsFamily{
+    font-family: 'Poppins', sans-serif;
+}
+.pricingMarkers{
+    list-style-type: '\2713';
+    @apply marker:text-dark-blue
+}
+.specialBUndle{
+}
+
+

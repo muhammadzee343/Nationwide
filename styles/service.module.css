@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu&display=swap');
+
+.servicePara{
+    @apply text-[#1a1a1a] text-[15px] leading-7 font-semibold block mb-[23px] text-justify
+}
+.servicePara2{
+    @apply text-justify text-[#1a1a1a] mb-[15px] leading-7 text-[15px]
+}
+
+.serviceHeading{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.parent {
+    @apply text-gray-500
+}
+.parent:hover span{
+    @apply text-white
+}
