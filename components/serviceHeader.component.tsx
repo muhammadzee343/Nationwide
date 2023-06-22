@@ -13,9 +13,9 @@ function ServiceHeader(props: any) {
         <div className="md:bg-white hidden h-full  md:block w-full pt-[40px] pb-[40px] md:pr-[20px] md:pl-[20px] xl:pl-[0px] xl:pr-[0px] w-full xl:min-w-[1170px] xl:w-[100%] m-auto lg:pl-[20px] lg:pr-[20px]">
           <div className="w-full flex justify-between">
             <div className="w-full flex flex-col md:flex-row justify-between">
-              <div style={{'--image-url': `url(${props.serviceBanner.src})`}}
+              <div style={{'--image-url': `url(${props.serviceBanner})`}}
                className="hidden xl:block lg:block w-[33%] lg:min-w-[375px] lg:min-h-[376px] xl:min-w-[380px] xxl:min-w-[444px] flex flex-col min-h-[418px] xl:min-h-[418px] bg-[image:var(--image-url)] bg-cover"></div>
-
+                {/*<Image src={`${props.serviceBanner}`} width={300} height={300}/>*/}
               <div className="w-[37%] md:w-[70%]  lg:w-[70%] xl:w-[37%] lg:pl-[25px] xl:pl-[0px] h-full pt-0 flex flex-col xl:ml-10 md:ml-[0px] col_2 pr-7">
                 <div className="border-b-4 border-lime w-[85px] rounded-full mb-3 lg:hidden xl:block"></div>
                 <h1 className="text-[26px] md:text-[30px] font-bold leading-10 lg:text-[20px] lg:leading-8 xl:leading-10  xl:text-[25px] xxl:text-[34px] lg:text-black mb-6 animate-fade-in-up lg:pr-[20px] xl:pr-[0px]">
@@ -50,7 +50,8 @@ function ServiceHeader(props: any) {
               <div className="w-[30%] w-[95%] md:w-[45%] lg:w-[50.3%] xl:w-[30%] h-max col_3">
                 <SelectProperty
                   sticky={false}
-                  selectedServiceId={props.certificate[0].id}/>
+                  selectedServiceId={props.certificate[0].id}
+                />
               </div>
             </div>
           </div>
@@ -58,9 +59,9 @@ function ServiceHeader(props: any) {
       </div>
       <div className="md:bg-blue-transparent md:hidden block w-full pb-[32px] relative">
       <div className=" w-[100%] bg-cover  flex flex-col relative">
+          {/*<Image src={`${props.serviceBanner}`} width={300} height={300}/>*/}
       <Image
-          // src={props.serviceBannerMobile}
-          src={`/images/${props.serviceBannerMobile}`}
+          src={`${props.serviceBannerMobile}`}
           alt={props.serviceTitle}
           width={500}
           height={300}
@@ -98,7 +99,9 @@ function ServiceHeader(props: any) {
             </div>
             <div className="md:hidden mt-6 px-6">
               <SelectProperty
-                  sticky={false}/>
+                  sticky={false}
+                  selectedServiceId={props.certificate[0].id}
+              />
             </div>
           </div>
         </div>

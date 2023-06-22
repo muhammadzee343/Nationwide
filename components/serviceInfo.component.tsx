@@ -18,10 +18,9 @@ function ServiceInfo({ className, content, index }: any) {
                                 contentStyle='p-4  m-auto'>
           <Image
             className="h-full w-full cursor-pointer object-cover"
-            // src={content.image}
-            src={`/images/${content.image}`}
+            src={content.image.src ? content.image.src : content.image}
             alt="ServiceInfo"
-            width={500}
+            width={300}
             height={300}
           />
         </BoxBackgroundComponent>

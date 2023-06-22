@@ -49,10 +49,13 @@ const ReviewCard = ({ indexNum, review, displayedReviews }: { indexNum: any,revi
             <div className="flex flex-row space-x-3 text-sm text-[#697E9A] font-montserrat">
                 <p>{review.reviewDate}</p>
                 <div className="flex flex-row items-center">
-                    <FontAwesomeIcon
-                        icon={faCheck}
-                        className="text-lime h-3 mr-1"
-                    />
+                    {
+                        review.reviewVerified === 'Verified' &&
+                        <FontAwesomeIcon
+                            icon={faCheck}
+                            className="text-lime h-3 mr-1"
+                        />
+                    }
                     <p>{review.reviewVerified}</p>
                 </div>
             </div>

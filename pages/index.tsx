@@ -56,7 +56,7 @@ library.add(
 
 const content = homeServices[0].content;
 
-export default function Home({data}: any) {
+export default function Home({homeReviews}: any) {
   const { smallDevice, middleDevice, largeDevice }: any =
     useContext(DeviceContext);
   const router = useRouter();
@@ -92,7 +92,7 @@ export default function Home({data}: any) {
         }
     }, []);
 
-  updateHomeReviewsData(data.home_screen_reviews)
+  updateHomeReviewsData(homeReviews.home_screen_reviews)
 
   useLayoutEffect(()=> {
     window.addEventListener('resize', ()=> {
@@ -116,7 +116,8 @@ export default function Home({data}: any) {
             </div>
             <div className="lg:order-2 w-[95%] lg:w-[29%] xl:w-[30%] flex justify-center px-2 sm:px-[15px] sm:w-full xl:pr-[0px]">
               <SelectProperty
-                  sticky={false}/>
+                  sticky={false}
+              />
 
             </div>
       </div>
@@ -335,18 +336,18 @@ export default function Home({data}: any) {
         </div>
       </section>
 
-        <Reviews homeReviewsData={homeReviewsData}/>
+        <Reviews reviewsData={homeReviewsData}/>
     </div>
   );
 }
 
 export const getServerSideProps = async () => {
     const res = await fetch(`${process.env.BASE_URL_DEV}/services/home_screen_reviews`);
-    const data = await res.json();
+    const homeReviews = await res.json();
 
     return {
         props: {
-            data
+            homeReviews
         },
     };
 };

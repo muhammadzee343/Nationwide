@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from "react";
 import { SidebarContext } from "../../../context/sidebarContext";
-import {howItWorks, service, updateServiceData} from "../../../utility/constants";
+import { howItWorks, service, updateServiceData} from "../../../utility/constants";
 import ServiceInfo from "../../../components/serviceInfo.component";
 import Head from "next/head";
 import HowItWorks from "../../../components/howItWorksCard.component";
@@ -18,10 +18,11 @@ import Swal from "sweetalert2";
 import CarouselComponent from "../../../components/carousel.component";
 import PricingCarouselComponent from "../../../components/pricingCarousel.component";
 import Pricing from "../../../components/pricing.component";
+import Reviews from "../../../components/reviews.component";
 
 function Service({ data, slug }: any) {
-    updateServiceData(data.services_content)
-    const certificate = service.filter((ele: any) => ele.certificate === slug);
+  updateServiceData(data?.services_content)
+  const certificate = service.filter((ele: any) => ele.certificate === slug);
 
   const { setShowDrawer, setOverlay, setPropertyType, propertyType } =
     useContext(SidebarContext);
@@ -234,14 +235,14 @@ function Service({ data, slug }: any) {
                         <section>
                             <div className="w-full flex flex-col gap-y-4 md:flex-row md:justify-between">
                                 <div className="w-full md:w-[50%]">
-                                    <div className="border-b-4 border-lime w-[85px] rounded-full mb-3"></div>
-                                    <h2 className="text-black text-3xl font-medium ">
-                                        Frequently Asked Questions
-                                    </h2>
-                                    <p className="text-black text-[15px] leading-[27px] mt-5 mb-10">
-                                        I am promo text. Click edit button to change this text. Lorem ipsum dolor sit amet,
-                                        consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo
-                                    </p>
+                                    {certificate[0].faq.length > 0 &&
+                                        <>
+                                            <div className="border-b-4 border-lime w-[85px] rounded-full mb-3"></div>
+                                            <h2 className="text-black text-3xl font-medium ">
+                                                Frequently Asked Questions
+                                            </h2>
+                                        </>
+                                    }
                                     <FaqAccordionComponent
                                         accordionData={certificate[0]?.faq}
                                         iconMinusColor="#fff"
@@ -425,6 +426,7 @@ function Service({ data, slug }: any) {
                                 </div>
                             </div>
                         </div>
+                        <Reviews reviewsData={certificate[0].reviews}/>
                     </div>
                 </div>
             </div>
