@@ -24,9 +24,9 @@ import SelectProperty from "../components/selectProperty.component";
 import Pricing from "../components/pricing.component";
 import PricingCarouselComponent from "../components/pricingCarousel.component";
 import { DeviceContext } from "../components/deviceContext.component";
-import React, {useContext, useState, useLayoutEffect, useRef} from "react";
+import React, {useContext, useState, useLayoutEffect, useEffect} from "react";
 import ServiceInfo from "../components/serviceInfo.component";
-import {homeServices, howItWorks, ourServices, reviewDummyData} from "../utility/constants";
+import {homeReviewsData, homeServices, howItWorks, ourServices, updateHomeReviewsData} from "../utility/constants";
 import OurServicesComponent from "../components/ourServices.component";
 import HowItWorks from "../components/howItWorksCard.component";
 import ButtonComponent from "../components/button.component";
@@ -54,16 +54,18 @@ library.add(
   faCheck
 );
 
-const content = homeServices[0].content;
+/*const content = homeServices[0].content;*/
 
-export default function Home() {
+const Home = (props) => {
+    let homeReviews = props.homeReviews;
+    let content = props.content;
+
   const { smallDevice, middleDevice, largeDevice }: any =
     useContext(DeviceContext);
   const router = useRouter();
-
   const [width, setWidth] = useState(1000);
 
-  const ref = useRef(null);
+  updateHomeReviewsData(homeReviews.home_screen_reviews)
 
   useLayoutEffect(()=> {
     window.addEventListener('resize', ()=> {
@@ -87,7 +89,8 @@ export default function Home() {
             </div>
             <div className="lg:order-2 w-[95%] lg:w-[29%] xl:w-[30%] flex justify-center px-2 sm:px-[15px] sm:w-full xl:pr-[0px]">
               <SelectProperty
-                  sticky={false}/>
+                  sticky={false}
+              />
 
             </div>
       </div>
@@ -306,7 +309,21 @@ export default function Home() {
         </div>
       </section>
 
-        <Reviews reviewDummyData={reviewDummyData}/>
+        <Reviews reviewsData={homeReviewsData}/>
     </div>
   );
 }
+
+export const getServerSideProps = async () => {
+    const res = await fetch(`${process.env.BASE_URL_DEV}/services/home_screen_reviews`);
+    const homeReviews = await res.json();
+    const content = await homeServices[0].content;
+    console.log(content);
+    return {
+        props: {
+            homeReviews,
+            content
+        },
+    };
+};
+export default Home;

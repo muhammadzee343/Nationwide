@@ -29,6 +29,7 @@ import CardComponent from "../components/card.component";
 import RequestCallBack from "../components/requestCallBack.component";
 import { useForm } from "react-hook-form";
 import GoogePayComponent from "../components/googePay.component";
+import Swal from "sweetalert2";
 
 const stripePromise = loadStripe("pk_test_96JJ6DEa2MKGHUR9ubWNXJDT00EC1yyjzn");
 
@@ -78,6 +79,8 @@ function Checkout(props: any) {
   const [paymentType, setPaymentType] = useState<string>("");
   const [cardError, setCardError] = useState("");
   const [billingDetails, setBillingDetails] = useState({});
+  const [orderStatus, setOrderStatus] = useState('');
+  const [paymentStatus, setPaymentStatus] = useState('');
 
   const { isLoading, setIsLoading } = useContext<any>(OverlayContext);
 
@@ -155,6 +158,17 @@ function Checkout(props: any) {
         `${process.env.BASE_URL_DEV}shopping_carts?session_id=${uid}`
       );
       const data = await response.json();
+      setPaymentStatus(data?.esp_order_payment_status)
+      setOrderStatus(data?.esp_order_status)
+      if(data?.esp_order_status !== 'draft' && data?.esp_order_payment_status === 'paid'){
+        Swal.fire({
+          title: 'Success!',
+          text: 'Many thanks for using our services. Your order is already in process',
+          icon: 'success',
+          confirmButtonText: 'Close',
+          confirmButtonColor: '#c2cf10'
+        });
+      }
       if (Object.keys(data).length === 0) {
         router?.push({
           pathname: "/",
@@ -186,7 +200,6 @@ function Checkout(props: any) {
       setIsLoading(false);
     }
   };
-
   const getBillingDetailsCart = async (token: string, quote: boolean) => {
     setIsLoading(true);
 
@@ -432,6 +445,9 @@ function Checkout(props: any) {
       });
     }, 500);
   },[paymentType])
+  // const showSuccessNotification = () => {
+  //
+  // };
 
   // @ts-ignore
   return (
@@ -470,7 +486,7 @@ function Checkout(props: any) {
             {/*</div>*/}
             <br />
             <div className="w-full">
-              {!router?.query?.aquote && !router?.query.bquote && (
+              {orderStatus === "draft"&& (
               <ButtonComponent
                 text="Add an other property"
                 className={`flex justify-center items-center border-lime border flex-row-reverse bg-white text-[13px] font-bold mb-5
@@ -498,39 +514,53 @@ function Checkout(props: any) {
                         Payment options
                       </h3>
                     </header>*/}
-                  <div className="mt-4">
-                    {pricing.totalAmount != "0" ? GooglePayButton : null}
-                  </div>
-                  <div className="mt-4">
-                    <ButtonComponent
-                      text="Pay by debit/credit card"
-                      className={`flex justify-center text-[13px] font-bold hover:text-dark-blue border-[1px] border-lime
-           hover:bg-lime px-[22px] py-[12px] uppercase rounded ${
-             paymentType === "payByCard" && "text-white bg-lime rounded-b-none"
-           }`}
-                      onClick={() => setPaymentType("payByCard")}
-                    />
-                    <br />
-                    {!router?.query?.aquote && !router?.query.bquote && (
+                  {orderStatus !== "draft" && paymentStatus === "unpaid" &&
+                      <>
+                        <div className="mt-4">
+                          {pricing.totalAmount != "0" ? GooglePayButton : null}
+                        </div>
                         <ButtonComponent
-                                    text="Pay Over Phone"
-                                    className={`flex justify-center text-[13px] font-bold hover:text-dark-blue border-[1px] border-lime
-                            hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
-                              paymentType === "payOverPhone" &&
-                              "text-white bg-lime rounded-b-none"
+                            text="Pay by debit/credit card"
+                            className={`flex justify-center text-[13px] font-bold hover:text-dark-blue border-[1px] border-lime
+           hover:bg-lime px-[22px] py-[12px] uppercase rounded ${
+                                paymentType === "payByCard" && "text-white bg-lime rounded-b-none"
                             }`}
-                      onClick={() => setPaymentType("payOverPhone")}
-                    />)}
-                    <br />
-                    {!router?.query?.aquote && !router?.query.bquote && (
-                      <ButtonComponent
-                        text="Pay By Bank Transfer"
-                        className={`flex justify-center text-[13px] mb-2 font-bold hover:text-dark-blue border-[1px] border-lime
+                            onClick={() => setPaymentType("payByCard")}
+                        />
+                      </>
+                  }
+                  {orderStatus === "draft" && (
+                      <>
+                        <ButtonComponent
+                            text="Pay by debit/credit card"
+                            className={`flex justify-center text-[13px] font-bold hover:text-dark-blue border-[1px] border-lime
+           hover:bg-lime px-[22px] py-[12px] uppercase rounded ${
+                                paymentType === "payByCard" && "text-white bg-lime rounded-b-none"
+                            }`}
+                            onClick={() => setPaymentType("payByCard")}
+                        />
+                        <br />
+                        <ButtonComponent
+                            text="Pay Over Phone"
+                            className={`flex justify-center text-[13px] font-bold hover:text-dark-blue border-[1px] border-lime
+                            hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
+                                paymentType === "payOverPhone" &&
+                                "text-white bg-lime rounded-b-none"
+                            }`}
+                            onClick={() => setPaymentType("payOverPhone")}
+                        />
+                        <br />
+                        <ButtonComponent
+                            text="Pay By Bank Transfer"
+                            className={`flex justify-center text-[13px] mb-2 font-bold hover:text-dark-blue border-[1px] border-lime
                        hover:bg-lime px-[28px] py-[12px] uppercase rounded ${
-                         paymentType === "payByBank" && "text-white bg-lime "
-                       }`}
-                        onClick={() => setPaymentType("payByBank")}
-                      />)}
+                                paymentType === "payByBank" && "text-white bg-lime "
+                            }`}
+                            onClick={() => setPaymentType("payByBank")}
+                        />
+                      </>
+                  )}
+                  <div className="mt-4">
                     {paymentType !== "" && (
                       <header className="flex justify-between items-center bg-dark-blue h-[45px] mb-[0] mt-8">
                         <h3 className="font-base font-semibold text-white px-[25px] ">

@@ -11,7 +11,11 @@ import Meta from "../components/meta.component";
 function Feq() {
   return (
     <div className="w-full bg-white flex justify-center">
-      <Meta title="gjggjjgjgj"/>
+      <Meta
+          title="FAQs - Nationwide Surveyors"
+          description="Do you have any questions? Let us find you an answer."
+          keywords="Frequently, Asked, Questions"
+      />
       <div className="w-full flex flex-col items-center">
         <HeaderComponent
           header="FAQs"

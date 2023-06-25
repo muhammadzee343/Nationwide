@@ -456,7 +456,7 @@ export const megaMenu = [
         title: "Legionella Risk Assessment",
         link: "/legionella-risk-assessment",
       },
-      { title: "SAP Assessments", link: "/sap-assessments-2" },
+      { title: "SAP Assessments", link: "/sap-assessments" },
     ],
   },
 ];
@@ -509,7 +509,7 @@ export const ourServices = [
         text: "Legionella Risk Assessment",
         link: "/legionella-risk-assessment",
       },
-      { text: "SAP Assessments", link: "/sap-assessments-2" },
+      { text: "SAP Assessments", link: "/sap-assessments" },
     ],
   },
 ];
@@ -540,7 +540,7 @@ export const howItWorks = [
   },
 ];
 // Services
-export const service = [
+export let service = [
   //Energy Performance Certificates
   {
     id: 1,
@@ -2144,7 +2144,7 @@ export const service = [
       description: "Nationwide Surveyors offer all types of Landlord Certifications &amp; reports for domestic and commercial properties at competitive prices with Nationwide Coverage.",
       keywords: "Load Removal",
     },
-    certificate: "sap-assessments-2",
+    certificate: "sap-assessments",
     content: [
       {
         className: "flex flex-col-reverse lg:flex-row-reverse",
@@ -2238,6 +2238,9 @@ export const service = [
     ],
   },
 ];
+export const updateServiceData = (data) => {
+  service = data;
+};
 //Terms and condition lists
 export const joinAdvantageList = [
   {
@@ -2473,7 +2476,7 @@ export const infolistPoints = [
 ];
 
 //reviews data
-export const reviewDummyData = [
+export let homeReviewsData = [
   {reviewName: "Getrude  C.",
     reviewRating: 2.5,
     reviewScore: 5,
@@ -2500,38 +2503,6 @@ export const reviewDummyData = [
   {reviewName: "Getrude  C.",
     reviewRating: 2.5,
     reviewScore: 5,
-    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. He kept in touch before and after the service. " +
-        "He did his job perfectly and i received feedback within the expected time frame.",
-    reviewData: "June 17, 2023",
-    reviewVerified: "Verified"
-  },
-  {reviewName: "Getrude  C.",
-    reviewRating: 2.5,
-    reviewScore: 5,
-    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. He kept in touch before and after the service. " +
-        "He did his job perfectly and i received feedback within the expected time frame.",
-    reviewData: "June 17, 2023",
-    reviewVerified: "Verified"
-  },
-  {reviewName: "Getrude  C.",
-    reviewRating: 2.5,
-    reviewScore: 5,
-    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. He kept in touch before and after the service. " +
-        "He did his job perfectly and i received feedback within the expected time frame.",
-    reviewData: "June 17, 2023",
-    reviewVerified: "Verified"
-  },
-  {reviewName: "Getrude  C.",
-    reviewRating: 2.5,
-    reviewScore: 5,
-    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. He kept in touch before and after the service. " +
-        "He did his job perfectly and i received feedback within the expected time frame.",
-    reviewData: "June 17, 2023",
-    reviewVerified: "Verified"
-  },
-  {reviewName: "Getrude  C.",
-    reviewRating: 2.5,
-    reviewScore: 5,
     reviewComment: "I enjoyed working with Amardeep. His communication skills are good. .",
     reviewData: "June 17, 2023",
     reviewVerified: "Verified"
@@ -2544,28 +2515,8 @@ export const reviewDummyData = [
     reviewData: "June 17, 2023",
     reviewVerified: "Verified"
   },
-  {reviewName: "Getrude  C.",
-    reviewRating: 2.5,
-    reviewScore: 5,
-    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. He kept in touch before and after the service. " +
-        "He did his job perfectly and i received feedback within the expected time frame.",
-    reviewData: "June 17, 2023",
-    reviewVerified: "Verified"
-  },
-  {reviewName: "Getrude  C.",
-    reviewRating: 2.5,
-    reviewScore: 5,
-    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. He kept in touch before and after the service. " +
-        "He did his job perfectly and i received feedback within the expected time frame.",
-    reviewData: "June 17, 2023",
-    reviewVerified: "Verified"
-  },
-  {reviewName: "Getrude  C.",
-    reviewRating: 2.5,
-    reviewScore: 5,
-    reviewComment: "I enjoyed working with Amardeep. His communication skills are good. He kept in touch before and after the service. " +
-        "He did his job perfectly and i received feedback within the expected time frame.",
-    reviewData: "June 17, 2023",
-    reviewVerified: "Verified"
-  }
-]
+];
+
+export const updateHomeReviewsData = (data) => {
+  homeReviewsData = data;
+};
