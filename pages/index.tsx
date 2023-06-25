@@ -54,43 +54,16 @@ library.add(
   faCheck
 );
 
-const content = homeServices[0].content;
+/*const content = homeServices[0].content;*/
 
-export default function Home({homeReviews}: any) {
+const Home = (props) => {
+    let homeReviews = props.homeReviews;
+    let content = props.content;
+
   const { smallDevice, middleDevice, largeDevice }: any =
     useContext(DeviceContext);
   const router = useRouter();
-
   const [width, setWidth] = useState(1000);
-    const [city, setCity] = useState('');
-
-    useEffect(() => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                async (position) => {
-                    const { latitude, longitude } = position.coords;
-                    // `https://api.opencagedata.com/geocode/v1/json?key=AIzaSyDCQuX99IdPW8qdaGkhAAWL4Uj7U0fLibI&q=${latitude}+${longitude}&pretty=1`
-                    try {
-                        const response = await fetch(
-                            `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
-                        );
-                        const data = await response.json();
-                        if (data) {
-                            const city = data?.city;
-                            setCity(city);
-                        }
-                    } catch (error) {
-                        console.error('Error getting location ccc:', error);
-                    }
-                },
-                (error) => {
-                    console.error('Error getting location bbbb:', error?.message);
-                }
-            );
-        } else {
-            console.error('Geolocation is not supported by this browser.');
-        }
-    }, []);
 
   updateHomeReviewsData(homeReviews.home_screen_reviews)
 
@@ -344,10 +317,13 @@ export default function Home({homeReviews}: any) {
 export const getServerSideProps = async () => {
     const res = await fetch(`${process.env.BASE_URL_DEV}/services/home_screen_reviews`);
     const homeReviews = await res.json();
-
+    const content = await homeServices[0].content;
+    console.log(content);
     return {
         props: {
-            homeReviews
+            homeReviews,
+            content
         },
     };
 };
+export default Home;

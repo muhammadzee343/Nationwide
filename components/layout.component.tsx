@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import Meta from "./meta.component";
 import { myFont } from "../utility/constants";
+import Head from "next/head";
 import DrawerComponent from "./drawer.component";
 import TopNavComponent from "./topNav.component";
 import MainNavComponent from "./mainNav.component";
@@ -8,6 +9,7 @@ import Footer from "./footer.component";
 import { CartCountContext, SidebarContext } from "../context/sidebarContext";
 import Link from "next/link";
 import {useRouter} from "next/router";
+
 
 function Layout({ children }) {
   const { overlay } = useContext<any>(SidebarContext);
@@ -17,7 +19,10 @@ function Layout({ children }) {
 
   return (
     <div>
-      <Meta />
+      <Head>
+        <link rel="icon" href="/favicon.png" />
+      </Head>
+      {/*<Meta />*/}
       <main className={`${myFont.className} `}>
         {overlay && <DrawerComponent />}
         <CartCountContext.Provider value={{ count, setCount }}>

@@ -456,7 +456,7 @@ export const megaMenu = [
         title: "Legionella Risk Assessment",
         link: "/legionella-risk-assessment",
       },
-      { title: "SAP Assessments", link: "/sap-assessments-2" },
+      { title: "SAP Assessments", link: "/sap-assessments" },
     ],
   },
 ];
@@ -509,7 +509,7 @@ export const ourServices = [
         text: "Legionella Risk Assessment",
         link: "/legionella-risk-assessment",
       },
-      { text: "SAP Assessments", link: "/sap-assessments-2" },
+      { text: "SAP Assessments", link: "/sap-assessments" },
     ],
   },
 ];
@@ -2144,7 +2144,7 @@ export let service = [
       description: "Nationwide Surveyors offer all types of Landlord Certifications &amp; reports for domestic and commercial properties at competitive prices with Nationwide Coverage.",
       keywords: "Load Removal",
     },
-    certificate: "sap-assessments-2",
+    certificate: "sap-assessments",
     content: [
       {
         className: "flex flex-col-reverse lg:flex-row-reverse",

@@ -114,7 +114,7 @@ function Service({ data, slug }: any) {
         alert("Something Went wrong");
       }
   }
-
+    console.log(certificate[0]?.title);
   return (
     <>
       {certificate[0]?.servicesDec && <ServiceHeader servicesDec={certificate[0]?.servicesDec} serviceTitle={certificate[0]?.bannerTitle} serviceBanner={certificate[0]?.bannerImage} serviceBannerMobile={certificate[0]?.bannerImageMobile} certificate={certificate}/>}
@@ -129,6 +129,7 @@ function Service({ data, slug }: any) {
       )}
         <div className="w-full xxl:continer flex flex-col lg:flex-row">
           <Head>
+
             <title>{certificate[0]?.title}</title>
             {
               certificate[0]?.metaData && Object.entries(certificate[0]?.metaData).map((data) => {
@@ -235,12 +236,13 @@ function Service({ data, slug }: any) {
                         <section>
                             <div className="w-full flex flex-col gap-y-4 md:flex-row md:justify-between">
                                 <div className="w-full md:w-[50%]">
-                                    {certificate[0].faq.length > 0 &&
+                                    {certificate[0]?.faq.length > 0 &&
                                         <>
                                             <div className="border-b-4 border-lime w-[85px] rounded-full mb-3"></div>
                                             <h2 className="text-black text-3xl font-medium ">
                                                 Frequently Asked Questions
                                             </h2>
+                                            <p className="text-black text-[15px] leading-[27px] mt-5 mb-10">Below is a list of answers to Frequently Asked Questions about {certificate[0]?.bannerTitle}</p>
                                         </>
                                     }
                                     <FaqAccordionComponent
@@ -426,7 +428,9 @@ function Service({ data, slug }: any) {
                                 </div>
                             </div>
                         </div>
-                        <Reviews reviewsData={certificate[0].reviews}/>
+                        {certificate[0]?.reviews.length > 0 && (
+                            <Reviews reviewsData={certificate[0].reviews}/>
+                        )}
                     </div>
                 </div>
             </div>
