@@ -6,7 +6,7 @@ interface reviewCardProps  {
     reviewRating: number
     reviewScore: number
     reviewComment: string
-    reviewData: string
+    reviewDate: string
     reviewVerified: string
 }
 const ReviewCard = ({ indexNum, review, displayedReviews }: { indexNum: any,review: reviewCardProps, displayedReviews: any }) => {
@@ -47,12 +47,15 @@ const ReviewCard = ({ indexNum, review, displayedReviews }: { indexNum: any,revi
             </div>
             <p className="text-sm mt-4 mb-4 font-montserrat text-[#212529]">{review.reviewComment}</p>
             <div className="flex flex-row space-x-3 text-sm text-[#697E9A] font-montserrat">
-                <p>{review.reviewData}</p>
+                <p>{review.reviewDate}</p>
                 <div className="flex flex-row items-center">
-                    <FontAwesomeIcon
-                        icon={faCheck}
-                        className="text-lime h-3 mr-1"
-                    />
+                    {
+                        review.reviewVerified === 'Verified' &&
+                        <FontAwesomeIcon
+                            icon={faCheck}
+                            className="text-lime h-3 mr-1"
+                        />
+                    }
                     <p>{review.reviewVerified}</p>
                 </div>
             </div>

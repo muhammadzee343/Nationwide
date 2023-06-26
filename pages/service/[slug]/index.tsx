@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useContext} from "react";
 import { SidebarContext } from "../../../context/sidebarContext";
-import { howItWorks, service } from "../../../utility/constants";
+import { howItWorks, service, updateServiceData} from "../../../utility/constants";
 import ServiceInfo from "../../../components/serviceInfo.component";
 import Head from "next/head";
 import HowItWorks from "../../../components/howItWorksCard.component";
@@ -8,7 +8,6 @@ import ServiceHeader from "../../../components/serviceHeader.component";
 import ButtonComponent from "../../../components/button.component";
 import QuoteButtonComponent from "../../../components/quoteButton.component";
 import router from "next/router";
-import { faqAccordionData } from "../../../utility/constants";
 import FaqAccordionComponent from "../../../components/faqAccordion.component";
 import BoxBackgroundComponent from "../../../components/boxBackground.component";
 import TextField from "../../../components/textFied.component";
@@ -19,13 +18,11 @@ import Swal from "sweetalert2";
 import CarouselComponent from "../../../components/carousel.component";
 import PricingCarouselComponent from "../../../components/pricingCarousel.component";
 import Pricing from "../../../components/pricing.component";
+import Reviews from "../../../components/reviews.component";
 
-
-
-
-
-
-function Service({ certificate }: any) {
+function Service({ data, slug }: any) {
+  updateServiceData(data?.services_content)
+  const certificate = service.filter((ele: any) => ele.certificate === slug);
 
   const { setShowDrawer, setOverlay, setPropertyType, propertyType } =
     useContext(SidebarContext);
@@ -117,7 +114,7 @@ function Service({ certificate }: any) {
         alert("Something Went wrong");
       }
   }
-
+    console.log(certificate[0]?.title);
   return (
     <>
       {certificate[0]?.servicesDec && <ServiceHeader servicesDec={certificate[0]?.servicesDec} serviceTitle={certificate[0]?.bannerTitle} serviceBanner={certificate[0]?.bannerImage} serviceBannerMobile={certificate[0]?.bannerImageMobile} certificate={certificate}/>}
@@ -132,7 +129,8 @@ function Service({ certificate }: any) {
       )}
         <div className="w-full xxl:continer flex flex-col lg:flex-row">
           <Head>
-            <title>{certificate[0].title}</title>
+
+            <title>{certificate[0]?.title}</title>
             {
               certificate[0]?.metaData && Object.entries(certificate[0]?.metaData).map((data) => {
                 return (
@@ -238,14 +236,15 @@ function Service({ certificate }: any) {
                         <section>
                             <div className="w-full flex flex-col gap-y-4 md:flex-row md:justify-between">
                                 <div className="w-full md:w-[50%]">
-                                    <div className="border-b-4 border-lime w-[85px] rounded-full mb-3"></div>
-                                    <h2 className="text-black text-3xl font-medium ">
-                                        Frequently Asked Questions
-                                    </h2>
-                                    <p className="text-black text-[15px] leading-[27px] mt-5 mb-10">
-                                        I am promo text. Click edit button to change this text. Lorem ipsum dolor sit amet,
-                                        consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo
-                                    </p>
+                                    {certificate[0]?.faq.length > 0 &&
+                                        <>
+                                            <div className="border-b-4 border-lime w-[85px] rounded-full mb-3"></div>
+                                            <h2 className="text-black text-3xl font-medium ">
+                                                Frequently Asked Questions
+                                            </h2>
+                                            <p className="text-black text-[15px] leading-[27px] mt-5 mb-10">Below is a list of answers to Frequently Asked Questions about {certificate[0]?.bannerTitle}</p>
+                                        </>
+                                    }
                                     <FaqAccordionComponent
                                         accordionData={certificate[0]?.faq}
                                         iconMinusColor="#fff"
@@ -429,6 +428,9 @@ function Service({ certificate }: any) {
                                 </div>
                             </div>
                         </div>
+                        {certificate[0]?.reviews.length > 0 && (
+                            <Reviews reviewsData={certificate[0].reviews}/>
+                        )}
                     </div>
                 </div>
             </div>
@@ -437,12 +439,18 @@ function Service({ certificate }: any) {
   );
 }
 
-Service.getInitialProps = (props: any) => {
-  const { slug } = props.query;
-  const certificate: any = service.filter((ele) => {
-    return ele.certificate === slug;
-  });
-  return { certificate };
+export const getServerSideProps = async (context: any) => {
+    const { slug } = context.query;
+    const res = await fetch(`${process.env.BASE_URL_DEV}/services/services_content`);
+    const data = await res.json();
+
+    return {
+        props: {
+            data,
+            slug
+        },
+    };
 };
+
 
 export default Service;

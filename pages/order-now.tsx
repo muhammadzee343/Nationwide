@@ -182,26 +182,25 @@ function OrderNow({ commercialProperties, residentialProperties }: any) {
 
   const orderNow = async () => {
     setFormDirty(true);
-    let {property_type, bedrooms, distribution_boards, electrical_appliances, gas_appliances, gas_fire, fire_back_boiler} = attribute
-    let formError = property_type && bedrooms && distribution_boards && electrical_appliances
-    let gasFire = false
-    if(!gas_appliances){
-       gasFire = false
-    } else if(gas_appliances > 1) {
-      if(gas_fire === false ){
-         gasFire = true
-      } else {
-         if(fire_back_boiler !== ""){
-           gasFire = true
-         }else{
-           gasFire = false
-         }
-      }
-    } else {
-      gasFire = true
-    }
 
-    if (formError && gasFire && propertyAddress) {
+    let gasFire = false
+    let valid = [];
+    for (let i = 0; i < serviceAttributes.length; i++) {
+      if(serviceAttributes[i] === "gas_fire" && attribute["gas_appliances"] == 1){
+        continue
+      }
+      if(serviceAttributes[i] === "fire_back_boiler" && attribute["gas_fire"] == false){
+        continue
+      }
+      if (attribute[serviceAttributes[i]] === "") {
+        valid.push(false);
+      } else {
+        valid.push(true);
+      }
+    }
+    gasFire = !valid.includes(false);
+
+    if ( gasFire && propertyAddress) {
       const body = {
         order: {
           service_category: propertyType,
